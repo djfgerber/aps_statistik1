@@ -1,10 +1,87 @@
-# (PART) Eine intervallskalierte Variable {-}
+# (PART) Eine intervallskaliertes Merkmal {-}
 
-# Intervallskalierte Variablen
+# Intervallskalierte Merkmale
 
-## Was ist eine intervallskalierte Variable?
+## Was ist eine intervallskaliertes Merkmal?
 
-## Wie kann eine intervallskalierte Variable beschrieben werden?
+Ein Merkmal ist dann intervallskaliert, wenn die einzelnen Beobachtungen in eine natürliche Reihenfolge gebracht werden können und zwischen dem tiefsten und höchsten möglichen Wert, alle erdenklichen Zwischenwerte möglich sind. 
+
+Ein Beispiel für ein intervallskaliertes Merkmal ist die Körpertemperatur. Beobachtungen der Körpertemperatur einer lebenden Person sind Werte zwischen ungefähr 10°C und 42°C. Es ist möglich zu sagen, dass eine Person mit 40°C Körpertemperatur eine höhere Temperatur hat als eine mit 38°C Körpertemperatur. Ausserdem sind alle erdenklichen Zwischenwerte möglich, so auch dass bei einer Person eine Körpertemperatur von 37.821239°C gemessen wird. 
+
+Ein weiteres Beispiel für ein intervallskaliertes Merkmal ist der Intelligenzquotient _IQ_. Der IQ bewegt sich normalerweise zwischen 50 und 150, eine Person mit einem IQ von 105 hat einen höheren IQ als eine Person mit einem IQ von 103. Ausserdem sind IQ-Werte von 103.12 oder 118.9182 durchaus möglich.
+
+<details>
+  <summary>Klicke hier, falls dir verhältnisskalierte Merkmale bekannt sind</summary>
+    Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Letztere sind intervallskalierte Merkmale, welche einen absoluten Nullpunkt aufweisen.
+</details> 
+
+
+## Wie kann eine intervallskaliertes Merkmal beschrieben werden?
+
+```{r, echo=FALSE}
+set.seed(11242)
+n <- 40
+x <- round(rnorm(n, 41.1+(42.2-41.1)/2, (42.2-41.1)/4), 2)
+tibble(temperatur = x) %>% 
+  haven::write_sav('data/Enten_n40.sav')
+```
+
+Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen. Dazu untersucht sie `r n` Enten und misst die Körpertemperaturen
+
+```{r, echo = FALSE}
+cat(paste0(x, collapse = ", "))
+```
+
+Für einen Menschen ist es ziemlich schwierig direkt aus der Sichtung dieser Zahlen zu begreifen, welche Körpertemperatur Enten haben. Ein Mensch kann sich jedoch helfen, indem er die Zahlen zusammenfasst.
+
+### Verteilung
+
+Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von 0.2°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein __Histogramm__ genannt.
+
+```{r, echo = FALSE}
+tibble(temperatur = x) %>% 
+  ggplot()+
+  geom_histogram(aes(x=temperatur, colour = 'blue'),
+                 binwidth=0.2)+
+  labs(title = "Histogramm Körpertemperatur Enten", y= "Häufigkeit", x = "Temperatur")+
+  theme(legend.position = "none")+
+  scale_y_continuous(breaks=c(0:17))
+```
+
+Aufgrund dieser Darstellung kann die Veterinärin nun sehen, dass Beobachtungen der Körpertemperatur rund um 41.6°C am häufigsten sind und tiefere und höhere Temperaturen seltener vorkommen. Auf einen Blick sieht sie auch, dass die Temperatur aller Enten zwischen 41°C und 42.2°C war.
+
+
+ 
+
+### Zentralität
+
+### Variabilität
 
 
 ## Übungen
+
+1.
+  (a) Versuche selbst ein Histogramm der Daten oben (*Enten_n40.sav*) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben. 
+  (b) Berechne zusätzlich das arithmetische Mittel und die Standardabweichung des Merkmals.
+
+<details>
+  <summary>Lösung</summary>
+  
+  ```{r, echo=FALSE, fig.cap="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.", fig.show="hold", out.width="50%"}
+  knitr::include_graphics("figures/Enten_n40_instr_histogramm.jpg")
+  knitr::include_graphics("figures/Enten_n40.png")
+  ```
+  (a) Das Histogramm sieht nicht gleich aus, da Jamovi die Temperaturabschnitte kürzer gewählt hat nämlich bei 0.125°C statt 0.2°C wie oben im Text. In Jamovi gibt es aktuell keine Möglichkeit die Abschnittsweite anzupassen. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite. 
+  
+  (b) TODO
+</details> 
+
+
+2.
+  (a) TODO
+  (b) TODO
+
+<details>
+  <summary>Lösung</summary>
+  Lösung
+</details> 

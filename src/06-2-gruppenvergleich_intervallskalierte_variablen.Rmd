@@ -1,0 +1,11 @@
+# (PART) Gruppenvergleich einer intervallskalierten Variable {-}
+
+# Gruppenvergleich einer intervallskalierten Variable
+
+## Zwei Gruppen vergleichen 
+
+## Was ist das Problem der Stichprobenziehung?
+
+## Wie kann man Aussagen über die Grundgesamtheit machen?
+
+## Übungen

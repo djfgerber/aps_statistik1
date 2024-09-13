@@ -66,6 +66,9 @@ Für die Erstellung dieses Buches wurden insbesondere die folgenden Softwareprod
 
 - Jamovi [@R-jmv]
 
+```{r, echo=FALSE}
+library(tidyverse)
+```
 
 
 

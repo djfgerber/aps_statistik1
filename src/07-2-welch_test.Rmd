@@ -1,0 +1,9 @@
+# Welch-Test
+
+## Zwei Gruppen vergleichen 
+
+## Sind die Durchschnitte der beiden Gruppen in der Grundgesamtheit gleich?
+
+## Wie stark unterscheiden sich die Durchschnitte?
+
+## Übungen

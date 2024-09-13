@@ -8,7 +8,9 @@ rmd_files: [
   "src/index.Rmd",
   "src/01-einleitung.Rmd",                                    
   "src/02-1-was_ist_eine_intervallskalierte_variable.Rmd",    
-  "src/04-1-durchschnitt_und_standardabweichung_schätzen.Rmd",
   "src/03-1-stichprobenziehung.Rmd",                          
-  "src/05-1-durchschnitt_testen.Rmd"
+  "src/04-1-durchschnitt_und_standardabweichung_schätzen.Rmd",
+  "src/05-1-durchschnitt_testen.Rmd",
+  "src/06-2-gruppenvergleich_intervallskalierte_variablen.Rmd",
+  "src/07-2-welch_test.Rmd",
 ]
