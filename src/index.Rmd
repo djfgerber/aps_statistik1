@@ -1,0 +1,21 @@
+---
+title: "My Project Title"
+author: "Your Name"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib]
+biblio-style: apalike
+link-citations: yes
+---
+
+<!-- bookdown::render_book("src/index.Rmd", "bookdown::gitbook") -->
+
+<!-- bookdown::render_book("src/index.Rmd", "bookdown::pdf_book") -->
+
+<!-- bookdown::render_book("src/index.Rmd", "bookdown::beamer_presentation2") -->
+
+
+# Preface {-}
+
+This is the preface to my project.
