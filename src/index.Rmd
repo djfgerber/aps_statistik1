@@ -1,6 +1,6 @@
 ---
-title: "My Project Title"
-author: "Your Name"
+title: "Statistik 1"
+author: "Daniel Gerber"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -16,6 +16,6 @@ link-citations: yes
 <!-- bookdown::render_book("src/index.Rmd", "bookdown::beamer_presentation2") -->
 
 
-# Preface {-}
+# Vorwort {-}
 
-This is the preface to my project.
+Dieses Buch ist im Rahmen meiner Lehrtätigkeit an der FHNW entstanden und frei verfügbar.

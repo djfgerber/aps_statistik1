@@ -1,5 +1,4 @@
-introduction
-background
+einleitung
 methods
 data-collection
 analysis
