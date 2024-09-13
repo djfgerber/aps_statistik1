@@ -1,0 +1,10 @@
+# (PART) Eine intervallskalierte Variable {-}
+
+# Intervallskalierte Variablen
+
+## Was ist eine intervallskalierte Variable?
+
+## Wie kann eine intervallskalierte Variable beschrieben werden?
+
+
+## Übungen

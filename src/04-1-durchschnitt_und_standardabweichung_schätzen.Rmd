@@ -1,0 +1,7 @@
+# Durchschnitt und Standardabweichung schätzen
+
+## Wo liegt der Durchschnitt der Grundgesamtheit?
+
+## Wo liegt der Durchschnitt der Standardabweichung?
+
+## Übungen

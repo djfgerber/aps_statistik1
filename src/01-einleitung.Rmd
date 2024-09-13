@@ -1,0 +1,71 @@
+# Einleitung
+
+## Worum geht es?
+
+## Inhaltlicher Aufbau
+
+Dieses Buch umfasst die untenstehenden Inhalte. Die Inhalte wurden hier nach Zwecken sortiert angeordnet:
+
+Stichprobe beschreiben (__deskriptive Statistik__):
+
+-	Arithmetisches Mittel
+-	Median
+-	Quantile
+-	Anteil
+-	Odds Ratio
+-	Relatives Risiko
+
+Population beschreiben (__Wahrscheinlichkeitslehre__):
+
+-	Zufallsvariable
+-	Erwartungswert
+-	Standardabweichung
+-	Varianz
+-	Wahrscheinlichkeitsdichte
+-	Wahrscheinlichkeitsverteilung
+-	Verteilungen
+
+Populationsparameter aus Stichproben schätzen (__Konfidenzintervalle__ + Stichprobengrösse):
+
+-	Mittelwert
+-	Standardabweichung
+-	Anteil
+-	Berichten
+-	Darstellen
+
+
+Aussagen auf die Population aufgrund von Stichproben machen (Test-Theorie):
+
+-	Effektstärke
+-	Berichten
+-	T-Test (1 Stichprobe)
+-	T-Test (2 Stichproben), Welch-Test
+-	Welch Test
+-	U-Test
+-	Korrelation absichern gegen 0
+-	Vierfelder/Mehrfeldertest
+
+Zusammenhänge beschreiben (Zusammenhangsmasse):
+
+-	Pearsons r
+-	Spearmans rho
+-	Vierfelderkorrelation / Phi
+-	Punktbiseriale Korrelation
+-	Kontingenzkoeffizient
+-	Cramérs V
+
+Die Inhalte nach Zweck zu gruppieren ist eine Option, die andere ist die Verfahren der Skalierung der Variablen folgend aufzubauen. Bei dieser Gruppierung ist der Zweck nicht direkt ersichtlich, dafür ist einfacher zu begreiffen welches Verfahren für welche Ausgangslage geeignet ist. Diese Gruppierung wurde für die präsentation der Inhalte in diesem Buch gewählt.
+
+## Wie soll ich dieses Buch lesen?
+
+Dieses Buch enthält zu jedem Thema eine kurze Beschreibung der Theorie, Beispiele und Übungen. 
+
+## Software
+
+Für die Erstellung dieses Buches wurden insbesondere die folgenden Softwareprodukte verwendet:
+
+- Jamovi [@R-jmv]
+
+
+
+

@@ -1,9 +1,0 @@
-# Methods
-
-## Data Collection
-
-Mauris in lorem nisl. Maecenas tempus facilisis ante, eget viverra nisl tincidunt et. Donec turpis lectus, mattis ac malesuada a, accumsan eu libero [@brown2021].
-
-## Analysis
-
-Suspendisse lectus leo, consectetur in tempor sit amet, placerat quis neque. Etiam luctus porttitor lorem, sed suscipit est rutrum non [@wilson2018].
