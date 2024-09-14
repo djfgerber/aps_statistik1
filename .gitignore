@@ -4,5 +4,7 @@
 .RData
 .Ruserdata
 .Rproj
-_main_files
+
+/_main_files/
+!docs/_main_files/
 data/
