@@ -46,14 +46,33 @@ tibble(temperatur = x) %>%
   labs(title = "Histogramm Körpertemperatur Enten", y= "Häufigkeit", x = "Temperatur")+
   theme(legend.position = "none")+
   scale_y_continuous(breaks=c(0:17))
+
+counts_x <- table(x)
+mode_x <- counts_x[counts_x == max(counts_x)]
 ```
 
-Aufgrund dieser Darstellung kann die Veterinärin nun sehen, dass Beobachtungen der Körpertemperatur rund um 41.6°C am häufigsten sind und tiefere und höhere Temperaturen seltener vorkommen. Auf einen Blick sieht sie auch, dass die Temperatur aller Enten zwischen 41°C und 42.2°C war.
+Aufgrund dieser Darstellung kann die Veterinärin nun sehen, wie häufig welche Körpertemperature sind. Dies wird die __Verteilung__ des Merkmals genannt. Sie bemerkt zum Beispiel, dass Beobachtungen der Körpertemperatur rund um 41.6°C am häufigsten sind und tiefere und höhere Temperaturen seltener vorkommen. Auf einen Blick sieht sie auch, dass die Temperatur aller Enten zwischen 41°C und 42.2°C war.
 
-
- 
+Die Verteilung eines Merkmals zu kennen ist hilfreich, jedoch in vielen Situationen (z. B. in der Kommunikation) noch zu komplex. Einfacher ist es die Komplexität einer Verteilung auf zwei Faktoren herunterzubrechen: Die Zentralität und die Variabilität einse Merkmals. 
 
 ### Zentralität
+
+Mit der Zentralität ist ein Wert gemeint, welcher die zentrale Tendenz des Merkmals abbildet. Um die Zentralität zu messen gibt es drei Möglichkeiten:
+
+- Der __Modus__ ist der am häufigsten vorkommende Wert. Im Beispiel ist das der Wert `r names(mode_x)`, welcher `r unname(mode_x)` mal und damit am häufigsten vorkommt.
+- Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als __Median__ bezeichnet. Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir `r n` Beobachtugen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte
+```{r, echo = FALSE, results='asis'} 
+cat(sort(x))
+``` 
+, also `r median(x)`.
+- Das __arithmetische Mittel__ bezeichnet, was gemeinhin mit Durchschnitt gemeint ist. Wenn wir die erste von insgesamt $n$ Beobachtung mit $x_1$ und die letzte Beobachtung mit $x_n$ bezeichnen, so ist das aritmethische Mittel
+$$\bar{x} = \frac{1}{n}\sum^n_{i=1} x_i$$
+Im Beispiel ist das arithmetische Mittel der Körpertemperaturen `r mean(x)`. <details>
+  <summary>Exkurs Wie liest man diese Formel?</summary>
+  TODO.
+</details> 
+
+Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden dementsprechend in unterschiedlichen Situationen eingesetzt, siehe Übungen.
 
 ### Variabilität
 

@@ -189,10 +189,28 @@ Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Le
 <h3><span class="header-section-number">2.2.1</span> Verteilung<a href="intervallskalierte-merkmale.html#verteilung" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von 0.2°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein <strong>Histogramm</strong> genannt.</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p>Aufgrund dieser Darstellung kann die Veterinärin nun sehen, dass Beobachtungen der Körpertemperatur rund um 41.6°C am häufigsten sind und tiefere und höhere Temperaturen seltener vorkommen. Auf einen Blick sieht sie auch, dass die Temperatur aller Enten zwischen 41°C und 42.2°C war.</p>
+<p>Aufgrund dieser Darstellung kann die Veterinärin nun sehen, wie häufig welche Körpertemperature sind. Dies wird die <strong>Verteilung</strong> des Merkmals genannt. Sie bemerkt zum Beispiel, dass Beobachtungen der Körpertemperatur rund um 41.6°C am häufigsten sind und tiefere und höhere Temperaturen seltener vorkommen. Auf einen Blick sieht sie auch, dass die Temperatur aller Enten zwischen 41°C und 42.2°C war.</p>
+<p>Die Verteilung eines Merkmals zu kennen ist hilfreich, jedoch in vielen Situationen (z. B. in der Kommunikation) noch zu komplex. Einfacher ist es die Komplexität einer Verteilung auf zwei Faktoren herunterzubrechen: Die Zentralität und die Variabilität einse Merkmals.</p>
 </div>
 <div id="zentralität" class="section level3 hasAnchor" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Zentralität<a href="intervallskalierte-merkmale.html#zentralität" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Mit der Zentralität ist ein Wert gemeint, welcher die zentrale Tendenz des Merkmals abbildet. Um die Zentralität zu messen gibt es drei Möglichkeiten:</p>
+<ul>
+<li>Der <strong>Modus</strong> ist der am häufigsten vorkommende Wert. Im Beispiel ist das der Wert 41.52, welcher 3 mal und damit am häufigsten vorkommt.</li>
+<li>Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als <strong>Median</strong> bezeichnet. Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtugen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte
+41.07 41.32 41.35 41.43 41.46 41.46 41.48 41.5 41.51 41.52 41.52 41.52 41.53 41.53 41.54 41.58 41.58 41.6 41.62 41.65 41.66 41.67 41.67 41.69 41.7 41.72 41.8 41.81 41.81 41.82 41.82 41.88 41.89 41.92 41.92 41.96 42.01 42.06 42.14 42.18
+, also 41.655.</li>
+<li>Das <strong>arithmetische Mittel</strong> bezeichnet, was gemeinhin mit Durchschnitt gemeint ist. Wenn wir die erste von insgesamt <span class="math inline">\(n\)</span> Beobachtung mit <span class="math inline">\(x_1\)</span> und die letzte Beobachtung mit <span class="math inline">\(x_n\)</span> bezeichnen, so ist das aritmethische Mittel
+<span class="math display">\[\bar{x} = \frac{1}{n}\sum^n_{i=1} x_i\]</span>
+Im Beispiel ist das arithmetische Mittel der Körpertemperaturen 41.6725.
+<details>
+<summary>
+Exkurs Wie liest man diese Formel?
+</summary>
+TODO.
+</details></li>
+</ul>
+<p>Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden dementsprechend in unterschiedlichen Situationen eingesetzt, siehe Übungen.</p>
 </div>
 <div id="variabilität" class="section level3 hasAnchor" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Variabilität<a href="intervallskalierte-merkmale.html#variabilität" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -210,7 +228,7 @@ Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Le
 <summary>
 Lösung
 </summary>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
 <img src="figures/Enten_n40_instr_histogramm.jpg" alt="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur." width="50%" /><img src="figures/Enten_n40.png" alt="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur." width="50%" />
 <p class="caption">
 Figure 2.1: Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.
@@ -297,6 +315,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
