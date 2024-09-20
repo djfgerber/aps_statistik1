@@ -1,7 +1,23 @@
 bookdown_filename: "aps_statistik1"
-delete_merged_file: true
+delete_merged_file: false
 output_dir: "docs"
 language:
+  label:
+    fig: 'Figure '
+    tab: 'Table '
+    eq: 'Equation '
+    thm: 'Theorem '
+    lem: 'Lemma '
+    cor: 'Corollary '
+    prp: 'Proposition '
+    cnj: 'Conjecture '
+    def: 'Definition '
+    exm: 'Example '
+    exr: 'Exercise '
+    hyp: 'Hypothesis '
+    proof: 'Proof. '
+    remark: 'Remark. '
+    solution: 'Solution. '
   ui:
     chapter_name: "Kapitel "
 rmd_files: [

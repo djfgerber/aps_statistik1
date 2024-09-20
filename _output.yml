@@ -6,6 +6,21 @@ bookdown::gitbook:
       scroll_highlight: true
       before: null
       after: null
-    edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
-    download: ["pdf", "epub"]
+      toolbar:
+    position: fixed
+    edit : null
+    download: ["pdf"]
+    sharing:
+      facebook: true
+      github: false
+      twitter: true
+      linkedin: true
+      weibo: false
+      instapaper: false
+      vk: false
+      whatsapp: false
+      all: null
+    info: true
+  highlight: tango
   split_by: chapter
+  
