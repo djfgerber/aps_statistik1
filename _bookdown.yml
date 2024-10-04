@@ -1,4 +1,4 @@
-bookdown_filename: "aps_statistik1"
+book_filename: "aps_statistik1"
 delete_merged_file: false
 output_dir: "docs"
 language:
