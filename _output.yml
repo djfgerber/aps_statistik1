@@ -1,6 +1,8 @@
 bookdown::gitbook:
   css: style.css
-  pandoc_args: ["--lua-filter=solution_filter.lua"]
+  pandoc_args: [
+    "--lua-filter=solution_filter.lua"
+  ]
   config:
     toc:
       collapse: subsection

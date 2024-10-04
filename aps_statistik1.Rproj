@@ -13,3 +13,4 @@ RnwWeave: Sweave
 LaTeX: XeLaTeX
 
 BuildType: Website
+WebsitePath: C:/Users/danth/switchdrive/FHNW APS/11 Course try/aps_statistik1

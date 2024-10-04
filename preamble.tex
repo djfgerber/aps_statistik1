@@ -27,7 +27,7 @@
 \renewcommand{\proofname}{Beweis}
 
 % Define custom environments
-\newenvironment{remark}{\par\textbf{Hinweis.} }{\par}
+% \newenvironment{remark}{\par\textbf{Hinweis.} }{\par}
 \newenvironment{solution}{\par\textbf{Lösung.} }{\par}
 
 % Ensure German captions are used
@@ -36,3 +36,28 @@
   \renewcommand{\chaptername}{Kapitel}
 }
 
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+
+\newenvironment{remark}
+  {
+  \begin{itemize}
+  \renewcommand{\labelitemi}{
+    \raisebox{-.7\height}[0pt][0pt]{
+      {\setkeys{Gin}{width=3em,keepaspectratio}
+        \includegraphics{figures/icons/caution.png}}
+    }
+  }
+  \setlength{\fboxsep}{1em}
+  \begin{tcolorbox}[
+    colback=gray!10,
+    colframe=gray!50,
+    title=\textbf{Hinweis.},
+    fonttitle=\bfseries,
+    sharp corners=south] % Optional: Use tcolorbox for better visuals
+  \item
+  }
+  {
+  \end{tcolorbox}
+  \end{itemize}
+  }{}

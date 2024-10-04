@@ -92,7 +92,7 @@
 \renewcommand{\proofname}{Beweis}
 
 % Define custom environments
-\newenvironment{remark}{\par\textbf{Hinweis.} }{\par}
+% \newenvironment{remark}{\par\textbf{Hinweis.} }{\par}
 \newenvironment{solution}{\par\textbf{Lösung.} }{\par}
 
 % Ensure German captions are used
@@ -101,6 +101,31 @@
   \renewcommand{\chaptername}{Kapitel}
 }
 
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+
+\newenvironment{remark}
+  {
+  \begin{itemize}
+  \renewcommand{\labelitemi}{
+    \raisebox{-.7\height}[0pt][0pt]{
+      {\setkeys{Gin}{width=3em,keepaspectratio}
+        \includegraphics{figures/icons/caution.png}}
+    }
+  }
+  \setlength{\fboxsep}{1em}
+  \begin{tcolorbox}[
+    colback=gray!10,
+    colframe=gray!50,
+    title=\textbf{Hinweis.},
+    fonttitle=\bfseries,
+    sharp corners=south] % Optional: Use tcolorbox for better visuals
+  \item
+  }
+  {
+  \end{tcolorbox}
+  \end{itemize}
+  }{}
 \usepackage{amsthm}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
@@ -281,11 +306,7 @@ Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Le
 
 \section{Wie kann eine intervallskaliertes Merkmal beschrieben werden?}\label{wie-kann-eine-intervallskaliertes-merkmal-beschrieben-werden}
 
-Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen. Dazu untersucht sie 40 Enten und misst die Körpertemperaturen
-
-\begin{verbatim}
-## 42.01, 41.72, 41.51, 41.52, 41.5, 41.6, 41.46, 41.81, 42.14, 41.82, 42.06, 41.53, 41.66, 41.65, 41.46, 41.48, 41.92, 41.58, 41.32, 41.58, 41.81, 41.7, 41.62, 41.52, 41.89, 41.53, 41.67, 41.43, 42.18, 41.52, 41.82, 41.96, 41.8, 41.54, 41.88, 41.69, 41.92, 41.35, 41.07, 41.67
-\end{verbatim}
+Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen. Dazu untersucht sie 40 Enten und misst die Körpertemperaturen 42.01, 41.72, 41.51, 41.52, 41.5, 41.6, 41.46, 41.81, 42.14, 41.82, 42.06, 41.53, 41.66, 41.65, 41.46, 41.48, 41.92, 41.58, 41.32, 41.58, 41.81, 41.7, 41.62, 41.52, 41.89, 41.53, 41.67, 41.43, 42.18, 41.52, 41.82, 41.96, 41.8, 41.54, 41.88, 41.69, 41.92, 41.35, 41.07, 41.67.
 
 Für einen Menschen ist es ziemlich schwierig direkt aus der Sichtung dieser Zahlen zu begreifen, welche Körpertemperatur Enten haben. Ein Mensch kann sich jedoch helfen, indem er die Zahlen zusammenfasst.
 
@@ -293,7 +314,7 @@ Für einen Menschen ist es ziemlich schwierig direkt aus der Sichtung dieser Zah
 
 Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von 0.2°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein \textbf{Histogramm} genannt.
 
-\includegraphics{aps_statistik1_files/figure-latex/unnamed-chunk-6-1.pdf}
+\includegraphics{aps_statistik1_files/figure-latex/unnamed-chunk-5-1.pdf}
 
 Aufgrund dieser Darstellung kann die Veterinärin nun sehen, wie häufig welche Körpertemperature sind. Dies wird die \textbf{Verteilung} des Merkmals genannt. Sie bemerkt zum Beispiel, dass Beobachtungen der Körpertemperatur rund um 41.6°C am häufigsten sind und tiefere und höhere Temperaturen seltener vorkommen. Auf einen Blick sieht sie auch, dass die Temperatur aller Enten zwischen 41°C und 42.2°C war.
 
@@ -308,18 +329,16 @@ Mit der Zentralität ist ein Wert gemeint, welcher die zentrale Tendenz des Merk
 \item
   Der \textbf{Modus} ist der am häufigsten vorkommende Wert. Im Beispiel ist das der Wert 41.52, welcher 3 mal und damit am häufigsten vorkommt.
 \item
-  Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als \textbf{Median} bezeichnet. Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtugen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte
-  41.07 41.32 41.35 41.43 41.46 41.46 41.48 41.5 41.51 41.52 41.52 41.52 41.53 41.53 41.54 41.58 41.58 41.6 41.62 41.65 41.66 41.67 41.67 41.69 41.7 41.72 41.8 41.81 41.81 41.82 41.82 41.88 41.89 41.92 41.92 41.96 42.01 42.06 42.14 42.18
-  , also 41.655.
+  Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als \textbf{Median} bezeichnet. Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtugen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte 41.07, 41.32, 41.35, 41.43, 41.46, 41.46, 41.48, 41.5, 41.51, 41.52, 41.52, 41.52, 41.53, 41.53, 41.54, 41.58, 41.58, 41.6, 41.62, 41.65, 41.66, 41.67, 41.67, 41.69, 41.7, 41.72, 41.8, 41.81, 41.81, 41.82, 41.82, 41.88, 41.89, 41.92, 41.92, 41.96, 42.01, 42.06, 42.14, 42.18, also 41.655.
 \item
   Das \textbf{arithmetische Mittel} bezeichnet, was gemeinhin mit Durchschnitt gemeint ist. Wenn wir die erste von insgesamt \(n\) Beobachtung mit \(x_1\) und die letzte Beobachtung mit \(x_n\) bezeichnen, so ist das aritmethische Mittel
   \[\bar{x} = \frac{1}{n}\sum^n_{i=1} x_i\]
   Im Beispiel ist das arithmetische Mittel der Körpertemperaturen 41.6725.
-
-  Exkurs Wie liest man diese Formel?
-
-  TODO.
 \end{itemize}
+
+\begin{remark}
+TODO: so und so.
+\end{remark}
 
 Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden dementsprechend in unterschiedlichen Situationen eingesetzt, siehe Übungen.
 
@@ -345,7 +364,7 @@ Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden d
 \leavevmode
 
 \begin{figure}
-  \includegraphics[width=0.5\linewidth]{figures/Enten_n40_instr_histogramm} \includegraphics[width=0.5\linewidth]{figures/Enten_n40} \caption{Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.}\label{fig:unnamed-chunk-8}
+  \includegraphics[width=0.5\linewidth]{figures/Enten_n40_instr_histogramm} \includegraphics[width=0.5\linewidth]{figures/Enten_n40} \caption{Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.}\label{fig:unnamed-chunk-6}
   \end{figure}
 
 \begin{enumerate}

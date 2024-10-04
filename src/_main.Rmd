@@ -9,6 +9,7 @@ biblio-style: apalike
 link-citations: yes
 ---
 
+
 # Vorwort {-}
 
 Dieses Buch ist im Rahmen meiner Lehrtätigkeit an der FHNW entstanden und frei verfügbar.
@@ -24,7 +25,7 @@ knitr::write_bib(c(
 ), 'packages.bib')
 ```
 
-<!--chapter:end:src/index.Rmd-->
+<!--chapter:end:index.Rmd-->
 
 # Einleitung
 
@@ -101,13 +102,13 @@ library(tidyverse)
 
 
 
-<!--chapter:end:src/01-einleitung.Rmd-->
+<!--chapter:end:01-einleitung.Rmd-->
 
 # (PART) Eine intervallskaliertes Merkmal {-}
 
 # Intervallskalierte Merkmale
 
-## Was ist eine intervallskaliertes Merkmal?
+## Was ist ein intervallskaliertes Merkmal?
 
 Ein Merkmal ist dann intervallskaliert, wenn die einzelnen Beobachtungen in eine natürliche Reihenfolge gebracht werden können und zwischen dem tiefsten und höchsten möglichen Wert, alle erdenklichen Zwischenwerte möglich sind. 
 
@@ -172,10 +173,13 @@ cat(sort(x))
 , also `r median(x)`.
 - Das __arithmetische Mittel__ bezeichnet, was gemeinhin mit Durchschnitt gemeint ist. Wenn wir die erste von insgesamt $n$ Beobachtung mit $x_1$ und die letzte Beobachtung mit $x_n$ bezeichnen, so ist das aritmethische Mittel
 $$\bar{x} = \frac{1}{n}\sum^n_{i=1} x_i$$
-Im Beispiel ist das arithmetische Mittel der Körpertemperaturen `r mean(x)`. <details>
-  <summary>Exkurs Wie liest man diese Formel?</summary>
-  TODO.
-</details> 
+Im Beispiel ist das arithmetische Mittel der Körpertemperaturen `r mean(x)`. 
+
+::: {.remark .caution}
+
+TODO: so und so.
+
+:::
 
 Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden dementsprechend in unterschiedlichen Situationen eingesetzt, siehe Übungen.
 
@@ -213,7 +217,7 @@ Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden d
 Text..
 :::
 
-<!--chapter:end:src/02-1-was_ist_eine_intervallskalierte_variable.Rmd-->
+<!--chapter:end:02-1-was_ist_eine_intervallskalierte_variable.Rmd-->
 
 # Stichprobenziehung
 
@@ -223,7 +227,7 @@ Text..
 
 ## Übungen
 
-<!--chapter:end:src/03-1-stichprobenziehung.Rmd-->
+<!--chapter:end:03-1-stichprobenziehung.Rmd-->
 
 # Durchschnitt und Standardabweichung schätzen
 
@@ -233,7 +237,7 @@ Text..
 
 ## Übungen
 
-<!--chapter:end:src/04-1-durchschnitt_und_standardabweichung_schätzen.Rmd-->
+<!--chapter:end:04-1-durchschnitt_und_standardabweichung_schätzen.Rmd-->
 
 # Durchschnitt testen
 
@@ -243,7 +247,7 @@ Text..
 
 ## Übungen
 
-<!--chapter:end:src/05-1-durchschnitt_testen.Rmd-->
+<!--chapter:end:05-1-durchschnitt_testen.Rmd-->
 
 # (PART) Gruppenvergleich einer intervallskalierten Variable {-}
 
@@ -257,7 +261,7 @@ Text..
 
 ## Übungen
 
-<!--chapter:end:src/06-2-gruppenvergleich_intervallskalierte_variablen.Rmd-->
+<!--chapter:end:06-2-gruppenvergleich_intervallskalierte_variablen.Rmd-->
 
 # Welch-Test
 
@@ -269,5 +273,5 @@ Text..
 
 ## Übungen
 
-<!--chapter:end:src/07-2-welch_test.Rmd-->
+<!--chapter:end:07-2-welch_test.Rmd-->
 

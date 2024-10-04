@@ -20,7 +20,7 @@ language:
   ui:
     chapter_name: "Kapitel "
 rmd_files: [
-  "src/index.Rmd",
+  "index.Rmd",
   "src/01-einleitung.Rmd",                                    
   "src/02-1-was_ist_eine_intervallskalierte_variable.Rmd",    
   "src/03-1-stichprobenziehung.Rmd",                          

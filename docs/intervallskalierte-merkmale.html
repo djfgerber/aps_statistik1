@@ -96,7 +96,7 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="vorwort.html"><a href="vorwort.html"><i class="fa fa-check"></i>Vorwort</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Vorwort</a></li>
 <li class="chapter" data-level="1" data-path="einleitung.html"><a href="einleitung.html"><i class="fa fa-check"></i><b>1</b> Einleitung</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="einleitung.html"><a href="einleitung.html#worum-geht-es"><i class="fa fa-check"></i><b>1.1</b> Worum geht es?</a></li>
@@ -182,13 +182,12 @@ Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Le
 </div>
 <div id="wie-kann-eine-intervallskaliertes-merkmal-beschrieben-werden" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Wie kann eine intervallskaliertes Merkmal beschrieben werden?<a href="intervallskalierte-merkmale.html#wie-kann-eine-intervallskaliertes-merkmal-beschrieben-werden" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen. Dazu untersucht sie 40 Enten und misst die Körpertemperaturen</p>
-<pre><code>## 42.01, 41.72, 41.51, 41.52, 41.5, 41.6, 41.46, 41.81, 42.14, 41.82, 42.06, 41.53, 41.66, 41.65, 41.46, 41.48, 41.92, 41.58, 41.32, 41.58, 41.81, 41.7, 41.62, 41.52, 41.89, 41.53, 41.67, 41.43, 42.18, 41.52, 41.82, 41.96, 41.8, 41.54, 41.88, 41.69, 41.92, 41.35, 41.07, 41.67</code></pre>
+<p>Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen. Dazu untersucht sie 40 Enten und misst die Körpertemperaturen 42.01, 41.72, 41.51, 41.52, 41.5, 41.6, 41.46, 41.81, 42.14, 41.82, 42.06, 41.53, 41.66, 41.65, 41.46, 41.48, 41.92, 41.58, 41.32, 41.58, 41.81, 41.7, 41.62, 41.52, 41.89, 41.53, 41.67, 41.43, 42.18, 41.52, 41.82, 41.96, 41.8, 41.54, 41.88, 41.69, 41.92, 41.35, 41.07, 41.67.</p>
 <p>Für einen Menschen ist es ziemlich schwierig direkt aus der Sichtung dieser Zahlen zu begreifen, welche Körpertemperatur Enten haben. Ein Mensch kann sich jedoch helfen, indem er die Zahlen zusammenfasst.</p>
 <div id="verteilung" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Verteilung<a href="intervallskalierte-merkmale.html#verteilung" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von 0.2°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein <strong>Histogramm</strong> genannt.</p>
-<p><img src="aps_statistik1_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="aps_statistik1_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Aufgrund dieser Darstellung kann die Veterinärin nun sehen, wie häufig welche Körpertemperature sind. Dies wird die <strong>Verteilung</strong> des Merkmals genannt. Sie bemerkt zum Beispiel, dass Beobachtungen der Körpertemperatur rund um 41.6°C am häufigsten sind und tiefere und höhere Temperaturen seltener vorkommen. Auf einen Blick sieht sie auch, dass die Temperatur aller Enten zwischen 41°C und 42.2°C war.</p>
 <p>Die Verteilung eines Merkmals zu kennen ist hilfreich, jedoch in vielen Situationen (z. B. in der Kommunikation) noch zu komplex. Einfacher ist es die Komplexität einer Verteilung auf zwei Faktoren herunterzubrechen: Die Zentralität und die Variabilität einse Merkmals.</p>
 </div>
@@ -197,19 +196,14 @@ Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Le
 <p>Mit der Zentralität ist ein Wert gemeint, welcher die zentrale Tendenz des Merkmals abbildet. Um die Zentralität zu messen gibt es drei Möglichkeiten:</p>
 <ul>
 <li>Der <strong>Modus</strong> ist der am häufigsten vorkommende Wert. Im Beispiel ist das der Wert 41.52, welcher 3 mal und damit am häufigsten vorkommt.</li>
-<li>Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als <strong>Median</strong> bezeichnet. Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtugen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte
-41.07 41.32 41.35 41.43 41.46 41.46 41.48 41.5 41.51 41.52 41.52 41.52 41.53 41.53 41.54 41.58 41.58 41.6 41.62 41.65 41.66 41.67 41.67 41.69 41.7 41.72 41.8 41.81 41.81 41.82 41.82 41.88 41.89 41.92 41.92 41.96 42.01 42.06 42.14 42.18
-, also 41.655.</li>
+<li>Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als <strong>Median</strong> bezeichnet. Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtugen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte 41.07, 41.32, 41.35, 41.43, 41.46, 41.46, 41.48, 41.5, 41.51, 41.52, 41.52, 41.52, 41.53, 41.53, 41.54, 41.58, 41.58, 41.6, 41.62, 41.65, 41.66, 41.67, 41.67, 41.69, 41.7, 41.72, 41.8, 41.81, 41.81, 41.82, 41.82, 41.88, 41.89, 41.92, 41.92, 41.96, 42.01, 42.06, 42.14, 42.18, also 41.655.</li>
 <li>Das <strong>arithmetische Mittel</strong> bezeichnet, was gemeinhin mit Durchschnitt gemeint ist. Wenn wir die erste von insgesamt <span class="math inline">\(n\)</span> Beobachtung mit <span class="math inline">\(x_1\)</span> und die letzte Beobachtung mit <span class="math inline">\(x_n\)</span> bezeichnen, so ist das aritmethische Mittel
 <span class="math display">\[\bar{x} = \frac{1}{n}\sum^n_{i=1} x_i\]</span>
-Im Beispiel ist das arithmetische Mittel der Körpertemperaturen 41.6725.
-<details>
-<summary>
-Exkurs Wie liest man diese Formel?
-</summary>
-TODO.
-</details></li>
+Im Beispiel ist das arithmetische Mittel der Körpertemperaturen 41.6725.</li>
 </ul>
+<div class="remark caution">
+<p><span id="unlabeled-div-1" class="remark"><em>Hinweis</em>. </span>TODO: so und so.</p>
+</div>
 <p>Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden dementsprechend in unterschiedlichen Situationen eingesetzt, siehe Übungen.</p>
 </div>
 <div id="variabilität" class="section level3 hasAnchor" number="2.2.3">
@@ -219,7 +213,7 @@ TODO.
 <div id="übungen" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Übungen<a href="intervallskalierte-merkmale.html#übungen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-1" class="exercise"><strong>Übung 2.1  </strong></span></p>
+<p><span id="exr:unlabeled-div-2" class="exercise"><strong>Übung 2.1  </strong></span></p>
 <ol style="list-style-type: lower-alpha">
 <li>Versuche selbst ein Histogramm der Daten oben (<em>Enten_n40.sav</em>) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben.</li>
 <li>Berechne zusätzlich das arithmetische Mittel und die Standardabweichung des Merkmals.</li>
@@ -229,9 +223,9 @@ TODO.
 <!--   <summary>Lösung</summary> -->
 <div class="solution">
 <details>
-  <summary>Lösung</summary>
-<p><span id="unlabeled-div-2" class="solution"><em>Lösung</em>. </span></p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-3" class="solution"><em>Lösung</em>. </span></p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
 <img src="figures/Enten_n40_instr_histogramm.jpg" alt="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur." width="50%" /><img src="figures/Enten_n40.png" alt="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur." width="50%" />
 <p class="caption">
 Abbildung 2.1: Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.
@@ -245,7 +239,7 @@ Abbildung 2.1: Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: H
 </div>
 <!-- </details>  -->
 <div class="exercise">
-<p><span id="exr:unlabeled-div-3" class="exercise"><strong>Übung 2.2  </strong></span></p>
+<p><span id="exr:unlabeled-div-4" class="exercise"><strong>Übung 2.2  </strong></span></p>
 <ol style="list-style-type: lower-alpha">
 <li>TODO</li>
 <li>TODO</li>
@@ -253,8 +247,8 @@ Abbildung 2.1: Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: H
 </div>
 <div class="solution">
 <details>
-  <summary>Lösung</summary>
-<p><span id="unlabeled-div-4" class="solution"><em>Lösung</em>. </span>Text..</p>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-5" class="solution"><em>Lösung</em>. </span>Text..</p>
 </details>
 </div>
 
