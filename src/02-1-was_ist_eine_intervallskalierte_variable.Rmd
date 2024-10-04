@@ -2,7 +2,7 @@
 
 # Intervallskalierte Merkmale
 
-## Was ist eine intervallskaliertes Merkmal?
+## Was ist ein intervallskaliertes Merkmal?
 
 Ein Merkmal ist dann intervallskaliert, wenn die einzelnen Beobachtungen in eine natürliche Reihenfolge gebracht werden können und zwischen dem tiefsten und höchsten möglichen Wert, alle erdenklichen Zwischenwerte möglich sind. 
 
@@ -79,13 +79,14 @@ Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden d
 
 ## Übungen
 
-1.
+::: {.exercise}
   (a) Versuche selbst ein Histogramm der Daten oben (*Enten_n40.sav*) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben. 
   (b) Berechne zusätzlich das arithmetische Mittel und die Standardabweichung des Merkmals.
+:::
 
-<details>
-  <summary>Lösung</summary>
-  
+<!-- <details> -->
+<!--   <summary>Lösung</summary> -->
+:::{.solution}
   ```{r, echo=FALSE, fig.cap="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.", fig.show="hold", out.width="50%"}
   knitr::include_graphics("figures/Enten_n40_instr_histogramm.jpg")
   knitr::include_graphics("figures/Enten_n40.png")
@@ -93,14 +94,16 @@ Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden d
   (a) Das Histogramm sieht nicht gleich aus, da Jamovi die Temperaturabschnitte kürzer gewählt hat nämlich bei 0.125°C statt 0.2°C wie oben im Text. In Jamovi gibt es aktuell keine Möglichkeit die Abschnittsweite anzupassen. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite. 
   
   (b) TODO
-</details> 
+:::
+<!-- </details>  -->
 
 
-2.
+::: {.exercise}
   (a) TODO
   (b) TODO
+:::
 
-<details>
-  <summary>Lösung</summary>
-  Lösung
-</details> 
+
+:::{.solution}
+Text..
+:::

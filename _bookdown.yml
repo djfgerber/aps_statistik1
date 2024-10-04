@@ -3,21 +3,20 @@ delete_merged_file: false
 output_dir: "docs"
 language:
   label:
-    fig: 'Figure '
-    tab: 'Table '
-    eq: 'Equation '
+    fig: 'Abbildung '
+    tab: 'Tabelle '
+    eq: 'Gleichung '
     thm: 'Theorem '
     lem: 'Lemma '
-    cor: 'Corollary '
     prp: 'Proposition '
     cnj: 'Conjecture '
     def: 'Definition '
-    exm: 'Example '
-    exr: 'Exercise '
-    hyp: 'Hypothesis '
-    proof: 'Proof. '
-    remark: 'Remark. '
-    solution: 'Solution. '
+    exm: 'Beispiel '
+    exr: 'Übung '
+    hyp: 'Hypothese '
+    proof: 'Beweis. '
+    remark: 'Hinweis. '
+    solution: 'Lösung '
   ui:
     chapter_name: "Kapitel "
 rmd_files: [

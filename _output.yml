@@ -1,5 +1,6 @@
 bookdown::gitbook:
   css: style.css
+  pandoc_args: ["--lua-filter=solution_filter.lua"]
   config:
     toc:
       collapse: subsection
@@ -23,4 +24,11 @@ bookdown::gitbook:
     info: true
   highlight: tango
   split_by: chapter
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  extra_dependencies: ["amsthm"]
+  keep_tex: yes
   

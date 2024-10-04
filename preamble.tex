@@ -1,1 +1,38 @@
 \usepackage{booktabs}
+\usepackage{amsthm}
+\usepackage[ngerman,provide=*]{babel}
+
+% Redefine names for various elements
+\renewcommand{\figurename}{Abbildung}
+\renewcommand{\tablename}{Tabelle}
+\renewcommand{\contentsname}{Inhaltsverzeichnis}
+\renewcommand{\partname}{Teil}
+\renewcommand{\chaptername}{Kapitel}
+\renewcommand{\appendixname}{Anhang}
+
+% The \equationname is not a standard LaTeX command, so we'll define it
+\newcommand{\equationname}{Gleichung}
+
+% Define theorem-like environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Vermutung}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Beispiel}
+\newtheorem{exercise}{Übung}
+\newtheorem{hypothesis}{Hypothese}
+
+% Redefine proof name
+\renewcommand{\proofname}{Beweis}
+
+% Define custom environments
+\newenvironment{remark}{\par\textbf{Hinweis.} }{\par}
+\newenvironment{solution}{\par\textbf{Lösung.} }{\par}
+
+% Ensure German captions are used
+\addto\captionsgerman{
+  \renewcommand{\partname}{Teil}
+  \renewcommand{\chaptername}{Kapitel}
+}
+
