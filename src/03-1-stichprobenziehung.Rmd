@@ -1,5 +1,13 @@
 # Stichprobenziehung
 
+
+```{r, echo = FALSE}
+plot_ball_bag(scores_bag = rnorm(100, 100, 15), 
+                  scores_hover = runif(10, 130, 140),
+                  score_name = "my long title", 
+                  seed = 123)
+```
+
 ## Was ist das Problem der Stichprobenziehung?
 
 ## Wie kann man Aussagen über die Grundgesamtheit machen?
