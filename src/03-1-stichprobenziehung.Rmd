@@ -1,7 +1,7 @@
 # Stichprobenziehung
 
 
-```{r, echo = FALSE}
+```{r stichprobenziehung_intervall, echo = FALSE}
 plot_ball_bag(scores_bag = rnorm(100, 100, 15), 
                   scores_hover = runif(10, 130, 140),
                   score_name = "my long title", 

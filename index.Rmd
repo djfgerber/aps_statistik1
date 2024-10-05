@@ -14,7 +14,7 @@ link-citations: yes
 
 Dieses Buch ist im Rahmen meiner Lehrtätigkeit an der FHNW entstanden und frei verfügbar.
 
-```{r eval=FALSE, include=FALSE}
+```{r servebook, eval=FALSE, include=FALSE}
 bookdown::serve_book()
 ```
 
@@ -66,7 +66,7 @@ plot_ball_bag <- function(scores_bag, scores_hover, score_name, bag_color = "lig
     annotate("text", x = 1.5, y = 7.5, label = "Stichprobe", angle = 90, hjust = 0.5) +
     # Add arrow
     annotate("segment", x = 5, xend = 5, y = 6.2, yend = 7,
-             arrow = arrow(length = unit(0.3, "cm")), size = 1) +
+             arrow = arrow(length = unit(0.3, "cm")), linewidth = 1) +
     # Adjust the plot
     coord_fixed(ratio = 1, xlim = c(0, 10), ylim = c(0, 10)) +
     theme_void() +

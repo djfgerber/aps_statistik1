@@ -14,7 +14,7 @@ link-citations: yes
 
 Dieses Buch ist im Rahmen meiner Lehrtätigkeit an der FHNW entstanden und frei verfügbar.
 
-```{r eval=FALSE, include=FALSE}
+```{r servebook, eval=FALSE, include=FALSE}
 bookdown::serve_book()
 ```
 
@@ -66,7 +66,7 @@ plot_ball_bag <- function(scores_bag, scores_hover, score_name, bag_color = "lig
     annotate("text", x = 1.5, y = 7.5, label = "Stichprobe", angle = 90, hjust = 0.5) +
     # Add arrow
     annotate("segment", x = 5, xend = 5, y = 6.2, yend = 7,
-             arrow = arrow(length = unit(0.3, "cm")), size = 1) +
+             arrow = arrow(length = unit(0.3, "cm")), linewidth = 1) +
     # Adjust the plot
     coord_fixed(ratio = 1, xlim = c(0, 10), ylim = c(0, 10)) +
     theme_void() +
@@ -74,8 +74,6 @@ plot_ball_bag <- function(scores_bag, scores_hover, score_name, bag_color = "lig
       legend.position = "right",
       legend.title = element_text(angle = 0, vjust = 0.5),
       legend.box.margin = margin(0, 0, -50, -50)
-      # ,
-      # plot.margin = margin(5, 5, 5, 5)
     )
   
   return(p)
@@ -201,7 +199,7 @@ Für einen Menschen ist es ziemlich schwierig direkt aus der Sichtung dieser Zah
 
 Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von $0.2$°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein __Histogramm__ genannt.
 
-```{r, echo = FALSE}
+```{r enten_histogramm, echo = FALSE}
 tibble(temperatur = x) %>% 
   ggplot()+
   geom_histogram(aes(x=temperatur, colour = 'blue'),
@@ -294,7 +292,7 @@ Die Aufgabe kann im Kopf gelöst werden, oder mithilfe eines Taschenrechners, od
 # Stichprobenziehung
 
 
-```{r, echo = FALSE}
+```{r stichprobenziehung_intervall, echo = FALSE}
 plot_ball_bag(scores_bag = rnorm(100, 100, 15), 
                   scores_hover = runif(10, 130, 140),
                   score_name = "my long title", 

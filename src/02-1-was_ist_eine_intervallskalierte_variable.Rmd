@@ -34,7 +34,7 @@ Für einen Menschen ist es ziemlich schwierig direkt aus der Sichtung dieser Zah
 
 Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von $0.2$°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein __Histogramm__ genannt.
 
-```{r, echo = FALSE}
+```{r enten_histogramm, echo = FALSE}
 tibble(temperatur = x) %>% 
   ggplot()+
   geom_histogram(aes(x=temperatur, colour = 'blue'),
