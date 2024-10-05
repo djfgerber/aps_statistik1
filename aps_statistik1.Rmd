@@ -183,7 +183,7 @@ Ein weiteres Beispiel für ein intervallskaliertes Merkmal ist der Intelligenzqu
 
 ## Wie kann eine intervallskaliertes Merkmal beschrieben werden?
 
-```{r, echo=FALSE}
+```{r gen_ente, echo=FALSE}
 set.seed(11242)
 n <- 40
 x <- round(rnorm(n, 41.1+(42.2-41.1)/2, (42.2-41.1)/4), 2)
@@ -291,17 +291,57 @@ Die Aufgabe kann im Kopf gelöst werden, oder mithilfe eines Taschenrechners, od
 
 # Stichprobenziehung
 
+Forschende haben ein Messinstrument für Angst entwickelt, welches STAI (State-Trait Anxiety Inentory) [@spielberger1983manual]. Sie erheben dabei unter anderem einen Wert zwischen $20$ und $80$ für eine Zustandsangst. A priori haben die Forschenden keine Ahnung, wie ängstlich eine Person im Durchschnitt ist oder ob die ganze Skala der Werte genutzt wird. Die Fprschenden machen deshalb eine kleine Befragung mit $30$ zufällig ausgewählten Studierenden. Zufällig ausgewählte Beobachtungen eines Merkmals werden als __Stichprobe__ bezeichnet. Die Forschenden finden die zusammenfassenden Werte $M=43.2, s = 7.8, n = 30$ für die Zustandsangst in ihrer Stichrpobe.
 
-```{r stichprobenziehung_intervall, echo = FALSE}
-plot_ball_bag(scores_bag = rnorm(100, 100, 15), 
-                  scores_hover = runif(10, 130, 140),
-                  score_name = "my long title", 
-                  seed = 123)
-```
+Anschliessend stellt sich die Frage, wie stark diese Werte basierend auf dieser Stichprobe Zustandsangst von allen Personen widerspiegelt. Alle Personen oder generell alle möglichen Beobachtungen eines Merkmals, werden als __Population__ oder __Grundgesamtheit__ bezeichnet. Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Pouplation, wenn sie zufällig aus dieser Population gezogen gezogen. Ist dies gegeben, wird die Stichprobe auch als __Zufallsstichprobe__ bezeichnet.
+
+::::{.caution}
+
+:::{.remark}
+Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am Forschungsbetrieb sind und damit über Studien informiert sind oder für wenig Geld oder Bildungsanerkennung an Studien teilnehmen. Einige dieser Studien generalisieren ihre Forschungsresultate nachher auf alle Personen. Dies ist in der Regel falsch, da Studierende nicht representativ für die Gesamtbevölkerung sind (Altersstruktur, Geschlechtsverteilung, Vermögen, usw.). Die Frage, wie eine repräsentative Stichprobe würde den Rahmen dieses Buches sprengen.
+:::
+
+::::
 
 ## Was ist das Problem der Stichprobenziehung?
 
+Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung  \@ref(fig:srs-intervall-nocol) ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population. Die Personen im Zimmer, respektive die Beobachtungen in der Population sind normalerweise nicht sichtbar. Aus diesem Zimmer wurden also 30 Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die Punkte über dem Zimmer, oberhalb des Pfeils. Die Farbe der Punktes ist jetzt bekannt und entspricht der jeweiligen Zustandesangst der beobachteten Person.
+
+```{r srs-intervall-nocol, echo = FALSE, fig.cap="Personen ohne Angst.TODO, make points black in population."}
+set.seed(124)
+scores_hover <- rnorm(30, 43.2, 7.8)
+plot_ball_bag(scores_bag = c(20, 80, rnorm(198, 43.2, 7.8)), 
+                  scores_hover = scores_hover,
+                  score_name = "Zustandsangst", 
+                  seed = 123)
+```
+
+Da die Stichprobe nun eben zufällig gezogen wurde, dass heisst zufällig Personen aus dem Zimmer geholt wurden, kann es nun sein, dass die Stichprobe einer Population wie in Abbildung \@ref(fig:srs-intervall-high-p) entstammt.
+
+
+```{r srs-intervall-high-p, fig.cap="Population mit ähnlichen Werten wie in der Stichprobe.", echo = FALSE}
+set.seed(124)
+scores_hover <- rnorm(30, 43.2, 7.8)
+plot_ball_bag(scores_bag = c(20, 80, rnorm(198, 43.2, 7.8)), 
+                  scores_hover = scores_hover,
+                  score_name = "Zustandsangst", 
+                  seed = 123)
+```
+
+Es könnte aber auch sein, dass die Stichprobe einer Population mit viel höherer Zusatandsangst, wie in Abbildung \@ref(fig:srs-intervall-low-p) dargestellt, entstammt.
+
+```{r srs-intervall-low-p, fig.cap="Population mit höheren Werten als in der Stichprobe.", echo = FALSE}
+plot_ball_bag(scores_bag = c(20, 80, rnorm(198, 52, 7.8)), 
+                  scores_hover = scores_hover,
+                  score_name = "Zustandsangst", 
+                  seed = 123)
+```
+
+Das Problem der zufälligen Stichprobenziehung ist also, dass nie ganz klar ist, wie die darunterliegende Population aussieht. Sind die Werte der Stichprobe tief, weil zufällig gerade Studierende mit tiefer Zustandsangst beobachtet wurden, oder haben tatsächlich die meisten Studierenden eine tiefe Zustandsangst?
+
 ## Wie kann man Aussagen über die Grundgesamtheit machen?
+
+
 
 ## Übungen
 
