@@ -32,7 +32,7 @@ Für einen Menschen ist es ziemlich schwierig direkt aus der Sichtung dieser Zah
 
 ### Verteilung
 
-Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von 0.2°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein __Histogramm__ genannt.
+Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von $0.2$°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein __Histogramm__ genannt.
 
 ```{r, echo = FALSE}
 tibble(temperatur = x) %>% 
@@ -61,11 +61,16 @@ Mit der Zentralität ist ein Wert gemeint, welcher die zentrale Tendenz des Merk
 $$\bar{x} = \frac{1}{n}\sum^n_{i=1} x_i$$
 Im Beispiel ist das arithmetische Mittel der Körpertemperaturen `r mean(x)`. 
 
-::: {.remark .caution}
+:::: {.caution  data-latex=""}
 
-TODO: so und so.
+::: {.remark}
 
+_Erklärung der Formel_: Hier wird zum ersten Mal eine Formel verwendet. $\sum$ steht für die Summe von allen Beobachtungen $x_i$, wenn der Index $i$ in $1$-Schritten von der Zahl unter dem Summenzeichen $i=1$ bis zu der Zahl oben am Summenzeichen $i=n$ läuft. In unserem Beispiel ist $n=`r n`$, also ist $i = 1, 2, 3, 4, \ldots, `r n-1`, `r n`$. Der Teil $\sum^n_{i=1} x_i$ bedeutet also nichts anderes als $x_1 + x_2 + \ldots + x_{`r n-1`} + x_{`r n`}$, also die Summe aller Beobachtungen. $\frac{1}{n}$ bedeutet, dass wir diese Summe jetzt noch durch die Anzahl Beobachtungen teilen. 
+
+_Welchen Einfluss haben die verschiedenen Einflussgrössen_: Dies wird in Übung \@ref(exr:theorie-mdn-mean) erklärt.
 :::
+
+::::
 
 Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden dementsprechend in unterschiedlichen Situationen eingesetzt, siehe Übungen.
 
@@ -74,26 +79,22 @@ Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden d
 
 ## Übungen
 
-::: {.exercise}
-  (a) Versuche selbst ein Histogramm der Daten oben (*Enten_n40.sav*) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben. 
+::: {.exercise  #enten-hist-mean-sd}
+  (a) Versuch selbst ein Histogramm der Daten oben (*Enten_n40.sav*) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben. 
   (b) Berechne zusätzlich das arithmetische Mittel und die Standardabweichung des Merkmals.
 :::
 
-<!-- <details> -->
-<!--   <summary>Lösung</summary> -->
 :::{.solution}
-  ```{r, echo=FALSE, fig.cap="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.", fig.show="hold", out.width="50%"}
+  ```{r enten-hist-mean-sd, echo=FALSE, fig.cap="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.", fig.show="hold", out.width="50%"}
   knitr::include_graphics("figures/Enten_n40_instr_histogramm.jpg")
   knitr::include_graphics("figures/Enten_n40.png")
   ```
-  (a) Das Histogramm sieht nicht gleich aus, da Jamovi die Temperaturabschnitte kürzer gewählt hat nämlich bei 0.125°C statt 0.2°C wie oben im Text. In Jamovi gibt es aktuell keine Möglichkeit die Abschnittsweite anzupassen. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite. 
+  (a) Das Histogramm, siehe Abbildung \@ref(fig:enten-hist-mean-sd) sieht nicht gleich aus, da Jamovi die Temperaturabschnitte kürzer gewählt hat nämlich bei 0.125°C statt 0.2°C wie oben im Text. In Jamovi gibt es aktuell keine Möglichkeit die Abschnittsweite anzupassen. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite. 
   
   (b) TODO
 :::
-<!-- </details>  -->
 
-
-::: {.exercise}
+::: {.exercise #theorie-mdn-mean}
   (a) TODO
   (b) TODO
 :::

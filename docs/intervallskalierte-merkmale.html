@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel J. F. Gerber" />
 
 
-<meta name="date" content="2024-10-04" />
+<meta name="date" content="2024-10-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -102,7 +102,8 @@ div.csl-indent {
 <li class="chapter" data-level="1.1" data-path="einleitung.html"><a href="einleitung.html#worum-geht-es"><i class="fa fa-check"></i><b>1.1</b> Worum geht es?</a></li>
 <li class="chapter" data-level="1.2" data-path="einleitung.html"><a href="einleitung.html#inhaltlicher-aufbau"><i class="fa fa-check"></i><b>1.2</b> Inhaltlicher Aufbau</a></li>
 <li class="chapter" data-level="1.3" data-path="einleitung.html"><a href="einleitung.html#wie-soll-ich-dieses-buch-lesen"><i class="fa fa-check"></i><b>1.3</b> Wie soll ich dieses Buch lesen?</a></li>
-<li class="chapter" data-level="1.4" data-path="einleitung.html"><a href="einleitung.html#software"><i class="fa fa-check"></i><b>1.4</b> Software</a></li>
+<li class="chapter" data-level="1.4" data-path="einleitung.html"><a href="einleitung.html#formeln"><i class="fa fa-check"></i><b>1.4</b> Formeln</a></li>
+<li class="chapter" data-level="1.5" data-path="einleitung.html"><a href="einleitung.html#software"><i class="fa fa-check"></i><b>1.5</b> Software</a></li>
 </ul></li>
 <li class="part"><span><b>I Eine intervallskaliertes Merkmal</b></span></li>
 <li class="chapter" data-level="2" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html"><i class="fa fa-check"></i><b>2</b> Intervallskalierte Merkmale</a>
@@ -186,8 +187,8 @@ Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Le
 <p>Für einen Menschen ist es ziemlich schwierig direkt aus der Sichtung dieser Zahlen zu begreifen, welche Körpertemperatur Enten haben. Ein Mensch kann sich jedoch helfen, indem er die Zahlen zusammenfasst.</p>
 <div id="verteilung" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Verteilung<a href="intervallskalierte-merkmale.html#verteilung" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von 0.2°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein <strong>Histogramm</strong> genannt.</p>
-<p><img src="aps_statistik1_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von <span class="math inline">\(0.2\)</span>°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein <strong>Histogramm</strong> genannt.</p>
+<p><img src="aps_statistik1_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Aufgrund dieser Darstellung kann die Veterinärin nun sehen, wie häufig welche Körpertemperature sind. Dies wird die <strong>Verteilung</strong> des Merkmals genannt. Sie bemerkt zum Beispiel, dass Beobachtungen der Körpertemperatur rund um 41.6°C am häufigsten sind und tiefere und höhere Temperaturen seltener vorkommen. Auf einen Blick sieht sie auch, dass die Temperatur aller Enten zwischen 41°C und 42.2°C war.</p>
 <p>Die Verteilung eines Merkmals zu kennen ist hilfreich, jedoch in vielen Situationen (z. B. in der Kommunikation) noch zu komplex. Einfacher ist es die Komplexität einer Verteilung auf zwei Faktoren herunterzubrechen: Die Zentralität und die Variabilität einse Merkmals.</p>
 </div>
@@ -201,8 +202,11 @@ Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Le
 <span class="math display">\[\bar{x} = \frac{1}{n}\sum^n_{i=1} x_i\]</span>
 Im Beispiel ist das arithmetische Mittel der Körpertemperaturen 41.6725.</li>
 </ul>
-<div class="remark caution">
-<p><span id="unlabeled-div-1" class="remark"><em>Hinweis</em>. </span>TODO: so und so.</p>
+<div class="caution">
+<div class="remark">
+<p><span id="unlabeled-div-1" class="remark"><em>Hinweis</em>. </span><em>Erklärung der Formel</em>: Hier wird zum ersten Mal eine Formel verwendet. <span class="math inline">\(\sum\)</span> steht für die Summe von allen Beobachtungen <span class="math inline">\(x_i\)</span>, wenn der Index <span class="math inline">\(i\)</span> in <span class="math inline">\(1\)</span>-Schritten von der Zahl unter dem Summenzeichen <span class="math inline">\(i=1\)</span> bis zu der Zahl oben am Summenzeichen <span class="math inline">\(i=n\)</span> läuft. In unserem Beispiel ist <span class="math inline">\(n=40\)</span>, also ist <span class="math inline">\(i = 1, 2, 3, 4, \ldots, 39, 40\)</span>. Der Teil <span class="math inline">\(\sum^n_{i=1} x_i\)</span> bedeutet also nichts anderes als <span class="math inline">\(x_1 + x_2 + \ldots + x_{39} + x_{40}\)</span>, also die Summe aller Beobachtungen. <span class="math inline">\(\frac{1}{n}\)</span> bedeutet, dass wir diese Summe jetzt noch durch die Anzahl Beobachtungen teilen.</p>
+<p><em>Welchen Einfluss haben die verschiedenen Einflussgrössen</em>: Dies wird in Übung <a href="intervallskalierte-merkmale.html#exr:theorie-mdn-mean">2.2</a> erklärt.</p>
+</div>
 </div>
 <p>Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden dementsprechend in unterschiedlichen Situationen eingesetzt, siehe Übungen.</p>
 </div>
@@ -213,33 +217,30 @@ Im Beispiel ist das arithmetische Mittel der Körpertemperaturen 41.6725.</li>
 <div id="übungen" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Übungen<a href="intervallskalierte-merkmale.html#übungen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-2" class="exercise"><strong>Übung 2.1  </strong></span></p>
+<p><span id="exr:enten-hist-mean-sd" class="exercise"><strong>Übung 2.1  </strong></span></p>
 <ol style="list-style-type: lower-alpha">
-<li>Versuche selbst ein Histogramm der Daten oben (<em>Enten_n40.sav</em>) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben.</li>
+<li>Versuch selbst ein Histogramm der Daten oben (<em>Enten_n40.sav</em>) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben.</li>
 <li>Berechne zusätzlich das arithmetische Mittel und die Standardabweichung des Merkmals.</li>
 </ol>
 </div>
-<!-- <details> -->
-<!--   <summary>Lösung</summary> -->
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-3" class="solution"><em>Lösung</em>. </span></p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<p><span id="unlabeled-div-2" class="solution"><em>Lösung</em>. </span></p>
+<div class="figure"><span style="display:block;" id="fig:enten-hist-mean-sd"></span>
 <img src="figures/Enten_n40_instr_histogramm.jpg" alt="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur." width="50%" /><img src="figures/Enten_n40.png" alt="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur." width="50%" />
 <p class="caption">
 Abbildung 2.1: Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.
 </p>
 </div>
 <ol style="list-style-type: lower-alpha">
-<li><p>Das Histogramm sieht nicht gleich aus, da Jamovi die Temperaturabschnitte kürzer gewählt hat nämlich bei 0.125°C statt 0.2°C wie oben im Text. In Jamovi gibt es aktuell keine Möglichkeit die Abschnittsweite anzupassen. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite.</p></li>
+<li><p>Das Histogramm, siehe Abbildung <a href="intervallskalierte-merkmale.html#fig:enten-hist-mean-sd">2.1</a> sieht nicht gleich aus, da Jamovi die Temperaturabschnitte kürzer gewählt hat nämlich bei 0.125°C statt 0.2°C wie oben im Text. In Jamovi gibt es aktuell keine Möglichkeit die Abschnittsweite anzupassen. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite.</p></li>
 <li><p>TODO</p></li>
 </ol>
 </details>
 </div>
-<!-- </details>  -->
 <div class="exercise">
-<p><span id="exr:unlabeled-div-4" class="exercise"><strong>Übung 2.2  </strong></span></p>
+<p><span id="exr:theorie-mdn-mean" class="exercise"><strong>Übung 2.2  </strong></span></p>
 <ol style="list-style-type: lower-alpha">
 <li>TODO</li>
 <li>TODO</li>
@@ -248,7 +249,7 @@ Abbildung 2.1: Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: H
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-5" class="solution"><em>Lösung</em>. </span>Text..</p>
+<p><span id="unlabeled-div-3" class="solution"><em>Lösung</em>. </span>Text..</p>
 </details>
 </div>
 

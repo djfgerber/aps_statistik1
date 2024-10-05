@@ -16,7 +16,7 @@ language:
     hyp: 'Hypothese '
     proof: 'Beweis. '
     remark: 'Hinweis. '
-    solution: 'Lösung '
+    solution: 'Lösung.'
   ui:
     chapter_name: "Kapitel "
 rmd_files: [

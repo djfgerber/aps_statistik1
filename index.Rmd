@@ -20,6 +20,7 @@ bookdown::serve_book()
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
+library(tidyverse)
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'jmv'
 ), 'packages.bib')

@@ -1,6 +1,12 @@
 \usepackage{booktabs}
-\usepackage{amsthm}
 \usepackage[ngerman,provide=*]{babel}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
 
 % Redefine names for various elements
 \renewcommand{\figurename}{Abbildung}
@@ -13,22 +19,8 @@
 % The \equationname is not a standard LaTeX command, so we'll define it
 \newcommand{\equationname}{Gleichung}
 
-% Define theorem-like environments
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}{Lemma}
-\newtheorem{proposition}{Proposition}
-\newtheorem{conjecture}{Vermutung}
-\newtheorem{definition}{Definition}
-\newtheorem{example}{Beispiel}
-\newtheorem{exercise}{Übung}
-\newtheorem{hypothesis}{Hypothese}
-
 % Redefine proof name
 \renewcommand{\proofname}{Beweis}
-
-% Define custom environments
-% \newenvironment{remark}{\par\textbf{Hinweis.} }{\par}
-\newenvironment{solution}{\par\textbf{Lösung.} }{\par}
 
 % Ensure German captions are used
 \addto\captionsgerman{
@@ -39,8 +31,9 @@
 \usepackage{tcolorbox}
 \usepackage{xcolor}
 
-\newenvironment{remark}
-  {
+
+
+\newenvironment{caution}{
   \begin{itemize}
   \renewcommand{\labelitemi}{
     \raisebox{-.7\height}[0pt][0pt]{
@@ -50,10 +43,12 @@
   }
   \setlength{\fboxsep}{1em}
   \begin{tcolorbox}[
-    colback=gray!10,
+  colback=gray!10,
     colframe=gray!50,
-    title=\textbf{Hinweis.},
+    title=\textbf{Achtung},
     fonttitle=\bfseries,
+    coltitle=black,
+    colbacktitle=yellow!50,
     sharp corners=south] % Optional: Use tcolorbox for better visuals
   \item
   }
@@ -61,3 +56,4 @@
   \end{tcolorbox}
   \end{itemize}
   }{}
+

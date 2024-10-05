@@ -64,8 +64,14 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
-\usepackage{amsthm}
 \usepackage[ngerman,provide=*]{babel}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
 
 % Redefine names for various elements
 \renewcommand{\figurename}{Abbildung}
@@ -78,22 +84,8 @@
 % The \equationname is not a standard LaTeX command, so we'll define it
 \newcommand{\equationname}{Gleichung}
 
-% Define theorem-like environments
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}{Lemma}
-\newtheorem{proposition}{Proposition}
-\newtheorem{conjecture}{Vermutung}
-\newtheorem{definition}{Definition}
-\newtheorem{example}{Beispiel}
-\newtheorem{exercise}{Übung}
-\newtheorem{hypothesis}{Hypothese}
-
 % Redefine proof name
 \renewcommand{\proofname}{Beweis}
-
-% Define custom environments
-% \newenvironment{remark}{\par\textbf{Hinweis.} }{\par}
-\newenvironment{solution}{\par\textbf{Lösung.} }{\par}
 
 % Ensure German captions are used
 \addto\captionsgerman{
@@ -104,8 +96,9 @@
 \usepackage{tcolorbox}
 \usepackage{xcolor}
 
-\newenvironment{remark}
-  {
+
+
+\newenvironment{caution}{
   \begin{itemize}
   \renewcommand{\labelitemi}{
     \raisebox{-.7\height}[0pt][0pt]{
@@ -115,10 +108,12 @@
   }
   \setlength{\fboxsep}{1em}
   \begin{tcolorbox}[
-    colback=gray!10,
+  colback=gray!10,
     colframe=gray!50,
-    title=\textbf{Hinweis.},
+    title=\textbf{Achtung},
     fonttitle=\bfseries,
+    coltitle=black,
+    colbacktitle=yellow!50,
     sharp corners=south] % Optional: Use tcolorbox for better visuals
   \item
   }
@@ -126,6 +121,7 @@
   \end{tcolorbox}
   \end{itemize}
   }{}
+
 \usepackage{amsthm}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
@@ -143,8 +139,25 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{2024-10-04}
+\date{2024-10-05}
 
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Beispiel}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Übung}[chapter]
+\theoremstyle{definition}
+\newtheorem{hypothesis}{Hypothese}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Hinweis}
+\newtheorem*{solution}{Lösung}
 \begin{document}
 \maketitle
 
@@ -263,30 +276,29 @@ Die Inhalte nach Zweck zu gruppieren ist eine Option, die andere ist die Verfahr
 
 \section{Wie soll ich dieses Buch lesen?}\label{wie-soll-ich-dieses-buch-lesen}
 
-Dieses Buch enthält zu jedem Thema eine kurze Beschreibung der Theorie, Beispiele und Übungen.
+Dieses Buch enthält zu jedem Thema eine kurze Beschreibung der Theorie, Beispiele und Übungen. Das selbstständige Lösen der Übungen ist unerlässlich für das Verständnis und die emanzipation im korrekten Umgang mit Daten. Ohne Übungen fehlt die Auseinandersetzung mit dem Unterrichtsstoff und ohne diese fällt es den allermeisten schwer sogar einfachste Zusammenhänge zu begreiffen. Es wird deshalb empfohlen, dass die Übungen zum jeweiligen Thema zeitnah zur Theorie gelöst werden. Damit überprüft werden kann, ob die Übungen richtig gelöst wurden, ist zu jeder Übung eine kurze Lösung hinterlegt. Wer beim ersten selbstständigen Versuch der Übungslösung scheitert - was garantiert den meisten Lesenden hier ein oder mehrmals passieren wird -, kann die Übung mit Hilfe der Lösung lösen und zu einem späteren Zeitpunkt die Übung selbstständig nochmal machen ohne Lösung. Für die Statistik ist es also \textbf{nicht} genug den Stoff einmal auswendig zu lernen, übung ist unerlässlich.
+
+\section{Formeln}\label{formeln}
+
+Die Statistik bedient sich der universellen Sprache der Formeln. Es ist deshalb unerlässlich einige Formeln zu verstehen. Das Verständnis von Formeln ist für ungeübte Lesende verwirrend und schwierig. Deshalb wird dieses Verständnis in diesem Buch nach und nach aufgebaut. Dazu werden Teilformeln isoliert und erklärt und die Einflüsse der verschiedenen Kenngrössen in der Formel exploriert.
 
 \section{Software}\label{software}
 
-Für die Erstellung dieses Buches wurden insbesondere die folgenden Softwareprodukte verwendet:
+Für die Lösung der Übungen wird oft die freie Software Jamovi verwendet. Dem Leser wird deshalb empfohlen diese Software zu installieren. Für die Erstellung dieses Buches wurden ferner die folgenden Softwareprodukte verwendet:
 
 \begin{itemize}
 \tightlist
 \item
-  Jamovi \citep{R-jmv}
+  Jamovi software (Version 2.3.21.0)
+\item
+  Jamovi R-package \citep{R-jmv}
+\item
+  R \citep{R-base}
+\item
+  Tidyverse \citep{tidyverse2019}
+\item
+  Bookdown \citep{bookdown2016}
 \end{itemize}
-
-\begin{verbatim}
-## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
-## v dplyr     1.1.4     v readr     2.1.5
-## v forcats   1.0.0     v stringr   1.5.1
-## v ggplot2   3.5.1     v tibble    3.2.1
-## v lubridate 1.9.3     v tidyr     1.3.1
-## v purrr     1.0.2     
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-\end{verbatim}
 
 \part{Eine intervallskaliertes Merkmal}\label{part-eine-intervallskaliertes-merkmal}
 
@@ -312,9 +324,9 @@ Für einen Menschen ist es ziemlich schwierig direkt aus der Sichtung dieser Zah
 
 \subsection{Verteilung}\label{verteilung}
 
-Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von 0.2°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein \textbf{Histogramm} genannt.
+Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von \(0.2\)°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein \textbf{Histogramm} genannt.
 
-\includegraphics{aps_statistik1_files/figure-latex/unnamed-chunk-5-1.pdf}
+\includegraphics{aps_statistik1_files/figure-latex/unnamed-chunk-4-1.pdf}
 
 Aufgrund dieser Darstellung kann die Veterinärin nun sehen, wie häufig welche Körpertemperature sind. Dies wird die \textbf{Verteilung} des Merkmals genannt. Sie bemerkt zum Beispiel, dass Beobachtungen der Körpertemperatur rund um 41.6°C am häufigsten sind und tiefere und höhere Temperaturen seltener vorkommen. Auf einen Blick sieht sie auch, dass die Temperatur aller Enten zwischen 41°C und 42.2°C war.
 
@@ -336,9 +348,15 @@ Mit der Zentralität ist ein Wert gemeint, welcher die zentrale Tendenz des Merk
   Im Beispiel ist das arithmetische Mittel der Körpertemperaturen 41.6725.
 \end{itemize}
 
+\begin{caution}
+
 \begin{remark}
-TODO: so und so.
+\emph{Erklärung der Formel}: Hier wird zum ersten Mal eine Formel verwendet. \(\sum\) steht für die Summe von allen Beobachtungen \(x_i\), wenn der Index \(i\) in \(1\)-Schritten von der Zahl unter dem Summenzeichen \(i=1\) bis zu der Zahl oben am Summenzeichen \(i=n\) läuft. In unserem Beispiel ist \(n=40\), also ist \(i = 1, 2, 3, 4, \ldots, 39, 40\). Der Teil \(\sum^n_{i=1} x_i\) bedeutet also nichts anderes als \(x_1 + x_2 + \ldots + x_{39} + x_{40}\), also die Summe aller Beobachtungen. \(\frac{1}{n}\) bedeutet, dass wir diese Summe jetzt noch durch die Anzahl Beobachtungen teilen.
+
+\emph{Welchen Einfluss haben die verschiedenen Einflussgrössen}: Dies wird in Übung \ref{exr:theorie-mdn-mean} erklärt.
 \end{remark}
+
+\end{caution}
 
 Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden dementsprechend in unterschiedlichen Situationen eingesetzt, siehe Übungen.
 
@@ -347,13 +365,13 @@ Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden d
 \section{Übungen}\label{uxfcbungen}
 
 \begin{exercise}
-\leavevmode
+\protect\hypertarget{exr:enten-hist-mean-sd}{}\label{exr:enten-hist-mean-sd}\leavevmode
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Versuche selbst ein Histogramm der Daten oben (\emph{Enten\_n40.sav}) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben.
+  Versuch selbst ein Histogramm der Daten oben (\emph{Enten\_n40.sav}) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben.
 \item
   Berechne zusätzlich das arithmetische Mittel und die Standardabweichung des Merkmals.
 \end{enumerate}
@@ -364,13 +382,13 @@ Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden d
 \leavevmode
 
 \begin{figure}
-  \includegraphics[width=0.5\linewidth]{figures/Enten_n40_instr_histogramm} \includegraphics[width=0.5\linewidth]{figures/Enten_n40} \caption{Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.}\label{fig:unnamed-chunk-6}
+  \includegraphics[width=0.5\linewidth]{figures/Enten_n40_instr_histogramm} \includegraphics[width=0.5\linewidth]{figures/Enten_n40} \caption{Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.}\label{fig:enten-hist-mean-sd}
   \end{figure}
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \item
-  Das Histogramm sieht nicht gleich aus, da Jamovi die Temperaturabschnitte kürzer gewählt hat nämlich bei 0.125°C statt 0.2°C wie oben im Text. In Jamovi gibt es aktuell keine Möglichkeit die Abschnittsweite anzupassen. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite.
+  Das Histogramm, siehe Abbildung \ref{fig:enten-hist-mean-sd} sieht nicht gleich aus, da Jamovi die Temperaturabschnitte kürzer gewählt hat nämlich bei 0.125°C statt 0.2°C wie oben im Text. In Jamovi gibt es aktuell keine Möglichkeit die Abschnittsweite anzupassen. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite.
 \item
   TODO
 \end{enumerate}
@@ -378,7 +396,7 @@ Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden d
 \end{solution}
 
 \begin{exercise}
-\leavevmode
+\protect\hypertarget{exr:theorie-mdn-mean}{}\label{exr:theorie-mdn-mean}\leavevmode
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
