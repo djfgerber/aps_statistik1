@@ -6,10 +6,11 @@ plot_ball_bag <- function(scores_bag,
                           score_name,
                           bag_color = "lightgrey",
                           seed = NA_integer_,
-                          color_bag_balls = TRUE) {
+                          color_bag_balls = TRUE,
+                          no_legend = FALSE) {
   if (!is.null(seed))
     set.seed(seed)
-  
+
   n <- length(scores_bag)
   k <- length(scores_hover)
   scores <- c(scores_bag, scores_hover)
@@ -23,11 +24,18 @@ plot_ball_bag <- function(scores_bag,
   df_hover <- tibble(x = seq(3, 7, length.out = k), y = rep(7.5, k)) %>%
     mutate(type = "hover", score = scores_hover)
   
+  
   df_all <- bind_rows(df_bag, df_hover)
   
   if (!color_bag_balls) {
     df_all <- df_all %>%
       mutate(score = if_else(type == "bag", NA_real_, score))
+  }
+  
+  if(no_legend){
+    legend_pos = "none"
+  }else{
+    legend_pos = "right"
   }
   
   p <- ggplot() +
@@ -80,7 +88,7 @@ plot_ball_bag <- function(scores_bag,
                 ylim = c(0, 10)) +
     theme_void() +
     theme(
-      legend.position = "right",
+      legend.position = legend_pos,
       legend.title = element_text(angle = 0, vjust = 0.5),
       legend.box.margin = margin(0, 0, -50, -50)
     )

@@ -10,7 +10,7 @@ link-citations: yes
 ---
 
 
-# Vorwort {-}
+# Vorwort {-#vorwort}
 
 Dieses Buch ist im Rahmen meiner Lehrtätigkeit an der FHNW entstanden und frei verfügbar.
 
@@ -19,6 +19,7 @@ bookdown::serve_book()
 ```
 
 ```{r load_packages, include=FALSE}
+library(gridExtra)
 source('src/r/bag_sampling.R')
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'jmv'

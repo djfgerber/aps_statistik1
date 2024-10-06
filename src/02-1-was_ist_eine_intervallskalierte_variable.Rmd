@@ -1,10 +1,10 @@
 # (PART) Eine intervallskaliertes Merkmal {-}
 
-# Intervallskalierte Merkmale
+# Intervallskalierte Merkmale  {#intervallskalierte-merkmale}
 
-## Was ist ein intervallskaliertes Merkmal?
+## Was ist ein intervallskaliertes Merkmal? {#intervallskalierte-merkmale-definition}
 
-Ein Merkmal ist dann intervallskaliert, wenn die einzelnen Beobachtungen in eine natürliche Reihenfolge gebracht werden können und zwischen dem tiefsten und höchsten möglichen Wert, alle erdenklichen Zwischenwerte möglich sind. 
+Ein Merkmal ist dann **intervallskaliert**, wenn die einzelnen Beobachtungen in eine natürliche Reihenfolge gebracht werden können und zwischen dem tiefsten und höchsten möglichen Wert, alle erdenklichen Zwischenwerte möglich sind. 
 
 Ein Beispiel für ein intervallskaliertes Merkmal ist die Körpertemperatur. Beobachtungen der Körpertemperatur einer lebenden Person sind Werte zwischen ungefähr 10°C und 42°C. Es ist möglich zu sagen, dass eine Person mit 40°C Körpertemperatur eine höhere Temperatur hat als eine mit 38°C Körpertemperatur. Ausserdem sind alle erdenklichen Zwischenwerte möglich, so auch dass bei einer Person eine Körpertemperatur von 37.821239°C gemessen wird. 
 
@@ -16,7 +16,7 @@ Ein weiteres Beispiel für ein intervallskaliertes Merkmal ist der Intelligenzqu
 </details> 
 
 
-## Wie kann eine intervallskaliertes Merkmal beschrieben werden?
+## Wie kann eine intervallskaliertes Merkmal beschrieben werden? {#intervallskalierte-merkmale-beschreibung}
 
 ```{r gen_ente, echo=FALSE}
 set.seed(11242)
@@ -30,7 +30,7 @@ Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen
 
 Für einen Menschen ist es ziemlich schwierig direkt aus der Sichtung dieser Zahlen zu begreifen, welche Körpertemperatur Enten haben. Ein Mensch kann sich jedoch helfen, indem er die Zahlen zusammenfasst.
 
-### Verteilung
+### Verteilung {#verteilung}
 
 Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von $0.2$°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein __Histogramm__ genannt.
 
@@ -51,7 +51,7 @@ Aufgrund dieser Darstellung kann die Veterinärin nun sehen, wie häufig welche 
 
 Die Verteilung eines Merkmals zu kennen ist hilfreich, jedoch in vielen Situationen (z. B. in der Kommunikation) noch zu komplex. Einfacher ist es die Komplexität einer Verteilung auf zwei Faktoren herunterzubrechen: Die Zentralität und die Variabilität einse Merkmals. 
 
-### Zentralität
+### Zentralität {#zentralitaet}
 
 Mit der Zentralität ist ein Wert gemeint, welcher die zentrale Tendenz des Merkmals abbildet. Um die Zentralität zu messen gibt es drei Möglichkeiten:
 
@@ -79,13 +79,13 @@ _Welchen Einfluss haben die verschiedenen Einflussgrössen_: Dies wird in Übung
 
 Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden dementsprechend in unterschiedlichen Situationen eingesetzt, siehe Übungen.
 
-### Variabilität
+### Variabilität {#variabilitaet}
 
 TODO: Quantile
 TODO: Standardabweichung
 
 
-## Übungen
+## Übungen  {#intervallskaliertes-merkmal-uebungen}
 
 ::: {.exercise  #enten-hist-mean-sd}
   (a) Versuch selbst ein Histogramm der Daten oben (*Enten_n40.sav*) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben. 
