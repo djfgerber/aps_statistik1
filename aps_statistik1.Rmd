@@ -19,65 +19,10 @@ bookdown::serve_book()
 ```
 
 ```{r load_packages, include=FALSE}
-# automatically create a bib database for R packages
-library(tidyverse)
-library(RColorBrewer)
+source('src/r/bag_sampling.R')
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'jmv'
 ), 'packages.bib')
-```
-
-```{r foodef_plot_ball_bag, include=FALSE}
-plot_ball_bag <- function(scores_bag, scores_hover, score_name, bag_color = "lightgrey", seed = NULL) {
-  if (!is.null(seed)) set.seed(seed)
-  
-  n <- length(scores_bag)
-  k <- length(scores_hover)
-  # Generate scores and positions
-  scores <- c(scores_bag, scores_hover)
-  
-  # Function to generate random positions within the bag
-  random_position <- function(count, xmin, xmax, ymin, ymax) {
-    data.frame(
-      x = runif(count, xmin, xmax),
-      y = runif(count, ymin, ymax)
-    )
-  }
-  
-  # Create dataframe for all balls
-  df_bag <- random_position(n, 2.5, 7.5, 1.5, 5.5)
-  df_hover <- data.frame(
-    x = seq(3, 7, length.out = k),
-    y = rep(7.5, k)
-  )
-  df_all <- rbind(
-    cbind(df_bag, type = "bag", score = scores_bag),
-    cbind(df_hover, type = "hover", score = scores_hover)
-  )
-  
-  p <- ggplot() +
-    geom_rect(aes(xmin = 2, xmax = 8, ymin = 1, ymax = 6), 
-              fill = bag_color, color = "black", linewidth = 1) +
-    geom_point(data = df_all, aes(x = x, y = y, color = score), size = 5) +
-    scale_color_gradientn(colors = rev(brewer.pal(9, "RdYlGn")), 
-                          name = score_name,
-                          limits = c(min(scores), max(scores))) +
-    annotate("text", x = 1.5, y = 3.5, label = "Population", angle = 90, hjust = 0.5) +
-    annotate("text", x = 1.5, y = 7.5, label = "Stichprobe", angle = 90, hjust = 0.5) +
-    # Add arrow
-    annotate("segment", x = 5, xend = 5, y = 6.2, yend = 7,
-             arrow = arrow(length = unit(0.3, "cm")), linewidth = 1) +
-    # Adjust the plot
-    coord_fixed(ratio = 1, xlim = c(0, 10), ylim = c(0, 10)) +
-    theme_void() +
-    theme(
-      legend.position = "right",
-      legend.title = element_text(angle = 0, vjust = 0.5),
-      legend.box.margin = margin(0, 0, -50, -50)
-    )
-  
-  return(p)
-}
 ```
 
 <!--chapter:end:index.Rmd-->
@@ -307,34 +252,40 @@ Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am F
 
 Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung  \@ref(fig:srs-intervall-nocol) ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population. Die Personen im Zimmer, respektive die Beobachtungen in der Population sind normalerweise nicht sichtbar. Aus diesem Zimmer wurden also 30 Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die Punkte über dem Zimmer, oberhalb des Pfeils. Die Farbe der Punktes ist jetzt bekannt und entspricht der jeweiligen Zustandesangst der beobachteten Person.
 
-```{r srs-intervall-nocol, echo = FALSE, fig.cap="Personen ohne Angst.TODO, make points black in population."}
+```{r srs-intervall-nocol, echo = FALSE, fig.cap="Population mit unbekannter Zustandsangst."}
 set.seed(124)
 scores_hover <- rnorm(30, 43.2, 7.8)
-plot_ball_bag(scores_bag = c(20, 80, rnorm(198, 43.2, 7.8)), 
-                  scores_hover = scores_hover,
-                  score_name = "Zustandsangst", 
-                  seed = 123)
+plot_ball_bag(
+  scores_bag = c(20, 80, rnorm(198, 43.2, 7.8)),
+  scores_hover = scores_hover,
+  score_name = "Zustandsangst",
+  bag_color = "grey90",
+  seed = 123,
+  color_bag_balls = FALSE
+)
 ```
 
 Da die Stichprobe nun eben zufällig gezogen wurde, dass heisst zufällig Personen aus dem Zimmer geholt wurden, kann es nun sein, dass die Stichprobe einer Population wie in Abbildung \@ref(fig:srs-intervall-high-p) entstammt.
 
 
 ```{r srs-intervall-high-p, fig.cap="Population mit ähnlichen Werten wie in der Stichprobe.", echo = FALSE}
-set.seed(124)
-scores_hover <- rnorm(30, 43.2, 7.8)
-plot_ball_bag(scores_bag = c(20, 80, rnorm(198, 43.2, 7.8)), 
-                  scores_hover = scores_hover,
-                  score_name = "Zustandsangst", 
-                  seed = 123)
+plot_ball_bag(
+  scores_bag = c(20, 80, rnorm(198, 43.2, 7.8)),
+  scores_hover = scores_hover,
+  score_name = "Zustandsangst",
+  seed = 123
+)
 ```
 
-Es könnte aber auch sein, dass die Stichprobe einer Population mit viel höherer Zusatandsangst, wie in Abbildung \@ref(fig:srs-intervall-low-p) dargestellt, entstammt.
+Es könnte aber auch sein, dass die Stichprobe einer Population mit viel höherer Zusatandsangst, wie in Abbildung \@ref(fig:srs-intervall-low-p) dargestellt, entstammt. Dies wird zwar weniger häufig vorkommen als der Fall oben, aber ist trotzdem möglich.
 
 ```{r srs-intervall-low-p, fig.cap="Population mit höheren Werten als in der Stichprobe.", echo = FALSE}
-plot_ball_bag(scores_bag = c(20, 80, rnorm(198, 52, 7.8)), 
-                  scores_hover = scores_hover,
-                  score_name = "Zustandsangst", 
-                  seed = 123)
+plot_ball_bag(
+  scores_bag = c(20, 80, rnorm(198, 52, 7.8)),
+  scores_hover = scores_hover,
+  score_name = "Zustandsangst",
+  seed = 123
+)
 ```
 
 Das Problem der zufälligen Stichprobenziehung ist also, dass nie ganz klar ist, wie die darunterliegende Population aussieht. Sind die Werte der Stichprobe tief, weil zufällig gerade Studierende mit tiefer Zustandsangst beobachtet wurden, oder haben tatsächlich die meisten Studierenden eine tiefe Zustandsangst?

@@ -16,34 +16,40 @@ Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am F
 
 Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung  \@ref(fig:srs-intervall-nocol) ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population. Die Personen im Zimmer, respektive die Beobachtungen in der Population sind normalerweise nicht sichtbar. Aus diesem Zimmer wurden also 30 Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die Punkte über dem Zimmer, oberhalb des Pfeils. Die Farbe der Punktes ist jetzt bekannt und entspricht der jeweiligen Zustandesangst der beobachteten Person.
 
-```{r srs-intervall-nocol, echo = FALSE, fig.cap="Personen ohne Angst.TODO, make points black in population."}
+```{r srs-intervall-nocol, echo = FALSE, fig.cap="Population mit unbekannter Zustandsangst."}
 set.seed(124)
 scores_hover <- rnorm(30, 43.2, 7.8)
-plot_ball_bag(scores_bag = c(20, 80, rnorm(198, 43.2, 7.8)), 
-                  scores_hover = scores_hover,
-                  score_name = "Zustandsangst", 
-                  seed = 123)
+plot_ball_bag(
+  scores_bag = c(20, 80, rnorm(198, 43.2, 7.8)),
+  scores_hover = scores_hover,
+  score_name = "Zustandsangst",
+  bag_color = "grey90",
+  seed = 123,
+  color_bag_balls = FALSE
+)
 ```
 
 Da die Stichprobe nun eben zufällig gezogen wurde, dass heisst zufällig Personen aus dem Zimmer geholt wurden, kann es nun sein, dass die Stichprobe einer Population wie in Abbildung \@ref(fig:srs-intervall-high-p) entstammt.
 
 
 ```{r srs-intervall-high-p, fig.cap="Population mit ähnlichen Werten wie in der Stichprobe.", echo = FALSE}
-set.seed(124)
-scores_hover <- rnorm(30, 43.2, 7.8)
-plot_ball_bag(scores_bag = c(20, 80, rnorm(198, 43.2, 7.8)), 
-                  scores_hover = scores_hover,
-                  score_name = "Zustandsangst", 
-                  seed = 123)
+plot_ball_bag(
+  scores_bag = c(20, 80, rnorm(198, 43.2, 7.8)),
+  scores_hover = scores_hover,
+  score_name = "Zustandsangst",
+  seed = 123
+)
 ```
 
-Es könnte aber auch sein, dass die Stichprobe einer Population mit viel höherer Zusatandsangst, wie in Abbildung \@ref(fig:srs-intervall-low-p) dargestellt, entstammt.
+Es könnte aber auch sein, dass die Stichprobe einer Population mit viel höherer Zusatandsangst, wie in Abbildung \@ref(fig:srs-intervall-low-p) dargestellt, entstammt. Dies wird zwar weniger häufig vorkommen als der Fall oben, aber ist trotzdem möglich.
 
 ```{r srs-intervall-low-p, fig.cap="Population mit höheren Werten als in der Stichprobe.", echo = FALSE}
-plot_ball_bag(scores_bag = c(20, 80, rnorm(198, 52, 7.8)), 
-                  scores_hover = scores_hover,
-                  score_name = "Zustandsangst", 
-                  seed = 123)
+plot_ball_bag(
+  scores_bag = c(20, 80, rnorm(198, 52, 7.8)),
+  scores_hover = scores_hover,
+  score_name = "Zustandsangst",
+  seed = 123
+)
 ```
 
 Das Problem der zufälligen Stichprobenziehung ist also, dass nie ganz klar ist, wie die darunterliegende Population aussieht. Sind die Werte der Stichprobe tief, weil zufällig gerade Studierende mit tiefer Zustandsangst beobachtet wurden, oder haben tatsächlich die meisten Studierenden eine tiefe Zustandsangst?
