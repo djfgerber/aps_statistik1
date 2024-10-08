@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.6)  6 OCT 2024 13:28
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.6)  8 OCT 2024 21:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1001,8 +1001,8 @@ Underfull \vbox (badness 2269) has occurred while \output is active []
 
 
 
-Overfull \hbox (73.93341pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 2.2.  WIE KANN EINE INTERVALLSKALIERTES MERKMAL BESCHRIEBEN WERDEN? \TU/lmr/m/n/10 15
+Overfull \hbox (67.12341pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 2.2.  WIE KANN EIN INTERVALLSKALIERTES MERKMAL BESCHRIEBEN WERDEN? \TU/lmr/m/n/10 15
  []
 
 [15]
@@ -1162,10 +1162,10 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  30476 strings out of 476234
  618262 string characters out of 5785538
- 1123034 words of memory out of 5000000
+ 1123033 words of memory out of 5000000
  52579 multiletter control sequences out of 15000+600000
  564520 words of font info for 89 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 98i,6n,123p,1020b,693s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,6n,123p,1019b,693s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on aps_statistik1.pdf (37 pages).
