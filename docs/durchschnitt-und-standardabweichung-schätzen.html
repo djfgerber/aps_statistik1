@@ -23,7 +23,7 @@
 <meta name="author" content="Daniel J. F. Gerber" />
 
 
-<meta name="date" content="2024-10-08" />
+<meta name="date" content="2024-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -170,8 +170,104 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="durchschnitt-und-standardabweichung-schätzen" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Kapitel 4</span> Durchschnitt und Standardabweichung schätzen<a href="durchschnitt-und-standardabweichung-schätzen.html#durchschnitt-und-standardabweichung-schätzen" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Wie die in Abschnitt @ref(stichprobenziehung-lösung) erklärte Lösung für das Problem der zufälligen Stichprobe konkret gemacht werden muss hängt von der Problemstellung ab.</p>
 <div id="wo-liegt-der-durchschnitt-der-grundgesamtheit" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Wo liegt der Durchschnitt der Grundgesamtheit?<a href="durchschnitt-und-standardabweichung-schätzen.html#wo-liegt-der-durchschnitt-der-grundgesamtheit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ein Parameter über welchen wir gerne eine Aussage treffen würden ist die zentrale Tendenz in der Grundgesamtheit. Diese wird <strong>Erwartungswert</strong> (Symbol <span class="math inline">\(\mu\)</span> [gr.: mü]) genannt. Wenn das arithmetische Mittel der Stichprobe berechnet wird, ergibt dies auch ein Schätzwert für besagten Erwartungswert. Aufgrund der zufälligen Stichprobenziehung ist jedoch auch klar, dass dieser Schätzwert nie genau dem wahren Erwartungswert entspricht.</p>
+<p>Die Folgefrage ist also wie genau unsere Schätzung ist. Um dies zu quantifizieren, wiederholen wir die Stichprobenziehung und berechnen das arithmetische Mittel dieser zweiten Stichprobe. Dann wiederholen wir diesen Prozess, zum Beispiel 1000 mal.</p>
+<div class="figure"><span style="display:block;" id="fig:hist-mean-estimation"></span>
+<img src="aps_statistik1_files/figure-html/hist-mean-estimation-1.png" alt="Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Zustandsangst." width="672" />
+<p class="caption">
+Abbildung 4.1: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Zustandsangst.
+</p>
+</div>
+<p>Die Häufigkeitsverteilung der berechneten arithmetischen Mittelin Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:hist-mean-estimation">4.1</a> lässt nun Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die 30 ist hier am wahrscheinlichsten und ein Wert tiefer als 27 oder höher 33 eher selten. Um diese Schätzung wissenschaftlicher präziser zu gestalten, werden konventionell die 95% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die 5% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das 2.5% Perzentil trennt die 2.5% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei 26.5. Das 97.5.5%-Perzentil trennt die höchsten 2.5% (oder eben die tiefsten 97.5%) arthmetischen Mittel ab und liegt bei 33.6.</p>
+<div class="figure"><span style="display:block;" id="fig:hist-mean-estimation1"></span>
+<img src="aps_statistik1_files/figure-html/hist-mean-estimation1-1.png" alt="Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Zustandsangst." width="672" />
+<p class="caption">
+Abbildung 4.2: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Zustandsangst.
+</p>
+</div>
+<p>TODO: explain example 2 likert scale</p>
+<pre><code>## Warning: Removed 4 rows containing missing values or values outside the scale range
+## (`geom_bar()`).</code></pre>
+<div class="figure"><span style="display:block;" id="fig:hist-mean-estimation2"></span>
+<img src="aps_statistik1_files/figure-html/hist-mean-estimation2-1.png" alt="TODO: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Zustandsangst." width="672" />
+<p class="caption">
+Abbildung 4.3: TODO: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Zustandsangst.
+</p>
+</div>
+<p>TODO: explain quantiles.</p>
+<p>Das Problem mit diesem Vorgehen ist, dass es aus finanziellen oder technischen Gründen selten möglich ist mehrere Stichproben aus derselben Population zu ziehen. Glücklicherweise haben Statistiker:innen herausgefunden, dass die Häufigkeitsverteilungen wie in Abbildungen <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:hist-mean-estimation1">4.2</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:hist-mean-estimation2">4.3</a> immer dieselbe Verteilung haben und dies unabhängig davon wie die ursprüngliche Verteilung des Merkmals aussah. Diese Verteilung ist eine sogenannte <strong>Normalverteilung</strong>.</p>
+<p>Die Normalverteilung sieht eine Glocke ähnlich. Deshalb wird sie auch Gausssche Glockenkurve nach Carl F. Gauss (1777-1855) benannt. Die Normalverteilung kann mit nur zwei Parametern beschrieben werden.</p>
+<ul>
+<li><span class="math inline">\(\mu_g\)</span> gibt an, wo auf der x-Achse der höchste Punkt der Glocke liegt</li>
+<li><span class="math inline">\(\sigma_g\)</span> gibt an, wie flach die Glockenform ist (ein grosser Wert entspricht einer flachen Glockenform, ein tiefer Wert einer steilen Glockenform).</li>
+</ul>
+<p>Auf <a href="https://seeing-theory.brown.edu/probability-distributions/index.html#section2">seeing-theory.brown.edu &gt; Continuous &gt; Normal</a> kann der Einfluss von <span class="math inline">\(\mu\)</span> und <span class="math inline">\(\sigma\)</span> auf die Normalverteilung erfahren werden.</p>
+<p>Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie <strong>Zentraler Grenzwertsatz</strong> genannt wurde. Der zentrale Grenzwertsatz besagt geneauer, dass bei einem Merkmal mit Erwartungswert <span class="math inline">\(\mu\)</span> und Standardabweichung <span class="math inline">\(\sigma\)</span>, der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit <span class="math inline">\(\mu_g = \mu\)</span> und <span class="math inline">\(\sigma_g = \frac{\sigma}{\sqrt{n}}\)</span> entspricht, wobei <span class="math inline">\(n\)</span> die Stichprobengrösse bezeichnet.</p>
+<div class="remark">
+<p><span id="unlabeled-div-5" class="remark"><em>Hinweis</em>. </span></p>
+<ul>
+<li><span class="math inline">\(\mu_g = \mu\)</span> bedeutet, dass der Wert, welcher unter der normalverteilung am wahrscheinlichsten ist, genau dem Erwartungswert des untersuchten Merkmales entspricht.</li>
+<li><span class="math inline">\(\sigma_g = \frac{\sigma}{\sqrt{n}}\)</span> hat zwei Implikationen:
+<ul>
+<li>je grösser die Streuung des Merkmals (grosses <span class="math inline">\(\sigma\)</span>) desto breiter ist auch die Streuung der arithmetischen Mittel (grosses <span class="math inline">\(\sigma_g\)</span>). Dies bedeutet, je weniger Streuung das Merkmal aufweist, desto genauer ist die Bestimmung des Erwartungswertes des Merkmales.</li>
+<li>je grösser die Anzahl Beobachtungen <span class="math inline">\(n\)</span>, desto kleiner die Streuung der arithmetischen Mittel (kleines <span class="math inline">\(\sigma_g\)</span>). Dies bedeutet, je grösser die Stichprobe ist, desto genauer ist die Bestimmung des Erwartungswertes des Merkmales.</li>
+</ul></li>
+</ul>
+</div>
+<p>Die Abbildungen <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:normal-approx">4.4</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:normal-approx1">4.5</a> illustrieren den zentralen Grenzwertsatz für Beispiel 1 und 2 respektive. Dabei wird einstweilen angenommen, dass <span class="math inline">\(\mu\)</span> und <span class="math inline">\(\sigma\)</span> bekannt sind. Diese Annahme wird später aufgelöst und dient hier lediglich der Illustration.</p>
+<div class="figure"><span style="display:block;" id="fig:normal-approx"></span>
+<img src="aps_statistik1_files/figure-html/normal-approx-1.png" alt="Die arithmetischen Mittel sind Normalverteilt mit Parametern $\mu_g = 30$ und $\sigma_g = 10 / \sqrt{30}$." width="672" />
+<p class="caption">
+Abbildung 4.4: Die arithmetischen Mittel sind Normalverteilt mit Parametern <span class="math inline">\(\mu_g = 30\)</span> und <span class="math inline">\(\sigma_g = 10 / \sqrt{30}\)</span>.
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:normal-approx1"></span>
+<img src="aps_statistik1_files/figure-html/normal-approx1-1.png" alt="Die arithmetischen Mittel sind Normalverteilt mit Parametern $\mu_g = 4$ und $\sigma_g = 1.73 / \sqrt{100}$." width="672" />
+<p class="caption">
+Abbildung 4.5: Die arithmetischen Mittel sind Normalverteilt mit Parametern <span class="math inline">\(\mu_g = 4\)</span> und <span class="math inline">\(\sigma_g = 1.73 / \sqrt{100}\)</span>.
+</p>
+</div>
+<p>Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte ziehen von Stichproben unnötig. Die Normalverteilung ist theoretisch konstruiert und ihr 2.5%- und 97.5%-Perzentil können theoretisch hergeleitet werden. Tabelle <a href="durchschnitt-und-standardabweichung-schätzen.html#tab:quantiles-norm">4.1</a> wird kann beobachtet werden, dass für unsere zwei Beispiele die Perzentile der Stichprobe und der Normalverteilung sehr ähnlich, wenn auch nicht exakt gleich sind. Die Ungenauigkeit rührt daher, dass der zentrale Grenzwertsatz nur dann exakt funktioniert, wenn die Anzahl Beobachtungen (unendlich) gross ist.</p>
+<table>
+<caption><span id="tab:quantiles-norm">Tabelle 4.1: </span>Vergleich Perzentile der Stichprobe und der theoretischen Verteilung.</caption>
+<colgroup>
+<col width="6%" />
+<col width="20%" />
+<col width="21%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">Beispiel</th>
+<th align="right">2.5%-Perzentil (Stichprobe)</th>
+<th align="right">97.5%-Perzentil (Stichprobe)</th>
+<th align="right">2.5%-Perzentil (Normalverteilung)</th>
+<th align="right">97.5%-Perzentil (Normalverteilung)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">26.5</td>
+<td align="right">33.6</td>
+<td align="right">26.421612</td>
+<td align="right">33.578388</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">3.7</td>
+<td align="right">4.3</td>
+<td align="right">3.660524</td>
+<td align="right">4.339476</td>
+</tr>
+</tbody>
+</table>
+<p>Einstweilen wurde hier angenommen, dass die Streuung des Merkmals <span class="math inline">\(\sigma\)</span> bekannt ist. Dies ist in der Realität nie der Fall. Wenn <span class="math inline">\(\sigma\)</span> also auch aus der Stichprobe geschätzt werden muss, ist die Verteilung der arthmetischen Mittel</p>
+<p><span class="math display">\[ \bar{x} - \frac{\sigma}{\sqrt{n}} \cdot z_{2.5\%} &lt; \mu &lt; \bar{x} - \frac{\sigma}{\sqrt{n}} \cdot z_{2.5\%}\]</span></p>
 </div>
 <div id="wo-liegt-der-durchschnitt-der-standardabweichung" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Wo liegt der Durchschnitt der Standardabweichung?<a href="durchschnitt-und-standardabweichung-schätzen.html#wo-liegt-der-durchschnitt-der-standardabweichung" class="anchor-section" aria-label="Anchor link to header"></a></h2>

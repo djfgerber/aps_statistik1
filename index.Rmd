@@ -14,11 +14,8 @@ link-citations: yes
 
 Dieses Buch ist im Rahmen meiner Lehrtätigkeit an der FHNW entstanden und frei verfügbar.
 
-```{r servebook, eval=FALSE, include=FALSE}
-bookdown::serve_book()
-```
-
 ```{r load_packages, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
 library(gridExtra)
 source('src/r/bag_sampling.R')
 knitr::write_bib(c(
