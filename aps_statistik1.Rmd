@@ -112,7 +112,7 @@ Für die Lösung der Übungen wird oft die freie Software Jamovi verwendet. Dem 
 
 ## Was ist ein intervallskaliertes Merkmal? {#intervallskalierte-merkmale-definition}
 
-Ein Merkmal ist dann **intervallskaliert**, wenn die einzelnen Beobachtungen in eine natürliche Reihenfolge gebracht werden können und zwischen dem tiefsten und höchsten möglichen Wert, alle erdenklichen Zwischenwerte möglich sind. 
+[Ein Merkmal ist dann **intervallskaliert**, wenn die einzelnen Beobachtungen in eine natürliche Reihenfolge gebracht werden können und zwischen dem tiefsten und höchsten möglichen Wert, alle erdenklichen Zwischenwerte möglich sind.]{.customdef #customdef-intervallskaliert} 
 
 Ein Beispiel für ein intervallskaliertes Merkmal ist die Körpertemperatur. Beobachtungen der Körpertemperatur einer lebenden Person sind Werte zwischen ungefähr 10°C und 42°C. Es ist möglich zu sagen, dass eine Person mit 40°C Körpertemperatur eine höhere Temperatur hat als eine mit 38°C Körpertemperatur. Ausserdem sind alle erdenklichen Zwischenwerte möglich, so auch dass bei einer Person eine Körpertemperatur von 37.821239°C gemessen wird. 
 
@@ -164,9 +164,9 @@ Die Verteilung eines Merkmals zu kennen ist hilfreich, jedoch in vielen Situatio
 
 Mit der Zentralität ist ein Wert gemeint, welcher die zentrale Tendenz des Merkmals abbildet. Um die Zentralität zu messen, gibt es drei Möglichkeiten:
 
-- Der __Modus__ ist der am häufigsten vorkommende Wert. Im Beispiel ist das der Wert `r names(mode_x)`, welcher `r unname(mode_x)` mal und damit am häufigsten vorkommt.
-- Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als __Median__ (abgekürzt _Mdn_, Symbol $\tilde{x}$) bezeichnet. Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir `r n` Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte `r paste(sort(x), collapse = ", ")`, also `r median(x)`.
-- Das __arithmetische Mittel__ (abgekürzt _M_, Symbol $\bar{x}$) bezeichnet, was gemeinhin mit Durchschnitt gemeint ist. Wenn wir die erste von insgesamt $n$ Beobachtung mit $x_1$ und die letzte Beobachtung mit $x_n$ bezeichnen, so ist das arithmetische Mittel
+- [Der __Modus__ ist der am häufigsten vorkommende Wert.]{.customdef #customdef-modus} Im Beispiel ist das der Wert `r names(mode_x)`, welcher `r unname(mode_x)` mal und damit am häufigsten vorkommt.
+- [Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als __Median__ (abgekürzt _Mdn_, Symbol $\tilde{x}$) bezeichnet.]{.customdef #customdef-median} Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir `r n` Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte `r paste(sort(x), collapse = ", ")`, also `r median(x)`.
+- [Das __arithmetische Mittel__ (abgekürzt _M_, Symbol $\bar{x}$) bezeichnet, was gemeinhin mit Durchschnitt gemeint ist.]{.customdef #customdef-arithmetisches-mittel} Wenn wir die erste von insgesamt $n$ Beobachtung mit $x_1$ und die letzte Beobachtung mit $x_n$ bezeichnen, so ist das arithmetische Mittel
 
 
 \begin{equation}
@@ -242,7 +242,7 @@ Die Aufgabe kann im Kopf gelöst werden, oder mithilfe eines Taschenrechners, od
 Forschende haben ein Messinstrument STAI (State-Trait Anxiety Inentory), welches Angst misst [@spielberger1983manual]. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst man aktuell empfindet. Die so gemessene Angst enstpricht einem Wert zwischen $20$ und $80$. A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit $30$ zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte $M=43.2, s = 7.8, n = 30$ für die Angst in ihren Beobachtungen.
 :::
 
-Zufällig ausgewählte Beobachtungen eines Merkmals werden als __Stichprobe__ bezeichnet. Nach der Auswahl der Stichprobe ist die __Stichprobenziehung__. Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als __Population__ oder __Grundgesamtheit__ bezeichnet. Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als __Zufallsstichprobe__ bezeichnet. 
+[Zufällig ausgewählte Beobachtungen eines Merkmals werden als __Stichprobe__ bezeichnet.]{.customdef #customdef-stichprobe} [Nach der Auswahl der Stichprobe ist die __Stichprobenziehung__.]{.customdef #customdef-stichprobenziehung} Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? [Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als __Population__]{.customdef #customdef-population} [oder __Grundgesamtheit__ bezeichnet]{.customdef #customdef-grundgesamtheit}. [Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als __Zufallsstichprobe__ bezeichnet.]{.customdef #customdef-zufallsstichprobe} 
 
 ::::{.caution}
 
@@ -394,7 +394,7 @@ Wie die in Abschnitt \@ref(#stichprobenziehung-loesung) skizzierte Lösung für 
 
 ## Wo liegt der Durchschnitt der Grundgesamtheit?
 
-Ein Parameter über welchen wir gerne eine Aussage treffen würden ist die zentrale Tendenz in der Grundgesamtheit. Diese wird **Erwartungswert** (Symbol $\mu$ [gr.: mü]) genannt. Wenn das arithmetische Mittel der Stichprobe berechnet wird, ergibt dies auch ein Schätzwert für besagten Erwartungswert. Aufgrund der zufälligen Stichprobenziehung ist jedoch auch klar, dass dieser Schätzwert nie genau dem wahren Erwartungswert entspricht. 
+Ein Parameter über welchen wir gerne eine Aussage treffen würden ist die zentrale Tendenz in der Grundgesamtheit. [Diese wird **Erwartungswert** (Symbol $\mu$ [gr.: mü]) genannt.]{.customdef #customdef-erwartungswert} Wenn das arithmetische Mittel der Stichprobe berechnet wird, ergibt dies auch ein Schätzwert für besagten Erwartungswert. Aufgrund der zufälligen Stichprobenziehung ist jedoch auch klar, dass dieser Schätzwert nie genau dem wahren Erwartungswert entspricht. 
 
 Die Folgefrage ist also wie genau unsere Schätzung ist. Um dies zu quantifizieren, wiederholen wir die Stichprobenziehung und berechnen das arithmetische Mittel dieser zweiten Stichprobe. Dann wiederholen wir diesen Prozess, zum Beispiel `r m` mal.
 
@@ -435,7 +435,7 @@ tibble(x = means1) %>%
 ```
 TODO: explain quantiles.
 
-Das Problem mit diesem Vorgehen ist, dass es aus finanziellen oder technischen Gründen selten möglich ist mehrere Stichproben aus derselben Population zu ziehen. Glücklicherweise haben Statistiker:innen herausgefunden, dass die Häufigkeitsverteilungen wie in Abbildungen \@ref(fig:hist-mean-estimation1) und \@ref(fig:hist-mean-estimation2) immer dieselbe Verteilung haben und dies unabhängig davon wie die ursprüngliche Verteilung des Merkmals aussah. Diese Verteilung ist eine sogenannte **Normalverteilung**. 
+Das Problem mit diesem Vorgehen ist, dass es aus finanziellen oder technischen Gründen selten möglich ist mehrere Stichproben aus derselben Population zu ziehen. Glücklicherweise haben Statistiker:innen herausgefunden, dass die Häufigkeitsverteilungen wie in Abbildungen \@ref(fig:hist-mean-estimation1) und \@ref(fig:hist-mean-estimation2) immer dieselbe Verteilung haben und dies unabhängig davon wie die ursprüngliche Verteilung des Merkmals aussah. [Diese Verteilung ist eine sogenannte **Normalverteilung**]{.customdef #customdef-normalverteilung}. 
 
 Die Normalverteilung sieht eine Glocke ähnlich. Deshalb wird sie auch Gausssche Glockenkurve nach Carl F. Gauss (1777-1855) benannt. Die Normalverteilung kann mit nur zwei Parametern beschrieben werden. 
 
@@ -444,7 +444,7 @@ Die Normalverteilung sieht eine Glocke ähnlich. Deshalb wird sie auch Gausssche
 
 Auf [seeing-theory.brown.edu > Continuous > Normal](https://seeing-theory.brown.edu/probability-distributions/index.html#section2) kann der Einfluss von $\mu$ und $\sigma$ auf die Normalverteilung erfahren werden. 
 
-Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie **Zentraler Grenzwertsatz** genannt wurde. Der zentrale Grenzwertsatz besagt geneauer, dass bei einem Merkmal mit Erwartungswert $\mu$ und Standardabweichung $\sigma$, der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit $\mu_g = \mu$ und $\sigma_g = \frac{\sigma}{\sqrt{n}}$ entspricht, wobei $n$ die Stichprobengrösse bezeichnet.
+[Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie **Zentraler Grenzwertsatz** genannt wurde.]{.customdef #customdef-zentraler-grenzwertsatz} Der zentrale Grenzwertsatz besagt geneauer, dass bei einem Merkmal mit Erwartungswert $\mu$ und Standardabweichung $\sigma$, der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit $\mu_g = \mu$ und $\sigma_g = \frac{\sigma}{\sqrt{n}}$ entspricht, wobei $n$ die Stichprobengrösse bezeichnet.
 
 :::{.remark}
 - $\mu_g = \mu$ bedeutet, dass der Wert, welcher unter der normalverteilung am wahrscheinlichsten ist, genau dem Erwartungswert des untersuchten Merkmales entspricht.
@@ -540,19 +540,18 @@ $$ \bar{x} - \frac{\sigma}{\sqrt{n}} \cdot z_{2.5\%} < \mu < \bar{x} - \frac{\si
 
 # Begriffsverzeichnis {-}
 
-- **intervallskaliert**
-- [__arithmetische Mittel__](#NA)
-- [__deskriptive Statistik__](#NA)
-- __Grundgesamtheit__
-- [__Histogramm__](#NA)
-- [__Konfidenzintervalle__](#NA)
-- [__Median__](#NA)
-- [__Modus__](#NA)
-- __Population__
-- __Stichprobe__
-- [__Verteilung__](#NA)
-- [__Wahrscheinlichkeitslehre__](#NA)
-- __Zufallsstichprobe__
+- [Erwartungswert](#customdef-erwartungswert)
+- [Grundgesamtheit](#customdef-grundgesamtheit)
+- [Median](#customdef-median)
+- [Modus](#customdef-modus)
+- [Normalverteilung](#customdef-normalverteilung)
+- [Population](#customdef-population)
+- [Stichprobe](#customdef-stichprobe)
+- [Stichprobenziehung](#customdef-stichprobenziehung)
+- [Zentraler Grenzwertsatz](#customdef-zentraler-grenzwertsatz)
+- [Zufallsstichprobe](#customdef-zufallsstichprobe)
+- [arithmetische Mittel](#customdef-arithmetisches-mittel)
+- [intervallskaliert](#customdef-intervallskaliert)
 
 <!--chapter:end:src/98-glossary.Rmd-->
 

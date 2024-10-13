@@ -9,9 +9,9 @@ bookdown::gitbook:
       scroll_highlight: true
       before: null
       after: null
-      toolbar:
-    position: fixed
-    edit : null
+    toolbar:
+      position: fixed
+    edit: null
     download: [["aps_statistik1.pdf", "pdf"]]
     sharing:
       facebook: true
@@ -26,11 +26,12 @@ bookdown::gitbook:
     info: true
   highlight: tango
   split_by: chapter
+
 bookdown::pdf_book:
   includes:
-    in_header: preamble.tex
+    in_header: 
+      - preamble.tex
   latex_engine: xelatex
   citation_package: natbib
   extra_dependencies: ["amsthm"]
   keep_tex: yes
-  

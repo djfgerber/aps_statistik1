@@ -1,15 +1,14 @@
 # Begriffsverzeichnis {-}
 
-- **intervallskaliert**
-- [__arithmetische Mittel__](#NA)
-- [__deskriptive Statistik__](#NA)
-- __Grundgesamtheit__
-- [__Histogramm__](#NA)
-- [__Konfidenzintervalle__](#NA)
-- [__Median__](#NA)
-- [__Modus__](#NA)
-- __Population__
-- __Stichprobe__
-- [__Verteilung__](#NA)
-- [__Wahrscheinlichkeitslehre__](#NA)
-- __Zufallsstichprobe__
+- [Erwartungswert](#customdef-erwartungswert)
+- [Grundgesamtheit](#customdef-grundgesamtheit)
+- [Median](#customdef-median)
+- [Modus](#customdef-modus)
+- [Normalverteilung](#customdef-normalverteilung)
+- [Population](#customdef-population)
+- [Stichprobe](#customdef-stichprobe)
+- [Stichprobenziehung](#customdef-stichprobenziehung)
+- [Zentraler Grenzwertsatz](#customdef-zentraler-grenzwertsatz)
+- [Zufallsstichprobe](#customdef-zufallsstichprobe)
+- [arithmetische Mittel](#customdef-arithmetisches-mittel)
+- [intervallskaliert](#customdef-intervallskaliert)

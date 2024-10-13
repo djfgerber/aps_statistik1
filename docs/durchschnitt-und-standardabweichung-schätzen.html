@@ -174,7 +174,7 @@ div.csl-indent {
 <p>Wie die in Abschnitt @ref(#stichprobenziehung-loesung) skizzierte Lösung für das Problem der zufälligen Stichprobe konkret umgesetzt wird, hängt von der Problemstellung ab. Im folgenden wird ein Verfahren zur Generalisierung der Schätzung der zentralen Tendenz und eines für die Schätzung der Variabilität basierend auf einer Stichprobe präsentiert.</p>
 <div id="wo-liegt-der-durchschnitt-der-grundgesamtheit" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Wo liegt der Durchschnitt der Grundgesamtheit?<a href="durchschnitt-und-standardabweichung-schätzen.html#wo-liegt-der-durchschnitt-der-grundgesamtheit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Ein Parameter über welchen wir gerne eine Aussage treffen würden ist die zentrale Tendenz in der Grundgesamtheit. Diese wird <strong>Erwartungswert</strong> (Symbol <span class="math inline">\(\mu\)</span> [gr.: mü]) genannt. Wenn das arithmetische Mittel der Stichprobe berechnet wird, ergibt dies auch ein Schätzwert für besagten Erwartungswert. Aufgrund der zufälligen Stichprobenziehung ist jedoch auch klar, dass dieser Schätzwert nie genau dem wahren Erwartungswert entspricht.</p>
+<p>Ein Parameter über welchen wir gerne eine Aussage treffen würden ist die zentrale Tendenz in der Grundgesamtheit. <span id="customdef-erwartungswert" class="customdef">Diese wird <strong>Erwartungswert</strong> (Symbol <span class="math inline">\(\mu\)</span> [gr.: mü]) genannt.</span> Wenn das arithmetische Mittel der Stichprobe berechnet wird, ergibt dies auch ein Schätzwert für besagten Erwartungswert. Aufgrund der zufälligen Stichprobenziehung ist jedoch auch klar, dass dieser Schätzwert nie genau dem wahren Erwartungswert entspricht.</p>
 <p>Die Folgefrage ist also wie genau unsere Schätzung ist. Um dies zu quantifizieren, wiederholen wir die Stichprobenziehung und berechnen das arithmetische Mittel dieser zweiten Stichprobe. Dann wiederholen wir diesen Prozess, zum Beispiel 1000 mal.</p>
 <div class="figure"><span style="display:block;" id="fig:hist-mean-estimation"></span>
 <img src="aps_statistik1_files/figure-html/hist-mean-estimation-1.png" alt="Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst." width="672" />
@@ -199,14 +199,14 @@ Abbildung 4.3: TODO: Verteilung der arithmetischen Mittel von 1000 zufällig gez
 </p>
 </div>
 <p>TODO: explain quantiles.</p>
-<p>Das Problem mit diesem Vorgehen ist, dass es aus finanziellen oder technischen Gründen selten möglich ist mehrere Stichproben aus derselben Population zu ziehen. Glücklicherweise haben Statistiker:innen herausgefunden, dass die Häufigkeitsverteilungen wie in Abbildungen <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:hist-mean-estimation1">4.2</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:hist-mean-estimation2">4.3</a> immer dieselbe Verteilung haben und dies unabhängig davon wie die ursprüngliche Verteilung des Merkmals aussah. Diese Verteilung ist eine sogenannte <strong>Normalverteilung</strong>.</p>
+<p>Das Problem mit diesem Vorgehen ist, dass es aus finanziellen oder technischen Gründen selten möglich ist mehrere Stichproben aus derselben Population zu ziehen. Glücklicherweise haben Statistiker:innen herausgefunden, dass die Häufigkeitsverteilungen wie in Abbildungen <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:hist-mean-estimation1">4.2</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:hist-mean-estimation2">4.3</a> immer dieselbe Verteilung haben und dies unabhängig davon wie die ursprüngliche Verteilung des Merkmals aussah. <span id="customdef-normalverteilung" class="customdef">Diese Verteilung ist eine sogenannte <strong>Normalverteilung</strong></span>.</p>
 <p>Die Normalverteilung sieht eine Glocke ähnlich. Deshalb wird sie auch Gausssche Glockenkurve nach Carl F. Gauss (1777-1855) benannt. Die Normalverteilung kann mit nur zwei Parametern beschrieben werden.</p>
 <ul>
 <li><span class="math inline">\(\mu_g\)</span> gibt an, wo auf der x-Achse der höchste Punkt der Glocke liegt</li>
 <li><span class="math inline">\(\sigma_g\)</span> gibt an, wie flach die Glockenform ist (ein grosser Wert entspricht einer flachen Glockenform, ein tiefer Wert einer steilen Glockenform).</li>
 </ul>
 <p>Auf <a href="https://seeing-theory.brown.edu/probability-distributions/index.html#section2">seeing-theory.brown.edu &gt; Continuous &gt; Normal</a> kann der Einfluss von <span class="math inline">\(\mu\)</span> und <span class="math inline">\(\sigma\)</span> auf die Normalverteilung erfahren werden.</p>
-<p>Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie <strong>Zentraler Grenzwertsatz</strong> genannt wurde. Der zentrale Grenzwertsatz besagt geneauer, dass bei einem Merkmal mit Erwartungswert <span class="math inline">\(\mu\)</span> und Standardabweichung <span class="math inline">\(\sigma\)</span>, der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit <span class="math inline">\(\mu_g = \mu\)</span> und <span class="math inline">\(\sigma_g = \frac{\sigma}{\sqrt{n}}\)</span> entspricht, wobei <span class="math inline">\(n\)</span> die Stichprobengrösse bezeichnet.</p>
+<p><span id="customdef-zentraler-grenzwertsatz" class="customdef">Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie <strong>Zentraler Grenzwertsatz</strong> genannt wurde.</span> Der zentrale Grenzwertsatz besagt geneauer, dass bei einem Merkmal mit Erwartungswert <span class="math inline">\(\mu\)</span> und Standardabweichung <span class="math inline">\(\sigma\)</span>, der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit <span class="math inline">\(\mu_g = \mu\)</span> und <span class="math inline">\(\sigma_g = \frac{\sigma}{\sqrt{n}}\)</span> entspricht, wobei <span class="math inline">\(n\)</span> die Stichprobengrösse bezeichnet.</p>
 <div class="remark">
 <p><span id="unlabeled-div-5" class="remark"><em>Hinweis</em>. </span></p>
 <ul>
@@ -355,10 +355,11 @@ gitbook.start({
 },
 "toc": {
 "collapse": "subsection",
-"scroll_highlight": true,
-"toolbar": null
+"scroll_highlight": true
 },
-"position": "fixed",
+"toolbar": {
+"position": "fixed"
+},
 "info": true
 });
 });

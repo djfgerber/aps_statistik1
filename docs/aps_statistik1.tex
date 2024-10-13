@@ -93,6 +93,7 @@
   \renewcommand{\chaptername}{Kapitel}
 }
 
+
 \usepackage{tcolorbox}
 \usepackage{xcolor}
 
@@ -122,6 +123,8 @@
   \end{itemize}
   }{}
 
+\definecolor{customdefcolor}{HTML}{2C3E50}
+\newcommand{\customdef}[1]{\textbf{\textcolor{customdefcolor}{#1}}}
 \usepackage{amsthm}
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -320,7 +323,7 @@ Für die Lösung der Übungen wird oft die freie Software Jamovi verwendet. Dem 
 
 \section{Was ist ein intervallskaliertes Merkmal?}\label{intervallskalierte-merkmale-definition}
 
-Ein Merkmal ist dann \textbf{intervallskaliert}, wenn die einzelnen Beobachtungen in eine natürliche Reihenfolge gebracht werden können und zwischen dem tiefsten und höchsten möglichen Wert, alle erdenklichen Zwischenwerte möglich sind.
+\phantomsection\label{customdef-intervallskaliert}{Ein Merkmal ist dann \textbf{intervallskaliert}, wenn die einzelnen Beobachtungen in eine natürliche Reihenfolge gebracht werden können und zwischen dem tiefsten und höchsten möglichen Wert, alle erdenklichen Zwischenwerte möglich sind.}
 
 Ein Beispiel für ein intervallskaliertes Merkmal ist die Körpertemperatur. Beobachtungen der Körpertemperatur einer lebenden Person sind Werte zwischen ungefähr 10°C und 42°C. Es ist möglich zu sagen, dass eine Person mit 40°C Körpertemperatur eine höhere Temperatur hat als eine mit 38°C Körpertemperatur. Ausserdem sind alle erdenklichen Zwischenwerte möglich, so auch dass bei einer Person eine Körpertemperatur von 37.821239°C gemessen wird.
 
@@ -353,11 +356,11 @@ Mit der Zentralität ist ein Wert gemeint, welcher die zentrale Tendenz des Merk
 \begin{itemize}
 \tightlist
 \item
-  Der \textbf{Modus} ist der am häufigsten vorkommende Wert. Im Beispiel ist das der Wert 41.52, welcher 3 mal und damit am häufigsten vorkommt.
+  \phantomsection\label{customdef-modus}{Der \textbf{Modus} ist der am häufigsten vorkommende Wert.} Im Beispiel ist das der Wert 41.52, welcher 3 mal und damit am häufigsten vorkommt.
 \item
-  Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als \textbf{Median} (abgekürzt \emph{Mdn}, Symbol \(\tilde{x}\)) bezeichnet. Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte 41.07, 41.32, 41.35, 41.43, 41.46, 41.46, 41.48, 41.5, 41.51, 41.52, 41.52, 41.52, 41.53, 41.53, 41.54, 41.58, 41.58, 41.6, 41.62, 41.65, 41.66, 41.67, 41.67, 41.69, 41.7, 41.72, 41.8, 41.81, 41.81, 41.82, 41.82, 41.88, 41.89, 41.92, 41.92, 41.96, 42.01, 42.06, 42.14, 42.18, also 41.655.
+  \phantomsection\label{customdef-median}{Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als \textbf{Median} (abgekürzt \emph{Mdn}, Symbol \(\tilde{x}\)) bezeichnet.} Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte 41.07, 41.32, 41.35, 41.43, 41.46, 41.46, 41.48, 41.5, 41.51, 41.52, 41.52, 41.52, 41.53, 41.53, 41.54, 41.58, 41.58, 41.6, 41.62, 41.65, 41.66, 41.67, 41.67, 41.69, 41.7, 41.72, 41.8, 41.81, 41.81, 41.82, 41.82, 41.88, 41.89, 41.92, 41.92, 41.96, 42.01, 42.06, 42.14, 42.18, also 41.655.
 \item
-  Das \textbf{arithmetische Mittel} (abgekürzt \emph{M}, Symbol \(\bar{x}\)) bezeichnet, was gemeinhin mit Durchschnitt gemeint ist. Wenn wir die erste von insgesamt \(n\) Beobachtung mit \(x_1\) und die letzte Beobachtung mit \(x_n\) bezeichnen, so ist das arithmetische Mittel
+  \phantomsection\label{customdef-arithmetisches-mittel}{Das \textbf{arithmetische Mittel} (abgekürzt \emph{M}, Symbol \(\bar{x}\)) bezeichnet, was gemeinhin mit Durchschnitt gemeint ist.} Wenn wir die erste von insgesamt \(n\) Beobachtung mit \(x_1\) und die letzte Beobachtung mit \(x_n\) bezeichnen, so ist das arithmetische Mittel
 \end{itemize}
 
 \begin{equation}
@@ -460,7 +463,7 @@ Die Aufgabe kann im Kopf gelöst werden, oder mithilfe eines Taschenrechners, od
 \protect\hypertarget{exm:angst}{}\label{exm:angst}Forschende haben ein Messinstrument STAI (State-Trait Anxiety Inentory), welches Angst misst \citep{spielberger1983manual}. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst man aktuell empfindet. Die so gemessene Angst enstpricht einem Wert zwischen \(20\) und \(80\). A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit \(30\) zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte \(M=43.2, s = 7.8, n = 30\) für die Angst in ihren Beobachtungen.
 \end{example}
 
-Zufällig ausgewählte Beobachtungen eines Merkmals werden als \textbf{Stichprobe} bezeichnet. Nach der Auswahl der Stichprobe ist die \textbf{Stichprobenziehung}. Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als \textbf{Population} oder \textbf{Grundgesamtheit} bezeichnet. Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als \textbf{Zufallsstichprobe} bezeichnet.
+\phantomsection\label{customdef-stichprobe}{Zufällig ausgewählte Beobachtungen eines Merkmals werden als \textbf{Stichprobe} bezeichnet.} \phantomsection\label{customdef-stichprobenziehung}{Nach der Auswahl der Stichprobe ist die \textbf{Stichprobenziehung}.} Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? \phantomsection\label{customdef-population}{Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als \textbf{Population}} \phantomsection\label{customdef-grundgesamtheit}{oder \textbf{Grundgesamtheit} bezeichnet}. \phantomsection\label{customdef-zufallsstichprobe}{Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als \textbf{Zufallsstichprobe} bezeichnet.}
 
 \begin{remark}
 Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am Forschungsbetrieb sind und damit über Studien informiert sind oder für wenig Geld oder Bildungsanerkennung an Studien teilnehmen. Einige dieser Studien generalisieren ihre Forschungsresultate nachher auf alle Personen. Dies ist in der Regel falsch, da Studierende nicht repräsentativ für die Gesamtbevölkerung sind (Altersstruktur, Geschlechtsverteilung, Vermögen, usw.). Die Frage, wie eine repräsentative Stichprobe würde den Rahmen dieses Buches sprengen.
@@ -522,7 +525,7 @@ Wie die in Abschnitt @ref(\#stichprobenziehung-loesung) skizzierte Lösung für 
 
 \section{Wo liegt der Durchschnitt der Grundgesamtheit?}\label{wo-liegt-der-durchschnitt-der-grundgesamtheit}
 
-Ein Parameter über welchen wir gerne eine Aussage treffen würden ist die zentrale Tendenz in der Grundgesamtheit. Diese wird \textbf{Erwartungswert} (Symbol \(\mu\) {[}gr.: mü{]}) genannt. Wenn das arithmetische Mittel der Stichprobe berechnet wird, ergibt dies auch ein Schätzwert für besagten Erwartungswert. Aufgrund der zufälligen Stichprobenziehung ist jedoch auch klar, dass dieser Schätzwert nie genau dem wahren Erwartungswert entspricht.
+Ein Parameter über welchen wir gerne eine Aussage treffen würden ist die zentrale Tendenz in der Grundgesamtheit. \phantomsection\label{customdef-erwartungswert}{Diese wird \textbf{Erwartungswert} (Symbol \(\mu\) {[}gr.: mü{]}) genannt.} Wenn das arithmetische Mittel der Stichprobe berechnet wird, ergibt dies auch ein Schätzwert für besagten Erwartungswert. Aufgrund der zufälligen Stichprobenziehung ist jedoch auch klar, dass dieser Schätzwert nie genau dem wahren Erwartungswert entspricht.
 
 Die Folgefrage ist also wie genau unsere Schätzung ist. Um dies zu quantifizieren, wiederholen wir die Stichprobenziehung und berechnen das arithmetische Mittel dieser zweiten Stichprobe. Dann wiederholen wir diesen Prozess, zum Beispiel 1000 mal.
 
@@ -550,7 +553,7 @@ TODO: explain example 2 likert scale
 \includegraphics{aps_statistik1_files/figure-latex/hist-mean-estimation2-1.pdf}
 TODO: explain quantiles.
 
-Das Problem mit diesem Vorgehen ist, dass es aus finanziellen oder technischen Gründen selten möglich ist mehrere Stichproben aus derselben Population zu ziehen. Glücklicherweise haben Statistiker:innen herausgefunden, dass die Häufigkeitsverteilungen wie in Abbildungen \ref{fig:hist-mean-estimation1} und \ref{fig:hist-mean-estimation2} immer dieselbe Verteilung haben und dies unabhängig davon wie die ursprüngliche Verteilung des Merkmals aussah. Diese Verteilung ist eine sogenannte \textbf{Normalverteilung}.
+Das Problem mit diesem Vorgehen ist, dass es aus finanziellen oder technischen Gründen selten möglich ist mehrere Stichproben aus derselben Population zu ziehen. Glücklicherweise haben Statistiker:innen herausgefunden, dass die Häufigkeitsverteilungen wie in Abbildungen \ref{fig:hist-mean-estimation1} und \ref{fig:hist-mean-estimation2} immer dieselbe Verteilung haben und dies unabhängig davon wie die ursprüngliche Verteilung des Merkmals aussah. \phantomsection\label{customdef-normalverteilung}{Diese Verteilung ist eine sogenannte \textbf{Normalverteilung}}.
 
 Die Normalverteilung sieht eine Glocke ähnlich. Deshalb wird sie auch Gausssche Glockenkurve nach Carl F. Gauss (1777-1855) benannt. Die Normalverteilung kann mit nur zwei Parametern beschrieben werden.
 
@@ -564,7 +567,7 @@ Die Normalverteilung sieht eine Glocke ähnlich. Deshalb wird sie auch Gausssche
 
 Auf \href{https://seeing-theory.brown.edu/probability-distributions/index.html\#section2}{seeing-theory.brown.edu \textgreater{} Continuous \textgreater{} Normal} kann der Einfluss von \(\mu\) und \(\sigma\) auf die Normalverteilung erfahren werden.
 
-Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie \textbf{Zentraler Grenzwertsatz} genannt wurde. Der zentrale Grenzwertsatz besagt geneauer, dass bei einem Merkmal mit Erwartungswert \(\mu\) und Standardabweichung \(\sigma\), der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit \(\mu_g = \mu\) und \(\sigma_g = \frac{\sigma}{\sqrt{n}}\) entspricht, wobei \(n\) die Stichprobengrösse bezeichnet.
+\phantomsection\label{customdef-zentraler-grenzwertsatz}{Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie \textbf{Zentraler Grenzwertsatz} genannt wurde.} Der zentrale Grenzwertsatz besagt geneauer, dass bei einem Merkmal mit Erwartungswert \(\mu\) und Standardabweichung \(\sigma\), der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit \(\mu_g = \mu\) und \(\sigma_g = \frac{\sigma}{\sqrt{n}}\) entspricht, wobei \(n\) die Stichprobengrösse bezeichnet.
 
 \begin{remark}
 \leavevmode
@@ -661,31 +664,29 @@ Einstweilen wurde hier angenommen, dass die Streuung des Merkmals \(\sigma\) bek
 \begin{itemize}
 \tightlist
 \item
-  \textbf{intervallskaliert}
+  \hyperref[customdef-erwartungswert]{Erwartungswert}
 \item
-  \hyperref[NA]{\textbf{arithmetische Mittel}}
+  \hyperref[customdef-grundgesamtheit]{Grundgesamtheit}
 \item
-  \hyperref[NA]{\textbf{deskriptive Statistik}}
+  \hyperref[customdef-median]{Median}
 \item
-  \textbf{Grundgesamtheit}
+  \hyperref[customdef-modus]{Modus}
 \item
-  \hyperref[NA]{\textbf{Histogramm}}
+  \hyperref[customdef-normalverteilung]{Normalverteilung}
 \item
-  \hyperref[NA]{\textbf{Konfidenzintervalle}}
+  \hyperref[customdef-population]{Population}
 \item
-  \hyperref[NA]{\textbf{Median}}
+  \hyperref[customdef-stichprobe]{Stichprobe}
 \item
-  \hyperref[NA]{\textbf{Modus}}
+  \hyperref[customdef-stichprobenziehung]{Stichprobenziehung}
 \item
-  \textbf{Population}
+  \hyperref[customdef-zentraler-grenzwertsatz]{Zentraler Grenzwertsatz}
 \item
-  \textbf{Stichprobe}
+  \hyperref[customdef-zufallsstichprobe]{Zufallsstichprobe}
 \item
-  \hyperref[NA]{\textbf{Verteilung}}
+  \hyperref[customdef-arithmetisches-mittel]{arithmetische Mittel}
 \item
-  \hyperref[NA]{\textbf{Wahrscheinlichkeitslehre}}
-\item
-  \textbf{Zufallsstichprobe}
+  \hyperref[customdef-intervallskaliert]{intervallskaliert}
 \end{itemize}
 
   \bibliography{book.bib,packages.bib}

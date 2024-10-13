@@ -173,7 +173,7 @@ div.csl-indent {
 <h1><span class="header-section-number">Kapitel 2</span> Intervallskalierte Merkmale<a href="intervallskalierte-merkmale.html#intervallskalierte-merkmale" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="intervallskalierte-merkmale-definition" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Was ist ein intervallskaliertes Merkmal?<a href="intervallskalierte-merkmale.html#intervallskalierte-merkmale-definition" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Ein Merkmal ist dann <strong>intervallskaliert</strong>, wenn die einzelnen Beobachtungen in eine natürliche Reihenfolge gebracht werden können und zwischen dem tiefsten und höchsten möglichen Wert, alle erdenklichen Zwischenwerte möglich sind.</p>
+<p><span id="customdef-intervallskaliert" class="customdef">Ein Merkmal ist dann <strong>intervallskaliert</strong>, wenn die einzelnen Beobachtungen in eine natürliche Reihenfolge gebracht werden können und zwischen dem tiefsten und höchsten möglichen Wert, alle erdenklichen Zwischenwerte möglich sind.</span></p>
 <p>Ein Beispiel für ein intervallskaliertes Merkmal ist die Körpertemperatur. Beobachtungen der Körpertemperatur einer lebenden Person sind Werte zwischen ungefähr 10°C und 42°C. Es ist möglich zu sagen, dass eine Person mit 40°C Körpertemperatur eine höhere Temperatur hat als eine mit 38°C Körpertemperatur. Ausserdem sind alle erdenklichen Zwischenwerte möglich, so auch dass bei einer Person eine Körpertemperatur von 37.821239°C gemessen wird.</p>
 <p>Ein weiteres Beispiel für ein intervallskaliertes Merkmal ist der Intelligenzquotient <em>IQ</em>. Der IQ bewegt sich normalerweise zwischen 50 und 150, eine Person mit einem IQ von 105 hat einen höheren IQ als eine Person mit einem IQ von 103. Ausserdem sind IQ-Werte von 103.12 oder 118.9182 durchaus möglich.</p>
 <details>
@@ -198,9 +198,9 @@ Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Le
 <h3><span class="header-section-number">2.2.2</span> Zentralität<a href="intervallskalierte-merkmale.html#zentralitaet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Mit der Zentralität ist ein Wert gemeint, welcher die zentrale Tendenz des Merkmals abbildet. Um die Zentralität zu messen, gibt es drei Möglichkeiten:</p>
 <ul>
-<li>Der <strong>Modus</strong> ist der am häufigsten vorkommende Wert. Im Beispiel ist das der Wert 41.52, welcher 3 mal und damit am häufigsten vorkommt.</li>
-<li>Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als <strong>Median</strong> (abgekürzt <em>Mdn</em>, Symbol <span class="math inline">\(\tilde{x}\)</span>) bezeichnet. Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte 41.07, 41.32, 41.35, 41.43, 41.46, 41.46, 41.48, 41.5, 41.51, 41.52, 41.52, 41.52, 41.53, 41.53, 41.54, 41.58, 41.58, 41.6, 41.62, 41.65, 41.66, 41.67, 41.67, 41.69, 41.7, 41.72, 41.8, 41.81, 41.81, 41.82, 41.82, 41.88, 41.89, 41.92, 41.92, 41.96, 42.01, 42.06, 42.14, 42.18, also 41.655.</li>
-<li>Das <strong>arithmetische Mittel</strong> (abgekürzt <em>M</em>, Symbol <span class="math inline">\(\bar{x}\)</span>) bezeichnet, was gemeinhin mit Durchschnitt gemeint ist. Wenn wir die erste von insgesamt <span class="math inline">\(n\)</span> Beobachtung mit <span class="math inline">\(x_1\)</span> und die letzte Beobachtung mit <span class="math inline">\(x_n\)</span> bezeichnen, so ist das arithmetische Mittel</li>
+<li><span id="customdef-modus" class="customdef">Der <strong>Modus</strong> ist der am häufigsten vorkommende Wert.</span> Im Beispiel ist das der Wert 41.52, welcher 3 mal und damit am häufigsten vorkommt.</li>
+<li><span id="customdef-median" class="customdef">Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als <strong>Median</strong> (abgekürzt <em>Mdn</em>, Symbol <span class="math inline">\(\tilde{x}\)</span>) bezeichnet.</span> Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte 41.07, 41.32, 41.35, 41.43, 41.46, 41.46, 41.48, 41.5, 41.51, 41.52, 41.52, 41.52, 41.53, 41.53, 41.54, 41.58, 41.58, 41.6, 41.62, 41.65, 41.66, 41.67, 41.67, 41.69, 41.7, 41.72, 41.8, 41.81, 41.81, 41.82, 41.82, 41.88, 41.89, 41.92, 41.92, 41.96, 42.01, 42.06, 42.14, 42.18, also 41.655.</li>
+<li><span id="customdef-arithmetisches-mittel" class="customdef">Das <strong>arithmetische Mittel</strong> (abgekürzt <em>M</em>, Symbol <span class="math inline">\(\bar{x}\)</span>) bezeichnet, was gemeinhin mit Durchschnitt gemeint ist.</span> Wenn wir die erste von insgesamt <span class="math inline">\(n\)</span> Beobachtung mit <span class="math inline">\(x_1\)</span> und die letzte Beobachtung mit <span class="math inline">\(x_n\)</span> bezeichnen, so ist das arithmetische Mittel</li>
 </ul>
 <p><span class="math display" id="eq:mean">\[\begin{equation}
 \bar{x} = \frac{1}{n}\sum^n_{i=1} x_i
@@ -322,10 +322,11 @@ gitbook.start({
 },
 "toc": {
 "collapse": "subsection",
-"scroll_highlight": true,
-"toolbar": null
+"scroll_highlight": true
 },
-"position": "fixed",
+"toolbar": {
+"position": "fixed"
+},
 "info": true
 });
 });

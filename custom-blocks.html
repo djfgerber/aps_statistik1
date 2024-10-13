@@ -1,0 +1,12 @@
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var customdefs = document.getElementsByClassName("customdef");
+  for (var i = 0; i < customdefs.length; i++) {
+    var content = customdefs[i].innerHTML;
+    var span = document.createElement("span");
+    span.className = "customdef";
+    span.innerHTML = content;
+    customdefs[i].parentNode.replaceChild(span, customdefs[i]);
+  }
+});
+</script>
