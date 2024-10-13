@@ -23,7 +23,6 @@
 <meta name="author" content="Daniel J. F. Gerber" />
 
 
-<meta name="date" content="2024-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +51,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 
@@ -120,7 +121,7 @@ div.csl-indent {
 <li class="chapter" data-level="3" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html"><i class="fa fa-check"></i><b>3</b> Stichprobenziehung</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#stichprobenziehung-problem"><i class="fa fa-check"></i><b>3.1</b> Was ist das Problem der Stichprobenziehung?</a></li>
-<li class="chapter" data-level="3.2" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#stichprobenziehung-lösung"><i class="fa fa-check"></i><b>3.2</b> Wie kann man Aussagen über die Grundgesamtheit machen?</a></li>
+<li class="chapter" data-level="3.2" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#stichprobenziehung-loesung"><i class="fa fa-check"></i><b>3.2</b> Wie kann man Aussagen über die Grundgesamtheit machen?</a></li>
 <li class="chapter" data-level="3.3" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#übungen"><i class="fa fa-check"></i><b>3.3</b> Übungen</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html"><i class="fa fa-check"></i><b>4</b> Durchschnitt und Standardabweichung schätzen</a>
@@ -170,31 +171,31 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="durchschnitt-und-standardabweichung-schätzen" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Kapitel 4</span> Durchschnitt und Standardabweichung schätzen<a href="durchschnitt-und-standardabweichung-schätzen.html#durchschnitt-und-standardabweichung-schätzen" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Wie die in Abschnitt @ref(stichprobenziehung-lösung) erklärte Lösung für das Problem der zufälligen Stichprobe konkret gemacht werden muss hängt von der Problemstellung ab.</p>
+<p>Wie die in Abschnitt @ref(#stichprobenziehung-loesung) skizzierte Lösung für das Problem der zufälligen Stichprobe konkret umgesetzt wird, hängt von der Problemstellung ab. Im folgenden wird ein Verfahren zur Generalisierung der Schätzung der zentralen Tendenz und eines für die Schätzung der Variabilität basierend auf einer Stichprobe präsentiert.</p>
 <div id="wo-liegt-der-durchschnitt-der-grundgesamtheit" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Wo liegt der Durchschnitt der Grundgesamtheit?<a href="durchschnitt-und-standardabweichung-schätzen.html#wo-liegt-der-durchschnitt-der-grundgesamtheit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ein Parameter über welchen wir gerne eine Aussage treffen würden ist die zentrale Tendenz in der Grundgesamtheit. Diese wird <strong>Erwartungswert</strong> (Symbol <span class="math inline">\(\mu\)</span> [gr.: mü]) genannt. Wenn das arithmetische Mittel der Stichprobe berechnet wird, ergibt dies auch ein Schätzwert für besagten Erwartungswert. Aufgrund der zufälligen Stichprobenziehung ist jedoch auch klar, dass dieser Schätzwert nie genau dem wahren Erwartungswert entspricht.</p>
 <p>Die Folgefrage ist also wie genau unsere Schätzung ist. Um dies zu quantifizieren, wiederholen wir die Stichprobenziehung und berechnen das arithmetische Mittel dieser zweiten Stichprobe. Dann wiederholen wir diesen Prozess, zum Beispiel 1000 mal.</p>
 <div class="figure"><span style="display:block;" id="fig:hist-mean-estimation"></span>
-<img src="aps_statistik1_files/figure-html/hist-mean-estimation-1.png" alt="Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Zustandsangst." width="672" />
+<img src="aps_statistik1_files/figure-html/hist-mean-estimation-1.png" alt="Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst." width="672" />
 <p class="caption">
-Abbildung 4.1: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Zustandsangst.
+Abbildung 4.1: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.
 </p>
 </div>
-<p>Die Häufigkeitsverteilung der berechneten arithmetischen Mittelin Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:hist-mean-estimation">4.1</a> lässt nun Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die 30 ist hier am wahrscheinlichsten und ein Wert tiefer als 27 oder höher 33 eher selten. Um diese Schätzung wissenschaftlicher präziser zu gestalten, werden konventionell die 95% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die 5% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das 2.5% Perzentil trennt die 2.5% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei 26.5. Das 97.5.5%-Perzentil trennt die höchsten 2.5% (oder eben die tiefsten 97.5%) arthmetischen Mittel ab und liegt bei 33.6.</p>
+<p>Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:hist-mean-estimation">4.1</a> lässt nun Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die 30 ist hier am wahrscheinlichsten und ein Wert tiefer als 27 oder höher 33 eher selten. Um diese Aussage präziser zu gestalten, werden konventionell die 95% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die 5% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das 2.5% Perzentil trennt die 2.5% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei 26.5. Das 97.5%-Perzentil trennt die höchsten 2.5% (oder eben die tiefsten 97.5%) arthmetischen Mittel ab und liegt bei 33.6.</p>
 <div class="figure"><span style="display:block;" id="fig:hist-mean-estimation1"></span>
-<img src="aps_statistik1_files/figure-html/hist-mean-estimation1-1.png" alt="Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Zustandsangst." width="672" />
+<img src="aps_statistik1_files/figure-html/hist-mean-estimation1-1.png" alt="Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst." width="672" />
 <p class="caption">
-Abbildung 4.2: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Zustandsangst.
+Abbildung 4.2: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.
 </p>
 </div>
 <p>TODO: explain example 2 likert scale</p>
 <pre><code>## Warning: Removed 4 rows containing missing values or values outside the scale range
 ## (`geom_bar()`).</code></pre>
 <div class="figure"><span style="display:block;" id="fig:hist-mean-estimation2"></span>
-<img src="aps_statistik1_files/figure-html/hist-mean-estimation2-1.png" alt="TODO: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Zustandsangst." width="672" />
+<img src="aps_statistik1_files/figure-html/hist-mean-estimation2-1.png" alt="TODO: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst." width="672" />
 <p class="caption">
-Abbildung 4.3: TODO: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Zustandsangst.
+Abbildung 4.3: TODO: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.
 </p>
 </div>
 <p>TODO: explain quantiles.</p>
@@ -231,38 +232,63 @@ Abbildung 4.5: Die arithmetischen Mittel sind Normalverteilt mit Parametern <spa
 </p>
 </div>
 <p>Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte ziehen von Stichproben unnötig. Die Normalverteilung ist theoretisch konstruiert und ihr 2.5%- und 97.5%-Perzentil können theoretisch hergeleitet werden. Tabelle <a href="durchschnitt-und-standardabweichung-schätzen.html#tab:quantiles-norm">4.1</a> wird kann beobachtet werden, dass für unsere zwei Beispiele die Perzentile der Stichprobe und der Normalverteilung sehr ähnlich, wenn auch nicht exakt gleich sind. Die Ungenauigkeit rührt daher, dass der zentrale Grenzwertsatz nur dann exakt funktioniert, wenn die Anzahl Beobachtungen (unendlich) gross ist.</p>
-<table>
-<caption><span id="tab:quantiles-norm">Tabelle 4.1: </span>Vergleich Perzentile der Stichprobe und der theoretischen Verteilung.</caption>
-<colgroup>
-<col width="6%" />
-<col width="20%" />
-<col width="21%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
+<table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:quantiles-norm">Tabelle 4.1: </span>Vergleich Perzentile der Stichprobe und der theoretischen Verteilung.
+</caption>
 <thead>
-<tr class="header">
-<th align="right">Beispiel</th>
-<th align="right">2.5%-Perzentil (Stichprobe)</th>
-<th align="right">97.5%-Perzentil (Stichprobe)</th>
-<th align="right">2.5%-Perzentil (Normalverteilung)</th>
-<th align="right">97.5%-Perzentil (Normalverteilung)</th>
+<tr>
+<th style="text-align:center;">
+Beispiel
+</th>
+<th style="text-align:right;">
+2.5%-Perzentil (Stichprobe)
+</th>
+<th style="text-align:right;">
+97.5%-Perzentil (Stichprobe)
+</th>
+<th style="text-align:right;">
+2.5%-Perzentil (Normalverteilung)
+</th>
+<th style="text-align:right;">
+97.5%-Perzentil (Normalverteilung)
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">26.5</td>
-<td align="right">33.6</td>
-<td align="right">26.421612</td>
-<td align="right">33.578388</td>
+<tr>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:right;">
+26.5
+</td>
+<td style="text-align:right;">
+33.6
+</td>
+<td style="text-align:right;">
+26.4216
+</td>
+<td style="text-align:right;">
+33.5784
+</td>
 </tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="right">3.7</td>
-<td align="right">4.3</td>
-<td align="right">3.660524</td>
-<td align="right">4.339476</td>
+<tr>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:right;">
+3.7
+</td>
+<td style="text-align:right;">
+4.3
+</td>
+<td style="text-align:right;">
+3.6605
+</td>
+<td style="text-align:right;">
+4.3395
+</td>
 </tr>
 </tbody>
 </table>

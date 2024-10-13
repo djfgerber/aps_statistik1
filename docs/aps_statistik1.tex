@@ -123,6 +123,20 @@
   }{}
 
 \usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -139,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{2024-10-11}
+\date{13 October, 2024}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -442,9 +456,11 @@ Die Aufgabe kann im Kopf gelöst werden, oder mithilfe eines Taschenrechners, od
 
 \chapter{Stichprobenziehung}\label{stichprobenziehung}
 
-Forschende haben ein Messinstrument für Angst entwickelt, welches STAI (State-Trait Anxiety Inentory) \citep{spielberger1983manual}. Sie erheben dabei unter anderem einen Wert zwischen \(20\) und \(80\) für eine Zustandsangst. A priori haben die Forschenden keine Ahnung, wie ängstlich eine Person im Durchschnitt ist oder ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit \(30\) zufällig ausgewählten Studierenden. Zufällig ausgewählte Beobachtungen eines Merkmals werden als \textbf{Stichprobe} bezeichnet. Die Forschenden finden die zusammenfassenden Werte \(M=43.2, s = 7.8, n = 30\) für die Zustandsangst in ihrer Stichprobe.
+\begin{example}[Angst]
+\protect\hypertarget{exm:angst}{}\label{exm:angst}Forschende haben ein Messinstrument STAI (State-Trait Anxiety Inentory), welches Angst misst \citep{spielberger1983manual}. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst man aktuell empfindet. Die so gemessene Angst enstpricht einem Wert zwischen \(20\) und \(80\). A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit \(30\) zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte \(M=43.2, s = 7.8, n = 30\) für die Angst in ihren Beobachtungen.
+\end{example}
 
-Anschliessend stellt sich die Frage, wie stark diese Werte basierend auf dieser Stichprobe Zustandsangst von allen Personen widerspiegelt. Alle Personen oder generell alle möglichen Beobachtungen eines Merkmals, werden als \textbf{Population} oder \textbf{Grundgesamtheit} bezeichnet. Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als \textbf{Zufallsstichprobe} bezeichnet.
+Zufällig ausgewählte Beobachtungen eines Merkmals werden als \textbf{Stichprobe} bezeichnet. Nach der Auswahl der Stichprobe ist die \textbf{Stichprobenziehung}. Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als \textbf{Population} oder \textbf{Grundgesamtheit} bezeichnet. Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als \textbf{Zufallsstichprobe} bezeichnet.
 
 \begin{remark}
 Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am Forschungsbetrieb sind und damit über Studien informiert sind oder für wenig Geld oder Bildungsanerkennung an Studien teilnehmen. Einige dieser Studien generalisieren ihre Forschungsresultate nachher auf alle Personen. Dies ist in der Regel falsch, da Studierende nicht repräsentativ für die Gesamtbevölkerung sind (Altersstruktur, Geschlechtsverteilung, Vermögen, usw.). Die Frage, wie eine repräsentative Stichprobe würde den Rahmen dieses Buches sprengen.
@@ -457,7 +473,7 @@ Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befin
 \begin{figure}
 \centering
 \includegraphics{aps_statistik1_files/figure-latex/srs-intervall-nocol-1.pdf}
-\caption{\label{fig:srs-intervall-nocol}Population mit unbekannter Zustandsangst.}
+\caption{\label{fig:srs-intervall-nocol}Population mit unbekannter Angst.}
 \end{figure}
 
 Da die Stichprobe nun eben zufällig gezogen wurde, das heisst zufällig Personen aus dem Zimmer geholt wurden, kann es nun sein, dass die Stichprobe einer Population wie in Abbildung \ref{fig:srs-intervall-high-p} entstammt.
@@ -465,7 +481,7 @@ Da die Stichprobe nun eben zufällig gezogen wurde, das heisst zufällig Persone
 \begin{figure}
 \centering
 \includegraphics{aps_statistik1_files/figure-latex/srs-intervall-high-p-1.pdf}
-\caption{\label{fig:srs-intervall-high-p}Population mit ähnlichen Zustandsangst-Werten wie in der Stichprobe.}
+\caption{\label{fig:srs-intervall-high-p}Population mit ähnlichen Angst-Werten wie in der Stichprobe.}
 \end{figure}
 
 Es könnte aber auch sein, dass die Stichprobe einer Population mit viel höherer Zusatandsangst, wie in Abbildung \ref{fig:srs-intervall-low-p} dargestellt, entstammt. Dies wird zwar weniger häufig vorkommen als der Fall oben, aber ist trotzdem möglich.
@@ -473,14 +489,14 @@ Es könnte aber auch sein, dass die Stichprobe einer Population mit viel höhere
 \begin{figure}
 \centering
 \includegraphics{aps_statistik1_files/figure-latex/srs-intervall-low-p-1.pdf}
-\caption{\label{fig:srs-intervall-low-p}Population mit höheren Zustandsangst-Werten als in der Stichprobe.}
+\caption{\label{fig:srs-intervall-low-p}Population mit höheren Angst-Werten als in der Stichprobe.}
 \end{figure}
 
-Das Problem der zufälligen Stichprobenziehung ist also, dass nie ganz klar ist, wie die darunterliegende Population aussieht. Sind die Werte der Stichprobe tief, weil zufällig gerade Studierende mit tiefer Zustandsangst beobachtet wurden, oder haben tatsächlich die meisten Studierenden eine tiefe Zustandsangst?
+Das Problem der zufälligen Stichprobenziehung ist also, dass nie ganz klar ist, wie die darunterliegende Population aussieht. Sind die Werte der Stichprobe tief, weil zufällig gerade Studierende mit tiefer Angst beobachtet wurden, oder haben tatsächlich die meisten Studierenden eine tiefe Angst?
 
-\section{Wie kann man Aussagen über die Grundgesamtheit machen?}\label{stichprobenziehung-luxf6sung}
+\section{Wie kann man Aussagen über die Grundgesamtheit machen?}\label{stichprobenziehung-loesung}
 
-Die Lösung dieses Problems funktioniert intuitiv wie folgt: Man stellt sich vor, die Stichprobenziehung würde erneut gemacht, und dann nochmal und dann nochmal. So oft, bis man einen guten Eindruck davon hat, wie häufig eine Stichprobe mit eher tiefen Zustandsangst-Werten wie bei der Stichprobe im Beispiel vorkommt. Im Szenario, in welchem in der Population tatsächlich tiefe Werte häufig vorkommen, kann dies aussehen wie in Abbildung \ref{fig:srs-intervall-high-p-many}. Stichproben mit eher tiefen Zustandsangst-Werten kommen hier häufig vor.
+Die Lösung dieses Problems funktioniert intuitiv wie folgt: Man stellt sich vor, die Stichprobenziehung würde erneut gemacht, und dann nochmal und dann nochmal. So oft, bis man einen guten Eindruck davon hat, wie häufig eine Stichprobe mit eher tiefen Angst-Werten wie bei der Stichprobe im Beispiel vorkommt. Im Szenario, in welchem in der Population tatsächlich tiefe Werte häufig vorkommen, kann dies aussehen wie in Abbildung \ref{fig:srs-intervall-high-p-many}. Stichproben mit eher tiefen Angst-Werten kommen hier häufig vor.
 
 \begin{figure}
 \centering
@@ -488,7 +504,7 @@ Die Lösung dieses Problems funktioniert intuitiv wie folgt: Man stellt sich vor
 \caption{\label{fig:srs-intervall-high-p-many}TODO.}
 \end{figure}
 
-Im Szenario, in welchem in der Population tatsächlich höhere Werte häufig vorkommen, kann dies aussehen wie in Abbildung \ref{fig:srs-intervall-low-p-many}. Stichproben mit eher tiefen Zustandsangst-Werten kommen hier selten oder gar nicht vor.
+Im Szenario, in welchem in der Population tatsächlich höhere Werte häufig vorkommen, kann dies aussehen wie in Abbildung \ref{fig:srs-intervall-low-p-many}. Stichproben mit eher tiefen Angst-Werten kommen hier selten oder gar nicht vor.
 
 \begin{figure}
 \centering
@@ -496,13 +512,13 @@ Im Szenario, in welchem in der Population tatsächlich höhere Werte häufig vor
 \caption{\label{fig:srs-intervall-low-p-many}TODO.}
 \end{figure}
 
-Es kann also zusammenfassend gesagt werden, dass die gezogene Stichprobe wohl eher aus einer Population mit tiefen Zustandsangst-Werten gezogen wurde als aus einer Population mit eher höheren Zustandsangst-Werten. Ganz sicher kann man jedoch nie sein, da die Werte in der Population eigentlich unbekannt sind. Eine genaue Quantifizierung dieser Unsicherheit kann mit Hilfe der Statistik erreicht werden und wird in den folgenden Kapiteln dieses Buches erläutert.
+Es kann also zusammenfassend gesagt werden, dass die gezogene Stichprobe wohl eher aus einer Population mit tiefen Angst-Werten gezogen wurde als aus einer Population mit eher höheren Angst-Werten. Ganz sicher kann man jedoch nie sein, da die Werte in der Population eigentlich unbekannt sind. Eine genaue Quantifizierung dieser Unsicherheit kann mit Hilfe der Statistik erreicht werden und wird in den folgenden Kapiteln dieses Buches erläutert.
 
 \section{Übungen}\label{uxfcbungen}
 
 \chapter{Durchschnitt und Standardabweichung schätzen}\label{durchschnitt-und-standardabweichung-schuxe4tzen}
 
-Wie die in Abschnitt @ref(stichprobenziehung-lösung) erklärte Lösung für das Problem der zufälligen Stichprobe konkret gemacht werden muss hängt von der Problemstellung ab.
+Wie die in Abschnitt @ref(\#stichprobenziehung-loesung) skizzierte Lösung für das Problem der zufälligen Stichprobe konkret umgesetzt wird, hängt von der Problemstellung ab. Im folgenden wird ein Verfahren zur Generalisierung der Schätzung der zentralen Tendenz und eines für die Schätzung der Variabilität basierend auf einer Stichprobe präsentiert.
 
 \section{Wo liegt der Durchschnitt der Grundgesamtheit?}\label{wo-liegt-der-durchschnitt-der-grundgesamtheit}
 
@@ -513,15 +529,15 @@ Die Folgefrage ist also wie genau unsere Schätzung ist. Um dies zu quantifizier
 \begin{figure}
 \centering
 \includegraphics{aps_statistik1_files/figure-latex/hist-mean-estimation-1.pdf}
-\caption{\label{fig:hist-mean-estimation}Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Zustandsangst.}
+\caption{\label{fig:hist-mean-estimation}Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.}
 \end{figure}
 
-Die Häufigkeitsverteilung der berechneten arithmetischen Mittelin Abbildung \ref{fig:hist-mean-estimation} lässt nun Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die 30 ist hier am wahrscheinlichsten und ein Wert tiefer als 27 oder höher 33 eher selten. Um diese Schätzung wissenschaftlicher präziser zu gestalten, werden konventionell die 95\% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die 5\% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das 2.5\% Perzentil trennt die 2.5\% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei 26.5. Das 97.5.5\%-Perzentil trennt die höchsten 2.5\% (oder eben die tiefsten 97.5\%) arthmetischen Mittel ab und liegt bei 33.6.
+Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \ref{fig:hist-mean-estimation} lässt nun Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die 30 ist hier am wahrscheinlichsten und ein Wert tiefer als 27 oder höher 33 eher selten. Um diese Aussage präziser zu gestalten, werden konventionell die 95\% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die 5\% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das 2.5\% Perzentil trennt die 2.5\% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei 26.5. Das 97.5\%-Perzentil trennt die höchsten 2.5\% (oder eben die tiefsten 97.5\%) arthmetischen Mittel ab und liegt bei 33.6.
 
 \begin{figure}
 \centering
 \includegraphics{aps_statistik1_files/figure-latex/hist-mean-estimation1-1.pdf}
-\caption{\label{fig:hist-mean-estimation1}Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Zustandsangst.}
+\caption{\label{fig:hist-mean-estimation1}Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.}
 \end{figure}
 
 TODO: explain example 2 likert scale
@@ -588,17 +604,16 @@ Die Abbildungen \ref{fig:normal-approx} und \ref{fig:normal-approx1} illustriere
 Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte ziehen von Stichproben unnötig. Die Normalverteilung ist theoretisch konstruiert und ihr 2.5\%- und 97.5\%-Perzentil können theoretisch hergeleitet werden. Tabelle \ref{tab:quantiles-norm} wird kann beobachtet werden, dass für unsere zwei Beispiele die Perzentile der Stichprobe und der Normalverteilung sehr ähnlich, wenn auch nicht exakt gleich sind. Die Ungenauigkeit rührt daher, dass der zentrale Grenzwertsatz nur dann exakt funktioniert, wenn die Anzahl Beobachtungen (unendlich) gross ist.
 
 \begin{table}
-
+\centering
 \caption{\label{tab:quantiles-norm}Vergleich Perzentile der Stichprobe und der theoretischen Verteilung.}
 \centering
-\begin{tabular}[t]{r|r|r|r|r}
-\hline
+\begin{tabular}[t]{crrrr}
+\toprule
 Beispiel & 2.5\%-Perzentil (Stichprobe) & 97.5\%-Perzentil (Stichprobe) & 2.5\%-Perzentil (Normalverteilung) & 97.5\%-Perzentil (Normalverteilung)\\
-\hline
-1 & 26.5 & 33.6 & 26.421612 & 33.578388\\
-\hline
-2 & 3.7 & 4.3 & 3.660524 & 4.339476\\
-\hline
+\midrule
+1 & 26.5 & 33.6 & 26.4216 & 33.5784\\
+2 & 3.7 & 4.3 & 3.6605 & 4.3395\\
+\bottomrule
 \end{tabular}
 \end{table}
 
