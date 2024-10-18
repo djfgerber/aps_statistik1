@@ -127,7 +127,7 @@ div.csl-indent {
 <li class="chapter" data-level="4" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html"><i class="fa fa-check"></i><b>4</b> Durchschnitt und Standardabweichung schätzen</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#wo-liegt-der-durchschnitt-der-grundgesamtheit"><i class="fa fa-check"></i><b>4.1</b> Wo liegt der Durchschnitt der Grundgesamtheit?</a></li>
-<li class="chapter" data-level="4.2" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#wo-liegt-der-durchschnitt-der-standardabweichung"><i class="fa fa-check"></i><b>4.2</b> Wo liegt der Durchschnitt der Standardabweichung?</a></li>
+<li class="chapter" data-level="4.2" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#wo-liegt-der-durchschnit-der-standardabweichung"><i class="fa fa-check"></i><b>4.2</b> Wo liegt der Durchschnit der Standardabweichung?</a></li>
 <li class="chapter" data-level="4.3" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#übungen-1"><i class="fa fa-check"></i><b>4.3</b> Übungen</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="durchschnitt-testen.html"><a href="durchschnitt-testen.html"><i class="fa fa-check"></i><b>5</b> Durchschnitt testen</a>
@@ -175,31 +175,37 @@ div.csl-indent {
 <div id="wo-liegt-der-durchschnitt-der-grundgesamtheit" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Wo liegt der Durchschnitt der Grundgesamtheit?<a href="durchschnitt-und-standardabweichung-schätzen.html#wo-liegt-der-durchschnitt-der-grundgesamtheit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ein Parameter über welchen wir gerne eine Aussage treffen würden ist die zentrale Tendenz in der Grundgesamtheit. <span id="customdef-erwartungswert" class="customdef">Diese wird <strong>Erwartungswert</strong> (Symbol <span class="math inline">\(\mu\)</span> [gr.: mü]) genannt.</span> Wenn das arithmetische Mittel der Stichprobe berechnet wird, ergibt dies auch ein Schätzwert für besagten Erwartungswert. Aufgrund der zufälligen Stichprobenziehung ist jedoch auch klar, dass dieser Schätzwert nie genau dem wahren Erwartungswert entspricht.</p>
-<p>Die Folgefrage ist also wie genau unsere Schätzung ist. Um dies zu quantifizieren, wiederholen wir die Stichprobenziehung und berechnen das arithmetische Mittel dieser zweiten Stichprobe. Dann wiederholen wir diesen Prozess, zum Beispiel 1000 mal.</p>
-<div class="figure"><span style="display:block;" id="fig:hist-mean-estimation"></span>
-<img src="aps_statistik1_files/figure-html/hist-mean-estimation-1.png" alt="Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst." width="672" />
+<p>In Beispiel <a href="stichprobenziehung.html#exm:angst">3.1</a> liegt das arithmetische Mittel in der Stichprobe der Studierenden bei <span class="math inline">\(M=43.2\)</span>. Dieser Wert entspricht nun auch der Schätzung des Erwartungswertes, also der geschätzten durchschnittlichen Angst aller Menschen. Die Folgefrage ist also wie genau unsere Schätzung ist. Um dies zu quantifizieren, wiederholen wir die Stichprobenziehung und berechnen das arithmetische Mittel dieser zweiten Stichprobe. Dann wiederholen wir diesen Prozess, zum Beispiel 1000 mal.</p>
+<div class="figure"><span style="display:block;" id="fig:exm-angst-hist-means"></span>
+<img src="aps_statistik1_files/figure-html/exm-angst-hist-means-1.png" alt="Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst." width="672" />
 <p class="caption">
 Abbildung 4.1: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.
 </p>
 </div>
-<p>Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:hist-mean-estimation">4.1</a> lässt nun Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die 30 ist hier am wahrscheinlichsten und ein Wert tiefer als 27 oder höher 33 eher selten. Um diese Aussage präziser zu gestalten, werden konventionell die 95% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die 5% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das 2.5% Perzentil trennt die 2.5% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei 26.5. Das 97.5%-Perzentil trennt die höchsten 2.5% (oder eben die tiefsten 97.5%) arthmetischen Mittel ab und liegt bei 33.6.</p>
-<div class="figure"><span style="display:block;" id="fig:hist-mean-estimation1"></span>
-<img src="aps_statistik1_files/figure-html/hist-mean-estimation1-1.png" alt="Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst." width="672" />
+<p>Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-angst-hist-means">4.1</a> lässt nun Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die 30 ist hier am wahrscheinlichsten und ein Wert tiefer als 27 oder höher 33 eher selten. Um diese Aussage präziser zu gestalten, werden konventionell die 95% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die 5% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das 2.5% Perzentil trennt die 2.5% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei 26.5. Das 97.5%-Perzentil trennt die höchsten 2.5% (oder eben die tiefsten 97.5%) arthmetischen Mittel ab und liegt bei 33.6. Dies ist in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-angst-hist-means-emp-ci">4.2</a> ersichtlich.</p>
+<div class="figure"><span style="display:block;" id="fig:exm-angst-hist-means-emp-ci"></span>
+<img src="aps_statistik1_files/figure-html/exm-angst-hist-means-emp-ci-1.png" alt="Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst." width="672" />
 <p class="caption">
 Abbildung 4.2: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.
 </p>
 </div>
-<p>TODO: explain example 2 likert scale</p>
-<pre><code>## Warning: Removed 4 rows containing missing values or values outside the scale range
-## (`geom_bar()`).</code></pre>
-<div class="figure"><span style="display:block;" id="fig:hist-mean-estimation2"></span>
-<img src="aps_statistik1_files/figure-html/hist-mean-estimation2-1.png" alt="TODO: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst." width="672" />
+<div class="example">
+<p><span id="exm:agreableness" class="example"><strong>Beispiel 4.1  (Verträglichkeit) </strong></span>Einer der Big-5 Persönlichkeitszüge ist die Verträglichkeit. Eine einfache Art die Big-5 zu messen ist mit den 10 Fragen aus dem ten-item personality inventory (TIPI) <span class="citation">(<a href="#ref-gosling2003">Gosling, Rentfrow, and Swann 2003</a>)</span>. Für die Verträglichkeit müssen zwei Items (Item 1: Critical, quarrelsome; Item 2: Sympathetic, warm) auf einer Likert-Skala von 1 bis 7 eingeordnet werden. Anschliessend werden die Antworten gemittelt. Ein Student möchte herausfinden, ob mit diesem Messinstrument die durchschnittliche Verträglichkeit aller Menschen mittig also bei <span class="math inline">\(4\)</span> liegt. Dafür befragt er <span class="math inline">\(n = 100\)</span> Personen und findet die Werte <span class="math inline">\(M=4.05, s = 1.71\)</span>.</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:exm-agreableness-hist"></span>
+<img src="aps_statistik1_files/figure-html/exm-agreableness-hist-1.png" alt="Verteilung der 100 beobachteten Verträglichkeitswerte einer zufällig gezogenen Stichprobe." width="672" />
 <p class="caption">
-Abbildung 4.3: TODO: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.
+Abbildung 4.3: Verteilung der 100 beobachteten Verträglichkeitswerte einer zufällig gezogenen Stichprobe.
 </p>
 </div>
-<p>TODO: explain quantiles.</p>
-<p>Das Problem mit diesem Vorgehen ist, dass es aus finanziellen oder technischen Gründen selten möglich ist mehrere Stichproben aus derselben Population zu ziehen. Glücklicherweise haben Statistiker:innen herausgefunden, dass die Häufigkeitsverteilungen wie in Abbildungen <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:hist-mean-estimation1">4.2</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:hist-mean-estimation2">4.3</a> immer dieselbe Verteilung haben und dies unabhängig davon wie die ursprüngliche Verteilung des Merkmals aussah. <span id="customdef-normalverteilung" class="customdef">Diese Verteilung ist eine sogenannte <strong>Normalverteilung</strong></span>.</p>
+<p>Die Verteilung der Beobachtungen, siehe Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-agreableness-hist">4.3</a>, zeigt, dass alle Werte zwischen 1 und 7 vorkommen, aber keine zentrale Tendenz greifbar ist. Um herauszufinden wie zutreffend die Schätzung des Erwartungswertes der Verträglichkeit von <span class="math inline">\(M=4.05\)</span> ist, stelle man sich wieder vor, dass der Student 1000-mal die Stichprobenziehung wiederholt und jedes mal das arithmetische Mittel <span class="math inline">\(M\)</span> von neuem Berechnet. Die Verteilung der arithmetischen Mittel dieser Stichproben ist in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-agreableness-hist-means">4.4</a> dargestellt. Bei dieser Verteilung kann erneut links und rechts 2.5% der Werte abgeschnitten werden, um zum Schluss zu gelangen, dass das arithmetische Mittel in 95% der Fälle zwischen <span class="math inline">\(3.7\)</span> und <span class="math inline">\(4.3\)</span> zu liegen kommt.</p>
+<div class="figure"><span style="display:block;" id="fig:exm-agreableness-hist-means"></span>
+<img src="aps_statistik1_files/figure-html/exm-agreableness-hist-means-1.png" alt="Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Verträglichkeit." width="672" />
+<p class="caption">
+Abbildung 4.4: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Verträglichkeit.
+</p>
+</div>
+<p>Das Problem mit diesem Vorgehen ist, dass es aus finanziellen oder technischen Gründen selten möglich ist mehrere Stichproben aus derselben Population zu ziehen. Glücklicherweise haben Statistiker:innen herausgefunden, dass die Häufigkeitsverteilungen wie in Abbildungen <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-angst-hist-means-emp-ci">4.2</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-agreableness-hist-means">4.4</a> immer dieselbe Verteilung haben und dies unabhängig davon wie die ursprüngliche Verteilung des Merkmals aussah. <span id="customdef-normalverteilung" class="customdef">Diese Verteilung ist eine sogenannte <strong>Normalverteilung</strong></span>.</p>
 <p>Die Normalverteilung sieht eine Glocke ähnlich. Deshalb wird sie auch Gausssche Glockenkurve nach Carl F. Gauss (1777-1855) benannt. Die Normalverteilung kann mit nur zwei Parametern beschrieben werden.</p>
 <ul>
 <li><span class="math inline">\(\mu_g\)</span> gibt an, wo auf der x-Achse der höchste Punkt der Glocke liegt</li>
@@ -218,17 +224,17 @@ Abbildung 4.3: TODO: Verteilung der arithmetischen Mittel von 1000 zufällig gez
 </ul></li>
 </ul>
 </div>
-<p>Die Abbildungen <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:normal-approx">4.4</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:normal-approx1">4.5</a> illustrieren den zentralen Grenzwertsatz für Beispiel 1 und 2 respektive. Dabei wird einstweilen angenommen, dass <span class="math inline">\(\mu\)</span> und <span class="math inline">\(\sigma\)</span> bekannt sind. Diese Annahme wird später aufgelöst und dient hier lediglich der Illustration.</p>
-<div class="figure"><span style="display:block;" id="fig:normal-approx"></span>
-<img src="aps_statistik1_files/figure-html/normal-approx-1.png" alt="Die arithmetischen Mittel sind Normalverteilt mit Parametern $\mu_g = 30$ und $\sigma_g = 10 / \sqrt{30}$." width="672" />
+<p>Die Abbildungen <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-angst-normal-approx">4.5</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-agreableness-normal-approx">4.6</a> illustrieren den zentralen Grenzwertsatz für Beispiel <a href="stichprobenziehung.html#exm:angst">3.1</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#exm:agreableness">4.1</a> respektive, wobei die Normalverteilung der roten Linie entspricht. Dabei wird einstweilen angenommen, dass <span class="math inline">\(\mu\)</span> und <span class="math inline">\(\sigma\)</span> bekannt sind. Diese Annahme wird später aufgelöst und dient hier lediglich der Illustration.</p>
+<div class="figure"><span style="display:block;" id="fig:exm-angst-normal-approx"></span>
+<img src="aps_statistik1_files/figure-html/exm-angst-normal-approx-1.png" alt="Die arithmetischen Mittel sind Normalverteilt mit Parametern $\mu_g = 30$ und $\sigma_g = 10 / \sqrt{30}$." width="672" />
 <p class="caption">
-Abbildung 4.4: Die arithmetischen Mittel sind Normalverteilt mit Parametern <span class="math inline">\(\mu_g = 30\)</span> und <span class="math inline">\(\sigma_g = 10 / \sqrt{30}\)</span>.
+Abbildung 4.5: Die arithmetischen Mittel sind Normalverteilt mit Parametern <span class="math inline">\(\mu_g = 30\)</span> und <span class="math inline">\(\sigma_g = 10 / \sqrt{30}\)</span>.
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:normal-approx1"></span>
-<img src="aps_statistik1_files/figure-html/normal-approx1-1.png" alt="Die arithmetischen Mittel sind Normalverteilt mit Parametern $\mu_g = 4$ und $\sigma_g = 1.73 / \sqrt{100}$." width="672" />
+<div class="figure"><span style="display:block;" id="fig:exm-agreableness-normal-approx"></span>
+<img src="aps_statistik1_files/figure-html/exm-agreableness-normal-approx-1.png" alt="Die arithmetischen Mittel sind Normalverteilt mit Parametern $\mu_g = 4$ und $\sigma_g = 1.73 / \sqrt{100}$." width="672" />
 <p class="caption">
-Abbildung 4.5: Die arithmetischen Mittel sind Normalverteilt mit Parametern <span class="math inline">\(\mu_g = 4\)</span> und <span class="math inline">\(\sigma_g = 1.73 / \sqrt{100}\)</span>.
+Abbildung 4.6: Die arithmetischen Mittel sind Normalverteilt mit Parametern <span class="math inline">\(\mu_g = 4\)</span> und <span class="math inline">\(\sigma_g = 1.73 / \sqrt{100}\)</span>.
 </p>
 </div>
 <p>Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte ziehen von Stichproben unnötig. Die Normalverteilung ist theoretisch konstruiert und ihr 2.5%- und 97.5%-Perzentil können theoretisch hergeleitet werden. Tabelle <a href="durchschnitt-und-standardabweichung-schätzen.html#tab:quantiles-norm">4.1</a> wird kann beobachtet werden, dass für unsere zwei Beispiele die Perzentile der Stichprobe und der Normalverteilung sehr ähnlich, wenn auch nicht exakt gleich sind. Die Ungenauigkeit rührt daher, dass der zentrale Grenzwertsatz nur dann exakt funktioniert, wenn die Anzahl Beobachtungen (unendlich) gross ist.</p>
@@ -238,27 +244,52 @@ Abbildung 4.5: Die arithmetischen Mittel sind Normalverteilt mit Parametern <spa
 </caption>
 <thead>
 <tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Stichprobe
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Normalverteilung
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+t-Verteilung
+</div>
+</th>
+</tr>
+<tr>
 <th style="text-align:center;">
 Beispiel
 </th>
 <th style="text-align:right;">
-2.5%-Perzentil (Stichprobe)
+2.5%
 </th>
 <th style="text-align:right;">
-97.5%-Perzentil (Stichprobe)
+97.5%
 </th>
 <th style="text-align:right;">
-2.5%-Perzentil (Normalverteilung)
+2.5%
 </th>
 <th style="text-align:right;">
-97.5%-Perzentil (Normalverteilung)
+97.5%
+</th>
+<th style="text-align:center;">
+2.5%
+</th>
+<th style="text-align:right;">
+97.5%
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center;">
-1
+Angst
 </td>
 <td style="text-align:right;">
 26.5
@@ -267,15 +298,21 @@ Beispiel
 33.6
 </td>
 <td style="text-align:right;">
-26.4216
+26.42
 </td>
 <td style="text-align:right;">
-33.5784
+33.58
+</td>
+<td style="text-align:center;">
+26.27
+</td>
+<td style="text-align:right;">
+33.73
 </td>
 </tr>
 <tr>
 <td style="text-align:center;">
-2
+Vertraeglichkeit
 </td>
 <td style="text-align:right;">
 3.7
@@ -284,23 +321,75 @@ Beispiel
 4.3
 </td>
 <td style="text-align:right;">
-3.6605
+2.66
 </td>
 <td style="text-align:right;">
-4.3395
+3.34
+</td>
+<td style="text-align:center;">
+2.66
+</td>
+<td style="text-align:right;">
+3.34
 </td>
 </tr>
 </tbody>
 </table>
-<p>Einstweilen wurde hier angenommen, dass die Streuung des Merkmals <span class="math inline">\(\sigma\)</span> bekannt ist. Dies ist in der Realität nie der Fall. Wenn <span class="math inline">\(\sigma\)</span> also auch aus der Stichprobe geschätzt werden muss, ist die Verteilung der arthmetischen Mittel</p>
-<p><span class="math display">\[ \bar{x} - \frac{\sigma}{\sqrt{n}} \cdot z_{2.5\%} &lt; \mu &lt; \bar{x} - \frac{\sigma}{\sqrt{n}} \cdot z_{2.5\%}\]</span></p>
+<p>Einstweilen wurde hier angenommen, dass die Streuung des Merkmals <span class="math inline">\(\sigma\)</span> bekannt ist. Dies ist in der Realität nie der Fall. <span id="customdef-student-verteilung" class="customdef">Wenn <span class="math inline">\(\sigma\)</span> also auch aus der Stichprobe geschätzt werden muss, ist die Ännäherung der Verteilung der arithmetischen Mittel besser gegeben mit einer <strong>Student-<span class="math inline">\(t\)</span>-Verteilung</strong> oder kurz <span class="math inline">\(t\)</span>-Verteilung.</span> Die grüne Linie in Abbildungen <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-angst-normal-approx">4.5</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-agreableness-normal-approx">4.6</a> entspricht der <span class="math inline">\(t\)</span>-Verteilung im jeweiligen Beispiel.</p>
+<p>Der Unterschied zwischen der Normalverteilung und der <span class="math inline">\(t\)</span>-Verteilung ist nur sichtbar, wenn <span class="math inline">\(n\)</span> klein ist. In Beispiel <a href="stichprobenziehung.html#exm:angst">3.1</a> mit <span class="math inline">\(n = 30\)</span> ist ein kleiner Unterschied, in Beispiel <a href="durchschnitt-und-standardabweichung-schätzen.html#exm:agreableness">4.1</a> mit <span class="math inline">\(n = 100\)</span> ist kein Unterschied zwischen der Normalverteilung und der <span class="math inline">\(t\)</span>-Verteilung sichtbar. Tatsächlich wird die <span class="math inline">\(t\)</span>-Verteilung mit einem Parameter charaktisiert, welcher Freiheitsgrade [eng. degrees of freedom, <span class="math inline">\(df\)</span>] genannt wird. In Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:t-distribution">4.7</a> wird die <span class="math inline">\(t\)</span>-Verteilung mit verschiedenen Freiheitsgraden mit der Normalverteilung verglichen. Bei der <span class="math inline">\(t\)</span>-Verteilung mit den kleinsten Freiheitsgraden sind extremere Werte wahrscheinlicher als <span class="math inline">\(t\)</span>-Verteilungen mit grösseren Freiheitsgraden.</p>
+<div class="figure"><span style="display:block;" id="fig:t-distribution"></span>
+<img src="aps_statistik1_files/figure-html/t-distribution-1.png" alt="Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleich zu der Normalverteilung." width="672" />
+<p class="caption">
+Abbildung 4.7: Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleich zu der Normalverteilung.
+</p>
 </div>
-<div id="wo-liegt-der-durchschnitt-der-standardabweichung" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Wo liegt der Durchschnitt der Standardabweichung?<a href="durchschnitt-und-standardabweichung-schätzen.html#wo-liegt-der-durchschnitt-der-standardabweichung" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Die Freiheitsgrade der <span class="math inline">\(t\)</span>-Verteilung in der Annäherung oben entsprechen der Anzahl Beobachtungen minus 1, also <span class="math inline">\(df = n-1\)</span>. Die höhere Wahrscheinlichkeit von extremeren Werten bei kleinen Freiheitsgraden spiegelt die grössere Unsicherheit der Schätzung des Erwartungswertes wieder, wenn die Standardabweichung unbekannt und damit auch geschätzt werden muss. Je kleiner <span class="math inline">\(n\)</span> ist, desto stärker fällt diese Unsicherheit aus.</p>
+<p>Die arithmetischen Mittel bei unbekannter Standardabweichung sind bei wiederholter Stichprobenziehung genau <span class="math inline">\(t\)</span>-verteilt. Um die Genauigkeit der Schätzung des Erwartungswertes zu bestimmen genügt es folglich, das 2.5% und das 97.5% Perzentil der <span class="math inline">\(t\)</span>-Verteilung mit <span class="math inline">\(n-1\)</span> Freiheitsgraden zu bestimmen. Diese Perzentile können mit</p>
+<p><span class="math display">\[ \bar{x} - \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1} &lt; \mu &lt; \bar{x} + \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1}\]</span></p>
+<p>berechnet werden, wobei <span class="math inline">\(\bar{x}\)</span> das arithmetische Mittel, <span class="math inline">\(s\)</span> die Standardabweichung und <span class="math inline">\(t_{97.5\%, n-1}\)</span> dem Wert des 97.5%-Perzentil einer auf 0 zentrierten <span class="math inline">\(t\)</span>-Verteilung mit <span class="math inline">\(n-1\)</span> Freiheitsgraden entspricht. Letzere Perzentile der <span class="math inline">\(t\)</span>-Verteilung können bei Bedarf in entsprechenden Tabellen nachgeschlagen werden.</p>
+<p>Das 2.5% und das 97.5% Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines <span id="customdef-interval" class="customdef"><strong>Intervalles</strong>. Ein Intervall bezeichnet durch die Symbolik <span class="math inline">\([\)</span>untere Schranke, obere Schranke<span class="math inline">\(]\)</span> beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.</span> <span id="customdef-confidence-interval" class="customdef">Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in 95% der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu 95% sicher oder <em>konfident</em> sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als 95%-<strong>Konfidenzintervall</strong> (symbol KI) bezeichnet.</span></p>
+<p>In Beispiel <a href="stichprobenziehung.html#exm:angst">3.1</a>, kann aus der Tabelle <a href="durchschnitt-und-standardabweichung-schätzen.html#tab:quantiles-norm">4.1</a> entnommen werden, dass die Angst in der Population bei <span class="math inline">\(M = 30\)</span> <span class="math inline">\(95\%\)</span>-KI <span class="math inline">\([26.27,33.73]\)</span> liegt. In Beispiel <a href="durchschnitt-und-standardabweichung-schätzen.html#exm:agreableness">4.1</a>, kann aus der Tabelle <a href="durchschnitt-und-standardabweichung-schätzen.html#tab:quantiles-norm">4.1</a> entnommen werden, dass die Angst in der Population bei <span class="math inline">\(M = 3\)</span> <span class="math inline">\(95\%\)</span>-KI <span class="math inline">\([2.66,3.34]\)</span> liegt.</p>
+<p>Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse <span class="math inline">\(n\)</span> oder die geschätzte Standardabweichung <span class="math inline">\(s\)</span> auf die Länge des Konfidenzintervalls auswirkt. Dies kann in den Übungen <a href="durchschnitt-und-standardabweichung-schätzen.html#exr:ki-mean-n-vary">4.1</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#exr:ki-mean-s-vary">4.2</a> selbst erforscht werden.</p>
+</div>
+<div id="wo-liegt-der-durchschnit-der-standardabweichung" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Wo liegt der Durchschnit der Standardabweichung?<a href="durchschnitt-und-standardabweichung-schätzen.html#wo-liegt-der-durchschnit-der-standardabweichung" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
 <div id="übungen-1" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Übungen<a href="durchschnitt-und-standardabweichung-schätzen.html#übungen-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:ki-mean-n-vary" class="exercise"><strong>Übung 4.1  </strong></span>TODO</p>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-6" class="solution"><em>Lösung</em>. </span>TODO</p>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:ki-mean-s-vary" class="exercise"><strong>Übung 4.2  </strong></span>TODO</p>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-7" class="solution"><em>Lösung</em>. </span>TODO</p>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:ki-approx-normal" class="exercise"><strong>Übung 4.3  </strong></span>TODO</p>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-8" class="solution"><em>Lösung</em>. </span>TODO</p>
+</details>
+</div>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-gosling2003" class="csl-entry">
+Gosling, Samuel D, Peter J Rentfrow, and William B Swann. 2003. <span>“A Very Brief Measure of the Big-Five Personality Domains.”</span> <em>Journal of Research in Personality</em> 37 (6): 504–28. https://doi.org/<a href="https://doi.org/10.1016/S0092-6566(03)00046-1">https://doi.org/10.1016/S0092-6566(03)00046-1</a>.
 </div>
 </div>
             </section>
