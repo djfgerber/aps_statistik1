@@ -11,7 +11,9 @@ bookdown::gitbook:
       after: null
     toolbar:
       position: fixed
-    edit: null
+    edit:
+      link: https://github.com/djfgerber/aps_statistik1/edit/main/%s
+      text: "Edit this page"
     download: [["aps_statistik1.pdf", "pdf"]]
     sharing:
       facebook: true
