@@ -238,8 +238,16 @@ Die Aufgabe kann im Kopf gelöst werden, oder mithilfe eines Taschenrechners, od
 # Stichprobenziehung {#stichprobenziehung}
 
 
+```{r 3-prep_example, include=FALSE}
+set.seed(12452)
+n <- 30
+ex_angst_mean <- 43.2
+ex_angst_sd <- 7.8
+x <- rnorm(n, ex_angst_mean, ex_angst_sd)
+```
+
 :::{.example #angst name="Angst"}
-Forschende haben ein Messinstrument STAI (State-Trait Anxiety Inentory), welches Angst misst [@spielberger1983manual]. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst man aktuell empfindet. Die so gemessene Angst enstpricht einem Wert zwischen $20$ und $80$. A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit $30$ zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte $M=43.2, s = 7.8, n = 30$ für die Angst in ihren Beobachtungen.
+Forschende haben ein Messinstrument STAI (State-Trait Anxiety Inentory), welches Angst misst [@spielberger1983manual]. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst man aktuell empfindet. Die so gemessene Angst enstpricht einem Wert zwischen $20$ und $80$. A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit $n =`r n`$ zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte $M=`r round(mean(x), 2)`, s = `r round(sd(x),2)`, n = `r n`$ für die Angst in ihren Beobachtungen.
 :::
 
 [Zufällig ausgewählte Beobachtungen eines Merkmals werden als __Stichprobe__ bezeichnet.]{.customdef #customdef-stichprobe} [Nach der Auswahl der Stichprobe ist die __Stichprobenziehung__.]{.customdef #customdef-stichprobenziehung} Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? [Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als __Population__]{.customdef #customdef-population} [oder __Grundgesamtheit__ bezeichnet]{.customdef #customdef-grundgesamtheit}. [Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als __Zufallsstichprobe__ bezeichnet.]{.customdef #customdef-zufallsstichprobe} 
@@ -254,15 +262,13 @@ Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am F
 
 ## Was ist das Problem der Stichprobenziehung? {#stichprobenziehung-problem}
 
-Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung \@ref(fig:srs-intervall-nocol) ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population. Die Personen im Zimmer, respektive die Beobachtungen in der Population sind normalerweise nicht sichtbar. Aus diesem Zimmer wurden also 30 Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die Punkte über dem Zimmer, oberhalb des Pfeils. Die Farben der Punkte sind jetzt bekannt und entsprechen der jeweiligen Zustandesangst der beobachteten Personen.
+Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung \@ref(fig:srs-intervall-nocol) ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population. Die Personen im Zimmer, respektive die Beobachtungen in der Population sind normalerweise nicht sichtbar. Aus diesem Zimmer wurden also `r n` Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die Punkte über dem Zimmer, oberhalb des Pfeils. Die Farben der Punkte sind jetzt bekannt und entsprechen der jeweiligen Zustandesangst der beobachteten Personen.
 
 
 ```{r srs-intervall-nocol, echo = FALSE, fig.cap="Population mit unbekannter Angst."}
-set.seed(124)
-scores_hover <- rnorm(30, 43.2, 7.8)
 plot_ball_bag(
-  scores_bag = c(20, 80, rnorm(198, 43.2, 7.8)),
-  scores_hover = scores_hover,
+  scores_bag = c(20, 80, rnorm(198, ex_angst_mean, ex_angst_sd)),
+  scores_hover = x,
   score_name = "Angst",
   bag_color = "grey90",
   seed = 123,
@@ -274,10 +280,10 @@ Da die Stichprobe nun eben zufällig gezogen wurde, das heisst zufällig Persone
 
 
 ```{r srs-intervall-high-p, fig.cap="Population mit ähnlichen Angst-Werten wie in der Stichprobe.", echo = FALSE}
-scores_bag_high_p <- c(20, 80, rnorm(198, 43.2, 7.8))
+scores_bag_high_p <- c(20, 80, rnorm(198, ex_angst_mean, ex_angst_sd))
 plot_ball_bag(
   scores_bag = scores_bag_high_p,
-  scores_hover = scores_hover,
+  scores_hover = x,
   score_name = "Angst",
   seed = 123
 )
@@ -286,10 +292,10 @@ plot_ball_bag(
 Es könnte aber auch sein, dass die Stichprobe einer Population mit viel höherer Zusatandsangst, wie in Abbildung \@ref(fig:srs-intervall-low-p) dargestellt, entstammt. Dies wird zwar weniger häufig vorkommen als der Fall oben, aber ist trotzdem möglich.
 
 ```{r srs-intervall-low-p, fig.cap="Population mit höheren Angst-Werten als in der Stichprobe.", echo = FALSE}
-scores_bag_low_p <-  c(20, 80, rnorm(198, 52, 7.8))
+scores_bag_low_p <-  c(20, 80, rnorm(198, 52, ex_angst_sd))
 plot_ball_bag(
   scores_bag = scores_bag_low_p,
-  scores_hover = scores_hover,
+  scores_hover = x,
   score_name = "Angst",
   seed = 123
 )
@@ -305,7 +311,7 @@ Die Lösung dieses Problems funktioniert intuitiv wie folgt: Man stellt sich vor
 plots <- list()
 for (i in 1:6) {
   set.seed(i * 5 + 789)
-  scores_hover <- rnorm(30, 43.2, 7.8)
+  scores_hover <- rnorm(n, ex_angst_mean, ex_angst_sd)
   plots[[i]] <- plot_ball_bag(
     scores_bag = scores_bag_high_p,
     scores_hover = scores_hover,
@@ -323,7 +329,7 @@ Im Szenario, in welchem in der Population tatsächlich höhere Werte häufig vor
 plots <- list()
 for(i in 1:6){
   set.seed(i*5+789)
-  scores_hover <- rnorm(30, 52, 7.8)
+  scores_hover <- rnorm(n, 52, ex_angst_sd)
   plots[[i]] <-plot_ball_bag(
   scores_bag = scores_bag_low_p,
   scores_hover = scores_hover,
@@ -342,16 +348,16 @@ Es kann also zusammenfassend gesagt werden, dass die gezogene Stichprobe wohl eh
 
 # Durchschnitt und Standardabweichung schätzen
 
-```{r prep_example, include=FALSE}
+```{r 4-prep_example, include=FALSE}
 library(kableExtra)
 set.seed(1928)
 m <- 1000
-n <- 30
-means <- map_dbl(1:m, ~ mean(rnorm(n, 30, 10)))
+means <- map_dbl(1:m, ~ mean(rnorm(n, ex_angst_mean, ex_angst_sd)))
+sds <- map_dbl(1:m, ~ sd(rnorm(n, ex_angst_mean, ex_angst_sd)))
 lb <- round(unname(quantile(means, 0.025)), 1)
 ub <- round(unname(quantile(means, 0.975)), 1)
-m_means <- 30
-s_means <- sqrt(100 / n)
+m_means <- mean(x)
+s_means <- sqrt(sd(x) / n)
 lb_t <- m_means - qt(0.975, n - 1) * s_means
 ub_t <- m_means + qt(0.975, n - 1) * s_means
 
@@ -360,9 +366,10 @@ b <- 7
 n1 <- 100
 x1 <- runif(n1, a, b)
 means1 <- map_dbl(1:m, ~ mean(runif(n1, a, b)))
+sds1 <- map_dbl(1:m, ~ sd(runif(n1, a, b)))
 lb1 <- round(unname(quantile(means1, 0.025)), 1)
 ub1 <- round(unname(quantile(means1, 0.975)), 1)
-m_means1 <- (b - a) / 2
+m_means1 <- a+(b - a) / 2
 s_means1 <- sqrt(((b - a) ^ 2 / 12) / n1)
 lb1_t <- m_means1 - qt(0.975, n1 - 1) * s_means1
 ub1_t <- m_means1 + qt(0.975, n1 - 1) * s_means1
@@ -411,13 +418,13 @@ plot_hist_denstiy_expected_value <- function(means, mu, sigma, n, xlab, binwidth
 }
 ```
 
-Wie die in Abschnitt \@ref(#stichprobenziehung-loesung) skizzierte Lösung für das Problem der zufälligen Stichprobe konkret umgesetzt wird, hängt von der Problemstellung ab. Im folgenden wird ein Verfahren zur Generalisierung der Schätzung der zentralen Tendenz und eines für die Schätzung der Variabilität basierend auf einer Stichprobe präsentiert.
+Wie die in Abschnitt \@ref(stichprobenziehung-loesung) skizzierte Lösung für das Problem der zufälligen Stichprobe konkret umgesetzt wird, hängt von der Problemstellung ab. Im folgenden wird ein Verfahren zur Generalisierung der Schätzung der zentralen Tendenz und eines für die Schätzung der Variabilität basierend auf einer Stichprobe präsentiert.
 
 ## Wo liegt der Durchschnitt der Grundgesamtheit?
 
 Ein Parameter über welchen wir gerne eine Aussage treffen würden ist die zentrale Tendenz in der Grundgesamtheit. [Diese wird **Erwartungswert** (Symbol $\mu$ [gr.: mü]) genannt.]{.customdef #customdef-erwartungswert} Wenn das arithmetische Mittel der Stichprobe berechnet wird, ergibt dies auch ein Schätzwert für besagten Erwartungswert. Aufgrund der zufälligen Stichprobenziehung ist jedoch auch klar, dass dieser Schätzwert nie genau dem wahren Erwartungswert entspricht. 
 
-In Beispiel \@ref(exm:angst) liegt das arithmetische Mittel in der Stichprobe der Studierenden bei $M=43.2$. Dieser Wert entspricht nun auch der Schätzung des Erwartungswertes, also der geschätzten durchschnittlichen Angst aller Menschen. Die Folgefrage ist also wie genau unsere Schätzung ist. Um dies zu quantifizieren, wiederholen wir die Stichprobenziehung und berechnen das arithmetische Mittel dieser zweiten Stichprobe. Dann wiederholen wir diesen Prozess, zum Beispiel `r m` mal.
+In Beispiel \@ref(exm:angst) liegt das arithmetische Mittel in der Stichprobe der Studierenden bei $M=`r ex_angst_mean`$. Dieser Wert entspricht nun auch der Schätzung des Erwartungswertes, also der geschätzten durchschnittlichen Angst aller Menschen. Die Folgefrage ist also wie genau unsere Schätzung ist. Um dies zu quantifizieren, wiederholen wir die Stichprobenziehung und berechnen das arithmetische Mittel dieser zweiten Stichprobe. Dann wiederholen wir diesen Prozess, zum Beispiel $`r m`$ mal.
 
 ```{r exm-angst-hist-means, echo = FALSE, fig.cap = paste("Verteilung der arithmetischen Mittel von", m, "zufällig gezogenen Stichproben der Angst.")}
 tibble(x = means) %>% 
@@ -426,7 +433,7 @@ tibble(x = means) %>%
   labs(y = 'Häufigkeit', x = 'Angst')
 ```
 
-Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \@ref(fig:exm-angst-hist-means) lässt nun Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die 30 ist hier am wahrscheinlichsten und ein Wert tiefer als 27 oder höher 33 eher selten. Um diese Aussage präziser zu gestalten, werden konventionell die 95% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die 5% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das 2.5% Perzentil trennt die 2.5% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei `r lb`. Das 97.5%-Perzentil trennt die höchsten 2.5% (oder eben die tiefsten 97.5%) arthmetischen Mittel ab  und liegt bei `r ub`. Dies ist in Abbildung \@ref(fig:exm-angst-hist-means-emp-ci) ersichtlich.
+Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \@ref(fig:exm-angst-hist-means) lässt nun Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die 30 ist hier am wahrscheinlichsten und ein Wert tiefer als $27$ oder höher $33$ eher selten. Um diese Aussage präziser zu gestalten, werden konventionell die $95$% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die $5$% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das $2.5$% Perzentil trennt die $2.5$% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei $`r lb`$. Das $97.5$%-Perzentil trennt die höchsten $2.5$% (oder eben die tiefsten $97.5$%) arthmetischen Mittel ab und liegt bei $`r ub`$. Dies ist in Abbildung \@ref(fig:exm-angst-hist-means-emp-ci) ersichtlich.
 
 
 ```{r exm-angst-hist-means-emp-ci, fig.cap = paste0("Verteilung der arithmetischen Mittel von ",m," zufällig gezogenen Stichproben der Angst.")}
@@ -470,11 +477,11 @@ Auf [seeing-theory.brown.edu > Continuous > Normal](https://seeing-theory.brown.
 
 Die Abbildungen \@ref(fig:exm-angst-normal-approx) und \@ref(fig:exm-agreableness-normal-approx) illustrieren den zentralen Grenzwertsatz für Beispiel \@ref(exm:angst) und \@ref(exm:agreableness) respektive, wobei die Normalverteilung der roten Linie entspricht. Dabei wird einstweilen angenommen, dass $\mu$ und $\sigma$ bekannt sind. Diese Annahme wird später aufgelöst und dient hier lediglich der Illustration.
 
-```{r exm-angst-normal-approx, fig.cap = "Die arithmetischen Mittel sind Normalverteilt mit Parametern $\\mu_g = 30$ und $\\sigma_g = 10 / \\sqrt{30}$."}
-plot_hist_denstiy_expected_value(means, 30, 10, 30, "Angst", 0.5)
+```{r exm-angst-normal-approx, fig.cap = paste0("Die arithmetischen Mittel sind Normalverteilt mit Parametern $\\mu_g = ",round(mean(x),2),"$ und $\\sigma_g = ",round(sd(x),2)," / \\sqrt{",n,"}$.")}
+plot_hist_denstiy_expected_value(means, ex_angst_mean, ex_angst_sd, n, "Angst", 0.5)
 ```
 
-```{r exm-agreableness-normal-approx, fig.cap = "Die arithmetischen Mittel sind Normalverteilt mit Parametern $\\mu_g = 4$ und $\\sigma_g = 1.73 / \\sqrt{100}$."}
+```{r exm-agreableness-normal-approx, fig.cap = paste0("Die arithmetischen Mittel sind Normalverteilt mit Parametern $\\mu_g = ",round(mean(x1),2),"$ und $\\sigma_g = ",round(sd(x1),2)," / \\sqrt{",n1,"}$.")}
 plot_hist_denstiy_expected_value(means1, 4, sqrt((b - a) ^ 2 / 12), n1, "Verträglichkeit", 0.05)
 ```
 
@@ -534,36 +541,192 @@ Die arithmetischen Mittel bei unbekannter Standardabweichung sind bei wiederholt
 
 $$ \bar{x} - \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1} < \mu < \bar{x} + \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1}$$
 
-berechnet werden, wobei $\bar{x}$ das arithmetische Mittel, $s$ die Standardabweichung und $t_{97.5\%, n-1}$ dem Wert des 97.5%-Perzentil einer auf 0 zentrierten $t$-Verteilung mit $n-1$ Freiheitsgraden entspricht. Letzere Perzentile der $t$-Verteilung können bei Bedarf in entsprechenden Tabellen nachgeschlagen werden.
+berechnet werden, wobei $\bar{x}$ das arithmetische Mittel, $s$ die Standardabweichung und $t_{97.5\%, n-1}$ dem Wert des 97.5%-Perzentil einer auf 0 zentrierten $t$-Verteilung mit $n-1$ Freiheitsgraden entspricht. Letzere Perzentile der $t$-Verteilung können bei Bedarf in entsprechenden Tabellen nachgeschlagen werden. Als Gedankenstütze kann für $t_{97.5\%, n-1}$ immer $2$ gedacht werden, da dies ungefähr dem wahren Wert entspricht, wenn $n$ grösser als $50$ ist.
 
 Das 2.5% und das 97.5% Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines [**Intervalles**. Ein Intervall bezeichnet durch die Symbolik $[$untere Schranke, obere Schranke$]$ beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.]{.customdef #customdef-interval} [Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in 95% der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu 95% sicher oder _konfident_ sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als 95%-**Konfidenzintervall** (symbol KI) bezeichnet.]{.customdef #customdef-confidence-interval}
 
-In Beispiel \@ref(exm:angst), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Angst in der Population bei $M = `r m_means`$ $95\%$-KI $[`r round(lb_t,2)`,`r round(ub_t,2)`]$ liegt. In Beispiel \@ref(exm:agreableness), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Angst in der Population bei $M = `r m_means1`$ $95\%$-KI $[`r round(lb1_t,2)`,`r round(ub1_t,2)`]$ liegt.
+In Beispiel \@ref(exm:angst), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Angst in der Population bei $M = `r round(mean(x),2)`$ $95\%$-KI $[`r round(lb_t,2)`,`r round(ub_t,2)`]$ liegt. In Beispiel \@ref(exm:agreableness), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Verträglichkeit in der Population bei $M = `r round(mean(x1), 2)`$ $95\%$-KI $[`r round(lb1_t,2)`,`r round(ub1_t,2)`]$ liegt.
 
 Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse $n$ oder die geschätzte Standardabweichung $s$ auf die Länge des Konfidenzintervalls auswirkt. Dies kann in den Übungen \@ref(exr:ki-mean-n-vary) und \@ref(exr:ki-mean-s-vary) selbst erforscht werden.
 
-## Wo liegt der Durchschnit der Standardabweichung?
+<!-- ## Wo liegt die Standardabweichung? -->
+
+
+<!-- This is probably wrong. Skip the chapter? -->
+<!-- ```{r} -->
+
+<!-- x_range <- seq(min(sds^2), max(sds^2), by = 0.1) -->
+<!-- chisq_curve = tibble( -->
+<!--   x = x_range, -->
+<!--   y = dchisq(x/((ex_angst_sd^2)/(n-1)), n - 1) * (m) -->
+<!-- ) -->
+
+<!-- tibble(x = sds^2) %>% -->
+<!--   ggplot(aes(x = x))+ -->
+<!--   geom_histogram(binwidth = 2) + -->
+<!--   geom_line( -->
+<!--       data = chisq_curve, -->
+<!--       aes(x = x, y = y), -->
+<!--       colour = "#f12489", -->
+<!--       linewidth = 1 -->
+<!--     ) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- x_range <- seq(min(sds1^2), max(sds1^2), by = 0.05) -->
+<!-- ex_agreableness_sd <- sqrt((b-a)^2 / 12) -->
+
+<!-- chisq_curve = tibble( -->
+<!--   x = x_range, -->
+<!--   y = dchisq(x * (n1-1) / (ex_agreableness_sd^2), n1 - 1) * (n1-1) / (ex_agreableness_sd^2) -->
+<!-- ) -->
+
+<!-- tibble(x = sds1^2) %>% -->
+<!--   ggplot(aes(x = x))+ -->
+<!--   geom_histogram(binwidth = bw, aes(y = after_stat(density))) + -->
+<!--   geom_line( -->
+<!--       data = chisq_curve, -->
+<!--       aes(x = x, y = y), -->
+<!--       colour = "#f12489", -->
+<!--       linewidth = 1 -->
+<!--     ) -->
+<!-- ``` -->
 
 ## Übungen
 
-::: {.exercise #ki-mean-n-vary}
+::: {.exercise #interpret-report1}
 TODO
+```{r exr-interpret-report1}
+print('hi')
+```
+
 :::
 
 :::{.solution}
 TODO
 :::
+
+::: {.exercise #interpret-report2}
+TODO
+```{r exr-interpret-report2}
+print('hi')
+```
+
+:::
+
+:::{.solution}
+TODO
+:::
+
+
+::: {.exercise #ki-approx-normal}
+```{r ki-approx-normal}
+exr_ki_approx_normal <- function(n){
+  seed <- 1928
+  set.seed(1928)
+  m <- 200
+  lambda <- 7
+  x <- rpois(n, lambda)
+  x_samples <- map(1:m, ~ rpois(n, lambda))
+  means <- x_samples %>% map_dbl(mean)
+  sds <- x_samples %>% map_dbl(sd)
+  lb <- unname(quantile(means, 0.025))
+  ub <- unname(quantile(means, 0.975))
+  m_means <- mean(x)
+  s_means <- sqrt(sd(x) / n)
+  lb_t <- lambda - qt(0.975, n - 1) * s_means
+  ub_t <- lambda + qt(0.975, n - 1) * s_means
+  plt_hist <- plot_hist_means(means, lb, ub, 3/n, 'Count')
+  plt_hist_density <- plot_hist_denstiy_expected_value(means,
+                                   lambda,
+                                   sqrt(lambda),
+                                   n = n,
+                                   "bla",
+                                   3 / n)
+  return(mget(ls()))
+}
+experiment1 <- exr_ki_approx_normal(10)
+experiment2 <- exr_ki_approx_normal(50)
+experiment3 <- exr_ki_approx_normal(100)
+abs(experiment1$lb_t - experiment1$lb)
+abs(experiment2$lb_t - experiment2$lb)
+abs(experiment3$lb_t - experiment3$lb)
+```
+:::
+
+:::{.solution}
+TODO
+:::
+
+::: {.exercise #ki-mean-n-vary}
+
+```{r exr-ki-mean-n-vary}
+gen_exr_ki_mean_n_vary <- function(){
+  seed <- 1029
+  set.seed(seed)
+  sample_sizes <- c(5, 20, 50, 100, 1000)
+  samples <- sample_sizes %>%
+    map(~rexp(.x,4))
+  ki_table <- tibble(x = samples,
+         n = sample_sizes) %>%
+    mutate(
+      means = x %>% map_dbl(mean),
+           sds = x %>% map_dbl(sd),
+           lb = means - qt(0.975, n-1) * sds / sqrt(n),
+           ub = means + qt(0.975, n-1) * sds / sqrt(n),
+           il = ub - lb)
+  tibble(!!!setNames(
+      map(ki_table$x, ~c(.x, rep(NA, 1000 - length(.x)))),
+      paste0("col_", seq_along(ki_table$x))
+  )) %>%
+    haven::write_sav('data/04-exr-stichprobengroesse.sav')
+  return(mget(ls()))
+}
+
+exr_ki_mean_n_vary <- gen_exr_ki_mean_n_vary()
+```
+
+Eine Mensa will herausfinden, wie lange die Leute um 12h durchschnittlich anstehen müssen. Dazu befragt sie `r exr_ki_mean_n_vary$ki_table$n[1]` Kund:innen. Das Resultat der Untersuchung ist, dass die Kund:innen im Durchschnitt $0.4$ Stunden anstehen müssen. Leider ist das Konfidenzintervall sehr gross. Da die Mensa nicht weiss, wie viele Leute befragt werden müssen, um ein kleineres Konfidenzintervall zu erhalten befragt sie in 4 weiteren Runden jeweils `r knitr::combine_words(exr_ki_mean_n_vary$ki_table$n[-c(1)], and = " und ", oxford_comma = FALSE)` Kund:innen. Die Daten aller 5 Untersuchungen sind unter `04-exr-stichprobengroesse.sav` abgelegt. Für jede der 5 Stichproben:
+
+  a. Was ist die Schätzung des Erwartungswertes der Wartezeit?
+  b. Wie gross ist die Standardabweichung der Wartezeit?
+  c. Wie gross ist die Standardabweichung der arithmetischen Mittel?
+  d. Bestimmen Sie die 95%-Konfidenzintervalle.
+  e. Berechnen Sie die Länge jedes Konfidenzintervalls.
+
+Vergleichen Sie die Resultate der Berechnungen für jede Stichprobe:
+
+  f. Weshalb ist die Schätzung für den Erwartungswert für jede Stichprobe unterschiedlich?
+  g. Was lässt sich über den Zusammenhang zwischen Stichprobengrösse und der Länge des Konfidenzintervalls sagen?
+
+:::
+
+:::{.solution}
+
+Abbildung \@ref(fig:sol-ki-mean-n-vary) zeigt die Berechnunganweisungen für Jamovi und die resultierende Tabelle daraus.
+
+```{r sol-ki-mean-n-vary, fig.cap="Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen.", fig.show="hold", out.width="50%"}
+  knitr::include_graphics("figures/04-exr-stichprobengroesse-jmv-input.jpg")
+  knitr::include_graphics("figures/04-exr-stichprobengroesse-jmv-output.jpg")
+```
+
+  a. Der Erwartungswert der Wartezeiten (das heisst der Populationmittelwerte der Wartezeiten) wird mit dem arithmetischen Mittel der Stichprobe geschätzt und kann in der Tabelle bei `Mittelwert` abgelesen werden. Der Erwartungswert der Wartezeiten beträgt bei allen Stichproben ausser bei der ersten ungefähr 0.22 Stunden, also ein bisschen weniger als eine Viertelstunde.
+  b. Der Standardabweichung der Wartezeiten der Stichprobe sind in der Tabelle bei `Std.-abw.` abzulesen. Die Standardabweichungen sind für alle Stichproben ausser der ersten ungefähr bei 0.23.
+  c. Die Standardabweichung der arithmetischen Mittel liegt bei $s/\sqrt{n}$. Für die erste Stichprobe ist dies $0.157 / \sqrt{5} = `r 0.157/sqrt(5)`$. Diese Werte werden auch als Standardfehler bezeichnet und sind in der Tabelle bei `Std.-fehler` ablesbar.
+  d. Die untere und obere Schranke der 95%-Konfidenzintervalle sind bei `Untere` und `Obere` respektive abzulesen.  
+  e. Die Länge des Konfidenzintervalls entspricht jeweils dem höheren Wert minus dem tieferen Wert. Für die erste Stichprobe ist dies 0.597 - 0.208 = `r (0.597 - 0.208)`, für die anderen `r knitr::combine_words(map_dbl(exr_ki_mean_n_vary$ki_table$il[-c(1)], ~ round(.x, 2)), and = " und ", oxford_comma = FALSE)`.
+  f. Die Schätzung des Erwartungswertes ist das arithmetische Mittel der Stichprobe. Da jedesmal eine neue Zufallsstichprobe gezogen wurde und diese nicht dieselben Beobachtungen enthalten, ergeben sich auch jedesmal andere Stichprobenmittelewerte.
+  g. Je grösser $n$, desto kleiner ist das Konfidenzintervall. Wenn man also ein kleines Konfidenzintervall erreichen will, braucht man eine grössere Stichprobe.
+:::
+
+
 
 ::: {.exercise #ki-mean-s-vary}
 TODO
-:::
+```{r exr-ki-mean-s-vary}
+print('hi')
+```
 
-:::{.solution}
-TODO
-:::
-
-::: {.exercise #ki-approx-normal}
-TODO
 :::
 
 :::{.solution}
