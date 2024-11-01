@@ -21,4 +21,8 @@ source('src/r/bag_sampling.R')
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'jmv'
 ), 'packages.bib')
+
+combine_words <- function(x){
+  knitr::combine_words(x, and = " und ", oxford_comma = FALSE)
+}
 ```

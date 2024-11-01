@@ -173,8 +173,12 @@ div.csl-indent {
 <div id="intervallskalierte-merkmale-definition" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Was ist ein intervallskaliertes Merkmal?<a href="intervallskalierte-merkmale.html#intervallskalierte-merkmale-definition" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><span id="customdef-intervallskaliert" class="customdef">Ein Merkmal ist dann <strong>intervallskaliert</strong>, wenn die einzelnen Beobachtungen in eine natürliche Reihenfolge gebracht werden können und zwischen dem tiefsten und höchsten möglichen Wert, alle erdenklichen Zwischenwerte möglich sind.</span></p>
-<p>Ein Beispiel für ein intervallskaliertes Merkmal ist die Körpertemperatur. Beobachtungen der Körpertemperatur einer lebenden Person sind Werte zwischen ungefähr 10°C und 42°C. Es ist möglich zu sagen, dass eine Person mit 40°C Körpertemperatur eine höhere Temperatur hat als eine mit 38°C Körpertemperatur. Ausserdem sind alle erdenklichen Zwischenwerte möglich, so auch dass bei einer Person eine Körpertemperatur von 37.821239°C gemessen wird.</p>
-<p>Ein weiteres Beispiel für ein intervallskaliertes Merkmal ist der Intelligenzquotient <em>IQ</em>. Der IQ bewegt sich normalerweise zwischen 50 und 150, eine Person mit einem IQ von 105 hat einen höheren IQ als eine Person mit einem IQ von 103. Ausserdem sind IQ-Werte von 103.12 oder 118.9182 durchaus möglich.</p>
+<div class="example">
+<p><span id="exm:ducktemp" class="example"><strong>Beispiel 2.1  (Körpertemperatur Enten) </strong></span>Ein Beispiel für ein intervallskaliertes Merkmal ist die Körpertemperatur. Beobachtungen der Körpertemperatur einer lebenden Person sind Werte zwischen ungefähr 10°C und 42°C. Es ist möglich zu sagen, dass eine Person mit 40°C Körpertemperatur eine höhere Temperatur hat als eine mit 38°C Körpertemperatur. Ausserdem sind alle erdenklichen Zwischenwerte möglich, so auch dass bei einer Person eine Körpertemperatur von 37.821239°C gemessen wird.</p>
+</div>
+<div class="example">
+<p><span id="exm:iq" class="example"><strong>Beispiel 2.2  (Intelligenzquotient) </strong></span>Ein weiteres Beispiel für ein intervallskaliertes Merkmal ist der Intelligenzquotient <em>IQ</em>. Der IQ bewegt sich normalerweise zwischen 50 und 150, eine Person mit einem IQ von 105 hat einen höheren IQ als eine Person mit einem IQ von 103. Ausserdem sind IQ-Werte von 103.12 oder 118.9182 durchaus möglich.</p>
+</div>
 <details>
 <summary>
 Klicke hier, falls dir verhältnisskalierte Merkmale bekannt sind
@@ -184,7 +188,7 @@ Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Le
 </div>
 <div id="intervallskalierte-merkmale-beschreibung" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Wie kann ein intervallskaliertes Merkmal beschrieben werden?<a href="intervallskalierte-merkmale.html#intervallskalierte-merkmale-beschreibung" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen. Dazu untersucht sie 40 Enten und misst die Körpertemperaturen 42.01, 41.72, 41.51, 41.52, 41.5, 41.6, 41.46, 41.81, 42.14, 41.82, 42.06, 41.53, 41.66, 41.65, 41.46, 41.48, 41.92, 41.58, 41.32, 41.58, 41.81, 41.7, 41.62, 41.52, 41.89, 41.53, 41.67, 41.43, 42.18, 41.52, 41.82, 41.96, 41.8, 41.54, 41.88, 41.69, 41.92, 41.35, 41.07, 41.67.</p>
+<p>Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen. Dazu untersucht sie 40 Enten und misst die Körpertemperaturen 42.01, 41.72, 41.51, 41.52, 41.5, 41.6, 41.46, 41.81, 42.14, 41.82, 42.06, 41.53, 41.66, 41.65, 41.46, 41.48, 41.92, 41.58, 41.32, 41.58, 41.81, 41.7, 41.62, 41.52, 41.89, 41.53, 41.67, 41.43, 42.18, 41.52, 41.82, 41.96, 41.8, 41.54, 41.88, 41.69, 41.92, 41.35, 41.07 und 41.67.</p>
 <p>Für einen Menschen ist es schwierig direkt aus der Sichtung dieser Zahlen zu begreifen, welche Körpertemperatur Enten haben. Ein Mensch kann sich jedoch helfen, indem er die Zahlen zusammenfasst.</p>
 <div id="verteilung" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Verteilung<a href="intervallskalierte-merkmale.html#verteilung" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -198,7 +202,7 @@ Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Le
 <p>Mit der Zentralität ist ein Wert gemeint, welcher die zentrale Tendenz des Merkmals abbildet. Um die Zentralität zu messen, gibt es drei Möglichkeiten:</p>
 <ul>
 <li><span id="customdef-modus" class="customdef">Der <strong>Modus</strong> ist der am häufigsten vorkommende Wert.</span> Im Beispiel ist das der Wert 41.52, welcher 3 mal und damit am häufigsten vorkommt.</li>
-<li><span id="customdef-median" class="customdef">Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als <strong>Median</strong> (abgekürzt <em>Mdn</em>, Symbol <span class="math inline">\(\tilde{x}\)</span>) bezeichnet.</span> Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte 41.07, 41.32, 41.35, 41.43, 41.46, 41.46, 41.48, 41.5, 41.51, 41.52, 41.52, 41.52, 41.53, 41.53, 41.54, 41.58, 41.58, 41.6, 41.62, 41.65, 41.66, 41.67, 41.67, 41.69, 41.7, 41.72, 41.8, 41.81, 41.81, 41.82, 41.82, 41.88, 41.89, 41.92, 41.92, 41.96, 42.01, 42.06, 42.14, 42.18, also 41.655.</li>
+<li><span id="customdef-median" class="customdef">Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als <strong>Median</strong> (abgekürzt <em>Mdn</em>, Symbol <span class="math inline">\(\tilde{x}\)</span>) bezeichnet.</span> Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte 41.07, 41.32, 41.35, 41.43, 41.46, 41.46, 41.48, 41.5, 41.51, 41.52, 41.52, 41.52, 41.53, 41.53, 41.54, 41.58, 41.58, 41.6, 41.62, 41.65, 41.66, 41.67, 41.67, 41.69, 41.7, 41.72, 41.8, 41.81, 41.81, 41.82, 41.82, 41.88, 41.89, 41.92, 41.92, 41.96, 42.01, 42.06, 42.14 und 42.18, also 41.655.</li>
 <li><span id="customdef-arithmetisches-mittel" class="customdef">Das <strong>arithmetische Mittel</strong> (abgekürzt <em>M</em>, Symbol <span class="math inline">\(\bar{x}\)</span>) bezeichnet, was gemeinhin mit Durchschnitt gemeint ist.</span> Wenn wir die erste von insgesamt <span class="math inline">\(n\)</span> Beobachtung mit <span class="math inline">\(x_1\)</span> und die letzte Beobachtung mit <span class="math inline">\(x_n\)</span> bezeichnen, so ist das arithmetische Mittel</li>
 </ul>
 <p><span class="math display" id="eq:mean">\[\begin{equation}
@@ -216,8 +220,21 @@ Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Le
 </div>
 <div id="variabilitaet" class="section level3 hasAnchor" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Variabilität<a href="intervallskalierte-merkmale.html#variabilitaet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>TODO: Quantile
-TODO: Standardabweichung</p>
+<ul>
+<li><span id="customdef-spannweite" class="customdef">Die <strong>Spannweite</strong> (abgekürzt <span class="math inline">\(R\)</span> aus dem englisch <em>range</em>) ist der höchste beobachtete Wert minus der kleinste beobachtete Wert</span>. Im Beispiel ist der höchste beobachtet Wert <span class="math inline">\(42.18° C\)</span> und der kleinste Beobachtete Wert <span class="math inline">\(41.07° C\)</span>. Also ist die Spannweite <span class="math inline">\(42.18 - 41.07 = 1.11° C\)</span>. Achtung die Spannweite wird in Jamovi mit <code>Wertebereich</code> bezeichnet.</li>
+<li><span id="customdef-perzentil" class="customdef">Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine <span class="math inline">\(P\%\)</span> tiefere und <span class="math inline">\((100\% - P\%)\)</span> höhere Hälfte teilt, dann wird dieser Wert als <strong>Perzentil</strong> bezeichnet.</span> Das <span class="math inline">\(5\%\)</span>-Perzentil zum Beispiel teilt die beobachteten Werte in <span class="math inline">\(5\%\)</span> kleinere und <span class="math inline">\(95\%\)</span> grössere Werte. Im Beispiel haben wir 40 Beobachtungen. <span class="math inline">\(5\%\)</span> davon sind demnach <span class="math inline">\(2\)</span> Beobachtungen die tiefer sind als das <span class="math inline">\(5\%\)</span> Perzentil und <span class="math inline">\(95\%\)</span> also <span class="math inline">\(38\)</span> Beobachtungen die höher sind als das <span class="math inline">\(5\%\)</span> Perzentil. Das <span class="math inline">\(5\%\)</span> Perzentil liegt also zwischen <span class="math inline">\(41.32° C\)</span> und <span class="math inline">\(41.35° C\)</span>. In diesem Fall wird ein Mittelwert der beiden nächsten Werte verwendet, hier <span class="math inline">\((41.32 + 41.35)/2=41.34° C\)</span>. Ein Perzentil alleine gibt noch keinen Hinweis auf die Streuung der Werte. Werden aber zwei Perzentile zusammen betrachtet, z. B. das <span class="math inline">\(5\%\)</span> und das <span class="math inline">\(95\%\)</span> Perzentil, dann geben diese Werte und der Abstand dazwischen einen Hinweis auf die Streuung der Beobachtungen. Im Beispiel ist das <span class="math inline">\(5\%\)</span> Perzentil bei <span class="math inline">\(41.34° C\)</span> und das <span class="math inline">\(95\%\)</span>-Perzentil bei <span class="math inline">\(42.1° C\)</span>. Hier befinden sich also <span class="math inline">\(90\%\)</span> aller Beobachtungen zwischen diesen Werten. <span id="customdef-quartile" class="customdef">Weitere beliebte Werte sind das <span class="math inline">\(25\%\)</span> und das <span class="math inline">\(75\%\)</span>-Perzentil (auch <strong>Quartile</strong> genannt, da sie die beobachteten Werte vierteln), im Beispiel bei <span class="math inline">\(41.52° C\)</span> und <span class="math inline">\(41.82° C\)</span> respektive.</span> <span id="customdef-iqr" class="customdef">Die Differenz dieser Perzentile wird als <strong>Interquartilabstand</strong> (abkürzung IQR von interquartile range) bezeichnet und ist im Beispiel <span class="math inline">\(0.3° C\)</span>.</span></li>
+<li><span id="customdef-std" class="customdef">Die <strong>Standardabweichung</strong> (abgekürzt <em>SD</em>, Symbol <span class="math inline">\(s\)</span>) ist die durchschnittliche Abweichung jeder Beobachtung vom arithmetischen Mittel.</span> Wenn wir die erste von insgesamt <span class="math inline">\(n\)</span> Beobachtung mit <span class="math inline">\(x_1\)</span> und die letzte Beobachtung mit <span class="math inline">\(x_n\)</span> bezeichnen, so ist das arithmetische Mittel</li>
+</ul>
+<p><span class="math display" id="eq:sd">\[\begin{equation}
+s = \sqrt{\frac{1}{n-1}\sum^n_{i=1} (x_i-\bar{x})^2}
+\tag{2.2}
+\end{equation}\]</span></p>
+<p>Im Beispiel ist die Standardabweichung der Körpertemperaturen <span class="math inline">\(0.233° C\)</span>.</p>
+<div class="caution">
+<div class="remark">
+<p><span id="unlabeled-div-2" class="remark"><em>Hinweis</em>. </span><em>Erklärung der Formel</em>: <span class="math inline">\((x_i-\bar{x})\)</span> bezeichnet den Abstand von jeder Beobachtung zum arithmetischen Mittel. Dieser Abstand kann positiv (wenn <span class="math inline">\(x_i\)</span> grösser ist als <span class="math inline">\(\bar{x}\)</span>) oder negativ (wenn <span class="math inline">\(x_i\)</span> kleiner ist als <span class="math inline">\(\bar{x}\)</span>) ausfallen. Damit diese positiven und negativen Abstände sich in der Summe nicht ausgleichen und eine Standardabweichung von 0 entsteht, werden diese Abstände quadriert <span class="math inline">\((x_i-\bar{x})^2\)</span> bevor sie summiert werden. Anschliessend wird diese Summe durch <span class="math inline">\(n-1\)</span> geteilt, um den durchschnittlichen Abstand pro Beobachtung zu ermitteln. Intuitiv würde man hier durch <span class="math inline">\(n\)</span> teilen. Statistiker:innen haben jedoch herausgefunden, dass es einige Vorteile hat, wenn durch <span class="math inline">\(n-1\)</span> statt <span class="math inline">\(n\)</span> geteilt wird. Das Quadrat wird nach der Aufsummierung wieder aufgehoben indem die Quadratwurzel gezogen wird.</p>
+</div>
+</div>
 </div>
 </div>
 <div id="intervallskaliertes-merkmal-uebungen" class="section level2 hasAnchor" number="2.3">
@@ -225,14 +242,14 @@ TODO: Standardabweichung</p>
 <div class="exercise">
 <p><span id="exr:enten-hist-mean-sd" class="exercise"><strong>Übung 2.1  </strong></span></p>
 <ol style="list-style-type: lower-alpha">
-<li>Versuch selbst ein Histogramm der Daten oben (<em>Enten_n40.sav</em>) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben.</li>
+<li>Versuch selbst ein Histogramm der Daten oben (data/02-exm-ducktemp.sav) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben.</li>
 <li>Berechne zusätzlich das arithmetische Mittel und die Standardabweichung des Merkmals.</li>
 </ol>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-2" class="solution"><em>Lösung</em>. </span></p>
+<p><span id="unlabeled-div-3" class="solution"><em>Lösung</em>. </span></p>
 <div class="figure"><span style="display:block;" id="fig:enten-hist-mean-sd"></span>
 <img src="figures/Enten_n40_instr_histogramm.jpg" alt="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur." width="50%" /><img src="figures/Enten_n40.png" alt="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur." width="50%" />
 <p class="caption">
@@ -256,7 +273,7 @@ Abbildung 2.1: Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: H
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-3" class="solution"><em>Lösung</em>. </span>Die Aufgabe kann im Kopf gelöst werden, oder mithilfe eines Taschenrechners, oder indem die Zahlen manuell bei Jamovi eingegeben werden.</p>
+<p><span id="unlabeled-div-4" class="solution"><em>Lösung</em>. </span>Die Aufgabe kann im Kopf gelöst werden, oder mithilfe eines Taschenrechners, oder indem die Zahlen manuell bei Jamovi eingegeben werden.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Wir haben hier <span class="math inline">\(n=5\)</span> Beobachtungen, nämlich <span class="math inline">\(x_1 = 18, x_2 = 21, x_3 = 20, x_4 = 19, x_5=22\)</span>. Wird dies in die Formel <a href="intervallskalierte-merkmale.html#eq:mean">(2.1)</a> eingesetzt, so gibt dies das arithmetische Mittel
 <span class="math display">\[\bar{x} = \frac{1}{n}\sum^n_{i=1} x_i = \frac{1}{n}(x_1 + x_2 + x_3 + x_4 + x_5) =  \frac{1}{5}(18+ 21+ 20+ 19+ 22) = 20.\]</span>

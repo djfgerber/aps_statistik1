@@ -156,7 +156,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{21 October, 2024}
+\date{01 November, 2024}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -325,9 +325,13 @@ Für die Lösung der Übungen wird oft die freie Software Jamovi verwendet. Dem 
 
 \phantomsection\label{customdef-intervallskaliert}{Ein Merkmal ist dann \textbf{intervallskaliert}, wenn die einzelnen Beobachtungen in eine natürliche Reihenfolge gebracht werden können und zwischen dem tiefsten und höchsten möglichen Wert, alle erdenklichen Zwischenwerte möglich sind.}
 
-Ein Beispiel für ein intervallskaliertes Merkmal ist die Körpertemperatur. Beobachtungen der Körpertemperatur einer lebenden Person sind Werte zwischen ungefähr 10°C und 42°C. Es ist möglich zu sagen, dass eine Person mit 40°C Körpertemperatur eine höhere Temperatur hat als eine mit 38°C Körpertemperatur. Ausserdem sind alle erdenklichen Zwischenwerte möglich, so auch dass bei einer Person eine Körpertemperatur von 37.821239°C gemessen wird.
+\begin{example}[Körpertemperatur Enten]
+\protect\hypertarget{exm:ducktemp}{}\label{exm:ducktemp}Ein Beispiel für ein intervallskaliertes Merkmal ist die Körpertemperatur. Beobachtungen der Körpertemperatur einer lebenden Person sind Werte zwischen ungefähr 10°C und 42°C. Es ist möglich zu sagen, dass eine Person mit 40°C Körpertemperatur eine höhere Temperatur hat als eine mit 38°C Körpertemperatur. Ausserdem sind alle erdenklichen Zwischenwerte möglich, so auch dass bei einer Person eine Körpertemperatur von 37.821239°C gemessen wird.
+\end{example}
 
-Ein weiteres Beispiel für ein intervallskaliertes Merkmal ist der Intelligenzquotient \emph{IQ}. Der IQ bewegt sich normalerweise zwischen 50 und 150, eine Person mit einem IQ von 105 hat einen höheren IQ als eine Person mit einem IQ von 103. Ausserdem sind IQ-Werte von 103.12 oder 118.9182 durchaus möglich.
+\begin{example}[Intelligenzquotient]
+\protect\hypertarget{exm:iq}{}\label{exm:iq}Ein weiteres Beispiel für ein intervallskaliertes Merkmal ist der Intelligenzquotient \emph{IQ}. Der IQ bewegt sich normalerweise zwischen 50 und 150, eine Person mit einem IQ von 105 hat einen höheren IQ als eine Person mit einem IQ von 103. Ausserdem sind IQ-Werte von 103.12 oder 118.9182 durchaus möglich.
+\end{example}
 
 Klicke hier, falls dir verhältnisskalierte Merkmale bekannt sind
 
@@ -335,7 +339,7 @@ Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Le
 
 \section{Wie kann ein intervallskaliertes Merkmal beschrieben werden?}\label{intervallskalierte-merkmale-beschreibung}
 
-Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen. Dazu untersucht sie 40 Enten und misst die Körpertemperaturen 42.01, 41.72, 41.51, 41.52, 41.5, 41.6, 41.46, 41.81, 42.14, 41.82, 42.06, 41.53, 41.66, 41.65, 41.46, 41.48, 41.92, 41.58, 41.32, 41.58, 41.81, 41.7, 41.62, 41.52, 41.89, 41.53, 41.67, 41.43, 42.18, 41.52, 41.82, 41.96, 41.8, 41.54, 41.88, 41.69, 41.92, 41.35, 41.07, 41.67.
+Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen. Dazu untersucht sie 40 Enten und misst die Körpertemperaturen 42.01, 41.72, 41.51, 41.52, 41.5, 41.6, 41.46, 41.81, 42.14, 41.82, 42.06, 41.53, 41.66, 41.65, 41.46, 41.48, 41.92, 41.58, 41.32, 41.58, 41.81, 41.7, 41.62, 41.52, 41.89, 41.53, 41.67, 41.43, 42.18, 41.52, 41.82, 41.96, 41.8, 41.54, 41.88, 41.69, 41.92, 41.35, 41.07 und 41.67.
 
 Für einen Menschen ist es schwierig direkt aus der Sichtung dieser Zahlen zu begreifen, welche Körpertemperatur Enten haben. Ein Mensch kann sich jedoch helfen, indem er die Zahlen zusammenfasst.
 
@@ -358,7 +362,7 @@ Mit der Zentralität ist ein Wert gemeint, welcher die zentrale Tendenz des Merk
 \item
   \phantomsection\label{customdef-modus}{Der \textbf{Modus} ist der am häufigsten vorkommende Wert.} Im Beispiel ist das der Wert 41.52, welcher 3 mal und damit am häufigsten vorkommt.
 \item
-  \phantomsection\label{customdef-median}{Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als \textbf{Median} (abgekürzt \emph{Mdn}, Symbol \(\tilde{x}\)) bezeichnet.} Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte 41.07, 41.32, 41.35, 41.43, 41.46, 41.46, 41.48, 41.5, 41.51, 41.52, 41.52, 41.52, 41.53, 41.53, 41.54, 41.58, 41.58, 41.6, 41.62, 41.65, 41.66, 41.67, 41.67, 41.69, 41.7, 41.72, 41.8, 41.81, 41.81, 41.82, 41.82, 41.88, 41.89, 41.92, 41.92, 41.96, 42.01, 42.06, 42.14, 42.18, also 41.655.
+  \phantomsection\label{customdef-median}{Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als \textbf{Median} (abgekürzt \emph{Mdn}, Symbol \(\tilde{x}\)) bezeichnet.} Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte 41.07, 41.32, 41.35, 41.43, 41.46, 41.46, 41.48, 41.5, 41.51, 41.52, 41.52, 41.52, 41.53, 41.53, 41.54, 41.58, 41.58, 41.6, 41.62, 41.65, 41.66, 41.67, 41.67, 41.69, 41.7, 41.72, 41.8, 41.81, 41.81, 41.82, 41.82, 41.88, 41.89, 41.92, 41.92, 41.96, 42.01, 42.06, 42.14 und 42.18, also 41.655.
 \item
   \phantomsection\label{customdef-arithmetisches-mittel}{Das \textbf{arithmetische Mittel} (abgekürzt \emph{M}, Symbol \(\bar{x}\)) bezeichnet, was gemeinhin mit Durchschnitt gemeint ist.} Wenn wir die erste von insgesamt \(n\) Beobachtung mit \(x_1\) und die letzte Beobachtung mit \(x_n\) bezeichnen, so ist das arithmetische Mittel
 \end{itemize}
@@ -384,8 +388,26 @@ Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden d
 
 \subsection{Variabilität}\label{variabilitaet}
 
-TODO: Quantile
-TODO: Standardabweichung
+\begin{itemize}
+\tightlist
+\item
+  \phantomsection\label{customdef-spannweite}{Die \textbf{Spannweite} (abgekürzt \(R\) aus dem englisch \emph{range}) ist der höchste beobachtete Wert minus der kleinste beobachtete Wert}. Im Beispiel ist der höchste beobachtet Wert \(42.18° C\) und der kleinste Beobachtete Wert \(41.07° C\). Also ist die Spannweite \(42.18 - 41.07 = 1.11° C\). Achtung die Spannweite wird in Jamovi mit \texttt{Wertebereich} bezeichnet.
+\item
+  \phantomsection\label{customdef-perzentil}{Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine \(P\%\) tiefere und \((100\% - P\%)\) höhere Hälfte teilt, dann wird dieser Wert als \textbf{Perzentil} bezeichnet.} Das \(5\%\)-Perzentil zum Beispiel teilt die beobachteten Werte in \(5\%\) kleinere und \(95\%\) grössere Werte. Im Beispiel haben wir 40 Beobachtungen. \(5\%\) davon sind demnach \(2\) Beobachtungen die tiefer sind als das \(5\%\) Perzentil und \(95\%\) also \(38\) Beobachtungen die höher sind als das \(5\%\) Perzentil. Das \(5\%\) Perzentil liegt also zwischen \(41.32° C\) und \(41.35° C\). In diesem Fall wird ein Mittelwert der beiden nächsten Werte verwendet, hier \((41.32 + 41.35)/2=41.34° C\). Ein Perzentil alleine gibt noch keinen Hinweis auf die Streuung der Werte. Werden aber zwei Perzentile zusammen betrachtet, z. B. das \(5\%\) und das \(95\%\) Perzentil, dann geben diese Werte und der Abstand dazwischen einen Hinweis auf die Streuung der Beobachtungen. Im Beispiel ist das \(5\%\) Perzentil bei \(41.34° C\) und das \(95\%\)-Perzentil bei \(42.1° C\). Hier befinden sich also \(90\%\) aller Beobachtungen zwischen diesen Werten. \phantomsection\label{customdef-quartile}{Weitere beliebte Werte sind das \(25\%\) und das \(75\%\)-Perzentil (auch \textbf{Quartile} genannt, da sie die beobachteten Werte vierteln), im Beispiel bei \(41.52° C\) und \(41.82° C\) respektive.} \phantomsection\label{customdef-iqr}{Die Differenz dieser Perzentile wird als \textbf{Interquartilabstand} (abkürzung IQR von interquartile range) bezeichnet und ist im Beispiel \(0.3° C\).}
+\item
+  \phantomsection\label{customdef-std}{Die \textbf{Standardabweichung} (abgekürzt \emph{SD}, Symbol \(s\)) ist die durchschnittliche Abweichung jeder Beobachtung vom arithmetischen Mittel.} Wenn wir die erste von insgesamt \(n\) Beobachtung mit \(x_1\) und die letzte Beobachtung mit \(x_n\) bezeichnen, so ist das arithmetische Mittel
+\end{itemize}
+
+\begin{equation}
+s = \sqrt{\frac{1}{n-1}\sum^n_{i=1} (x_i-\bar{x})^2}
+\label{eq:sd}
+\end{equation}
+
+Im Beispiel ist die Standardabweichung der Körpertemperaturen \(0.233° C\).
+
+\begin{remark}
+\emph{Erklärung der Formel}: \((x_i-\bar{x})\) bezeichnet den Abstand von jeder Beobachtung zum arithmetischen Mittel. Dieser Abstand kann positiv (wenn \(x_i\) grösser ist als \(\bar{x}\)) oder negativ (wenn \(x_i\) kleiner ist als \(\bar{x}\)) ausfallen. Damit diese positiven und negativen Abstände sich in der Summe nicht ausgleichen und eine Standardabweichung von 0 entsteht, werden diese Abstände quadriert \((x_i-\bar{x})^2\) bevor sie summiert werden. Anschliessend wird diese Summe durch \(n-1\) geteilt, um den durchschnittlichen Abstand pro Beobachtung zu ermitteln. Intuitiv würde man hier durch \(n\) teilen. Statistiker:innen haben jedoch herausgefunden, dass es einige Vorteile hat, wenn durch \(n-1\) statt \(n\) geteilt wird. Das Quadrat wird nach der Aufsummierung wieder aufgehoben indem die Quadratwurzel gezogen wird.
+\end{remark}
 
 \section{Übungen}\label{intervallskaliertes-merkmal-uebungen}
 
@@ -396,7 +418,7 @@ TODO: Standardabweichung
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Versuch selbst ein Histogramm der Daten oben (\emph{Enten\_n40.sav}) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben.
+  Versuch selbst ein Histogramm der Daten oben (data/02-exm-ducktemp.sav) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben.
 \item
   Berechne zusätzlich das arithmetische Mittel und die Standardabweichung des Merkmals.
 \end{enumerate}
@@ -687,24 +709,25 @@ TODO
 \end{solution}
 
 \begin{exercise}
-\protect\hypertarget{exr:ki-approx-normal}{}\label{exr:ki-approx-normal}\leavevmode
+\protect\hypertarget{exr:ki-approx-normal}{}\label{exr:ki-approx-normal}Für ein Experiment werden in drei Runden jeweils \(\ensuremath{10^{4}}\) Zufallsstichproben erhoben mit respektive \(10\), \(40\) und \(100\) Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung \ref{fig:ki-approx-normal1} dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.
 
-\begin{verbatim}
-## [1] 0.5342439
-\end{verbatim}
+\begin{figure}
+\centering
+\includegraphics{aps_statistik1_files/figure-latex/ki-approx-normal1-1.pdf}
+\caption{\label{fig:ki-approx-normal1}TODO.}
+\end{figure}
 
-\begin{verbatim}
-## [1] 0.2388751
-\end{verbatim}
-
-\begin{verbatim}
-## [1] 0.1677798
-\end{verbatim}
-
+Die arithmetischen Mittel der 10'000 Stichproben sind im Datensatz \texttt{04-exr-zentraler-grenzwertsatz.sav} festgehalten. In der Spalte \texttt{n\_10} zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallstichprobe mit 10 Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse \(n\). Erstellen Sie ein Histogramm mit der Erweiterung \texttt{JJStatsPlot} und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.
 \end{exercise}
 
 \begin{solution}
-TODO
+
+Die Übereinanderlegung des jeweiligen Histograms und der Wahrscheinlichkeitsdichte der Normalverteilung wird in Abbildung \ref{fig:sol-ki-approx-normal} gezeigt. Es ist deutlich zu sehen, dass die Linie nur bei \(n=100\) die Häufigkeitsverteilung der arithmetischen Mittel gut nachbilden kann. Bei \(n=10\) und \(n=50\) ist ein grosser Unterschied zwischen Häufigkeitsverteilung und Linie sichtbar. Das genaue \(n\) ab welchem eine Häufigkeitsverteilung gut durch die Normalverteilung angenähert wird hängt von der ursprünglichen Verteilung der Daten ab, d.h. der Verteilung in Abbildung \ref{fig:ki-approx-normal1}. Es kann deshalb nicht generell gesagt werden, dass ab \(n=100\) die Annäherung immer gut sei, so wie in diesem Beispiel. Der zentrale Grenzwertsatz besagt demnach auch lediglich, dass man immer ein grosses \(n\) wählen kann, so dass die Annäherung gut ist. Er besagt nichts darüber, wie gross \(n\) sein muss.
+
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-input} \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-output1} \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-output2} \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-output3} \caption{TODO}\label{fig:sol-ki-approx-normal}
+\end{figure}
+
 \end{solution}
 
 \begin{exercise}
@@ -825,6 +848,8 @@ TODO
 \item
   \hyperref[customdef-grundgesamtheit]{Grundgesamtheit}
 \item
+  \hyperref[customdef-iqr]{Interquartilabstand}
+\item
   \hyperref[customdef-interval]{Intervalles}
 \item
   \hyperref[customdef-confidence-interval]{Konfidenzintervall}
@@ -835,7 +860,13 @@ TODO
 \item
   \hyperref[customdef-normalverteilung]{Normalverteilung}
 \item
+  \hyperref[customdef-perzentil]{Perzentil}
+\item
   \hyperref[customdef-population]{Population}
+\item
+  \hyperref[customdef-spannweite]{Spannweite}
+\item
+  \hyperref[customdef-std]{Standardabweichung}
 \item
   \hyperref[customdef-stichprobe]{Stichprobe}
 \item

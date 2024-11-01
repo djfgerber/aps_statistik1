@@ -21,6 +21,10 @@ source('src/r/bag_sampling.R')
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'jmv'
 ), 'packages.bib')
+
+combine_words <- function(x){
+  knitr::combine_words(x, and = " und ", oxford_comma = FALSE)
+}
 ```
 
 <!--chapter:end:index.Rmd-->
@@ -114,9 +118,13 @@ Für die Lösung der Übungen wird oft die freie Software Jamovi verwendet. Dem 
 
 [Ein Merkmal ist dann **intervallskaliert**, wenn die einzelnen Beobachtungen in eine natürliche Reihenfolge gebracht werden können und zwischen dem tiefsten und höchsten möglichen Wert, alle erdenklichen Zwischenwerte möglich sind.]{.customdef #customdef-intervallskaliert} 
 
+:::{.example #ducktemp name="Körpertemperatur Enten"}
 Ein Beispiel für ein intervallskaliertes Merkmal ist die Körpertemperatur. Beobachtungen der Körpertemperatur einer lebenden Person sind Werte zwischen ungefähr 10°C und 42°C. Es ist möglich zu sagen, dass eine Person mit 40°C Körpertemperatur eine höhere Temperatur hat als eine mit 38°C Körpertemperatur. Ausserdem sind alle erdenklichen Zwischenwerte möglich, so auch dass bei einer Person eine Körpertemperatur von 37.821239°C gemessen wird. 
+:::
 
+:::{.example #iq name="Intelligenzquotient"}
 Ein weiteres Beispiel für ein intervallskaliertes Merkmal ist der Intelligenzquotient _IQ_. Der IQ bewegt sich normalerweise zwischen 50 und 150, eine Person mit einem IQ von 105 hat einen höheren IQ als eine Person mit einem IQ von 103. Ausserdem sind IQ-Werte von 103.12 oder 118.9182 durchaus möglich.
+:::
 
 <details>
   <summary>Klicke hier, falls dir verhältnisskalierte Merkmale bekannt sind</summary>
@@ -127,15 +135,36 @@ Ein weiteres Beispiel für ein intervallskaliertes Merkmal ist der Intelligenzqu
 ## Wie kann ein intervallskaliertes Merkmal beschrieben werden? {#intervallskalierte-merkmale-beschreibung}
 
 
-```{r gen_ente, echo=FALSE}
-set.seed(11242)
-n <- 40
-x <- round(rnorm(n, 41.1+(42.2-41.1)/2, (42.2-41.1)/4), 2)
-tibble(temperatur = x) %>% 
-  haven::write_sav('data/Enten_n40.sav')
+```{r exm-ducktemp, echo=FALSE}
+gen_exm_ducktemp <- function(){
+  set.seed(11242)
+  n <- 40
+  x <- round(rnorm(n, 41.1+(42.2-41.1)/2, (42.2-41.1)/4), 2)
+  sorted_x <- sort(x)
+  tab <- tibble(temperatur = x)
+  data_path <-  'data/02-exm-ducktemp.sav'
+  tab %>% 
+    haven::write_sav(data_path)
+  
+  hist <- tab %>% 
+    ggplot()+
+    geom_histogram(aes(x=temperatur, colour = 'blue'),
+                   binwidth=0.2)+
+    labs(title = "Histogramm Körpertemperatur Enten", 
+         y= "Häufigkeit", 
+         x = "Temperatur")+
+    theme(legend.position = "none")+
+    scale_y_continuous(breaks=c(0:17))
+  
+  counts_x <- table(x)
+  mode_x <- counts_x[counts_x == max(counts_x)]
+  return(mget(ls()))
+}
+
+exm_ducktemp <- gen_exm_ducktemp()
 ```
 
-Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen. Dazu untersucht sie `r n` Enten und misst die Körpertemperaturen `r paste(x, collapse = ", ")`.
+Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen. Dazu untersucht sie `r exm_ducktemp$n` Enten und misst die Körpertemperaturen `r combine_words(exm_ducktemp$x)`.
 
 Für einen Menschen ist es schwierig direkt aus der Sichtung dieser Zahlen zu begreifen, welche Körpertemperatur Enten haben. Ein Mensch kann sich jedoch helfen, indem er die Zahlen zusammenfasst.
 
@@ -143,17 +172,8 @@ Für einen Menschen ist es schwierig direkt aus der Sichtung dieser Zahlen zu be
 
 Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von $0.2$°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein __Histogramm__ genannt.
 
-```{r enten_histogramm, echo = FALSE}
-tibble(temperatur = x) %>% 
-  ggplot()+
-  geom_histogram(aes(x=temperatur, colour = 'blue'),
-                 binwidth=0.2)+
-  labs(title = "Histogramm Körpertemperatur Enten", y= "Häufigkeit", x = "Temperatur")+
-  theme(legend.position = "none")+
-  scale_y_continuous(breaks=c(0:17))
-
-counts_x <- table(x)
-mode_x <- counts_x[counts_x == max(counts_x)]
+```{r enten_histogramm}
+exm_ducktemp$hist
 ```
 
 Aufgrund dieser Darstellung kann die Veterinärin nun sehen, wie häufig welche Körpertemperaturen sind. Dies wird die __Verteilung__ des Merkmals genannt. Sie bemerkt zum Beispiel, dass Beobachtungen der Körpertemperatur rund um 41.6°C am häufigsten sind und tiefere und höhere Temperaturen seltener vorkommen. Auf einen Blick sieht sie auch, dass die Temperatur aller Enten zwischen 41°C und 42.2°C war.
@@ -164,23 +184,22 @@ Die Verteilung eines Merkmals zu kennen ist hilfreich, jedoch in vielen Situatio
 
 Mit der Zentralität ist ein Wert gemeint, welcher die zentrale Tendenz des Merkmals abbildet. Um die Zentralität zu messen, gibt es drei Möglichkeiten:
 
-- [Der __Modus__ ist der am häufigsten vorkommende Wert.]{.customdef #customdef-modus} Im Beispiel ist das der Wert `r names(mode_x)`, welcher `r unname(mode_x)` mal und damit am häufigsten vorkommt.
-- [Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als __Median__ (abgekürzt _Mdn_, Symbol $\tilde{x}$) bezeichnet.]{.customdef #customdef-median} Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir `r n` Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte `r paste(sort(x), collapse = ", ")`, also `r median(x)`.
+- [Der __Modus__ ist der am häufigsten vorkommende Wert.]{.customdef #customdef-modus} Im Beispiel ist das der Wert `r names(exm_ducktemp$mode_x)`, welcher `r unname(exm_ducktemp$mode_x)` mal und damit am häufigsten vorkommt.
+- [Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als __Median__ (abgekürzt _Mdn_, Symbol $\tilde{x}$) bezeichnet.]{.customdef #customdef-median} Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir `r exm_ducktemp[['n']]` Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte `r combine_words(exm_ducktemp$sorted_x)`, also `r median(exm_ducktemp$x)`.
 - [Das __arithmetische Mittel__ (abgekürzt _M_, Symbol $\bar{x}$) bezeichnet, was gemeinhin mit Durchschnitt gemeint ist.]{.customdef #customdef-arithmetisches-mittel} Wenn wir die erste von insgesamt $n$ Beobachtung mit $x_1$ und die letzte Beobachtung mit $x_n$ bezeichnen, so ist das arithmetische Mittel
-
 
 \begin{equation}
 \bar{x} = \frac{1}{n}\sum^n_{i=1} x_i
 (\#eq:mean)
 \end{equation}
 
-Im Beispiel ist das arithmetische Mittel der Körpertemperaturen `r mean(x)`. 
+Im Beispiel ist das arithmetische Mittel der Körpertemperaturen `r mean(exm_ducktemp$x)`. 
 
 :::: {.caution  data-latex=""}
 
 ::: {.remark}
 
-_Erklärung der Formel_: Hier wird zum ersten Mal eine Formel verwendet. $\sum$ steht für die Summe von allen Beobachtungen $x_i$, wenn der Index $i$ in $1$-Schritten von der Zahl unter dem Summenzeichen $i=1$ bis zu der Zahl oben am Summenzeichen $i=n$ läuft. In unserem Beispiel ist $n=`r n`$, also ist $i = 1, 2, 3, 4, \ldots, `r n-1`, `r n`$. Der Teil $\sum^n_{i=1} x_i$ bedeutet also nichts anderes als $x_1 + x_2 + \ldots + x_{`r n-1`} + x_{`r n`}$, also die Summe aller Beobachtungen. $\frac{1}{n}$ bedeutet, dass wir diese Summe jetzt noch durch die Anzahl Beobachtungen teilen. 
+_Erklärung der Formel_: Hier wird zum ersten Mal eine Formel verwendet. $\sum$ steht für die Summe von allen Beobachtungen $x_i$, wenn der Index $i$ in $1$-Schritten von der Zahl unter dem Summenzeichen $i=1$ bis zu der Zahl oben am Summenzeichen $i=n$ läuft. In unserem Beispiel ist $n=`r exm_ducktemp[['n']]`$, also ist $i = 1, 2, 3, 4, \ldots, `r exm_ducktemp[['n']]-1`, `r exm_ducktemp[['n']]`$. Der Teil $\sum^n_{i=1} x_i$ bedeutet also nichts anderes als $x_1 + x_2 + \ldots + x_{`r exm_ducktemp[['n']]-1`} + x_{`r exm_ducktemp[['n']]`}$, also die Summe aller Beobachtungen. $\frac{1}{n}$ bedeutet, dass wir diese Summe jetzt noch durch die Anzahl Beobachtungen teilen. 
 
 _Welchen Einfluss haben die verschiedenen Einflussgrössen_: Dies wird in Übung \@ref(exr:theorie-mdn-mean) erklärt.
 :::
@@ -191,14 +210,29 @@ Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden d
 
 ### Variabilität {#variabilitaet}
 
-TODO: Quantile
-TODO: Standardabweichung
 
+- [Die __Spannweite__ (abgekürzt $R$ aus dem englisch _range_) ist der höchste beobachtete Wert minus der kleinste beobachtete Wert]{.customdef #customdef-spannweite}. Im Beispiel ist der höchste beobachtet Wert $`r max(exm_ducktemp$x)`° C$ und der kleinste Beobachtete Wert $`r min(exm_ducktemp$x)`° C$. Also ist die Spannweite $`r max(exm_ducktemp$x)` - `r min(exm_ducktemp$x)` = `r max(exm_ducktemp$x) - min(exm_ducktemp$x)`° C$. Achtung die Spannweite wird in Jamovi mit `Wertebereich` bezeichnet.
+- [Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine $P\%$ tiefere und $(100\% - P\%)$ höhere Hälfte teilt, dann wird dieser Wert als __Perzentil__ bezeichnet.]{.customdef #customdef-perzentil} Das $5\%$-Perzentil zum Beispiel teilt die beobachteten Werte in $5\%$ kleinere und $95\%$ grössere Werte. Im Beispiel haben wir `r exm_ducktemp[['n']]` Beobachtungen. $5\%$ davon sind demnach $2$ Beobachtungen die tiefer sind als das $5\%$ Perzentil und $95\%$ also $38$ Beobachtungen die höher sind als das $5\%$ Perzentil. Das $5\%$ Perzentil liegt also zwischen $`r exm_ducktemp$sorted_x[2]`° C$ und $`r exm_ducktemp$sorted_x[3]`° C$. In diesem Fall wird ein Mittelwert der beiden nächsten Werte verwendet, hier $(`r exm_ducktemp$sorted_x[2]` + `r exm_ducktemp$sorted_x[3]`)/2=`r round((exm_ducktemp$sorted_x[2] + exm_ducktemp$sorted_x[3])/2,2)`° C$. Ein Perzentil alleine gibt noch keinen Hinweis auf die Streuung der Werte. Werden aber zwei Perzentile zusammen betrachtet, z. B. das $5\%$ und das $95\%$ Perzentil, dann geben diese Werte und der Abstand dazwischen einen Hinweis auf die Streuung der Beobachtungen. Im Beispiel ist das $5\%$ Perzentil bei $`r round((exm_ducktemp$sorted_x[2] + exm_ducktemp$sorted_x[3])/2,2)`° C$ und das $95\%$-Perzentil bei $`r round((exm_ducktemp$sorted_x[38] + exm_ducktemp$sorted_x[39])/2,2)`° C$. Hier befinden sich also $90\%$ aller Beobachtungen zwischen diesen Werten. [Weitere beliebte Werte sind das $25\%$ und das $75\%$-Perzentil (auch __Quartile__ genannt, da sie die beobachteten Werte vierteln), im Beispiel bei $`r round((exm_ducktemp$sorted_x[10] + exm_ducktemp$sorted_x[11])/2,2)`° C$ und $`r round((exm_ducktemp$sorted_x[30] + exm_ducktemp$sorted_x[31])/2,2)`° C$ respektive.]{.customdef #customdef-quartile} [Die Differenz dieser Perzentile wird als __Interquartilabstand__ (abkürzung IQR von interquartile range) bezeichnet und ist im Beispiel $`r round((exm_ducktemp$sorted_x[30] + exm_ducktemp$sorted_x[31])/2,2) - round((exm_ducktemp$sorted_x[10] + exm_ducktemp$sorted_x[11])/2,2)`° C$.]{.customdef #customdef-iqr}
+- [Die __Standardabweichung__ (abgekürzt _SD_, Symbol $s$) ist die durchschnittliche Abweichung jeder Beobachtung vom arithmetischen Mittel.]{.customdef #customdef-std} Wenn wir die erste von insgesamt $n$ Beobachtung mit $x_1$ und die letzte Beobachtung mit $x_n$ bezeichnen, so ist das arithmetische Mittel
+
+\begin{equation}
+s = \sqrt{\frac{1}{n-1}\sum^n_{i=1} (x_i-\bar{x})^2}
+(\#eq:sd)
+\end{equation}
+
+Im Beispiel ist die Standardabweichung der Körpertemperaturen $`r round(sd(exm_ducktemp$x),3)`° C$.
+
+::::{.caution}
+::: {.remark}
+
+_Erklärung der Formel_: $(x_i-\bar{x})$ bezeichnet den Abstand von jeder Beobachtung zum arithmetischen Mittel. Dieser Abstand kann positiv (wenn $x_i$ grösser ist als $\bar{x}$) oder negativ (wenn $x_i$ kleiner ist als $\bar{x}$) ausfallen. Damit diese positiven  und negativen Abstände sich in der Summe nicht ausgleichen und eine Standardabweichung von 0 entsteht, werden diese Abstände quadriert $(x_i-\bar{x})^2$ bevor sie summiert werden. Anschliessend wird diese Summe durch $n-1$ geteilt, um den durchschnittlichen Abstand pro Beobachtung zu ermitteln. Intuitiv würde man hier durch $n$ teilen. Statistiker:innen haben jedoch herausgefunden, dass es einige Vorteile hat, wenn durch $n-1$ statt $n$ geteilt wird. Das Quadrat wird nach der Aufsummierung wieder aufgehoben indem die Quadratwurzel gezogen wird.
+:::
+::::
 
 ## Übungen  {#intervallskaliertes-merkmal-uebungen}
 
 ::: {.exercise  #enten-hist-mean-sd}
-  (a) Versuch selbst ein Histogramm der Daten oben (*Enten_n40.sav*) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben. 
+  (a) Versuch selbst ein Histogramm der Daten oben (`r exm_ducktemp$data_path`) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben. 
   (b) Berechne zusätzlich das arithmetische Mittel und die Standardabweichung des Merkmals.
 :::
 
@@ -620,11 +654,12 @@ TODO
 
 
 ::: {.exercise #ki-approx-normal}
+
 ```{r ki-approx-normal}
-exr_ki_approx_normal <- function(n){
+gen_exr_ki_approx_normal <- function(n){
   seed <- 1928
   set.seed(1928)
-  m <- 200
+  m <- 10000
   lambda <- 7
   x <- rpois(n, lambda)
   x_samples <- map(1:m, ~ rpois(n, lambda))
@@ -636,26 +671,45 @@ exr_ki_approx_normal <- function(n){
   s_means <- sqrt(sd(x) / n)
   lb_t <- lambda - qt(0.975, n - 1) * s_means
   ub_t <- lambda + qt(0.975, n - 1) * s_means
-  plt_hist <- plot_hist_means(means, lb, ub, 3/n, 'Count')
-  plt_hist_density <- plot_hist_denstiy_expected_value(means,
-                                   lambda,
-                                   sqrt(lambda),
-                                   n = n,
-                                   "bla",
-                                   3 / n)
   return(mget(ls()))
 }
-experiment1 <- exr_ki_approx_normal(10)
-experiment2 <- exr_ki_approx_normal(50)
-experiment3 <- exr_ki_approx_normal(100)
-abs(experiment1$lb_t - experiment1$lb)
-abs(experiment2$lb_t - experiment2$lb)
-abs(experiment3$lb_t - experiment3$lb)
+
+ns <- c(10, 40, 100)
+list_experiments <- map(ns, ~ gen_exr_ki_approx_normal(.x))
+tibble(!!!setNames(
+    map(list_experiments,~c(.x$means)),
+    paste0("n_", ns)
+)) %>%
+    haven::write_sav('data/04-exr-zentraler-grenzwertsatz.sav')
 ```
+
+Für ein Experiment werden in drei Runden jeweils $`r list_experiments[[1]]$m`$ Zufallsstichproben erhoben mit respektive $10$, $40$ und $100$ Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung \@ref(fig:ki-approx-normal1) dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.
+
+```{r ki-approx-normal1, fig.cap="TODO."}
+map_dfr(c(1:3),
+        ~tibble(x = list_experiments[[.x]]$x_samples[[1]],
+       n = list_experiments[[.x]]$n)) %>% 
+  ggplot() +
+  geom_histogram(aes(x=x), binwidth = 1)+
+  facet_wrap(~n,labeller = label_both)+
+  labs(x="Wert", y = 'Häufigkeit')
+```
+
+Die arithmetischen Mittel der 10'000 Stichproben sind im Datensatz `04-exr-zentraler-grenzwertsatz.sav` festgehalten. In der Spalte `n_10` zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallstichprobe mit 10 Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse $n$. Erstellen Sie ein Histogramm mit der Erweiterung `JJStatsPlot` und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.
+
 :::
 
 :::{.solution}
-TODO
+
+Die Übereinanderlegung des jeweiligen Histograms und der Wahrscheinlichkeitsdichte der Normalverteilung wird in Abbildung \@ref(fig:sol-ki-approx-normal) gezeigt. Es ist deutlich zu sehen, dass die Linie nur bei $n=100$ die Häufigkeitsverteilung der arithmetischen Mittel gut nachbilden kann. Bei $n=10$ und $n=50$ ist ein grosser Unterschied zwischen Häufigkeitsverteilung und Linie sichtbar. Das genaue $n$ ab welchem eine Häufigkeitsverteilung gut durch die Normalverteilung angenähert wird hängt von der ursprünglichen Verteilung der Daten ab, d.h. der Verteilung in Abbildung \@ref(fig:ki-approx-normal1). Es kann deshalb nicht generell gesagt werden, dass ab $n=100$ die Annäherung immer gut sei, so wie in diesem Beispiel. Der zentrale Grenzwertsatz besagt demnach auch lediglich, dass man immer ein grosses $n$ wählen kann, so dass die Annäherung gut ist. Er besagt nichts darüber, wie gross $n$ sein muss.
+
+```{r sol-ki-approx-normal, fig.cap="TODO", fig.show="hold", out.width="50%"}
+knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-input.jpg")
+knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-output1.jpg")
+knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-output2.jpg")
+knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-output3.jpg")
+```
+
 :::
 
 ::: {.exercise #ki-mean-n-vary}
@@ -777,12 +831,16 @@ TODO
 
 - [Erwartungswert](#customdef-erwartungswert)
 - [Grundgesamtheit](#customdef-grundgesamtheit)
+- [Interquartilabstand](#customdef-iqr)
 - [Intervalles](#customdef-interval)
 - [Konfidenzintervall](#customdef-confidence-interval)
 - [Median](#customdef-median)
 - [Modus](#customdef-modus)
 - [Normalverteilung](#customdef-normalverteilung)
+- [Perzentil](#customdef-perzentil)
 - [Population](#customdef-population)
+- [Spannweite](#customdef-spannweite)
+- [Standardabweichung](#customdef-std)
 - [Stichprobe](#customdef-stichprobe)
 - [Stichprobenziehung](#customdef-stichprobenziehung)
 - [Student-$t$-Verteilung](#customdef-student-verteilung)

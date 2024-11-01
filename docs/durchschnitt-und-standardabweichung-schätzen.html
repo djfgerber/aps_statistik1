@@ -213,7 +213,7 @@ Abbildung 4.4: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen
 <p>Auf <a href="https://seeing-theory.brown.edu/probability-distributions/index.html#section2">seeing-theory.brown.edu &gt; Continuous &gt; Normal</a> kann der Einfluss von <span class="math inline">\(\mu\)</span> und <span class="math inline">\(\sigma\)</span> auf die Normalverteilung erfahren werden.</p>
 <p><span id="customdef-zentraler-grenzwertsatz" class="customdef">Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie <strong>Zentraler Grenzwertsatz</strong> genannt wurde.</span> Der zentrale Grenzwertsatz besagt geneauer, dass bei einem Merkmal mit Erwartungswert <span class="math inline">\(\mu\)</span> und Standardabweichung <span class="math inline">\(\sigma\)</span>, der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit <span class="math inline">\(\mu_g = \mu\)</span> und <span class="math inline">\(\sigma_g = \frac{\sigma}{\sqrt{n}}\)</span> entspricht, wobei <span class="math inline">\(n\)</span> die Stichprobengrösse bezeichnet.</p>
 <div class="remark">
-<p><span id="unlabeled-div-5" class="remark"><em>Hinweis</em>. </span></p>
+<p><span id="unlabeled-div-6" class="remark"><em>Hinweis</em>. </span></p>
 <ul>
 <li><span class="math inline">\(\mu_g = \mu\)</span> bedeutet, dass der Wert, welcher unter der normalverteilung am wahrscheinlichsten ist, genau dem Erwartungswert des untersuchten Merkmales entspricht.</li>
 <li><span class="math inline">\(\sigma_g = \frac{\sigma}{\sqrt{n}}\)</span> hat zwei Implikationen:
@@ -394,7 +394,7 @@ Abbildung 4.7: Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleic
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-6" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-7" class="solution"><em>Lösung</em>. </span>TODO</p>
 </details>
 </div>
 <div class="exercise">
@@ -404,19 +404,29 @@ Abbildung 4.7: Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleic
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-7" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-8" class="solution"><em>Lösung</em>. </span>TODO</p>
 </details>
 </div>
 <div class="exercise">
-<p><span id="exr:ki-approx-normal" class="exercise"><strong>Übung 4.3  </strong></span></p>
-<pre><code>## [1] 0.5342439</code></pre>
-<pre><code>## [1] 0.2388751</code></pre>
-<pre><code>## [1] 0.1677798</code></pre>
+<p><span id="exr:ki-approx-normal" class="exercise"><strong>Übung 4.3  </strong></span>Für ein Experiment werden in drei Runden jeweils <span class="math inline">\(10^{4}\)</span> Zufallsstichproben erhoben mit respektive <span class="math inline">\(10\)</span>, <span class="math inline">\(40\)</span> und <span class="math inline">\(100\)</span> Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:ki-approx-normal1">4.8</a> dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.</p>
+<div class="figure"><span style="display:block;" id="fig:ki-approx-normal1"></span>
+<img src="aps_statistik1_files/figure-html/ki-approx-normal1-1.png" alt="TODO." width="672" />
+<p class="caption">
+Abbildung 4.8: TODO.
+</p>
+</div>
+<p>Die arithmetischen Mittel der 10’000 Stichproben sind im Datensatz <code>04-exr-zentraler-grenzwertsatz.sav</code> festgehalten. In der Spalte <code>n_10</code> zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallstichprobe mit 10 Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse <span class="math inline">\(n\)</span>. Erstellen Sie ein Histogramm mit der Erweiterung <code>JJStatsPlot</code> und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.</p>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-8" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-9" class="solution"><em>Lösung</em>. </span>Die Übereinanderlegung des jeweiligen Histograms und der Wahrscheinlichkeitsdichte der Normalverteilung wird in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-ki-approx-normal">4.9</a> gezeigt. Es ist deutlich zu sehen, dass die Linie nur bei <span class="math inline">\(n=100\)</span> die Häufigkeitsverteilung der arithmetischen Mittel gut nachbilden kann. Bei <span class="math inline">\(n=10\)</span> und <span class="math inline">\(n=50\)</span> ist ein grosser Unterschied zwischen Häufigkeitsverteilung und Linie sichtbar. Das genaue <span class="math inline">\(n\)</span> ab welchem eine Häufigkeitsverteilung gut durch die Normalverteilung angenähert wird hängt von der ursprünglichen Verteilung der Daten ab, d.h. der Verteilung in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:ki-approx-normal1">4.8</a>. Es kann deshalb nicht generell gesagt werden, dass ab <span class="math inline">\(n=100\)</span> die Annäherung immer gut sei, so wie in diesem Beispiel. Der zentrale Grenzwertsatz besagt demnach auch lediglich, dass man immer ein grosses <span class="math inline">\(n\)</span> wählen kann, so dass die Annäherung gut ist. Er besagt nichts darüber, wie gross <span class="math inline">\(n\)</span> sein muss.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-ki-approx-normal"></span>
+<img src="figures/04-exr-ki-approx-normal-jmv-input.jpg" alt="TODO" width="50%" /><img src="figures/04-exr-ki-approx-normal-jmv-output1.jpg" alt="TODO" width="50%" /><img src="figures/04-exr-ki-approx-normal-jmv-output2.jpg" alt="TODO" width="50%" /><img src="figures/04-exr-ki-approx-normal-jmv-output3.jpg" alt="TODO" width="50%" />
+<p class="caption">
+Abbildung 4.9: TODO
+</p>
+</div>
 </details>
 </div>
 <div class="exercise">
@@ -437,11 +447,11 @@ Abbildung 4.7: Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleic
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-9" class="solution"><em>Lösung</em>. </span>Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-ki-mean-n-vary">4.8</a> zeigt die Berechnunganweisungen für Jamovi und die resultierende Tabelle daraus.</p>
+<p><span id="unlabeled-div-10" class="solution"><em>Lösung</em>. </span>Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-ki-mean-n-vary">4.10</a> zeigt die Berechnunganweisungen für Jamovi und die resultierende Tabelle daraus.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-ki-mean-n-vary"></span>
 <img src="figures/04-exr-stichprobengroesse-jmv-input.jpg" alt="Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen." width="50%" /><img src="figures/04-exr-stichprobengroesse-jmv-output.jpg" alt="Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen." width="50%" />
 <p class="caption">
-Abbildung 4.8: Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen.
+Abbildung 4.10: Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen.
 </p>
 </div>
 <ol style="list-style-type: lower-alpha">
@@ -463,7 +473,7 @@ Abbildung 4.8: Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den releva
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-10" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-11" class="solution"><em>Lösung</em>. </span>TODO</p>
 </details>
 </div>
 
