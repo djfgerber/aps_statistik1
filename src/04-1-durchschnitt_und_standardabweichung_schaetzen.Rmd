@@ -1,7 +1,6 @@
 # Durchschnitt und Standardabweichung schätzen
 
 ```{r 4-prep_example, include=FALSE}
-library(kableExtra)
 set.seed(1928)
 m <- 1000
 means <- map_dbl(1:m, ~ mean(rnorm(n, ex_angst_mean, ex_angst_sd)))
@@ -70,7 +69,9 @@ plot_hist_denstiy_expected_value <- function(means, mu, sigma, n, xlab, binwidth
 }
 ```
 
-Wie die in Abschnitt \@ref(stichprobenziehung-loesung) skizzierte Lösung für das Problem der zufälligen Stichprobe konkret umgesetzt wird, hängt von der Problemstellung ab. Im folgenden wird ein Verfahren zur Generalisierung der Schätzung der zentralen Tendenz und eines für die Schätzung der Variabilität basierend auf einer Stichprobe präsentiert.
+Wie die in Abschnitt \@ref(stichprobenziehung-loesung) skizzierte Lösung für das Problem der zufälligen Stichprobe konkret umgesetzt wird, hängt von der Problemstellung ab. Im folgenden wird ein Verfahren zur Generalisierung der Schätzung der zentralen Tendenz 
+<!-- und eines für die Schätzung der Variabilität  -->
+basierend auf einer Stichprobe präsentiert.
 
 ## Wo liegt der Durchschnitt der Grundgesamtheit?
 
@@ -93,7 +94,7 @@ plot_hist_means(means, lb, ub, 0.5, 'Angst')
 ```
 
 :::{.example #agreableness name="Verträglichkeit"}
-Einer der Big-5 Persönlichkeitszüge ist die Verträglichkeit. Eine einfache Art die Big-5 zu messen ist mit den 10 Fragen aus dem ten-item personality inventory (TIPI) [@gosling2003]. Für die Verträglichkeit müssen zwei Items (Item 1: Critical, quarrelsome; Item 2: Sympathetic, warm) auf einer Likert-Skala von 1 bis 7 eingeordnet werden. Anschliessend werden die Antworten gemittelt. Ein Student möchte herausfinden, ob mit diesem Messinstrument die durchschnittliche Verträglichkeit aller Menschen mittig also bei $4$ liegt. Dafür befragt er $n = `r n1`$ Personen und findet die Werte $M=`r round(mean(x1), 2)`, s = `r round(sd(x1),2)`$.
+Einer der Big-5 Persönlichkeitszüge ist die Verträglichkeit. Eine einfache Art die Big-5 zu messen ist mit den 10 Fragen aus dem ten-item personality inventory _TIPI_ [@gosling2003]. Für die Verträglichkeit müssen zwei Items (Item 1: Critical, quarrelsome; Item 2: Sympathetic, warm) auf einer Likert-Skala von 1 bis 7 eingeordnet werden. Anschliessend werden die Antworten gemittelt. Ein Student möchte herausfinden, ob mit diesem Messinstrument die durchschnittliche Verträglichkeit aller Menschen mittig also bei $4$ liegt. Dafür befragt er $n = `r n1`$ Personen und findet die Werte $M=`r round(mean(x1), 2)`, s = `r round(sd(x1),2)`$.
 :::
 
 ```{r exm-agreableness-hist, fig.cap = paste("Verteilung der", n1, "beobachteten Verträglichkeitswerte einer zufällig gezogenen Stichprobe.")}
@@ -103,7 +104,7 @@ tibble(x = x1) %>%
   labs(y = 'Häufigkeit', x = 'Verträglichkeit')
 ```
 
-Die Verteilung der Beobachtungen, siehe Abbildung \@ref(fig:exm-agreableness-hist), zeigt, dass alle Werte zwischen 1 und 7 vorkommen, aber keine zentrale Tendenz greifbar ist. Um herauszufinden wie zutreffend die Schätzung des Erwartungswertes der Verträglichkeit von $M=`r round(mean(x1), 2)`$ ist, stelle man sich wieder vor, dass der Student `r m`-mal die Stichprobenziehung wiederholt und jedes mal das arithmetische Mittel $M$ von neuem Berechnet. Die Verteilung der arithmetischen Mittel dieser Stichproben ist in Abbildung \@ref(fig:exm-agreableness-hist-means) dargestellt. Bei dieser Verteilung kann erneut links und rechts 2.5% der Werte abgeschnitten werden, um zum Schluss zu gelangen, dass das arithmetische Mittel in 95% der Fälle zwischen $`r lb1`$ und $`r ub1`$ zu liegen kommt.
+Die Verteilung der Beobachtungen, siehe Abbildung \@ref(fig:exm-agreableness-hist), zeigt, dass alle Werte zwischen $1$ und $7$ vorkommen, aber keine zentrale Tendenz greifbar ist. Um herauszufinden wie zutreffend die Schätzung des Erwartungswertes der Verträglichkeit von $M=`r round(mean(x1), 2)`$ ist, stelle man sich wieder vor, dass der Student $`r m`$-mal die Stichprobenziehung wiederholt und jedes mal das arithmetische Mittel $M$ von neuem berechnet. Die Verteilung der arithmetischen Mittel dieser Stichproben ist in Abbildung \@ref(fig:exm-agreableness-hist-means) dargestellt. Bei dieser Verteilung kann erneut links und rechts $2.5\%$ der Werte abgeschnitten werden, um zum Schluss zu gelangen, dass das arithmetische Mittel in $95\%$ der Fälle zwischen $`r lb1`$ und $`r ub1`$ zu liegen kommt.
 
 ```{r exm-agreableness-hist-means, fig.cap = paste0("Verteilung der arithmetischen Mittel von ",m," zufällig gezogenen Stichproben der Verträglichkeit.")}
 plot_hist_means(means1, lb1, ub1, 0.05, "Verträglichkeit")
@@ -120,12 +121,15 @@ Auf [seeing-theory.brown.edu > Continuous > Normal](https://seeing-theory.brown.
 
 [Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie **Zentraler Grenzwertsatz** genannt wurde.]{.customdef #customdef-zentraler-grenzwertsatz} Der zentrale Grenzwertsatz besagt geneauer, dass bei einem Merkmal mit Erwartungswert $\mu$ und Standardabweichung $\sigma$, der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit $\mu_g = \mu$ und $\sigma_g = \frac{\sigma}{\sqrt{n}}$ entspricht, wobei $n$ die Stichprobengrösse bezeichnet.
 
+::::{.caution data-latex=""}
 :::{.remark}
+
 - $\mu_g = \mu$ bedeutet, dass der Wert, welcher unter der normalverteilung am wahrscheinlichsten ist, genau dem Erwartungswert des untersuchten Merkmales entspricht.
 - $\sigma_g = \frac{\sigma}{\sqrt{n}}$ hat zwei Implikationen:
   - je grösser die Streuung des Merkmals (grosses $\sigma$) desto breiter ist auch die Streuung der arithmetischen Mittel (grosses $\sigma_g$). Dies bedeutet, je weniger Streuung das Merkmal aufweist, desto genauer ist die Bestimmung des Erwartungswertes des Merkmales.
   - je grösser die Anzahl Beobachtungen $n$, desto kleiner die Streuung der arithmetischen Mittel (kleines $\sigma_g$). Dies bedeutet, je grösser die Stichprobe ist, desto genauer ist die Bestimmung des Erwartungswertes des Merkmales.
 :::
+::::
 
 Die Abbildungen \@ref(fig:exm-angst-normal-approx) und \@ref(fig:exm-agreableness-normal-approx) illustrieren den zentralen Grenzwertsatz für Beispiel \@ref(exm:angst) und \@ref(exm:agreableness) respektive, wobei die Normalverteilung der roten Linie entspricht. Dabei wird einstweilen angenommen, dass $\mu$ und $\sigma$ bekannt sind. Diese Annahme wird später aufgelöst und dient hier lediglich der Illustration.
 
@@ -137,7 +141,7 @@ plot_hist_denstiy_expected_value(means, ex_angst_mean, ex_angst_sd, n, "Angst", 
 plot_hist_denstiy_expected_value(means1, 4, sqrt((b - a) ^ 2 / 12), n1, "Verträglichkeit", 0.05)
 ```
 
-Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte ziehen von Stichproben unnötig. Die Normalverteilung ist theoretisch konstruiert und ihr 2.5%- und 97.5%-Perzentil können theoretisch hergeleitet werden. Tabelle \@ref(tab:quantiles-norm) wird kann beobachtet werden, dass für unsere zwei Beispiele die Perzentile der Stichprobe und der Normalverteilung sehr ähnlich, wenn auch nicht exakt gleich sind. Die Ungenauigkeit rührt daher, dass der zentrale Grenzwertsatz nur dann exakt funktioniert, wenn die Anzahl Beobachtungen (unendlich) gross ist.
+Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte ziehen von Stichproben unnötig. Die Normalverteilung ist theoretisch konstruiert und ihr $2.5\%$- und $97.5\%$-Perzentil können theoretisch hergeleitet werden. Tabelle \@ref(tab:quantiles-norm) wird kann beobachtet werden, dass für unsere zwei Beispiele die Perzentile der Stichprobe und der Normalverteilung sehr ähnlich, wenn auch nicht exakt gleich sind. Die Ungenauigkeit rührt daher, dass der zentrale Grenzwertsatz nur dann exakt funktioniert, wenn die Anzahl Beobachtungen (unendlich) gross ist.
 
 
 ```{r quantiles-norm}
@@ -171,9 +175,9 @@ Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte ziehen von
 ```
 
 
-Einstweilen wurde hier angenommen, dass die Streuung des Merkmals $\sigma$ bekannt ist. Dies ist in der Realität nie der Fall. [Wenn $\sigma$ also auch aus der Stichprobe geschätzt werden muss, ist die Ännäherung der Verteilung der arithmetischen Mittel besser gegeben mit einer **Student-$t$-Verteilung** oder kurz $t$-Verteilung.]{.customdef #customdef-student-verteilung} Die grüne Linie in Abbildungen \@ref(fig:exm-angst-normal-approx) und \@ref(fig:exm-agreableness-normal-approx) entspricht der $t$-Verteilung im jeweiligen Beispiel. 
+Einstweilen wurde hier angenommen, dass die Streuung des Merkmals $\sigma$ bekannt ist. Dies ist in der Realität nie der Fall und eine weitere, wenn auch weniger grosse Ungenauigkeitsquelle. [Wenn $\sigma$ also auch aus der Stichprobe geschätzt werden muss, ist die Ännäherung der Verteilung der arithmetischen Mittel besser gegeben mit einer **Student-$t$-Verteilung** oder kurz $t$-Verteilung.]{.customdef #customdef-student-verteilung} Die grüne gestrichtelte Linie in den Abbildungen \@ref(fig:exm-angst-normal-approx) und \@ref(fig:exm-agreableness-normal-approx) entspricht der $t$-Verteilung im jeweiligen Beispiel. 
 
-Der Unterschied zwischen der Normalverteilung und der $t$-Verteilung ist nur sichtbar, wenn $n$ klein ist. In Beispiel \@ref(exm:angst) mit $n = `r n`$ ist ein kleiner Unterschied, in Beispiel \@ref(exm:agreableness) mit $n = `r n1`$ ist kein Unterschied zwischen der Normalverteilung und der $t$-Verteilung sichtbar. Tatsächlich wird die $t$-Verteilung mit einem Parameter charaktisiert, welcher Freiheitsgrade [eng. degrees of freedom, $df$] genannt wird. In Abbildung \@ref(fig:t-distribution) wird die $t$-Verteilung mit verschiedenen Freiheitsgraden mit der Normalverteilung verglichen. Bei der $t$-Verteilung mit den kleinsten Freiheitsgraden sind extremere Werte wahrscheinlicher als $t$-Verteilungen mit grösseren Freiheitsgraden. 
+Der Unterschied zwischen der Normalverteilung und der $t$-Verteilung ist nur sichtbar, wenn $n$ klein ist. In Beispiel \@ref(exm:angst) mit $n = `r n`$ ist ein kleiner Unterschied, in Beispiel \@ref(exm:agreableness) mit $n = `r n1`$ ist kein Unterschied zwischen der Normalverteilung und der $t$-Verteilung sichtbar. [Tatsächlich wird die $t$-Verteilung mit einem Parameter charaktisiert, welcher __Freiheitsgrade__ (eng. degrees of freedom, $df$) genannt wird.]{.customdef #customdef-freiheitsgrade} In Abbildung \@ref(fig:t-distribution) wird die $t$-Verteilung mit verschiedenen Freiheitsgraden mit der Normalverteilung verglichen. Bei der $t$-Verteilung mit den kleinsten Freiheitsgraden sind extremere Werte wahrscheinlicher als $t$-Verteilungen mit grösseren Freiheitsgraden. 
 
 ```{r t-distribution, fig.cap="Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleich zu der Normalverteilung."}
 tibble(x = seq(-4, 4, by = 0.1),
@@ -195,9 +199,9 @@ $$ \bar{x} - \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1} < \mu < \bar{x} + \frac{s}
 
 berechnet werden, wobei $\bar{x}$ das arithmetische Mittel, $s$ die Standardabweichung und $t_{97.5\%, n-1}$ dem Wert des 97.5%-Perzentil einer auf 0 zentrierten $t$-Verteilung mit $n-1$ Freiheitsgraden entspricht. Letzere Perzentile der $t$-Verteilung können bei Bedarf in entsprechenden Tabellen nachgeschlagen werden. Als Gedankenstütze kann für $t_{97.5\%, n-1}$ immer $2$ gedacht werden, da dies ungefähr dem wahren Wert entspricht, wenn $n$ grösser als $50$ ist.
 
-Das 2.5% und das 97.5% Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines [**Intervalles**. Ein Intervall bezeichnet durch die Symbolik $[$untere Schranke, obere Schranke$]$ beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.]{.customdef #customdef-interval} [Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in 95% der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu 95% sicher oder _konfident_ sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als 95%-**Konfidenzintervall** (symbol KI) bezeichnet.]{.customdef #customdef-confidence-interval}
+Das $2.5\%$ und das $97.5\%$ Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines [**Intervalles**. Ein Intervall bezeichnet durch die Symbolik $[$untere Schranke, obere Schranke$]$ beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.]{.customdef #customdef-interval} [Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in $95\%$ der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu $95\%$ sicher oder _konfident_ sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als $95\%$-**Konfidenzintervall** (symbol KI) bezeichnet.]{.customdef #customdef-confidence-interval}
 
-In Beispiel \@ref(exm:angst), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Angst in der Population bei $M = `r round(mean(x),2)`$ $95\%$-KI $[`r round(lb_t,2)`,`r round(ub_t,2)`]$ liegt. In Beispiel \@ref(exm:agreableness), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Verträglichkeit in der Population bei $M = `r round(mean(x1), 2)`$ $95\%$-KI $[`r round(lb1_t,2)`,`r round(ub1_t,2)`]$ liegt.
+In Beispiel \@ref(exm:angst), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Angst in der Population bei $M = `r round(mean(x),2)`$ $95\%$ KI $[`r round(lb_t,2)`,`r round(ub_t,2)`]$ liegt. In Beispiel \@ref(exm:agreableness), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Verträglichkeit in der Population bei $M = `r round(mean(x1), 2)`$ $95\%$ KI $[`r round(lb1_t,2)`,`r round(ub1_t,2)`]$ liegt. Wann immer eine Schätzung eines zentralen Wertes berichtet wird, soll dies ab jetzt in der soeben gezeigten Darstellung inklusive Angabe des Konfidenzintervalls erfolgen. Damit wird der Leserin aufgezeigt, wo der Schätzwert der zentralen Tendenz liegt und gleichzeigtig wird intuitiv vermittelt wie genau die Schätzung ist.
 
 Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse $n$ oder die geschätzte Standardabweichung $s$ auf die Länge des Konfidenzintervalls auswirkt. Dies kann in den Übungen \@ref(exr:ki-mean-n-vary) und \@ref(exr:ki-mean-s-vary) selbst erforscht werden.
 
@@ -247,7 +251,10 @@ Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse $n$ oder die
 ## Übungen
 
 ::: {.exercise #interpret-report1}
-TODO
+<!-- 
+Ziel: 
+- 
+-->
 ```{r exr-interpret-report1}
 print('hi')
 ```
@@ -259,7 +266,10 @@ TODO
 :::
 
 ::: {.exercise #interpret-report2}
-TODO
+<!-- 
+Ziel: 
+- 
+-->
 ```{r exr-interpret-report2}
 print('hi')
 ```
@@ -272,6 +282,10 @@ TODO
 
 
 ::: {.exercise #ki-approx-normal}
+<!-- 
+Ziel: 
+- 
+-->
 
 ```{r ki-approx-normal}
 gen_exr_ki_approx_normal <- function(n){
@@ -331,6 +345,10 @@ knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-output3.jpg")
 :::
 
 ::: {.exercise #ki-mean-n-vary}
+<!-- 
+Ziel: 
+- 
+-->
 
 ```{r exr-ki-mean-n-vary}
 gen_exr_ki_mean_n_vary <- function(){
@@ -394,7 +412,10 @@ Abbildung \@ref(fig:sol-ki-mean-n-vary) zeigt die Berechnunganweisungen für Jam
 
 
 ::: {.exercise #ki-mean-s-vary}
-TODO
+<!-- 
+Ziel: 
+- 
+-->
 ```{r exr-ki-mean-s-vary}
 print('hi')
 ```

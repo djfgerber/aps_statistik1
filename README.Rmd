@@ -1,0 +1,48 @@
+# Rules
+
+- First use of non statistical defined word or introducing abbreviations: word _abb. word_ (e.g. _STAI_, _IQ_)
+- Jamovi wording in `font`, use inline_code(file_name).
+
+
+
+
+# Templates
+
+# tileword1 titleword2 {#tileword1-titleword2}
+
+
+### Definition
+[Sentence **defined word** (eng. degrees of freedom, Symbol df)  sentence.]{.customdef #customdef-tagname} 
+
+### Example 
+:::{.example #tagname name="TODO: displayed name"}
+TODO:body
+:::
+\@ref(exm:tagname)
+
+
+### Exercise
+::: {.exercise  #tagname}
+<!-- 
+Ziel: 
+- 
+-->
+TODO: Exercise body
+:::
+
+:::{.solution}
+TODO: solution body
+:::
+
+\@ref(exr:tagname)
+
+### Hinweis
+::::{.caution data-latex=""}
+::: {.remark}
+TODO: remark body
+:::
+::::
+
+### Reference
+[@bibtextag]
+

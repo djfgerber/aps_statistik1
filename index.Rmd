@@ -17,6 +17,8 @@ Dieses Buch ist im Rahmen meiner Lehrtätigkeit an der FHNW entstanden und frei 
 ```{r load_packages, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(gridExtra)
+library(jmv)
+library(kableExtra)
 source('src/r/bag_sampling.R')
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'jmv'
@@ -24,5 +26,14 @@ knitr::write_bib(c(
 
 combine_words <- function(x){
   knitr::combine_words(x, and = " und ", oxford_comma = FALSE)
+}
+inline_code <- function(x) {
+  paste0("``", x, "``")
+}
+
+path_data <- 'data/'
+write_sav <- function(x, file_name){
+  x %>% 
+    haven::write_sav(paste0(path_data, file_name))
 }
 ```

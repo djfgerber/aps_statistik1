@@ -156,7 +156,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{01 November, 2024}
+\date{15 November, 2024}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -295,9 +295,11 @@ Die Inhalte nach Zweck zu gruppieren ist eine Option, die andere ist die Verfahr
 
 Dieses Buch enthält zu jedem Thema eine kurze Beschreibung der Theorie, Beispiele und Übungen. Das selbstständige Lösen der Übungen ist unerlässlich für das Verständnis und die Emanzipation im korrekten Umgang mit Daten. Ohne Übungen fehlt die Auseinandersetzung mit dem Unterrichtsstoff und ohne diese fällt es den allermeisten schwer sogar einfachste Zusammenhänge zu begreifen. Es wird deshalb empfohlen, dass die Übungen zum jeweiligen Thema zeitnah zur Theorie gelöst werden. Damit überprüft werden kann, ob die Übungen richtig gelöst wurden, ist zu jeder Übung eine kurze Lösung hinterlegt. Wer beim ersten selbstständigen Versuch der Übungslösung scheitert - was garantiert den meisten Lesenden hier ein oder mehrmals passieren wird -, kann die Übung mit Hilfe der Lösung lösen und zu einem späteren Zeitpunkt die Übung selbstständig nochmal machen ohne Lösung. Für die Statistik ist es also \emph{nicht} genug den Stoff einmal auswendig zu lernen, Übung ist unerlässlich.
 
-\section{Formeln}\label{formeln}
+\section{Formeln, Symbole und Zahlen}\label{formeln}
 
 Die Statistik bedient sich der universellen Sprache der Formeln. Es ist deshalb unerlässlich einige Formeln zu verstehen. Das Verständnis von Formeln ist für ungeübte Lesende verwirrend und schwierig. Deshalb wird dieses Verständnis in diesem Buch nach und nach aufgebaut. Dazu werden Teilformeln isoliert und erklärt und die Einflüsse der verschiedenen Kenngrössen in der Formel exploriert.
+
+Es gibt eine vielzahl von Möglichkeiten Formeln und Zahlen in einem Manuskript niederzuschreiben. Um die Formeln, Symbole und Zahlen verständlich und vergleichbar zu halten wurden verschiedene Standards definiert. In diesem Buch wird der Standard Richtlinien zur Manuskriptgestaltung der Deutschen Gesellschaft für Psychologie verwendet \citep{dgp2019}. Dieser ist wiederum stark an den Standard der American psychological assiciation angelehnt.
 
 \section{Software}\label{software}
 
@@ -325,8 +327,8 @@ Für die Lösung der Übungen wird oft die freie Software Jamovi verwendet. Dem 
 
 \phantomsection\label{customdef-intervallskaliert}{Ein Merkmal ist dann \textbf{intervallskaliert}, wenn die einzelnen Beobachtungen in eine natürliche Reihenfolge gebracht werden können und zwischen dem tiefsten und höchsten möglichen Wert, alle erdenklichen Zwischenwerte möglich sind.}
 
-\begin{example}[Körpertemperatur Enten]
-\protect\hypertarget{exm:ducktemp}{}\label{exm:ducktemp}Ein Beispiel für ein intervallskaliertes Merkmal ist die Körpertemperatur. Beobachtungen der Körpertemperatur einer lebenden Person sind Werte zwischen ungefähr 10°C und 42°C. Es ist möglich zu sagen, dass eine Person mit 40°C Körpertemperatur eine höhere Temperatur hat als eine mit 38°C Körpertemperatur. Ausserdem sind alle erdenklichen Zwischenwerte möglich, so auch dass bei einer Person eine Körpertemperatur von 37.821239°C gemessen wird.
+\begin{example}[Körpertemperatur]
+\protect\hypertarget{exm:humtemp}{}\label{exm:humtemp}Ein Beispiel für ein intervallskaliertes Merkmal ist die Körpertemperatur. Beobachtungen der Körpertemperatur einer lebenden Person sind Werte zwischen ungefähr 10°C und 42°C. Es ist möglich zu sagen, dass eine Person mit 40°C Körpertemperatur eine höhere Temperatur hat als eine mit 38°C Körpertemperatur. Ausserdem sind alle erdenklichen Zwischenwerte möglich, so auch dass bei einer Person eine Körpertemperatur von 37.821239°C gemessen wird.
 \end{example}
 
 \begin{example}[Intelligenzquotient]
@@ -339,7 +341,9 @@ Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Le
 
 \section{Wie kann ein intervallskaliertes Merkmal beschrieben werden?}\label{intervallskalierte-merkmale-beschreibung}
 
-Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen. Dazu untersucht sie 40 Enten und misst die Körpertemperaturen 42.01, 41.72, 41.51, 41.52, 41.5, 41.6, 41.46, 41.81, 42.14, 41.82, 42.06, 41.53, 41.66, 41.65, 41.46, 41.48, 41.92, 41.58, 41.32, 41.58, 41.81, 41.7, 41.62, 41.52, 41.89, 41.53, 41.67, 41.43, 42.18, 41.52, 41.82, 41.96, 41.8, 41.54, 41.88, 41.69, 41.92, 41.35, 41.07 und 41.67.
+\begin{example}[Körpertemperatur Enten]
+\protect\hypertarget{exm:ducktemp}{}\label{exm:ducktemp}Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen. Dazu untersucht sie 40 Enten und misst die Körpertemperaturen 42.01, 41.72, 41.51, 41.52, 41.5, 41.6, 41.46, 41.81, 42.14, 41.82, 42.06, 41.53, 41.66, 41.65, 41.46, 41.48, 41.92, 41.58, 41.32, 41.58, 41.81, 41.7, 41.62, 41.52, 41.89, 41.53, 41.67, 41.43, 42.18, 41.52, 41.82, 41.96, 41.8, 41.54, 41.88, 41.69, 41.92, 41.35, 41.07 und 41.67.
+\end{example}
 
 Für einen Menschen ist es schwierig direkt aus der Sichtung dieser Zahlen zu begreifen, welche Körpertemperatur Enten haben. Ein Mensch kann sich jedoch helfen, indem er die Zahlen zusammenfasst.
 
@@ -360,19 +364,17 @@ Mit der Zentralität ist ein Wert gemeint, welcher die zentrale Tendenz des Merk
 \begin{itemize}
 \tightlist
 \item
-  \phantomsection\label{customdef-modus}{Der \textbf{Modus} ist der am häufigsten vorkommende Wert.} Im Beispiel ist das der Wert 41.52, welcher 3 mal und damit am häufigsten vorkommt.
+  \phantomsection\label{customdef-modus}{Der \textbf{Modus} ist der am häufigsten vorkommende Wert.} Im Beispiel ist das der Wert 41.52, welcher 3 mal und damit am häufigsten vorkommt. In Jamovi wird der Modus mit \texttt{Modalwert} bezeichnet.
 \item
-  \phantomsection\label{customdef-median}{Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als \textbf{Median} (abgekürzt \emph{Mdn}, Symbol \(\tilde{x}\)) bezeichnet.} Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte 41.07, 41.32, 41.35, 41.43, 41.46, 41.46, 41.48, 41.5, 41.51, 41.52, 41.52, 41.52, 41.53, 41.53, 41.54, 41.58, 41.58, 41.6, 41.62, 41.65, 41.66, 41.67, 41.67, 41.69, 41.7, 41.72, 41.8, 41.81, 41.81, 41.82, 41.82, 41.88, 41.89, 41.92, 41.92, 41.96, 42.01, 42.06, 42.14 und 42.18, also 41.655.
+  \phantomsection\label{customdef-median}{Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als \textbf{Median} (abgekürzt \emph{Mdn}, Symbol \(\tilde{x}\)) bezeichnet.} Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte 41.07, 41.32, 41.35, 41.43, 41.46, 41.46, 41.48, 41.5, 41.51, 41.52, 41.52, 41.52, 41.53, 41.53, 41.54, 41.58, 41.58, 41.6, 41.62, 41.65, 41.66, 41.67, 41.67, 41.69, 41.7, 41.72, 41.8, 41.81, 41.81, 41.82, 41.82, 41.88, 41.89, 41.92, 41.92, 41.96, 42.01, 42.06, 42.14 und 42.18, also 41.655. In Jamovi wird der Median mit \texttt{Median} bezeichnet.
 \item
   \phantomsection\label{customdef-arithmetisches-mittel}{Das \textbf{arithmetische Mittel} (abgekürzt \emph{M}, Symbol \(\bar{x}\)) bezeichnet, was gemeinhin mit Durchschnitt gemeint ist.} Wenn wir die erste von insgesamt \(n\) Beobachtung mit \(x_1\) und die letzte Beobachtung mit \(x_n\) bezeichnen, so ist das arithmetische Mittel
+  \begin{equation}
+  \bar{x} = \frac{1}{n}\sum^n_{i=1} x_i
+  \label{eq:mean}
+  \end{equation}
+  Im Beispiel ist das arithmetische Mittel der Körpertemperaturen 41.6725. In Jamovi wird das arithmetische Mittel als \texttt{Mittelwert} bezeichnet.
 \end{itemize}
-
-\begin{equation}
-\bar{x} = \frac{1}{n}\sum^n_{i=1} x_i
-\label{eq:mean}
-\end{equation}
-
-Im Beispiel ist das arithmetische Mittel der Körpertemperaturen 41.6725.
 
 \begin{caution}
 
@@ -391,36 +393,40 @@ Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden d
 \begin{itemize}
 \tightlist
 \item
-  \phantomsection\label{customdef-spannweite}{Die \textbf{Spannweite} (abgekürzt \(R\) aus dem englisch \emph{range}) ist der höchste beobachtete Wert minus der kleinste beobachtete Wert}. Im Beispiel ist der höchste beobachtet Wert \(42.18° C\) und der kleinste Beobachtete Wert \(41.07° C\). Also ist die Spannweite \(42.18 - 41.07 = 1.11° C\). Achtung die Spannweite wird in Jamovi mit \texttt{Wertebereich} bezeichnet.
+  \phantomsection\label{customdef-spannweite}{Die \textbf{Spannweite} (abgekürzt \(R\) aus dem englisch \emph{range}) ist der höchste beobachtete Wert minus der kleinste beobachtete Wert}. Im Beispiel ist der höchste beobachtet Wert \(42.18° C\) und der kleinste Beobachtete Wert \(41.07° C\). Also ist die Spannweite \(42.18 - 41.07 = 1.11° C\). Die Spannweite wird in Jamovi mit \texttt{Wertebereich} bezeichnet.
 \item
-  \phantomsection\label{customdef-perzentil}{Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine \(P\%\) tiefere und \((100\% - P\%)\) höhere Hälfte teilt, dann wird dieser Wert als \textbf{Perzentil} bezeichnet.} Das \(5\%\)-Perzentil zum Beispiel teilt die beobachteten Werte in \(5\%\) kleinere und \(95\%\) grössere Werte. Im Beispiel haben wir 40 Beobachtungen. \(5\%\) davon sind demnach \(2\) Beobachtungen die tiefer sind als das \(5\%\) Perzentil und \(95\%\) also \(38\) Beobachtungen die höher sind als das \(5\%\) Perzentil. Das \(5\%\) Perzentil liegt also zwischen \(41.32° C\) und \(41.35° C\). In diesem Fall wird ein Mittelwert der beiden nächsten Werte verwendet, hier \((41.32 + 41.35)/2=41.34° C\). Ein Perzentil alleine gibt noch keinen Hinweis auf die Streuung der Werte. Werden aber zwei Perzentile zusammen betrachtet, z. B. das \(5\%\) und das \(95\%\) Perzentil, dann geben diese Werte und der Abstand dazwischen einen Hinweis auf die Streuung der Beobachtungen. Im Beispiel ist das \(5\%\) Perzentil bei \(41.34° C\) und das \(95\%\)-Perzentil bei \(42.1° C\). Hier befinden sich also \(90\%\) aller Beobachtungen zwischen diesen Werten. \phantomsection\label{customdef-quartile}{Weitere beliebte Werte sind das \(25\%\) und das \(75\%\)-Perzentil (auch \textbf{Quartile} genannt, da sie die beobachteten Werte vierteln), im Beispiel bei \(41.52° C\) und \(41.82° C\) respektive.} \phantomsection\label{customdef-iqr}{Die Differenz dieser Perzentile wird als \textbf{Interquartilabstand} (abkürzung IQR von interquartile range) bezeichnet und ist im Beispiel \(0.3° C\).}
+  \phantomsection\label{customdef-perzentil}{Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine \(P\%\) tiefere und \((100\% - P\%)\) höhere Hälfte teilt, dann wird dieser Wert als \textbf{Perzentil} bezeichnet.} Das \(5\%\)-Perzentil zum Beispiel teilt die beobachteten Werte in \(5\%\) kleinere und \(95\%\) grössere Werte. Im Beispiel haben wir 40 Beobachtungen. \(5\%\) davon sind demnach \(2\) Beobachtungen die tiefer sind als das \(5\%\) Perzentil und \(95\%\) also \(38\) Beobachtungen die höher sind als das \(5\%\) Perzentil. Das \(5\%\) Perzentil liegt also zwischen \(41.32° C\) und \(41.35° C\). In diesem Fall wird ein Mittelwert der beiden nächsten Werte verwendet, hier \((41.32 + 41.35)/2=41.34° C\). Das \(P\%\)-Perzentil kann in Jamovi bei \texttt{Perzentil} gefolgt von der Zahl \texttt{P} ermittelt werden. Ein Perzentil alleine gibt jedoch noch keinen Hinweis auf die Streuung der Werte. Werden aber zwei Perzentile zusammen betrachtet, z. B. das \(5\%\) und das \(95\%\) Perzentil, dann geben diese Werte und der Abstand dazwischen einen Hinweis auf die Streuung der Beobachtungen. Im Beispiel ist das \(5\%\) Perzentil bei \(41.34° C\) und das \(95\%\)-Perzentil bei \(42.1° C\). Hier befinden sich also \(90\%\) aller Beobachtungen zwischen diesen Werten. Mehrere Perzentile können in Jamovi gleichzeitig angezeigt werden indem die Perzentil-Werte mit Komma getrennt werden, für die Perzentile hier im Beispiel \texttt{0.05,\ 0.95}. \phantomsection\label{customdef-quartile}{Weitere beliebte Werte sind das \(25\%\) und das \(75\%\)-Perzentil (auch \textbf{Quartile} genannt, da sie die beobachteten Werte vierteln), im Beispiel bei \(41.52° C\) und \(41.82° C\) respektive.} \phantomsection\label{customdef-iqr}{Die Differenz dieser Perzentile wird als \textbf{Interquartilabstand} (abkürzung IQR von interquartile range) bezeichnet und ist im Beispiel \(0.3° C\).}. Der Interquartilabstand wird in Jamovi mit \texttt{IQR} bezeichnet.
 \item
-  \phantomsection\label{customdef-std}{Die \textbf{Standardabweichung} (abgekürzt \emph{SD}, Symbol \(s\)) ist die durchschnittliche Abweichung jeder Beobachtung vom arithmetischen Mittel.} Wenn wir die erste von insgesamt \(n\) Beobachtung mit \(x_1\) und die letzte Beobachtung mit \(x_n\) bezeichnen, so ist das arithmetische Mittel
+  \phantomsection\label{customdef-std}{Die \textbf{Standardabweichung} (abgekürzt \emph{SD}, Symbol \(s\)) ist die durchschnittliche Abweichung jeder Beobachtung vom arithmetischen Mittel.} Wenn wir die erste von insgesamt \(n\) Beobachtung mit \(x_1\) und die letzte Beobachtung mit \(x_n\) bezeichnen, so ist die Standardabweichung
+  \begin{equation}
+  s = \sqrt{\frac{1}{n-1}\sum^n_{i=1} (x_i-\bar{x})^2}
+  \label{eq:sd}
+  \end{equation}
+  Im Beispiel ist die Standardabweichung der Körpertemperaturen \(0.233° C\). In Jamovi wird die Standardabweichung mit \texttt{Std.-abweichung} bezeichnet.
 \end{itemize}
 
-\begin{equation}
-s = \sqrt{\frac{1}{n-1}\sum^n_{i=1} (x_i-\bar{x})^2}
-\label{eq:sd}
-\end{equation}
-
-Im Beispiel ist die Standardabweichung der Körpertemperaturen \(0.233° C\).
+\begin{caution}
 
 \begin{remark}
 \emph{Erklärung der Formel}: \((x_i-\bar{x})\) bezeichnet den Abstand von jeder Beobachtung zum arithmetischen Mittel. Dieser Abstand kann positiv (wenn \(x_i\) grösser ist als \(\bar{x}\)) oder negativ (wenn \(x_i\) kleiner ist als \(\bar{x}\)) ausfallen. Damit diese positiven und negativen Abstände sich in der Summe nicht ausgleichen und eine Standardabweichung von 0 entsteht, werden diese Abstände quadriert \((x_i-\bar{x})^2\) bevor sie summiert werden. Anschliessend wird diese Summe durch \(n-1\) geteilt, um den durchschnittlichen Abstand pro Beobachtung zu ermitteln. Intuitiv würde man hier durch \(n\) teilen. Statistiker:innen haben jedoch herausgefunden, dass es einige Vorteile hat, wenn durch \(n-1\) statt \(n\) geteilt wird. Das Quadrat wird nach der Aufsummierung wieder aufgehoben indem die Quadratwurzel gezogen wird.
 \end{remark}
+
+\end{caution}
 
 \section{Übungen}\label{intervallskaliertes-merkmal-uebungen}
 
 \begin{exercise}
 \protect\hypertarget{exr:enten-hist-mean-sd}{}\label{exr:enten-hist-mean-sd}\leavevmode
 
+Mit den Daten \texttt{02-exm-ducktemp.sav} aus Beispiel \ref{exm:ducktemp}:
+
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Versuch selbst ein Histogramm der Daten oben (data/02-exm-ducktemp.sav) mit Jamovi zu erstellen und begründe, weshalb es nicht gleich aussieht wie das Histogramm oben.
+  Erstellen Sie selbst ein Histogramm mit Jamovi und begründen Sie, weshalb es nicht gleich aussieht wie das Histogramm oben.
 \item
-  Berechne zusätzlich das arithmetische Mittel und die Standardabweichung des Merkmals.
+  Berechnen Sie zusätzlich Modus, Median, arithmetisches Mittel, IQR, 25\%- und 75\%-Perzentil, sowie 2.5\%- und 97.5\%-Perzentil, sowie die Spannweite und die Standardabweichung der Körpertemperaturen der Enten mit Jamovi.
 \end{enumerate}
 
 \end{exercise}
@@ -429,21 +435,43 @@ Im Beispiel ist die Standardabweichung der Körpertemperaturen \(0.233° C\).
 \leavevmode
 
 \begin{figure}
-  \includegraphics[width=0.5\linewidth]{figures/Enten_n40_instr_histogramm} \includegraphics[width=0.5\linewidth]{figures/Enten_n40} \caption{Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.}\label{fig:enten-hist-mean-sd}
+  \includegraphics[width=0.5\linewidth]{figures/Enten_n40_instr_histogramm} \includegraphics[width=0.5\linewidth]{figures/Enten_n40} \caption{Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.}\label{fig:enten-hist-mean-sd1}
   \end{figure}
 
 \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
+\tightlist
 \item
-  Das Histogramm, siehe Abbildung \ref{fig:enten-hist-mean-sd} sieht nicht gleich aus, da Jamovi die Temperaturabschnitte kürzer gewählt hat nämlich bei 0.125°C statt 0.2°C wie oben im Text. In Jamovi gibt es aktuell keine Möglichkeit die Abschnittsweite anzupassen. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite.
+  Das Histogramm, siehe Abbildung \ref{fig:enten-hist-mean-sd1} sieht nicht gleich aus, da Jamovi die Temperaturabschnitte kürzer gewählt hat nämlich bei 0.125°C statt 0.2°C wie oben im Text. In Jamovi gibt es aktuell keine Möglichkeit die Abschnittsweite anzupassen. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite.
+\end{enumerate}
+
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-mean-sd-input} \includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-mean-sd-output} \caption{Links: Jamovi-Anleitung zur Berechnung der gewünschten Parameter; rechts: Parameterwerte.}\label{fig:enten-hist-mean-sd2}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
 \item
-  TODO
+  Eine Anleitung zur Berechnung in Jamovi sowie die berechneten Werte können in Abbildung \ref{fig:enten-hist-mean-sd2} abgelesen werden.
 \end{enumerate}
 
 \end{solution}
 
 \begin{exercise}
-\protect\hypertarget{exr:theorie-mdn-mean}{}\label{exr:theorie-mdn-mean}
+\protect\hypertarget{exr:temptag_pvai8hwv}{}\label{exr:temptag_pvai8hwv}\leavevmode
+
+TODO: Exercise body
+
+\end{exercise}
+
+\begin{solution}
+TODO: solution body
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:theorie-mdn-mean}{}\label{exr:theorie-mdn-mean}\leavevmode
 
 In einem psychologischen Test machen \(5\) Probandinnen die Werte \(18, 21, 20, 19, 22\). Um mit einer Zahl zu sagen, wo die Testresultate liegen, wird ein zentraler Wert berechnet.
 
@@ -479,10 +507,97 @@ Die Aufgabe kann im Kopf gelöst werden, oder mithilfe eines Taschenrechners, od
 
 \end{solution}
 
+\begin{exercise}
+\protect\hypertarget{exr:temptag_poiane}{}\label{exr:temptag_poiane}\leavevmode
+
+TODO: Exercise body
+
+\end{exercise}
+
+\begin{solution}
+TODO: solution body
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:diverse-distrib}{}\label{exr:diverse-distrib}\leavevmode
+
+Für eine Studie werden Studierende gebeten eine Aufgabe zu lösen, bei welcher Sie eine gewisse Anzahl \texttt{Punkte} erzielen. Über jede Proband:in sind ausserdem folgende Eigenschaften bekannt:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{IQ}: Intelligenzquotient
+\item
+  \texttt{Aufgeschlossenheit}: Likert von 1-7
+\item
+  \texttt{Wartezeit\_min}: Wartezeit vor beginn des Experiments in Minuten
+\item
+  \texttt{Wartezeit\_std}: Wartezeit vor beginn des Experiments in Stunden
+\item
+  \texttt{Geburtzeit\_std\_ab\_mitternacht}: Geburtszeit in Stunden ab Mitternacht. Wenn jemand um 13h30 auf die Welt kam, ist dieser Wert 13.5.
+\item
+  \texttt{Geburtzeit\_std\_ab\_mittag}: Geburtszeit in Stunden ab Mittag. Wenn jemand um 13h30 auf die Welt kam, ist dieser Wert 1.5.
+\end{itemize}
+
+Die Daten sind in Jamovi unter \texttt{02-exr-diverse-distrib.sav} verfügbar.
+
+Analysieren Sie alle erhobenen Merkmale indem Sie ein Histogramm erstellen und die zentralen Tendenzen sowie die Variabilität analysieren.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Wie viele Personen nahmen an der Studie teil?
+\item
+  Vergleichen Sie Ihre Ergebnisse für die Merkmale IQ und Aufgeschlossenheit. Was für Zusammenhänge fallen auf?
+\item
+  Vergleichen Sie Ihre Ergebnisse für die Wartezeiten Merkmale. Was für Zusammenhänge fallen auf?
+\item
+  Vergleichen Sie Ihre Ergebnisse für die Merkmale Punkte und Wartezeiten. Was für Zusammenhänge fallen auf?
+\item
+  Geburtszeit. TODO.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-diverse-distrib-input} \caption{Jamovi Eingabe.}\label{fig:sol-diverse-distrib1}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-diverse-distrib-output} \caption{Deskriptive Statistiken.}\label{fig:sol-diverse-distrib2}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-1} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-2} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-3} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-4} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-5} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-6} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-7} \caption{Histogramme.}\label{fig:sol-diverse-distrib3}
+\end{figure}
+
+Die Merkmale werden mit den Befehlen in Abbildung \ref{fig:sol-diverse-distrib1} analysiert.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Es gibt gemäss \ref{fig:sol-diverse-distrib2} genau \(500\) Studienteilnehmende (siehe \(N\)).
+\item
+  Die Histogramme für den IQ und die Aufgeschlossenheit weisen eine ähliche Form auf. Viele Beobachtungen sind um eine Mitte zentriert. Je weiter weg von der Mitte, desto seltener sind die Beobachtungen. Das Histogram des IQ zeigt, dass die Verteilung rund um 100 zentriert ist und ca von 60 bis 140 reicht. Je weiter entfernt von 100, desto weniger Beobachtungen wurden gemacht. Das Histogram der Aufgeschlossenheit stellt dar, dass diese rund um 4 zentriert ist mit Werten von 1 bis 7. Je weiter die Werte von 4 entfernt sind, desto weniger häufig sind die Beobachtungen. Der vom Histogram abgeleitete vorher genannte zentrale Wert entspricht ungefähr dem Mittelwert und dem Median für beide Merkmale. Für die Aufgeschlossenheit hat der Modalwert ebenfalls einen ähnlichen Wert. Der Modus für den IQ ist nicht belastbar, da die Fussnote besagt, dass mehrere Werte als Modus in Frage kommen. Eine genauere Durchsicht der IQ-Werte lässt folgern, dass aufgrund der vielen Nachkommastellen jeder IQ-Wert nur genau einmal vorkommt. Der angebene Modalwert des IQs entspricht also einfach einer zufälligen Beobachtung. Die Kennwerte für die Variabilität lassen ebenfalls auf Unterschiede zwischen den beiden Merkmalen schliessen. Die höheren Werte Standardabweichung, IQR und Wertebereich des IQ im Vergleich zur Aufgeschlossenheit legen nahe, dass die Streuung der Werte für den IQ viel grösser ist. Zum Beispiel ist eine durchschnittliche IQ-Beobachtung 15.5 IQ-Werte weg vom durchschnittlichen IQ und eine durchschnittliche Aufgeschlossenheits-Beobachtung nur 1.3 Aufgeschlossenheits-Werte weg von der duchschnittlichen Aufgeschlossenheit. Dies ist auf dem Histogramm zu erkennen, wenn die Skala der horizontalen Achse betrachtet wird. Für den IQ reicht diese von 50 bis 125 und für die Aufgeschlossenheit von 2 bis 6.
+\item
+  Die Wartezeiten wurden einmal in Minuten und einmal in Stunden abgespeichtert. Die resultierenden Histogramme sind deshalb genau identisch bis auf die Werte der horizontalen Achse, welche von 0 bis 0.6 Stunden und von 0 bis 40 Minuten reicht. Im Vergleich zu den Histogrammen des IQ und der Aufmerksamkeit kann für die Wartezeit und eine asymetrische Verteilung beobachtet werden. Kurze Wartezeiten werden demnach häufiger beobachtet als längere Wartezeiten. Die meisten Wartezeiten liegen unter 10 Minuten, sehr selten kommt es zu Wartezeiten über 20 Minuten. Die Kennzahlen für die Wartezeit in Stunden können aus den Kennzahlen der Wartezeit in Stunden hergeleitet werden indem die Werte durch \(60\) geteilt werden. Es reicht deshalb die Kennzahlen für die Wartezeit in Minuten zu betrachten. Die durchscnittliche Wartezeit liegt bei \(M=5.07, Mdn = 3.97\) Minuten. Der Modalwert ist wiederum nicht interpretierbar aus demselben Grund wie oben. Der Median bedeutet, dass \(50\%\) der Wartezeiten kleiner und \(50\%\) der Wartezeiten grösser waren als \(3.97\) Minuten. Das arithmetische Mittel ist höher als der Median. Die einigen wenigen Beobachtungen mit sehr langen Wartezeiten haben also das arithmetische Mittel im Vergleich zum Median stärker beeinflusst.
+\item
+  TODO.
+\item
+  TODO: Zentraler Wert hier nicht identifiziertbar, streuung auch nicht.
+\end{enumerate}
+
+\end{solution}
+
 \chapter{Stichprobenziehung}\label{stichprobenziehung}
 
 \begin{example}[Angst]
-\protect\hypertarget{exm:angst}{}\label{exm:angst}Forschende haben ein Messinstrument STAI (State-Trait Anxiety Inentory), welches Angst misst \citep{spielberger1983manual}. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst man aktuell empfindet. Die so gemessene Angst enstpricht einem Wert zwischen \(20\) und \(80\). A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit \(n =30\) zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte \(M=43.34, s = 9.72, n = 30\) für die Angst in ihren Beobachtungen.
+\protect\hypertarget{exm:angst}{}\label{exm:angst}Forschende haben ein Messinstrument State-Trait Anxiety Inentory \emph{STAI}, welches Angst misst \citep{spielberger1983manual}. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst man aktuell empfindet. Die so gemessene Angst enstpricht einem Wert zwischen \(20\) und \(80\). A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit \(n =30\) zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte \(M=43.34, s = 9.72, n = 30\) für die Angst in ihren Beobachtungen.
 \end{example}
 
 \phantomsection\label{customdef-stichprobe}{Zufällig ausgewählte Beobachtungen eines Merkmals werden als \textbf{Stichprobe} bezeichnet.} \phantomsection\label{customdef-stichprobenziehung}{Nach der Auswahl der Stichprobe ist die \textbf{Stichprobenziehung}.} Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? \phantomsection\label{customdef-population}{Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als \textbf{Population}} \phantomsection\label{customdef-grundgesamtheit}{oder \textbf{Grundgesamtheit} bezeichnet}. \phantomsection\label{customdef-zufallsstichprobe}{Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als \textbf{Zufallsstichprobe} bezeichnet.}
@@ -541,9 +656,32 @@ Es kann also zusammenfassend gesagt werden, dass die gezogene Stichprobe wohl eh
 
 \section{Übungen}\label{uxfcbungen}
 
+\begin{exercise}
+\protect\hypertarget{exr:tagname_alskfdieu}{}\label{exr:tagname_alskfdieu}\leavevmode
+
+TODO: Exercise body
+
+\end{exercise}
+
+\begin{solution}
+TODO: solution body
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:tagname_apwioev}{}\label{exr:tagname_apwioev}\leavevmode
+
+TODO: Exercise body
+
+\end{exercise}
+
+\begin{solution}
+TODO: solution body
+\end{solution}
+
 \chapter{Durchschnitt und Standardabweichung schätzen}\label{durchschnitt-und-standardabweichung-schuxe4tzen}
 
-Wie die in Abschnitt \ref{stichprobenziehung-loesung} skizzierte Lösung für das Problem der zufälligen Stichprobe konkret umgesetzt wird, hängt von der Problemstellung ab. Im folgenden wird ein Verfahren zur Generalisierung der Schätzung der zentralen Tendenz und eines für die Schätzung der Variabilität basierend auf einer Stichprobe präsentiert.
+Wie die in Abschnitt \ref{stichprobenziehung-loesung} skizzierte Lösung für das Problem der zufälligen Stichprobe konkret umgesetzt wird, hängt von der Problemstellung ab. Im folgenden wird ein Verfahren zur Generalisierung der Schätzung der zentralen Tendenz
+basierend auf einer Stichprobe präsentiert.
 
 \section{Wo liegt der Durchschnitt der Grundgesamtheit?}\label{wo-liegt-der-durchschnitt-der-grundgesamtheit}
 
@@ -566,7 +704,7 @@ Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \r
 \end{figure}
 
 \begin{example}[Verträglichkeit]
-\protect\hypertarget{exm:agreableness}{}\label{exm:agreableness}Einer der Big-5 Persönlichkeitszüge ist die Verträglichkeit. Eine einfache Art die Big-5 zu messen ist mit den 10 Fragen aus dem ten-item personality inventory (TIPI) \citep{gosling2003}. Für die Verträglichkeit müssen zwei Items (Item 1: Critical, quarrelsome; Item 2: Sympathetic, warm) auf einer Likert-Skala von 1 bis 7 eingeordnet werden. Anschliessend werden die Antworten gemittelt. Ein Student möchte herausfinden, ob mit diesem Messinstrument die durchschnittliche Verträglichkeit aller Menschen mittig also bei \(4\) liegt. Dafür befragt er \(n = 100\) Personen und findet die Werte \(M=4.14, s = 1.69\).
+\protect\hypertarget{exm:agreableness}{}\label{exm:agreableness}Einer der Big-5 Persönlichkeitszüge ist die Verträglichkeit. Eine einfache Art die Big-5 zu messen ist mit den 10 Fragen aus dem ten-item personality inventory \emph{TIPI} \citep{gosling2003}. Für die Verträglichkeit müssen zwei Items (Item 1: Critical, quarrelsome; Item 2: Sympathetic, warm) auf einer Likert-Skala von 1 bis 7 eingeordnet werden. Anschliessend werden die Antworten gemittelt. Ein Student möchte herausfinden, ob mit diesem Messinstrument die durchschnittliche Verträglichkeit aller Menschen mittig also bei \(4\) liegt. Dafür befragt er \(n = 100\) Personen und findet die Werte \(M=4.14, s = 1.69\).
 \end{example}
 
 \begin{figure}
@@ -575,7 +713,7 @@ Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \r
 \caption{\label{fig:exm-agreableness-hist}Verteilung der 100 beobachteten Verträglichkeitswerte einer zufällig gezogenen Stichprobe.}
 \end{figure}
 
-Die Verteilung der Beobachtungen, siehe Abbildung \ref{fig:exm-agreableness-hist}, zeigt, dass alle Werte zwischen 1 und 7 vorkommen, aber keine zentrale Tendenz greifbar ist. Um herauszufinden wie zutreffend die Schätzung des Erwartungswertes der Verträglichkeit von \(M=4.14\) ist, stelle man sich wieder vor, dass der Student 1000-mal die Stichprobenziehung wiederholt und jedes mal das arithmetische Mittel \(M\) von neuem Berechnet. Die Verteilung der arithmetischen Mittel dieser Stichproben ist in Abbildung \ref{fig:exm-agreableness-hist-means} dargestellt. Bei dieser Verteilung kann erneut links und rechts 2.5\% der Werte abgeschnitten werden, um zum Schluss zu gelangen, dass das arithmetische Mittel in 95\% der Fälle zwischen \(3.7\) und \(4.3\) zu liegen kommt.
+Die Verteilung der Beobachtungen, siehe Abbildung \ref{fig:exm-agreableness-hist}, zeigt, dass alle Werte zwischen \(1\) und \(7\) vorkommen, aber keine zentrale Tendenz greifbar ist. Um herauszufinden wie zutreffend die Schätzung des Erwartungswertes der Verträglichkeit von \(M=4.14\) ist, stelle man sich wieder vor, dass der Student \(1000\)-mal die Stichprobenziehung wiederholt und jedes mal das arithmetische Mittel \(M\) von neuem berechnet. Die Verteilung der arithmetischen Mittel dieser Stichproben ist in Abbildung \ref{fig:exm-agreableness-hist-means} dargestellt. Bei dieser Verteilung kann erneut links und rechts \(2.5\%\) der Werte abgeschnitten werden, um zum Schluss zu gelangen, dass das arithmetische Mittel in \(95\%\) der Fälle zwischen \(3.7\) und \(4.3\) zu liegen kommt.
 
 \begin{figure}
 \centering
@@ -599,6 +737,8 @@ Auf \href{https://seeing-theory.brown.edu/probability-distributions/index.html\#
 
 \phantomsection\label{customdef-zentraler-grenzwertsatz}{Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie \textbf{Zentraler Grenzwertsatz} genannt wurde.} Der zentrale Grenzwertsatz besagt geneauer, dass bei einem Merkmal mit Erwartungswert \(\mu\) und Standardabweichung \(\sigma\), der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit \(\mu_g = \mu\) und \(\sigma_g = \frac{\sigma}{\sqrt{n}}\) entspricht, wobei \(n\) die Stichprobengrösse bezeichnet.
 
+\begin{caution}
+
 \begin{remark}
 \leavevmode
 
@@ -620,6 +760,8 @@ Auf \href{https://seeing-theory.brown.edu/probability-distributions/index.html\#
 
 \end{remark}
 
+\end{caution}
+
 Die Abbildungen \ref{fig:exm-angst-normal-approx} und \ref{fig:exm-agreableness-normal-approx} illustrieren den zentralen Grenzwertsatz für Beispiel \ref{exm:angst} und \ref{exm:agreableness} respektive, wobei die Normalverteilung der roten Linie entspricht. Dabei wird einstweilen angenommen, dass \(\mu\) und \(\sigma\) bekannt sind. Diese Annahme wird später aufgelöst und dient hier lediglich der Illustration.
 
 \begin{figure}
@@ -634,7 +776,7 @@ Die Abbildungen \ref{fig:exm-angst-normal-approx} und \ref{fig:exm-agreableness-
 \caption{\label{fig:exm-agreableness-normal-approx}Die arithmetischen Mittel sind Normalverteilt mit Parametern \(\mu_g = 4.14\) und \(\sigma_g = 1.69 / \sqrt{100}\).}
 \end{figure}
 
-Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte ziehen von Stichproben unnötig. Die Normalverteilung ist theoretisch konstruiert und ihr 2.5\%- und 97.5\%-Perzentil können theoretisch hergeleitet werden. Tabelle \ref{tab:quantiles-norm} wird kann beobachtet werden, dass für unsere zwei Beispiele die Perzentile der Stichprobe und der Normalverteilung sehr ähnlich, wenn auch nicht exakt gleich sind. Die Ungenauigkeit rührt daher, dass der zentrale Grenzwertsatz nur dann exakt funktioniert, wenn die Anzahl Beobachtungen (unendlich) gross ist.
+Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte ziehen von Stichproben unnötig. Die Normalverteilung ist theoretisch konstruiert und ihr \(2.5\%\)- und \(97.5\%\)-Perzentil können theoretisch hergeleitet werden. Tabelle \ref{tab:quantiles-norm} wird kann beobachtet werden, dass für unsere zwei Beispiele die Perzentile der Stichprobe und der Normalverteilung sehr ähnlich, wenn auch nicht exakt gleich sind. Die Ungenauigkeit rührt daher, dass der zentrale Grenzwertsatz nur dann exakt funktioniert, wenn die Anzahl Beobachtungen (unendlich) gross ist.
 
 \begin{table}
 \centering
@@ -652,9 +794,9 @@ Vertraeglichkeit & 3.7 & 4.3 & 3.66 & 4.34 & 3.66 & 4.34\\
 \end{tabular}
 \end{table}
 
-Einstweilen wurde hier angenommen, dass die Streuung des Merkmals \(\sigma\) bekannt ist. Dies ist in der Realität nie der Fall. \phantomsection\label{customdef-student-verteilung}{Wenn \(\sigma\) also auch aus der Stichprobe geschätzt werden muss, ist die Ännäherung der Verteilung der arithmetischen Mittel besser gegeben mit einer \textbf{Student-\(t\)-Verteilung} oder kurz \(t\)-Verteilung.} Die grüne Linie in Abbildungen \ref{fig:exm-angst-normal-approx} und \ref{fig:exm-agreableness-normal-approx} entspricht der \(t\)-Verteilung im jeweiligen Beispiel.
+Einstweilen wurde hier angenommen, dass die Streuung des Merkmals \(\sigma\) bekannt ist. Dies ist in der Realität nie der Fall und eine weitere, wenn auch weniger grosse Ungenauigkeitsquelle. \phantomsection\label{customdef-student-verteilung}{Wenn \(\sigma\) also auch aus der Stichprobe geschätzt werden muss, ist die Ännäherung der Verteilung der arithmetischen Mittel besser gegeben mit einer \textbf{Student-\(t\)-Verteilung} oder kurz \(t\)-Verteilung.} Die grüne gestrichtelte Linie in den Abbildungen \ref{fig:exm-angst-normal-approx} und \ref{fig:exm-agreableness-normal-approx} entspricht der \(t\)-Verteilung im jeweiligen Beispiel.
 
-Der Unterschied zwischen der Normalverteilung und der \(t\)-Verteilung ist nur sichtbar, wenn \(n\) klein ist. In Beispiel \ref{exm:angst} mit \(n = 30\) ist ein kleiner Unterschied, in Beispiel \ref{exm:agreableness} mit \(n = 100\) ist kein Unterschied zwischen der Normalverteilung und der \(t\)-Verteilung sichtbar. Tatsächlich wird die \(t\)-Verteilung mit einem Parameter charaktisiert, welcher Freiheitsgrade {[}eng. degrees of freedom, \(df\){]} genannt wird. In Abbildung \ref{fig:t-distribution} wird die \(t\)-Verteilung mit verschiedenen Freiheitsgraden mit der Normalverteilung verglichen. Bei der \(t\)-Verteilung mit den kleinsten Freiheitsgraden sind extremere Werte wahrscheinlicher als \(t\)-Verteilungen mit grösseren Freiheitsgraden.
+Der Unterschied zwischen der Normalverteilung und der \(t\)-Verteilung ist nur sichtbar, wenn \(n\) klein ist. In Beispiel \ref{exm:angst} mit \(n = 30\) ist ein kleiner Unterschied, in Beispiel \ref{exm:agreableness} mit \(n = 100\) ist kein Unterschied zwischen der Normalverteilung und der \(t\)-Verteilung sichtbar. \phantomsection\label{customdef-freiheitsgrade}{Tatsächlich wird die \(t\)-Verteilung mit einem Parameter charaktisiert, welcher \textbf{Freiheitsgrade} (eng. degrees of freedom, \(df\)) genannt wird.} In Abbildung \ref{fig:t-distribution} wird die \(t\)-Verteilung mit verschiedenen Freiheitsgraden mit der Normalverteilung verglichen. Bei der \(t\)-Verteilung mit den kleinsten Freiheitsgraden sind extremere Werte wahrscheinlicher als \(t\)-Verteilungen mit grösseren Freiheitsgraden.
 
 \begin{figure}
 \centering
@@ -670,18 +812,16 @@ Die arithmetischen Mittel bei unbekannter Standardabweichung sind bei wiederholt
 
 berechnet werden, wobei \(\bar{x}\) das arithmetische Mittel, \(s\) die Standardabweichung und \(t_{97.5\%, n-1}\) dem Wert des 97.5\%-Perzentil einer auf 0 zentrierten \(t\)-Verteilung mit \(n-1\) Freiheitsgraden entspricht. Letzere Perzentile der \(t\)-Verteilung können bei Bedarf in entsprechenden Tabellen nachgeschlagen werden. Als Gedankenstütze kann für \(t_{97.5\%, n-1}\) immer \(2\) gedacht werden, da dies ungefähr dem wahren Wert entspricht, wenn \(n\) grösser als \(50\) ist.
 
-Das 2.5\% und das 97.5\% Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines \phantomsection\label{customdef-interval}{\textbf{Intervalles}. Ein Intervall bezeichnet durch die Symbolik \([\)untere Schranke, obere Schranke\(]\) beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.} \phantomsection\label{customdef-confidence-interval}{Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in 95\% der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu 95\% sicher oder \emph{konfident} sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als 95\%-\textbf{Konfidenzintervall} (symbol KI) bezeichnet.}
+Das \(2.5\%\) und das \(97.5\%\) Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines \phantomsection\label{customdef-interval}{\textbf{Intervalles}. Ein Intervall bezeichnet durch die Symbolik \([\)untere Schranke, obere Schranke\(]\) beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.} \phantomsection\label{customdef-confidence-interval}{Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in \(95\%\) der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu \(95\%\) sicher oder \emph{konfident} sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als \(95\%\)-\textbf{Konfidenzintervall} (symbol KI) bezeichnet.}
 
-In Beispiel \ref{exm:angst}, kann aus der Tabelle \ref{tab:quantiles-norm} entnommen werden, dass die Angst in der Population bei \(M = 43.34\) \(95\%\)-KI \([42.18,44.5]\) liegt. In Beispiel \ref{exm:agreableness}, kann aus der Tabelle \ref{tab:quantiles-norm} entnommen werden, dass die Verträglichkeit in der Population bei \(M = 4.14\) \(95\%\)-KI \([3.66,4.34]\) liegt.
+In Beispiel \ref{exm:angst}, kann aus der Tabelle \ref{tab:quantiles-norm} entnommen werden, dass die Angst in der Population bei \(M = 43.34\) \(95\%\) KI \([42.18,44.5]\) liegt. In Beispiel \ref{exm:agreableness}, kann aus der Tabelle \ref{tab:quantiles-norm} entnommen werden, dass die Verträglichkeit in der Population bei \(M = 4.14\) \(95\%\) KI \([3.66,4.34]\) liegt. Wann immer eine Schätzung eines zentralen Wertes berichtet wird, soll dies ab jetzt in der soeben gezeigten Darstellung inklusive Angabe des Konfidenzintervalls erfolgen. Damit wird der Leserin aufgezeigt, wo der Schätzwert der zentralen Tendenz liegt und gleichzeigtig wird intuitiv vermittelt wie genau die Schätzung ist.
 
 Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse \(n\) oder die geschätzte Standardabweichung \(s\) auf die Länge des Konfidenzintervalls auswirkt. Dies kann in den Übungen \ref{exr:ki-mean-n-vary} und \ref{exr:ki-mean-s-vary} selbst erforscht werden.
 
 \section{Übungen}\label{uxfcbungen-1}
 
 \begin{exercise}
-\protect\hypertarget{exr:interpret-report1}{}\label{exr:interpret-report1}
-
-TODO
+\protect\hypertarget{exr:interpret-report1}{}\label{exr:interpret-report1}\leavevmode
 
 \begin{verbatim}
 ## [1] "hi"
@@ -694,9 +834,7 @@ TODO
 \end{solution}
 
 \begin{exercise}
-\protect\hypertarget{exr:interpret-report2}{}\label{exr:interpret-report2}
-
-TODO
+\protect\hypertarget{exr:interpret-report2}{}\label{exr:interpret-report2}\leavevmode
 
 \begin{verbatim}
 ## [1] "hi"
@@ -709,7 +847,9 @@ TODO
 \end{solution}
 
 \begin{exercise}
-\protect\hypertarget{exr:ki-approx-normal}{}\label{exr:ki-approx-normal}Für ein Experiment werden in drei Runden jeweils \(\ensuremath{10^{4}}\) Zufallsstichproben erhoben mit respektive \(10\), \(40\) und \(100\) Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung \ref{fig:ki-approx-normal1} dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.
+\protect\hypertarget{exr:ki-approx-normal}{}\label{exr:ki-approx-normal}\leavevmode
+
+Für ein Experiment werden in drei Runden jeweils \(\ensuremath{10^{4}}\) Zufallsstichproben erhoben mit respektive \(10\), \(40\) und \(100\) Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung \ref{fig:ki-approx-normal1} dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.
 
 \begin{figure}
 \centering
@@ -718,6 +858,7 @@ TODO
 \end{figure}
 
 Die arithmetischen Mittel der 10'000 Stichproben sind im Datensatz \texttt{04-exr-zentraler-grenzwertsatz.sav} festgehalten. In der Spalte \texttt{n\_10} zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallstichprobe mit 10 Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse \(n\). Erstellen Sie ein Histogramm mit der Erweiterung \texttt{JJStatsPlot} und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.
+
 \end{exercise}
 
 \begin{solution}
@@ -731,7 +872,7 @@ Die Übereinanderlegung des jeweiligen Histograms und der Wahrscheinlichkeitsdic
 \end{solution}
 
 \begin{exercise}
-\protect\hypertarget{exr:ki-mean-n-vary}{}\label{exr:ki-mean-n-vary}
+\protect\hypertarget{exr:ki-mean-n-vary}{}\label{exr:ki-mean-n-vary}\leavevmode
 
 Eine Mensa will herausfinden, wie lange die Leute um 12h durchschnittlich anstehen müssen. Dazu befragt sie 5 Kund:innen. Das Resultat der Untersuchung ist, dass die Kund:innen im Durchschnitt \(0.4\) Stunden anstehen müssen. Leider ist das Konfidenzintervall sehr gross. Da die Mensa nicht weiss, wie viele Leute befragt werden müssen, um ein kleineres Konfidenzintervall zu erhalten befragt sie in 4 weiteren Runden jeweils 20, 50, 100 und 1000 Kund:innen. Die Daten aller 5 Untersuchungen sind unter \texttt{04-exr-stichprobengroesse.sav} abgelegt. Für jede der 5 Stichproben:
 
@@ -794,9 +935,7 @@ Abbildung \ref{fig:sol-ki-mean-n-vary} zeigt die Berechnunganweisungen für Jamo
 \end{solution}
 
 \begin{exercise}
-\protect\hypertarget{exr:ki-mean-s-vary}{}\label{exr:ki-mean-s-vary}
-
-TODO
+\protect\hypertarget{exr:ki-mean-s-vary}{}\label{exr:ki-mean-s-vary}\leavevmode
 
 \begin{verbatim}
 ## [1] "hi"
@@ -808,9 +947,153 @@ TODO
 TODO
 \end{solution}
 
-\chapter{Durchschnitt testen}\label{durchschnitt-testen}
+\chapter{Zentrale Tendenz testen}\label{zentrale-tendenz-testen}
 
-\section{Entspricht der Durchschnitt der Grundgesamtheit einem gewissen Wert?}\label{entspricht-der-durchschnitt-der-grundgesamtheit-einem-gewissen-wert}
+Eine andere Fragestellung die mit Daten oft beantwortet wird ist, ob eine gewisse Aussage wahr ist oder falsch. \phantomsection\label{customdef-hypothese}{Eine solche Aussage wird \textbf{Hypothese} (Symbol: \(H\)) genannt.} Eine Hypothese könnte zum Beispiel sein:
+
+\begin{quote}
+\(H:\) Es regnet.
+\end{quote}
+
+Ist die Hypothese einmal gefunden, können Daten gesammelt werden, um diese Hypothese zu bestätigen oder zu falsifizieren. Man geht nach draussen und spürt Regen auf der Haut bedeutet \(H\) ist wahr, spürt man keinen Regen, so ist \(H\) falsch.
+
+Wenn eine Hypothese wahr ist, dann ist das Gegenteil der Hypothese falsch. Weil oft über die Hypothese und ihr Gegenteil debatiert wird, ist es nützlich die beiden auch terminologisch auseinanderhalten zu können. \phantomsection\label{customdef-nullhypothese}{Die Hypothese, welche den bisherige Informationsstand reflektiert wird \textbf{Nullhypothese} (Symbol \(H_0\)) genannt.} War es draussen bei der letzten Messung vor einer Stunde schönes Wetter, dann ist die Nullhypothese
+
+\begin{quote}
+\(H_0:\) Es regnet nicht.
+\end{quote}
+
+\phantomsection\label{customdef-alternativhypothese}{Das Gegenteil der Nullhypothese wird \textbf{Alternativhypothese} (Symbol \(H_1\)) genannt.} Im Beispiel ist die Alternativhypothese
+
+\begin{quote}
+\(H_1:\) Es regnet.
+\end{quote}
+
+\section{Entspricht der Erwartungswert einem gewissen Wert?}\label{entspricht-der-erwartungswert-einem-gewissen-wert}
+
+Um eine Hypothese mit Daten überprüfbar zu machen, muss diese in eine Form gebracht werden, welche Daten einbezieht. Eine einfache Form einer solchen überprüfbaren Hypothese ist
+
+\begin{quote}
+\(H:\) Das durchschnittliche Vermögen einer in der Schweiz lebenden Person beträgt \(100'000\) CHF.
+\end{quote}
+
+Wenn die Population alle in der Schweiz lebenden Personen sind, dann entspricht dies also der Nullhypothese
+
+\begin{quote}
+\(H_0:\mu = 100'000\).
+\end{quote}
+
+Abstrahiert, soll bei dieser Problemstellung herausgefunden werden, ob der Erwartungswert einer Population einem gewissen Wert entspricht. Das Gegenteil dieser Nullhypothese ist die Alternativhypothese
+
+\begin{quote}
+\(H_1: \mu \neq 100'000\).
+\end{quote}
+
+Dies bedeutet, dass das Vermögen der Population nicht bei \(100'000\) CHF liegt. \phantomsection\label{customdef-zweiseitige-hypothese}{Weil die Alternativhypothese hier zwei Ausgänge zulässt, nämlich kleiner oder grösser als \(100'000\) CHF wird diese Art \textbf{zweiseitige Hypothese} bezeichnet.}.
+
+Eine weitere Form der Hypothese wäre
+
+\begin{quote}
+\(H:\) Das durchschnittliche Vermögen einer in der Schweiz lebenden Person beträgt weniger als oder genau \(100'000\) CHF.
+\end{quote}
+
+In Formelsprache übersetzt entspricht dies
+
+\begin{quote}
+\(H_1: \mu \leq 100'000\).
+\end{quote}
+
+Das Gegenteil davon ist, wenn das duchschnittliche Vermögen grösser und ungleich 100'000 CHF ist, also
+
+\begin{quote}
+\(H_1: \mu > 100'000\).
+\end{quote}
+
+\begin{caution}
+
+\begin{remark}
+
+Die verwendeten Zeichen in den Formeln sind
+
+\begin{itemize}
+\tightlist
+\item
+  \(=\): Gleichheit, sprich ``gleich''. Beispiele:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(3 = 3\) (\(3\) gleich \(3\)) ist eine wahre Aussage.
+  \item
+    \(3 = 4\) (\(3\) gleich \(4\)) ist eine falsche Aussage.
+  \end{itemize}
+\item
+  \(\neq\): Ungleichheit, sprich ``ungleich'' oder ``nicht gleich''. Beispiele:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(3 \neq 3\) (\(3\) ist nicht gleich \(3\)) ist eine falsche Aussage.
+  \item
+    \(3 \neq 4\) (\(3\) ist nicht gleich \(4\)) ist eine wahre Aussage.
+  \end{itemize}
+\item
+  \(<\): Kleiner, sprich ``kleiner''. Beispiele:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(4 < 3\) (4 ist kleiner als 3) ist eine falsche Aussage.
+  \item
+    \(3 < 3\) (3 ist kleiner als 3) ist eine falsche Aussage.
+  \item
+    \(3 < 4\) (3 ist kleiner als 4) ist eine wahre Aussage.
+  \end{itemize}
+\item
+  \(\leq\) Kleiner gleich, sprich ``kleiner gleich''. Beispiele:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(4 \leq 3\) (4 ist kleiner oder gleich wie 3) ist eine falsche Aussage.
+  \item
+    \(3 \leq 3\) (3 ist kleiner oder gleich wie 3) ist eine wahre Aussage.
+  \item
+    \(3 \leq 4\) (3 ist kleiner oder gleich wie 4) ist eine wahre Aussage.
+  \end{itemize}
+\item
+  \(>\): Grösser, sprich ``grösser''. Beispiele:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(4 > 3\) (4 ist grösser als 3) ist eine wahre Aussage.
+  \item
+    \(3 > 3\) (3 ist grösser als 3) ist eine falsche Aussage.
+  \item
+    \(3 > 4\) (3 ist grösser als 4) ist eine falsche Aussage.
+  \end{itemize}
+\item
+  \(\geq\) Grösser gleich, sprich ``grösser gleich''. Beispiele:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(4 \geq 3\) (4 ist grösser oder gleich wie 3) ist eine wahre Aussage.
+  \item
+    \(3 \geq 3\) (3 ist grösser oder gleich wie 3) ist eine wahre Aussage.
+  \item
+    \(3 \geq 4\) (3 ist grösser oder gleich wie 4) ist eine falsche Aussage.
+  \end{itemize}
+\end{itemize}
+
+\end{remark}
+
+\end{caution}
+
+\begin{example}[Alexithymie]
+\protect\hypertarget{exm:alexithymie}{}\label{exm:alexithymie}Mit Gefühlsblindheit oder \emph{Alexithymie} (griechisch: a = ohne, lexis= lesen, sprechen, thymie = Gefühle) werden Einschränkungen bei der Fähigkeit Emotionen wahrzunehmen, zu erkennen und zu beschreiben bezeichnet. Es gibt ein online \href{https://www.alexithymie.com/de/}{Messinstrument}, welches die Alexithymie auf einer Skala von \(37\) Punkten (kleine Gefühlsblindheit) bis \(185\) (grosse Gefühlsblindheit) misst. Die Skala wurde so gewählt, dass die durchschnittliche Alexithymie aller Menschen bei \(100\) liegt. Eine Soziologin interessiert sich nun dafür, ob junge Menschen unter \(25\) durchschnittlich weniger Alexithymie aufweisen als die Gesamtbevölkerung. Um dies zu testen befragt sie \(n = 1823\) unter \(25\)-jährige mit besagtem Messinstrument. In dieser Gruppe wurde eine durchschnittliche Alexithymie von \(M = 92.3\) Punkten festgestellt.
+\end{example}
 
 \section{Weicht der gefundene Durchschnitt stark vom hypothetischen Wert ab?}\label{weicht-der-gefundene-durchschnitt-stark-vom-hypothetischen-wert-ab}
 
@@ -844,9 +1127,15 @@ TODO
 \begin{itemize}
 \tightlist
 \item
+  \hyperref[customdef-alternativhypothese]{Alternativhypothese}
+\item
   \hyperref[customdef-erwartungswert]{Erwartungswert}
 \item
+  \hyperref[customdef-freiheitsgrade]{Freiheitsgrade}
+\item
   \hyperref[customdef-grundgesamtheit]{Grundgesamtheit}
+\item
+  \hyperref[customdef-hypothese]{Hypothese}
 \item
   \hyperref[customdef-iqr]{Interquartilabstand}
 \item
@@ -859,6 +1148,8 @@ TODO
   \hyperref[customdef-modus]{Modus}
 \item
   \hyperref[customdef-normalverteilung]{Normalverteilung}
+\item
+  \hyperref[customdef-nullhypothese]{Nullhypothese}
 \item
   \hyperref[customdef-perzentil]{Perzentil}
 \item
@@ -881,6 +1172,8 @@ TODO
   \hyperref[customdef-arithmetisches-mittel]{arithmetische Mittel}
 \item
   \hyperref[customdef-intervallskaliert]{intervallskaliert}
+\item
+  \hyperref[customdef-zweiseitige-hypothese]{zweiseitige Hypothese}
 \end{itemize}
 
   \bibliography{book.bib,packages.bib}

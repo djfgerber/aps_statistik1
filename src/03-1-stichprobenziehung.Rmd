@@ -10,7 +10,7 @@ x <- rnorm(n, ex_angst_mean, ex_angst_sd)
 ```
 
 :::{.example #angst name="Angst"}
-Forschende haben ein Messinstrument STAI (State-Trait Anxiety Inentory), welches Angst misst [@spielberger1983manual]. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst man aktuell empfindet. Die so gemessene Angst enstpricht einem Wert zwischen $20$ und $80$. A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit $n =`r n`$ zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte $M=`r round(mean(x), 2)`, s = `r round(sd(x),2)`, n = `r n`$ für die Angst in ihren Beobachtungen.
+Forschende haben ein Messinstrument State-Trait Anxiety Inentory _STAI_, welches Angst misst [@spielberger1983manual]. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst man aktuell empfindet. Die so gemessene Angst enstpricht einem Wert zwischen $20$ und $80$. A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit $n =`r n`$ zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte $M=`r round(mean(x), 2)`, s = `r round(sd(x),2)`, n = `r n`$ für die Angst in ihren Beobachtungen.
 :::
 
 [Zufällig ausgewählte Beobachtungen eines Merkmals werden als __Stichprobe__ bezeichnet.]{.customdef #customdef-stichprobe} [Nach der Auswahl der Stichprobe ist die __Stichprobenziehung__.]{.customdef #customdef-stichprobenziehung} Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? [Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als __Population__]{.customdef #customdef-population} [oder __Grundgesamtheit__ bezeichnet]{.customdef #customdef-grundgesamtheit}. [Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als __Zufallsstichprobe__ bezeichnet.]{.customdef #customdef-zufallsstichprobe} 
@@ -106,3 +106,32 @@ do.call(grid.arrange, c(plots, ncol = 3))
 Es kann also zusammenfassend gesagt werden, dass die gezogene Stichprobe wohl eher aus einer Population mit tiefen Angst-Werten gezogen wurde als aus einer Population mit eher höheren Angst-Werten. Ganz sicher kann man jedoch nie sein, da die Werte in der Population eigentlich unbekannt sind. Eine genaue Quantifizierung dieser Unsicherheit kann mit Hilfe der Statistik erreicht werden und wird in den folgenden Kapiteln dieses Buches erläutert.
 
 ## Übungen
+
+::: {.exercise  #tagname_alskfdieu}
+<!-- 
+Ziel: 
+- Begriffsklärung Stichprobe / Population / Grundgesamtheit / Zufallsstichprobe
+-->
+TODO: Exercise body
+:::
+
+:::{.solution}
+TODO: solution body
+:::
+
+::: {.exercise  #tagname_apwioev}
+<!-- 
+Ziel: 
+- Verständnis Problem/chance der zufallsstichprobe
+-->
+TODO: Exercise body
+:::
+
+:::{.solution}
+TODO: solution body
+:::
+
+
+
+
+

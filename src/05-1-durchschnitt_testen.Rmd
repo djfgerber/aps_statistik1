@@ -1,6 +1,79 @@
-# Durchschnitt testen
+# Zentrale Tendenz testen {#zentrale-tendenz-testen}
 
-## Entspricht der Durchschnitt der Grundgesamtheit einem gewissen Wert?
+Eine andere Fragestellung die mit Daten oft beantwortet wird ist, ob eine gewisse Aussage wahr ist oder falsch. [Eine solche Aussage wird **Hypothese** (Symbol: $H$) genannt.]{.customdef #customdef-hypothese} Eine Hypothese könnte zum Beispiel sein: 
+
+> $H:$ Es regnet. 
+
+Ist die Hypothese einmal gefunden, können Daten gesammelt werden, um diese Hypothese zu bestätigen oder zu falsifizieren. Man geht nach draussen und spürt Regen auf der Haut bedeutet $H$ ist wahr, spürt man keinen Regen, so ist $H$ falsch.
+
+Wenn eine Hypothese wahr ist, dann ist das Gegenteil der Hypothese falsch. Weil oft über die Hypothese und ihr Gegenteil debatiert wird, ist es nützlich die beiden auch terminologisch auseinanderhalten zu können. [Die Hypothese, welche den bisherige Informationsstand reflektiert wird **Nullhypothese** (Symbol $H_0$) genannt.]{.customdef #customdef-nullhypothese} War es draussen bei der letzten Messung vor einer Stunde schönes Wetter, dann ist die Nullhypothese
+
+> $H_0:$ Es regnet nicht. 
+
+[Das Gegenteil der Nullhypothese wird **Alternativhypothese** (Symbol $H_1$) genannt.]{.customdef #customdef-alternativhypothese} Im Beispiel ist die Alternativhypothese 
+
+> $H_1:$ Es regnet.
+
+## Entspricht der Erwartungswert einem gewissen Wert?
+
+Um eine Hypothese mit Daten überprüfbar zu machen, muss diese in eine Form gebracht werden, welche Daten einbezieht. Eine einfache Form einer solchen überprüfbaren Hypothese ist 
+
+> $H:$ Das durchschnittliche Vermögen einer in der Schweiz lebenden Person beträgt $100'000$ CHF. 
+
+Wenn die Population alle in der Schweiz lebenden Personen sind, dann entspricht dies also der Nullhypothese
+
+> $H_0:\mu = 100'000$. 
+
+Abstrahiert, soll bei dieser Problemstellung herausgefunden werden, ob der Erwartungswert einer Population einem gewissen Wert entspricht. Das Gegenteil dieser Nullhypothese ist die Alternativhypothese 
+
+> $H_1: \mu \neq 100'000$. 
+
+Dies bedeutet, dass das Vermögen der Population nicht bei $100'000$ CHF liegt. [Weil die Alternativhypothese hier zwei Ausgänge zulässt, nämlich kleiner oder grösser als $100'000$ CHF wird diese Art **zweiseitige Hypothese** bezeichnet.]{.customdef #customdef-zweiseitige-hypothese}. 
+
+Eine weitere Form der Hypothese wäre 
+
+> $H:$ Das durchschnittliche Vermögen einer in der Schweiz lebenden Person beträgt weniger als oder genau $100'000$ CHF. 
+
+In Formelsprache übersetzt entspricht dies 
+
+> $H_1: \mu \leq 100'000$. 
+
+Das Gegenteil davon ist, wenn das duchschnittliche Vermögen grösser und ungleich 100'000 CHF ist, also 
+
+> $H_1: \mu > 100'000$. 
+
+::::{.caution data-latex=""}
+::: {.remark}
+Die verwendeten Zeichen in den Formeln sind
+
+- $=$: Gleichheit, sprich "gleich". Beispiele: 
+  - $3 = 3$ ($3$ gleich $3$) ist eine wahre Aussage. 
+  - $3 = 4$ ($3$ gleich $4$) ist eine falsche Aussage.
+- $\neq$: Ungleichheit, sprich "ungleich" oder "nicht gleich". Beispiele: 
+  - $3 \neq 3$ ($3$ ist nicht gleich $3$) ist eine falsche Aussage. 
+  - $3 \neq 4$ ($3$ ist nicht gleich $4$) ist eine wahre Aussage.
+- $<$: Kleiner, sprich "kleiner". Beispiele: 
+  - $4 < 3$ (4 ist kleiner als 3) ist eine falsche Aussage. 
+  - $3 < 3$ (3 ist kleiner als 3) ist eine falsche Aussage. 
+  - $3 < 4$ (3 ist kleiner als 4) ist eine wahre Aussage.
+- $\leq$ Kleiner gleich, sprich "kleiner gleich". Beispiele: 
+  - $4 \leq 3$ (4 ist kleiner oder gleich wie 3) ist eine falsche Aussage.
+  - $3 \leq 3$ (3 ist kleiner oder gleich wie 3) ist eine wahre Aussage. 
+  - $3 \leq 4$ (3 ist kleiner oder gleich wie 4) ist eine wahre Aussage.
+- $>$: Grösser, sprich "grösser". Beispiele: 
+  - $4 > 3$ (4 ist grösser als 3) ist eine wahre Aussage. 
+  - $3 > 3$ (3 ist grösser als 3) ist eine falsche Aussage. 
+  - $3 > 4$ (3 ist grösser als 4) ist eine falsche Aussage.
+- $\geq$ Grösser gleich, sprich "grösser gleich". Beispiele: 
+  - $4 \geq 3$ (4 ist grösser oder gleich wie 3) ist eine wahre Aussage. 
+  - $3 \geq 3$ (3 ist grösser oder gleich wie 3) ist eine wahre Aussage. 
+  - $3 \geq 4$ (3 ist grösser oder gleich wie 4) ist eine falsche Aussage.
+:::
+::::
+
+:::{.example #alexithymie name="Alexithymie"}
+Mit Gefühlsblindheit oder _Alexithymie_ (griechisch: a = ohne, lexis= lesen, sprechen, thymie = Gefühle) werden Einschränkungen bei der Fähigkeit Emotionen wahrzunehmen, zu erkennen und zu beschreiben bezeichnet. Es gibt ein online [Messinstrument](https://www.alexithymie.com/de/), welches die Alexithymie auf einer Skala von $37$ Punkten (kleine Gefühlsblindheit) bis $185$ (grosse Gefühlsblindheit) misst. Die Skala wurde so gewählt, dass die durchschnittliche Alexithymie aller Menschen bei $100$ liegt. Eine Soziologin interessiert sich nun dafür, ob junge Menschen unter $25$ durchschnittlich weniger Alexithymie aufweisen als die Gesamtbevölkerung. Um dies zu testen befragt sie $n = 1823$ unter $25$-jährige mit besagtem Messinstrument. In dieser Gruppe wurde eine durchschnittliche Alexithymie von $M = 92.3$ Punkten festgestellt.
+:::
 
 ## Weicht der gefundene Durchschnitt stark vom hypothetischen Wert ab?
 
