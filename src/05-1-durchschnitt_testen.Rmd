@@ -36,7 +36,7 @@ Eine weitere Form der Hypothese wäre
 
 In Formelsprache übersetzt entspricht dies 
 
-> $H_1: \mu \leq 100'000$. 
+> $H_0: \mu \leq 100'000$. 
 
 Das Gegenteil davon ist, wenn das duchschnittliche Vermögen grösser und ungleich 100'000 CHF ist, also 
 
@@ -47,29 +47,240 @@ Das Gegenteil davon ist, wenn das duchschnittliche Vermögen grösser und unglei
 Die verwendeten Zeichen in den Formeln sind
 
 - $=$: Gleichheit, sprich "gleich". Beispiele: 
-  - $3 = 3$ ($3$ gleich $3$) ist eine wahre Aussage. 
-  - $3 = 4$ ($3$ gleich $4$) ist eine falsche Aussage.
+    - $3 = 3$ ($3$ gleich $3$) ist eine wahre Aussage. 
+    - $3 = 4$ ($3$ gleich $4$) ist eine falsche Aussage.
 - $\neq$: Ungleichheit, sprich "ungleich" oder "nicht gleich". Beispiele: 
-  - $3 \neq 3$ ($3$ ist nicht gleich $3$) ist eine falsche Aussage. 
-  - $3 \neq 4$ ($3$ ist nicht gleich $4$) ist eine wahre Aussage.
+    - $3 \neq 3$ ($3$ ist nicht gleich $3$) ist eine falsche Aussage. 
+    - $3 \neq 4$ ($3$ ist nicht gleich $4$) ist eine wahre Aussage.
 - $<$: Kleiner, sprich "kleiner". Beispiele: 
-  - $4 < 3$ (4 ist kleiner als 3) ist eine falsche Aussage. 
-  - $3 < 3$ (3 ist kleiner als 3) ist eine falsche Aussage. 
-  - $3 < 4$ (3 ist kleiner als 4) ist eine wahre Aussage.
-- $\leq$ Kleiner gleich, sprich "kleiner gleich". Beispiele: 
-  - $4 \leq 3$ (4 ist kleiner oder gleich wie 3) ist eine falsche Aussage.
-  - $3 \leq 3$ (3 ist kleiner oder gleich wie 3) ist eine wahre Aussage. 
-  - $3 \leq 4$ (3 ist kleiner oder gleich wie 4) ist eine wahre Aussage.
+    - $4 < 3$ ($4$ ist kleiner als $3$) ist eine falsche Aussage. 
+    - $3 < 3$ ($3$ ist kleiner als $3$) ist eine falsche Aussage. 
+    - $3 < 4$ ($3$ ist kleiner als $4$) ist eine wahre Aussage.
+- $\leq$: Kleiner gleich, sprich "kleiner gleich". Beispiele: 
+    - $4 \leq 3$ ($4$ ist kleiner oder gleich wie $3$) ist eine falsche Aussage.
+    - $3 \leq 3$ ($3$ ist kleiner oder gleich wie $3$) ist eine wahre Aussage. 
+    - $3 \leq 4$ ($3$ ist kleiner oder gleich wie $4$) ist eine wahre Aussage.
 - $>$: Grösser, sprich "grösser". Beispiele: 
-  - $4 > 3$ (4 ist grösser als 3) ist eine wahre Aussage. 
-  - $3 > 3$ (3 ist grösser als 3) ist eine falsche Aussage. 
-  - $3 > 4$ (3 ist grösser als 4) ist eine falsche Aussage.
-- $\geq$ Grösser gleich, sprich "grösser gleich". Beispiele: 
-  - $4 \geq 3$ (4 ist grösser oder gleich wie 3) ist eine wahre Aussage. 
-  - $3 \geq 3$ (3 ist grösser oder gleich wie 3) ist eine wahre Aussage. 
-  - $3 \geq 4$ (3 ist grösser oder gleich wie 4) ist eine falsche Aussage.
+    - $4 > 3$ ($4$ ist grösser als $3$) ist eine wahre Aussage. 
+    - $3 > 3$ ($3$ ist grösser als $3$) ist eine falsche Aussage. 
+    - $3 > 4$ ($3$ ist grösser als $4$) ist eine falsche Aussage.
+- $\geq$: Grösser gleich, sprich "grösser gleich". Beispiele: 
+    - $4 \geq 3$ ($4$ ist grösser oder gleich wie $3$) ist eine wahre Aussage. 
+    - $3 \geq 3$ ($3$ ist grösser oder gleich wie $3$) ist eine wahre Aussage. 
+    - $3 \geq 4$ ($3$ ist grösser oder gleich wie $4$) ist eine falsche Aussage.
+    
 :::
 ::::
+
+
+:::{.example #vermoegen name="Vermögen"}
+
+```{r exm-vermoegen}
+gen_exm_vermoegen <- function(){
+  # x ~ chisq(df)
+  # a * x ~ a chisq(df)
+  # E(a*x) ~ a E(chisq(df)) = a df
+  # Var(a*x) ~ a^2 Var(x) = a^2 2k / n
+  mu0 <- 100000
+  n_bag <- 200L
+  n <- 20L
+  n_samples <- 3000L
+  df <- 3L
+  set.seed(23415)
+  scores_hover <- (160/3)*rchisq(n, df)
+  x <- 1000*scores_hover
+  scale_factor <- mu0/3
+  x_mean <- (160/3)*1000*df
+  x_sd <- ((160/3)*1000)^2 * 2 * df
+  x_means <- map_dbl(1:n_samples, ~ mean(scale_factor*rchisq(n, df)))
+  q95_x_means <- x_means %>% quantile(c(0.95)) %>% unlist() %>% unname()
+  p_value <- mean(x_means > (x %>% mean()))
+  
+  scores_bag <- list(40*rchisq(n_bag,df),
+                   60*rchisq(n_bag,df))
+  plots <- list()
+  for (i in 1:length(scores_bag)) {
+    plots[[i]] <- plot_ball_bag(
+      scores_bag = scores_bag[[i]],
+      scores_hover = scores_hover,
+      score_name = "1000 CHF",
+      seed = 123+i,
+      no_legend = c(TRUE, FALSE)[i],
+      limit_scores = c(0, 800)
+    )
+  }
+  
+  plot_hist_density <- plot_hist_denstiy_expected_value(
+    x_means, 
+    scale_factor*df, 
+    sqrt((scale_factor)^2*2*df), 
+    n,
+    "Vermögen CHF",
+    5000)
+
+  return(mget(ls()))
+}
+exm_vermoegen <- gen_exm_vermoegen()
+```
+
+Eine Sozialpolitikberatungsfirma will herausfinden, ob das duchschnittliche Vermögen der in der Schweiz lebenden Personen im letzten Jahr gestiegen ist. Sie stellen dazu basierend auf dem aktuellen Wissensstand die Nullhypothese auf, dass das durchschnittliche Vermögen nicht gestiegen ist, und die Alternativhypothese, dass das durchschnittliche Vermögen gestiegen ist:
+
+> $H_0: \mu \leq 100'000$ CHF
+
+> $H_1: \mu > 100'000$ CHF
+
+Um die Hypothesen auf einer Datengrundlage zu evaluieren erfragt es das Vermögen von $n=`r exm_vermoegen$n`$ zufällig ausgewählten Personen und findet ein durchschnittliches Vermögen von $M=`r round(mean(exm_vermoegen$x))`$ CHF.
+
+:::
+
+Es kann nun schnell gesagt werden, dass das durchschnittliche Vermögen in der Population gestiegen ist, weil $193'000$ CHF grösser ist als $100'000$ CHF. Dies so zu behaupten wäre jedoch falsch, weil nicht alle Personen in der Population befragt wurden, sondern lediglich eine Zufallsstichprobe. Wie in Kapitel \@ref(stichprobenziehung) muss hier für eine Generalisierung der Stichprobe auf die Population der Effekt der zufälligen Stichprobenziehung miteinbezogen werden. 
+
+Aufgrund der Zufallsstichprobe ist es unmöglich zu sagen, ob unsere Stichprobe eine eher seltene Stichprobenziehung aus einer Population mit unverändertem durchschnittlichen Vermögen von $100'000$ CHF ist (Abbildung \@ref(fig:exm-vermoegen-sampling-plot) links) oder ob es eine eher häufig vorkommende Stichprobenziehung aus einer Population mit höherem durchschnittlichen Vermögen ist (Abbildung \@ref(fig:exm-vermoegen-sampling-plot) rechts). 
+
+```{r exm-vermoegen-sampling-plot, fig.cap="Vorgestellte Zufallsstichprobenziehung. Links: Nullhypothese ist wahr. Rechts: Nullhypothese ist falsch.", echo = FALSE}
+do.call(grid.arrange, c(exm_vermoegen$plots, ncol = 2))
+```
+
+Es kann jedoch ausgesagt werden, mit welcher Wahrscheinlichkeit der gefundene Stichprobenmittelwert realisiert wird, gegeben dass die Nullhypothese wahr ist. Hier wird also angenommen, dass eine Population mit Erwartungswert $\mu = 100'000$ CHF vorliegt und dass annschliessend zum Beispiel 1000 Stichproben an je $`r exm_vermoegen$n`$ Beobachtungen pro Stichprobe gezogen werden. Von jeder dieses Stichproben wird anschliessend das arithmetische Mittel berechnet. In dieser Verteilung, siehe Abbildung \@ref(fig:exm-vermoegen-histogram-plot), wird nun der tatsächliche Mittelwert der Stichprobe $\bar{x} = `r round(exm_vermoegen$x %>% mean())`$ verortet. 
+
+```{r exm-vermoegen-histogram-plot, fig.cap="TODO.", echo = FALSE}
+exm_vermoegen$plot_hist_density + 
+  geom_vline(xintercept = exm_vermoegen$x %>% mean())+
+  scale_x_continuous(n.breaks = 10)
+```
+
+Der beobachtete Mittelwert ist zwar nicht genau bei $100'000$ CHF, aber trotzdem noch einigermassen plausibel, wenn die Nullhypothese stimmt. Um diesen Gedanken zu formalisieren gibt es zwei Denkweisen, welche nun vorgestellt werden.
+
+Die eine von Ronald Fisher Denkweise ist die Frage nach der Wahrscheinlichkeit, dass der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert. Im Beispiel entspricht dies der Wahrscheinlichkeit den Wert $`r round(exm_vermoegen$x %>% mean())`$ oder einen grösseren Wert zu beobachten, wenn der Erwartungswert tatsächlich bei $100'000$ CHF liegt. Um diese Wahrscheinlichkeit zu bestimmen, kann einfach gezählt werden, welcher Anteil der Stichprobenmittel werte grösser oder gleich $`r round(exm_vermoegen$x %>% mean())`$ CHF ist. Im Beispiel sind dies $`r round(exm_vermoegen$p_value,3)` = `r round(exm_vermoegen$p_value*100,1)`\%$. [Dieser Wert wird, abgeleitet vom englischen _probability_ auch __p-Wert__ (Symbol: $p$) genannt. Beim Berichten des p-Werts wird normalerweise die führende $0$ nicht geschrieben, also $p = `r round(exm_vermoegen$p_value,3) %>% str_sub(2)`$.]{.customdef #customdef-pwert} 
+
+[Bei der anderen Denkweise muss noch vor der Datenerhebung ein sogenanntes **Signifikanzniveau** (Symbol $\alpha$, sprich 'alpha')  bestimmt werden. Dieser Wert entspricht der Wahrscheinlichkeit, dass der statistische Test die Nullhypothese verwirft, obwohl diese wahr gewesen wäre. Normalerweise wird $\alpha = 5\%$ gesetzt.]{.customdef #customdef-signifikanzniveau} Es wird also akzeptiert, dass ein statistischer Test in $5\%$ der Fälle gegen die Nullhypothese entscheidet, obwohl diese wahr wäre. [In einem zweiten Schritt wird bestimmt, welches die $5\%$ unwahrscheinlichsten Werte sind, wenn die Nullhypothese wahr ist. Diese Werte werden **Ablehnungsbereich** genannt.]{.customdef #customdef-ablehnungsbereich} Im Beispiel sind dies die $5\%$ höchsten Werte, nämlich Vermögen von $`r round(exm_vermoegen$q95_x_means)`$ CHF und grössere Vermögen. Nun wird bestimmt, ob der tatsächliche beobachtete Wert im Ablehnungsbereich liegt oder nicht. [Im Beispiel liegt der Stichprobenmittelwert $`r round(exm_vermoegen$x %>% mean())`$ CHF nicht im Ablehnungsbereich. In diesem Fall wird die Nullhypothese nicht verworfen und das Testresultat erhält das Prädikat **nicht signifikant**. Läge der Stichprobenmittelwert im Ablehungsbereich, so wäre das Testresultat als **signifikant** einzustufen.]{.customdef #customdef-signifikanz}
+
+::::{.caution data-latex=""}
+::: {.remark}
+Ein signifikanter Unterschied bedeutet im allgemeinen Sprachgebrauch ein _bedeutsamer, substanzieller_ Unterschied. Im statistischen Kontext bedeutet ein signifikanter Unterschied, wie oben beschrieben, dass ein Unterschied bis auf eine gewisse Irrtumswahrscheinlichkeit (angegeben durch das Signifikanzniveau) _nicht zufällig_ zustande gekommen ist. In manchen Texten, werden allgemeine und auch statistische Fragen bearbeitet. Hier empfiehlt sich für den allgemeinen Sprachgbrauch _substanziell_ und für die statischen Aussagen _statistisch signifikant_ zu verwenden.
+
+Es wird ausserdem empfohlen, das Wort signifikant immer nur als Prädikat für eine Qualifizierung der Nullhypothese zu verwenden. Im Beispiel war $H_0: \mu \leq 100'000$CHF. Korrekte Aussage sind: 
+- Das durchschnittliche Vermögen ist im letzten Jahr nicht signifikant gewachsen.
+- Das durchschnittliche Vermögen ist in diesem Jahr nicht signifikant grösser als $100'000$ CHF.
+
+:::
+::::
+
+Die beiden Denkarten entsprechen sich insofern, als ein $p$-Wert kleiner als $5\%$ ein signifikantes Resultat bei Signifikanzniveau $\alpha = 5\%$ bedeutet. In der Praxis werden beide Methoden verwendet. Im Beispiel liegt der $p$-Wert bei $p = `r round(exm_vermoegen$p_value,3) %>% str_sub(2)`$. Dies bedeutet, dass die Wahrscheinlichkeit zufällig den realisierten Stichprobenmittelwert zu kommen, gegeben, dass die Nullhypothese stimmt, grösser als $5\%$ ist und demnach auch der Unterschied nicht signifikant ist.
+
+Ein noch zu lösendes Problem ist, dass normalerweise Geld, Zeit und nerven fehlen, um eine Stichprobenziehung $`r exm_vermoegen$n_samples`$ mal zu wiederholen. Hier hilft es wieder zu beobachten, dass die Verteilung der Werte des Histograms in Abbildung \@ref(fig:exm-vermoegen-histogram-plot) wieder mit zunehmender Stichprobengrösse immer genauer einer Normalverteilung folgen. Tatsächlich trifft es aufgrund des zentralen Grenzwertsatzes immer zu, dass wenn ein Merkmal mit $n$ Beobachtungen, Erwartungswert $\mu$ und Standardabweichung $\sigma$ hat, der Wert
+
+$$z = \frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}$$
+normalverteilt ist, wobei $\mu$ hier dem Wert der Nullhypothese entspricht, also $100'000$ CHF. Dies entspricht der roten linie in Abbildung \@ref(fig:exm-vermoegen-histogram-plot). Ist die Standardabweichung des Merkmals unbekannt, so wird diese mit $s$ geschätzt. Diese zusätzliche Unsicherheit führt dazu, dass
+$$t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}$$
+nicht mehr normal-, sondern $t$-verteilt ist bei $n-1$ Freiheitsgraden. Die $t$-Verteilung mit allen Freiheitsgraden ist in `Jamovi` hinterlegt und es kann der Software überlassen werden den $p$-Wert und den Ablehnungsbereich genau zu bestimmen.
+
+
+```{r exm-vermoegen-plots-sampling-theorie, fig.cap="Oben: Histogram der simulierten Verteilung; unten: theoretische Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert."}
+line_xlim <- xlim(c(40000, 180000))
+sample_mean <- mean(exm_vermoegen$x)
+sigma_g <- sd(exm_vermoegen$x) / sqrt(exm_vermoegen$n)
+x_range <- seq(exm_vermoegen$mu0-3*sigma_g, exm_vermoegen$mu0+3*sigma_g, length.out = 1000)
+
+# Function to create text data
+create_text_data <- function(labels, y_value, plot_type) {
+  tibble(
+    label = labels,
+    x = c(60000, 160000),
+    y = rep(y_value, 2),
+    color = c("red", "green"),
+    plot_type = plot_type
+  )
+}
+
+
+add_colors <- function(x, type){
+  x %>% 
+    mutate(
+    color = case_when(
+      plot_type == type %>% str_c(" p-Wert") & x > sample_mean ~ "green",
+      plot_type == type %>% str_c(" p-Wert") & x <= sample_mean ~ "red",
+      plot_type == type %>% str_c(" Ablehnungsbereich") & x > exm_vermoegen$q95_x_means ~ "green",
+      plot_type == type %>% str_c(" Ablehnungsbereich") & x <= exm_vermoegen$q95_x_means ~ "red"
+    )
+  )
+}
+# Create data for histograms
+histogram_data <- tibble(
+  x = rep(exm_vermoegen$x_means, 2),
+  plot_type = rep(c("Histogram p-Wert", 
+                    "Histogram Ablehnungsbereich"), 
+                  each = length(exm_vermoegen$x_means))
+) %>%
+  add_colors("Histogram")
+
+# Create data for density plots
+density_data <- tibble(
+  x = rep(x_range, 2),
+  y = dt((x - exm_vermoegen$mu0) / sigma_g, exm_vermoegen$n - 1) / sigma_g,
+  plot_type = rep(c("Verteilung p-Wert", 
+                    "Verteilung Ablehnungsbereich"), 
+                  each = length(x_range))
+) %>%
+  add_colors("Verteilung")
+
+# Create text data for all plots
+text_pval <- str_c(round(100 * c(1 - exm_vermoegen$p_value, exm_vermoegen$p_value), 1), '%')
+text_sign <- c('95%', '5%')
+text_data_all <- bind_rows(
+  create_text_data(
+    text_pval,
+    200,
+    "Histogram p-Wert"
+  ),
+  create_text_data(
+    text_sign, 
+    200,
+    "Histogram Ablehnungsbereich"
+  ),
+  create_text_data(
+    text_pval,
+    0.000015, 
+    "Verteilung p-Wert"
+  ),
+  create_text_data(
+    text_sign, 
+    0.000015,
+    "Verteilung Ablehnungsbereich"
+  )
+)
+
+custom_labeller <- as_labeller(c(
+  "Histogram p-Wert" = "p-Wert",
+  "Histogram Ablehnungsbereich" = "Ablehnungsbereich",
+  "Verteilung p-Wert" = "p-Wert",
+  "Verteilung Ablehnungsbereich" = "Ablehnungsbereich"
+))
+
+ggplot() +
+  geom_histogram(data = histogram_data,
+                 aes(x = x, fill = color),
+                 binwidth = 4300) +
+  geom_line(data = density_data,
+            aes(x = x, y = y, colour = color)) +
+  geom_area(data = density_data,
+            aes(x = x, y = y, fill = color)) +
+  geom_vline(xintercept = sample_mean) +
+  geom_text(data = text_data_all,
+            mapping = aes(x = x, y = y, label = label, colour = color)) +
+  facet_wrap(~ plot_type, nrow = 2, scales = "free_y", 
+             strip.position = "top",
+             labeller = custom_labeller) +
+  line_xlim +
+  theme(
+    axis.text.y = element_text(),
+    axis.ticks.y = element_line(),
+    axis.title.y = element_text(),
+    strip.placement = "outside",
+    legend.position = "none"
+  ) +
+  labs(x = "Vermögen", y = "W.-dichte                              Häufigkeit")
+```
 
 :::{.example #alexithymie name="Alexithymie"}
 Mit Gefühlsblindheit oder _Alexithymie_ (griechisch: a = ohne, lexis= lesen, sprechen, thymie = Gefühle) werden Einschränkungen bei der Fähigkeit Emotionen wahrzunehmen, zu erkennen und zu beschreiben bezeichnet. Es gibt ein online [Messinstrument](https://www.alexithymie.com/de/), welches die Alexithymie auf einer Skala von $37$ Punkten (kleine Gefühlsblindheit) bis $185$ (grosse Gefühlsblindheit) misst. Die Skala wurde so gewählt, dass die durchschnittliche Alexithymie aller Menschen bei $100$ liegt. Eine Soziologin interessiert sich nun dafür, ob junge Menschen unter $25$ durchschnittlich weniger Alexithymie aufweisen als die Gesamtbevölkerung. Um dies zu testen befragt sie $n = 1823$ unter $25$-jährige mit besagtem Messinstrument. In dieser Gruppe wurde eine durchschnittliche Alexithymie von $M = 92.3$ Punkten festgestellt.

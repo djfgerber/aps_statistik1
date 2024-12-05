@@ -20,6 +20,10 @@ library(gridExtra)
 library(jmv)
 library(kableExtra)
 source('src/r/bag_sampling.R')
+source('src/r/plots.R')
+
+options(scipen=999)
+
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'jmv'
 ), 'packages.bib')

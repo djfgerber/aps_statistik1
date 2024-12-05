@@ -8,13 +8,10 @@
 }
 \makeatother
 
-% Redefine names for various elements
-% \renewcommand{\figurename}{Abbildung}
-% \renewcommand{\tablename}{Tabelle}
-% \renewcommand{\contentsname}{Inhaltsverzeichnis}
-% \renewcommand{\partname}{Teil}
-% \renewcommand{\chaptername}{Kapitel}
-% \renewcommand{\appendixname}{Anhang}
+\usepackage{enumitem}
+\setlist[itemize,1]{label=--}
+\setlist[itemize,2]{label=\textbullet}
+\setlist[itemize,3]{label=\textopenbullet}
 
 % The \equationname is not a standard LaTeX command, so we'll define it
 \newcommand{\equationname}{Gleichung}

@@ -73,13 +73,10 @@
 }
 \makeatother
 
-% Redefine names for various elements
-% \renewcommand{\figurename}{Abbildung}
-% \renewcommand{\tablename}{Tabelle}
-% \renewcommand{\contentsname}{Inhaltsverzeichnis}
-% \renewcommand{\partname}{Teil}
-% \renewcommand{\chaptername}{Kapitel}
-% \renewcommand{\appendixname}{Anhang}
+\usepackage{enumitem}
+\setlist[itemize,1]{label=--}
+\setlist[itemize,2]{label=\textbullet}
+\setlist[itemize,3]{label=\textopenbullet}
 
 % The \equationname is not a standard LaTeX command, so we'll define it
 \newcommand{\equationname}{Gleichung}
@@ -156,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{15 November, 2024}
+\date{05 December, 2024}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -704,7 +701,7 @@ Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \r
 \end{figure}
 
 \begin{example}[Verträglichkeit]
-\protect\hypertarget{exm:agreableness}{}\label{exm:agreableness}Einer der Big-5 Persönlichkeitszüge ist die Verträglichkeit. Eine einfache Art die Big-5 zu messen ist mit den 10 Fragen aus dem ten-item personality inventory \emph{TIPI} \citep{gosling2003}. Für die Verträglichkeit müssen zwei Items (Item 1: Critical, quarrelsome; Item 2: Sympathetic, warm) auf einer Likert-Skala von 1 bis 7 eingeordnet werden. Anschliessend werden die Antworten gemittelt. Ein Student möchte herausfinden, ob mit diesem Messinstrument die durchschnittliche Verträglichkeit aller Menschen mittig also bei \(4\) liegt. Dafür befragt er \(n = 100\) Personen und findet die Werte \(M=4.14, s = 1.69\).
+\protect\hypertarget{exm:agreableness}{}\label{exm:agreableness}Einer der Big-5 Persönlichkeitszüge ist die Verträglichkeit. Eine einfache Art die Big-5 zu messen ist mit den 10 Fragen aus dem ten-item personality inventory \emph{TIPI} \citep{gosling2003}. Für die Verträglichkeit müssen zwei Items (Item 1: Critical, quarrelsome; Item 2: Sympathetic, warm) auf einer Likert-Skala von 1 bis 7 eingeordnet werden. Anschliessend werden die Antworten gemittelt. Ein Student möchte herausfinden, ob mit diesem Messinstrument die durchschnittliche Verträglichkeit aller Menschen mittig also bei \(4\) liegt. Dafür befragt er \(n = 100\) Personen und findet die Werte \(M=3.91, s = 1.73\).
 \end{example}
 
 \begin{figure}
@@ -713,7 +710,7 @@ Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \r
 \caption{\label{fig:exm-agreableness-hist}Verteilung der 100 beobachteten Verträglichkeitswerte einer zufällig gezogenen Stichprobe.}
 \end{figure}
 
-Die Verteilung der Beobachtungen, siehe Abbildung \ref{fig:exm-agreableness-hist}, zeigt, dass alle Werte zwischen \(1\) und \(7\) vorkommen, aber keine zentrale Tendenz greifbar ist. Um herauszufinden wie zutreffend die Schätzung des Erwartungswertes der Verträglichkeit von \(M=4.14\) ist, stelle man sich wieder vor, dass der Student \(1000\)-mal die Stichprobenziehung wiederholt und jedes mal das arithmetische Mittel \(M\) von neuem berechnet. Die Verteilung der arithmetischen Mittel dieser Stichproben ist in Abbildung \ref{fig:exm-agreableness-hist-means} dargestellt. Bei dieser Verteilung kann erneut links und rechts \(2.5\%\) der Werte abgeschnitten werden, um zum Schluss zu gelangen, dass das arithmetische Mittel in \(95\%\) der Fälle zwischen \(3.7\) und \(4.3\) zu liegen kommt.
+Die Verteilung der Beobachtungen, siehe Abbildung \ref{fig:exm-agreableness-hist}, zeigt, dass alle Werte zwischen \(1\) und \(7\) vorkommen, aber keine zentrale Tendenz greifbar ist. Um herauszufinden wie zutreffend die Schätzung des Erwartungswertes der Verträglichkeit von \(M=3.91\) ist, stelle man sich wieder vor, dass der Student \(1000\)-mal die Stichprobenziehung wiederholt und jedes mal das arithmetische Mittel \(M\) von neuem berechnet. Die Verteilung der arithmetischen Mittel dieser Stichproben ist in Abbildung \ref{fig:exm-agreableness-hist-means} dargestellt. Bei dieser Verteilung kann erneut links und rechts \(2.5\%\) der Werte abgeschnitten werden, um zum Schluss zu gelangen, dass das arithmetische Mittel in \(95\%\) der Fälle zwischen \(3.7\) und \(4.3\) zu liegen kommt.
 
 \begin{figure}
 \centering
@@ -773,7 +770,7 @@ Die Abbildungen \ref{fig:exm-angst-normal-approx} und \ref{fig:exm-agreableness-
 \begin{figure}
 \centering
 \includegraphics{aps_statistik1_files/figure-latex/exm-agreableness-normal-approx-1.pdf}
-\caption{\label{fig:exm-agreableness-normal-approx}Die arithmetischen Mittel sind Normalverteilt mit Parametern \(\mu_g = 4.14\) und \(\sigma_g = 1.69 / \sqrt{100}\).}
+\caption{\label{fig:exm-agreableness-normal-approx}Die arithmetischen Mittel sind Normalverteilt mit Parametern \(\mu_g = 3.91\) und \(\sigma_g = 1.73 / \sqrt{100}\).}
 \end{figure}
 
 Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte ziehen von Stichproben unnötig. Die Normalverteilung ist theoretisch konstruiert und ihr \(2.5\%\)- und \(97.5\%\)-Perzentil können theoretisch hergeleitet werden. Tabelle \ref{tab:quantiles-norm} wird kann beobachtet werden, dass für unsere zwei Beispiele die Perzentile der Stichprobe und der Normalverteilung sehr ähnlich, wenn auch nicht exakt gleich sind. Die Ungenauigkeit rührt daher, dass der zentrale Grenzwertsatz nur dann exakt funktioniert, wenn die Anzahl Beobachtungen (unendlich) gross ist.
@@ -814,7 +811,7 @@ berechnet werden, wobei \(\bar{x}\) das arithmetische Mittel, \(s\) die Standard
 
 Das \(2.5\%\) und das \(97.5\%\) Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines \phantomsection\label{customdef-interval}{\textbf{Intervalles}. Ein Intervall bezeichnet durch die Symbolik \([\)untere Schranke, obere Schranke\(]\) beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.} \phantomsection\label{customdef-confidence-interval}{Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in \(95\%\) der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu \(95\%\) sicher oder \emph{konfident} sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als \(95\%\)-\textbf{Konfidenzintervall} (symbol KI) bezeichnet.}
 
-In Beispiel \ref{exm:angst}, kann aus der Tabelle \ref{tab:quantiles-norm} entnommen werden, dass die Angst in der Population bei \(M = 43.34\) \(95\%\) KI \([42.18,44.5]\) liegt. In Beispiel \ref{exm:agreableness}, kann aus der Tabelle \ref{tab:quantiles-norm} entnommen werden, dass die Verträglichkeit in der Population bei \(M = 4.14\) \(95\%\) KI \([3.66,4.34]\) liegt. Wann immer eine Schätzung eines zentralen Wertes berichtet wird, soll dies ab jetzt in der soeben gezeigten Darstellung inklusive Angabe des Konfidenzintervalls erfolgen. Damit wird der Leserin aufgezeigt, wo der Schätzwert der zentralen Tendenz liegt und gleichzeigtig wird intuitiv vermittelt wie genau die Schätzung ist.
+In Beispiel \ref{exm:angst}, kann aus der Tabelle \ref{tab:quantiles-norm} entnommen werden, dass die Angst in der Population bei \(M = 43.34\) \(95\%\) KI \([42.18,44.5]\) liegt. In Beispiel \ref{exm:agreableness}, kann aus der Tabelle \ref{tab:quantiles-norm} entnommen werden, dass die Verträglichkeit in der Population bei \(M = 3.91\) \(95\%\) KI \([3.66,4.34]\) liegt. Wann immer eine Schätzung eines zentralen Wertes berichtet wird, soll dies ab jetzt in der soeben gezeigten Darstellung inklusive Angabe des Konfidenzintervalls erfolgen. Damit wird der Leserin aufgezeigt, wo der Schätzwert der zentralen Tendenz liegt und gleichzeigtig wird intuitiv vermittelt wie genau die Schätzung ist.
 
 Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse \(n\) oder die geschätzte Standardabweichung \(s\) auf die Länge des Konfidenzintervalls auswirkt. Dies kann in den Übungen \ref{exr:ki-mean-n-vary} und \ref{exr:ki-mean-s-vary} selbst erforscht werden.
 
@@ -849,7 +846,7 @@ TODO
 \begin{exercise}
 \protect\hypertarget{exr:ki-approx-normal}{}\label{exr:ki-approx-normal}\leavevmode
 
-Für ein Experiment werden in drei Runden jeweils \(\ensuremath{10^{4}}\) Zufallsstichproben erhoben mit respektive \(10\), \(40\) und \(100\) Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung \ref{fig:ki-approx-normal1} dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.
+Für ein Experiment werden in drei Runden jeweils \(10000\) Zufallsstichproben erhoben mit respektive \(10\), \(40\) und \(100\) Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung \ref{fig:ki-approx-normal1} dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.
 
 \begin{figure}
 \centering
@@ -1000,7 +997,7 @@ Eine weitere Form der Hypothese wäre
 In Formelsprache übersetzt entspricht dies
 
 \begin{quote}
-\(H_1: \mu \leq 100'000\).
+\(H_0: \mu \leq 100'000\).
 \end{quote}
 
 Das Gegenteil davon ist, wenn das duchschnittliche Vermögen grösser und ungleich 100'000 CHF ist, also
@@ -1043,23 +1040,23 @@ Die verwendeten Zeichen in den Formeln sind
   \begin{itemize}
   \tightlist
   \item
-    \(4 < 3\) (4 ist kleiner als 3) ist eine falsche Aussage.
+    \(4 < 3\) (\(4\) ist kleiner als \(3\)) ist eine falsche Aussage.
   \item
-    \(3 < 3\) (3 ist kleiner als 3) ist eine falsche Aussage.
+    \(3 < 3\) (\(3\) ist kleiner als \(3\)) ist eine falsche Aussage.
   \item
-    \(3 < 4\) (3 ist kleiner als 4) ist eine wahre Aussage.
+    \(3 < 4\) (\(3\) ist kleiner als \(4\)) ist eine wahre Aussage.
   \end{itemize}
 \item
-  \(\leq\) Kleiner gleich, sprich ``kleiner gleich''. Beispiele:
+  \(\leq\): Kleiner gleich, sprich ``kleiner gleich''. Beispiele:
 
   \begin{itemize}
   \tightlist
   \item
-    \(4 \leq 3\) (4 ist kleiner oder gleich wie 3) ist eine falsche Aussage.
+    \(4 \leq 3\) (\(4\) ist kleiner oder gleich wie \(3\)) ist eine falsche Aussage.
   \item
-    \(3 \leq 3\) (3 ist kleiner oder gleich wie 3) ist eine wahre Aussage.
+    \(3 \leq 3\) (\(3\) ist kleiner oder gleich wie \(3\)) ist eine wahre Aussage.
   \item
-    \(3 \leq 4\) (3 ist kleiner oder gleich wie 4) ist eine wahre Aussage.
+    \(3 \leq 4\) (\(3\) ist kleiner oder gleich wie \(4\)) ist eine wahre Aussage.
   \end{itemize}
 \item
   \(>\): Grösser, sprich ``grösser''. Beispiele:
@@ -1067,29 +1064,114 @@ Die verwendeten Zeichen in den Formeln sind
   \begin{itemize}
   \tightlist
   \item
-    \(4 > 3\) (4 ist grösser als 3) ist eine wahre Aussage.
+    \(4 > 3\) (\(4\) ist grösser als \(3\)) ist eine wahre Aussage.
   \item
-    \(3 > 3\) (3 ist grösser als 3) ist eine falsche Aussage.
+    \(3 > 3\) (\(3\) ist grösser als \(3\)) ist eine falsche Aussage.
   \item
-    \(3 > 4\) (3 ist grösser als 4) ist eine falsche Aussage.
+    \(3 > 4\) (\(3\) ist grösser als \(4\)) ist eine falsche Aussage.
   \end{itemize}
 \item
-  \(\geq\) Grösser gleich, sprich ``grösser gleich''. Beispiele:
+  \(\geq\): Grösser gleich, sprich ``grösser gleich''. Beispiele:
 
   \begin{itemize}
   \tightlist
   \item
-    \(4 \geq 3\) (4 ist grösser oder gleich wie 3) ist eine wahre Aussage.
+    \(4 \geq 3\) (\(4\) ist grösser oder gleich wie \(3\)) ist eine wahre Aussage.
   \item
-    \(3 \geq 3\) (3 ist grösser oder gleich wie 3) ist eine wahre Aussage.
+    \(3 \geq 3\) (\(3\) ist grösser oder gleich wie \(3\)) ist eine wahre Aussage.
   \item
-    \(3 \geq 4\) (3 ist grösser oder gleich wie 4) ist eine falsche Aussage.
+    \(3 \geq 4\) (\(3\) ist grösser oder gleich wie \(4\)) ist eine falsche Aussage.
   \end{itemize}
 \end{itemize}
 
 \end{remark}
 
 \end{caution}
+
+\begin{example}[Vermögen]
+\protect\hypertarget{exm:vermoegen}{}\label{exm:vermoegen}Eine Sozialpolitikberatungsfirma will herausfinden, ob das duchschnittliche Vermögen der in der Schweiz lebenden Personen im letzten Jahr gestiegen ist. Sie stellen dazu basierend auf dem aktuellen Wissensstand die Nullhypothese auf, dass das durchschnittliche Vermögen nicht gestiegen ist, und die Alternativhypothese, dass das durchschnittliche Vermögen gestiegen ist:
+
+\begin{quote}
+\(H_0: \mu \leq 100'000\) CHF
+\end{quote}
+
+\begin{quote}
+\(H_1: \mu > 100'000\) CHF
+\end{quote}
+
+Um die Hypothesen auf einer Datengrundlage zu evaluieren erfragt es das Vermögen von \(n=20\) zufällig ausgewählten Personen und findet ein durchschnittliches Vermögen von \(M=119887\) CHF.
+\end{example}
+
+Es kann nun schnell gesagt werden, dass das durchschnittliche Vermögen in der Population gestiegen ist, weil \(193'000\) CHF grösser ist als \(100'000\) CHF. Dies so zu behaupten wäre jedoch falsch, weil nicht alle Personen in der Population befragt wurden, sondern lediglich eine Zufallsstichprobe. Wie in Kapitel \ref{stichprobenziehung} muss hier für eine Generalisierung der Stichprobe auf die Population der Effekt der zufälligen Stichprobenziehung miteinbezogen werden.
+
+Aufgrund der Zufallsstichprobe ist es unmöglich zu sagen, ob unsere Stichprobe eine eher seltene Stichprobenziehung aus einer Population mit unverändertem durchschnittlichen Vermögen von \(100'000\) CHF ist (Abbildung \ref{fig:exm-vermoegen-sampling-plot} links) oder ob es eine eher häufig vorkommende Stichprobenziehung aus einer Population mit höherem durchschnittlichen Vermögen ist (Abbildung \ref{fig:exm-vermoegen-sampling-plot} rechts).
+
+\begin{figure}
+\centering
+\includegraphics{aps_statistik1_files/figure-latex/exm-vermoegen-sampling-plot-1.pdf}
+\caption{\label{fig:exm-vermoegen-sampling-plot}Vorgestellte Zufallsstichprobenziehung. Links: Nullhypothese ist wahr. Rechts: Nullhypothese ist falsch.}
+\end{figure}
+
+Es kann jedoch ausgesagt werden, mit welcher Wahrscheinlichkeit der gefundene Stichprobenmittelwert realisiert wird, gegeben dass die Nullhypothese wahr ist. Hier wird also angenommen, dass eine Population mit Erwartungswert \(\mu = 100'000\) CHF vorliegt und dass annschliessend zum Beispiel 1000 Stichproben an je \(20\) Beobachtungen pro Stichprobe gezogen werden. Von jeder dieses Stichproben wird anschliessend das arithmetische Mittel berechnet. In dieser Verteilung, siehe Abbildung \ref{fig:exm-vermoegen-histogram-plot}, wird nun der tatsächliche Mittelwert der Stichprobe \(\bar{x} = 119887\) verortet.
+
+\begin{figure}
+\centering
+\includegraphics{aps_statistik1_files/figure-latex/exm-vermoegen-histogram-plot-1.pdf}
+\caption{\label{fig:exm-vermoegen-histogram-plot}TODO.}
+\end{figure}
+
+Der beobachtete Mittelwert ist zwar nicht genau bei \(100'000\) CHF, aber trotzdem noch einigermassen plausibel, wenn die Nullhypothese stimmt. Um diesen Gedanken zu formalisieren gibt es zwei Denkweisen, welche nun vorgestellt werden.
+
+Die eine von Ronald Fisher Denkweise ist die Frage nach der Wahrscheinlichkeit, dass der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert. Im Beispiel entspricht dies der Wahrscheinlichkeit den Wert \(119887\) oder einen grösseren Wert zu beobachten, wenn der Erwartungswert tatsächlich bei \(100'000\) CHF liegt. Um diese Wahrscheinlichkeit zu bestimmen, kann einfach gezählt werden, welcher Anteil der Stichprobenmittel werte grösser oder gleich \(119887\) CHF ist. Im Beispiel sind dies \(0.148 = 14.8\%\). \phantomsection\label{customdef-pwert}{Dieser Wert wird, abgeleitet vom englischen \emph{probability} auch \textbf{p-Wert} (Symbol: \(p\)) genannt. Beim Berichten des p-Werts wird normalerweise die führende \(0\) nicht geschrieben, also \(p = .148\).}
+
+\phantomsection\label{customdef-signifikanzniveau}{Bei der anderen Denkweise muss noch vor der Datenerhebung ein sogenanntes \textbf{Signifikanzniveau} (Symbol \(\alpha\), sprich `alpha') bestimmt werden. Dieser Wert entspricht der Wahrscheinlichkeit, dass der statistische Test die Nullhypothese verwirft, obwohl diese wahr gewesen wäre. Normalerweise wird \(\alpha = 5\%\) gesetzt.} Es wird also akzeptiert, dass ein statistischer Test in \(5\%\) der Fälle gegen die Nullhypothese entscheidet, obwohl diese wahr wäre. \phantomsection\label{customdef-ablehnungsbereich}{In einem zweiten Schritt wird bestimmt, welches die \(5\%\) unwahrscheinlichsten Werte sind, wenn die Nullhypothese wahr ist. Diese Werte werden \textbf{Ablehnungsbereich} genannt.} Im Beispiel sind dies die \(5\%\) höchsten Werte, nämlich Vermögen von \(132579\) CHF und grössere Vermögen. Nun wird bestimmt, ob der tatsächliche beobachtete Wert im Ablehnungsbereich liegt oder nicht. \phantomsection\label{customdef-signifikanz}{Im Beispiel liegt der Stichprobenmittelwert \(119887\) CHF nicht im Ablehnungsbereich. In diesem Fall wird die Nullhypothese nicht verworfen und das Testresultat erhält das Prädikat \textbf{nicht signifikant}. Läge der Stichprobenmittelwert im Ablehungsbereich, so wäre das Testresultat als \textbf{signifikant} einzustufen.}
+
+\begin{caution}
+
+\begin{remark}
+Ein signifikanter Unterschied bedeutet im allgemeinen Sprachgebrauch ein \emph{bedeutsamer, substanzieller} Unterschied. Im statistischen Kontext bedeutet ein signifikanter Unterschied, wie oben beschrieben, dass ein Unterschied bis auf eine gewisse Irrtumswahrscheinlichkeit (angegeben durch das Signifikanzniveau) \emph{nicht zufällig} zustande gekommen ist. In manchen Texten, werden allgemeine und auch statistische Fragen bearbeitet. Hier empfiehlt sich für den allgemeinen Sprachgbrauch \emph{substanziell} und für die statischen Aussagen \emph{statistisch signifikant} zu verwenden.
+
+Es wird ausserdem empfohlen, das Wort signifikant immer nur als Prädikat für eine Qualifizierung der Nullhypothese zu verwenden. Im Beispiel war \(H_0: \mu \leq 100'000\)CHF. Korrekte Aussage sind:
+- Das durchschnittliche Vermögen ist im letzten Jahr nicht signifikant gewachsen.
+- Das durchschnittliche Vermögen ist in diesem Jahr nicht signifikant grösser als \(100'000\) CHF.
+\end{remark}
+
+\end{caution}
+
+Die beiden Denkarten entsprechen sich insofern, als ein \(p\)-Wert kleiner als \(5\%\) ein signifikantes Resultat bei Signifikanzniveau \(\alpha = 5\%\) bedeutet. In der Praxis werden beide Methoden verwendet. Im Beispiel liegt der \(p\)-Wert bei \(p = .148\). Dies bedeutet, dass die Wahrscheinlichkeit zufällig den realisierten Stichprobenmittelwert zu kommen, gegeben, dass die Nullhypothese stimmt, grösser als \(5\%\) ist und demnach auch der Unterschied nicht signifikant ist.
+
+Ein noch zu lösendes Problem ist, dass normalerweise Geld, Zeit und nerven fehlen, um eine Stichprobenziehung \(3000\) mal zu wiederholen. Hier hilft es wieder zu beobachten, dass die Verteilung der Werte des Histograms in Abbildung \ref{fig:exm-vermoegen-histogram-plot} wieder mit zunehmender Stichprobengrösse immer genauer einer Normalverteilung folgen. Tatsächlich trifft es aufgrund des zentralen Grenzwertsatzes immer zu, dass wenn ein Merkmal mit \(n\) Beobachtungen, Erwartungswert \(\mu\) und Standardabweichung \(\sigma\) hat, der Wert
+
+\[z = \frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}\]
+normalverteilt ist, wobei \(\mu\) hier dem Wert der Nullhypothese entspricht, also \(100'000\) CHF. Dies entspricht der roten linie in Abbildung \ref{fig:exm-vermoegen-histogram-plot}. Ist die Standardabweichung des Merkmals unbekannt, so wird diese mit \(s\) geschätzt. Diese zusätzliche Unsicherheit führt dazu, dass
+\[t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}\]
+nicht mehr normal-, sondern \(t\)-verteilt ist bei \(n-1\) Freiheitsgraden. Die \(t\)-Verteilung mit allen Freiheitsgraden ist in \texttt{Jamovi} hinterlegt und es kann der Software überlassen werden den \(p\)-Wert und den Ablehnungsbereich genau zu bestimmen.
+
+\begin{verbatim}
+## Warning: Removed 2 rows containing non-finite outside the scale range
+## (`stat_bin()`).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 140 rows containing non-finite outside the scale range
+## (`stat_align()`).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 8 rows containing missing values or values outside the scale range
+## (`geom_bar()`).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 70 rows containing missing values or values outside the scale range
+## (`geom_line()`).
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{aps_statistik1_files/figure-latex/exm-vermoegen-plots-sampling-theorie-1.pdf}
+\caption{\label{fig:exm-vermoegen-plots-sampling-theorie}Oben: Histogram der simulierten Verteilung; unten: theoretische Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert.}
+\end{figure}
 
 \begin{example}[Alexithymie]
 \protect\hypertarget{exm:alexithymie}{}\label{exm:alexithymie}Mit Gefühlsblindheit oder \emph{Alexithymie} (griechisch: a = ohne, lexis= lesen, sprechen, thymie = Gefühle) werden Einschränkungen bei der Fähigkeit Emotionen wahrzunehmen, zu erkennen und zu beschreiben bezeichnet. Es gibt ein online \href{https://www.alexithymie.com/de/}{Messinstrument}, welches die Alexithymie auf einer Skala von \(37\) Punkten (kleine Gefühlsblindheit) bis \(185\) (grosse Gefühlsblindheit) misst. Die Skala wurde so gewählt, dass die durchschnittliche Alexithymie aller Menschen bei \(100\) liegt. Eine Soziologin interessiert sich nun dafür, ob junge Menschen unter \(25\) durchschnittlich weniger Alexithymie aufweisen als die Gesamtbevölkerung. Um dies zu testen befragt sie \(n = 1823\) unter \(25\)-jährige mit besagtem Messinstrument. In dieser Gruppe wurde eine durchschnittliche Alexithymie von \(M = 92.3\) Punkten festgestellt.

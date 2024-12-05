@@ -1,16 +1,33 @@
 # Stichprobenziehung {#stichprobenziehung}
 
+:::{.example #angst name="Angst"}
 
-```{r 3-prep_example, include=FALSE}
-set.seed(12452)
-n <- 30
-ex_angst_mean <- 43.2
-ex_angst_sd <- 7.8
-x <- rnorm(n, ex_angst_mean, ex_angst_sd)
+```{r exm-angst, include=FALSE}
+gen_exm_angst <- function(){
+  set.seed(12452)
+  n <- 30
+  x_mean <- 43.2
+  x_sd <- 7.8
+  x <- rnorm(n, x_mean, x_sd)
+  
+  set.seed(1928)
+  n_samples <- 1000
+  x_means <- map_dbl(1:n_samples, ~ mean(rnorm(n, x_mean, x_sd)))
+  x_sds <- map_dbl(1:n_samples, ~ sd(rnorm(n, x_mean, x_sd)))
+  lb_means_emp <- round(unname(quantile(x_means, 0.025)), 1)
+  ub_means_emp <- round(unname(quantile(x_means, 0.975)), 1)
+  
+  m_means <- mean(x)
+  s_means <- sqrt(sd(x) / n)
+  lb_means_t <- m_means - qt(0.975, n - 1) * s_means
+  ub_means_t <- m_means + qt(0.975, n - 1) * s_means
+  
+  return(mget(ls()))
+}
+exm_angst <- gen_exm_angst()
 ```
 
-:::{.example #angst name="Angst"}
-Forschende haben ein Messinstrument State-Trait Anxiety Inentory _STAI_, welches Angst misst [@spielberger1983manual]. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst man aktuell empfindet. Die so gemessene Angst enstpricht einem Wert zwischen $20$ und $80$. A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit $n =`r n`$ zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte $M=`r round(mean(x), 2)`, s = `r round(sd(x),2)`, n = `r n`$ für die Angst in ihren Beobachtungen.
+Forschende haben ein Messinstrument State-Trait Anxiety Inentory _STAI_, welches Angst misst [@spielberger1983manual]. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst man aktuell empfindet. Die so gemessene Angst enstpricht einem Wert zwischen $20$ und $80$. A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit $n =`r exm_angst$n`$ zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte $M=`r round(mean(exm_angst$x), 2)`, s = `r round(sd(exm_angst$x),2)`, n = `r exm_angst$n`$ für die Angst in ihren Beobachtungen.
 :::
 
 [Zufällig ausgewählte Beobachtungen eines Merkmals werden als __Stichprobe__ bezeichnet.]{.customdef #customdef-stichprobe} [Nach der Auswahl der Stichprobe ist die __Stichprobenziehung__.]{.customdef #customdef-stichprobenziehung} Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? [Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als __Population__]{.customdef #customdef-population} [oder __Grundgesamtheit__ bezeichnet]{.customdef #customdef-grundgesamtheit}. [Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als __Zufallsstichprobe__ bezeichnet.]{.customdef #customdef-zufallsstichprobe} 
@@ -25,13 +42,13 @@ Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am F
 
 ## Was ist das Problem der Stichprobenziehung? {#stichprobenziehung-problem}
 
-Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung \@ref(fig:srs-intervall-nocol) ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population. Die Personen im Zimmer, respektive die Beobachtungen in der Population sind normalerweise nicht sichtbar. Aus diesem Zimmer wurden also `r n` Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die Punkte über dem Zimmer, oberhalb des Pfeils. Die Farben der Punkte sind jetzt bekannt und entsprechen der jeweiligen Zustandesangst der beobachteten Personen.
+Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung \@ref(fig:srs-intervall-nocol) ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population. Die Personen im Zimmer, respektive die Beobachtungen in der Population sind normalerweise nicht sichtbar. Aus diesem Zimmer wurden also `r exm_angst$n` Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die Punkte über dem Zimmer, oberhalb des Pfeils. Die Farben der Punkte sind jetzt bekannt und entsprechen der jeweiligen Zustandesangst der beobachteten Personen.
 
 
 ```{r srs-intervall-nocol, echo = FALSE, fig.cap="Population mit unbekannter Angst."}
 plot_ball_bag(
-  scores_bag = c(20, 80, rnorm(198, ex_angst_mean, ex_angst_sd)),
-  scores_hover = x,
+  scores_bag = c(20, 80, rnorm(198, exm_angst$x_mean, exm_angst$x_sd)),
+  scores_hover = exm_angst$x,
   score_name = "Angst",
   bag_color = "grey90",
   seed = 123,
@@ -43,10 +60,10 @@ Da die Stichprobe nun eben zufällig gezogen wurde, das heisst zufällig Persone
 
 
 ```{r srs-intervall-high-p, fig.cap="Population mit ähnlichen Angst-Werten wie in der Stichprobe.", echo = FALSE}
-scores_bag_high_p <- c(20, 80, rnorm(198, ex_angst_mean, ex_angst_sd))
+scores_bag_high_p <- c(20, 80, rnorm(198,  exm_angst$x_mean, exm_angst$x_sd))
 plot_ball_bag(
   scores_bag = scores_bag_high_p,
-  scores_hover = x,
+  scores_hover = exm_angst$x,
   score_name = "Angst",
   seed = 123
 )
@@ -55,10 +72,10 @@ plot_ball_bag(
 Es könnte aber auch sein, dass die Stichprobe einer Population mit viel höherer Zusatandsangst, wie in Abbildung \@ref(fig:srs-intervall-low-p) dargestellt, entstammt. Dies wird zwar weniger häufig vorkommen als der Fall oben, aber ist trotzdem möglich.
 
 ```{r srs-intervall-low-p, fig.cap="Population mit höheren Angst-Werten als in der Stichprobe.", echo = FALSE}
-scores_bag_low_p <-  c(20, 80, rnorm(198, 52, ex_angst_sd))
+scores_bag_low_p <-  c(20, 80, rnorm(198, 52, exm_angst$x_sd))
 plot_ball_bag(
   scores_bag = scores_bag_low_p,
-  scores_hover = x,
+  scores_hover = exm_angst$x,
   score_name = "Angst",
   seed = 123
 )
@@ -74,7 +91,7 @@ Die Lösung dieses Problems funktioniert intuitiv wie folgt: Man stellt sich vor
 plots <- list()
 for (i in 1:6) {
   set.seed(i * 5 + 789)
-  scores_hover <- rnorm(n, ex_angst_mean, ex_angst_sd)
+  scores_hover <- rnorm(exm_angst$n,  exm_angst$x_mean, exm_angst$x_sd)
   plots[[i]] <- plot_ball_bag(
     scores_bag = scores_bag_high_p,
     scores_hover = scores_hover,
@@ -92,7 +109,7 @@ Im Szenario, in welchem in der Population tatsächlich höhere Werte häufig vor
 plots <- list()
 for(i in 1:6){
   set.seed(i*5+789)
-  scores_hover <- rnorm(n, 52, ex_angst_sd)
+  scores_hover <- rnorm(exm_angst$n, 52, exm_angst$x_sd)
   plots[[i]] <-plot_ball_bag(
   scores_bag = scores_bag_low_p,
   scores_hover = scores_hover,

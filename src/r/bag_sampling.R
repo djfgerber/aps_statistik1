@@ -7,13 +7,18 @@ plot_ball_bag <- function(scores_bag,
                           bag_color = "lightgrey",
                           seed = NA_integer_,
                           color_bag_balls = TRUE,
-                          no_legend = FALSE) {
+                          no_legend = FALSE,
+                          limit_scores = NULL) {
   if (!is.null(seed))
     set.seed(seed)
 
   n <- length(scores_bag)
   k <- length(scores_hover)
   scores <- c(scores_bag, scores_hover)
+  
+  if (is.null(limit_scores)){
+    limit_scores <- c(min(scores), max(scores))
+  }
   
   random_position <- function(count, xmin, xmax, ymin, ymax) {
     tibble(x = runif(count, xmin, xmax),
@@ -54,7 +59,7 @@ plot_ball_bag <- function(scores_bag,
     scale_color_gradientn(
       colors = rev(brewer.pal(9, "RdYlGn")),
       name = score_name,
-      limits = c(min(scores), max(scores))
+      limits = limit_scores
     ) +
     annotate(
       "text",
