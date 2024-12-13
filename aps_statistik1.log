@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.16)  9 DEC 2024 16:12
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.16)  13 DEC 2024 18:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1422,27 +1422,19 @@ File: figures/icons/caution.png Graphic file (type bmp)
 
 
 [50]
-Overfull \hbox (33.0pt too wide) in paragraph at lines 1151--1151
+Overfull \hbox (33.0pt too wide) in paragraph at lines 1159--1159
 []\TU/lmtt/m/n/10 ## Warning: Removed 2 rows containing non-finite outside the scale range 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 1156--1156
-[]\TU/lmtt/m/n/10 ## Warning: Removed 140 rows containing non-finite outside the scale range 
- []
-
-
-Overfull \hbox (106.5pt too wide) in paragraph at lines 1161--1161
+Overfull \hbox (106.5pt too wide) in paragraph at lines 1164--1164
 []\TU/lmtt/m/n/10 ## Warning: Removed 8 rows containing missing values or values outside the scale range 
- []
-
-
-Overfull \hbox (111.75pt too wide) in paragraph at lines 1166--1166
-[]\TU/lmtt/m/n/10 ## Warning: Removed 70 rows containing missing values or values outside the scale range 
  []
 
 File: aps_statistik1_files/figure-latex/exm-vermoegen-plots-sampling-theorie-1.pdf Graphic file (type pdf)
 <use aps_statistik1_files/figure-latex/exm-vermoegen-plots-sampling-theorie-1.pdf>
+File: figures/icons/caution.png Graphic file (type bmp)
+<figures/icons/caution.png>
 
 
 
@@ -1455,67 +1447,115 @@ Overfull \hbox (10.88452pt too wide) has occurred while \output is active
 [52]
 
 
-Overfull \hbox (120.36122pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 5.2.  WEICHT DER GEFUNDENE DURCHSCHNITT STARK VOM HYPOTHETISCHEN WERT AB? \TU/lmr/m/n/10 53
+Overfull \hbox (10.88452pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 5.1.  ENTSPRICHT DER ERWARTUNGSWERT EINEM GEWISSEN WERT? \TU/lmr/m/n/10 53
  []
 
 [53]
+Overfull \hbox (33.0pt too wide) in paragraph at lines 1231--1231
+[]\TU/lmtt/m/n/10 ## Warning: Removed 2 rows containing non-finite outside the scale range 
+ []
 
-[54
 
-]
+Overfull \hbox (106.5pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ## Warning: Removed 8 rows containing missing values or values outside the scale range 
+ []
+
+File: aps_statistik1_files/figure-latex/exm-alexithymie-plot-1.pdf Graphic file (type pdf)
+<use aps_statistik1_files/figure-latex/exm-alexithymie-plot-1.pdf>
+
+
+[54]
+
+
+Overfull \hbox (120.36122pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 5.2.  WEICHT DER GEFUNDENE DURCHSCHNITT STARK VOM HYPOTHETISCHEN WERT AB? \TU/lmr/m/n/10 55
+ []
 
 [55]
+Underfull \hbox (badness 2478) in paragraph at lines 1264--1265
+[]\TU/lmr/m/n/10 Wird im Vermögensbeispiel []5.1[] die Differenz zwischen geschätzem Er-
+ []
+
+
 
 [56]
-\bbl@ensure@ngerman {Kapitel} 6.
+File: figures/05-exr-vermoegen-jmv-input.jpg Graphic file (type bmp)
+<figures/05-exr-vermoegen-jmv-input.jpg>
+File: figures/05-exr-vermoegen-jmv-output.jpg Graphic file (type bmp)
+<figures/05-exr-vermoegen-jmv-output.jpg>
 
-Underfull \hbox (badness 2409) in paragraph at lines 1190--1190
-[]\TU/lmr/bx/n/14.4 Was ist das Problem der Stichproben-
+Underfull \hbox (badness 2277) in paragraph at lines 1351--1352
+[]\TU/lmr/m/n/10 Reproduziere das Beispiel Alexithymie []5.2[] mit \TU/lmtt/m/n/10 Jamovi \TU/lmr/m/n/10 indem folgende
  []
 
+File: figures/05-exr-alexithymie-jmv-input.jpg Graphic file (type bmp)
+<figures/05-exr-alexithymie-jmv-input.jpg>
+File: figures/05-exr-alexithymie-jmv-output.jpg Graphic file (type bmp)
+<figures/05-exr-alexithymie-jmv-output.jpg>
 
 
-[57
+[57]
 
-]
-
-
-Overfull \hbox (51.00671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 58 \TU/lmr/m/sl/10 KAPITEL 6.  GRUPPENVERGLEICH EINER INTERVALLSKALIERTEN VARIABLE
- []
-
-[58
-
-]
-\bbl@ensure@ngerman {Kapitel} 7.
-
+[58]
 
 [59]
 
 [60
 
-] (./aps_statistik1.bbl
+]
 
 [61]
 
-[62
+[62]
+\bbl@ensure@ngerman {Kapitel} 6.
+
+Underfull \hbox (badness 2409) in paragraph at lines 1384--1384
+[]\TU/lmr/bx/n/14.4 Was ist das Problem der Stichproben-
+ []
+
+
+
+[63
+
+]
+
+
+Overfull \hbox (51.00671pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 64 \TU/lmr/m/sl/10 KAPITEL 6.  GRUPPENVERGLEICH EINER INTERVALLSKALIERTEN VARIABLE
+ []
+
+[64
+
+]
+\bbl@ensure@ngerman {Kapitel} 7.
+
+
+[65]
+
+[66
+
+] (./aps_statistik1.bbl
+
+[67]
+
+[68
 
 ])
 
-[63] (./aps_statistik1.aux)
+[69] (./aps_statistik1.aux)
  ***********
 LaTeX2e <2024-11-01>
 L3 programming layer <2024-11-02>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 32716 strings out of 475994
- 672220 string characters out of 5777284
- 1166750 words of memory out of 5000000
- 54965 multiletter control sequences out of 15000+600000
- 564634 words of font info for 91 fonts, out of 8000000 for 9000
+ 32838 strings out of 475994
+ 677352 string characters out of 5777284
+ 1168284 words of memory out of 5000000
+ 55078 multiletter control sequences out of 15000+600000
+ 564650 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,9n,123p,2090b,738s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aps_statistik1.pdf (63 pages).
+Output written on aps_statistik1.pdf (69 pages).

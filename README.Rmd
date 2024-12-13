@@ -46,3 +46,10 @@ TODO: remark body
 ### Reference
 [@bibtextag]
 
+### Equation
+\begin{equation}
+t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
+(\#eq:tag)
+\end{equation}
+
+\@ref(eq:tag)
