@@ -474,6 +474,88 @@ Abbildung 5.8: Deskriptive Statistiken.
 </div>
 </details>
 </div>
+<div class="exercise">
+<p><span id="exr:circadian" class="exercise"><strong>Übung 5.3  </strong></span></p>
+<!-- 
+Ziel: 
+- Erster eigener Test selbstständig durchführen
+- Zweiseitiger Test
+- Signifikanz begreifen
+-->
+<p>Es soll überprüft werden, ob der 24-stündige Tagesrhythmus, auch <em>zirkadianer Rhythmus</em> genannt, des Menschen auch ohne Tageslicht aufrechterhalten wird. Eine solche Untersuchung wird von <span class="citation">Czeisler et al. (<a href="#ref-czeisler1999">1999</a>)</span> berichtet. Wir gehen von folgendem fiktiven Versuch aus: Freiwillige werden für vier Tage in einer Kellerwohnung ohne jedes Tageslicht einquartiert. Jede Versuchsperson ist während der vier Tage allein, darf die Wohnung nicht verlassen und erhält keinerlei Hinweise auf die aktuelle Tageszeit. Die Person muss unmittelbar vor dem Zu-Bett-Gehen, einen Knopf betätigen, wodurch die Uhrzeit festgehalten wird. Als Variable wird die Dauer der <code>tageslaenge</code> (in Stunden) zwischen dem Zu-Bett-Gehen am dritten Versuchstag und dem Zu-Bett-Gehen am vierten Versuchstag verwendet. Die erhobenen Daten sind in <code>05-exr-circadian.sav</code> abgelegt.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Ohne einen Test durchzuführen, haben die Proband:innen einen anderen zirkadianen Rhythmus als Menschen die nicht am Experiment teilnehmen? Weshalb es hier sinnvoll ist einen statistischen Test zu verwenden?</li>
+<li>Stellen Sie mit einem Einstichproben-t-Test fest, ob der zirkadiane Rhythmus durch das Tageslicht beeinflusst wird. Stellen Sie insbesondere die Hypothesen auf und berichten Sie das Testresultat adäquat.</li>
+<li>Erklären Sie alle Zahlen und Symbole im Testbericht.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-22" class="solution"><em>Lösung</em>. </span>Für diese Übung werden die Daten in <code>Jamovi</code> wie in Abbildung <a href="zentrale-tendenz-testen.html#fig:sol-circadian-input">5.9</a> analysiert. Das Resultat der Analyse ist in Abbildung <a href="zentrale-tendenz-testen.html#fig:sol-circadian-output">5.10</a> festgehalten.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-circadian-input"></span>
+<img src="figures/05-exr-circadian-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
+<p class="caption">
+Abbildung 5.9: Jamovi Eingabe.
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:sol-circadian-output"></span>
+<img src="figures/05-exr-circadian-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 5.10: Jamovi Ausgabe.
+</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li>Die Versuchpersonen haben einen durchschnittlichen zirkadianen Rhythmus von <span class="math inline">\(M = 24.6\)</span> Stunden. Dies ist länger als die regulären <span class="math inline">\(24\)</span> Stunden. Es ist unklar, ob hier gerade zufällig Personen beobachtet wurden bei welche sich der zirkadiane Rhytmus verlängert. Um die Wahrscheinlichkeit dieses Zufalls zu quantifizieren wird ein statistischer Test durchgeführt.</li>
+<li>Die Nullhypothese geht vom aktuell bekannten aus, also in diesem Fall, dass sich der durchschnittliche zirkadiane Rhythmus unter den Versuchsbedinungen nicht verändert. Der normale zirkadiane Rhythmus ist Sonnenbedingt <span class="math inline">\(24\)</span> Stunden lang, also wird die Nullhypothese <span class="math inline">\(H_0: \mu = 24\)</span> Stunden aufgestellt. <span class="math inline">\(\mu\)</span> ist hier die durchschnittiche Dauer des zirkadianen Rhythmus in der Population. Im Versuch geht es darum festzustellen, ob der normale zirkadiane Rhythmus gehalten wird oder nicht. Ein nicht gehaltener zirkadianer Rhythmus würde bedeuten, dass sich die Tagesdauer verkürzt oder verlängert gegenüber der Nullhypothese. Es ist hier also eine zweiseitige Hypothesenstellung und die Alternativhypothese lautet <span class="math inline">\(H_1: \mu \neq 24\)</span> Stunden.</li>
+</ol>
+<blockquote>
+<p>Die durchschnittliche Tageslänge (<span class="math inline">\(M = 24.6\)</span> Stunden, <span class="math inline">\(SD = 1.8\)</span>, <span class="math inline">\(N = 57\)</span>) unter Experimentalbedingungen unterscheidet sich signifikant von <span class="math inline">\(24\)</span> Stunden, <span class="math inline">\(t(56) = 2.41\)</span>, <span class="math inline">\(p = 0.981, d = 0.319\)</span>.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><span class="math inline">\(M, SD,\)</span> und <span class="math inline">\(N\)</span> sind das arithmetische Mittel, die geschätzte Standardabweichung und die Anzahl Beobachtungen der Stichprobe. <span class="math inline">\(p\)</span> ist die Wahrscheinlichkeit, zufällig den Stichprobenmittelwert oder einen noch extremeren Wert im Sinne der Alternativehypothese zu beobachten, falls die Nullhypothese stimmt. Dieser Wert ist kleiner als <span class="math inline">\(5\%\)</span>. Deswegen wird von einem signifikanten Unterschied der durchschnittlichen Tageslänge zum Erwartungswert gesprochen. <span class="math inline">\(24\)</span> Stunden ist der Vergleichswert der Nullhypothese. <span class="math inline">\(t(56)\)</span> bedeutet, dass die Teststatistik <span class="math inline">\(t\)</span>-verteilt ist mit 56 Freiheitsgraden, sofern die Nullhypothese wahr ist. Mit der aktuellen Stichprobenziehung wurde ein Wert von <span class="math inline">\(2.41\)</span> realisiert. Dieser Wert ist mit der <span class="math inline">\(t\)</span>-Verteilung in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:t-distribution">4.7</a> zu vergleichen. Der Wert entspricht einer eher unwahrscheinlichen Beobachtung dieser Verteilung. <span class="math inline">\(d = 0.319\)</span>, schliesslich, bezieht sich auf die Effektstärke. Das Testresultat entspricht einem mittleren Effekt.</li>
+</ol>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:schwimmen" class="exercise"><strong>Übung 5.4  </strong></span></p>
+<!-- 
+Ziel: 
+- Gerichtete Hypothese kleiner als ein Wert
+-->
+<p>Im Schwimmclub Neustadt erreichen neue Schwimmer nach einem Jahr Training eine Kraul-Schwimmzeit von durchschnittlich <span class="math inline">\(1.58\)</span> Minuten für <span class="math inline">\(100\)</span> Meter. Eine Sportstudentin will eine neue Trainingsmethode ausprobieren und herausfinden, ob die Methode bessere Ergebnisse erzielt. Dazu trainiert neue Schwimmer ein Jahr lang mit dieser Methode und misst anschliessend deren Kraul-Schwimmzeit über <span class="math inline">\(100\)</span> Meter. Die Daten sind in <code>05-exr-schwimmen.sav</code> abgelegt.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Wie viele Schwimmer hat die Sportstudentin trainiert?</li>
+<li>Ist die neue Trainingsmethode besser als die bisherige? Erklären Sie die Signifikanz und Relevanz des Experimentresultats.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-23" class="solution"><em>Lösung</em>. </span>Für diese Übung werden die Daten in <code>Jamovi</code> wie in Abbildung <a href="zentrale-tendenz-testen.html#fig:sol-schwimmen-input">5.11</a> analysiert. Das Resultat der Analyse ist in Abbildung <a href="zentrale-tendenz-testen.html#fig:sol-schwimmen-output">5.12</a> festgehalten.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-schwimmen-input"></span>
+<img src="figures/05-exr-schwimmen-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
+<p class="caption">
+Abbildung 5.11: Jamovi Eingabe.
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:sol-schwimmen-output"></span>
+<img src="figures/05-exr-schwimmen-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 5.12: Jamovi Ausgabe.
+</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li>Die Sportstudentin hat <span class="math inline">\(N = 13\)</span> Schwimmer trainiert.</li>
+<li>Die Forschungsfrage ist hier, ob die neue Trainingsmethode besser ist. Besser meint hier, dass die mit dieser Trainingsmethode trianierten Schwimmer nach dem Training durchschnittlich schneller schwimmen als die anderen. Die Alternativhypothese ist also <span class="math inline">\(H_1: \mu &lt; 1.58\)</span>. Die Nullhypothese sagt genau das Gegenteil davon aus, nämlich, dass die durchschnittliche Schimmzeit mit der neuen Methode gleich bleibt oder sogar noch länger wird <span class="math inline">\(H_0: \mu \geq 1.58\)</span>. Das Testresultat lässt sich wie folgt berichten:</li>
+</ol>
+<blockquote>
+<p>Die durchschnittliche Schwimmzeit (<span class="math inline">\(M = 1.31\)</span> Minuten, <span class="math inline">\(SD = 0.63\)</span>, <span class="math inline">\(N = 13\)</span>) mit der neuen Trainingsmethode ist nicht signifikant tiefer als <span class="math inline">\(1.58\)</span> Minuten, <span class="math inline">\(t(12) = -1.54\)</span>, <span class="math inline">\(p = .075, d = -0.426\)</span>.</p>
+</blockquote>
+<p>Das Testresultat ist nicht signifikant, da der <span class="math inline">\(p\)</span>-Wert grösser als <span class="math inline">\(5\%\)</span> ist. Tatsächlich bedeutet <span class="math inline">\(p = .075\)</span>, dass, wenn die Nullhypothese wahr ist, das gefundene Testresultat oder dass die Schwimmer noch schneller sind in <span class="math inline">\(7.5\%\)</span> zufällig durch die Zufallsstichprobenziehung zustande kommt. Kurz gesagt, das Resulat könnt auch Zufall sein.</p>
+<p>Die gefundene Effektstärke ist mittel. Wenn das Resultat nicht zufällig wäre, dann würde die Trainingsmethode immerhin einen mittleren Effekt erzielen. Wenn es tatsächlich einen mittleren Effekt gibt, dann könnte die Sportstudentin das Experiment nochmal mit mehr Probanden wiederholen, um den Effekt auch als statistisch signifikan nachweisen zu können. Falls der gefundene Effekt nur zufällig zustande gekommen ist und er nicht exisitiert, wird auch eine Experimentwiederholung mit mehr Probandinnen immernoch kein signifikantes Testergebnis liefern.</p>
+</details>
+</div>
 
 </div>
 </div>
@@ -484,6 +566,9 @@ Abbildung 5.8: Deskriptive Statistiken.
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-cohen1988" class="csl-entry">
 Cohen, Jacob. 1988. <em>Statistical Power Analysis for the Behavioral Sciences</em>. 2nd ed. Routledge.
+</div>
+<div id="ref-czeisler1999" class="csl-entry">
+Czeisler, Charles, Jeanne Duffy, Theresa Shanahan, Emery Brown, Jude Mitchell, David Rimmer, Joseph Ronda, et al. 1999. <span>“Stability, Precision, and Near-24-Hour Period of the Human Circadian Pacemaker.”</span> <em>Science</em> 284 (June): 2177–81. <a href="https://doi.org/10.1126/science.284.5423.2177">https://doi.org/10.1126/science.284.5423.2177</a>.
 </div>
 </div>
             </section>

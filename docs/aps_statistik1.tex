@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{13 December, 2024}
+\date{15 December, 2024}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -1373,6 +1373,104 @@ Reproduziere das Beispiel Alexithymie \ref{exm:alexithymie} mit \texttt{Jamovi} 
 \includegraphics[width=1\linewidth]{figures/05-exr-alexithymie-jmv-output} \caption{Deskriptive Statistiken.}\label{fig:sol-alexithymie-output}
 \end{figure}
 
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:circadian}{}\label{exr:circadian}\leavevmode
+
+Es soll überprüft werden, ob der 24-stündige Tagesrhythmus, auch \emph{zirkadianer Rhythmus} genannt, des Menschen auch ohne Tageslicht aufrechterhalten wird. Eine solche Untersuchung wird von \citet{czeisler1999} berichtet. Wir gehen von folgendem fiktiven Versuch aus: Freiwillige werden für vier Tage in einer Kellerwohnung ohne jedes Tageslicht einquartiert. Jede Versuchsperson ist während der vier Tage allein, darf die Wohnung nicht verlassen und erhält keinerlei Hinweise auf die aktuelle Tageszeit. Die Person muss unmittelbar vor dem Zu-Bett-Gehen, einen Knopf betätigen, wodurch die Uhrzeit festgehalten wird. Als Variable wird die Dauer der \texttt{tageslaenge} (in Stunden) zwischen dem Zu-Bett-Gehen am dritten Versuchstag und dem Zu-Bett-Gehen am vierten Versuchstag verwendet. Die erhobenen Daten sind in \texttt{05-exr-circadian.sav} abgelegt.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Ohne einen Test durchzuführen, haben die Proband:innen einen anderen zirkadianen Rhythmus als Menschen die nicht am Experiment teilnehmen? Weshalb es hier sinnvoll ist einen statistischen Test zu verwenden?
+\item
+  Stellen Sie mit einem Einstichproben-t-Test fest, ob der zirkadiane Rhythmus durch das Tageslicht beeinflusst wird. Stellen Sie insbesondere die Hypothesen auf und berichten Sie das Testresultat adäquat.
+\item
+  Erklären Sie alle Zahlen und Symbole im Testbericht.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+
+Für diese Übung werden die Daten in \texttt{Jamovi} wie in Abbildung \ref{fig:sol-circadian-input} analysiert. Das Resultat der Analyse ist in Abbildung \ref{fig:sol-circadian-output} festgehalten.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-circadian-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-circadian-input}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-circadian-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-circadian-output}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Die Versuchpersonen haben einen durchschnittlichen zirkadianen Rhythmus von \(M = 24.6\) Stunden. Dies ist länger als die regulären \(24\) Stunden. Es ist unklar, ob hier gerade zufällig Personen beobachtet wurden bei welche sich der zirkadiane Rhytmus verlängert. Um die Wahrscheinlichkeit dieses Zufalls zu quantifizieren wird ein statistischer Test durchgeführt.
+\item
+  Die Nullhypothese geht vom aktuell bekannten aus, also in diesem Fall, dass sich der durchschnittliche zirkadiane Rhythmus unter den Versuchsbedinungen nicht verändert. Der normale zirkadiane Rhythmus ist Sonnenbedingt \(24\) Stunden lang, also wird die Nullhypothese \(H_0: \mu = 24\) Stunden aufgestellt. \(\mu\) ist hier die durchschnittiche Dauer des zirkadianen Rhythmus in der Population. Im Versuch geht es darum festzustellen, ob der normale zirkadiane Rhythmus gehalten wird oder nicht. Ein nicht gehaltener zirkadianer Rhythmus würde bedeuten, dass sich die Tagesdauer verkürzt oder verlängert gegenüber der Nullhypothese. Es ist hier also eine zweiseitige Hypothesenstellung und die Alternativhypothese lautet \(H_1: \mu \neq 24\) Stunden.
+\end{enumerate}
+
+\begin{quote}
+Die durchschnittliche Tageslänge (\(M = 24.6\) Stunden, \(SD = 1.8\), \(N = 57\)) unter Experimentalbedingungen unterscheidet sich signifikant von \(24\) Stunden, \(t(56) = 2.41\), \(p = 0.981, d = 0.319\).
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \(M, SD,\) und \(N\) sind das arithmetische Mittel, die geschätzte Standardabweichung und die Anzahl Beobachtungen der Stichprobe. \(p\) ist die Wahrscheinlichkeit, zufällig den Stichprobenmittelwert oder einen noch extremeren Wert im Sinne der Alternativehypothese zu beobachten, falls die Nullhypothese stimmt. Dieser Wert ist kleiner als \(5\%\). Deswegen wird von einem signifikanten Unterschied der durchschnittlichen Tageslänge zum Erwartungswert gesprochen. \(24\) Stunden ist der Vergleichswert der Nullhypothese. \(t(56)\) bedeutet, dass die Teststatistik \(t\)-verteilt ist mit 56 Freiheitsgraden, sofern die Nullhypothese wahr ist. Mit der aktuellen Stichprobenziehung wurde ein Wert von \(2.41\) realisiert. Dieser Wert ist mit der \(t\)-Verteilung in Abbildung \ref{fig:t-distribution} zu vergleichen. Der Wert entspricht einer eher unwahrscheinlichen Beobachtung dieser Verteilung. \(d = 0.319\), schliesslich, bezieht sich auf die Effektstärke. Das Testresultat entspricht einem mittleren Effekt.
+\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:schwimmen}{}\label{exr:schwimmen}\leavevmode
+
+Im Schwimmclub Neustadt erreichen neue Schwimmer nach einem Jahr Training eine Kraul-Schwimmzeit von durchschnittlich \(1.58\) Minuten für \(100\) Meter. Eine Sportstudentin will eine neue Trainingsmethode ausprobieren und herausfinden, ob die Methode bessere Ergebnisse erzielt. Dazu trainiert neue Schwimmer ein Jahr lang mit dieser Methode und misst anschliessend deren Kraul-Schwimmzeit über \(100\) Meter. Die Daten sind in \texttt{05-exr-schwimmen.sav} abgelegt.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Wie viele Schwimmer hat die Sportstudentin trainiert?
+\item
+  Ist die neue Trainingsmethode besser als die bisherige? Erklären Sie die Signifikanz und Relevanz des Experimentresultats.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+Für diese Übung werden die Daten in \texttt{Jamovi} wie in Abbildung \ref{fig:sol-schwimmen-input} analysiert. Das Resultat der Analyse ist in Abbildung \ref{fig:sol-schwimmen-output} festgehalten.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-schwimmen-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-schwimmen-input}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-schwimmen-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-schwimmen-output}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Die Sportstudentin hat \(N = 13\) Schwimmer trainiert.
+\item
+  Die Forschungsfrage ist hier, ob die neue Trainingsmethode besser ist. Besser meint hier, dass die mit dieser Trainingsmethode trianierten Schwimmer nach dem Training durchschnittlich schneller schwimmen als die anderen. Die Alternativhypothese ist also \(H_1: \mu < 1.58\). Die Nullhypothese sagt genau das Gegenteil davon aus, nämlich, dass die durchschnittliche Schimmzeit mit der neuen Methode gleich bleibt oder sogar noch länger wird \(H_0: \mu \geq 1.58\). Das Testresultat lässt sich wie folgt berichten:
+\end{enumerate}
+
+\begin{quote}
+Die durchschnittliche Schwimmzeit (\(M = 1.31\) Minuten, \(SD = 0.63\), \(N = 13\)) mit der neuen Trainingsmethode ist nicht signifikant tiefer als \(1.58\) Minuten, \(t(12) = -1.54\), \(p = .075, d = -0.426\).
+\end{quote}
+
+Das Testresultat ist nicht signifikant, da der \(p\)-Wert grösser als \(5\%\) ist. Tatsächlich bedeutet \(p = .075\), dass, wenn die Nullhypothese wahr ist, das gefundene Testresultat oder dass die Schwimmer noch schneller sind in \(7.5\%\) zufällig durch die Zufallsstichprobenziehung zustande kommt. Kurz gesagt, das Resulat könnt auch Zufall sein.
+
+Die gefundene Effektstärke ist mittel. Wenn das Resultat nicht zufällig wäre, dann würde die Trainingsmethode immerhin einen mittleren Effekt erzielen. Wenn es tatsächlich einen mittleren Effekt gibt, dann könnte die Sportstudentin das Experiment nochmal mit mehr Probanden wiederholen, um den Effekt auch als statistisch signifikan nachweisen zu können. Falls der gefundene Effekt nur zufällig zustande gekommen ist und er nicht exisitiert, wird auch eine Experimentwiederholung mit mehr Probandinnen immernoch kein signifikantes Testergebnis liefern.
 \end{solution}
 
 \part{Gruppenvergleich einer intervallskalierten Variable}\label{part-gruppenvergleich-einer-intervallskalierten-variable}

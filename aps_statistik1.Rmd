@@ -1587,6 +1587,134 @@ knitr::include_graphics("figures/05-exr-alexithymie-jmv-output.jpg")
 ```  
 :::
 
+
+::: {.exercise  #circadian}
+<!-- 
+Ziel: 
+- Erster eigener Test selbstständig durchführen
+- Zweiseitiger Test
+- Signifikanz begreifen
+-->
+
+```{r exr-circadian}
+gen_exr_circadian <- function(){
+  set.seed(1982)
+  mu0 <- 24
+  n <- 57
+  
+  x <- rnorm(n, 24.5, 2) 
+  # x %>% summary()
+  # x %>% t.test(alternative = 'two.sided',
+  #              mu = mu0)
+  x_mean <- x %>% mean()
+  x_mean_sym <- mu0 + (mu0 - x_mean)
+  x_sd <- x %>% sd()
+  t_emp <- (x_mean - mu0)/(x_sd/sqrt(n))
+  p_value_the <- 1-2*pt((x_mean - mu0)/ (x_sd / sqrt(n)), n-1)
+  effect_size <- (x_mean - mu0) / x_sd
+  
+  file_name <- '05-exr-circadian.sav'
+  tibble(tageslaenge = x) %>% write_sav(file_name)
+  
+  return(mget(ls()))
+}
+exr_circadian <- gen_exr_circadian()
+```
+
+Es soll überprüft werden, ob der 24-stündige Tagesrhythmus, auch _zirkadianer Rhythmus_ genannt, des Menschen auch ohne Tageslicht aufrechterhalten wird. Eine solche Untersuchung wird von @czeisler1999 berichtet. Wir gehen von folgendem fiktiven Versuch aus:  Freiwillige werden für vier Tage in einer Kellerwohnung ohne jedes Tageslicht einquartiert. Jede Versuchsperson ist während der vier Tage allein, darf die Wohnung nicht verlassen und erhält keinerlei Hinweise auf die aktuelle Tageszeit. Die Person muss unmittelbar vor dem Zu-Bett-Gehen, einen Knopf betätigen, wodurch die Uhrzeit festgehalten wird. Als Variable wird die Dauer der `tageslaenge` (in Stunden) zwischen dem Zu-Bett-Gehen am dritten Versuchstag und dem Zu-Bett-Gehen am vierten Versuchstag verwendet. Die erhobenen Daten sind in `r inline_code(exr_circadian$file_name)` abgelegt.
+
+a) Ohne einen Test durchzuführen, haben die Proband:innen einen anderen zirkadianen Rhythmus als Menschen die nicht am Experiment teilnehmen? Weshalb es hier sinnvoll ist einen statistischen Test zu verwenden?
+b) Stellen Sie mit einem Einstichproben-t-Test fest, ob der zirkadiane Rhythmus durch das Tageslicht beeinflusst wird. Stellen Sie insbesondere die Hypothesen auf und berichten Sie das Testresultat adäquat.
+c) Erklären Sie alle Zahlen und Symbole im Testbericht.
+:::
+
+:::{.solution}
+Für diese Übung werden die Daten in `Jamovi` wie in Abbildung \@ref(fig:sol-circadian-input) analysiert. Das Resultat der Analyse ist in Abbildung \@ref(fig:sol-circadian-output) festgehalten.
+
+```{r sol-circadian-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
+knitr::include_graphics("figures/05-exr-circadian-jmv-input.jpg")
+```
+
+```{r sol-circadian-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/05-exr-circadian-jmv-output.jpg")
+``` 
+
+a) Die Versuchpersonen haben einen durchschnittlichen zirkadianen Rhythmus von $M = `r round(exr_circadian$x_mean,1)`$ Stunden. Dies ist länger als die regulären $24$ Stunden. Es ist unklar, ob hier gerade zufällig Personen beobachtet wurden bei welche sich der zirkadiane Rhytmus verlängert. Um die Wahrscheinlichkeit dieses Zufalls zu quantifizieren wird ein statistischer Test durchgeführt.
+b) Die Nullhypothese geht vom aktuell bekannten aus, also in diesem Fall, dass sich der durchschnittliche zirkadiane Rhythmus unter den Versuchsbedinungen nicht verändert. Der normale zirkadiane Rhythmus ist Sonnenbedingt $24$ Stunden lang, also wird die Nullhypothese $H_0: \mu = 24$ Stunden aufgestellt. $\mu$ ist hier die durchschnittiche Dauer des zirkadianen Rhythmus in der Population. Im Versuch geht es darum festzustellen, ob der normale zirkadiane Rhythmus gehalten wird oder nicht. Ein nicht gehaltener zirkadianer Rhythmus würde bedeuten, dass sich die Tagesdauer verkürzt oder verlängert gegenüber der Nullhypothese. Es ist hier also eine zweiseitige Hypothesenstellung und die Alternativhypothese lautet $H_1: \mu \neq 24$ Stunden.
+
+> Die durchschnittliche Tageslänge ($M = `r round(exr_circadian$x_mean,1)`$ Stunden, $SD = `r round(exr_circadian$x_sd,1)`$, $N = `r round(exr_circadian$n)`$) unter Experimentalbedingungen unterscheidet sich signifikant von $24$ Stunden, $t(`r round(exr_circadian$n-1)`) = `r round(exr_circadian$t_emp,2)`$, $p = `r round(exr_circadian$p_value_the,3) %>% str_sub(start = 2L)`, d = `r round(exr_circadian$effect_size,3)`$.
+
+c) $M, SD,$ und $N$ sind das arithmetische Mittel, die geschätzte Standardabweichung und die Anzahl Beobachtungen der Stichprobe. $p$ ist die Wahrscheinlichkeit, zufällig den Stichprobenmittelwert oder einen noch extremeren Wert im Sinne der Alternativehypothese zu beobachten, falls die Nullhypothese stimmt. Dieser Wert ist kleiner als $5\%$. Deswegen wird von einem signifikanten Unterschied der durchschnittlichen Tageslänge zum Erwartungswert gesprochen. $24$ Stunden ist der Vergleichswert der Nullhypothese. $t(`r round(exr_circadian$n-1)`)$ bedeutet, dass die Teststatistik $t$-verteilt ist mit `r exr_circadian$n-1` Freiheitsgraden, sofern die Nullhypothese wahr ist. Mit der aktuellen Stichprobenziehung wurde ein Wert von $`r round(exr_circadian$t_emp,2)`$ realisiert. Dieser Wert ist mit der $t$-Verteilung in Abbildung \@ref(fig:t-distribution) zu vergleichen. Der Wert entspricht einer eher unwahrscheinlichen Beobachtung dieser Verteilung. $d = `r round(exr_circadian$effect_size,3)`$, schliesslich, bezieht sich auf die Effektstärke. Das Testresultat entspricht einem mittleren Effekt.
+ 
+:::
+
+::: {.exercise  #schwimmen}
+<!-- 
+Ziel: 
+- Gerichtete Hypothese kleiner als ein Wert
+-->
+
+```{r exr-schwimmen}
+gen_exr_schwimmen <- function(){
+  set.seed(1982)
+  mu0 <- 1.58
+  n <- 13
+  
+  x <- rnorm(n, 1.50, 0.8) 
+  x %>% summary()
+  x %>% t.test(alternative = 'less',
+               mu = mu0)
+  x_mean <- x %>% mean()
+  x_mean_sym <- mu0 + (mu0 - x_mean)
+  x_sd <- x %>% sd()
+  t_emp <- (x_mean - mu0)/(x_sd/sqrt(n))
+  p_value_the <- pt(t_emp, n-1)
+  effect_size <- (x_mean - mu0) / x_sd
+  
+  file_name <- '05-exr-schwimmen.sav'
+  dd <- tibble(kraul_zeit = x) 
+  dd %>% write_sav(file_name)
+  jmv_res <- (dd %>% 
+    jmv::ttestOneS(vars = 'kraul_zeit', 
+                   testValue = 1.58, 
+                   hypothesis = 'lt', desc = TRUE,
+                   effectSize = TRUE))
+  jmv_res_test <- jmv_res$ttest$asDF %>% 
+    rename_with(~ .x %>% str_remove('\\[stud\\]'))
+  jmv_res_desc <- jmv_res$descriptives$asDF
+  
+  return(mget(ls()))
+}
+exr_schwimmen <- gen_exr_schwimmen()
+```
+
+Im Schwimmclub Neustadt erreichen neue Schwimmer nach einem Jahr Training eine Kraul-Schwimmzeit von durchschnittlich $`r exr_schwimmen$mu0`$ Minuten für $100$ Meter. Eine Sportstudentin will eine neue Trainingsmethode ausprobieren und herausfinden, ob die Methode bessere Ergebnisse erzielt. Dazu trainiert neue Schwimmer ein Jahr lang mit dieser Methode und misst anschliessend deren Kraul-Schwimmzeit über $100$ Meter. Die Daten sind in `r inline_code(exr_schwimmen$file_name)` abgelegt.
+
+a) Wie viele Schwimmer hat die Sportstudentin trainiert?
+b) Ist die neue Trainingsmethode besser als die bisherige? Erklären Sie die Signifikanz und Relevanz des Experimentresultats.
+:::
+
+:::{.solution}
+Für diese Übung werden die Daten in `Jamovi` wie in Abbildung \@ref(fig:sol-schwimmen-input) analysiert. Das Resultat der Analyse ist in Abbildung \@ref(fig:sol-schwimmen-output) festgehalten.
+
+```{r sol-schwimmen-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
+knitr::include_graphics("figures/05-exr-schwimmen-jmv-input.jpg")
+```
+
+```{r sol-schwimmen-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/05-exr-schwimmen-jmv-output.jpg")
+```
+
+a) Die Sportstudentin hat $N = `r exr_schwimmen$jmv_res_desc$num`$ Schwimmer trainiert.
+b) Die Forschungsfrage ist hier, ob die neue Trainingsmethode besser ist. Besser meint hier, dass die mit dieser Trainingsmethode trianierten Schwimmer nach dem Training durchschnittlich schneller schwimmen als die anderen. Die Alternativhypothese ist also $H_1: \mu < `r exr_schwimmen$mu0`$. Die Nullhypothese sagt genau das Gegenteil davon aus, nämlich, dass die durchschnittliche Schimmzeit mit der neuen Methode gleich bleibt oder sogar noch länger wird $H_0: \mu \geq `r exr_schwimmen$mu0`$. Das Testresultat lässt sich wie folgt berichten:
+
+> Die durchschnittliche Schwimmzeit ($M = `r round(exr_schwimmen$jmv_res_desc$mean,2)`$ Minuten, $SD = `r round(exr_schwimmen$jmv_res_desc$sd,2)`$, $N = `r exr_schwimmen$jmv_res_desc$num`$) mit der neuen Trainingsmethode ist nicht signifikant tiefer als $`r exr_schwimmen$mu0`$ Minuten, $t(`r exr_schwimmen$jmv_res_test$df`) = `r round(exr_schwimmen$jmv_res_test$stat,2)`$, $p = `r round(exr_schwimmen$jmv_res_test$p,3) %>% str_sub(start = 2L)`, d = `r round(exr_schwimmen$jmv_res_test$es,3)`$.
+
+Das Testresultat ist nicht signifikant, da der $p$-Wert grösser als $5\%$ ist. Tatsächlich bedeutet $p = `r round(exr_schwimmen$jmv_res_test$p,3) %>% str_sub(start = 2L)`$, dass, wenn die Nullhypothese wahr ist, das gefundene Testresultat oder dass die Schwimmer noch schneller sind in $`r round(100*exr_schwimmen$jmv_res_test$p,1)`\%$ zufällig durch die Zufallsstichprobenziehung zustande kommt. Kurz gesagt, das Resulat könnt auch Zufall sein.
+
+Die gefundene Effektstärke ist mittel. Wenn das Resultat nicht zufällig wäre, dann würde die Trainingsmethode immerhin einen mittleren Effekt erzielen. Wenn es tatsächlich einen mittleren Effekt gibt, dann könnte die Sportstudentin das Experiment nochmal mit mehr Probanden wiederholen, um den Effekt auch als statistisch signifikan nachweisen zu können. Falls der gefundene Effekt nur zufällig zustande gekommen ist und er nicht exisitiert, wird auch eine Experimentwiederholung mit mehr Probandinnen immernoch kein signifikantes Testergebnis liefern. 
+:::
+
 <!--chapter:end:src/05-1-durchschnitt_testen.Rmd-->
 
 # (PART) Gruppenvergleich einer intervallskalierten Variable {-}
