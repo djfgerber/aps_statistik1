@@ -346,6 +346,7 @@ gen_exm_alexithymie <- function(){
   n <- 391
   
   x <- rnorm(n, 96, 25) 
+  x <- crop(x, x_min, x_max)
   x[which(x < x_min)] <- x_min
   x[which(x > x_max)] <- x_max
   # x %>% summary()

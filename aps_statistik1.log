@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.16)  15 DEC 2024 13:13
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.11.16)  22 DEC 2024 13:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1527,9 +1527,11 @@ File: figures/05-exr-schwimmen-jmv-output.jpg Graphic file (type bmp)
 
 [66]
 \bbl@ensure@ngerman {Kapitel} 6.
+File: aps_statistik1_files/figure-latex/exm-breakup-1.pdf Graphic file (type pdf)
+<use aps_statistik1_files/figure-latex/exm-breakup-1.pdf>
 
-Underfull \hbox (badness 2409) in paragraph at lines 1482--1482
-[]\TU/lmr/bx/n/14.4 Was ist das Problem der Stichproben-
+Overfull \hbox (154.42369pt too wide) in paragraph at lines 1485--1486
+[][]\TU/lmr/bx/n/10 Beispiel 6.1 \TU/lmr/m/n/10 (Trennungsschmerz)\TU/lmr/bx/n/10 . [][] 
  []
 
 
@@ -1537,19 +1539,24 @@ Underfull \hbox (badness 2409) in paragraph at lines 1482--1482
 [67
 
 ]
+Underfull \hbox (badness 2409) in paragraph at lines 1499--1499
+[]\TU/lmr/bx/n/14.4 Was ist das Problem der Stichproben-
+ []
+
+
 
 
 Overfull \hbox (51.00671pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 68 \TU/lmr/m/sl/10 KAPITEL 6.  GRUPPENVERGLEICH EINER INTERVALLSKALIERTEN VARIABLE
  []
 
-[68
-
-]
+[68]
 \bbl@ensure@ngerman {Kapitel} 7.
 
 
-[69]
+[69
+
+]
 
 [70
 
@@ -1568,10 +1575,10 @@ L3 programming layer <2024-11-02>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 32939 strings out of 475994
- 681534 string characters out of 5777284
- 1168546 words of memory out of 5000000
- 55175 multiletter control sequences out of 15000+600000
+ 32952 strings out of 475994
+ 682090 string characters out of 5777284
+ 1168623 words of memory out of 5000000
+ 55187 multiletter control sequences out of 15000+600000
  564650 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,9n,123p,2090b,738s stack positions out of 10000i,1000n,20000p,200000b,200000s
