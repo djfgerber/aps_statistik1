@@ -84,7 +84,7 @@ plot_ball_bag <- function(scores_bag,
     ) +
     annotate_side_text(3.5, "Population")+
     annotate_side_text(7.5, "Stichprobe")+
-    annotate_arrow(7.2, 8)+ # up
+    annotate_arrow(6.2, 7)+ # up
     coord_fixed(ratio = 1,
                 xlim = c(0, 10),
                 ylim = c(0, 10)) +

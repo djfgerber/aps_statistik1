@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{22 December, 2024}
+\date{23 December, 2024}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -1473,18 +1473,17 @@ Das Testresultat ist nicht signifikant, da der \(p\)-Wert grösser als \(5\%\) i
 Die gefundene Effektstärke ist mittel. Wenn das Resultat nicht zufällig wäre, dann würde die Trainingsmethode immerhin einen mittleren Effekt erzielen. Wenn es tatsächlich einen mittleren Effekt gibt, dann könnte die Sportstudentin das Experiment nochmal mit mehr Probanden wiederholen, um den Effekt auch als statistisch signifikan nachweisen zu können. Falls der gefundene Effekt nur zufällig zustande gekommen ist und er nicht exisitiert, wird auch eine Experimentwiederholung mit mehr Probandinnen immernoch kein signifikantes Testergebnis liefern.
 \end{solution}
 
-\part{Gruppenvergleich einer intervallskalierten Variable}\label{part-gruppenvergleich-einer-intervallskalierten-variable}
+\part{Zwei Gruppen vergleichen}\label{part-zwei-gruppen-vergleichen}
 
-\chapter{Gruppenvergleich einer intervallskalierten Variable}\label{gruppenvergleich-einer-intervallskalierten-variable}
+\section{Mittelwertunterschied einer intervallskalierten Variable}\label{mittelwertunterschied-einer-intervallskalierten-variable}
 
-\section{Zwei Gruppen vergleichen}\label{zwei-gruppen-vergleichen}
+Bislang wurde versucht mithilfe \emph{einer} Stichprobe eine Aussage über \emph{eine} Population zu treffen. Dies setzt voraus, dass der Erwartungswert bereits aus früheren Untersuchungen bekannt ist oder theoretisch hergeleitet werden kann (Beispiel zirkadianer Rhythmus). In der Realität ist dies oft nicht der Fall. Es muss also gleichzeitig etwas über eine potenziell veränderte Population und über die Referenzpopulation herausgefunden werden. Im experimentellen Kontext enspricht dies dem Vergleich der Experimental- mit der Kontrollgruppe. Im observationellen Kontext wird die Referenzgruppe willkürlich bestimmt.
 
 \begin{example}[Trennungsschmerz]
-\protect\hypertarget{exm:breakup}{}\label{exm:breakup}
+\protect\hypertarget{exm:breakup}{}\label{exm:breakup}\includegraphics{aps_statistik1_files/figure-latex/exm-breakup-1.pdf}
 
-\includegraphics{aps_statistik1_files/figure-latex/exm-breakup-1.pdf}
-
-Trennung \citep{morris2015}
+\citet{morris2015} haben untersucht, ob das Geschlecht einen Einfluss auf den Schmerz bei der Auflösung einer romantischen Beziehung hat. Die Autoren unterscheiden dabei zwischen emotionaler und physischer Reaktion. Hier wird nur auf erstere Fokusiert, welche mit \emph{ER} abgekürzt wird. Dazu wurde mit erlösfreien Online-Umfragen unter anderem erfragt, ob die Person eine Trennung erlebt hat und wie sie ihren emotionalen Trennungsschmerz von \(0\) (keine Schmerzen) bis \(10\) (unerträglich) einstuft. An der Studie haben \(N_\text{Mann} = 2695\) Männer und \(N_\text{Frau} = 1409\) Frauen mitgemacht.
+\end{example}
 
 \begin{quote}
 \(H_0: \mu_\text{Frau} = \mu_\text{Mann}\)
@@ -1494,7 +1493,11 @@ Trennung \citep{morris2015}
 \(H_1: \mu_\text{Frau} \neq \mu_\text{Mann}\)
 \end{quote}
 
-\end{example}
+\begin{figure}
+\centering
+\includegraphics{aps_statistik1_files/figure-latex/exm-breakup-bagplot-1.pdf}
+\caption{\label{fig:exm-breakup-bagplot}TODO.}
+\end{figure}
 
 \section{Was ist das Problem der Stichprobenziehung?}\label{was-ist-das-problem-der-stichprobenziehung}
 
@@ -1504,7 +1507,7 @@ Trennung \citep{morris2015}
 
 \chapter{Welch-Test}\label{welch-test}
 
-\section{Zwei Gruppen vergleichen}\label{zwei-gruppen-vergleichen-1}
+\section{Zwei Gruppen vergleichen}\label{zwei-gruppen-vergleichen}
 
 \section{Sind die Durchschnitte der beiden Gruppen in der Grundgesamtheit gleich?}\label{sind-die-durchschnitte-der-beiden-gruppen-in-der-grundgesamtheit-gleich}
 

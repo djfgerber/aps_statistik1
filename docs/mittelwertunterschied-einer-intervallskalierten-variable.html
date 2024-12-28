@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 3 Stichprobenziehung | Statistik 1</title>
-  <meta name="description" content="Kapitel 3 Stichprobenziehung | Statistik 1" />
+  <title>Kapitel 6 Mittelwertunterschied einer intervallskalierten Variable | Statistik 1</title>
+  <meta name="description" content="Kapitel 6 Mittelwertunterschied einer intervallskalierten Variable | Statistik 1" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kapitel 3 Stichprobenziehung | Statistik 1" />
+  <meta property="og:title" content="Kapitel 6 Mittelwertunterschied einer intervallskalierten Variable | Statistik 1" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 3 Stichprobenziehung | Statistik 1" />
+  <meta name="twitter:title" content="Kapitel 6 Mittelwertunterschied einer intervallskalierten Variable | Statistik 1" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="intervallskalierte-merkmale.html"/>
-<link rel="next" href="durchschnitt-und-standardabweichung-schätzen.html"/>
+<link rel="prev" href="zentrale-tendenz-testen.html"/>
+<link rel="next" href="welch-test.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -170,97 +170,81 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="stichprobenziehung" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Kapitel 3</span> Stichprobenziehung<a href="stichprobenziehung.html#stichprobenziehung" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="mittelwertunterschied-einer-intervallskalierten-variable" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Kapitel 6</span> Mittelwertunterschied einer intervallskalierten Variable<a href="mittelwertunterschied-einer-intervallskalierten-variable.html#mittelwertunterschied-einer-intervallskalierten-variable" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Bislang wurde versucht mithilfe <em>einer</em> Stichprobe eine Aussage über <em>eine</em> Population zu treffen. Dies setzt voraus, dass der Erwartungswert bereits aus früheren Untersuchungen bekannt ist oder theoretisch hergeleitet werden kann (Beispiel zirkadianer Rhythmus). In der Realität ist dies oft nicht der Fall. Es muss also gleichzeitig etwas über eine potenziell veränderte Population und über die Referenzpopulation herausgefunden werden. Im experimentellen Kontext enspricht dies dem Vergleich der Experimental- mit der Kontrollgruppe. Im observationellen Kontext wird die Referenzgruppe willkürlich bestimmt.</p>
 <div class="example">
-<p><span id="exm:angst" class="example"><strong>Beispiel 3.1  (Angst) </strong></span>Forschende haben ein Messinstrument State-Trait Anxiety Inentory <em>STAI</em>, welches Angst misst <span class="citation">(<a href="#ref-spielberger1983manual">Spielberger et al. 1983</a>)</span>. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst man aktuell empfindet. Die so gemessene Angst enstpricht einem Wert zwischen <span class="math inline">\(20\)</span> und <span class="math inline">\(80\)</span>. A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit <span class="math inline">\(n =30\)</span> zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte <span class="math inline">\(M=43.34, s = 9.72, n = 30\)</span> für die Angst in ihren Beobachtungen.</p>
+<p><span id="exm:breakup" class="example"><strong>Beispiel 6.1  (Trennungsschmerz) </strong></span><span class="citation">Morris, Reiber, and Roman (<a href="#ref-morris2015">2015</a>)</span> haben untersucht, ob das Geschlecht einen Einfluss auf den Schmerz bei der Auflösung einer romantischen Beziehung hat. Die Autoren unterscheiden dabei zwischen emotionaler (Angst, Wut, Depression, Taubheit, usw.) und physischer Reaktion (Essgewohnheit, Schlaf, Gewicht, Panik, Immunsystem). Hier wird nur auf erstere Fokusiert, welche mit <em>ER</em> abgekürzt wird. Dazu wurde mit erlösfreien Online-Umfragen unter anderem erfragt, ob die Person eine Trennung erlebt hat und wie sie ihren emotionalen Trennungsschmerz von <span class="math inline">\(0\)</span> (keine Schmerzen) bis <span class="math inline">\(10\)</span> (unerträglich) einstuft. An der Studie haben <span class="math inline">\(N_\text{Frau} = 2695\)</span> Frauen und <span class="math inline">\(N_\text{Mann} = 1409\)</span> Männer mitgemacht, welche eine ER von <span class="math inline">\(M_\text{Frau} = 6.69, SD_\text{Frau} = 2.3\)</span> und <span class="math inline">\(M_\text{Mann} = 6.45, SD_\text{Mann} = 2.38\)</span> respektive aufwiesen.</p>
 </div>
-<p><span id="customdef-stichprobe" class="customdef">Zufällig ausgewählte Beobachtungen eines Merkmals werden als <strong>Stichprobe</strong> bezeichnet.</span> <span id="customdef-stichprobenziehung" class="customdef">Nach der Auswahl der Stichprobe ist die <strong>Stichprobenziehung</strong>.</span> Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? <span id="customdef-population" class="customdef">Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als <strong>Population</strong></span> <span id="customdef-grundgesamtheit" class="customdef">oder <strong>Grundgesamtheit</strong> bezeichnet</span>. <span id="customdef-zufallsstichprobe" class="customdef">Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als <strong>Zufallsstichprobe</strong> bezeichnet.</span></p>
-<div class="caution">
-<div class="remark">
-<p><span id="unlabeled-div-8" class="remark"><em>Hinweis</em>. </span>Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am Forschungsbetrieb sind und damit über Studien informiert sind oder für wenig Geld oder Bildungsanerkennung an Studien teilnehmen. Einige dieser Studien generalisieren ihre Forschungsresultate nachher auf alle Personen. Dies ist in der Regel falsch, da Studierende nicht repräsentativ für die Gesamtbevölkerung sind (Altersstruktur, Geschlechtsverteilung, Vermögen, usw.). Die Frage, wie eine repräsentative Stichprobe würde den Rahmen dieses Buches sprengen.</p>
-</div>
-</div>
-<div id="stichprobenziehung-problem" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Was ist das Problem der Stichprobenziehung?<a href="stichprobenziehung.html#stichprobenziehung-problem" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung <a href="stichprobenziehung.html#fig:srs-intervall-nocol">3.1</a> ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population. Die Personen im Zimmer, respektive die Beobachtungen in der Population sind normalerweise nicht sichtbar. Aus diesem Zimmer wurden also 30 Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die Punkte über dem Zimmer, oberhalb des Pfeils. Die Farben der Punkte sind jetzt bekannt und entsprechen der jeweiligen Zustandesangst der beobachteten Personen.</p>
-<div class="figure"><span style="display:block;" id="fig:srs-intervall-nocol"></span>
-<img src="aps_statistik1_files/figure-html/srs-intervall-nocol-1.png" alt="Population mit unbekannter Angst." width="672" />
+<div id="was-ist-das-problem-der-stichprobenziehung" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Was ist das Problem der Stichprobenziehung?<a href="mittelwertunterschied-einer-intervallskalierten-variable.html#was-ist-das-problem-der-stichprobenziehung" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In der Stichprobe kann also ein kleiner geschlechterspezifischer Mittelwertunterschied der ER beobachtet werden. Dieser Mittelwertunterschied könnte nun einerseits auf einen Mittelwertunterschied in der Population zurückzuführen sein, wie in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-bagplot">6.1</a> links dargestellt. Hier gibt es zwei Populationen: Frauen-Population mit höheren und Männer-Population mit tieferen ER-Werten. Dies führt dazu, dass der Erwartungswert der Frauen-Population höher ist als bei Männer-Population und eine zufällige gezogene stichprobe aus Frauen-Population auch ein höheres arithmetisches Mittel aufweist als Männer-Population.</p>
+<p>Andererseits könnte der Mittelwertunterschied auch auf die zufällige Stichprobenziehung zurückzuführen sein Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-bagplot">6.1</a> rechts. In dieser Situation haben die Frauen- und die Männer-Populationen ähnliche Werte und demnach auch einen ähnlichen Erwartungswert. Beim Ziehen der Stichproben spielt der Zufall hier so, dass aus der Frauen-Population einige Beobachtungen mehr mit hohen ER-Werten ausgewählt wurden als bei der Männer-Population. Dies führt dazu, dass in den zwei Stichproben ein Unterschied im arithmetischen Mittel der ER beobachtet werden kann.</p>
+<div class="figure"><span style="display:block;" id="fig:exm-breakup-bagplot"></span>
+<img src="aps_statistik1_files/figure-html/exm-breakup-bagplot-1.png" alt="Links: Zwei Stichprobenziehungen aus zwei Populationen mit unterschiedlichen Mittelwerten. Rechts: Zwei Stichprobenziehungen aus einer Populationen, bzw. aus zwei Populationen die sich bezüglich ihrer Werte nicht unterscheiden." width="672" />
 <p class="caption">
-Abbildung 3.1: Population mit unbekannter Angst.
+Abbildung 6.1: Links: Zwei Stichprobenziehungen aus zwei Populationen mit unterschiedlichen Mittelwerten. Rechts: Zwei Stichprobenziehungen aus einer Populationen, bzw. aus zwei Populationen die sich bezüglich ihrer Werte nicht unterscheiden.
 </p>
 </div>
-<p>Da die Stichprobe nun eben zufällig gezogen wurde, das heisst zufällig Personen aus dem Zimmer geholt wurden, kann es nun sein, dass die Stichprobe einer Population wie in Abbildung <a href="stichprobenziehung.html#fig:srs-intervall-high-p">3.2</a> entstammt.</p>
-<div class="figure"><span style="display:block;" id="fig:srs-intervall-high-p"></span>
-<img src="aps_statistik1_files/figure-html/srs-intervall-high-p-1.png" alt="Population mit ähnlichen Angst-Werten wie in der Stichprobe." width="672" />
+<!-- Discuss: welchen zwei anderen Möglichkeiten sind hier nicht dargestellt? -->
+<p>Welche dieser Situationen zutrifft kann nicht genau herausgefunden werden, da die Population nie vollständig beobachtet werden kann.</p>
+<p>Um trotzdem eine Aussage über die Population zu treffen, kann wie bereits mehrmals gemacht, die Stichprobenziehung oft - beispielsweise <span class="math inline">\(3000\)</span>-mal - wiederholt werden. Dies wird unter der Annahme gemacht, dass es keinen ER-Erwartungswertunterschied zwischen der Frauen- und Männer-Population gibt. Die Verteilung der ER-Mittelwertdifferenzen dieser Stichproben ist in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-hist">6.2</a> dargestellt.</p>
+<div class="figure"><span style="display:block;" id="fig:exm-breakup-hist"></span>
+<img src="aps_statistik1_files/figure-html/exm-breakup-hist-1.png" alt="TODO." width="672" />
 <p class="caption">
-Abbildung 3.2: Population mit ähnlichen Angst-Werten wie in der Stichprobe.
+Abbildung 6.2: TODO.
 </p>
 </div>
-<p>Es könnte aber auch sein, dass die Stichprobe einer Population mit viel höherer Zusatandsangst, wie in Abbildung <a href="stichprobenziehung.html#fig:srs-intervall-low-p">3.3</a> dargestellt, entstammt. Dies wird zwar weniger häufig vorkommen als der Fall oben, aber ist trotzdem möglich.</p>
-<div class="figure"><span style="display:block;" id="fig:srs-intervall-low-p"></span>
-<img src="aps_statistik1_files/figure-html/srs-intervall-low-p-1.png" alt="Population mit höheren Angst-Werten als in der Stichprobe." width="672" />
+<p>Das Testprinzip funktioniert genau gleich wie beim <span class="math inline">\(t\)</span>-Test für eine Stichprobe wie in Kapitel <a href="zentrale-tendenz-testen.html#zentrale-tendenz-testen">5</a>. Zunächst werden die Hypothesen aufgestellt. A priori liegt keine Vermutung darüber vor, ob Männer oder Frauen eine stärkere ER zeigen. Die Null- und Alternativhypothese sind deshalb</p>
+<blockquote>
+<p><span class="math inline">\(H_0: \mu_\text{Frau} = \mu_\text{Mann}\)</span></p>
+<p><span class="math inline">\(H_1: \mu_\text{Frau} \neq \mu_\text{Mann}.\)</span></p>
+</blockquote>
+<p>Dies entspricht, einfacher Arithmetik folgend,</p>
+<blockquote>
+<p><span class="math inline">\(H_0: \mu_\text{Frau} - \mu_\text{Mann} = 0\)</span></p>
+<p><span class="math inline">\(H_1: \mu_\text{Frau} - \mu_\text{Mann} \neq 0.\)</span></p>
+</blockquote>
+<p>Es kann beobachtet werden, dass, wenn es keine Erwartungswertdifferenz gibt, die Mittelwertdifferenzen der Stichproben am häufigsten bei <span class="math inline">\(0\)</span> liegen und mit zunehmender Entfernung von <span class="math inline">\(0\)</span> unwahrscheinlicher werden. Dies kann wieder formalisiert werden indem die <span class="math inline">\(5\%\)</span> unwahrscheinlichsten Werte (<span class="math inline">\(2.5\%\)</span> links und <span class="math inline">\(2.5\%\)</span> rechts) zum Ablehnungsbereich erklärt werden und entspricht der roten Fläche in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-hist-pval-reja">6.3</a> links. Die tatsächlich beobachtete Mittelwertdifferenz (schwarze Linie) liegt im Ablehnungsbereich. Dies bedeutet dass sich die Erwartungswertdifferenz bei Signifikanziniveau <span class="math inline">\(5\%\)</span> signifikant von <span class="math inline">\(0\)</span> unterscheidet. Dies ist äquivalent zu der Aussage, dass sich die ER-Erwartungswerte der Männer und Frauen signifikant unterscheidet.</p>
+<pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale
+## range (`geom_bar()`).</code></pre>
+<pre><code>## Warning: Removed 4 rows containing missing values or values outside the scale
+## range (`geom_text()`).</code></pre>
+<div class="figure"><span style="display:block;" id="fig:exm-breakup-hist-pval-reja"></span>
+<img src="aps_statistik1_files/figure-html/exm-breakup-hist-pval-reja-1.png" alt="TODO" width="672" />
 <p class="caption">
-Abbildung 3.3: Population mit höheren Angst-Werten als in der Stichprobe.
+Abbildung 6.3: TODO
 </p>
 </div>
-<p>Das Problem der zufälligen Stichprobenziehung ist also, dass nie ganz klar ist, wie die darunterliegende Population aussieht. Sind die Werte der Stichprobe tief, weil zufällig gerade Studierende mit tiefer Angst beobachtet wurden, oder haben tatsächlich die meisten Studierenden eine tiefe Angst?</p>
+<!-- Discuss: warum ist p-Wert nur rechts? Es hat keine Beobachtungen kleiner als -0.237. -->
+<p>Ebenfalls kann erneut der p-Wert berechnet werden. Dieser entspricht hier allen ER-Mittelwertdifferenzen, welche <em>extremer</em> als die beobachtete Mittelwertdifferenz <span class="math inline">\(0.24\)</span> sind. Da die Hypothesenstellung hier zweiseitig ist, bedeutet extremer hier wieder grösser als <span class="math inline">\(0.24\)</span> oder kleiner als <span class="math inline">\(-0.24\)</span>. Der <span class="math inline">\(p\)</span>-Wert enspricht dem Anteil der roten Fläche in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-hist-pval-reja">6.3</a> rechts an der Gesamtfläche und beträgt <span class="math inline">\(0.002\)</span>.</p>
+<p>Die Verteilung der Mittelwertdifferenzen unter der Annahme, dass die Nullhypothese wahr ist, kann wieder mit einer Kurve angenähert werden. Diese Annäherung hat den Vorteil, dass der Ablehnungsbereich und der <span class="math inline">\(p\)</span>-Wert abgeschätzt werden kann ohne dass dazu das Experiment wiederholt werden muss. Für die Annäherungskurve gibt es zwei Optionen, welche dann entsprechenden Tests ihre Namen geben: der Zweistichproben-<span class="math inline">\(t\)</span>-Test nach Student und der Welch Test.</p>
+<div id="erwartungswertunterschied-zweistichproben-t-test-nach-student" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Erwartungswertunterschied Zweistichproben-<span class="math inline">\(t\)</span>-Test nach Student<a href="mittelwertunterschied-einer-intervallskalierten-variable.html#erwartungswertunterschied-zweistichproben-t-test-nach-student" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Der Zweistichproben-<span class="math inline">\(t\)</span>-Test setzt voraus, dass die beiden Populationen eine ähnliche Varianz haben. Dazu später mehr. Ist dies gegeben, so kann die Teststatistik mit</p>
+<p><span class="math display" id="eq:t-emp-twosample-t">\[\begin{equation}
+t = \frac{\bar{x_1}-\bar{x_2} - \omega_0}{\sqrt{\frac{(n_1 - 1) s_1^2)+(n_2-1)s_2^2}{n_1 + n_2 - 2}}\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}
+\tag{6.1}
+\end{equation}\]</span></p>
+<p>berechnet werden, wobei <span class="math inline">\(\omega_0 = \mu_1 - \mu_2\)</span> der Erwartungswertdifferenz entspricht und in unserem Fall <span class="math inline">\(0\)</span> beträgt. Wenn die Nullhypothese wahr ist, so ist diese Teststatistik bei wiederholter Stichprobenziehung <span class="math inline">\(t\)</span>-verteilt bei <span class="math inline">\(df = n_1 + n_2 -2\)</span> Freiheitsgraden.</p>
 </div>
-<div id="stichprobenziehung-loesung" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Wie kann man Aussagen über die Grundgesamtheit machen?<a href="stichprobenziehung.html#stichprobenziehung-loesung" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Die Lösung dieses Problems funktioniert intuitiv wie folgt: Man stellt sich vor, die Stichprobenziehung würde erneut gemacht, und dann nochmal und dann nochmal. So oft, bis man einen guten Eindruck davon hat, wie häufig eine Stichprobe mit eher tiefen Angst-Werten wie bei der Stichprobe im Beispiel vorkommt. Im Szenario, in welchem in der Population tatsächlich tiefe Werte häufig vorkommen, kann dies aussehen wie in Abbildung <a href="stichprobenziehung.html#fig:srs-intervall-high-p-many">3.4</a>. Stichproben mit eher tiefen Angst-Werten kommen hier häufig vor.</p>
-<div class="figure"><span style="display:block;" id="fig:srs-intervall-high-p-many"></span>
-<img src="aps_statistik1_files/figure-html/srs-intervall-high-p-many-1.png" alt="TODO." width="672" />
-<p class="caption">
-Abbildung 3.4: TODO.
-</p>
+<div id="erwartungswertunterschied-welch-test" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Erwartungswertunterschied Welch Test<a href="mittelwertunterschied-einer-intervallskalierten-variable.html#erwartungswertunterschied-welch-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display" id="eq:t-emp-twosample-welch">\[\begin{equation}
+t = \frac{\bar{x_1}-\bar{x_2} - \omega_0}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}
+\tag{6.2}
+\end{equation}\]</span></p>
 </div>
-<p>Im Szenario, in welchem in der Population tatsächlich höhere Werte häufig vorkommen, kann dies aussehen wie in Abbildung <a href="stichprobenziehung.html#fig:srs-intervall-low-p-many">3.5</a>. Stichproben mit eher tiefen Angst-Werten kommen hier selten oder gar nicht vor.</p>
-<div class="figure"><span style="display:block;" id="fig:srs-intervall-low-p-many"></span>
-<img src="aps_statistik1_files/figure-html/srs-intervall-low-p-many-1.png" alt="TODO." width="672" />
-<p class="caption">
-Abbildung 3.5: TODO.
-</p>
 </div>
-<p>Es kann also zusammenfassend gesagt werden, dass die gezogene Stichprobe wohl eher aus einer Population mit tiefen Angst-Werten gezogen wurde als aus einer Population mit eher höheren Angst-Werten. Ganz sicher kann man jedoch nie sein, da die Werte in der Population eigentlich unbekannt sind. Eine genaue Quantifizierung dieser Unsicherheit kann mit Hilfe der Statistik erreicht werden und wird in den folgenden Kapiteln dieses Buches erläutert.</p>
-</div>
-<div id="übungen" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Übungen<a href="stichprobenziehung.html#übungen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="exercise">
-<p><span id="exr:tagname_alskfdieu" class="exercise"><strong>(#exr:tagname_alskfdieu) </strong></span></p>
-<!-- 
-Ziel: 
-- Begriffsklärung Stichprobe / Population / Grundgesamtheit / Zufallsstichprobe
--->
-<p>TODO: Exercise body</p>
-</div>
-<div class="solution">
-<details>
-  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-9" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
-</details>
-</div>
-<div class="exercise">
-<p><span id="exr:tagname_apwioev" class="exercise"><strong>(#exr:tagname_apwioev) </strong></span></p>
-<!-- 
-Ziel: 
-- Verständnis Problem/chance der zufallsstichprobe
--->
-<p>TODO: Exercise body</p>
-</div>
-<div class="solution">
-<details>
-  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-10" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
-</details>
-</div>
+<div id="übungen-3" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Übungen<a href="mittelwertunterschied-einer-intervallskalierten-variable.html#übungen-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-spielberger1983manual" class="csl-entry">
-Spielberger, Charles D., Richard L. Gorsuch, Robert Lushene, Peter R. Vagg, and Gerard A. Jacobs. 1983. <em>Manual for the State-Trait Anxiety Inventory</em>. Palo Alto, CA: Consulting Psychologists Press.
+<div id="ref-morris2015" class="csl-entry">
+Morris, Craig, Chris Reiber, and Emily Roman. 2015. <span>“Quantitative Sex Differences in Response to the Dissolution of a Romantic Relationship.”</span> <em>Evolutionary Behavioral Sciences</em> 9 (July). <a href="https://doi.org/10.1037/ebs0000054">https://doi.org/10.1037/ebs0000054</a>.
 </div>
 </div>
             </section>
@@ -268,8 +252,8 @@ Spielberger, Charles D., Richard L. Gorsuch, Robert Lushene, Peter R. Vagg, and 
           </div>
         </div>
       </div>
-<a href="intervallskalierte-merkmale.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="durchschnitt-und-standardabweichung-schätzen.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="zentrale-tendenz-testen.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="welch-test.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -300,7 +284,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/djfgerber/aps_statistik1/edit/main/src/03-1-stichprobenziehung.Rmd",
+"link": "https://github.com/djfgerber/aps_statistik1/edit/main/src/06-2-gruppenvergleich_intervallskalierte_variablen.Rmd",
 "text": "Edit this page"
 },
 "history": {

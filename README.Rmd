@@ -9,6 +9,7 @@
 # Templates
 
 # tileword1 titleword2 {#tileword1-titleword2}
+\@ref(tileword1-titleword2)
 
 
 ### Definition

@@ -28,12 +28,12 @@ bookdown::gitbook:
     info: true
   highlight: tango
   split_by: chapter
-
-bookdown::pdf_book:
-  includes:
-    in_header:
-      - preamble.tex
-  latex_engine: xelatex
-  citation_package: natbib
-  extra_dependencies: ["amsthm"]
-  keep_tex: yes
+# 
+# bookdown::pdf_book:
+#   includes:
+#     in_header:
+#       - preamble.tex
+#   latex_engine: xelatex
+#   citation_package: natbib
+#   extra_dependencies: ["amsthm"]
+#   keep_tex: yes
