@@ -133,30 +133,10 @@ gen_exm_vermoegen <- function(){
   
   line_xlim <- xlim(c(40000, 180000))
   sigma_g <- x_sd / sqrt(n)
-  x_range <- seq(mu0-3*sigma_g, mu0+3*sigma_g, length.out = 1000)
-  
-  # Function to create text data
-  create_text_data <- function(labels, y_value, plot_type) {
-    tibble(
-      label = labels,
-      x = c(60000, 160000),
-      y = rep(y_value, 2),
-      color = c("red", "green"),
-      plot_type = plot_type
-    )
-  }
-  
-  
-  add_colors <- function(x, type){
-    x %>% 
-      mutate(
-      color = case_when(
-        plot_type == type %>% str_c(" p-Wert") & x > x_mean ~ "green",
-        plot_type == type %>% str_c(" p-Wert") & x <= x_mean ~ "red",
-        plot_type == type %>% str_c(" Ablehnungsbereich") & x > q95_x_means ~ "green",
-        plot_type == type %>% str_c(" Ablehnungsbereich") & x <= q95_x_means ~ "red"
-      )
-    )
+  x_range_bounds <- c(mu0-3*sigma_g, mu0+3*sigma_g)
+  x_range <- seq(x_range_bounds[1], x_range_bounds[2], length.out = 1000)
+  create_text_data <- function(x,y,z){
+    plot_attr_reja_pval$create_text_data(10000*c(6,13),x,y,z)
   }
   # Create data for histograms
   histogram_data <- tibble(
@@ -165,7 +145,7 @@ gen_exm_vermoegen <- function(){
                       "Histogram Ablehnungsbereich"), 
                     each = length(x_means))
   ) %>%
-    add_colors("Histogram")
+    plot_attr_reja_pval$add_colors(side = "right", upper = q95_x_means, test_stat = x_mean)
   
   # Create data for density plots
   density_data <- tibble(
@@ -174,15 +154,15 @@ gen_exm_vermoegen <- function(){
     plot_type = rep(c("Verteilung p-Wert", 
                       "Verteilung Ablehnungsbereich"), 
                     each = length(x_range))
-  ) %>%
-    add_colors("Verteilung")
+  )  %>%
+    plot_attr_reja_pval$add_colors(side = "right", upper = q95_x_means, test_stat = x_mean)
   
   # Create text data for all plots
-  text_pval <- str_c(round(100 * c(1 - p_value_emp, p_value_emp), 1), '%')
   text_sign <- c('95%', '5%')
   text_data_all <- bind_rows(
     create_text_data(
-      text_pval,
+      round(100 *c(1 - p_value_emp, p_value_emp),1) %>% 
+        str_c('%'),
       200,
       "Histogram p-Wert"
     ),
@@ -192,7 +172,7 @@ gen_exm_vermoegen <- function(){
       "Histogram Ablehnungsbereich"
     ),
     create_text_data(
-      round(100 *c(1-p_value_the,p_value_the),1) %>% 
+      round(100 *c(1-p_value_the, p_value_the),1) %>% 
         str_c('%'),
       0.000015, 
       "Verteilung p-Wert"
@@ -204,35 +184,23 @@ gen_exm_vermoegen <- function(){
     )
   )
   
-  custom_labeller <- as_labeller(c(
-    "Histogram p-Wert" = "p-Wert",
-    "Histogram Ablehnungsbereich" = "Ablehnungsbereich",
-    "Verteilung p-Wert" = "p-Wert",
-    "Verteilung Ablehnungsbereich" = "Ablehnungsbereich"
-  ))
+  
   
   plot_hist_curve_pval_reja <- ggplot() +
     geom_histogram(data = histogram_data,
                    aes(x = x, fill = color),
                    binwidth = 4300) +
-    geom_line(data = density_data,
-              aes(x = x, y = y, colour = color)) +
     geom_area(data = density_data,
-              aes(x = x, y = y, fill = color)) +
+              aes(x = x, y = y, fill = color),
+            stat = "identity") +
     geom_vline(xintercept = x_mean) +
     geom_text(data = text_data_all,
               mapping = aes(x = x, y = y, label = label, colour = color)) +
     facet_wrap(~ plot_type, nrow = 2, scales = "free_y", 
                strip.position = "top",
-               labeller = custom_labeller) +
+               labeller = plot_attr_reja_pval$custom_labeller) +
     line_xlim +
-    theme(
-      axis.text.y = element_text(),
-      axis.ticks.y = element_line(),
-      axis.title.y = element_text(),
-      strip.placement = "outside",
-      legend.position = "none"
-    ) +
+    plot_attr_reja_pval$theme +
     labs(x = "Vermögen", y = "W.-dichte                              Häufigkeit")
 
   return(mget(ls()))
@@ -382,46 +350,8 @@ gen_exm_alexithymie <- function(){
   line_xlim <- xlim(c(95, 105))
   sigma_g <- x_sd / sqrt(n)
   x_range <- seq(mu0-3*sigma_g, mu0+3*sigma_g, length.out = 1000)
-  
-  # Function to create text data
-  create_text_data <- function(labels, y_value, plot_type) {
-    tibble(
-      label = labels,
-      x = c(98, 102),
-      y = rep(y_value, 2),
-      color = c("red", "green"),
-      plot_type = plot_type
-    )
-  }
-  
-  
-  add_colors <- function(x, type){
-    if(type == "Histogram"){
-      x %>% 
-      mutate(
-      color = case_when(
-        plot_type == type %>% str_c(" p-Wert") & x > x_mean & x < mu0 + (mu0 - x_mean) ~ "red",
-        plot_type == type %>% str_c(" p-Wert") & (x <= x_mean | x >= mu0 + (mu0 - x_mean)) ~ "green",
-        (plot_type == type %>% str_c(" Ablehnungsbereich")) & 
-          (x > q975_x_means | x < q025_x_means)~ "green",
-        (plot_type == type %>% str_c(" Ablehnungsbereich")) & 
-          (x <= q975_x_means & x >= q025_x_means) ~ "red"
-      )
-    )
-    }else{
-      x %>% 
-        mutate(
-        color = case_when(
-          plot_type == type %>% str_c(" p-Wert") & x > x_mean & x < mu0 + (mu0 - x_mean) ~ "red",
-          plot_type == type %>% str_c(" p-Wert") & (x <= x_mean | x >= mu0 + (mu0 - x_mean)) ~ "green",
-          (plot_type == type %>% str_c(" Ablehnungsbereich")) & 
-            (x > mu0 + qt(0.975, n-1)*x_sd/sqrt(n) | x < mu0 - qt(0.975, n-1)*x_sd/sqrt(n))~ "green",
-          (plot_type == type %>% str_c(" Ablehnungsbereich")) & 
-            (x <= mu0 + qt(0.975, n-1)*x_sd/sqrt(n) & x >= mu0 - qt(0.975, n-1)*x_sd/sqrt(n)) ~ "red"
-        )
-      )
-    }
-    
+  create_text_data <- function(x,y,z){
+    plot_attr_reja_pval$create_text_data(c(98, 102),x,y,z)
   }
   # Create data for histograms
   histogram_data <- tibble(
@@ -430,7 +360,7 @@ gen_exm_alexithymie <- function(){
                       "Histogram Ablehnungsbereich"), 
                     each = length(x_means))
   ) %>%
-    add_colors("Histogram")
+    plot_attr_reja_pval$add_colors(side = "both", upper = q975_x_means, lower = q025_x_means, test_stat = x_mean, mu0 = mu0)
   
   # Create data for density plots
   density_data <- tibble(
@@ -440,10 +370,7 @@ gen_exm_alexithymie <- function(){
                       "Verteilung Ablehnungsbereich"), 
                     each = length(x_range))
   ) %>%
-    add_colors("Verteilung")
-  
-  density_data %>% 
-    filter(plot_type ==  "Verteilung Ablehnungsbereich")
+    plot_attr_reja_pval$add_colors(side = "both", upper = q975_x_means, lower = q025_x_means, test_stat = x_mean, mu0 = mu0)
   
   # Create text data for all plots
   text_pval <- str_c(round(100 * c(1 - p_value_emp, p_value_emp), 1), '%')
@@ -472,37 +399,22 @@ gen_exm_alexithymie <- function(){
     )
   )
   
-  custom_labeller <- as_labeller(c(
-    "Histogram p-Wert" = "p-Wert",
-    "Histogram Ablehnungsbereich" = "Ablehnungsbereich",
-    "Verteilung p-Wert" = "p-Wert",
-    "Verteilung Ablehnungsbereich" = "Ablehnungsbereich"
-  ))
-  
   plot_hist_curve_pval_reja <- ggplot() +
     geom_histogram(data = histogram_data,
                    aes(x = x, fill = color),
                    binwidth = 0.25) +
-    geom_line(data = density_data,
-              aes(x = x, y = y)) +
-    geom_ribbon(data = density_data,
-                aes(x = x, ymin = 0, ymax = ifelse(color == "red", y, 0)), fill = "#00BFC4") +
-    geom_ribbon(data = density_data,
-                aes(x = x, ymin = 0, ymax = ifelse(color == "green", y, 0)), fill = "#F8766D") +
+    
+    geom_area(data = density_data,
+              aes(x = x, y = y, fill = color),
+            stat = "identity") +
     geom_vline(xintercept = x_mean) +
     geom_text(data = text_data_all,
               mapping = aes(x = x, y = y, label = label, colour = color)) +
     facet_wrap(~ plot_type, nrow = 2, scales = "free_y", 
                strip.position = "top",
-               labeller = custom_labeller) +
+               labeller = plot_attr_reja_pval$custom_labeller) +
     line_xlim +
-    theme(
-      axis.text.y = element_text(),
-      axis.ticks.y = element_line(),
-      axis.title.y = element_text(),
-      strip.placement = "outside",
-      legend.position = "none"
-    ) +
+    plot_attr_reja_pval$theme +
     labs(x = "Alexithymie", y = "W.-dichte                              Häufigkeit")
 
   return(mget(ls()))

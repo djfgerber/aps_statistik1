@@ -143,7 +143,8 @@ div.csl-indent {
 <li class="chapter" data-level="6.1.1" data-path="mittelwertunterschied-einer-intervallskalierten-variable.html"><a href="mittelwertunterschied-einer-intervallskalierten-variable.html#erwartungswertunterschied-zweistichproben-t-test-nach-student"><i class="fa fa-check"></i><b>6.1.1</b> Erwartungswertunterschied Zweistichproben-<span class="math inline">\(t\)</span>-Test nach Student</a></li>
 <li class="chapter" data-level="6.1.2" data-path="mittelwertunterschied-einer-intervallskalierten-variable.html"><a href="mittelwertunterschied-einer-intervallskalierten-variable.html#erwartungswertunterschied-welch-test"><i class="fa fa-check"></i><b>6.1.2</b> Erwartungswertunterschied Welch Test</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="mittelwertunterschied-einer-intervallskalierten-variable.html"><a href="mittelwertunterschied-einer-intervallskalierten-variable.html#übungen-3"><i class="fa fa-check"></i><b>6.2</b> Übungen</a></li>
+<li class="chapter" data-level="6.2" data-path="mittelwertunterschied-einer-intervallskalierten-variable.html"><a href="mittelwertunterschied-einer-intervallskalierten-variable.html#effektstärken"><i class="fa fa-check"></i><b>6.2</b> Effektstärken</a></li>
+<li class="chapter" data-level="6.3" data-path="mittelwertunterschied-einer-intervallskalierten-variable.html"><a href="mittelwertunterschied-einer-intervallskalierten-variable.html#übungen-3"><i class="fa fa-check"></i><b>6.3</b> Übungen</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="welch-test.html"><a href="welch-test.html"><i class="fa fa-check"></i><b>7</b> Welch-Test</a>
 <ul>
@@ -174,7 +175,7 @@ div.csl-indent {
 <h1><span class="header-section-number">Kapitel 6</span> Mittelwertunterschied einer intervallskalierten Variable<a href="mittelwertunterschied-einer-intervallskalierten-variable.html#mittelwertunterschied-einer-intervallskalierten-variable" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Bislang wurde versucht mithilfe <em>einer</em> Stichprobe eine Aussage über <em>eine</em> Population zu treffen. Dies setzt voraus, dass der Erwartungswert bereits aus früheren Untersuchungen bekannt ist oder theoretisch hergeleitet werden kann (Beispiel zirkadianer Rhythmus). In der Realität ist dies oft nicht der Fall. Es muss also gleichzeitig etwas über eine potenziell veränderte Population und über die Referenzpopulation herausgefunden werden. Im experimentellen Kontext enspricht dies dem Vergleich der Experimental- mit der Kontrollgruppe. Im observationellen Kontext wird die Referenzgruppe willkürlich bestimmt.</p>
 <div class="example">
-<p><span id="exm:breakup" class="example"><strong>Beispiel 6.1  (Trennungsschmerz) </strong></span><span class="citation">Morris, Reiber, and Roman (<a href="#ref-morris2015">2015</a>)</span> haben untersucht, ob das Geschlecht einen Einfluss auf den Schmerz bei der Auflösung einer romantischen Beziehung hat. Die Autoren unterscheiden dabei zwischen emotionaler (Angst, Wut, Depression, Taubheit, usw.) und physischer Reaktion (Essgewohnheit, Schlaf, Gewicht, Panik, Immunsystem). Hier wird nur auf erstere Fokusiert, welche mit <em>ER</em> abgekürzt wird. Dazu wurde mit erlösfreien Online-Umfragen unter anderem erfragt, ob die Person eine Trennung erlebt hat und wie sie ihren emotionalen Trennungsschmerz von <span class="math inline">\(0\)</span> (keine Schmerzen) bis <span class="math inline">\(10\)</span> (unerträglich) einstuft. An der Studie haben <span class="math inline">\(N_\text{Frau} = 2695\)</span> Frauen und <span class="math inline">\(N_\text{Mann} = 1409\)</span> Männer mitgemacht, welche eine ER von <span class="math inline">\(M_\text{Frau} = 6.69, SD_\text{Frau} = 2.3\)</span> und <span class="math inline">\(M_\text{Mann} = 6.45, SD_\text{Mann} = 2.38\)</span> respektive aufwiesen.</p>
+<p><span id="exm:breakup" class="example"><strong>Beispiel 6.1  (Trennungsschmerz) </strong></span><span class="citation">Morris, Reiber, and Roman (<a href="#ref-morris2015">2015</a>)</span> haben untersucht, ob das Geschlecht einen Einfluss auf den Schmerz bei der Auflösung einer romantischen Beziehung hat. Die Autoren unterscheiden dabei zwischen emotionaler (Angst, Wut, Depression, Taubheit, usw.) und physischer Reaktion (Essgewohnheit, Schlaf, Gewicht, Panik, Immunsystem). Hier wird nur auf erstere Fokusiert, welche mit <em>ER</em> abgekürzt wird. Dazu wurde mit erlösfreien Online-Umfragen unter anderem erfragt, ob die Person eine Trennung erlebt hat und wie sie ihren emotionalen Trennungsschmerz von <span class="math inline">\(0\)</span> (keine Schmerzen) bis <span class="math inline">\(10\)</span> (unerträglich) einstuft. An der Studie haben <span class="math inline">\(N_\text{Frau} = 2695\)</span> Frauen und <span class="math inline">\(N_\text{Mann} = 1409\)</span> Männer mitgemacht, welche eine ER von <span class="math inline">\(M_\text{Frau} = 6.81, SD_\text{Frau} = 2.53\)</span> und <span class="math inline">\(M_\text{Mann} = 6.56, SD_\text{Mann} = 2.6\)</span> respektive aufwiesen.</p>
 </div>
 <div id="was-ist-das-problem-der-stichprobenziehung" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Was ist das Problem der Stichprobenziehung?<a href="mittelwertunterschied-einer-intervallskalierten-variable.html#was-ist-das-problem-der-stichprobenziehung" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -190,9 +191,9 @@ Abbildung 6.1: Links: Zwei Stichprobenziehungen aus zwei Populationen mit unters
 <p>Welche dieser Situationen zutrifft kann nicht genau herausgefunden werden, da die Population nie vollständig beobachtet werden kann.</p>
 <p>Um trotzdem eine Aussage über die Population zu treffen, kann wie bereits mehrmals gemacht, die Stichprobenziehung oft - beispielsweise <span class="math inline">\(3000\)</span>-mal - wiederholt werden. Dies wird unter der Annahme gemacht, dass es keinen ER-Erwartungswertunterschied zwischen der Frauen- und Männer-Population gibt. Die Verteilung der ER-Mittelwertdifferenzen dieser Stichproben ist in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-hist">6.2</a> dargestellt.</p>
 <div class="figure"><span style="display:block;" id="fig:exm-breakup-hist"></span>
-<img src="aps_statistik1_files/figure-html/exm-breakup-hist-1.png" alt="TODO." width="672" />
+<img src="aps_statistik1_files/figure-html/exm-breakup-hist-1.png" alt="Verteilung simulierter ER-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test." width="672" />
 <p class="caption">
-Abbildung 6.2: TODO.
+Abbildung 6.2: Verteilung simulierter ER-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test.
 </p>
 </div>
 <p>Das Testprinzip funktioniert genau gleich wie beim <span class="math inline">\(t\)</span>-Test für eine Stichprobe wie in Kapitel <a href="zentrale-tendenz-testen.html#zentrale-tendenz-testen">5</a>. Zunächst werden die Hypothesen aufgestellt. A priori liegt keine Vermutung darüber vor, ob Männer oder Frauen eine stärkere ER zeigen. Die Null- und Alternativhypothese sind deshalb</p>
@@ -206,10 +207,10 @@ Abbildung 6.2: TODO.
 <p><span class="math inline">\(H_1: \mu_\text{Frau} - \mu_\text{Mann} \neq 0.\)</span></p>
 </blockquote>
 <p>Es kann beobachtet werden, dass, wenn es keine Erwartungswertdifferenz gibt, die Mittelwertdifferenzen der Stichproben am häufigsten bei <span class="math inline">\(0\)</span> liegen und mit zunehmender Entfernung von <span class="math inline">\(0\)</span> unwahrscheinlicher werden. Dies kann wieder formalisiert werden indem die <span class="math inline">\(5\%\)</span> unwahrscheinlichsten Werte (<span class="math inline">\(2.5\%\)</span> links und <span class="math inline">\(2.5\%\)</span> rechts) zum Ablehnungsbereich erklärt werden und entspricht der roten Fläche in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-hist-pval-reja">6.3</a> links. Die tatsächlich beobachtete Mittelwertdifferenz (schwarze Linie) liegt im Ablehnungsbereich. Dies bedeutet dass sich die Erwartungswertdifferenz bei Signifikanziniveau <span class="math inline">\(5\%\)</span> signifikant von <span class="math inline">\(0\)</span> unterscheidet. Dies ist äquivalent zu der Aussage, dass sich die ER-Erwartungswerte der Männer und Frauen signifikant unterscheidet.</p>
+<pre><code>## Warning: Removed 2 rows containing non-finite outside the scale range
+## (`stat_bin()`).</code></pre>
 <pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale
 ## range (`geom_bar()`).</code></pre>
-<pre><code>## Warning: Removed 4 rows containing missing values or values outside the scale
-## range (`geom_text()`).</code></pre>
 <div class="figure"><span style="display:block;" id="fig:exm-breakup-hist-pval-reja"></span>
 <img src="aps_statistik1_files/figure-html/exm-breakup-hist-pval-reja-1.png" alt="TODO" width="672" />
 <p class="caption">
@@ -217,34 +218,153 @@ Abbildung 6.3: TODO
 </p>
 </div>
 <!-- Discuss: warum ist p-Wert nur rechts? Es hat keine Beobachtungen kleiner als -0.237. -->
-<p>Ebenfalls kann erneut der p-Wert berechnet werden. Dieser entspricht hier allen ER-Mittelwertdifferenzen, welche <em>extremer</em> als die beobachtete Mittelwertdifferenz <span class="math inline">\(0.24\)</span> sind. Da die Hypothesenstellung hier zweiseitig ist, bedeutet extremer hier wieder grösser als <span class="math inline">\(0.24\)</span> oder kleiner als <span class="math inline">\(-0.24\)</span>. Der <span class="math inline">\(p\)</span>-Wert enspricht dem Anteil der roten Fläche in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-hist-pval-reja">6.3</a> rechts an der Gesamtfläche und beträgt <span class="math inline">\(0.002\)</span>.</p>
+<p>Ebenfalls kann erneut der p-Wert berechnet werden. Dieser entspricht hier allen ER-Mittelwertdifferenzen, welche <em>extremer</em> als die beobachtete Mittelwertdifferenz <span class="math inline">\(0.25\)</span> sind. Da die Hypothesenstellung hier zweiseitig ist, bedeutet extremer hier wieder grösser als <span class="math inline">\(0.25\)</span> oder kleiner als <span class="math inline">\(-0.25\)</span>. Der <span class="math inline">\(p\)</span>-Wert enspricht dem Anteil der roten Fläche in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-hist-pval-reja">6.3</a> rechts an der Gesamtfläche und beträgt <span class="math inline">\(0.004\)</span>.</p>
 <p>Die Verteilung der Mittelwertdifferenzen unter der Annahme, dass die Nullhypothese wahr ist, kann wieder mit einer Kurve angenähert werden. Diese Annäherung hat den Vorteil, dass der Ablehnungsbereich und der <span class="math inline">\(p\)</span>-Wert abgeschätzt werden kann ohne dass dazu das Experiment wiederholt werden muss. Für die Annäherungskurve gibt es zwei Optionen, welche dann entsprechenden Tests ihre Namen geben: der Zweistichproben-<span class="math inline">\(t\)</span>-Test nach Student und der Welch Test.</p>
 <div id="erwartungswertunterschied-zweistichproben-t-test-nach-student" class="section level3 hasAnchor" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Erwartungswertunterschied Zweistichproben-<span class="math inline">\(t\)</span>-Test nach Student<a href="mittelwertunterschied-einer-intervallskalierten-variable.html#erwartungswertunterschied-zweistichproben-t-test-nach-student" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Der Zweistichproben-<span class="math inline">\(t\)</span>-Test setzt voraus, dass die beiden Populationen eine ähnliche Varianz haben. Dazu später mehr. Ist dies gegeben, so kann die Teststatistik mit</p>
+<p><span id="customdef-twosample-t-test" class="customdef">Der <strong>Zweistichproben-<span class="math inline">\(t\)</span>-Test</strong> setzt voraus, dass die beiden Populationen eine ähnliche Varianz oder äquivalent eine ähnliche Standardabweichung haben.</span> Dazu später mehr. Ist dies gegeben, so kann die Teststatistik mit</p>
 <p><span class="math display" id="eq:t-emp-twosample-t">\[\begin{equation}
-t = \frac{\bar{x_1}-\bar{x_2} - \omega_0}{\sqrt{\frac{(n_1 - 1) s_1^2)+(n_2-1)s_2^2}{n_1 + n_2 - 2}}\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}
+t = \frac{\bar{x_1}-\bar{x_2} - \omega_0}{\sqrt{\frac{(n_1 - 1) s_1^2+(n_2-1)s_2^2}{n_1 + n_2 - 2}}\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}
 \tag{6.1}
 \end{equation}\]</span></p>
+<!-- Discuss formulas -->
 <p>berechnet werden, wobei <span class="math inline">\(\omega_0 = \mu_1 - \mu_2\)</span> der Erwartungswertdifferenz entspricht und in unserem Fall <span class="math inline">\(0\)</span> beträgt. Wenn die Nullhypothese wahr ist, so ist diese Teststatistik bei wiederholter Stichprobenziehung <span class="math inline">\(t\)</span>-verteilt bei <span class="math inline">\(df = n_1 + n_2 -2\)</span> Freiheitsgraden.</p>
+<p>Die rote Linie in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-hist">6.2</a> zeigt, dass die Annäherung durch den Zweistichproben-<span class="math inline">\(t\)</span>-Test nach Student die Verteilung der Mittelwertdifferenzen ziemlich gut trifft.</p>
+<!-- Discuss, wieso ist die Verteilung gegen links verschoben. -->
 </div>
 <div id="erwartungswertunterschied-welch-test" class="section level3 hasAnchor" number="6.1.2">
 <h3><span class="header-section-number">6.1.2</span> Erwartungswertunterschied Welch Test<a href="mittelwertunterschied-einer-intervallskalierten-variable.html#erwartungswertunterschied-welch-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="example">
+<p><span id="exm:emotional-stroop" class="example"><strong>Beispiel 6.2  (Emotionaler Stroop-Test bei posttraumatischer Belastungsstörung.) </strong></span>Analog zum klassischen Stroop-Test werden bei einem emotionalen Stroop-Test <em>EST</em> Testpersonen gebeten die Farben verschiedener ausgeschriebener Wörter zu erkennen. Die Wörter sind beim emotionalen Stroop-Test entweder emotional aufgeladen (Bombe, Schweiss, Faustschlag, …) oder neutral (Tisch, Weg, Bahn, …) für die Testpersonen <span class="citation">(<a href="#ref-williams1996">Macleod, Williams, and Mathews 1996</a>)</span>. Gemessen wird dabei die Reaktionsgeschwindigkeit <em>RT</em> in Millisekunden. In einem Versuch wollten <span class="citation">Khanna et al. (<a href="#ref-khanna2017">2017</a>)</span> herausfinden, ob von posttraumatischer Belastungsstörung betroffene Veteranen <em>PTSD</em> andere EST-Resultate erzielen als nicht betroffene <em>non-PTSD</em>. Die durschnittliche Reaktionszeit der <span class="math inline">\(26\)</span> von PTSD betroffenen Veteranen lag bei <span class="math inline">\(M=741\text{ ms }(SD = 226.8)\)</span> und bei den <span class="math inline">\(16\)</span> nicht von PTSD betroffenen Veteranen bei <span class="math inline">\(M=636.9 \text{ ms }(SD = 106.1)\)</span>.</p>
+</div>
+<p>Es wird keine Annahme über die Richtung einer eventualen Mittelwertsdifferenz angenommen. Die Hypothesen sind deshalb zweiseitig formuliert und lauten</p>
+<blockquote>
+<p><span class="math inline">\(H_0: \mu_\text{PTSD} = \mu_\text{non-PTSD}\)</span></p>
+<p><span class="math inline">\(H_1: \mu_\text{PTSD} \neq \mu_\text{non-PTSD}.\)</span></p>
+</blockquote>
+<p>In diesem Beispiel sind die Standardabweichungen und demnach auch die Varianzen der Reaktionszeiten in den beiden Gruppen sehr unterschiedlich. Wenn das Experiment wiederum wiederholt wird kann der Verteilung der Mittelwertsdifferenzen entnommen werden, dass der Zweistichproben-<span class="math inline">\(t\)</span>-Test nach Student diese Verteilung nicht gut abbildet. Die rote Linie in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-emotional-stroop-hist">6.4</a> liegt mittig zu tief und an den Enden zu hoch. Wird diese Annäherung in diesem Fall verwendet, dann besteht die Gefahr, dass ein signifikanter Mittelwertunterschied nicht erkannt wird.</p>
+<div class="figure"><span style="display:block;" id="fig:exm-emotional-stroop-hist"></span>
+<img src="aps_statistik1_files/figure-html/exm-emotional-stroop-hist-1.png" alt="Verteilung simulierter RT-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test." width="672" />
+<p class="caption">
+Abbildung 6.4: Verteilung simulierter RT-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test.
+</p>
+</div>
+<p>Für diesen Fall wurde von <span class="citation">Welch (<a href="#ref-welch1947">1947</a>)</span> eine alternative Annäherung an die Verteilung der Mittelwertsdifferenzen gefunden, nämlich</p>
 <p><span class="math display" id="eq:t-emp-twosample-welch">\[\begin{equation}
-t = \frac{\bar{x_1}-\bar{x_2} - \omega_0}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}
+t = \frac{\bar{x_1}-\bar{x_2} - \omega_0}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}.
 \tag{6.2}
 \end{equation}\]</span></p>
+<!-- Discuss formulas -->
+<p>Die so berechnete Teststatistik <span class="math inline">\(t\)</span> ist <span class="math inline">\(t\)</span>-Verteilt bei approximativ
+<span class="math display">\[df \approx\frac{\left(\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}\right)^2}{\frac{s_1^4}{(n_1-1) n_1^2}+ \frac{s_2^4}{(n_2-1) n_2^2}}  \]</span></p>
+<p><span id="customdef-welch-test" class="customdef">Freiheitsgraden und ein damit durchgeführter Test wird <strong>Welch-Test</strong> genannt.</span> Sie nähert die Verteilung der Mittelwertdifferenzen trotz unterschiedlicher Gruppenvarianzen gut an, siehe grüne Linie in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-emotional-stroop-hist">6.4</a>.</p>
+<p>Der Zweistichproben-<span class="math inline">\(t\)</span>-Test und der Welch-Test sind also zwei Testvarianten, um zu testen, ob der Erwartungswert in zwei Gruppen unterschiedlich ist. Dabei hat sich gezeigt, dass der Welch-Test die wahre Verteilung besser annähert als der Zweistichproben-<span class="math inline">\(t\)</span>-Test, wenn die beiden Gruppen unterschiedliche Varianzen aufweisen, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-emotional-stroop-hist">6.4</a>. Wenn beide Varianzen ungefähr gleich sind, so geben beide Tests jedoch ähnlich gute Resultate, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-hist">6.2</a>. Es wird deshalb empfohlen immer den Welch-Test durchzuführen <span class="citation">(<a href="#ref-zimmerman2004">Zimmerman 2004</a>)</span>. Ein Vergleich der Abbildungen <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-hist-pval-reja">6.3</a> und <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-emotional-stroop-hist-pval-reja">6.5</a> zeigt auch, dass der Unterschied von Ablehnungsbereich und <span class="math inline">\(p\)</span>-Wert beim im Falle der ähnlichen Varianzen gering und im Falle der unterschiedlichen Varianzen augenscheinlich wird.</p>
+<pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale
+## range (`geom_bar()`).</code></pre>
+<div class="figure"><span style="display:block;" id="fig:exm-emotional-stroop-hist-pval-reja"></span>
+<img src="aps_statistik1_files/figure-html/exm-emotional-stroop-hist-pval-reja-1.png" alt="TODO" width="672" />
+<p class="caption">
+Abbildung 6.5: TODO
+</p>
+</div>
+<!-- Discuss: rote und grüne linie auf den Histogramm plots -->
+<!-- Discuss: what does it mean to have one sided hypothesis: distribution, histogram and hypothesis formulation -->
 </div>
 </div>
-<div id="übungen-3" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Übungen<a href="mittelwertunterschied-einer-intervallskalierten-variable.html#übungen-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="effektstärken" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Effektstärken<a href="mittelwertunterschied-einer-intervallskalierten-variable.html#effektstärken" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="übungen-3" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Übungen<a href="mittelwertunterschied-einer-intervallskalierten-variable.html#übungen-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:tagname1" class="exercise"><strong>Übung 6.1  </strong></span></p>
+<!-- 
+Ziel: 
+- Anwendung t-Test mit Jamovi zweiseitig
+-->
+<p>TODO: Exercise body</p>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-24" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:tagname2" class="exercise"><strong>Übung 6.2  </strong></span></p>
+<!-- 
+Ziel: 
+- Anwendung t-Test mit Jamovi zweiseitig
+-->
+<p>TODO: Exercise body</p>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-25" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:tagname3" class="exercise"><strong>Übung 6.3  </strong></span></p>
+<!-- 
+Ziel: 
+- Anwendung t-Test mit Jamovi linksseitig
+-->
+<p>TODO: Exercise body</p>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-26" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:tagname4" class="exercise"><strong>Übung 6.4  </strong></span></p>
+<!-- 
+Ziel: 
+- Anwendung t-Test mit Jamovi rechtsseitig
+-->
+<p>TODO: Exercise body</p>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-27" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:tagname5" class="exercise"><strong>Übung 6.5  </strong></span></p>
+<!-- 
+Ziel: 
+- Berichten und Werte erklären
+-->
+<p>TODO: Exercise body</p>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-28" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
+</details>
+</div>
 
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-khanna2017" class="csl-entry">
+Khanna, M. M., A. S. Badura-Brack, T. J. McDermott, C. M. Embury, A. I. Wiesman, A. Shepherd, T. J. Ryan, E. Heinrichs-Graham, and T. W. Wilson. 2017. <span>“Veterans with Post-Traumatic Stress Disorder Exhibit Altered Emotional Processing and Attentional Control During an Emotional Stroop Task.”</span> <em>Psychological Medicine</em> 47 (11): 2017–27. <a href="https://doi.org/10.1017/S0033291717000460">https://doi.org/10.1017/S0033291717000460</a>.
+</div>
+<div id="ref-williams1996" class="csl-entry">
+Macleod, Colin, J. M. G. Williams, and A. Mathews. 1996. <span>“The Emotional Stroop Task and Psychopathology.”</span> <em>Psychological Bulletin</em> 120 (1): 3–24. <a href="https://doi.org/10.1037/0033-2909.120.1.3">https://doi.org/10.1037/0033-2909.120.1.3</a>.
+</div>
 <div id="ref-morris2015" class="csl-entry">
 Morris, Craig, Chris Reiber, and Emily Roman. 2015. <span>“Quantitative Sex Differences in Response to the Dissolution of a Romantic Relationship.”</span> <em>Evolutionary Behavioral Sciences</em> 9 (July). <a href="https://doi.org/10.1037/ebs0000054">https://doi.org/10.1037/ebs0000054</a>.
+</div>
+<div id="ref-welch1947" class="csl-entry">
+Welch, B. L. 1947. <span>“The Generalization of <span>‘Student’s’</span> Problem When Several Different Population Variances Are Involved.”</span> <em>Biometrika</em> 34 (1/2): 28–35. <a href="http://www.jstor.org/stable/2332510">http://www.jstor.org/stable/2332510</a>.
+</div>
+<div id="ref-zimmerman2004" class="csl-entry">
+Zimmerman, Donald W. 2004. <span>“A Note on Preliminary Tests of Equality of Variances.”</span> <em>British Journal of Mathematical and Statistical Psychology</em> 57 (1): 173–81. https://doi.org/<a href="https://doi.org/10.1348/000711004849222">https://doi.org/10.1348/000711004849222</a>.
 </div>
 </div>
             </section>

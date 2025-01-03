@@ -7,6 +7,8 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
+license: "CC BY-NC-SA 4.0"
+license_url: "https://creativecommons.org/licenses/by-nc-sa/4.0/"
 ---
 
 
@@ -1091,30 +1093,10 @@ gen_exm_vermoegen <- function(){
   
   line_xlim <- xlim(c(40000, 180000))
   sigma_g <- x_sd / sqrt(n)
-  x_range <- seq(mu0-3*sigma_g, mu0+3*sigma_g, length.out = 1000)
-  
-  # Function to create text data
-  create_text_data <- function(labels, y_value, plot_type) {
-    tibble(
-      label = labels,
-      x = c(60000, 160000),
-      y = rep(y_value, 2),
-      color = c("red", "green"),
-      plot_type = plot_type
-    )
-  }
-  
-  
-  add_colors <- function(x, type){
-    x %>% 
-      mutate(
-      color = case_when(
-        plot_type == type %>% str_c(" p-Wert") & x > x_mean ~ "green",
-        plot_type == type %>% str_c(" p-Wert") & x <= x_mean ~ "red",
-        plot_type == type %>% str_c(" Ablehnungsbereich") & x > q95_x_means ~ "green",
-        plot_type == type %>% str_c(" Ablehnungsbereich") & x <= q95_x_means ~ "red"
-      )
-    )
+  x_range_bounds <- c(mu0-3*sigma_g, mu0+3*sigma_g)
+  x_range <- seq(x_range_bounds[1], x_range_bounds[2], length.out = 1000)
+  create_text_data <- function(x,y,z){
+    plot_attr_reja_pval$create_text_data(10000*c(6,13),x,y,z)
   }
   # Create data for histograms
   histogram_data <- tibble(
@@ -1123,7 +1105,7 @@ gen_exm_vermoegen <- function(){
                       "Histogram Ablehnungsbereich"), 
                     each = length(x_means))
   ) %>%
-    add_colors("Histogram")
+    plot_attr_reja_pval$add_colors(side = "right", upper = q95_x_means, test_stat = x_mean)
   
   # Create data for density plots
   density_data <- tibble(
@@ -1132,15 +1114,15 @@ gen_exm_vermoegen <- function(){
     plot_type = rep(c("Verteilung p-Wert", 
                       "Verteilung Ablehnungsbereich"), 
                     each = length(x_range))
-  ) %>%
-    add_colors("Verteilung")
+  )  %>%
+    plot_attr_reja_pval$add_colors(side = "right", upper = q95_x_means, test_stat = x_mean)
   
   # Create text data for all plots
-  text_pval <- str_c(round(100 * c(1 - p_value_emp, p_value_emp), 1), '%')
   text_sign <- c('95%', '5%')
   text_data_all <- bind_rows(
     create_text_data(
-      text_pval,
+      round(100 *c(1 - p_value_emp, p_value_emp),1) %>% 
+        str_c('%'),
       200,
       "Histogram p-Wert"
     ),
@@ -1150,7 +1132,7 @@ gen_exm_vermoegen <- function(){
       "Histogram Ablehnungsbereich"
     ),
     create_text_data(
-      round(100 *c(1-p_value_the,p_value_the),1) %>% 
+      round(100 *c(1-p_value_the, p_value_the),1) %>% 
         str_c('%'),
       0.000015, 
       "Verteilung p-Wert"
@@ -1162,35 +1144,23 @@ gen_exm_vermoegen <- function(){
     )
   )
   
-  custom_labeller <- as_labeller(c(
-    "Histogram p-Wert" = "p-Wert",
-    "Histogram Ablehnungsbereich" = "Ablehnungsbereich",
-    "Verteilung p-Wert" = "p-Wert",
-    "Verteilung Ablehnungsbereich" = "Ablehnungsbereich"
-  ))
+  
   
   plot_hist_curve_pval_reja <- ggplot() +
     geom_histogram(data = histogram_data,
                    aes(x = x, fill = color),
                    binwidth = 4300) +
-    geom_line(data = density_data,
-              aes(x = x, y = y, colour = color)) +
     geom_area(data = density_data,
-              aes(x = x, y = y, fill = color)) +
+              aes(x = x, y = y, fill = color),
+            stat = "identity") +
     geom_vline(xintercept = x_mean) +
     geom_text(data = text_data_all,
               mapping = aes(x = x, y = y, label = label, colour = color)) +
     facet_wrap(~ plot_type, nrow = 2, scales = "free_y", 
                strip.position = "top",
-               labeller = custom_labeller) +
+               labeller = plot_attr_reja_pval$custom_labeller) +
     line_xlim +
-    theme(
-      axis.text.y = element_text(),
-      axis.ticks.y = element_line(),
-      axis.title.y = element_text(),
-      strip.placement = "outside",
-      legend.position = "none"
-    ) +
+    plot_attr_reja_pval$theme +
     labs(x = "Vermögen", y = "W.-dichte                              Häufigkeit")
 
   return(mget(ls()))
@@ -1340,46 +1310,8 @@ gen_exm_alexithymie <- function(){
   line_xlim <- xlim(c(95, 105))
   sigma_g <- x_sd / sqrt(n)
   x_range <- seq(mu0-3*sigma_g, mu0+3*sigma_g, length.out = 1000)
-  
-  # Function to create text data
-  create_text_data <- function(labels, y_value, plot_type) {
-    tibble(
-      label = labels,
-      x = c(98, 102),
-      y = rep(y_value, 2),
-      color = c("red", "green"),
-      plot_type = plot_type
-    )
-  }
-  
-  
-  add_colors <- function(x, type){
-    if(type == "Histogram"){
-      x %>% 
-      mutate(
-      color = case_when(
-        plot_type == type %>% str_c(" p-Wert") & x > x_mean & x < mu0 + (mu0 - x_mean) ~ "red",
-        plot_type == type %>% str_c(" p-Wert") & (x <= x_mean | x >= mu0 + (mu0 - x_mean)) ~ "green",
-        (plot_type == type %>% str_c(" Ablehnungsbereich")) & 
-          (x > q975_x_means | x < q025_x_means)~ "green",
-        (plot_type == type %>% str_c(" Ablehnungsbereich")) & 
-          (x <= q975_x_means & x >= q025_x_means) ~ "red"
-      )
-    )
-    }else{
-      x %>% 
-        mutate(
-        color = case_when(
-          plot_type == type %>% str_c(" p-Wert") & x > x_mean & x < mu0 + (mu0 - x_mean) ~ "red",
-          plot_type == type %>% str_c(" p-Wert") & (x <= x_mean | x >= mu0 + (mu0 - x_mean)) ~ "green",
-          (plot_type == type %>% str_c(" Ablehnungsbereich")) & 
-            (x > mu0 + qt(0.975, n-1)*x_sd/sqrt(n) | x < mu0 - qt(0.975, n-1)*x_sd/sqrt(n))~ "green",
-          (plot_type == type %>% str_c(" Ablehnungsbereich")) & 
-            (x <= mu0 + qt(0.975, n-1)*x_sd/sqrt(n) & x >= mu0 - qt(0.975, n-1)*x_sd/sqrt(n)) ~ "red"
-        )
-      )
-    }
-    
+  create_text_data <- function(x,y,z){
+    plot_attr_reja_pval$create_text_data(c(98, 102),x,y,z)
   }
   # Create data for histograms
   histogram_data <- tibble(
@@ -1388,7 +1320,7 @@ gen_exm_alexithymie <- function(){
                       "Histogram Ablehnungsbereich"), 
                     each = length(x_means))
   ) %>%
-    add_colors("Histogram")
+    plot_attr_reja_pval$add_colors(side = "both", upper = q975_x_means, lower = q025_x_means, test_stat = x_mean, mu0 = mu0)
   
   # Create data for density plots
   density_data <- tibble(
@@ -1398,10 +1330,7 @@ gen_exm_alexithymie <- function(){
                       "Verteilung Ablehnungsbereich"), 
                     each = length(x_range))
   ) %>%
-    add_colors("Verteilung")
-  
-  density_data %>% 
-    filter(plot_type ==  "Verteilung Ablehnungsbereich")
+    plot_attr_reja_pval$add_colors(side = "both", upper = q975_x_means, lower = q025_x_means, test_stat = x_mean, mu0 = mu0)
   
   # Create text data for all plots
   text_pval <- str_c(round(100 * c(1 - p_value_emp, p_value_emp), 1), '%')
@@ -1430,37 +1359,22 @@ gen_exm_alexithymie <- function(){
     )
   )
   
-  custom_labeller <- as_labeller(c(
-    "Histogram p-Wert" = "p-Wert",
-    "Histogram Ablehnungsbereich" = "Ablehnungsbereich",
-    "Verteilung p-Wert" = "p-Wert",
-    "Verteilung Ablehnungsbereich" = "Ablehnungsbereich"
-  ))
-  
   plot_hist_curve_pval_reja <- ggplot() +
     geom_histogram(data = histogram_data,
                    aes(x = x, fill = color),
                    binwidth = 0.25) +
-    geom_line(data = density_data,
-              aes(x = x, y = y)) +
-    geom_ribbon(data = density_data,
-                aes(x = x, ymin = 0, ymax = ifelse(color == "red", y, 0)), fill = "#00BFC4") +
-    geom_ribbon(data = density_data,
-                aes(x = x, ymin = 0, ymax = ifelse(color == "green", y, 0)), fill = "#F8766D") +
+    
+    geom_area(data = density_data,
+              aes(x = x, y = y, fill = color),
+            stat = "identity") +
     geom_vline(xintercept = x_mean) +
     geom_text(data = text_data_all,
               mapping = aes(x = x, y = y, label = label, colour = color)) +
     facet_wrap(~ plot_type, nrow = 2, scales = "free_y", 
                strip.position = "top",
-               labeller = custom_labeller) +
+               labeller = plot_attr_reja_pval$custom_labeller) +
     line_xlim +
-    theme(
-      axis.text.y = element_text(),
-      axis.ticks.y = element_line(),
-      axis.title.y = element_text(),
-      strip.placement = "outside",
-      legend.position = "none"
-    ) +
+    plot_attr_reja_pval$theme +
     labs(x = "Alexithymie", y = "W.-dichte                              Häufigkeit")
 
   return(mget(ls()))
@@ -1729,25 +1643,30 @@ Die gefundene Effektstärke ist mittel. Wenn das Resultat nicht zufällig wäre,
 
 # Mittelwertunterschied einer intervallskalierten Variable
 
-Bislang wurde versucht mithilfe _einer_ Stichprobe eine Aussage über _eine_ Population zu treffen. Dies setzt voraus, dass der Erwartungswert bereits aus früheren Untersuchungen bekannt ist oder theoretisch hergeleitet werden kann (Beispiel zirkadianer Rhythmus). In der Realität ist dies oft nicht der Fall. Es muss also gleichzeitig etwas über eine potenziell veränderte Population und über die Referenzpopulation herausgefunden werden. Im experimentellen Kontext enspricht dies dem Vergleich der Experimental- mit der Kontrollgruppe. Im observationellen Kontext wird die Referenzgruppe willkürlich bestimmt.
+Bislang wurde versucht mithilfe _einer_ Stichprobe eine Aussage über _eine_ Population zu treffen. Dies setzt voraus, dass der Erwartungswert bereits aus früheren Untersuchungen bekannt ist oder theoretisch hergeleitet werden kann (Beispiel zirkadianer Rhythmus). In der Realität ist dies oft nicht der Fall. Es muss also gleichzeitig etwas über eine potenziell veränderte Population und über die Referenzpopulation herausgefunden werden. Im experimentellen Kontext entspricht dies dem Vergleich der Experimental- mit der Kontrollgruppe. Im observationellen Kontext wird die Referenzgruppe willkürlich bestimmt.
 
 :::{.example #breakup name="Trennungsschmerz"}
 
 ```{r exm-breakup}
-gen_exm_breakup <- function(){
-  mu0 <- 0
+gen_exm_t_welch <- function(mu1,
+                            s1,
+                            n1,
+                            mu2,
+                            s2,
+                            n2,
+                            var_name,
+                            x_min,
+                            x_max,
+                            file_name,
+                            group_labels,
+                            x_label_position,
+                            y_label_position_hist,
+                            y_label_position_dens,
+                            binwidth,
+                            plot_bag) {
   
-  mu1 <- 6.84
-  s1 <- 2.52
-  n1 <- 2695
-  mu2 <- 6.58
-  s2 <- 2.58
-  n2 <- 1409
-  var_name <- "ER"
-
+  mu0 <- 0
   set.seed(61)
-  x_min <- 0
-  x_max <- 10
   x1 <- rnorm(n1, mu1, s1) %>% 
     crop(x_min, x_max)
   x2 <- rnorm(n2, mu2, s2) %>% 
@@ -1757,57 +1676,51 @@ gen_exm_breakup <- function(){
   x1_sd <- x1 %>% sd()
   x2_sd <- x2 %>% sd()
   s_p <- sqrt(weighted.mean(c(s1^2, s2^2), c(n1-1, n2-1)))
-  s_means <- s_p * sqrt((1/n1+1/n2))
+  s_t <- s_p * sqrt((1/n1+1/n2))
+  s_w <- sqrt(x1_sd^2/n1 + x2_sd^2/n2)
   x_mean <- x1_mean - x2_mean
-  df <- n1 + n2 - 2
-  
-  
-  # x <- scale_factor * rchisq(n, df)
-  # scores_hover <- x / 1000 # hovering with K CHF in scale
-  # x_mean <- x %>% mean()
-  # x_sd <- x %>% sd()
-  # t_emp <- (x_mean - mu0)/(x_sd/sqrt(n))
-  # p_value_the <- 1-pt((x_mean - 100000)/ (x_sd / sqrt(n)), n-1)
-  # effect_size <- (x_mean - mu0) / x_sd
+  df_t <- n1 + n2 - 2
+  df_w <- s_w^4 / (x1_sd^4 / (n1^2* (n1-1))+x2_sd^4 / (n2^2* (n2-1)))
+  p_value_the_t <- 2*(1-pt(x_mean/s_t, df_t))
+  p_value_the_w <- 2*(1-pt(x_mean/s_w, df_w))
 
-  file_name <- '06-exm-breakup.sav'
-  dd <- tibble(emotional_response = c(x1,x2),
-         sex = c(rep('male',n1), rep('female', n2))) %>% 
+  dd <- tibble(!!var_name := c(x1,x2),
+         Gruppe = c(rep(group_labels[1],n1), rep(group_labels[2], n2))) %>% 
     write_sav(file_name)
-  
+
   jmv_res <- dd %>%
-    jmv::ttestIS(vars = c("emotional_response"), 
-                 group = "sex",
+    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
                  welchs = TRUE, 
                  mann = TRUE, 
                  effectSize = TRUE)
-  
-  scores_hover1 <- rnorm(20, 3, s1) %>% 
-      crop(x_min, x_max)
-  scores_hover2 <- rnorm(20, 7, s1) %>% 
-      crop(x_min, x_max)
-  plot_ball_bag_different <- plot_ball_bag_two_samples(
-    scores_bag1 = rnorm(200, 3, s1) %>% 
-      crop(x_min, x_max),
-    scores_bag2 = rnorm(200, 7, s2) %>% 
-      crop(x_min, x_max),
-    scores_hover1 = scores_hover1,
-    scores_hover2 = scores_hover2,
-    score_name = var_name,
-    no_legend = TRUE
-  )
-  
-  plot_ball_bag_same <- plot_ball_bag_two_samples(
-    scores_bag1 = rnorm(200, 5, s1) %>% 
-      crop(x_min, x_max),
-    scores_bag2 = rnorm(200, 5, s2) %>% 
-      crop(x_min, x_max),
-    scores_hover1 = scores_hover1,
-    scores_hover2 = scores_hover2,
-    score_name = var_name
-  )
-  
 
+  if(plot_bag){
+    scores_hover1 <- rnorm(20, 3, s1) %>% 
+        crop(x_min, x_max)
+    scores_hover2 <- rnorm(20, 7, s1) %>% 
+        crop(x_min, x_max)
+    plot_ball_bag_different <- plot_ball_bag_two_samples(
+      scores_bag1 = rnorm(200, 3, s1) %>% 
+        crop(x_min, x_max),
+      scores_bag2 = rnorm(200, 7, s2) %>% 
+        crop(x_min, x_max),
+      scores_hover1 = scores_hover1,
+      scores_hover2 = scores_hover2,
+      score_name = var_name,
+      no_legend = TRUE
+    )
+    
+    plot_ball_bag_same <- plot_ball_bag_two_samples(
+      scores_bag1 = rnorm(200, 5, s1) %>% 
+        crop(x_min, x_max),
+      scores_bag2 = rnorm(200, 5, s2) %>% 
+        crop(x_min, x_max),
+      scores_hover1 = scores_hover1,
+      scores_hover2 = scores_hover2,
+      score_name = var_name
+    )
+  }
+  
   # distribution if H_0 were true
   n_samples <- 3000L
   x1_means <- 1:n_samples %>%
@@ -1822,126 +1735,153 @@ gen_exm_breakup <- function(){
   means_diff <- x1_means - x2_means
   q975_x_means <- means_diff %>% quantile(c(0.975)) %>% unlist() %>% unname()
   q025_x_means <- means_diff %>% quantile(c(0.025)) %>% unlist() %>% unname()
-  p_value_emp <- mean(means_diff > mean(x1) - mean(x2) | 
-                        means_diff < 0 + (0 - mean(x1) - mean(x2)))
-  plot_hist <- plot_hist_denstiy_expected_value(
-    means = means_diff,
-    mu = 0,
-    sigma = s_p,
-    1/(1/n1+1/n2),
-    xlab = "ER-Mittelwertdifferenz",
-    binwidth = 0.02)
+  p_value_emp <- mean(abs(means_diff) > abs(x_mean))
   
-  sigma_g <- s_means
-  line_xlim <- xlim(3.5*sigma_g*c(-1, 1))
-  x_range <- seq(0-3*sigma_g, 0+3*sigma_g, length.out = 1000)
+  plot_hist <- plot_hist_denstiy_expected_value1(
+    means_diff,
+    str_c(var_name, "-Mittelwertdifferenz"),
+    binwidth,
+    list(
+      "Student-t" = function(x)
+        dt((x-mu0)/s_t, df_t) / s_t,
+      "Welch t" = function(x)
+        dt((x-mu0)/s_w, df_w) / s_w)
+      )
   
-  create_text_data <- function(labels, y_value, plot_type) {
+  x_bounds <- 3.5*s_w*c(-1, 1)
+  line_xlim <- xlim(x_bounds)
+  x_range <- seq(x_bounds[1], x_bounds[2], length.out = 1000)
+  
+  create_text_data <- function(x,y,z){
+    plot_attr_reja_pval$create_text_data(x_label_position,x,y,z)
+  }
+  
+  histogram_data <- tibble(x = rep(means_diff, 2),
+                           plot_type = rep(
+                             c("Histogram p-Wert", "Histogram Ablehnungsbereich"),
+                             each = length(means_diff)
+                           )) %>%
+    plot_attr_reja_pval$add_colors(
+      side = "both",
+      upper = q975_x_means,
+      lower = q025_x_means,
+      test_stat = x_mean,
+      mu0 = mu0
+    )
+  
+  create_density_t_data <- function(x_range, mu0, sigma_g, df, labels, x_mean) {
     tibble(
-      label = labels,
-      x = c(98, 102),
-      y = rep(y_value, 2),
-      color = c("red", "green"),
-      plot_type = plot_type
-    )
-  }
-  
-  
-  add_colors <- function(x, type){
-    if(type == "Histogram"){
-      x <- x %>% 
-      mutate(
-      color = case_when(
-        plot_type == type %>% str_c(" p-Wert") & 
-          (abs(x_mean - mu0) > abs(x - mu0)) ~ "red",
-        (plot_type == type %>% str_c(" Ablehnungsbereich")) & 
-          (x <= q975_x_means & x >= q025_x_means) ~ "red",
-        TRUE ~ "green",
+      x = rep(x_range, 2),
+      y = dt((x - mu0) / sigma_g, df) / sigma_g,
+      plot_type = rep(
+        labels,
+        each = length(x_range)
       )
-    )
-    }else{
-      x <- x %>% 
-        mutate(
-        color = case_when(
-          plot_type == type %>% str_c(" p-Wert") & x > x_mean & x < mu0 + (mu0 - x_mean) ~ "red",
-          plot_type == type %>% str_c(" p-Wert") & (x <= x_mean | x >= mu0 + (mu0 - x_mean)) ~ "green",
-          (plot_type == type %>% str_c(" Ablehnungsbereich")) & 
-            (x > mu0 + qt(0.975, n-1)*x_sd/sqrt(n) | x < mu0 - qt(0.975, n-1)*x_sd/sqrt(n))~ "green",
-          (plot_type == type %>% str_c(" Ablehnungsbereich")) & 
-            (x <= mu0 + qt(0.975, n-1)*x_sd/sqrt(n) & x >= mu0 - qt(0.975, n-1)*x_sd/sqrt(n)) ~ "red"
-        )
+    ) %>%
+      plot_attr_reja_pval$add_colors(
+        side = "both",
+        upper = qt(0.975, df) * sigma_g,
+        lower = qt(0.025, df) * sigma_g,
+        test_stat = x_mean,
+        mu0 = mu0
       )
-    } 
-    x %>% 
-      mutate(color  = color %>% 
-      factor(levels = c("green", "red")))
   }
-  # Create data for histograms
-  histogram_data <- tibble(
-    x = rep(means_diff, 2),
-    plot_type = rep(c("Histogram p-Wert", 
-                      "Histogram Ablehnungsbereich"), 
-                    each = length(means_diff))
-  ) %>%
-    add_colors("Histogram")
-  
-  # Create text data for all plots
-  text_pval <- str_c(round(100 * c(1 - p_value_emp, p_value_emp), 1), '%')
-  text_sign <- c('95%', '5%')
-  text_data_all <- bind_rows(
-    create_text_data(
-      text_pval,
-      200,
-      "Histogram p-Wert"
+
+  density_data <- bind_rows(
+    create_density_t_data(
+      x_range,
+      mu0,
+      s_t,
+      df_t,
+      c("t-Test p-Wert", "t-Test Ablehnungsbereich"),
+      x_mean
     ),
-    create_text_data(
-      text_sign, 
-      200,
-      "Histogram Ablehnungsbereich"
+    create_density_t_data(
+      x_range,
+      mu0,
+      s_w,
+      df_w,
+      c("Welch-Test p-Wert", "Welch-Test Ablehnungsbereich"),
+      x_mean
     )
   )
-  
-  custom_labeller <- as_labeller(c(
-    "Histogram p-Wert" = "p-Wert",
-    "Histogram Ablehnungsbereich" = "Ablehnungsbereich"
-  ))
-  
-  plot_hist_pval_reja <- ggplot() +
-    geom_histogram(data = histogram_data,
+ 
+   plot_hist_curve_pval_reja <- ggplot() +
+     geom_histogram(data = histogram_data,
                    aes(x = x, fill = color),
-                   binwidth = 0.02) +
+                   binwidth = binwidth)+
+    geom_area(data = density_data, 
+              aes(x = x, y = y, fill = color), stat = "identity") +
     geom_vline(xintercept = x_mean) +
-    geom_text(data = text_data_all,
-              mapping = aes(x = x, y = y, label = label, colour = color)) +
-    facet_wrap(~ plot_type, nrow = 1, scales = "free_y", 
-               strip.position = "top",
-               labeller = custom_labeller) +
-    line_xlim +
-    theme(
-      axis.text.y = element_text(),
-      axis.ticks.y = element_line(),
-      axis.title.y = element_text(),
-      strip.placement = "outside",
-      legend.position = "none"
+    geom_text(
+      data = bind_rows(
+        create_text_data(
+           str_c(round(100 * c(1 - p_value_emp, p_value_emp), 1), '%'),
+          y_label_position_hist,
+          "Histogram p-Wert"
+        ),
+        create_text_data(
+          c('95%', '5%'), 
+          y_label_position_hist,
+          "Histogram Ablehnungsbereich"
+        ),
+        create_text_data(str_c(round(
+          100 * c(1 - p_value_the_t, p_value_the_t), 1
+        ), '%'), y_label_position_dens, "t-Test p-Wert"),
+        create_text_data(c('95%', '5%'), y_label_position_dens, "t-Test Ablehnungsbereich"),
+        create_text_data(str_c(round(
+          100 * c(1 - p_value_the_w, p_value_the_w), 1
+        ), '%'), y_label_position_dens, "Welch-Test p-Wert"),
+        create_text_data(c('95%', '5%'), y_label_position_dens, "Welch-Test Ablehnungsbereich")
+      ),
+      mapping = aes(
+        x = x,
+        y = y,
+        label = label,
+        colour = color
+      )
     ) +
-    labs(x = "ER-Mittelwertdifferenz", y = "Häufigkeit")
-
-
+    facet_wrap(
+      ~ plot_type,
+      ncol = 2,
+      scales = "free_y",
+      strip.position = "top"
+    ) +
+    line_xlim +
+    plot_attr_reja_pval$theme +
+    labs(x = str_c(var_name, "-Mittelwertdifferenz"), 
+         y = "Wahrscheinlichkeitsdichte        Häufigkeit")
+  
   return(mget(ls()))
 }
-exm_breakup <- gen_exm_breakup()
+exm_breakup <- gen_exm_t_welch(mu1 = 6.84,
+                            s1 = 2.52,
+                            n1 = 2695,
+                            mu2 = 6.58,
+                            s2 = 2.58,
+                            n2 = 1409,
+                            var_name = "ER",
+                            x_min = -10,
+                            x_max = 100,
+                            file_name = '06-exm-breakup.sav',
+                            group_labels = c('male', 'female'),
+                            x_label_position = 0.2*c(-1,1),
+                            y_label_position_hist = 250,
+                            y_label_position_dens = 4,
+                            binwidth = 0.02,
+                            plot_bag = TRUE)
 ```
 
-@morris2015 haben untersucht, ob das Geschlecht einen Einfluss auf den Schmerz bei der Auflösung einer romantischen Beziehung hat. Die Autoren unterscheiden dabei zwischen emotionaler (Angst, Wut, Depression, Taubheit, usw.) und physischer Reaktion (Essgewohnheit, Schlaf, Gewicht, Panik, Immunsystem). Hier wird nur auf erstere Fokusiert, welche mit _ER_ abgekürzt wird. Dazu wurde mit erlösfreien Online-Umfragen unter anderem erfragt, ob die Person eine Trennung erlebt hat und wie sie ihren emotionalen Trennungsschmerz von $0$ (keine Schmerzen) bis $10$ (unerträglich) einstuft. An der Studie haben $N_\text{Frau} = `r exm_breakup$n1`$ Frauen und $N_\text{Mann} = `r exm_breakup$n2`$ Männer mitgemacht, welche eine ER von $M_\text{Frau} = `r round(exm_breakup$x1_mean,2)`, SD_\text{Frau} = `r round(exm_breakup$x1_sd,2)`$  und $M_\text{Mann} = `r round(exm_breakup$x2_mean,2)`, SD_\text{Mann} = `r round(exm_breakup$x2_sd,2)`$ respektive aufwiesen. 
+@morris2015 haben untersucht, ob das Geschlecht einen Einfluss auf den Schmerz bei der Auflösung einer romantischen Beziehung hat. Die Autoren unterscheiden dabei zwischen emotionaler (Angst, Wut, Depression, Taubheit, usw.) und physischer Reaktion (Essgewohnheit, Schlaf, Gewicht, Panik, Immunsystem). Hier wird nur auf erstere fokussiert, welche mit _ER_ abgekürzt wird. Dazu wurde mit erlösfreien Online-Umfragen unter anderem erfragt, ob die Person eine Trennung erlebt hat und wie sie ihren emotionalen Trennungsschmerz von $0$ (keine Schmerzen) bis $10$ (unerträglich) einstuft. An der Studie haben $N_\text{Frau} = `r exm_breakup$n1`$ Frauen und $N_\text{Mann} = `r exm_breakup$n2`$ Männer mitgemacht, welche eine ER von $M_\text{Frau} = `r round(exm_breakup$x1_mean,2)`, SD_\text{Frau} = `r round(exm_breakup$x1_sd,2)`$  und $M_\text{Mann} = `r round(exm_breakup$x2_mean,2)`, SD_\text{Mann} = `r round(exm_breakup$x2_sd,2)`$ respektive aufwiesen. 
 :::
 
 ## Was ist das Problem der Stichprobenziehung?
 
-In der Stichprobe kann also ein kleiner geschlechterspezifischer Mittelwertunterschied der ER beobachtet werden. Dieser Mittelwertunterschied könnte nun einerseits auf einen Mittelwertunterschied in der Population zurückzuführen sein, wie in Abbildung \@ref(fig:exm-breakup-bagplot) links dargestellt. Hier gibt es zwei Populationen: Frauen-Population  mit höheren und Männer-Population  mit tieferen ER-Werten. Dies führt dazu, dass der Erwartungswert der Frauen-Population höher ist als bei Männer-Population und eine zufällige gezogene stichprobe aus Frauen-Population auch ein höheres arithmetisches Mittel aufweist als Männer-Population.
+In der Stichprobe kann also ein kleiner geschlechterspezifischer Mittelwertunterschied der ER beobachtet werden. Dieser Mittelwertunterschied könnte nun einerseits auf einen Mittelwertunterschied in der Population zurückzuführen sein, wie in Abbildung \@ref(fig:exm-breakup-bagplot) links dargestellt. Hier gibt es zwei Populationen: Frauen-Population  mit höheren und Männer-Population  mit tieferen ER-Werten. Dies führt dazu, dass der Erwartungswert der Frauen-Population höher ist als bei Männer-Population und eine zufällige gezogene Stichprobe aus Frauen-Population auch ein höheres arithmetisches Mittel aufweist als Männer-Population.
 
-Andererseits könnte der Mittelwertunterschied auch auf die zufällige Stichprobenziehung zurückzuführen sein Abbildung \@ref(fig:exm-breakup-bagplot) rechts. In dieser Situation haben die Frauen- und die Männer-Populationen ähnliche Werte und demnach auch einen ähnlichen Erwartungswert. Beim Ziehen der Stichproben spielt der Zufall hier so, dass aus der Frauen-Population einige Beobachtungen mehr mit hohen ER-Werten ausgewählt wurden als bei der Männer-Population. Dies führt dazu, dass in den zwei Stichproben ein Unterschied im arithmetischen Mittel der ER beobachtet werden kann. 
+Andererseits könnte der Mittelwertunterschied auch auf die zufällige Stichprobenziehung zurückzuführen sein, siehe Abbildung \@ref(fig:exm-breakup-bagplot) rechts. In dieser Situation haben die Frauen- und die Männer-Populationen ähnliche Werte und demnach auch einen ähnlichen Erwartungswert. Beim Ziehen der Stichproben spielt der Zufall hier so, dass aus der Frauen-Population einige Beobachtungen mehr mit hohen ER-Werten ausgewählt wurden als bei der Männer-Population. Dies führt dazu, dass in den zwei Stichproben ein Unterschied im arithmetischen Mittel der ER beobachtet werden kann. 
 
-```{r exm-breakup-bagplot, fig.cap="Links: Zwei Stichprobenziehungen aus zwei Populationen mit unterschiedlichen Mittelwerten. Rechts: Zwei Stichprobenziehungen aus einer Populationen, bzw. aus zwei Populationen die sich bezüglich ihrer Werte nicht unterscheiden."}
+```{r exm-breakup-bagplot, fig.cap="Links: Zwei Stichprobenziehungen aus zwei Populationen mit unterschiedlichen Mittelwerten. Rechts: Zwei Stichprobenziehungen aus einer Population, bzw. aus zwei Populationen die sich bezüglich ihrer Werte nicht unterscheiden."}
 grid.arrange(exm_breakup$plot_ball_bag_different,
              exm_breakup$plot_ball_bag_same, 
              ncol = 2)
@@ -1953,12 +1893,9 @@ Welche dieser Situationen zutrifft kann nicht genau herausgefunden werden, da di
 
 Um trotzdem eine Aussage über die Population zu treffen, kann wie bereits mehrmals gemacht, die Stichprobenziehung oft - beispielsweise $`r exm_breakup$n_samples`$-mal - wiederholt werden. Dies wird unter der Annahme gemacht, dass es keinen ER-Erwartungswertunterschied zwischen der Frauen- und Männer-Population gibt. Die Verteilung der ER-Mittelwertdifferenzen dieser Stichproben ist in Abbildung \@ref(fig:exm-breakup-hist) dargestellt. 
 
-```{r exm-breakup-hist, fig.cap="TODO."}
+```{r exm-breakup-hist, fig.cap="Verteilung simulierter ER-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test."}
 exm_breakup$plot_hist
 ```
-
-
-
 
 Das Testprinzip funktioniert genau gleich wie beim $t$-Test für eine Stichprobe wie in Kapitel \@ref(zentrale-tendenz-testen). Zunächst werden die Hypothesen aufgestellt. A priori liegt keine Vermutung darüber vor, ob Männer oder Frauen eine stärkere ER zeigen. Die Null- und Alternativhypothese sind deshalb
 
@@ -1972,37 +1909,164 @@ Dies entspricht, einfacher Arithmetik folgend,
 >
 > $H_1: \mu_\text{Frau} - \mu_\text{Mann} \neq 0.$
 
-Es kann beobachtet werden, dass, wenn es keine Erwartungswertdifferenz gibt, die Mittelwertdifferenzen der Stichproben am häufigsten bei $0$ liegen und mit zunehmender Entfernung von $0$ unwahrscheinlicher werden. Dies kann wieder formalisiert werden indem die $5\%$ unwahrscheinlichsten Werte ($2.5\%$ links und $2.5\%$ rechts) zum Ablehnungsbereich erklärt werden und entspricht der roten Fläche in Abbildung \@ref(fig:exm-breakup-hist-pval-reja) links. Die tatsächlich beobachtete Mittelwertdifferenz (schwarze Linie) liegt im Ablehnungsbereich. Dies bedeutet dass sich die Erwartungswertdifferenz bei Signifikanziniveau $5\%$ signifikant von $0$ unterscheidet. Dies ist äquivalent zu der Aussage, dass sich die ER-Erwartungswerte der Männer und Frauen signifikant unterscheidet.
+Es kann beobachtet werden, dass, wenn es keine Erwartungswertdifferenz gibt, die Mittelwertdifferenzen der Stichproben am häufigsten bei $0$ liegen und mit zunehmender Entfernung von $0$ unwahrscheinlicher werden. Dies kann wieder formalisiert werden indem die $5\%$ unwahrscheinlichsten Werte ($2.5\%$ links und $2.5\%$ rechts) zum Ablehnungsbereich erklärt werden und entspricht der roten Fläche in Abbildung \@ref(fig:exm-breakup-hist-pval-reja) links. Die tatsächlich beobachtete Mittelwertdifferenz (schwarze Linie) liegt im Ablehnungsbereich. Dies bedeutet dass sich die Erwartungswertdifferenz bei Signifikanzniveau $5\%$ signifikant von $0$ unterscheidet. Dies ist äquivalent zu der Aussage, dass sich die ER-Erwartungswerte der Männer und Frauen signifikant unterscheidet.
 
 ```{r exm-breakup-hist-pval-reja, fig.cap="TODO"}
-exm_breakup$plot_hist_pval_reja
+exm_breakup$plot_hist_curve_pval_reja
 ```
 <!-- Discuss: warum ist p-Wert nur rechts? Es hat keine Beobachtungen kleiner als -0.237. -->
 
-Ebenfalls kann erneut der p-Wert berechnet werden. Dieser entspricht hier allen ER-Mittelwertdifferenzen, welche _extremer_ als die beobachtete Mittelwertdifferenz $`r round(exm_breakup$x_mean,2)`$ sind. Da die Hypothesenstellung hier zweiseitig ist, bedeutet extremer hier wieder grösser als $`r round(exm_breakup$x_mean,2)`$ oder kleiner als $`r round(-exm_breakup$x_mean,2)`$. Der $p$-Wert enspricht dem Anteil der roten Fläche in Abbildung \@ref(fig:exm-breakup-hist-pval-reja) rechts an der Gesamtfläche und beträgt $`r round(exm_breakup$p_value_emp,3)`$.
+Ebenfalls kann erneut der p-Wert berechnet werden. Dieser entspricht hier allen ER-Mittelwertdifferenzen, welche _extremer_ als die beobachtete Mittelwertdifferenz $`r round(exm_breakup$x_mean,2)`$ sind. Da die Hypothesenstellung hier zweiseitig ist, bedeutet extremer hier wieder grösser als $`r round(exm_breakup$x_mean,2)`$ oder kleiner als $`r round(-exm_breakup$x_mean,2)`$. Der $p$-Wert entspricht dem Anteil der roten Fläche in Abbildung \@ref(fig:exm-breakup-hist-pval-reja) rechts an der Gesamtfläche und beträgt $`r round(exm_breakup$p_value_emp,3)`$.
 
-Die Verteilung der Mittelwertdifferenzen unter der Annahme, dass die Nullhypothese wahr ist, kann wieder mit einer Kurve angenähert werden. Diese Annäherung hat den Vorteil, dass der Ablehnungsbereich und der $p$-Wert abgeschätzt werden kann ohne dass dazu das Experiment wiederholt werden muss. Für die Annäherungskurve gibt es zwei Optionen, welche dann entsprechenden Tests ihre Namen geben: der Zweistichproben-$t$-Test nach Student und der Welch Test.
+Die Verteilung der Mittelwertdifferenzen unter der Annahme, dass die Nullhypothese wahr ist, kann wieder mit einer Kurve angenähert werden. Diese Annäherung hat den Vorteil, dass der Ablehnungsbereich und der $p$-Wert abgeschätzt werden kann, ohne dass dazu das Experiment wiederholt werden muss. Für die Annäherungskurve gibt es zwei Optionen, welche dann entsprechenden Tests ihre Namen geben: der Zweistichproben-$t$-Test nach Student und der Welch Test.
 
 ### Erwartungswertunterschied Zweistichproben-$t$-Test nach Student
 
-Der Zweistichproben-$t$-Test setzt voraus, dass die beiden Populationen eine ähnliche Varianz haben. Dazu später mehr. Ist dies gegeben, so kann die Teststatistik mit
+[Der **Zweistichproben-$t$-Test** setzt voraus, dass die beiden Populationen eine ähnliche Varianz oder äquivalent eine ähnliche Standardabweichung haben.]{.customdef #customdef-twosample-t-test} Dazu später mehr. Ist dies gegeben, so kann die Teststatistik mit
 
 \begin{equation}
-t = \frac{\bar{x_1}-\bar{x_2} - \omega_0}{\sqrt{\frac{(n_1 - 1) s_1^2)+(n_2-1)s_2^2}{n_1 + n_2 - 2}}\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}
+t = \frac{\bar{x_1}-\bar{x_2} - \omega_0}{\sqrt{\frac{(n_1 - 1) s_1^2+(n_2-1)s_2^2}{n_1 + n_2 - 2}}\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}
 (\#eq:t-emp-twosample-t)
 \end{equation}
 
+<!-- Discuss formulas -->
+
 berechnet werden, wobei $\omega_0 = \mu_1 - \mu_2$ der Erwartungswertdifferenz entspricht und in unserem Fall $0$ beträgt. Wenn die Nullhypothese wahr ist, so ist diese Teststatistik bei wiederholter Stichprobenziehung $t$-verteilt bei $df = n_1 + n_2 -2$ Freiheitsgraden.
+
+Die rote Linie in Abbildung \@ref(fig:exm-breakup-hist) zeigt, dass die Annäherung durch den Zweistichproben-$t$-Test nach Student die Verteilung der Mittelwertdifferenzen ziemlich gut trifft.
+
+<!-- Discuss, wieso ist die Verteilung gegen links verschoben. -->
 
 ### Erwartungswertunterschied Welch Test
 
+:::{.example #emotional-stroop name="Emotionaler Stroop-Test bei posttraumatischer Belastungsstörung."}
+
+```{r emotional-stroop}
+exm_emotional_stroop <- gen_exm_t_welch(
+  mu1 = 762.40,
+  s1 = 232.93,
+  n1 = 26,
+  mu2 = 639.07,
+  s2 = 94.90,
+  n2 = 16,
+  var_name = "RT",
+  x_min = 0,
+  x_max = 10000,
+  file_name = '06-exm-emotional-stroop.sav',
+  group_labels = c('PTSD', 'Non-PTSD'),
+  x_label_position = 100*c(-1,1),
+  y_label_position_hist = 250,
+  y_label_position_dens = 0.005,
+  binwidth = 15,
+  plot_bag = FALSE
+)
+```
+
+Analog zum klassischen Stroop-Test werden bei einem emotionalen Stroop-Test _EST_ Testpersonen gebeten die Farben verschiedener ausgeschriebener Wörter zu erkennen. Die Wörter sind beim emotionalen Stroop-Test entweder emotional aufgeladen (Bombe, Schweiss, Faustschlag, ...) oder neutral (Tisch, Weg, Bahn, ...) für die Testpersonen [@williams1996]. Gemessen wird dabei die Reaktionsgeschwindigkeit _RT_ in Millisekunden. In einem Versuch wollten @khanna2017 herausfinden, ob von posttraumatischer Belastungsstörung  betroffene Veteranen _PTSD_ andere EST-Resultate erzielen als nicht betroffene _non-PTSD_. Die durchschnittliche Reaktionszeit der $`r exm_emotional_stroop$n1`$ von PTSD betroffenen Veteranen lag bei $M=`r round(exm_emotional_stroop$x1_mean,1)`\text{ ms }(SD = `r round(exm_emotional_stroop$x1_sd,1)`)$ und bei den $`r exm_emotional_stroop$n2`$ nicht von PTSD betroffenen Veteranen bei $M=`r round(exm_emotional_stroop$x2_mean,1)` \text{ ms }(SD = `r round(exm_emotional_stroop$x2_sd,1)`)$.  
+
+:::
+
+Es wird keine Annahme über die Richtung einer eventualen Mittelwertdifferenz angenommen. Die Hypothesen sind deshalb zweiseitig formuliert und lauten
+
+> $H_0: \mu_\text{PTSD} = \mu_\text{non-PTSD}$
+>
+> $H_1: \mu_\text{PTSD} \neq \mu_\text{non-PTSD}.$
+
+In diesem Beispiel sind die Standardabweichungen und demnach auch die Varianzen der Reaktionszeiten in den beiden Gruppen sehr unterschiedlich. Wenn das Experiment wiederum wiederholt wird, kann der Verteilung der Mittelwertdifferenzen entnommen werden, dass der Zweistichproben-$t$-Test nach Student diese Verteilung nicht gut abbildet. Die rote Linie in Abbildung \@ref(fig:exm-emotional-stroop-hist) liegt mittig zu tief und an den Enden zu hoch. Wird diese Annäherung in diesem Fall verwendet, dann besteht die Gefahr, dass ein signifikanter Mittelwertunterschied nicht erkannt wird.
+
+```{r exm-emotional-stroop-hist, fig.cap="Verteilung simulierter RT-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test."}
+exm_breakup$plot_hist
+```
+
+Für diesen Fall wurde von @welch1947 eine alternative Annäherung an die Verteilung der Mittelwertdifferenzen gefunden, nämlich
+
 \begin{equation}
-t = \frac{\bar{x_1}-\bar{x_2} - \omega_0}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}
+t = \frac{\bar{x_1}-\bar{x_2} - \omega_0}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}.
 (\#eq:t-emp-twosample-welch)
 \end{equation}
 
+<!-- Discuss formulas -->
+
+Die so berechnete Teststatistik $t$ ist $t$-Verteilt bei approximativ 
+$$df \approx\frac{\left(\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}\right)^2}{\frac{s_1^4}{(n_1-1) n_1^2}+ \frac{s_2^4}{(n_2-1) n_2^2}}  $$
+
+[Freiheitsgraden und ein damit durchgeführter Test wird **Welch-Test** genannt.]{.customdef #customdef-welch-test} Sie nähert die Verteilung der Mittelwertdifferenzen trotz unterschiedlicher Gruppenvarianzen gut an, siehe grüne Linie in Abbildung \@ref(fig:exm-emotional-stroop-hist). 
+
+Der Zweistichproben-$t$-Test und der Welch-Test sind also zwei Testvarianten, um zu testen, ob der Erwartungswert in zwei Gruppen unterschiedlich ist. Dabei hat sich gezeigt, dass der Welch-Test die wahre Verteilung besser annähert als der Zweistichproben-$t$-Test, wenn die beiden Gruppen unterschiedliche Varianzen aufweisen, siehe Abbildung \@ref(fig:exm-emotional-stroop-hist). Wenn beide Varianzen ungefähr gleich sind, so geben beide Tests jedoch ähnlich gute Resultate, siehe Abbildung \@ref(fig:exm-breakup-hist). Es wird deshalb empfohlen immer den Welch-Test durchzuführen [@zimmerman2004]. Ein Vergleich der Abbildungen \@ref(fig:exm-breakup-hist-pval-reja) und \@ref(fig:exm-emotional-stroop-hist-pval-reja) zeigt auch, dass der Unterschied von Ablehnungsbereich und $p$-Wert beim im Falle der ähnlichen Varianzen gering und im Falle der unterschiedlichen Varianzen augenscheinlich wird.
+
+```{r exm-emotional-stroop-hist-pval-reja, fig.cap="TODO"}
+exm_emotional_stroop$plot_hist_curve_pval_reja
+```
+
+<!-- Discuss: rote und grüne linie auf den Histogramm plots -->
+
+<!-- Discuss: what does it mean to have one sided hypothesis: distribution, histogram and hypothesis formulation -->
+
+## Effektstärken
+
+
 
 ## Übungen
+
+::: {.exercise  #tagname1}
+<!-- 
+Ziel: 
+- Anwendung t-Test mit Jamovi zweiseitig
+-->
+TODO: Exercise body
+:::
+
+:::{.solution}
+TODO: solution body
+:::
+
+::: {.exercise  #tagname2}
+<!-- 
+Ziel: 
+- Anwendung t-Test mit Jamovi zweiseitig
+-->
+TODO: Exercise body
+:::
+
+:::{.solution}
+TODO: solution body
+:::
+
+::: {.exercise  #tagname3}
+<!-- 
+Ziel: 
+- Anwendung t-Test mit Jamovi linksseitig
+-->
+TODO: Exercise body
+:::
+
+:::{.solution}
+TODO: solution body
+:::
+
+::: {.exercise  #tagname4}
+<!-- 
+Ziel: 
+- Anwendung t-Test mit Jamovi rechtsseitig
+-->
+TODO: Exercise body
+:::
+
+:::{.solution}
+TODO: solution body
+:::
+
+::: {.exercise  #tagname5}
+<!-- 
+Ziel: 
+- Berichten und Werte erklären
+-->
+TODO: Exercise body
+:::
+
+:::{.solution}
+TODO: solution body
+:::
 
 <!--chapter:end:src/06-2-gruppenvergleich_intervallskalierte_variablen.Rmd-->
 
