@@ -35,7 +35,7 @@ gen_exm_t_welch <- function(mu1,
   x2_mean <- x2 %>% mean()
   x1_sd <- x1 %>% sd()
   x2_sd <- x2 %>% sd()
-  s_p <- sqrt(weighted.mean(c(s1^2, s2^2), c(n1-1, n2-1)))
+  s_p <- sqrt(weighted.mean(c(x1_sd^2, x2_sd^2), c(n1-1, n2-1)))
   s_t <- s_p * sqrt((1/n1+1/n2))
   s_w <- sqrt(x1_sd^2/n1 + x2_sd^2/n2)
   x_mean <- x1_mean - x2_mean
@@ -50,9 +50,14 @@ gen_exm_t_welch <- function(mu1,
 
   jmv_res <- dd %>%
     jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
+                desc = TRUE,
                  welchs = TRUE, 
                  mann = TRUE, 
                  effectSize = TRUE)
+  jmv_res_test <- jmv_res$ttest$asDF%>% 
+    rename_with(~ .x %>% str_replace_all('\\[(stud|welc)\\]',"\\1"))
+  jmv_res_desc <- jmv_res$desc$asDF%>% 
+    rename_with(~ .x %>% str_replace_all('\\[(1|2)\\]',"\\1"))
 
   if(plot_bag){
     scores_hover1 <- rnorm(20, 3, s1) %>% 
@@ -364,6 +369,48 @@ exm_emotional_stroop$plot_hist_curve_pval_reja
 
 ## Effektstärken
 
+In den Fromeln \@ref(eq:t-emp-twosample-t) und \@ref(eq:t-emp-twosample-welch) kann beobachtet werden, dass mit zunehmenden Stichprobengrössen der Gruppen der Nenner immer kleiner und damit die Teststatistik $t$ für eine gleichbleibende Mittelwert differenz immer grösser wird. Dies bedeutet, dass auch kleine Mittelwertdifferenzen bei grossen Stichprobengrösse signifikanten - also nicht auf die zufällige Stichprobenziehung zurückzuführenden - Unterschied darstellen. Beim Trennungsschmerzbeispiel ist der Mittelwertunterschied von $`r round(exm_breakup$x_mean,2)`$ gering. Dies trotz dem $p$-Wert des Welch-Test von $p=`r round(exm_breakup$p_value_the_w,3) %>% str_sub(start = 2L)`$, welcher auf einen stark signifikanten Mittelwertunterschied hindeutet. Umgekehrt bei der posttraumatischen Belastungsstörung: Hier ist der Mittelwertunterschied mit $`r round(exm_emotional_stroop$x_mean)`$ ms substanziell, aber der $p$-Wert des Welch-Test von $p=`r round(exm_emotional_stroop$p_value_the_w,3) %>% str_sub(start = 2L)`$ deutet knapp auf keine signifikante Mittelwertdifferenz hin. 
+
+Würde die Relevanz des beobachteten Effekts mit der Mittelwertsdifferenz gemessen, dann wäre, analog zu Kapitel \@ref(zentrale-tendenz-testen), dieses Mass wieder abhängig von der Einheit. Um dies zu verhindern, wird die Mittelwertdifferenz wieder durch die Standardabweichung geteilt. Für die konkrete Berechnung der Effektstärke gibt es verschiedene Methoden, wovon drei hier vorgestellt werden:
+
+- [Bei **Cohens $d$** (Symbol $d$) wird die Mittelwertdifferenz durch eine Art gewichtetes Mittel der Standardabweichungen geteilt.]{.customdef #customdef-cohens-d} 
+$$d = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{(n_1 - 1) s_1^2+(n_2-1)s_2^2}{n_1 + n_2 - 2}}}$$
+<!-- Discuss difference to effect size for only one sample t test. -->
+- [Bei **Hedges $g$** (Symbol $g$) handelt es sich um eine um einen Faktor korrigierte Version von Cohens $d$.]{.customdef #customdef-hedges-g} 
+$$g = \left(1-\frac{3}{4(n_1+n_2)-9}\right)d$$
+Hedges $g$ ist genauer als Cohens $d$ bei kleinen Stichprobengrössen und gleich wie Cohens $d$ für grosse Stichproben. Es kann daher immer Hedges $g$ verwendet werden.
+- [**Glass $\Delta$** (gr. delta, Symbol $\Delta$) wir nur bei Experimenten verwendet. Dabei wird die Mittelwertdifferenz durch die Standardabweichung der Kontrollgruppe dividiert, weil angenommen wird, dass die Kontrollgruppe repräsentativer für die Popoulation ist.]{.customdef #customdef-glass-delta}
+$$\Delta = \frac{\bar{x}_\text{Experiment}-\bar{x}_\text{Kontroll}}{s_\text{Kontroll}}$$
+
+Da es sich bei beiden Beispielen nicht um Experimente handelt, weil weder das Geschlecht noch die posttraumatische Belastungsstörung zufällig zugeorndet wurde, ist hier Glass $\Delta$ keine sinnvolle Effektgrösse. Aus diesem Grund wird für die Effektstärkenberechnung bei beiden Beispielen Hedges $g$ verwendet. Das berichten der Testresultate kann deshalb wie folgt aussehen:
+
+> Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche emotionale Antwort ER bei einer Trennung  bei Männern ($M = `r round(exm_breakup$jmv_res_desc$mean1,2)`$, $SD = `r round(exm_breakup$jmv_res_desc$sd1,2)`$, $N = `r exm_breakup$jmv_res_desc$num1`$) signifikant anders ist als bei Frauen ($M = `r round(exm_breakup$jmv_res_desc$mean2,2)`$, $SD = `r round(exm_breakup$jmv_res_desc$sd2,2)`$, $N = `r exm_breakup$jmv_res_desc$num2`$), $t(`r round(exm_breakup$jmv_res_test$dfwelc,1)`) = `r round(exm_breakup$jmv_res_test$statwelc,2)`$, $p = `r round(exm_breakup$jmv_res_test$pwelc,3) %>% str_sub(start = 2L)`, g = `r round((1-(3/(4*(exm_breakup$n1+exm_breakup$n2)-9)))*exm_breakup$jmv_res_test$esstud,3)`$.
+
+> Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Reaktionszeit beim emotionalen Stroop-Test bei Veteranen ohne PTSD ($M = `r round(exm_emotional_stroop$jmv_res_desc$mean1,2)`$, $SD = `r round(exm_emotional_stroop$jmv_res_desc$sd1,2)`$, $N = `r exm_emotional_stroop$jmv_res_desc$num1`$) nicht signifikant anders ist als bei Menschen mit PTSD ($M = `r round(exm_emotional_stroop$jmv_res_desc$mean2,2)`$, $SD = `r round(exm_emotional_stroop$jmv_res_desc$sd2,2)`$, $N = `r exm_emotional_stroop$jmv_res_desc$num2`$), $t(`r round(exm_emotional_stroop$jmv_res_test$dfwelc,1)`) = `r round(exm_emotional_stroop$jmv_res_test$statwelc,2)`$, $p = `r round(exm_emotional_stroop$jmv_res_test$pwelc,3) %>% str_sub(start = 2L)`, g = `r round((1-(3/(4*(exm_emotional_stroop$n1+exm_emotional_stroop$n2)-9)))*exm_emotional_stroop$jmv_res_test$esstud,3)`$.
+
+<!-- mit der neuen Trainingsmethode ist nicht signifikant tiefer als $`r exr_schwimmen$mu0`$ Minuten, $t(`r exr_schwimmen$jmv_res_test$df`) = `r round(exr_schwimmen$jmv_res_test$stat,2)`$, $p = `r round(exr_schwimmen$jmv_res_test$p,3) %>% str_sub(start = 2L)`, d = `r round(exr_schwimmen$jmv_res_test$es,3)`$. -->
+
+Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit auf den EST um einen mittleren Effekt.
+
+<!-- Discuss: Interpretation. -->
+
+::::{.caution data-latex=""}
+::: {.remark}
+- Die Namensgebung von diesen Berechnungsarten und insbesondere, was unter Cohens $d$ verstanden wird variiert beträchtlich und es empfiehlt sich immer die genaue Berechnungsart zu überprüfen.
+<!-- Discuss: Entwirrung Enzmann 2015 -->
+- In `Jamovi` wird für den Zweistichproben-$t$-Test und den Welch-Test eine unterschiedliche Effektstärke angegeben. Der Grund dafür ist unklar und es wird empfohlen die Effektgrösse für den Zweistichproben-$t$-Test zu berücksichtigen.
+<!-- pooledVARSTUD <- tryNaN(((n[1]-1)*v[1]+(n[2]-1)*v[2])/(n[1]+n[2]-2)) -->
+<!-- pooledVARWELC <- tryNaN((v[1] + v[2]) / 2) -->
+<!-- sediffSTUD <- tryNaN(sqrt((pooledVARSTUD/n[1])+(pooledVARSTUD/n[2]))) -->
+<!-- sediffWELC <- tryNaN(sqrt((v[1]/n[1])+(v[2]/n[2]))) -->
+
+<!-- dSTUD <- (m[1]-m[2])/sqrt(pooledVARSTUD) # Cohen's d for student's t -->
+<!-- dWELC <- (m[1]-m[2])/sqrt(pooledVARWELC) # Cohen's d for Welch's t -->
+:::
+::::
+
+
+
 
 
 ## Übungen
@@ -392,28 +439,139 @@ TODO: Exercise body
 TODO: solution body
 :::
 
-::: {.exercise  #tagname3}
+::: {.exercise  #hypnose}
 <!-- 
 Ziel: 
 - Anwendung t-Test mit Jamovi linksseitig
 -->
-TODO: Exercise body
+
+```{r exr-hypnose}
+gen_exr_hypnose <- function(){
+  set.seed(23)
+  n2 <- 15
+  n1 <- 11
+  x2 <- rnorm(n1, 5.5, 1)
+  x1 <- rnorm(n2, 5, 0.5)
+  var_name <- "Schmerz"
+  group_labels <- c('hypnose', 'placebo')
+  
+  file_name <- '06-exr-hynose.sav'
+  dd <- tibble(!!var_name := c(x1, x2),
+       Gruppe = c(rep(group_labels[1],n1), 
+                  rep(group_labels[2], n2))) %>% 
+  write_sav(file_name)
+
+  jmv_res <- dd %>%
+    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
+                 hypothesis = 'twoGreater',
+                desc = TRUE,
+                 welchs = TRUE, 
+                 mann = FALSE, 
+                 effectSize = TRUE)
+  jmv_res_test <- jmv_res$ttest$asDF%>% 
+    rename_with(~ .x %>% str_replace_all('\\[(stud|welc)\\]',"\\1"))
+  jmv_res_desc <- jmv_res$desc$asDF%>% 
+    rename_with(~ .x %>% str_replace_all('\\[(1|2)\\]',"\\1"))
+  
+  return(mget(ls()))
+}
+exr_hypnose <- gen_exr_hypnose()
+```
+
+Die Gesellschaft für Hypnose will unter Beweis stellen (Signifikanzniveau $\alpha=5\%$), dass ein neues Hypnoseverfahren eine schmerzlindernde Wirkung hat. Dazu werden Probanden zufällig und doppelblind in zwei Gruppen eingeteilt. Eine Gruppe erhält die Behandlung mit dem neuen Hypnoseverfahren, die andere wird einer Placebo-Behandlung unterzogen. Nach der Behandlung wird das Schmerzempfinden auf einer Skala von $1$ bis $10$ gemessen. Die Daten beider Versuchsgruppen stellen sich als normalverteilt heraus. Die erhobenen Daten sind unter `r inline_code(exr_hypnose$file_name)` abgelegt.
+
+a) Beschreiben Sie die beiden Stichproben deskriptiv. Hat die neue Behandlungsmethode einen Vorteil gegenüber der Placebo-Behandlung in der Stichprobe? Weshalb ist es sinnvoll danach noch einen statistischen Test durchzuführen?
+b) Stellen Sie die Hypothesen für einen einseitigen Test auf.
+c) Prüfen Sie die Hypothesen mit einem geeigneten einseitig durchgeführten statistischen Test, ob das Resultat auch auf die Population übertragen werden kann. Berichten Sie das Ergebnis.
 :::
 
 :::{.solution}
-TODO: solution body
+
+Zuerst wird der Datensatz mit `Jamovi` eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-hypnose-input). 
+
+```{r sol-hypnose-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
+knitr::include_graphics("figures/06-exr-hypnose-jmv-input.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-hypnose-output).
+
+```{r sol-hypnose-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/06-exr-hypnose-jmv-output.jpg")
+```
+
+Damit können und beide Teilfragen beantwortet werden. 
+
+a) In der Stichprobe ist der durchschnittliche Schmerz (arithmetisches Mittel) in der Hypnose-Gruppe mit $M = `r round(exr_hypnose$jmv_res_desc$mean2,2)`$ tiefer als in der Placebo-Gruppe mit $M = `r round(exr_hypnose$jmv_res_desc$mean1,2)`$. Es könnte sein, dass der gefundene Mittelwertunterschied auf die zufällige Stichprobenziehung zurückzuführen ist. Um dieses Risiko zu quantifizieren und damit einzuschätzen, ob das Ergebnis auch für die Population gelten könnte, kann ein statistischer Test durchgeführt werden.
+b) Es soll gezeigt werden, dass sich der durchschnittlich empfundene Schmerz mit der Hypnose-Behandlung tiefer liegt als mit der Placebo-Behandlung. Die Alternativhypothese lautet also $H_1: \mu_\text{Hypnose} < \mu_\text{Placebo}$. Die Nullhypothese dagegen sagt, dass die Hypnose-Behandlung nicht besser oder sogar schlechter ist als die Placebo-Behandlung also $H_0: \mu_\text{Hypnose} \geq \mu_\text{Placebo}$.
+c) Ein einseitiger Welch-Test ergibt, dass der durchschnittliche erhobene Schmerz bei einer Behandlung mit der neuen Hypnose-Methode ($M = `r round(exr_hypnose$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_hypnose$jmv_res_desc$sd1,2)`$, $N = `r exr_hypnose$jmv_res_desc$num1`$) signifikant tiefer ist als bei der Placebo-Behandlung ($M = `r round(exr_hypnose$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_hypnose$jmv_res_desc$sd2,2)`$, $N = `r exr_hypnose$jmv_res_desc$num2`$), $t(`r round(exr_hypnose$jmv_res_test$dfwelc,1)`) = `r round(exr_hypnose$jmv_res_test$statwelc,2)`$, $p = `r round(exr_hypnose$jmv_res_test$pwelc,3) %>% str_sub(start = 2L)`, g = `r round((1-(3/(4*(exr_hypnose$n1+exr_hypnose$n2)-9)))*exr_hypnose$jmv_res_test$esstud,3)`$.
 :::
 
-::: {.exercise  #tagname4}
+::: {.exercise  #ehe-burnout}
 <!-- 
 Ziel: 
 - Anwendung t-Test mit Jamovi rechtsseitig
 -->
-TODO: Exercise body
+```{r exr-ehe-burnout}
+gen_exr_ehe_burnout <- function(){
+  set.seed(23)
+  n1 <- 51L
+  n2 <- 61L
+  x1 <- rnorm(n1, 10.82, 2.165)
+  x2 <- rnorm(n2, 10.08, 1.969)
+  var_name <- "Burnout_score"
+  group_labels <- c('Unverheiratet', 'Verheiratet')
+  
+  file_name <- '06-exr-ehe-burnout.sav'
+  dd <- tibble(!!var_name := c(x1, x2),
+       Gruppe = c(rep(group_labels[1], length(x1)), 
+                  rep(group_labels[2], length(x2)))) %>% 
+  write_sav(file_name)
+
+  jmv_res <- dd %>%
+    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
+                 hypothesis = 'oneGreater',
+                desc = TRUE,
+                 welchs = TRUE, 
+                 mann = FALSE, 
+                 effectSize = TRUE)
+  jmv_res_test <- jmv_res$ttest$asDF%>% 
+    rename_with(~ .x %>% str_replace_all('\\[(stud|welc)\\]',"\\1"))
+  jmv_res_desc <- jmv_res$desc$asDF%>% 
+    rename_with(~ .x %>% str_replace_all('\\[(1|2)\\]',"\\1"))
+  
+  return(mget(ls()))
+}
+exr_ehe_burnout <- gen_exr_ehe_burnout()
+```
+
+Eine Forscherin hat die Hypothese, dass unverheiratete Ärztinnen ein weniger stabiles Umfeld haben als ihre verheirateten Kolleginnen. Das Fehlen dieser Ressource führt dazu, dass unverheiratete Ärztinnen eher Burnout gefährdet sind. Um diese Hypothese zu untersuchen befragt die Forscherin in einer Umfrage zufällig verheiratete und unverheiratete Ärztinnen. Diese füllen einen Online-Fragebogen mit einem Burnout-Inventar aus, welches zu einem Burnout-score führt. Die Daten sind unter `r inline_code(exr_ehe_burnout$file_name)` verfügbar.
+
+a) Wie viele verheiratete und unverheiratete haben den Fragebogen abgeschlossen?
+b) Welche Gruppe hat in der Stichprobe ein höheres mittleres Burnout-Risiko?
+c) Übersetzen Sie die Hypothese der Forscherin in eine Statistische Hypothese.
+d) Lässt sich die Hypothese statistisch bestätigen? Berichten Sie das Testresultat.
 :::
 
 :::{.solution}
-TODO: solution body
+
+Zuerst wird der Datensatz mit `Jamovi` eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-ehe-burnout-input). 
+
+```{r sol-ehe-burnout-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
+knitr::include_graphics("figures/06-exr-ehe-burnout-jmv-input.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-ehe-burnout-output).
+
+```{r sol-ehe-burnout-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/06-exr-ehe-burnout-jmv-output.jpg")
+```
+
+Damit können und beide Teilfragen beantwortet werden. 
+
+a) Aus der Stichprobenbeschreibung kann entnommen werden, dass $`r exr_ehe_burnout$jmv_res_desc$num1`$ unverheiratete und $`r exr_ehe_burnout$jmv_res_desc$num2`$ verheiratete Ärztinnen den Fragebogen abgeschlossen haben.
+b) Die unverheirateten Ärztinnen $M = `r round(exr_ehe_burnout$jmv_res_desc$mean1,2)`$ scheiden durchschnittlich höher ab als die verheirateten Ärztinnen $M = `r round(exr_ehe_burnout$jmv_res_desc$mean2,2)`$. Dieser Befund beschränkt sich ohne statistischen Test auf die Stichprobe. Deshalb wurde darin das Wort signifikant nicht verwendet.
+c) Die Forscherin will zeigen, dass unverheiratete Ärztinnen ein durchhschnittlich höheres Burnout-Risiko haben als verheiratete und zwar nicht nur in der Stichprobe sondern auch ich der Population. Das durchschnittliche Burnout-Risiko in der Population ist der Erwartungswert des Burnout-Risiko und wird mit $\mu$ bezeichnet. Die Forscherin will also zeigen, dass $H_1: \mu_\text{unverheiratet} > \mu_\text{verheiratet}$. Demgegenüber steht die Nullhypothese, dass dies nicht so ist oder das gar das Gegenteil der Fall sein könnte also $H_0: \mu_\text{unverheiratet} \leq \mu_\text{verheiratet}$. Die Hypothese ist also einseitig gestellt.
+d) Ein einseitiger Welch-Test ergibt, dass der durchschnittliche Burnout-Wert bei unverheirateten Ärztinnen ($M = `r round(exr_ehe_burnout$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_ehe_burnout$jmv_res_desc$sd1,2)`$, $N = `r exr_ehe_burnout$jmv_res_desc$num1`$) signifikant höher ist als bei verheirateten Ärztinnen ($M = `r round(exr_ehe_burnout$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_ehe_burnout$jmv_res_desc$sd2,2)`$, $N = `r exr_ehe_burnout$jmv_res_desc$num2`$), $t(`r round(exr_ehe_burnout$jmv_res_test$dfwelc,1)`) = `r round(exr_ehe_burnout$jmv_res_test$statwelc,2)`$, $p = `r round(exr_ehe_burnout$jmv_res_test$pwelc,3) %>% str_sub(start = 2L)`, g = `r round((1-(3/(4*(exr_ehe_burnout$n1+exr_ehe_burnout$n2)-9)))*exr_ehe_burnout$jmv_res_test$esstud,3)`$.
 :::
 
 ::: {.exercise  #tagname5}

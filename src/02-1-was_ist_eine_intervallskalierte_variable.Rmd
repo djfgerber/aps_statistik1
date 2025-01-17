@@ -36,7 +36,8 @@ gen_exm_ducktemp <- function(){
   
   hist <- tab %>% 
     ggplot()+
-    geom_histogram(aes(x=temperatur, colour = 'blue'),
+    geom_histogram(aes(x = temperatur, 
+                       colour = 'blue'),
                    binwidth=0.2)+
     labs(title = "Histogramm Körpertemperatur Enten", 
          y= "Häufigkeit", 
