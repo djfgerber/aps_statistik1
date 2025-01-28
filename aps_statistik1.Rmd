@@ -23,6 +23,7 @@ library(jmv)
 library(kableExtra)
 source('src/r/bag_sampling.R')
 source('src/r/plots.R')
+source('src/r/effect_size.R')
 
 options(scipen=999)
 
@@ -2000,6 +2001,8 @@ $$df \approx\frac{\left(\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}\right)^2}{\frac{s_1^
 
 Der Zweistichproben-$t$-Test und der Welch-Test sind also zwei Testvarianten, um zu testen, ob der Erwartungswert in zwei Gruppen unterschiedlich ist. Dabei hat sich gezeigt, dass der Welch-Test die wahre Verteilung besser annähert als der Zweistichproben-$t$-Test, wenn die beiden Gruppen unterschiedliche Varianzen aufweisen, siehe Abbildung \@ref(fig:exm-emotional-stroop-hist). Wenn beide Varianzen ungefähr gleich sind, so geben beide Tests jedoch ähnlich gute Resultate, siehe Abbildung \@ref(fig:exm-breakup-hist). Es wird deshalb empfohlen immer den Welch-Test durchzuführen [@zimmerman2004]. Ein Vergleich der Abbildungen \@ref(fig:exm-breakup-hist-pval-reja) und \@ref(fig:exm-emotional-stroop-hist-pval-reja) zeigt auch, dass der Unterschied von Ablehnungsbereich und $p$-Wert beim im Falle der ähnlichen Varianzen gering und im Falle der unterschiedlichen Varianzen augenscheinlich wird.
 
+<!-- Discuss: klären, Welch-Test praktisch relevant, zweistichproben-t-test historisch und als referenz wichtig. -->
+
 ```{r exm-emotional-stroop-hist-pval-reja, fig.cap="TODO"}
 exm_emotional_stroop$plot_hist_curve_pval_reja
 ```
@@ -2014,20 +2017,27 @@ In den Fromeln \@ref(eq:t-emp-twosample-t) und \@ref(eq:t-emp-twosample-welch) k
 
 Würde die Relevanz des beobachteten Effekts mit der Mittelwertsdifferenz gemessen, dann wäre, analog zu Kapitel \@ref(zentrale-tendenz-testen), dieses Mass wieder abhängig von der Einheit. Um dies zu verhindern, wird die Mittelwertdifferenz wieder durch die Standardabweichung geteilt. Für die konkrete Berechnung der Effektstärke gibt es verschiedene Methoden, wovon drei hier vorgestellt werden:
 
-- [Bei **Cohens $d$** (Symbol $d$) wird die Mittelwertdifferenz durch eine Art gewichtetes Mittel der Standardabweichungen geteilt.]{.customdef #customdef-cohens-d} 
+- [Bei **Cohens $d$ für Zweistichproben-t-Test** (Symbol $d$) wird die Mittelwertdifferenz durch das gewichtete Mittel der Standardabweichungen geteilt.]{.customdef #customdef-cohens-d} 
 $$d = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{(n_1 - 1) s_1^2+(n_2-1)s_2^2}{n_1 + n_2 - 2}}}$$
+Diese Formel entpricht dem `Cohens d` für den Zweistichproben-$t$-Test in `Jamovi`.
 <!-- Discuss difference to effect size for only one sample t test. -->
-- [Bei **Hedges $g$** (Symbol $g$) handelt es sich um eine um einen Faktor korrigierte Version von Cohens $d$.]{.customdef #customdef-hedges-g} 
+- [Bei **Hedges $g$** (Symbol $g$) handelt es sich um eine um einen Faktor korrigierte Version von Cohens $d$ für den Zweistichproben-$t$-Test.]{.customdef #customdef-hedges-g} 
 $$g = \left(1-\frac{3}{4(n_1+n_2)-9}\right)d$$
-Hedges $g$ ist genauer als Cohens $d$ bei kleinen Stichprobengrössen und gleich wie Cohens $d$ für grosse Stichproben. Es kann daher immer Hedges $g$ verwendet werden.
+Hedges $g$ ist genauer als Cohens $d$ bei kleinen Stichprobengrössen und gleich wie Cohens $d$ für grosse Stichproben. Es kann daher immer Hedges $g$ verwendet werden. Diese Formel wird für den Zweistichproben-$t$-Test verwendet und ist besser geeignet als $d$ oben - ein Unterschied ist jedoch nur bei kleinen Stichproben ersichtlich. Hedges $g$ wird in `Jamovi` nicht standardmässig ausgegeben und muss händisch berechnet werden.
+- [Bei **Cohens $d$ für den Welch-Test** (Symbol $d$) wird die Mittelwertdifferenz durch die mittlere Standardabweichungen geteilt.]{.customdef #customdef-cohens-d} 
+$$d = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{s_1^2+s_2^2}{2}}}$$
+Diese Formel entpricht dem `Cohens d` für den Welch-Test in `Jamovi`.
 - [**Glass $\Delta$** (gr. delta, Symbol $\Delta$) wir nur bei Experimenten verwendet. Dabei wird die Mittelwertdifferenz durch die Standardabweichung der Kontrollgruppe dividiert, weil angenommen wird, dass die Kontrollgruppe repräsentativer für die Popoulation ist.]{.customdef #customdef-glass-delta}
 $$\Delta = \frac{\bar{x}_\text{Experiment}-\bar{x}_\text{Kontroll}}{s_\text{Kontroll}}$$
+Glass $\Delta$ wird in `Jamovi` nicht standardmässig ausgegeben und muss händisch berechnet werden. 
 
-Da es sich bei beiden Beispielen nicht um Experimente handelt, weil weder das Geschlecht noch die posttraumatische Belastungsstörung zufällig zugeorndet wurde, ist hier Glass $\Delta$ keine sinnvolle Effektgrösse. Aus diesem Grund wird für die Effektstärkenberechnung bei beiden Beispielen Hedges $g$ verwendet. Das berichten der Testresultate kann deshalb wie folgt aussehen:
+Da es sich bei beiden Beispielen nicht um Experimente handelt, weil weder das Geschlecht noch die posttraumatische Belastungsstörung zufällig zugeorndet wurde, ist hier Glass $\Delta$ keine sinnvolle Effektgrösse. Aus diesem Grund wird für die Effektstärkenberechnung bei beiden Beispielen Cohens $d$ für den Welch-Test verwendet. Das berichten der Testresultate kann deshalb wie folgt aussehen:
 
-> Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche emotionale Antwort ER bei einer Trennung  bei Männern ($M = `r round(exm_breakup$jmv_res_desc$mean1,2)`$, $SD = `r round(exm_breakup$jmv_res_desc$sd1,2)`$, $N = `r exm_breakup$jmv_res_desc$num1`$) signifikant anders ist als bei Frauen ($M = `r round(exm_breakup$jmv_res_desc$mean2,2)`$, $SD = `r round(exm_breakup$jmv_res_desc$sd2,2)`$, $N = `r exm_breakup$jmv_res_desc$num2`$), $t(`r round(exm_breakup$jmv_res_test$dfwelc,1)`) = `r round(exm_breakup$jmv_res_test$statwelc,2)`$, $p = `r round(exm_breakup$jmv_res_test$pwelc,3) %>% str_sub(start = 2L)`, g = `r round((1-(3/(4*(exm_breakup$n1+exm_breakup$n2)-9)))*exm_breakup$jmv_res_test$esstud,3)`$.
+> Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche emotionale Antwort ER bei einer Trennung  bei Männern ($M = `r round(exm_breakup$jmv_res_desc$mean1,2)`$, $SD = `r round(exm_breakup$jmv_res_desc$sd1,2)`$, $N = `r exm_breakup$jmv_res_desc$num1`$) signifikant anders ist als bei Frauen ($M = `r round(exm_breakup$jmv_res_desc$mean2,2)`$, $SD = `r round(exm_breakup$jmv_res_desc$sd2,2)`$, $N = `r exm_breakup$jmv_res_desc$num2`$), $t(`r round(exm_breakup$jmv_res_test$dfwelc,1)`) = `r round(exm_breakup$jmv_res_test$statwelc,2)`$, $`r report_p(exm_breakup$jmv_res_test$pwelc)`, d = `r round(exm_breakup$jmv_res_test$eswelc,2)`$.
 
-> Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Reaktionszeit beim emotionalen Stroop-Test bei Veteranen ohne PTSD ($M = `r round(exm_emotional_stroop$jmv_res_desc$mean1,2)`$, $SD = `r round(exm_emotional_stroop$jmv_res_desc$sd1,2)`$, $N = `r exm_emotional_stroop$jmv_res_desc$num1`$) nicht signifikant anders ist als bei Menschen mit PTSD ($M = `r round(exm_emotional_stroop$jmv_res_desc$mean2,2)`$, $SD = `r round(exm_emotional_stroop$jmv_res_desc$sd2,2)`$, $N = `r exm_emotional_stroop$jmv_res_desc$num2`$), $t(`r round(exm_emotional_stroop$jmv_res_test$dfwelc,1)`) = `r round(exm_emotional_stroop$jmv_res_test$statwelc,2)`$, $p = `r round(exm_emotional_stroop$jmv_res_test$pwelc,3) %>% str_sub(start = 2L)`, g = `r round((1-(3/(4*(exm_emotional_stroop$n1+exm_emotional_stroop$n2)-9)))*exm_emotional_stroop$jmv_res_test$esstud,3)`$.
+> Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Reaktionszeit beim emotionalen Stroop-Test bei Veteranen ohne PTSD ($M = `r round(exm_emotional_stroop$jmv_res_desc$mean1,2)`$, $SD = `r round(exm_emotional_stroop$jmv_res_desc$sd1,2)`$, $N = `r exm_emotional_stroop$jmv_res_desc$num1`$) nicht signifikant anders ist als bei Menschen mit PTSD ($M = `r round(exm_emotional_stroop$jmv_res_desc$mean2,2)`$, $SD = `r round(exm_emotional_stroop$jmv_res_desc$sd2,2)`$, $N = `r exm_emotional_stroop$jmv_res_desc$num2`$), $t(`r round(exm_emotional_stroop$jmv_res_test$dfwelc,1)`) = `r round(exm_emotional_stroop$jmv_res_test$statwelc,2)`$, $`r report_p(exm_emotional_stroop$jmv_res_test$pwelc)`, d = `r round(exm_breakup$jmv_res_test$eswelc,3)`$.
+
+<!-- g = `r round((1-(3/(4*(exm_emotional_stroop$n1+exm_emotional_stroop$n2)-9)))*exm_emotional_stroop$jmv_res_test$esstud,3)`. -->
 
 <!-- mit der neuen Trainingsmethode ist nicht signifikant tiefer als $`r exr_schwimmen$mu0`$ Minuten, $t(`r exr_schwimmen$jmv_res_test$df`) = `r round(exr_schwimmen$jmv_res_test$stat,2)`$, $p = `r round(exr_schwimmen$jmv_res_test$p,3) %>% str_sub(start = 2L)`, d = `r round(exr_schwimmen$jmv_res_test$es,3)`$. -->
 
@@ -2039,7 +2049,7 @@ Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit 
 ::: {.remark}
 - Die Namensgebung von diesen Berechnungsarten und insbesondere, was unter Cohens $d$ verstanden wird variiert beträchtlich und es empfiehlt sich immer die genaue Berechnungsart zu überprüfen.
 <!-- Discuss: Entwirrung Enzmann 2015 -->
-- In `Jamovi` wird für den Zweistichproben-$t$-Test und den Welch-Test eine unterschiedliche Effektstärke angegeben. Der Grund dafür ist unklar und es wird empfohlen die Effektgrösse für den Zweistichproben-$t$-Test zu berücksichtigen.
+- In `Jamovi` wird für den Zweistichproben-$t$-Test und den Welch-Test eine unterschiedliche Effektstärke angegeben.
 <!-- pooledVARSTUD <- tryNaN(((n[1]-1)*v[1]+(n[2]-1)*v[2])/(n[1]+n[2]-2)) -->
 <!-- pooledVARWELC <- tryNaN((v[1] + v[2]) / 2) -->
 <!-- sediffSTUD <- tryNaN(sqrt((pooledVARSTUD/n[1])+(pooledVARSTUD/n[2]))) -->
@@ -2056,22 +2066,146 @@ Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit 
 
 ## Übungen
 
-::: {.exercise  #tagname1}
+::: {.exercise  #bobo2groups}
 <!-- 
 Ziel: 
 - Anwendung t-Test mit Jamovi zweiseitig
 -->
-TODO: Exercise body
+
+```{r exr-bobo2groups}
+gen_exr_bobo2groups <- function(){
+  set.seed(23)
+  n1 <- 24
+  n2 <- 24
+  x1 <- rnorm(n1, 10, 3)
+  x2 <- rnorm(n2, 5, 0.5)
+  var_name <- "anzahl_aggressionen"
+  group_labels <- c('aggressiv', 'nicht aggressiv')
+  
+  file_name <- '06-exr-bobo2groups.sav'
+  dd <- tibble(!!var_name := c(x1, x2),
+       Gruppe = c(rep(group_labels[1],n1), 
+                  rep(group_labels[2], n2))) %>% 
+  write_sav(file_name)
+
+  jmv_res <- dd %>%
+    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
+                desc = TRUE,
+                 welchs = TRUE, 
+                 mann = FALSE, 
+                 effectSize = TRUE)
+  jmv_res_test <- jmv_res$ttest$asDF%>% 
+    rename_with(~ .x %>% str_replace_all('\\[(stud|welc)\\]',"\\1"))
+  jmv_res_desc <- jmv_res$desc$asDF%>% 
+    rename_with(~ .x %>% str_replace_all('\\[(1|2)\\]',"\\1"))
+  
+  return(mget(ls()))
+}
+exr_bobo2groups <- gen_exr_bobo2groups()
+```
+
+Mit dem Bobo-Doll-Experiment sollte die Übertragung von Aggression durch Imitation aggressiver Modelle nachgewiesen werden. An der Studie nahmen $`r exr_bobo2groups$n1 + exr_bobo2groups$n2`$ Kinder im Alter von drei bis sechs Jahren teil. Die Kinder wurden in zwei Gruppen eingeteilt: eine mit aggressivem Modell und eine mit nicht-aggressivem Modell. In der aggressiven Bedingung sahen die Kinder, wie eine erwachsene Person (das Modell) eine Bobo-Puppe aggressiv behandelte, während in der nicht-aggressiven Bedingung das Modell ruhig mit der Puppe spielte. Nach der Beobachtungsphase wurden die Kinder einzeln in einen Spielraum geführt, der ähnliche Spielzeuge wie im Experiment enthielt, einschliesslich der Bobo-Puppe. Die Forscher beobachteten und notierten die Anzahl gezeigter aggressiven Handlungen gegenüber der Bobo-Puppe. 
+Inspiriert von @bandura1961.
+
+Beantworten Sie die Frage, ob aggressives Verhalten Erwachsener von Kindern imitiert wird anhand der folgenden Teilfragen:
+
+a) Die Kinder welcher Gruppe zeigen ein aggressiveres Verhalten? Argumentieren Sie mit zahlen.
+b) Kann die Aussage aus a) von der Stichprobe auf die Population verallgemeinert werden? Stellen Sie zweiseitige Testhypothesen für den Erwartungswert auf.
+c) Führen Sie den statistischen Test mit Jamovi durch und berechnen Sie eine angemessene Effektstärke. Berichten und interpretieren Sie das Testresultat.
 :::
 
 :::{.solution}
-TODO: solution body
+Zuerst wird der Datensatz mit `Jamovi` eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-bobo2groups-input). 
+
+```{r sol-bobo2groups-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
+knitr::include_graphics("figures/06-exr-bobo2groups-jmv-input.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-bobo2groups-output).
+
+```{r sol-bobo2groups-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/06-exr-bobo2groups-jmv-output.jpg")
+```
+
+Damit können und beide Teilfragen beantwortet werden. 
+
+a) In der Stichprobe ist der durchschnittliche Anzahl gezählter Aggressionen in der Gruppe mit aggressiven Modellen mit $M = `r round(exr_bobo2groups$jmv_res_desc$mean1,2)`$ höher als in der Gruppe mit nicht Aggressiven Modellen $M = `r round(exr_bobo2groups$jmv_res_desc$mean2,2)`$. Es könnte sein, dass der gefundene Mittelwertunterschied auf die zufällige Stichprobenziehung zurückzuführen ist. Um dieses Risiko zu quantifizieren und damit einzuschätzen, ob das Ergebnis auch für die Population gelten könnte, kann ein statistischer Test durchgeführt werden.
+b) Es soll gezeigt werden, dass sich der durchschnittlich beobachtete Anzahl aggressiver Handlungen der Kinder in der Gruppe mit aggressivem Modell anders ist als in der Gruppe mit nicht aggressivem Modell. Die Alternativhypothese lautet also $H_1: \mu_\text{Aggressiv} \neq \mu_\text{Nicht aggressiv}$. Die Nullhypothese dagegen sagt, dass beide Gruppen durchschnittlich gleich viele aggressive Handlungen begehen, also $H_0: \mu_\text{Aggressiv} = \mu_\text{Nicht aggressiv}$.
+c) Es werden Mittelwerte von einer intervallskalierten Variabel über zwei Gruppen verglichen. Als statischer Test kommt demnach der Zweistichproben-$t$-Test oder der Welch-Test infrage. Aufgrund der genaueren Testergebnisse wird immer der Welch-Test bevorzugt und dieser in folge durchgeführt und berichtet. Ein zweiseitiger Welch-Test ergibt, dass der durchschnittliche Anzahl Aggressionen in der Gruppe mit aggressivem Modell ($M = `r round(exr_bobo2groups$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_bobo2groups$jmv_res_desc$sd1,2)`$, $N = `r exr_bobo2groups$jmv_res_desc$num1`$) signifikant anders ist als in der Gruppe mit nicht aggressivem Modell ($M = `r round(exr_bobo2groups$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_bobo2groups$jmv_res_desc$sd2,2)`$, $N = `r exr_bobo2groups$jmv_res_desc$num2`$), $t(`r round(exr_bobo2groups$jmv_res_test$dfwelc,1)`) = `r round(exr_bobo2groups$jmv_res_test$statwelc,2)`$, $`r report_p(exr_bobo2groups$jmv_res_test$pwelc)`, \Delta = `r round(glass_delta(exr_bobo2groups$jmv_res_desc, TRUE),3)`$. Da es sich um ein Experiment handelt ist hier die Effektstärke Glass $\Delta$ angebracht. Die Effektstärke ist als gross einzustufen. 
 :::
 
-::: {.exercise  #tagname2}
+::: {.exercise  #gruppenpuzzle}
 <!-- 
 Ziel: 
 - Anwendung t-Test mit Jamovi zweiseitig
+-->
+```{r exr-gruppenpuzzle}
+gen_exr_gruppenpuzzle <- function(){
+  set.seed(23)
+  n1 <- 35
+  n2 <- 21
+  x1 <- rnorm(n1, 5.1, 0.3)
+  x2 <- rnorm(n2, 4.8, 0.3)
+  var_name <- "Zuneigung"
+  group_labels <- c('gruppenpuzzle', 'traditionell')
+  
+  file_name <- '06-exr-gruppenpuzzle.sav'
+  dd <- tibble(!!var_name := c(x1, x2),
+       Gruppe = c(rep(group_labels[1],n1), 
+                  rep(group_labels[2], n2))) %>% 
+  write_sav(file_name)
+
+  jmv_res <- dd %>%
+    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
+                desc = TRUE,
+                 welchs = TRUE, 
+                 mann = FALSE, 
+                 effectSize = TRUE)
+  jmv_res_test <- jmv_res$ttest$asDF%>% 
+    rename_with(~ .x %>% str_replace_all('\\[(stud|welc)\\]',"\\1"))
+  jmv_res_desc <- jmv_res$desc$asDF%>% 
+    rename_with(~ .x %>% str_replace_all('\\[(1|2)\\]',"\\1"))
+  
+  return(mget(ls()))
+}
+exr_gruppenpuzzle <- gen_exr_gruppenpuzzle()
+```
+
+In den 1970er Jahren hat eine Gruppe um @blaney1977 Versuche durchgeführt zu neuen Lehrmethoden. Insbesondere wurde dabei das sogenannte Gruppenpuzzle `gruppenpuzzle`, eine Lernform bei welcher die Lernenden den Inhalt mit und in Abhängigkeit voneinander erarbeiten, mit dem traditionellen Frontalunterricht `traditionell` verglichen. Die Forschenden wollten unter anderem Herausfinden, ob sich die Gruppenpuzzleteilnehmende nach dem Unterricht besser mochten (_liking_), als traditionell unterrichtete Lernende. Fiktive Daten zu dem Experiment sind als `r inline_code(exr_gruppenpuzzle$file_name)` verfügbar.
+
+a) Stellen Sie die Testhypothesen auf für einen zweiseitigen Welch-Test.
+b) Führen Sie den Test durch und berichten Sie das Resultat.
+c) Erklären Sie den Wert der Statistik, der Freiheitsgrade, des $p$-Werts und der Effektstärke respektive.
+:::
+
+:::{.solution}
+Zuerst wird der Datensatz mit `Jamovi` eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-gruppenpuzzle-input). 
+
+```{r sol-gruppenpuzzle-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
+knitr::include_graphics("figures/06-exr-gruppenpuzzle-jmv-input.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-gruppenpuzzle-output).
+
+```{r sol-gruppenpuzzle-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/06-exr-gruppenpuzzle-jmv-output.jpg")
+```
+
+Damit können und die Teilfragen beantwortet werden. 
+
+a) Angenommen die Zuneigung zur Personen der einen Gruppe ist unabhängig von der Lehrmethode, dann sollten beide Gruppen im durchschnitt denselben Erwartungswert $\mu$ bei der Zuneigung haben. Die Nullhypothese ist also $H_0: \mu_\text{Gruppenpuzzle} = \mu_\text{Traditionell}$. Ein Unterschied dazu wäre, wenn es die Lernenden der beiden Gruppen einen unterschiedlichen Erwartungswert aufweisen, formell $H_1: \mu_\text{Gruppenpuzzle} \neq \mu_\text{Traditionell}$. 
+b) Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Zuneigung in der Gruppenpuzzlegruppe ($M = `r round(exr_gruppenpuzzle$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_gruppenpuzzle$jmv_res_desc$sd1,2)`$, $N = `r exr_gruppenpuzzle$jmv_res_desc$num1`$) signifikant anders ist als in der traditionell unterrichteten Gruppe($M = `r round(exr_gruppenpuzzle$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_gruppenpuzzle$jmv_res_desc$sd2,2)`$, $N = `r exr_gruppenpuzzle$jmv_res_desc$num2`$), $t(`r round(exr_gruppenpuzzle$jmv_res_test$dfwelc,1)`) = `r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$, $`r report_p(exr_gruppenpuzzle$jmv_res_test$pwelc)`, \Delta = `r round(glass_delta(exr_gruppenpuzzle$jmv_res_desc, TRUE),3)`$.
+c) Die Statistik von $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ ist ein Wert, welcher eine Verteilung wie in \@ref(fig:t-distribution) aufweist. Diese Verteilung weist  die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zweigt, dass der beobachtete Wert $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ selten zufällig vorkommt (tiefer Wert der Linie weist auf eine tiefe Wahrscheinlichkeit der Statistik hin). Die Freiheitsgrade `r round(exr_gruppenpuzzle$jmv_res_test$dfwelc,1)` bestimmen die Form der oben referenzierten Verteilung. Wo bei kleinen Freiheitsgraden die beobachtete Statistik noch mit einer nicht allzukleinen Wahrscheinlichkeit beobachtet werden kann (vgl. $df = 1$ auf der Abbildung), so ist es bei dieser Anzahl Freiheitsgrade sehr selten (vgl. `Normalverteilung` auf der Abbildung).
+
+
+
+, dass  Erklären Sie den Wert der Statistik, der Freiheitsgrade, des $p$-Werts und der Effektstärke respektive.
+:::
+
+::: {.exercise  #tagname7}
+<!-- 
+Ziel: 
+- Zweiseitig nicht signifikant
 -->
 TODO: Exercise body
 :::
@@ -2096,7 +2230,7 @@ gen_exr_hypnose <- function(){
   var_name <- "Schmerz"
   group_labels <- c('hypnose', 'placebo')
   
-  file_name <- '06-exr-hynose.sav'
+  file_name <- '06-exr-hypnose.sav'
   dd <- tibble(!!var_name := c(x1, x2),
        Gruppe = c(rep(group_labels[1],n1), 
                   rep(group_labels[2], n2))) %>% 
@@ -2144,7 +2278,7 @@ Damit können und beide Teilfragen beantwortet werden.
 
 a) In der Stichprobe ist der durchschnittliche Schmerz (arithmetisches Mittel) in der Hypnose-Gruppe mit $M = `r round(exr_hypnose$jmv_res_desc$mean2,2)`$ tiefer als in der Placebo-Gruppe mit $M = `r round(exr_hypnose$jmv_res_desc$mean1,2)`$. Es könnte sein, dass der gefundene Mittelwertunterschied auf die zufällige Stichprobenziehung zurückzuführen ist. Um dieses Risiko zu quantifizieren und damit einzuschätzen, ob das Ergebnis auch für die Population gelten könnte, kann ein statistischer Test durchgeführt werden.
 b) Es soll gezeigt werden, dass sich der durchschnittlich empfundene Schmerz mit der Hypnose-Behandlung tiefer liegt als mit der Placebo-Behandlung. Die Alternativhypothese lautet also $H_1: \mu_\text{Hypnose} < \mu_\text{Placebo}$. Die Nullhypothese dagegen sagt, dass die Hypnose-Behandlung nicht besser oder sogar schlechter ist als die Placebo-Behandlung also $H_0: \mu_\text{Hypnose} \geq \mu_\text{Placebo}$.
-c) Ein einseitiger Welch-Test ergibt, dass der durchschnittliche erhobene Schmerz bei einer Behandlung mit der neuen Hypnose-Methode ($M = `r round(exr_hypnose$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_hypnose$jmv_res_desc$sd1,2)`$, $N = `r exr_hypnose$jmv_res_desc$num1`$) signifikant tiefer ist als bei der Placebo-Behandlung ($M = `r round(exr_hypnose$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_hypnose$jmv_res_desc$sd2,2)`$, $N = `r exr_hypnose$jmv_res_desc$num2`$), $t(`r round(exr_hypnose$jmv_res_test$dfwelc,1)`) = `r round(exr_hypnose$jmv_res_test$statwelc,2)`$, $p = `r round(exr_hypnose$jmv_res_test$pwelc,3) %>% str_sub(start = 2L)`, g = `r round((1-(3/(4*(exr_hypnose$n1+exr_hypnose$n2)-9)))*exr_hypnose$jmv_res_test$esstud,3)`$.
+c) Ein einseitiger Welch-Test ergibt, dass der durchschnittliche erhobene Schmerz bei einer Behandlung mit der neuen Hypnose-Methode ($M = `r round(exr_hypnose$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_hypnose$jmv_res_desc$sd1,2)`$, $N = `r exr_hypnose$jmv_res_desc$num1`$) signifikant tiefer ist als bei der Placebo-Behandlung ($M = `r round(exr_hypnose$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_hypnose$jmv_res_desc$sd2,2)`$, $N = `r exr_hypnose$jmv_res_desc$num2`$), $t(`r round(exr_hypnose$jmv_res_test$dfwelc,1)`) = `r round(exr_hypnose$jmv_res_test$statwelc,2)`$, $`r report_p(exr_hypnose$jmv_res_test$pwelc)`, \Delta = `r round(glass_delta(exr_hypnose$jmv_res_desc, TRUE),3)`$.
 :::
 
 ::: {.exercise  #ehe-burnout}
@@ -2170,7 +2304,7 @@ gen_exr_ehe_burnout <- function(){
 
   jmv_res <- dd %>%
     jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
-                 hypothesis = 'twoGreater',
+                 hypothesis = 'oneGreater',
                 desc = TRUE,
                  welchs = TRUE, 
                  mann = FALSE, 
@@ -2212,7 +2346,7 @@ Damit können und beide Teilfragen beantwortet werden.
 a) Aus der Stichprobenbeschreibung kann entnommen werden, dass $`r exr_ehe_burnout$jmv_res_desc$num1`$ unverheiratete und $`r exr_ehe_burnout$jmv_res_desc$num2`$ verheiratete Ärztinnen den Fragebogen abgeschlossen haben.
 b) Die unverheirateten Ärztinnen $M = `r round(exr_ehe_burnout$jmv_res_desc$mean1,2)`$ scheiden durchschnittlich höher ab als die verheirateten Ärztinnen $M = `r round(exr_ehe_burnout$jmv_res_desc$mean2,2)`$. Dieser Befund beschränkt sich ohne statistischen Test auf die Stichprobe. Deshalb wurde darin das Wort signifikant nicht verwendet.
 c) Die Forscherin will zeigen, dass unverheiratete Ärztinnen ein durchhschnittlich höheres Burnout-Risiko haben als verheiratete und zwar nicht nur in der Stichprobe sondern auch ich der Population. Das durchschnittliche Burnout-Risiko in der Population ist der Erwartungswert des Burnout-Risiko und wird mit $\mu$ bezeichnet. Die Forscherin will also zeigen, dass $H_1: \mu_\text{unverheiratet} > \mu_\text{verheiratet}$. Demgegenüber steht die Nullhypothese, dass dies nicht so ist oder das gar das Gegenteil der Fall sein könnte also $H_0: \mu_\text{unverheiratet} \leq \mu_\text{verheiratet}$. Die Hypothese ist also einseitig gestellt.
-d) Ein einseitiger Welch-Test ergibt, dass der durchschnittliche Burnout-Wert bei unverheirateten Ärztinnen ($M = `r round(exr_ehe_burnout$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_ehe_burnout$jmv_res_desc$sd1,2)`$, $N = `r exr_ehe_burnout$jmv_res_desc$num1`$) signifikant höher ist als bei verheirateten Ärztinnen ($M = `r round(exr_ehe_burnout$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_ehe_burnout$jmv_res_desc$sd2,2)`$, $N = `r exr_ehe_burnout$jmv_res_desc$num2`$), $t(`r round(exr_ehe_burnout$jmv_res_test$dfwelc,1)`) = `r round(exr_ehe_burnout$jmv_res_test$statwelc,2)`$, $p = `r round(exr_ehe_burnout$jmv_res_test$pwelc,3) %>% str_sub(start = 2L)`, g = `r round((1-(3/(4*(exr_ehe_burnout$n1+exr_ehe_burnout$n2)-9)))*exr_ehe_burnout$jmv_res_test$esstud,3)`$.
+d) Ein einseitiger Welch-Test ergibt, dass der durchschnittliche Burnout-Wert bei unverheirateten Ärztinnen ($M = `r round(exr_ehe_burnout$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_ehe_burnout$jmv_res_desc$sd1,2)`$, $N = `r exr_ehe_burnout$jmv_res_desc$num1`$) signifikant höher ist als bei verheirateten Ärztinnen ($M = `r round(exr_ehe_burnout$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_ehe_burnout$jmv_res_desc$sd2,2)`$, $N = `r exr_ehe_burnout$jmv_res_desc$num2`$), $t(`r round(exr_ehe_burnout$jmv_res_test$dfwelc,1)`) = `r round(exr_ehe_burnout$jmv_res_test$statwelc,2)`$, $`r report_p(exr_ehe_burnout$jmv_res_test$pwelc)`, d = `r round(exr_ehe_burnout$jmv_res_test$eswelc,3)`$.
 :::
 
 ::: {.exercise  #tagname5}

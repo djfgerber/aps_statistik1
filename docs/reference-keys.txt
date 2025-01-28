@@ -62,8 +62,13 @@ exm:emotional-stroop
 fig:exm-emotional-stroop-hist
 eq:t-emp-twosample-welch
 fig:exm-emotional-stroop-hist-pval-reja
-exr:tagname1
-exr:tagname2
+exr:bobo2groups
+fig:sol-bobo2groups-input
+fig:sol-bobo2groups-output
+exr:gruppenpuzzle
+fig:sol-gruppenpuzzle-input
+fig:sol-gruppenpuzzle-output
+exr:tagname7
 exr:hypnose
 fig:sol-hypnose-input
 fig:sol-hypnose-output

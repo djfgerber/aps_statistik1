@@ -259,6 +259,7 @@ t = \frac{\bar{x_1}-\bar{x_2} - \omega_0}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n
 <span class="math display">\[df \approx\frac{\left(\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}\right)^2}{\frac{s_1^4}{(n_1-1) n_1^2}+ \frac{s_2^4}{(n_2-1) n_2^2}}  \]</span></p>
 <p><span id="customdef-welch-test" class="customdef">Freiheitsgraden und ein damit durchgeführter Test wird <strong>Welch-Test</strong> genannt.</span> Sie nähert die Verteilung der Mittelwertdifferenzen trotz unterschiedlicher Gruppenvarianzen gut an, siehe grüne Linie in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-emotional-stroop-hist">6.4</a>.</p>
 <p>Der Zweistichproben-<span class="math inline">\(t\)</span>-Test und der Welch-Test sind also zwei Testvarianten, um zu testen, ob der Erwartungswert in zwei Gruppen unterschiedlich ist. Dabei hat sich gezeigt, dass der Welch-Test die wahre Verteilung besser annähert als der Zweistichproben-<span class="math inline">\(t\)</span>-Test, wenn die beiden Gruppen unterschiedliche Varianzen aufweisen, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-emotional-stroop-hist">6.4</a>. Wenn beide Varianzen ungefähr gleich sind, so geben beide Tests jedoch ähnlich gute Resultate, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-hist">6.2</a>. Es wird deshalb empfohlen immer den Welch-Test durchzuführen <span class="citation">(<a href="#ref-zimmerman2004">Zimmerman 2004</a>)</span>. Ein Vergleich der Abbildungen <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-hist-pval-reja">6.3</a> und <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-emotional-stroop-hist-pval-reja">6.5</a> zeigt auch, dass der Unterschied von Ablehnungsbereich und <span class="math inline">\(p\)</span>-Wert beim im Falle der ähnlichen Varianzen gering und im Falle der unterschiedlichen Varianzen augenscheinlich wird.</p>
+<!-- Discuss: klären, Welch-Test praktisch relevant, zweistichproben-t-test historisch und als referenz wichtig. -->
 <pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale
 ## range (`geom_bar()`).</code></pre>
 <div class="figure"><span style="display:block;" id="fig:exm-emotional-stroop-hist-pval-reja"></span>
@@ -276,22 +277,28 @@ Abbildung 6.5: TODO
 <p>In den Fromeln <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#eq:t-emp-twosample-t">(6.1)</a> und <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#eq:t-emp-twosample-welch">(6.2)</a> kann beobachtet werden, dass mit zunehmenden Stichprobengrössen der Gruppen der Nenner immer kleiner und damit die Teststatistik <span class="math inline">\(t\)</span> für eine gleichbleibende Mittelwert differenz immer grösser wird. Dies bedeutet, dass auch kleine Mittelwertdifferenzen bei grossen Stichprobengrösse signifikanten - also nicht auf die zufällige Stichprobenziehung zurückzuführenden - Unterschied darstellen. Beim Trennungsschmerzbeispiel ist der Mittelwertunterschied von <span class="math inline">\(0.25\)</span> gering. Dies trotz dem <span class="math inline">\(p\)</span>-Wert des Welch-Test von <span class="math inline">\(p=.004\)</span>, welcher auf einen stark signifikanten Mittelwertunterschied hindeutet. Umgekehrt bei der posttraumatischen Belastungsstörung: Hier ist der Mittelwertunterschied mit <span class="math inline">\(104\)</span> ms substanziell, aber der <span class="math inline">\(p\)</span>-Wert des Welch-Test von <span class="math inline">\(p=.052\)</span> deutet knapp auf keine signifikante Mittelwertdifferenz hin.</p>
 <p>Würde die Relevanz des beobachteten Effekts mit der Mittelwertsdifferenz gemessen, dann wäre, analog zu Kapitel <a href="zentrale-tendenz-testen.html#zentrale-tendenz-testen">5</a>, dieses Mass wieder abhängig von der Einheit. Um dies zu verhindern, wird die Mittelwertdifferenz wieder durch die Standardabweichung geteilt. Für die konkrete Berechnung der Effektstärke gibt es verschiedene Methoden, wovon drei hier vorgestellt werden:</p>
 <ul>
-<li><span id="customdef-cohens-d" class="customdef">Bei <strong>Cohens <span class="math inline">\(d\)</span></strong> (Symbol <span class="math inline">\(d\)</span>) wird die Mittelwertdifferenz durch eine Art gewichtetes Mittel der Standardabweichungen geteilt.</span>
+<li><span id="customdef-cohens-d" class="customdef">Bei <strong>Cohens <span class="math inline">\(d\)</span> für Zweistichproben-t-Test</strong> (Symbol <span class="math inline">\(d\)</span>) wird die Mittelwertdifferenz durch das gewichtete Mittel der Standardabweichungen geteilt.</span>
 <span class="math display">\[d = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{(n_1 - 1) s_1^2+(n_2-1)s_2^2}{n_1 + n_2 - 2}}}\]</span>
+Diese Formel entpricht dem <code>Cohens d</code> für den Zweistichproben-<span class="math inline">\(t\)</span>-Test in <code>Jamovi</code>.
 <!-- Discuss difference to effect size for only one sample t test. --></li>
-<li><span id="customdef-hedges-g" class="customdef">Bei <strong>Hedges <span class="math inline">\(g\)</span></strong> (Symbol <span class="math inline">\(g\)</span>) handelt es sich um eine um einen Faktor korrigierte Version von Cohens <span class="math inline">\(d\)</span>.</span>
+<li><span id="customdef-hedges-g" class="customdef">Bei <strong>Hedges <span class="math inline">\(g\)</span></strong> (Symbol <span class="math inline">\(g\)</span>) handelt es sich um eine um einen Faktor korrigierte Version von Cohens <span class="math inline">\(d\)</span> für den Zweistichproben-<span class="math inline">\(t\)</span>-Test.</span>
 <span class="math display">\[g = \left(1-\frac{3}{4(n_1+n_2)-9}\right)d\]</span>
-Hedges <span class="math inline">\(g\)</span> ist genauer als Cohens <span class="math inline">\(d\)</span> bei kleinen Stichprobengrössen und gleich wie Cohens <span class="math inline">\(d\)</span> für grosse Stichproben. Es kann daher immer Hedges <span class="math inline">\(g\)</span> verwendet werden.</li>
+Hedges <span class="math inline">\(g\)</span> ist genauer als Cohens <span class="math inline">\(d\)</span> bei kleinen Stichprobengrössen und gleich wie Cohens <span class="math inline">\(d\)</span> für grosse Stichproben. Es kann daher immer Hedges <span class="math inline">\(g\)</span> verwendet werden. Diese Formel wird für den Zweistichproben-<span class="math inline">\(t\)</span>-Test verwendet und ist besser geeignet als <span class="math inline">\(d\)</span> oben - ein Unterschied ist jedoch nur bei kleinen Stichproben ersichtlich. Hedges <span class="math inline">\(g\)</span> wird in <code>Jamovi</code> nicht standardmässig ausgegeben und muss händisch berechnet werden.</li>
+<li><span id="customdef-cohens-d" class="customdef">Bei <strong>Cohens <span class="math inline">\(d\)</span> für den Welch-Test</strong> (Symbol <span class="math inline">\(d\)</span>) wird die Mittelwertdifferenz durch die mittlere Standardabweichungen geteilt.</span>
+<span class="math display">\[d = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{s_1^2+s_2^2}{2}}}\]</span>
+Diese Formel entpricht dem <code>Cohens d</code> für den Welch-Test in <code>Jamovi</code>.</li>
 <li><span id="customdef-glass-delta" class="customdef"><strong>Glass <span class="math inline">\(\Delta\)</span></strong> (gr. delta, Symbol <span class="math inline">\(\Delta\)</span>) wir nur bei Experimenten verwendet. Dabei wird die Mittelwertdifferenz durch die Standardabweichung der Kontrollgruppe dividiert, weil angenommen wird, dass die Kontrollgruppe repräsentativer für die Popoulation ist.</span>
-<span class="math display">\[\Delta = \frac{\bar{x}_\text{Experiment}-\bar{x}_\text{Kontroll}}{s_\text{Kontroll}}\]</span></li>
+<span class="math display">\[\Delta = \frac{\bar{x}_\text{Experiment}-\bar{x}_\text{Kontroll}}{s_\text{Kontroll}}\]</span>
+Glass <span class="math inline">\(\Delta\)</span> wird in <code>Jamovi</code> nicht standardmässig ausgegeben und muss händisch berechnet werden.</li>
 </ul>
-<p>Da es sich bei beiden Beispielen nicht um Experimente handelt, weil weder das Geschlecht noch die posttraumatische Belastungsstörung zufällig zugeorndet wurde, ist hier Glass <span class="math inline">\(\Delta\)</span> keine sinnvolle Effektgrösse. Aus diesem Grund wird für die Effektstärkenberechnung bei beiden Beispielen Hedges <span class="math inline">\(g\)</span> verwendet. Das berichten der Testresultate kann deshalb wie folgt aussehen:</p>
+<p>Da es sich bei beiden Beispielen nicht um Experimente handelt, weil weder das Geschlecht noch die posttraumatische Belastungsstörung zufällig zugeorndet wurde, ist hier Glass <span class="math inline">\(\Delta\)</span> keine sinnvolle Effektgrösse. Aus diesem Grund wird für die Effektstärkenberechnung bei beiden Beispielen Cohens <span class="math inline">\(d\)</span> für den Welch-Test verwendet. Das berichten der Testresultate kann deshalb wie folgt aussehen:</p>
 <blockquote>
-<p>Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche emotionale Antwort ER bei einer Trennung bei Männern (<span class="math inline">\(M = 6.56\)</span>, <span class="math inline">\(SD = 2.6\)</span>, <span class="math inline">\(N = 1409\)</span>) signifikant anders ist als bei Frauen (<span class="math inline">\(M = 6.81\)</span>, <span class="math inline">\(SD = 2.53\)</span>, <span class="math inline">\(N = 2695\)</span>), <span class="math inline">\(t(2786.7) = -2.9\)</span>, <span class="math inline">\(p = .004, g = -0.096\)</span>.</p>
+<p>Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche emotionale Antwort ER bei einer Trennung bei Männern (<span class="math inline">\(M = 6.56\)</span>, <span class="math inline">\(SD = 2.6\)</span>, <span class="math inline">\(N = 1409\)</span>) signifikant anders ist als bei Frauen (<span class="math inline">\(M = 6.81\)</span>, <span class="math inline">\(SD = 2.53\)</span>, <span class="math inline">\(N = 2695\)</span>), <span class="math inline">\(t(2786.7) = -2.9\)</span>, <span class="math inline">\(p = .004, d = -0.1\)</span>.</p>
 </blockquote>
 <blockquote>
-<p>Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Reaktionszeit beim emotionalen Stroop-Test bei Veteranen ohne PTSD (<span class="math inline">\(M = 636.86\)</span>, <span class="math inline">\(SD = 106.08\)</span>, <span class="math inline">\(N = 16\)</span>) nicht signifikant anders ist als bei Menschen mit PTSD (<span class="math inline">\(M = 740.98\)</span>, <span class="math inline">\(SD = 226.81\)</span>, <span class="math inline">\(N = 26\)</span>), <span class="math inline">\(t(37.9) = -2.01\)</span>, <span class="math inline">\(p = .052, g = -0.536\)</span>.</p>
+<p>Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Reaktionszeit beim emotionalen Stroop-Test bei Veteranen ohne PTSD (<span class="math inline">\(M = 636.86\)</span>, <span class="math inline">\(SD = 106.08\)</span>, <span class="math inline">\(N = 16\)</span>) nicht signifikant anders ist als bei Menschen mit PTSD (<span class="math inline">\(M = 740.98\)</span>, <span class="math inline">\(SD = 226.81\)</span>, <span class="math inline">\(N = 26\)</span>), <span class="math inline">\(t(37.9) = -2.01\)</span>, <span class="math inline">\(p = .052, d = -0.096\)</span>.</p>
 </blockquote>
+<!-- g = -0.536. -->
 <!-- mit der neuen Trainingsmethode ist nicht signifikant tiefer als $1.58$ Minuten, $t(12) = -1.54$, $p = .075, d = -0.426$. -->
 <p>Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit auf den EST um einen mittleren Effekt.</p>
 <!-- Discuss: Interpretation. -->
@@ -301,7 +308,7 @@ Hedges <span class="math inline">\(g\)</span> ist genauer als Cohens <span class
 <ul>
 <li>Die Namensgebung von diesen Berechnungsarten und insbesondere, was unter Cohens <span class="math inline">\(d\)</span> verstanden wird variiert beträchtlich und es empfiehlt sich immer die genaue Berechnungsart zu überprüfen.
 <!-- Discuss: Entwirrung Enzmann 2015 --></li>
-<li>In <code>Jamovi</code> wird für den Zweistichproben-<span class="math inline">\(t\)</span>-Test und den Welch-Test eine unterschiedliche Effektstärke angegeben. Der Grund dafür ist unklar und es wird empfohlen die Effektgrösse für den Zweistichproben-<span class="math inline">\(t\)</span>-Test zu berücksichtigen.
+<li>In <code>Jamovi</code> wird für den Zweistichproben-<span class="math inline">\(t\)</span>-Test und den Welch-Test eine unterschiedliche Effektstärke angegeben.
 <!-- pooledVARSTUD <- tryNaN(((n[1]-1)*v[1]+(n[2]-1)*v[2])/(n[1]+n[2]-2)) -->
 <!-- pooledVARWELC <- tryNaN((v[1] + v[2]) / 2) -->
 <!-- sediffSTUD <- tryNaN(sqrt((pooledVARSTUD/n[1])+(pooledVARSTUD/n[2]))) -->
@@ -315,40 +322,105 @@ Hedges <span class="math inline">\(g\)</span> ist genauer als Cohens <span class
 <div id="übungen-3" class="section level2 hasAnchor" number="6.3">
 <h2><span class="header-section-number">6.3</span> Übungen<a href="mittelwertunterschied-einer-intervallskalierten-variable.html#übungen-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:tagname1" class="exercise"><strong>Übung 6.1  </strong></span></p>
+<p><span id="exr:bobo2groups" class="exercise"><strong>Übung 6.1  </strong></span></p>
 <!-- 
 Ziel: 
 - Anwendung t-Test mit Jamovi zweiseitig
+-->
+<p>Mit dem Bobo-Doll-Experiment sollte die Übertragung von Aggression durch Imitation aggressiver Modelle nachgewiesen werden. An der Studie nahmen <span class="math inline">\(48\)</span> Kinder im Alter von drei bis sechs Jahren teil. Die Kinder wurden in zwei Gruppen eingeteilt: eine mit aggressivem Modell und eine mit nicht-aggressivem Modell. In der aggressiven Bedingung sahen die Kinder, wie eine erwachsene Person (das Modell) eine Bobo-Puppe aggressiv behandelte, während in der nicht-aggressiven Bedingung das Modell ruhig mit der Puppe spielte. Nach der Beobachtungsphase wurden die Kinder einzeln in einen Spielraum geführt, der ähnliche Spielzeuge wie im Experiment enthielt, einschliesslich der Bobo-Puppe. Die Forscher beobachteten und notierten die Anzahl gezeigter aggressiven Handlungen gegenüber der Bobo-Puppe.
+Inspiriert von <span class="citation">Bandura, Ross, and Ross (<a href="#ref-bandura1961">1961</a>)</span>.</p>
+<p>Beantworten Sie die Frage, ob aggressives Verhalten Erwachsener von Kindern imitiert wird anhand der folgenden Teilfragen:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Die Kinder welcher Gruppe zeigen ein aggressiveres Verhalten? Argumentieren Sie mit zahlen.</li>
+<li>Kann die Aussage aus a) von der Stichprobe auf die Population verallgemeinert werden? Stellen Sie zweiseitige Testhypothesen für den Erwartungswert auf.</li>
+<li>Führen Sie den statistischen Test mit Jamovi durch und berechnen Sie eine angemessene Effektstärke. Berichten und interpretieren Sie das Testresultat.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-25" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-bobo2groups-input">6.6</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-bobo2groups-input"></span>
+<img src="figures/06-exr-bobo2groups-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
+<p class="caption">
+Abbildung 6.6: Jamovi Eingabe.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-bobo2groups-output">6.7</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-bobo2groups-output"></span>
+<img src="figures/06-exr-bobo2groups-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 6.7: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit können und beide Teilfragen beantwortet werden.</p>
+<ol style="list-style-type: lower-alpha">
+<li>In der Stichprobe ist der durchschnittliche Anzahl gezählter Aggressionen in der Gruppe mit aggressiven Modellen mit <span class="math inline">\(M = 10.63\)</span> höher als in der Gruppe mit nicht Aggressiven Modellen <span class="math inline">\(M = 4.95\)</span>. Es könnte sein, dass der gefundene Mittelwertunterschied auf die zufällige Stichprobenziehung zurückzuführen ist. Um dieses Risiko zu quantifizieren und damit einzuschätzen, ob das Ergebnis auch für die Population gelten könnte, kann ein statistischer Test durchgeführt werden.</li>
+<li>Es soll gezeigt werden, dass sich der durchschnittlich beobachtete Anzahl aggressiver Handlungen der Kinder in der Gruppe mit aggressivem Modell anders ist als in der Gruppe mit nicht aggressivem Modell. Die Alternativhypothese lautet also <span class="math inline">\(H_1: \mu_\text{Aggressiv} \neq \mu_\text{Nicht aggressiv}\)</span>. Die Nullhypothese dagegen sagt, dass beide Gruppen durchschnittlich gleich viele aggressive Handlungen begehen, also <span class="math inline">\(H_0: \mu_\text{Aggressiv} = \mu_\text{Nicht aggressiv}\)</span>.</li>
+<li>Es werden Mittelwerte von einer intervallskalierten Variabel über zwei Gruppen verglichen. Als statischer Test kommt demnach der Zweistichproben-<span class="math inline">\(t\)</span>-Test oder der Welch-Test infrage. Aufgrund der genaueren Testergebnisse wird immer der Welch-Test bevorzugt und dieser in folge durchgeführt und berichtet. Ein zweiseitiger Welch-Test ergibt, dass der durchschnittliche Anzahl Aggressionen in der Gruppe mit aggressivem Modell (<span class="math inline">\(M = 10.63\)</span>, <span class="math inline">\(SD = 2.62\)</span>, <span class="math inline">\(N = 24\)</span>) signifikant anders ist als in der Gruppe mit nicht aggressivem Modell (<span class="math inline">\(M = 4.95\)</span>, <span class="math inline">\(SD = 0.45\)</span>, <span class="math inline">\(N = 24\)</span>), <span class="math inline">\(t(24.4) = 10.45\)</span>, <span class="math inline">\(p &lt; 0.001, \Delta = -2.165\)</span>. Da es sich um ein Experiment handelt ist hier die Effektstärke Glass <span class="math inline">\(\Delta\)</span> angebracht. Die Effektstärke ist als gross einzustufen.</li>
+</ol>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:gruppenpuzzle" class="exercise"><strong>Übung 6.2  </strong></span></p>
+<!-- 
+Ziel: 
+- Anwendung t-Test mit Jamovi zweiseitig
+-->
+<p>In den 1970er Jahren hat eine Gruppe um <span class="citation">Blaney et al. (<a href="#ref-blaney1977">1977</a>)</span> Versuche durchgeführt zu neuen Lehrmethoden. Insbesondere wurde dabei das sogenannte Gruppenpuzzle <code>gruppenpuzzle</code>, eine Lernform bei welcher die Lernenden den Inhalt mit und in Abhängigkeit voneinander erarbeiten, mit dem traditionellen Frontalunterricht <code>traditionell</code> verglichen. Die Forschenden wollten unter anderem Herausfinden, ob sich die Gruppenpuzzleteilnehmende nach dem Unterricht besser mochten (<em>liking</em>), als traditionell unterrichtete Lernende. Fiktive Daten zu dem Experiment sind als <code>06-exr-gruppenpuzzle.sav</code> verfügbar.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Stellen Sie die Testhypothesen auf für einen zweiseitigen Welch-Test.</li>
+<li>Führen Sie den Test durch und berichten Sie das Resultat.</li>
+<li>Erklären Sie den Wert der Statistik, der Freiheitsgrade, des <span class="math inline">\(p\)</span>-Werts und der Effektstärke respektive.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-26" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-gruppenpuzzle-input">6.8</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-gruppenpuzzle-input"></span>
+<img src="figures/06-exr-gruppenpuzzle-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
+<p class="caption">
+Abbildung 6.8: Jamovi Eingabe.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-gruppenpuzzle-output">6.9</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-gruppenpuzzle-output"></span>
+<img src="figures/06-exr-gruppenpuzzle-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 6.9: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit können und die Teilfragen beantwortet werden.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Angenommen die Zuneigung zur Personen der einen Gruppe ist unabhängig von der Lehrmethode, dann sollten beide Gruppen im durchschnitt denselben Erwartungswert <span class="math inline">\(\mu\)</span> bei der Zuneigung haben. Die Nullhypothese ist also <span class="math inline">\(H_0: \mu_\text{Gruppenpuzzle} = \mu_\text{Traditionell}\)</span>. Ein Unterschied dazu wäre, wenn es die Lernenden der beiden Gruppen einen unterschiedlichen Erwartungswert aufweisen, formell <span class="math inline">\(H_1: \mu_\text{Gruppenpuzzle} \neq \mu_\text{Traditionell}\)</span>.</li>
+<li>Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Zuneigung in der Gruppenpuzzlegruppe (<span class="math inline">\(M = 5.11\)</span>, <span class="math inline">\(SD = 0.25\)</span>, <span class="math inline">\(N = 35\)</span>) signifikant anders ist als in der traditionell unterrichteten Gruppe(<span class="math inline">\(M = 4.82\)</span>, <span class="math inline">\(SD = 0.31\)</span>, <span class="math inline">\(N = 21\)</span>), <span class="math inline">\(t(35.6) = 3.69\)</span>, <span class="math inline">\(p &lt; 0.001, \Delta = -1.172\)</span>.</li>
+<li>Die Statistik von <span class="math inline">\(3.69\)</span> ist ein Wert, welcher eine Verteilung wie in <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:t-distribution">4.7</a> aufweist. Diese Verteilung weist die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zweigt, dass der beobachtete Wert <span class="math inline">\(3.69\)</span> selten zufällig vorkommt (tiefer Wert der Linie weist auf eine tiefe Wahrscheinlichkeit der Statistik hin). Die Freiheitsgrade 35.6 bestimmen die Form der oben referenzierten Verteilung. Wo bei kleinen Freiheitsgraden die beobachtete Statistik noch mit einer nicht allzukleinen Wahrscheinlichkeit beobachtet werden kann (vgl. <span class="math inline">\(df = 1\)</span> auf der Abbildung), so ist es bei dieser Anzahl Freiheitsgrade sehr selten (vgl. <code>Normalverteilung</code> auf der Abbildung).</li>
+</ol>
+<p>, dass Erklären Sie den Wert der Statistik, der Freiheitsgrade, des <span class="math inline">\(p\)</span>-Werts und der Effektstärke respektive.</p>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:tagname7" class="exercise"><strong>Übung 6.3  </strong></span></p>
+<!-- 
+Ziel: 
+- Zweiseitig nicht signifikant
 -->
 <p>TODO: Exercise body</p>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-25" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
+<p><span id="unlabeled-div-27" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
 </details>
 </div>
 <div class="exercise">
-<p><span id="exr:tagname2" class="exercise"><strong>Übung 6.2  </strong></span></p>
-<!-- 
-Ziel: 
-- Anwendung t-Test mit Jamovi zweiseitig
--->
-<p>TODO: Exercise body</p>
-</div>
-<div class="solution">
-<details>
-  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-26" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
-</details>
-</div>
-<div class="exercise">
-<p><span id="exr:hypnose" class="exercise"><strong>Übung 6.3  </strong></span></p>
+<p><span id="exr:hypnose" class="exercise"><strong>Übung 6.4  </strong></span></p>
 <!-- 
 Ziel: 
 - Anwendung t-Test mit Jamovi linksseitig
 -->
-<p>Die Gesellschaft für Hypnose will unter Beweis stellen (Signifikanzniveau <span class="math inline">\(\alpha=5\%\)</span>), dass ein neues Hypnoseverfahren eine schmerzlindernde Wirkung hat. Dazu werden Probanden zufällig und doppelblind in zwei Gruppen eingeteilt. Eine Gruppe erhält die Behandlung mit dem neuen Hypnoseverfahren, die andere wird einer Placebo-Behandlung unterzogen. Nach der Behandlung wird das Schmerzempfinden auf einer Skala von <span class="math inline">\(1\)</span> bis <span class="math inline">\(10\)</span> gemessen. Die Daten beider Versuchsgruppen stellen sich als normalverteilt heraus. Die erhobenen Daten sind unter <code>06-exr-hynose.sav</code> abgelegt.</p>
+<p>Die Gesellschaft für Hypnose will unter Beweis stellen (Signifikanzniveau <span class="math inline">\(\alpha=5\%\)</span>), dass ein neues Hypnoseverfahren eine schmerzlindernde Wirkung hat. Dazu werden Probanden zufällig und doppelblind in zwei Gruppen eingeteilt. Eine Gruppe erhält die Behandlung mit dem neuen Hypnoseverfahren, die andere wird einer Placebo-Behandlung unterzogen. Nach der Behandlung wird das Schmerzempfinden auf einer Skala von <span class="math inline">\(1\)</span> bis <span class="math inline">\(10\)</span> gemessen. Die Daten beider Versuchsgruppen stellen sich als normalverteilt heraus. Die erhobenen Daten sind unter <code>06-exr-hypnose.sav</code> abgelegt.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Beschreiben Sie die beiden Stichproben deskriptiv. Hat die neue Behandlungsmethode einen Vorteil gegenüber der Placebo-Behandlung in der Stichprobe? Weshalb ist es sinnvoll danach noch einen statistischen Test durchzuführen?</li>
 <li>Stellen Sie die Hypothesen für einen einseitigen Test auf.</li>
@@ -358,30 +430,30 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-27" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-hypnose-input">6.6</a>.</p>
+<p><span id="unlabeled-div-28" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-hypnose-input">6.10</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-hypnose-input"></span>
 <img src="figures/06-exr-hypnose-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
-Abbildung 6.6: Jamovi Eingabe.
+Abbildung 6.10: Jamovi Eingabe.
 </p>
 </div>
-<p>Dies produziert das Analyseergebnis in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-hypnose-output">6.7</a>.</p>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-hypnose-output">6.11</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-hypnose-output"></span>
 <img src="figures/06-exr-hypnose-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
-Abbildung 6.7: Jamovi Ausgabe.
+Abbildung 6.11: Jamovi Ausgabe.
 </p>
 </div>
 <p>Damit können und beide Teilfragen beantwortet werden.</p>
 <ol style="list-style-type: lower-alpha">
 <li>In der Stichprobe ist der durchschnittliche Schmerz (arithmetisches Mittel) in der Hypnose-Gruppe mit <span class="math inline">\(M = 5.81\)</span> tiefer als in der Placebo-Gruppe mit <span class="math inline">\(M = 4.92\)</span>. Es könnte sein, dass der gefundene Mittelwertunterschied auf die zufällige Stichprobenziehung zurückzuführen ist. Um dieses Risiko zu quantifizieren und damit einzuschätzen, ob das Ergebnis auch für die Population gelten könnte, kann ein statistischer Test durchgeführt werden.</li>
 <li>Es soll gezeigt werden, dass sich der durchschnittlich empfundene Schmerz mit der Hypnose-Behandlung tiefer liegt als mit der Placebo-Behandlung. Die Alternativhypothese lautet also <span class="math inline">\(H_1: \mu_\text{Hypnose} &lt; \mu_\text{Placebo}\)</span>. Die Nullhypothese dagegen sagt, dass die Hypnose-Behandlung nicht besser oder sogar schlechter ist als die Placebo-Behandlung also <span class="math inline">\(H_0: \mu_\text{Hypnose} \geq \mu_\text{Placebo}\)</span>.</li>
-<li>Ein einseitiger Welch-Test ergibt, dass der durchschnittliche erhobene Schmerz bei einer Behandlung mit der neuen Hypnose-Methode (<span class="math inline">\(M = 4.92\)</span>, <span class="math inline">\(SD = 0.39\)</span>, <span class="math inline">\(N = 11\)</span>) signifikant tiefer ist als bei der Placebo-Behandlung (<span class="math inline">\(M = 5.81\)</span>, <span class="math inline">\(SD = 0.87\)</span>, <span class="math inline">\(N = 15\)</span>), <span class="math inline">\(t(20.6) = -3.5\)</span>, <span class="math inline">\(p = .001, g = -1.21\)</span>.</li>
+<li>Ein einseitiger Welch-Test ergibt, dass der durchschnittliche erhobene Schmerz bei einer Behandlung mit der neuen Hypnose-Methode (<span class="math inline">\(M = 4.92\)</span>, <span class="math inline">\(SD = 0.39\)</span>, <span class="math inline">\(N = 11\)</span>) signifikant tiefer ist als bei der Placebo-Behandlung (<span class="math inline">\(M = 5.81\)</span>, <span class="math inline">\(SD = 0.87\)</span>, <span class="math inline">\(N = 15\)</span>), <span class="math inline">\(t(20.6) = -3.5\)</span>, <span class="math inline">\(p = .001, \Delta = 2.264\)</span>.</li>
 </ol>
 </details>
 </div>
 <div class="exercise">
-<p><span id="exr:ehe-burnout" class="exercise"><strong>Übung 6.4  </strong></span></p>
+<p><span id="exr:ehe-burnout" class="exercise"><strong>Übung 6.5  </strong></span></p>
 <!-- 
 Ziel: 
 - Anwendung t-Test mit Jamovi rechtsseitig
@@ -397,18 +469,18 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-28" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-ehe-burnout-input">6.8</a>.</p>
+<p><span id="unlabeled-div-29" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-ehe-burnout-input">6.12</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-ehe-burnout-input"></span>
 <img src="figures/06-exr-ehe-burnout-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
-Abbildung 6.8: Jamovi Eingabe.
+Abbildung 6.12: Jamovi Eingabe.
 </p>
 </div>
-<p>Dies produziert das Analyseergebnis in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-ehe-burnout-output">6.9</a>.</p>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-ehe-burnout-output">6.13</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-ehe-burnout-output"></span>
 <img src="figures/06-exr-ehe-burnout-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
-Abbildung 6.9: Jamovi Ausgabe.
+Abbildung 6.13: Jamovi Ausgabe.
 </p>
 </div>
 <p>Damit können und beide Teilfragen beantwortet werden.</p>
@@ -416,12 +488,12 @@ Abbildung 6.9: Jamovi Ausgabe.
 <li>Aus der Stichprobenbeschreibung kann entnommen werden, dass <span class="math inline">\(51\)</span> unverheiratete und <span class="math inline">\(61\)</span> verheiratete Ärztinnen den Fragebogen abgeschlossen haben.</li>
 <li>Die unverheirateten Ärztinnen <span class="math inline">\(M = 10.99\)</span> scheiden durchschnittlich höher ab als die verheirateten Ärztinnen <span class="math inline">\(M = 10.15\)</span>. Dieser Befund beschränkt sich ohne statistischen Test auf die Stichprobe. Deshalb wurde darin das Wort signifikant nicht verwendet.</li>
 <li>Die Forscherin will zeigen, dass unverheiratete Ärztinnen ein durchhschnittlich höheres Burnout-Risiko haben als verheiratete und zwar nicht nur in der Stichprobe sondern auch ich der Population. Das durchschnittliche Burnout-Risiko in der Population ist der Erwartungswert des Burnout-Risiko und wird mit <span class="math inline">\(\mu\)</span> bezeichnet. Die Forscherin will also zeigen, dass <span class="math inline">\(H_1: \mu_\text{unverheiratet} &gt; \mu_\text{verheiratet}\)</span>. Demgegenüber steht die Nullhypothese, dass dies nicht so ist oder das gar das Gegenteil der Fall sein könnte also <span class="math inline">\(H_0: \mu_\text{unverheiratet} \leq \mu_\text{verheiratet}\)</span>. Die Hypothese ist also einseitig gestellt.</li>
-<li>Ein einseitiger Welch-Test ergibt, dass der durchschnittliche Burnout-Wert bei unverheirateten Ärztinnen (<span class="math inline">\(M = 10.99\)</span>, <span class="math inline">\(SD = 1.92\)</span>, <span class="math inline">\(N = 51\)</span>) signifikant höher ist als bei verheirateten Ärztinnen (<span class="math inline">\(M = 10.15\)</span>, <span class="math inline">\(SD = 2.01\)</span>, <span class="math inline">\(N = 61\)</span>), <span class="math inline">\(t(108.1) = 2.26\)</span>, <span class="math inline">\(p = .987, g = 0.423\)</span>.</li>
+<li>Ein einseitiger Welch-Test ergibt, dass der durchschnittliche Burnout-Wert bei unverheirateten Ärztinnen (<span class="math inline">\(M = 10.99\)</span>, <span class="math inline">\(SD = 1.92\)</span>, <span class="math inline">\(N = 51\)</span>) signifikant höher ist als bei verheirateten Ärztinnen (<span class="math inline">\(M = 10.15\)</span>, <span class="math inline">\(SD = 2.01\)</span>, <span class="math inline">\(N = 61\)</span>), <span class="math inline">\(t(108.1) = 2.26\)</span>, <span class="math inline">\(p = .013, d = 0.427\)</span>.</li>
 </ol>
 </details>
 </div>
 <div class="exercise">
-<p><span id="exr:tagname5" class="exercise"><strong>Übung 6.5  </strong></span></p>
+<p><span id="exr:tagname5" class="exercise"><strong>Übung 6.6  </strong></span></p>
 <!-- 
 Ziel: 
 - Berichten und Werte erklären
@@ -431,7 +503,7 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-29" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
+<p><span id="unlabeled-div-30" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
 </details>
 </div>
 
@@ -439,6 +511,12 @@ Ziel:
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-bandura1961" class="csl-entry">
+Bandura, A., D. Ross, and S. A. Ross. 1961. <span>“Transmission of Aggression Through Imitation of Aggressive Models.”</span> <em>Journal of Abnormal and Social Psychology</em> 63 (3): 575–82. <a href="https://doi.org/10.1037/h0045925">https://doi.org/10.1037/h0045925</a>.
+</div>
+<div id="ref-blaney1977" class="csl-entry">
+Blaney, N. T., C. Stephan, D. Rosenfield, E. Aronson, and J. Sikes. 1977. <span>“Interdependence in the Classroom: A Field Study.”</span> <em>Journal of Educational Psychology</em> 69 (2): 121–28. <a href="https://doi.org/10.1037/0022-0663.69.2.121">https://doi.org/10.1037/0022-0663.69.2.121</a>.
+</div>
 <div id="ref-khanna2017" class="csl-entry">
 Khanna, M. M., A. S. Badura-Brack, T. J. McDermott, C. M. Embury, A. I. Wiesman, A. Shepherd, T. J. Ryan, E. Heinrichs-Graham, and T. W. Wilson. 2017. <span>“Veterans with Post-Traumatic Stress Disorder Exhibit Altered Emotional Processing and Attentional Control During an Emotional Stroop Task.”</span> <em>Psychological Medicine</em> 47 (11): 2017–27. <a href="https://doi.org/10.1017/S0033291717000460">https://doi.org/10.1017/S0033291717000460</a>.
 </div>

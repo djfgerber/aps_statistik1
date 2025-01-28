@@ -23,6 +23,7 @@ library(jmv)
 library(kableExtra)
 source('src/r/bag_sampling.R')
 source('src/r/plots.R')
+source('src/r/effect_size.R')
 
 options(scipen=999)
 
