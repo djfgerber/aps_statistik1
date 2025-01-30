@@ -68,7 +68,7 @@ Es gibt eine vielzahl von Möglichkeiten Formeln und Zahlen in einem Manuskript 
 
 ## Software {#software}
 
-Für die Lösung der Übungen wird oft die freie Software Jamovi verwendet. Dem Leser wird deshalb empfohlen diese Software zu installieren. Für die Erstellung dieses Buches wurden ferner die folgenden Softwareprodukte verwendet:
+Für die Lösung der Übungen wird oft die freie Software `Jamovi` verwendet. Den Lesenden wird deshalb empfohlen `Jamovi` zu installieren. Für die Erstellung dieses Buches wurden ferner die folgenden Softwareprodukte verwendet:
 
 - Jamovi software (Version 2.3.21.0)
 - Jamovi R-package [@R-jmv]

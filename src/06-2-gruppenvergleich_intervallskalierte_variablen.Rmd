@@ -404,6 +404,7 @@ Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit 
 <!-- Discuss: Interpretation. -->
 
 ::::{.caution data-latex=""}
+
 ::: {.remark}
 - Die Namensgebung von diesen Berechnungsarten und insbesondere, was unter Cohens $d$ verstanden wird variiert beträchtlich und es empfiehlt sich immer die genaue Berechnungsart zu überprüfen.
 <!-- Discuss: Entwirrung Enzmann 2015 -->
@@ -416,6 +417,7 @@ Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit 
 <!-- dSTUD <- (m[1]-m[2])/sqrt(pooledVARSTUD) # Cohen's d for student's t -->
 <!-- dWELC <- (m[1]-m[2])/sqrt(pooledVARWELC) # Cohen's d for Welch's t -->
 :::
+
 ::::
 
 
@@ -553,23 +555,71 @@ Damit können und die Teilfragen beantwortet werden.
 
 a) Angenommen die Zuneigung zur Personen der einen Gruppe ist unabhängig von der Lehrmethode, dann sollten beide Gruppen im durchschnitt denselben Erwartungswert $\mu$ bei der Zuneigung haben. Die Nullhypothese ist also $H_0: \mu_\text{Gruppenpuzzle} = \mu_\text{Traditionell}$. Ein Unterschied dazu wäre, wenn es die Lernenden der beiden Gruppen einen unterschiedlichen Erwartungswert aufweisen, formell $H_1: \mu_\text{Gruppenpuzzle} \neq \mu_\text{Traditionell}$. 
 b) Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Zuneigung in der Gruppenpuzzlegruppe ($M = `r round(exr_gruppenpuzzle$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_gruppenpuzzle$jmv_res_desc$sd1,2)`$, $N = `r exr_gruppenpuzzle$jmv_res_desc$num1`$) signifikant anders ist als in der traditionell unterrichteten Gruppe($M = `r round(exr_gruppenpuzzle$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_gruppenpuzzle$jmv_res_desc$sd2,2)`$, $N = `r exr_gruppenpuzzle$jmv_res_desc$num2`$), $t(`r round(exr_gruppenpuzzle$jmv_res_test$dfwelc,1)`) = `r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$, $`r report_p(exr_gruppenpuzzle$jmv_res_test$pwelc)`, \Delta = `r round(glass_delta(exr_gruppenpuzzle$jmv_res_desc, TRUE),3)`$.
-c) Die Statistik von $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ ist ein Wert, welcher eine Verteilung wie in \@ref(fig:t-distribution) aufweist. Diese Verteilung weist  die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zweigt, dass der beobachtete Wert $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ selten zufällig vorkommt (tiefer Wert der Linie weist auf eine tiefe Wahrscheinlichkeit der Statistik hin). Die Freiheitsgrade `r round(exr_gruppenpuzzle$jmv_res_test$dfwelc,1)` bestimmen die Form der oben referenzierten Verteilung. Wo bei kleinen Freiheitsgraden die beobachtete Statistik noch mit einer nicht allzukleinen Wahrscheinlichkeit beobachtet werden kann (vgl. $df = 1$ auf der Abbildung), so ist es bei dieser Anzahl Freiheitsgrade sehr selten (vgl. `Normalverteilung` auf der Abbildung).
-
-
-
-, dass  Erklären Sie den Wert der Statistik, der Freiheitsgrade, des $p$-Werts und der Effektstärke respektive.
+c) Die Statistik von $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ ist ein Wert, welcher eine Verteilung wie in \@ref(fig:t-distribution) aufweist. Diese Verteilung weist  die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zweigt, dass der beobachtete Wert $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ selten zufällig vorkommt (tiefer Wert der Linie weist auf eine tiefe Wahrscheinlichkeit der Statistik hin). Die Freiheitsgrade `r round(exr_gruppenpuzzle$jmv_res_test$dfwelc,1)` bestimmen die Form der oben referenzierten Verteilung. Wo bei kleinen Freiheitsgraden die beobachtete Statistik noch mit einer nicht allzukleinen Wahrscheinlichkeit beobachtet werden kann (vgl. $df = 1$ in der Abbildung), so ist es bei dieser Anzahl Freiheitsgrade sehr selten (vgl. `Normalverteilung` in der Abbildung). $`r report_p(exr_gruppenpuzzle$jmv_res_test$pwelc)`$ bedeutet, dass der $p$-Wert kleiner als $0.001 = 0.1\%$ ist. Damit ist die Wahrscheinlichkeit den Statistik-Wert $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ oder einen extremeren Wert im Sinne der Alternativhypothese zu beobachten, gegeben dass die Nullhypothese wahr ist, kleiner als $0.1\%$ also sehr selten. Da der $p$-Wert kleiner ist als $5\%$ ist wird geschlossen, dass die Annahme, dass die Nullhypothese wahr ist, wahrscheinlich falsch ist. Die Effektstärke von $\Delta = `r round(glass_delta(exr_gruppenpuzzle$jmv_res_desc, TRUE),3)`$ bedeutet, dass hier ein Mittelwertunterschied von ungefähr $`r round(glass_delta(exr_gruppenpuzzle$jmv_res_desc, TRUE),3)`$ Standardabweichungen des Merkmals Zuneigung entspricht. Dies heisst, auf der Skala des Merkmals ist der Mittelwertunterschied gross oder anders gesagt: es handelt sich um einen starken Effekt. Das Vorzeichen hängt von der Gruppenbeschriftung ab und hat keine spezielle Bedeutung.
 :::
 
-::: {.exercise  #tagname7}
+::: {.exercise  #music-memory}
 <!-- 
 Ziel: 
 - Zweiseitig nicht signifikant
 -->
-TODO: Exercise body
+```{r exr-music-memory}
+gen_exr_music_memory <- function(){
+  set.seed(23)
+  n2 <- 43
+  n1 <- 35
+  x2 <- rnorm(n1, 8.2, 0.9)
+  x1 <- rnorm(n2, 8.0, 1.7)
+  var_name <- "anzahl_nonsens_silben"
+  group_labels <- c('mit_text', 'ohne_text')
+  
+  file_name <- '06-exr-music-memory.sav'
+  dd <- tibble(!!var_name := c(x1, x2),
+       Gruppe = c(rep(group_labels[1],n1), 
+                  rep(group_labels[2], n2))) %>% 
+  write_sav(file_name)
+
+  jmv_res <- dd %>%
+    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
+                desc = TRUE,
+                 welchs = TRUE, 
+                 mann = FALSE, 
+                 effectSize = TRUE)
+  jmv_res_test <- jmv_res$ttest$asDF%>% 
+    rename_with(~ .x %>% str_replace_all('\\[(stud|welc)\\]',"\\1"))
+  jmv_res_desc <- jmv_res$desc$asDF%>% 
+    rename_with(~ .x %>% str_replace_all('\\[(1|2)\\]',"\\1"))
+  
+  return(mget(ls()))
+}
+exr_music_memory <- gen_exr_music_memory()
+```
+
+Studierende wollen herausfinden, ob Entspannungsmusik ohne Text oder Musik mit Text einen unterschiedlichen Einfluss auf die Merkfähigkeit haben. Dazu lernen die Studienteilnehmenden während $10$ Minuten Wortsilben ohne semantische Bedeutung auswendig und geben diese nach einer Latenzzeit wider. Die Beschallungsart wird den Studienteilnehmenden zufällig zugeordnet. Die Anzahl korrekt memorisierte Wortsilben sind im Datensatz `r inline_code(exr_music_memory$file_name)` verfügbar.
+
+a) Stellen Sie die Testhypothesen auf für einen zweiseitigen Welch-Test.
+b) Führen Sie den Test durch und berichten Sie das Resultat.
+c) Erklären Sie den Wert der Statistik, des $p$-Werts und der Effektstärke respektive.
 :::
 
 :::{.solution}
-TODO: solution body
+Zuerst wird der Datensatz mit `Jamovi` eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-music-memory-input). 
+
+```{r sol-music-memory-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
+knitr::include_graphics("figures/06-exr-music-memory-jmv-input.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-music-memory-output).
+
+```{r sol-music-memory-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/06-exr-music-memory-jmv-output.jpg")
+```
+
+Damit können die Teilfragen beantwortet werden. 
+
+a) Die Nullhypothese besagt, dass die durchschnittliche Anzahl gemerkter Wortsilben beim Lernen mit oder ohne Musik gleich ist, also $H_0: \mu_\text{Musik mit Text} = \mu_\text{Musik ohne Text}$. Die Alternativhypothese besagt, dass sich die durchschnittliche Anzahl gemerkter Wortsiblen mit oder ohne Musik unterscheiden  $H_1: \mu_\text{Musik mit Text} \neq \mu_\text{Musik ohne Text}$. 
+b) Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Anzahl gemerkter Wortsilben beim Lernen mit Musik mit Text ($M = `r round(exr_music_memory$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_music_memory$jmv_res_desc$sd1,2)`$, $N = `r exr_music_memory$jmv_res_desc$num1`$) nicht signifikant anders ist als beim Lernen mit Musik ohne Text ($M = `r round(exr_music_memory$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_music_memory$jmv_res_desc$sd2,2)`$, $N = `r exr_music_memory$jmv_res_desc$num2`$), $t(`r round(exr_music_memory$jmv_res_test$dfwelc,1)`) = `r round(exr_music_memory$jmv_res_test$statwelc,2)`$, $`r report_p(exr_music_memory$jmv_res_test$pwelc)`, d = `r round(exr_music_memory$jmv_res_test$eswelc,3)`$.
+c) Die Statistik von $`r round(exr_music_memory$jmv_res_test$statwelc,2)`$ ist ein Wert, welcher eine Verteilung wie in \@ref(fig:t-distribution) aufweist. Diese Verteilung weist  die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zeigt, dass der beobachtete Wert $`r round(exr_music_memory$jmv_res_test$statwelc,2)`$ oft zufällig vorkommt (hoher Wert der Linie weist auf eine hohe Wahrscheinlichkeit der Statistik hin). $`r report_p(exr_music_memory$jmv_res_test$pwelc)`$ bedeutet, dass die Wahrscheinlichkeit den Statistik-Wert $`r round(exr_music_memory$jmv_res_test$statwelc,2)`$ oder einen extremeren Wert im Sinne der Alternativhypothese zu beobachten, gegeben dass die Nullhypothese wahr ist, nicht aussergewönlich erscheint. Da der $p$-Wert grösser ist als $5\%$ ist, kann keine Aussage zur Wahrheit oder Falschheit der Nullhypothese getroffen werden. Die Effektstärke von $d = `r round(exr_music_memory$jmv_res_test$eswelc,3)`$ bedeutet, dass hier ein Mittelwertunterschied von ungefähr $`r round(exr_music_memory$jmv_res_test$eswelc,3)`$ Standardabweichungen des Merkmals Anzahl gemerkter Wortsiblen entspricht. Dies heisst, auf der Skala des Merkmals ist der Mittelwertunterschied klein oder anders gesagt: es handelt sich um einen schwachen Effekt. Das Vorzeichen hängt von der Gruppenbeschriftung ab und hat keine spezielle Bedeutung.
 :::
 
 ::: {.exercise  #hypnose}
@@ -699,7 +749,7 @@ Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-ehe-burnout-outpu
 knitr::include_graphics("figures/06-exr-ehe-burnout-jmv-output.jpg")
 ```
 
-Damit können und beide Teilfragen beantwortet werden. 
+Damit können die Teilfragen beantwortet werden. 
 
 a) Aus der Stichprobenbeschreibung kann entnommen werden, dass $`r exr_ehe_burnout$jmv_res_desc$num1`$ unverheiratete und $`r exr_ehe_burnout$jmv_res_desc$num2`$ verheiratete Ärztinnen den Fragebogen abgeschlossen haben.
 b) Die unverheirateten Ärztinnen $M = `r round(exr_ehe_burnout$jmv_res_desc$mean1,2)`$ scheiden durchschnittlich höher ab als die verheirateten Ärztinnen $M = `r round(exr_ehe_burnout$jmv_res_desc$mean2,2)`$. Dieser Befund beschränkt sich ohne statistischen Test auf die Stichprobe. Deshalb wurde darin das Wort signifikant nicht verwendet.

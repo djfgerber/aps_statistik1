@@ -6,7 +6,12 @@ eq:sd
 exr:enten-hist-mean-sd
 fig:enten-hist-mean-sd1
 fig:enten-hist-mean-sd2
+exr:temptag-pvai8hwv
 exr:theorie-mdn-mean
+fig:sol-theorie-mdn-mean-data
+fig:sol-theorie-mdn-mean-input
+fig:sol-theorie-mdn-mean-output
+exr:temptag-poiane
 exr:diverse-distrib
 fig:sol-diverse-distrib1
 fig:sol-diverse-distrib2
@@ -17,6 +22,8 @@ fig:srs-intervall-high-p
 fig:srs-intervall-low-p
 fig:srs-intervall-high-p-many
 fig:srs-intervall-low-p-many
+exr:tagname-alskfdieu
+exr:tagname-apwioev
 fig:exm-angst-hist-means
 fig:exm-angst-hist-means-emp-ci
 exm:agreableness
@@ -68,7 +75,9 @@ fig:sol-bobo2groups-output
 exr:gruppenpuzzle
 fig:sol-gruppenpuzzle-input
 fig:sol-gruppenpuzzle-output
-exr:tagname7
+exr:music-memory
+fig:sol-music-memory-input
+fig:sol-music-memory-output
 exr:hypnose
 fig:sol-hypnose-input
 fig:sol-hypnose-output

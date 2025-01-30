@@ -124,7 +124,7 @@ Es kann also zusammenfassend gesagt werden, dass die gezogene Stichprobe wohl eh
 
 ## Übungen
 
-::: {.exercise  #tagname_alskfdieu}
+::: {.exercise  #tagname-alskfdieu}
 <!-- 
 Ziel: 
 - Begriffsklärung Stichprobe / Population / Grundgesamtheit / Zufallsstichprobe
@@ -136,7 +136,7 @@ TODO: Exercise body
 TODO: solution body
 :::
 
-::: {.exercise  #tagname_apwioev}
+::: {.exercise  #tagname-apwioev}
 <!-- 
 Ziel: 
 - Verständnis Problem/chance der zufallsstichprobe

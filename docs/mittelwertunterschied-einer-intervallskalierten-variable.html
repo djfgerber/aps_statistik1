@@ -395,23 +395,46 @@ Abbildung 6.9: Jamovi Ausgabe.
 <ol style="list-style-type: lower-alpha">
 <li>Angenommen die Zuneigung zur Personen der einen Gruppe ist unabhängig von der Lehrmethode, dann sollten beide Gruppen im durchschnitt denselben Erwartungswert <span class="math inline">\(\mu\)</span> bei der Zuneigung haben. Die Nullhypothese ist also <span class="math inline">\(H_0: \mu_\text{Gruppenpuzzle} = \mu_\text{Traditionell}\)</span>. Ein Unterschied dazu wäre, wenn es die Lernenden der beiden Gruppen einen unterschiedlichen Erwartungswert aufweisen, formell <span class="math inline">\(H_1: \mu_\text{Gruppenpuzzle} \neq \mu_\text{Traditionell}\)</span>.</li>
 <li>Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Zuneigung in der Gruppenpuzzlegruppe (<span class="math inline">\(M = 5.11\)</span>, <span class="math inline">\(SD = 0.25\)</span>, <span class="math inline">\(N = 35\)</span>) signifikant anders ist als in der traditionell unterrichteten Gruppe(<span class="math inline">\(M = 4.82\)</span>, <span class="math inline">\(SD = 0.31\)</span>, <span class="math inline">\(N = 21\)</span>), <span class="math inline">\(t(35.6) = 3.69\)</span>, <span class="math inline">\(p &lt; 0.001, \Delta = -1.172\)</span>.</li>
-<li>Die Statistik von <span class="math inline">\(3.69\)</span> ist ein Wert, welcher eine Verteilung wie in <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:t-distribution">4.7</a> aufweist. Diese Verteilung weist die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zweigt, dass der beobachtete Wert <span class="math inline">\(3.69\)</span> selten zufällig vorkommt (tiefer Wert der Linie weist auf eine tiefe Wahrscheinlichkeit der Statistik hin). Die Freiheitsgrade 35.6 bestimmen die Form der oben referenzierten Verteilung. Wo bei kleinen Freiheitsgraden die beobachtete Statistik noch mit einer nicht allzukleinen Wahrscheinlichkeit beobachtet werden kann (vgl. <span class="math inline">\(df = 1\)</span> auf der Abbildung), so ist es bei dieser Anzahl Freiheitsgrade sehr selten (vgl. <code>Normalverteilung</code> auf der Abbildung).</li>
+<li>Die Statistik von <span class="math inline">\(3.69\)</span> ist ein Wert, welcher eine Verteilung wie in <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:t-distribution">4.7</a> aufweist. Diese Verteilung weist die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zweigt, dass der beobachtete Wert <span class="math inline">\(3.69\)</span> selten zufällig vorkommt (tiefer Wert der Linie weist auf eine tiefe Wahrscheinlichkeit der Statistik hin). Die Freiheitsgrade 35.6 bestimmen die Form der oben referenzierten Verteilung. Wo bei kleinen Freiheitsgraden die beobachtete Statistik noch mit einer nicht allzukleinen Wahrscheinlichkeit beobachtet werden kann (vgl. <span class="math inline">\(df = 1\)</span> in der Abbildung), so ist es bei dieser Anzahl Freiheitsgrade sehr selten (vgl. <code>Normalverteilung</code> in der Abbildung). <span class="math inline">\(p &lt; 0.001\)</span> bedeutet, dass der <span class="math inline">\(p\)</span>-Wert kleiner als <span class="math inline">\(0.001 = 0.1\%\)</span> ist. Damit ist die Wahrscheinlichkeit den Statistik-Wert <span class="math inline">\(3.69\)</span> oder einen extremeren Wert im Sinne der Alternativhypothese zu beobachten, gegeben dass die Nullhypothese wahr ist, kleiner als <span class="math inline">\(0.1\%\)</span> also sehr selten. Da der <span class="math inline">\(p\)</span>-Wert kleiner ist als <span class="math inline">\(5\%\)</span> ist wird geschlossen, dass die Annahme, dass die Nullhypothese wahr ist, wahrscheinlich falsch ist. Die Effektstärke von <span class="math inline">\(\Delta = -1.172\)</span> bedeutet, dass hier ein Mittelwertunterschied von ungefähr <span class="math inline">\(-1.172\)</span> Standardabweichungen des Merkmals Zuneigung entspricht. Dies heisst, auf der Skala des Merkmals ist der Mittelwertunterschied gross oder anders gesagt: es handelt sich um einen starken Effekt. Das Vorzeichen hängt von der Gruppenbeschriftung ab und hat keine spezielle Bedeutung.</li>
 </ol>
-<p>, dass Erklären Sie den Wert der Statistik, der Freiheitsgrade, des <span class="math inline">\(p\)</span>-Werts und der Effektstärke respektive.</p>
 </details>
 </div>
 <div class="exercise">
-<p><span id="exr:tagname7" class="exercise"><strong>Übung 6.3  </strong></span></p>
+<p><span id="exr:music-memory" class="exercise"><strong>Übung 6.3  </strong></span></p>
 <!-- 
 Ziel: 
 - Zweiseitig nicht signifikant
 -->
-<p>TODO: Exercise body</p>
+<p>Studierende wollen herausfinden, ob Entspannungsmusik ohne Text oder Musik mit Text einen unterschiedlichen Einfluss auf die Merkfähigkeit haben. Dazu lernen die Studienteilnehmenden während <span class="math inline">\(10\)</span> Minuten Wortsilben ohne semantische Bedeutung auswendig und geben diese nach einer Latenzzeit wider. Die Beschallungsart wird den Studienteilnehmenden zufällig zugeordnet. Die Anzahl korrekt memorisierte Wortsilben sind im Datensatz <code>06-exr-music-memory.sav</code> verfügbar.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Stellen Sie die Testhypothesen auf für einen zweiseitigen Welch-Test.</li>
+<li>Führen Sie den Test durch und berichten Sie das Resultat.</li>
+<li>Erklären Sie den Wert der Statistik, des <span class="math inline">\(p\)</span>-Werts und der Effektstärke respektive.</li>
+</ol>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-27" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
+<p><span id="unlabeled-div-27" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-music-memory-input">6.10</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-music-memory-input"></span>
+<img src="figures/06-exr-music-memory-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
+<p class="caption">
+Abbildung 6.10: Jamovi Eingabe.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-music-memory-output">6.11</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-music-memory-output"></span>
+<img src="figures/06-exr-music-memory-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 6.11: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit können die Teilfragen beantwortet werden.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Die Nullhypothese besagt, dass die durchschnittliche Anzahl gemerkter Wortsilben beim Lernen mit oder ohne Musik gleich ist, also <span class="math inline">\(H_0: \mu_\text{Musik mit Text} = \mu_\text{Musik ohne Text}\)</span>. Die Alternativhypothese besagt, dass sich die durchschnittliche Anzahl gemerkter Wortsiblen mit oder ohne Musik unterscheiden <span class="math inline">\(H_1: \mu_\text{Musik mit Text} \neq \mu_\text{Musik ohne Text}\)</span>.</li>
+<li>Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Anzahl gemerkter Wortsilben beim Lernen mit Musik mit Text (<span class="math inline">\(M = 8\)</span>, <span class="math inline">\(SD = 1.69\)</span>, <span class="math inline">\(N = 35\)</span>) nicht signifikant anders ist als beim Lernen mit Musik ohne Text (<span class="math inline">\(M = 8.22\)</span>, <span class="math inline">\(SD = 1.06\)</span>, <span class="math inline">\(N = 43\)</span>), <span class="math inline">\(t(54.6) = -0.66\)</span>, <span class="math inline">\(p = .514, d = -0.153\)</span>.</li>
+<li>Die Statistik von <span class="math inline">\(-0.66\)</span> ist ein Wert, welcher eine Verteilung wie in <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:t-distribution">4.7</a> aufweist. Diese Verteilung weist die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zeigt, dass der beobachtete Wert <span class="math inline">\(-0.66\)</span> oft zufällig vorkommt (hoher Wert der Linie weist auf eine hohe Wahrscheinlichkeit der Statistik hin). <span class="math inline">\(p = .514\)</span> bedeutet, dass die Wahrscheinlichkeit den Statistik-Wert <span class="math inline">\(-0.66\)</span> oder einen extremeren Wert im Sinne der Alternativhypothese zu beobachten, gegeben dass die Nullhypothese wahr ist, nicht aussergewönlich erscheint. Da der <span class="math inline">\(p\)</span>-Wert grösser ist als <span class="math inline">\(5\%\)</span> ist, kann keine Aussage zur Wahrheit oder Falschheit der Nullhypothese getroffen werden. Die Effektstärke von <span class="math inline">\(d = -0.153\)</span> bedeutet, dass hier ein Mittelwertunterschied von ungefähr <span class="math inline">\(-0.153\)</span> Standardabweichungen des Merkmals Anzahl gemerkter Wortsiblen entspricht. Dies heisst, auf der Skala des Merkmals ist der Mittelwertunterschied klein oder anders gesagt: es handelt sich um einen schwachen Effekt. Das Vorzeichen hängt von der Gruppenbeschriftung ab und hat keine spezielle Bedeutung.</li>
+</ol>
 </details>
 </div>
 <div class="exercise">
@@ -430,18 +453,18 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-28" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-hypnose-input">6.10</a>.</p>
+<p><span id="unlabeled-div-28" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-hypnose-input">6.12</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-hypnose-input"></span>
 <img src="figures/06-exr-hypnose-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
-Abbildung 6.10: Jamovi Eingabe.
+Abbildung 6.12: Jamovi Eingabe.
 </p>
 </div>
-<p>Dies produziert das Analyseergebnis in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-hypnose-output">6.11</a>.</p>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-hypnose-output">6.13</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-hypnose-output"></span>
 <img src="figures/06-exr-hypnose-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
-Abbildung 6.11: Jamovi Ausgabe.
+Abbildung 6.13: Jamovi Ausgabe.
 </p>
 </div>
 <p>Damit können und beide Teilfragen beantwortet werden.</p>
@@ -469,21 +492,21 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-29" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-ehe-burnout-input">6.12</a>.</p>
+<p><span id="unlabeled-div-29" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-ehe-burnout-input">6.14</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-ehe-burnout-input"></span>
 <img src="figures/06-exr-ehe-burnout-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
-Abbildung 6.12: Jamovi Eingabe.
+Abbildung 6.14: Jamovi Eingabe.
 </p>
 </div>
-<p>Dies produziert das Analyseergebnis in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-ehe-burnout-output">6.13</a>.</p>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-ehe-burnout-output">6.15</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-ehe-burnout-output"></span>
 <img src="figures/06-exr-ehe-burnout-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
-Abbildung 6.13: Jamovi Ausgabe.
+Abbildung 6.15: Jamovi Ausgabe.
 </p>
 </div>
-<p>Damit können und beide Teilfragen beantwortet werden.</p>
+<p>Damit können die Teilfragen beantwortet werden.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Aus der Stichprobenbeschreibung kann entnommen werden, dass <span class="math inline">\(51\)</span> unverheiratete und <span class="math inline">\(61\)</span> verheiratete Ärztinnen den Fragebogen abgeschlossen haben.</li>
 <li>Die unverheirateten Ärztinnen <span class="math inline">\(M = 10.99\)</span> scheiden durchschnittlich höher ab als die verheirateten Ärztinnen <span class="math inline">\(M = 10.15\)</span>. Dieser Befund beschränkt sich ohne statistischen Test auf die Stichprobe. Deshalb wurde darin das Wort signifikant nicht verwendet.</li>

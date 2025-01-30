@@ -28,7 +28,7 @@ bookdown::gitbook:
     info: true
   highlight: tango
   split_by: chapter
-# 
+
 # bookdown::pdf_book:
 #   includes:
 #     in_header:
