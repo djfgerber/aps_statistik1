@@ -279,6 +279,7 @@ Es kann beobachtet werden, dass, wenn es keine Erwartungswertdifferenz gibt, die
 ```{r exm-breakup-hist-pval-reja, fig.cap="TODO"}
 exm_breakup$plot_hist_curve_pval_reja
 ```
+
 <!-- Discuss: warum ist p-Wert nur rechts? Es hat keine Beobachtungen kleiner als -0.237. -->
 
 Ebenfalls kann erneut der p-Wert berechnet werden. Dieser entspricht hier allen ER-Mittelwertdifferenzen, welche _extremer_ als die beobachtete Mittelwertdifferenz $`r round(exm_breakup$x_mean,2)`$ sind. Da die Hypothesenstellung hier zweiseitig ist, bedeutet extremer hier wieder grösser als $`r round(exm_breakup$x_mean,2)`$ oder kleiner als $`r round(-exm_breakup$x_mean,2)`$. Der $p$-Wert entspricht dem Anteil der roten Fläche in Abbildung \@ref(fig:exm-breakup-hist-pval-reja) rechts an der Gesamtfläche und beträgt $`r round(exm_breakup$p_value_emp,3)`$.
@@ -382,7 +383,7 @@ Diese Formel entpricht dem `Cohens d` für den Zweistichproben-$t$-Test in `Jamo
 - [Bei **Hedges $g$** (Symbol $g$) handelt es sich um eine um einen Faktor korrigierte Version von Cohens $d$ für den Zweistichproben-$t$-Test.]{.customdef #customdef-hedges-g} 
 $$g = \left(1-\frac{3}{4(n_1+n_2)-9}\right)d$$
 Hedges $g$ ist genauer als Cohens $d$ bei kleinen Stichprobengrössen und gleich wie Cohens $d$ für grosse Stichproben. Es kann daher immer Hedges $g$ verwendet werden. Diese Formel wird für den Zweistichproben-$t$-Test verwendet und ist besser geeignet als $d$ oben - ein Unterschied ist jedoch nur bei kleinen Stichproben ersichtlich. Hedges $g$ wird in `Jamovi` nicht standardmässig ausgegeben und muss händisch berechnet werden.
-- [Bei **Cohens $d$ für den Welch-Test** (Symbol $d$) wird die Mittelwertdifferenz durch die mittlere Standardabweichungen geteilt.]{.customdef #customdef-cohens-d} 
+- [Bei **Cohens $d$ für den Welch-Test** (Symbol $d$) wird die Mittelwertdifferenz durch die mittlere Standardabweichungen geteilt.]{.customdef #customdef-welch-cohens-d} 
 $$d = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{s_1^2+s_2^2}{2}}}$$
 Diese Formel entpricht dem `Cohens d` für den Welch-Test in `Jamovi`.
 - [**Glass $\Delta$** (gr. delta, Symbol $\Delta$) wir nur bei Experimenten verwendet. Dabei wird die Mittelwertdifferenz durch die Standardabweichung der Kontrollgruppe dividiert, weil angenommen wird, dass die Kontrollgruppe repräsentativer für die Popoulation ist.]{.customdef #customdef-glass-delta}

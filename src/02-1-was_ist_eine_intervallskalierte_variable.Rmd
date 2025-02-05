@@ -308,3 +308,95 @@ c. Die Wartezeiten wurden einmal in Minuten und einmal in Stunden abgespeichtert
 d. TODO.
 e. TODO: Zentraler Wert hier nicht identifiziertbar, streuung auch nicht.
 :::
+
+## Test  {#intervallskaliertes-merkmal-test}
+
+::: {.exercise}
+<!-- 
+Ziel: 
+- Intervallskaliertes Merkmal
+-->
+Welche der folgenden Merkmalen sind mindestens intervallskaliert?
+
+a) Verkaufspreise einer Kunstauktion.
+b) Eine Person stimmt ja, nein oder enthält sich bei einer Abstimmung.
+c) Beobachtungen des Intelligenzquotienten.
+d) Reaktionszeit.
+:::
+
+:::{.solution}
+a) Ja
+b) Nein
+c) Ja
+d) Ja
+:::
+
+::: {.exercise}
+<!-- 
+Ziel: 
+- Mittelwerte Theorie
+-->
+Welche der folgenden Aussagen sind wahr, welche falsch?
+
+a) Der Median ist immer kleiner als das arithmetische Mittel.
+b) Das arithmetische Mittel ist anfälliger für Messfehler als der Median.
+:::
+
+:::{.solution}
+a) Falsch
+b) Richtig, siehe Übung \@ref(exr:theorie-mdn-mean)
+:::
+
+::: {.exercise}
+<!-- 
+Ziel: 
+- Mittelwerte mit Zahlen
+-->
+Von einem intervallskalierten Merkmal wurden folgende fünf Beobachtungen gemacht: $12, 23, 15, 12, 7$. Welche der folgenden Aussagen sind wahr, welche falsch?
+
+a) Der Median liegt bei $15$.
+b) Der Modus ist $12$.
+c) Das arithmetische Mittel ist kleiner als der Median.
+d) $\sum_{i = 1}^n x_i$ entspricht der Summe der Beobachtungen, also $69$.
+:::
+
+:::{.solution}
+a) Falsch
+b) Richtig
+c) Falsch
+d) Richtig
+:::
+
+::: {.exercise}
+<!-- 
+Ziel: 
+- Mittelwerte mit Jamovi
+-->
+```{r exr-autos-haushalt}
+gen_exr_autos_haushalt <- function() {
+  set.seed(1298)
+  file_name <- '02-exr-autos-haushalt.sav'
+  tab <- tibble(anzahl_auto = rpois(92,1)) %>%
+    write_sav(file_name)
+  return(mget(ls()))
+}
+exr_autos_haushalt <- gen_exr_autos_haushalt()
+```
+
+Es wird beobachtet wie viele Autos ein Haushalt hat. Die Daten sind in `r inline_code(exr_autos_haushalt$file_name)` abgelegt. Welche der folgenden Aussagen sind wahr, welche falsch?
+
+a) Die durchschnittliche Anzahl Autos pro Haushalt liegt bei $M=0.87$.
+b) Der Modus liegt bei $1$.
+c) Der Median liegt bei $M=1$.
+d) Es wurden $N=92$ Personen beobachtet.
+:::
+
+:::{.solution}
+a) Richtig
+b) Falsch, siehe `Modalwert`.
+c) Falsch, richtig wäre $Mdn=1$.
+d) Falsch, es wurden Haushalte beobachtet nicht Personen.
+:::
+
+
+

@@ -117,6 +117,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.3" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#variabilitaet"><i class="fa fa-check"></i><b>2.2.3</b> Variabilität</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskaliertes-merkmal-uebungen"><i class="fa fa-check"></i><b>2.3</b> Übungen</a></li>
+<li class="chapter" data-level="2.4" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskaliertes-merkmal-test"><i class="fa fa-check"></i><b>2.4</b> Test</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html"><i class="fa fa-check"></i><b>3</b> Stichprobenziehung</a>
 <ul>
@@ -421,6 +422,109 @@ Abbildung 2.8: Histogramme.
 <li>Die Wartezeiten wurden einmal in Minuten und einmal in Stunden abgespeichtert. Die resultierenden Histogramme sind deshalb genau identisch bis auf die Werte der horizontalen Achse, welche von 0 bis 0.6 Stunden und von 0 bis 40 Minuten reicht. Im Vergleich zu den Histogrammen des IQ und der Aufmerksamkeit kann für die Wartezeit und eine asymetrische Verteilung beobachtet werden. Kurze Wartezeiten werden demnach häufiger beobachtet als längere Wartezeiten. Die meisten Wartezeiten liegen unter 10 Minuten, sehr selten kommt es zu Wartezeiten über 20 Minuten. Die Kennzahlen für die Wartezeit in Stunden können aus den Kennzahlen der Wartezeit in Stunden hergeleitet werden indem die Werte durch <span class="math inline">\(60\)</span> geteilt werden. Es reicht deshalb die Kennzahlen für die Wartezeit in Minuten zu betrachten. Die durchscnittliche Wartezeit liegt bei <span class="math inline">\(M=5.07, Mdn = 3.97\)</span> Minuten. Der Modalwert ist wiederum nicht interpretierbar aus demselben Grund wie oben. Der Median bedeutet, dass <span class="math inline">\(50\%\)</span> der Wartezeiten kleiner und <span class="math inline">\(50\%\)</span> der Wartezeiten grösser waren als <span class="math inline">\(3.97\)</span> Minuten. Das arithmetische Mittel ist höher als der Median. Die einigen wenigen Beobachtungen mit sehr langen Wartezeiten haben also das arithmetische Mittel im Vergleich zum Median stärker beeinflusst.</li>
 <li>TODO.</li>
 <li>TODO: Zentraler Wert hier nicht identifiziertbar, streuung auch nicht.</li>
+</ol>
+</details>
+</div>
+</div>
+<div id="intervallskaliertes-merkmal-test" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Test<a href="intervallskalierte-merkmale.html#intervallskaliertes-merkmal-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-8" class="exercise"><strong>Übung 2.6  </strong></span></p>
+<!-- 
+Ziel: 
+- Intervallskaliertes Merkmal
+-->
+<p>Welche der folgenden Merkmalen sind mindestens intervallskaliert?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Verkaufspreise einer Kunstauktion.</li>
+<li>Eine Person stimmt ja, nein oder enthält sich bei einer Abstimmung.</li>
+<li>Beobachtungen des Intelligenzquotienten.</li>
+<li>Reaktionszeit.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-9" class="solution"><em>Lösung</em>. </span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Ja</li>
+<li>Nein</li>
+<li>Ja</li>
+<li>Ja</li>
+</ol>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-10" class="exercise"><strong>Übung 2.7  </strong></span></p>
+<!-- 
+Ziel: 
+- Mittelwerte Theorie
+-->
+<p>Welche der folgenden Aussagen sind wahr, welche falsch?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Der Median ist immer kleiner als das arithmetische Mittel.</li>
+<li>Das arithmetische Mittel ist anfälliger für Messfehler als der Median.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-11" class="solution"><em>Lösung</em>. </span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Falsch</li>
+<li>Richtig, siehe Übung <a href="intervallskalierte-merkmale.html#exr:theorie-mdn-mean">2.3</a></li>
+</ol>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-12" class="exercise"><strong>Übung 2.8  </strong></span></p>
+<!-- 
+Ziel: 
+- Mittelwerte mit Zahlen
+-->
+<p>Von einem intervallskalierten Merkmal wurden folgende fünf Beobachtungen gemacht: <span class="math inline">\(12, 23, 15, 12, 7\)</span>. Welche der folgenden Aussagen sind wahr, welche falsch?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Der Median liegt bei <span class="math inline">\(15\)</span>.</li>
+<li>Der Modus ist <span class="math inline">\(12\)</span>.</li>
+<li>Das arithmetische Mittel ist kleiner als der Median.</li>
+<li><span class="math inline">\(\sum_{i = 1}^n x_i\)</span> entspricht der Summe der Beobachtungen, also <span class="math inline">\(69\)</span>.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-13" class="solution"><em>Lösung</em>. </span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Falsch</li>
+<li>Richtig</li>
+<li>Falsch</li>
+<li>Richtig</li>
+</ol>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-14" class="exercise"><strong>Übung 2.9  </strong></span></p>
+<!-- 
+Ziel: 
+- Mittelwerte mit Jamovi
+-->
+<p>Es wird beobachtet wie viele Autos ein Haushalt hat. Die Daten sind in <code>02-exr-autos-haushalt.sav</code> abgelegt. Welche der folgenden Aussagen sind wahr, welche falsch?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Die durchschnittliche Anzahl Autos pro Haushalt liegt bei <span class="math inline">\(M=0.87\)</span>.</li>
+<li>Der Modus liegt bei <span class="math inline">\(1\)</span>.</li>
+<li>Der Median liegt bei <span class="math inline">\(M=1\)</span>.</li>
+<li>Es wurden <span class="math inline">\(N=92\)</span> Personen beobachtet.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-15" class="solution"><em>Lösung</em>. </span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Richtig</li>
+<li>Falsch, siehe <code>Modalwert</code>.</li>
+<li>Falsch, richtig wäre <span class="math inline">\(Mdn=1\)</span>.</li>
+<li>Falsch, es wurden Haushalte beobachtet nicht Personen.</li>
 </ol>
 </details>
 </div>

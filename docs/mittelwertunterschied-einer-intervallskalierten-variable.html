@@ -117,6 +117,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.3" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#variabilitaet"><i class="fa fa-check"></i><b>2.2.3</b> Variabilität</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskaliertes-merkmal-uebungen"><i class="fa fa-check"></i><b>2.3</b> Übungen</a></li>
+<li class="chapter" data-level="2.4" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskaliertes-merkmal-test"><i class="fa fa-check"></i><b>2.4</b> Test</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html"><i class="fa fa-check"></i><b>3</b> Stichprobenziehung</a>
 <ul>
@@ -209,8 +210,8 @@ Abbildung 6.2: Verteilung simulierter ER-Mittelwertdifferenzen bei wiederholten 
 <p>Es kann beobachtet werden, dass, wenn es keine Erwartungswertdifferenz gibt, die Mittelwertdifferenzen der Stichproben am häufigsten bei <span class="math inline">\(0\)</span> liegen und mit zunehmender Entfernung von <span class="math inline">\(0\)</span> unwahrscheinlicher werden. Dies kann wieder formalisiert werden indem die <span class="math inline">\(5\%\)</span> unwahrscheinlichsten Werte (<span class="math inline">\(2.5\%\)</span> links und <span class="math inline">\(2.5\%\)</span> rechts) zum Ablehnungsbereich erklärt werden und entspricht der roten Fläche in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-hist-pval-reja">6.3</a> links. Die tatsächlich beobachtete Mittelwertdifferenz (schwarze Linie) liegt im Ablehnungsbereich. Dies bedeutet dass sich die Erwartungswertdifferenz bei Signifikanzniveau <span class="math inline">\(5\%\)</span> signifikant von <span class="math inline">\(0\)</span> unterscheidet. Dies ist äquivalent zu der Aussage, dass sich die ER-Erwartungswerte der Männer und Frauen signifikant unterscheidet.</p>
 <pre><code>## Warning: Removed 2 rows containing non-finite outside the scale range
 ## (`stat_bin()`).</code></pre>
-<pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale
-## range (`geom_bar()`).</code></pre>
+<pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale range
+## (`geom_bar()`).</code></pre>
 <div class="figure"><span style="display:block;" id="fig:exm-breakup-hist-pval-reja"></span>
 <img src="aps_statistik1_files/figure-html/exm-breakup-hist-pval-reja-1.png" alt="TODO" width="672" />
 <p class="caption">
@@ -260,8 +261,8 @@ t = \frac{\bar{x_1}-\bar{x_2} - \omega_0}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n
 <p><span id="customdef-welch-test" class="customdef">Freiheitsgraden und ein damit durchgeführter Test wird <strong>Welch-Test</strong> genannt.</span> Sie nähert die Verteilung der Mittelwertdifferenzen trotz unterschiedlicher Gruppenvarianzen gut an, siehe grüne Linie in Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-emotional-stroop-hist">6.4</a>.</p>
 <p>Der Zweistichproben-<span class="math inline">\(t\)</span>-Test und der Welch-Test sind also zwei Testvarianten, um zu testen, ob der Erwartungswert in zwei Gruppen unterschiedlich ist. Dabei hat sich gezeigt, dass der Welch-Test die wahre Verteilung besser annähert als der Zweistichproben-<span class="math inline">\(t\)</span>-Test, wenn die beiden Gruppen unterschiedliche Varianzen aufweisen, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-emotional-stroop-hist">6.4</a>. Wenn beide Varianzen ungefähr gleich sind, so geben beide Tests jedoch ähnlich gute Resultate, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-hist">6.2</a>. Es wird deshalb empfohlen immer den Welch-Test durchzuführen <span class="citation">(<a href="#ref-zimmerman2004">Zimmerman 2004</a>)</span>. Ein Vergleich der Abbildungen <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-breakup-hist-pval-reja">6.3</a> und <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:exm-emotional-stroop-hist-pval-reja">6.5</a> zeigt auch, dass der Unterschied von Ablehnungsbereich und <span class="math inline">\(p\)</span>-Wert beim im Falle der ähnlichen Varianzen gering und im Falle der unterschiedlichen Varianzen augenscheinlich wird.</p>
 <!-- Discuss: klären, Welch-Test praktisch relevant, zweistichproben-t-test historisch und als referenz wichtig. -->
-<pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale
-## range (`geom_bar()`).</code></pre>
+<pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale range
+## (`geom_bar()`).</code></pre>
 <div class="figure"><span style="display:block;" id="fig:exm-emotional-stroop-hist-pval-reja"></span>
 <img src="aps_statistik1_files/figure-html/exm-emotional-stroop-hist-pval-reja-1.png" alt="TODO" width="672" />
 <p class="caption">
@@ -284,7 +285,7 @@ Diese Formel entpricht dem <code>Cohens d</code> für den Zweistichproben-<span 
 <li><span id="customdef-hedges-g" class="customdef">Bei <strong>Hedges <span class="math inline">\(g\)</span></strong> (Symbol <span class="math inline">\(g\)</span>) handelt es sich um eine um einen Faktor korrigierte Version von Cohens <span class="math inline">\(d\)</span> für den Zweistichproben-<span class="math inline">\(t\)</span>-Test.</span>
 <span class="math display">\[g = \left(1-\frac{3}{4(n_1+n_2)-9}\right)d\]</span>
 Hedges <span class="math inline">\(g\)</span> ist genauer als Cohens <span class="math inline">\(d\)</span> bei kleinen Stichprobengrössen und gleich wie Cohens <span class="math inline">\(d\)</span> für grosse Stichproben. Es kann daher immer Hedges <span class="math inline">\(g\)</span> verwendet werden. Diese Formel wird für den Zweistichproben-<span class="math inline">\(t\)</span>-Test verwendet und ist besser geeignet als <span class="math inline">\(d\)</span> oben - ein Unterschied ist jedoch nur bei kleinen Stichproben ersichtlich. Hedges <span class="math inline">\(g\)</span> wird in <code>Jamovi</code> nicht standardmässig ausgegeben und muss händisch berechnet werden.</li>
-<li><span id="customdef-cohens-d" class="customdef">Bei <strong>Cohens <span class="math inline">\(d\)</span> für den Welch-Test</strong> (Symbol <span class="math inline">\(d\)</span>) wird die Mittelwertdifferenz durch die mittlere Standardabweichungen geteilt.</span>
+<li><span id="customdef-welch-cohens-d" class="customdef">Bei <strong>Cohens <span class="math inline">\(d\)</span> für den Welch-Test</strong> (Symbol <span class="math inline">\(d\)</span>) wird die Mittelwertdifferenz durch die mittlere Standardabweichungen geteilt.</span>
 <span class="math display">\[d = \frac{\bar{x_1}-\bar{x_2}}{\sqrt{\frac{s_1^2+s_2^2}{2}}}\]</span>
 Diese Formel entpricht dem <code>Cohens d</code> für den Welch-Test in <code>Jamovi</code>.</li>
 <li><span id="customdef-glass-delta" class="customdef"><strong>Glass <span class="math inline">\(\Delta\)</span></strong> (gr. delta, Symbol <span class="math inline">\(\Delta\)</span>) wir nur bei Experimenten verwendet. Dabei wird die Mittelwertdifferenz durch die Standardabweichung der Kontrollgruppe dividiert, weil angenommen wird, dass die Kontrollgruppe repräsentativer für die Popoulation ist.</span>
@@ -304,7 +305,7 @@ Glass <span class="math inline">\(\Delta\)</span> wird in <code>Jamovi</code> ni
 <!-- Discuss: Interpretation. -->
 <div class="caution">
 <div class="remark">
-<p><span id="unlabeled-div-24" class="remark"><em>Hinweis</em>. </span></p>
+<p><span id="unlabeled-div-32" class="remark"><em>Hinweis</em>. </span></p>
 <ul>
 <li>Die Namensgebung von diesen Berechnungsarten und insbesondere, was unter Cohens <span class="math inline">\(d\)</span> verstanden wird variiert beträchtlich und es empfiehlt sich immer die genaue Berechnungsart zu überprüfen.
 <!-- Discuss: Entwirrung Enzmann 2015 --></li>
@@ -339,7 +340,7 @@ Inspiriert von <span class="citation">Bandura, Ross, and Ross (<a href="#ref-ban
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-25" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-bobo2groups-input">6.6</a>.</p>
+<p><span id="unlabeled-div-33" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-bobo2groups-input">6.6</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-bobo2groups-input"></span>
 <img src="figures/06-exr-bobo2groups-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
@@ -377,7 +378,7 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-26" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-gruppenpuzzle-input">6.8</a>.</p>
+<p><span id="unlabeled-div-34" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-gruppenpuzzle-input">6.8</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-gruppenpuzzle-input"></span>
 <img src="figures/06-exr-gruppenpuzzle-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
@@ -415,7 +416,7 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-27" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-music-memory-input">6.10</a>.</p>
+<p><span id="unlabeled-div-35" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-music-memory-input">6.10</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-music-memory-input"></span>
 <img src="figures/06-exr-music-memory-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
@@ -453,7 +454,7 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-28" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-hypnose-input">6.12</a>.</p>
+<p><span id="unlabeled-div-36" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-hypnose-input">6.12</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-hypnose-input"></span>
 <img src="figures/06-exr-hypnose-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
@@ -492,7 +493,7 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-29" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-ehe-burnout-input">6.14</a>.</p>
+<p><span id="unlabeled-div-37" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="mittelwertunterschied-einer-intervallskalierten-variable.html#fig:sol-ehe-burnout-input">6.14</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-ehe-burnout-input"></span>
 <img src="figures/06-exr-ehe-burnout-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
@@ -526,7 +527,7 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-30" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
+<p><span id="unlabeled-div-38" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
 </details>
 </div>
 
