@@ -199,7 +199,12 @@ Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Le
 <div id="verteilung" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Verteilung<a href="intervallskalierte-merkmale.html#verteilung" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von <span class="math inline">\(0.2\)</span>°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein <strong>Histogramm</strong> genannt.</p>
-<p><img src="aps_statistik1_files/figure-html/enten_histogramm-1.png" width="672" /></p>
+<div class="figure"><span style="display:block;" id="fig:exm-ducktemp-histogramm"></span>
+<img src="aps_statistik1_files/figure-html/exm-ducktemp-histogramm-1.png" alt="Histogramm Körpertemperatur Enten." width="672" />
+<p class="caption">
+Abbildung 2.1: Histogramm Körpertemperatur Enten.
+</p>
+</div>
 <p>Aufgrund dieser Darstellung kann die Veterinärin nun sehen, wie häufig welche Körpertemperaturen sind. Dies wird die <strong>Verteilung</strong> des Merkmals genannt. Sie bemerkt zum Beispiel, dass Beobachtungen der Körpertemperatur rund um 41.6°C am häufigsten sind und tiefere und höhere Temperaturen seltener vorkommen. Auf einen Blick sieht sie auch, dass die Temperatur aller Enten zwischen 41°C und 42.2°C war.</p>
 <p>Die Verteilung eines Merkmals zu kennen ist hilfreich, jedoch in vielen Situationen (z. B. in der Kommunikation) noch zu komplex. Einfacher ist es die Komplexität einer Verteilung auf zwei Faktoren herunterzubrechen: Die Zentralität und die Variabilität eines Merkmals.</p>
 </div>
@@ -254,8 +259,10 @@ Ziel:
 -->
 <p>Mit den Daten <code>02-exm-ducktemp.sav</code> aus Beispiel <a href="intervallskalierte-merkmale.html#exm:ducktemp">2.3</a>:</p>
 <ol style="list-style-type: lower-alpha">
-<li>Erstellen Sie selbst ein Histogramm mit Jamovi und begründen Sie, weshalb es nicht gleich aussieht wie das Histogramm oben.</li>
-<li>Berechnen Sie zusätzlich Modus, Median, arithmetisches Mittel, IQR, <span class="math inline">\(25\%\)</span>- und <span class="math inline">\(75\%\)</span>-Perzentil, sowie <span class="math inline">\(2.5\%\)</span>- und <span class="math inline">\(97.5\%\)</span>-Perzentil, sowie die Spannweite und die Standardabweichung der Körpertemperaturen der Enten mit Jamovi.</li>
+<li>Erstellen Sie selbst ein Histogramm mit Jamovi und begründen Sie, weshalb es nicht gleich aussieht wie das Histogramm in Abbildung <a href="intervallskalierte-merkmale.html#fig:exm-ducktemp-histogramm">2.1</a>.</li>
+<li>Berechnen Sie Modus, Median und arithmetisches Mittel der Körpertemperaturen der Enten mit <code>Jamovi</code> und berichten Sie diese mit der angemessenen Symbolik.</li>
+<li>(<span class="math inline">\(\star\)</span>) Reproduzieren Sie das Histogramm in Abbildung <a href="intervallskalierte-merkmale.html#fig:exm-ducktemp-histogramm">2.1</a> genau mithilfe der Histogramm-Funktion des <code>Jamovi</code>-Moduls <code>JJStatsPlot</code> <span class="citation">(<a href="#ref-jjstatsplot2025">Balci 2025</a>)</span>.</li>
+<li>Berechnen Sie IQR, <span class="math inline">\(25\%\)</span>- und <span class="math inline">\(75\%\)</span>-Perzentil, sowie <span class="math inline">\(2.5\%\)</span>- und <span class="math inline">\(97.5\%\)</span>-Perzentil, sowie die Spannweite und die Standardabweichung der Körpertemperaturen der Enten mit <code>Jamovi</code> und berichten Sie diese mit der angemessenen Symbolik.</li>
 </ol>
 </div>
 <div class="solution">
@@ -265,21 +272,30 @@ Ziel:
 <div class="figure"><span style="display:block;" id="fig:enten-hist-mean-sd1"></span>
 <img src="figures/Enten_n40_instr_histogramm.jpg" alt="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur." width="50%" /><img src="figures/Enten_n40.png" alt="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur." width="50%" />
 <p class="caption">
-Abbildung 2.1: Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.
+Abbildung 2.2: Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.
 </p>
 </div>
 <ol style="list-style-type: lower-alpha">
-<li>Das Histogramm, siehe Abbildung <a href="intervallskalierte-merkmale.html#fig:enten-hist-mean-sd1">2.1</a> sieht nicht gleich aus, da Jamovi die Temperaturabschnitte kürzer gewählt hat nämlich bei 0.125°C statt 0.2°C wie oben im Text. In Jamovi gibt es aktuell keine Möglichkeit die Abschnittsweite anzupassen. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite.</li>
+<li>Das Histogramm, siehe Abbildung <a href="intervallskalierte-merkmale.html#fig:enten-hist-mean-sd1">2.2</a> sieht nicht gleich aus, da Jamovi die Temperaturabschnitte mit Korbbreite <span class="math inline">\(0.125\)</span>°C kürzer gewählt hat als die in Abbildung Abbildung <a href="intervallskalierte-merkmale.html#fig:exm-ducktemp-histogramm">2.1</a> dargestellte Korbbreite von <span class="math inline">\(0.2\)</span>°C. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite.</li>
 </ol>
 <div class="figure"><span style="display:block;" id="fig:enten-hist-mean-sd2"></span>
 <img src="figures/02-exr-enten-hist-mean-sd-input.jpg" alt="Links: Jamovi-Anleitung zur Berechnung der gewünschten Parameter; rechts: Parameterwerte." width="50%" /><img src="figures/02-exr-enten-hist-mean-sd-output.jpg" alt="Links: Jamovi-Anleitung zur Berechnung der gewünschten Parameter; rechts: Parameterwerte." width="50%" />
 <p class="caption">
-Abbildung 2.2: Links: Jamovi-Anleitung zur Berechnung der gewünschten Parameter; rechts: Parameterwerte.
+Abbildung 2.3: Links: Jamovi-Anleitung zur Berechnung der gewünschten Parameter; rechts: Parameterwerte.
 </p>
 </div>
 <ol start="2" style="list-style-type: lower-alpha">
-<li>Eine Anleitung zur Berechnung in Jamovi sowie die berechneten Werte können in Abbildung <a href="intervallskalierte-merkmale.html#fig:enten-hist-mean-sd2">2.2</a> abgelesen werden.</li>
+<li>Eine Anleitung zur Berechnung in <code>Jamovi</code> sowie die berechneten Werte können in Abbildung <a href="intervallskalierte-merkmale.html#fig:enten-hist-mean-sd2">2.3</a> abgelesen und sind Modus <span class="math inline">\(= 41.5\)</span>°C, Median <span class="math inline">\(Mdn = 41.7\)</span> und arithmetisches Mittel <span class="math inline">\(M=41.7\)</span>.</li>
+<li>Im Modul <code>JJStatsPlot</code> kann die Korbgrösse mit <code>Change Bin Width</code> angepasst werden. In Abbildung Abbildung <a href="intervallskalierte-merkmale.html#fig:exm-ducktemp-histogramm">2.1</a> kann beobachtet werden, dass die Balken und also auch die Körbe <span class="math inline">\(0.2\)</span> Einheiten breit sind. Dies wird so eingestellt, siehe Abbildung <a href="intervallskalierte-merkmale.html#fig:enten-hist-binwidth">2.4</a>.</li>
 </ol>
+<div class="figure"><span style="display:block;" id="fig:enten-hist-binwidth"></span>
+<img src="figures/02-exr-enten-hist-binwidth-jmv-input.jpg" alt="Links: Jamovi-Anleitung zur Berechnung des gewünschten Histogramms; rechts: Jamovi-Ausgabe." width="50%" /><img src="figures/02-exr-enten-hist-binwidth-jmv-output.jpg" alt="Links: Jamovi-Anleitung zur Berechnung des gewünschten Histogramms; rechts: Jamovi-Ausgabe." width="50%" />
+<p class="caption">
+Abbildung 2.4: Links: Jamovi-Anleitung zur Berechnung des gewünschten Histogramms; rechts: Jamovi-Ausgabe.
+</p>
+</div>
+<p>Es entsteht dabei glücklicherweise genau die gewünschte Darstellung. Es wäre auch möglich gewesen, dass die Körbe auf der <span class="math inline">\(x\)</span>-Achse verschoben sind, zum Beispiel ein Korb <span class="math inline">\(41.2\)</span> bis <span class="math inline">\(41.4\)</span>. Diese Verschiebung könnte nicht mit <code>JJStatsPlot</code> behoben werden und müsste mit einer anderen Statistiksoftware bearbeitet werden.
+(d) Eine Anleitung zur Berechnung in <code>Jamovi</code> sowie die berechneten Werte können in Abbildung <a href="intervallskalierte-merkmale.html#fig:enten-hist-mean-sd2">2.3</a> abgelesen und sind Interquartilabstand <span class="math inline">\(IQR= 0.3\)</span>°C, <span class="math inline">\(25\%\)</span>-Perzentil <span class="math inline">\(=41.5\)</span>, <span class="math inline">\(75\%\)</span>-Perzentil <span class="math inline">\(=41.8\)</span>, <span class="math inline">\(2.5\%\)</span>-Perzentil <span class="math inline">\(=41.3\)</span>, <span class="math inline">\(97.5\%\)</span>-Perzentil <span class="math inline">\(= 42.1\)</span>, Spannweite <span class="math inline">\(R=1.11\)</span> und die Standardabweichung <span class="math inline">\(SD = 0.233\)</span>.</p>
 </details>
 </div>
 <div class="exercise">
@@ -323,24 +339,24 @@ Ziel:
 Um den Median zu berechnen, werden die Werte zuerst aufsteigend sortiert <span class="math inline">\(18, 19, 20, 21, 22\)</span>. Der Wert, welcher die Werte in eine grössere und eine kleinere Hälfte teilt, ist hier <span class="math inline">\(20\)</span>, was dem Median entspricht.</li>
 <li>Die Beobachtungen sind jetzt <span class="math inline">\(x_1 = 81, x_2 = 21, x_3 = 20, x_4 = 19, x_5=22\)</span>. Analog wie in (a) kann demnach das arithmetische Mittel als <span class="math inline">\(\bar{x} = 32.6\)</span> bestimmt werden. Die aufsteigend sortierten Beobachtungen sind nun <span class="math inline">\(19, 20, 21, 22, 81\)</span>. Der Median ist also <span class="math inline">\(21\)</span>.</li>
 </ol>
-<p>Für c und d wird der Datensatz bei <code>Jamovi</code> eingegeben, siehe Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-theorie-mdn-mean-data">2.3</a>, und die Analyseparameter werden gesetzt, siehe Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-theorie-mdn-mean-input">2.4</a>.</p>
+<p>Für c und d wird der Datensatz bei <code>Jamovi</code> eingegeben, siehe Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-theorie-mdn-mean-data">2.5</a>, und die Analyseparameter werden gesetzt, siehe Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-theorie-mdn-mean-input">2.6</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-theorie-mdn-mean-data"></span>
 <img src="figures/02-exr-theorie-mdn-mean-data-input.jpg" alt="Jamovi Dateneingabe." width="33%" /><img src="figures/02-exr-theorie-mdn-mean-data-mod.jpg" alt="Jamovi Dateneingabe." width="33%" /><img src="figures/02-exr-theorie-mdn-mean-data-clean.jpg" alt="Jamovi Dateneingabe." width="33%" />
 <p class="caption">
-Abbildung 2.3: Jamovi Dateneingabe.
+Abbildung 2.5: Jamovi Dateneingabe.
 </p>
 </div>
 <div class="figure"><span style="display:block;" id="fig:sol-theorie-mdn-mean-input"></span>
 <img src="figures/02-exr-theorie-mdn-mean-jmv-input.jpg" alt="Jamovi setzen der Analyseparameter." width="100%" />
 <p class="caption">
-Abbildung 2.4: Jamovi setzen der Analyseparameter.
+Abbildung 2.6: Jamovi setzen der Analyseparameter.
 </p>
 </div>
-<p>Dies produziert das Analyseergebnis in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-theorie-mdn-mean-output">2.5</a>.</p>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-theorie-mdn-mean-output">2.7</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-theorie-mdn-mean-output"></span>
 <img src="figures/02-exr-theorie-mdn-mean-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
-Abbildung 2.5: Jamovi Ausgabe.
+Abbildung 2.7: Jamovi Ausgabe.
 </p>
 </div>
 <p>Damit können die beiden nächsten Teilfragen beantwortet werden.</p>
@@ -352,7 +368,70 @@ Abbildung 2.5: Jamovi Ausgabe.
 </details>
 </div>
 <div class="exercise">
-<p><span id="exr:temptag-poiane" class="exercise"><strong>Übung 2.4  </strong></span></p>
+<p><span id="exr:theorie-variabilitaet" class="exercise"><strong>Übung 2.4  </strong></span></p>
+<!-- 
+Ziel: 
+- Computeranweisung mit Verfahrensberechnung verknüpfen.
+- Vor/Nachteile Mean/median kennen.
+-->
+<p>In einem psychologischen Test machen <span class="math inline">\(5\)</span> Probandinnen die Werte <span class="math inline">\(18, 21, 20, 19, 22\)</span>. Um mit einer Zahl zu sagen, wie stark die Testresultate streuen, wird die Variabilität berechnet.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Wie gross ist die Spannweite und die Standardabweichung dieser Werte? Rechnen Sie im Kopf oder mit einem Taschenrechner.</li>
+<li>Nehme an, der Testleiter hat den Wert der ersten Probandin falsch in seine Tabelle übertragen - statt <span class="math inline">\(18\)</span> hat er <span class="math inline">\(81\)</span> geschrieben. Wie gross ist die Spannweite und die Standardabweichung dieser Werte jetzt? Rechnen Sie im Kopf oder mit einem Taschenrechner.</li>
+<li>Gleich wie (a), aber führen Sie die Berechnungen aus indem die Zahlen manuell bei <code>Jamovi</code> eingegeben. Tipp: Die Messskala muss manuell auf kontinuierlich gestellt werden.</li>
+<li>Gleich wie (b), aber führen Sie die Berechnungen aus indem die Zahlen manuell bei <code>Jamovi</code> eingegeben.</li>
+<li>Vergewissern Sie sich, dass der Interquartilabstand in jedem Fall dem Abstand zwischen dem <span class="math inline">\(25\%\)</span> und dem <span class="math inline">\(75\%\)</span>-Perzentil entspricht. Vergewissern Sie sich zusätzlich, dass in jedem Fall der Median dem <span class="math inline">\(50\%\)</span>-Perzentil entspricht.</li>
+<li>Schliessen Sie aus dieser Übung auf das Verhalten der verschiedenen Variabilitätsmasse bei fehlerhaften Daten?</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-6" class="solution"><em>Lösung</em>. </span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Die Spannweite entspricht dem höchsten minus dem kleinsten beobachteten Wert, also <span class="math inline">\(R = 22- 18 = 4\)</span>. Wir haben hier <span class="math inline">\(n=5\)</span> Beobachtungen, nämlich <span class="math inline">\(x_1 = 18, x_2 = 21, x_3 = 20, x_4 = 19, x_5=22\)</span>. Wird dies in die Formel <a href="intervallskalierte-merkmale.html#eq:sd">(2.2)</a> eingesetzt, so gibt dies die Standardabweichung
+<span class="math display">\[\begin{align}
+    s &amp;= \sqrt{\frac{1}{n-1}\sum^n_{i=1} (x_i-\bar{x})^2} \\
+    &amp;= \sqrt{\frac{1}{n-1} \left( (x_1-\bar{x})^2+(x_2-\bar{x})^2+(x_3-\bar{x})^2+(x_4-\bar{x})^2+(x_5-\bar{x})^2\right)} \\
+    &amp;=  \sqrt{\frac{1}{5-1} \left( (18-20)^2+(21-20)^2+(20-20)^2+(19-20)^2+(22-20)^2\right)} \\
+    &amp;=     \sqrt{\frac{1}{4} \left( 4+1+0+1+4\right)}\\
+    &amp;=1.58.
+  \end{align}\]</span></li>
+<li>Wir haben hier <span class="math inline">\(n=5\)</span> neue Beobachtungen, nämlich <span class="math inline">\(x_1 = 81, x_2 = 21, x_3 = 20, x_4 = 19, x_5=22\)</span>. Die Spannweite entspricht dem höchsten minus dem kleinsten beobachteten Wert, also <span class="math inline">\(R = 81 - 19 = 62\)</span>. Wird dies in die Formel <a href="intervallskalierte-merkmale.html#eq:sd">(2.2)</a> eingesetzt, so gibt dies die Standardabweichung
+<span class="math display">\[\begin{align}
+    s &amp;= \sqrt{\frac{1}{n-1}\sum^n_{i=1} (x_i-\bar{x})^2} \\
+    &amp;= \sqrt{\frac{1}{n-1} \left( (x_1-\bar{x})^2+(x_2-\bar{x})^2+(x_3-\bar{x})^2+(x_4-\bar{x})^2+(x_5-\bar{x})^2\right)} \\
+    &amp;=  \sqrt{\frac{1}{5-1} \left( (81-32.6)^2+(21-32.6)^2+(20-32.6)^2+(19-32.6)^2+(22-32.6)^2\right)} \\
+    &amp;=     \sqrt{\frac{1}{4} \left( 2342.56+134.56+158.76+184.96+112.36\right)}\\
+    &amp;=27.08.
+  \end{align}\]</span>
+Je nach Rundungsverfahren können hier kleinere Werteunterschiede im Nachkommabereich resultieren.</li>
+</ol>
+<p>Für c und d wird der Datensatz bei <code>Jamovi</code> eingegeben. Die Variablen werden bearbeitet wie in <a href="intervallskalierte-merkmale.html#exr:theorie-mdn-mean">2.3</a> beschrieben. Die Analyseparameter werden gesetzt, siehe Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-theorie-variabilitaet-input">2.8</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-theorie-variabilitaet-input"></span>
+<img src="figures/02-exr-theorie-variabilitaet-jmv-input.jpg" alt="Jamovi setzen der Analyseparameter." width="100%" />
+<p class="caption">
+Abbildung 2.8: Jamovi setzen der Analyseparameter.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-theorie-variabilitaet-output">2.9</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-theorie-variabilitaet-output"></span>
+<img src="figures/02-exr-theorie-variabilitaet-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 2.9: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit können die beiden nächsten Teilfragen beantwortet werden.</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Tatsächlich ist die Spannweite gemäss Jamovi auch <span class="math inline">\(R=4\)</span> (siehe <code>Wertebereich</code>) und die Standardabweichung ist <span class="math inline">\(SD=1.58\)</span>.</li>
+<li>Tatsächlich ist die Spannweite gemäss Jamovi auch <span class="math inline">\(R=62\)</span> (siehe <code>Wertebereich</code>) und die Standardabweichung ist <span class="math inline">\(SD=27.08\)</span>.</li>
+<li>Tatsächlich ist der <span class="math inline">\(IQR = 2\)</span> in beiden Beispielen. Dies entspricht genau den Perzentildifferenzen <span class="math inline">\(21-19\)</span> für den original und <span class="math inline">\(22-20\)</span> für den fehlerhaften Datensatz. Dass zweimal genau derselbe Wert resultiert ist Zufall. In beiden Fällen entspricht der Median dem <span class="math inline">\(50\%\)</span>-Perzentil. Dies sollte immer der Fall sein, da sowohl der Median, wie auch das <span class="math inline">\(50\%\)</span>-Perzentil die Beobachtungen in eine höhere und eine tiefere Hälfte teilen.</li>
+<li>Diese Übung zeigt, dass die Standardabweichung und die Spannweite durch fehlerhafte Beobachtungen stark beeinflusst werden. Der Interquartilabstand ist hingegen relativ stabil, solange nicht viele Beobachtungen fehlerhaft sind.</li>
+</ol>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:temptag-poiane" class="exercise"><strong>Übung 2.5  </strong></span></p>
 <!-- 
 Ziel: 
 - Berechnung mit Jamovi festigen
@@ -364,11 +443,11 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-6" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
+<p><span id="unlabeled-div-7" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
 </details>
 </div>
 <div class="exercise">
-<p><span id="exr:diverse-distrib" class="exercise"><strong>Übung 2.5  </strong></span></p>
+<p><span id="exr:diverse-distrib" class="exercise"><strong>Übung 2.6  </strong></span></p>
 <!-- 
 Ziel: 
 - Berechnung mit Jamovi festigen
@@ -396,29 +475,29 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-7" class="solution"><em>Lösung</em>. </span></p>
+<p><span id="unlabeled-div-8" class="solution"><em>Lösung</em>. </span></p>
 <div class="figure"><span style="display:block;" id="fig:sol-diverse-distrib1"></span>
 <img src="figures/02-exr-diverse-distrib-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
-Abbildung 2.6: Jamovi Eingabe.
+Abbildung 2.10: Jamovi Eingabe.
 </p>
 </div>
 <div class="figure"><span style="display:block;" id="fig:sol-diverse-distrib2"></span>
 <img src="figures/02-exr-diverse-distrib-output.jpg" alt="Deskriptive Statistiken." width="100%" />
 <p class="caption">
-Abbildung 2.7: Deskriptive Statistiken.
+Abbildung 2.11: Deskriptive Statistiken.
 </p>
 </div>
 <div class="figure"><span style="display:block;" id="fig:sol-diverse-distrib3"></span>
 <img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-1.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-2.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-3.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-4.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-5.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-6.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-7.png" alt="Histogramme." width="33%" />
 <p class="caption">
-Abbildung 2.8: Histogramme.
+Abbildung 2.12: Histogramme.
 </p>
 </div>
-<p>Die Merkmale werden mit den Befehlen in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-diverse-distrib1">2.6</a> analysiert.</p>
+<p>Die Merkmale werden mit den Befehlen in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-diverse-distrib1">2.10</a> analysiert.</p>
 <ol style="list-style-type: lower-alpha">
-<li>Es gibt gemäss <a href="intervallskalierte-merkmale.html#fig:sol-diverse-distrib2">2.7</a> genau <span class="math inline">\(500\)</span> Studienteilnehmende (siehe <span class="math inline">\(N\)</span>).</li>
-<li>Die Histogramme für den IQ und die Aufgeschlossenheit weisen eine ähliche Form auf. Viele Beobachtungen sind um eine Mitte zentriert. Je weiter weg von der Mitte, desto seltener sind die Beobachtungen. Das Histogram des IQ zeigt, dass die Verteilung rund um 100 zentriert ist und ca von 60 bis 140 reicht. Je weiter entfernt von 100, desto weniger Beobachtungen wurden gemacht. Das Histogram der Aufgeschlossenheit stellt dar, dass diese rund um 4 zentriert ist mit Werten von 1 bis 7. Je weiter die Werte von 4 entfernt sind, desto weniger häufig sind die Beobachtungen. Der vom Histogram abgeleitete vorher genannte zentrale Wert entspricht ungefähr dem Mittelwert und dem Median für beide Merkmale. Für die Aufgeschlossenheit hat der Modalwert ebenfalls einen ähnlichen Wert. Der Modus für den IQ ist nicht belastbar, da die Fussnote besagt, dass mehrere Werte als Modus in Frage kommen. Eine genauere Durchsicht der IQ-Werte lässt folgern, dass aufgrund der vielen Nachkommastellen jeder IQ-Wert nur genau einmal vorkommt. Der angebene Modalwert des IQs entspricht also einfach einer zufälligen Beobachtung. Die Kennwerte für die Variabilität lassen ebenfalls auf Unterschiede zwischen den beiden Merkmalen schliessen. Die höheren Werte Standardabweichung, IQR und Wertebereich des IQ im Vergleich zur Aufgeschlossenheit legen nahe, dass die Streuung der Werte für den IQ viel grösser ist. Zum Beispiel ist eine durchschnittliche IQ-Beobachtung 15.5 IQ-Werte weg vom durchschnittlichen IQ und eine durchschnittliche Aufgeschlossenheits-Beobachtung nur 1.3 Aufgeschlossenheits-Werte weg von der duchschnittlichen Aufgeschlossenheit. Dies ist auf dem Histogramm zu erkennen, wenn die Skala der horizontalen Achse betrachtet wird. Für den IQ reicht diese von 50 bis 125 und für die Aufgeschlossenheit von 2 bis 6.</li>
+<li>Es gibt gemäss <a href="intervallskalierte-merkmale.html#fig:sol-diverse-distrib2">2.11</a> genau <span class="math inline">\(500\)</span> Studienteilnehmende (siehe <span class="math inline">\(N\)</span>).</li>
+<li>Die Histogramme für den IQ und die Aufgeschlossenheit weisen eine ähliche Form auf. Viele Beobachtungen sind um eine Mitte zentriert. Je weiter weg von der Mitte, desto seltener sind die Beobachtungen. Das Histogramm des IQ zeigt, dass die Verteilung rund um 100 zentriert ist und ca von 60 bis 140 reicht. Je weiter entfernt von 100, desto weniger Beobachtungen wurden gemacht. Das Histogramm der Aufgeschlossenheit stellt dar, dass diese rund um 4 zentriert ist mit Werten von 1 bis 7. Je weiter die Werte von 4 entfernt sind, desto weniger häufig sind die Beobachtungen. Der vom Histogramm abgeleitete vorher genannte zentrale Wert entspricht ungefähr dem Mittelwert und dem Median für beide Merkmale. Für die Aufgeschlossenheit hat der Modalwert ebenfalls einen ähnlichen Wert. Der Modus für den IQ ist nicht belastbar, da die Fussnote besagt, dass mehrere Werte als Modus in Frage kommen. Eine genauere Durchsicht der IQ-Werte lässt folgern, dass aufgrund der vielen Nachkommastellen jeder IQ-Wert nur genau einmal vorkommt. Der angebene Modalwert des IQs entspricht also einfach einer zufälligen Beobachtung. Die Kennwerte für die Variabilität lassen ebenfalls auf Unterschiede zwischen den beiden Merkmalen schliessen. Die höheren Werte Standardabweichung, IQR und Wertebereich des IQ im Vergleich zur Aufgeschlossenheit legen nahe, dass die Streuung der Werte für den IQ viel grösser ist. Zum Beispiel ist eine durchschnittliche IQ-Beobachtung 15.5 IQ-Werte weg vom durchschnittlichen IQ und eine durchschnittliche Aufgeschlossenheits-Beobachtung nur 1.3 Aufgeschlossenheits-Werte weg von der duchschnittlichen Aufgeschlossenheit. Dies ist auf dem Histogramm zu erkennen, wenn die Skala der horizontalen Achse betrachtet wird. Für den IQ reicht diese von 50 bis 125 und für die Aufgeschlossenheit von 2 bis 6.</li>
 <li>Die Wartezeiten wurden einmal in Minuten und einmal in Stunden abgespeichtert. Die resultierenden Histogramme sind deshalb genau identisch bis auf die Werte der horizontalen Achse, welche von 0 bis 0.6 Stunden und von 0 bis 40 Minuten reicht. Im Vergleich zu den Histogrammen des IQ und der Aufmerksamkeit kann für die Wartezeit und eine asymetrische Verteilung beobachtet werden. Kurze Wartezeiten werden demnach häufiger beobachtet als längere Wartezeiten. Die meisten Wartezeiten liegen unter 10 Minuten, sehr selten kommt es zu Wartezeiten über 20 Minuten. Die Kennzahlen für die Wartezeit in Stunden können aus den Kennzahlen der Wartezeit in Stunden hergeleitet werden indem die Werte durch <span class="math inline">\(60\)</span> geteilt werden. Es reicht deshalb die Kennzahlen für die Wartezeit in Minuten zu betrachten. Die durchscnittliche Wartezeit liegt bei <span class="math inline">\(M=5.07, Mdn = 3.97\)</span> Minuten. Der Modalwert ist wiederum nicht interpretierbar aus demselben Grund wie oben. Der Median bedeutet, dass <span class="math inline">\(50\%\)</span> der Wartezeiten kleiner und <span class="math inline">\(50\%\)</span> der Wartezeiten grösser waren als <span class="math inline">\(3.97\)</span> Minuten. Das arithmetische Mittel ist höher als der Median. Die einigen wenigen Beobachtungen mit sehr langen Wartezeiten haben also das arithmetische Mittel im Vergleich zum Median stärker beeinflusst.</li>
 <li>TODO.</li>
 <li>TODO: Zentraler Wert hier nicht identifiziertbar, streuung auch nicht.</li>
@@ -429,7 +508,7 @@ Abbildung 2.8: Histogramme.
 <div id="intervallskaliertes-merkmal-test" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Test<a href="intervallskalierte-merkmale.html#intervallskaliertes-merkmal-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-8" class="exercise"><strong>Übung 2.6  </strong></span></p>
+<p><span id="exr:unlabeled-div-9" class="exercise"><strong>Übung 2.7  </strong></span></p>
 <!-- 
 Ziel: 
 - Intervallskaliertes Merkmal
@@ -445,7 +524,7 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-9" class="solution"><em>Lösung</em>. </span></p>
+<p><span id="unlabeled-div-10" class="solution"><em>Lösung</em>. </span></p>
 <ol style="list-style-type: lower-alpha">
 <li>Ja</li>
 <li>Nein</li>
@@ -455,7 +534,7 @@ Ziel:
 </details>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-10" class="exercise"><strong>Übung 2.7  </strong></span></p>
+<p><span id="exr:unlabeled-div-11" class="exercise"><strong>Übung 2.8  </strong></span></p>
 <!-- 
 Ziel: 
 - Mittelwerte Theorie
@@ -464,20 +543,24 @@ Ziel:
 <ol style="list-style-type: lower-alpha">
 <li>Der Median ist immer kleiner als das arithmetische Mittel.</li>
 <li>Das arithmetische Mittel ist anfälliger für Messfehler als der Median.</li>
+<li>Die Balkenhöhe eines Histogramms steht für die Anzahl Beobachtungen.</li>
+<li>Bei einem Histogramm ist steht das beobachtete Merkmal auf der <span class="math inline">\(x\)</span>-Achse.</li>
 </ol>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-11" class="solution"><em>Lösung</em>. </span></p>
+<p><span id="unlabeled-div-12" class="solution"><em>Lösung</em>. </span></p>
 <ol style="list-style-type: lower-alpha">
 <li>Falsch</li>
 <li>Richtig, siehe Übung <a href="intervallskalierte-merkmale.html#exr:theorie-mdn-mean">2.3</a></li>
+<li>Richtig</li>
+<li>Richtig</li>
 </ol>
 </details>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-12" class="exercise"><strong>Übung 2.8  </strong></span></p>
+<p><span id="exr:unlabeled-div-13" class="exercise"><strong>Übung 2.9  </strong></span></p>
 <!-- 
 Ziel: 
 - Mittelwerte mit Zahlen
@@ -493,7 +576,7 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-13" class="solution"><em>Lösung</em>. </span></p>
+<p><span id="unlabeled-div-14" class="solution"><em>Lösung</em>. </span></p>
 <ol style="list-style-type: lower-alpha">
 <li>Falsch</li>
 <li>Richtig</li>
@@ -503,7 +586,7 @@ Ziel:
 </details>
 </div>
 <div class="exercise">
-<p><span id="exr:unlabeled-div-14" class="exercise"><strong>Übung 2.9  </strong></span></p>
+<p><span id="exr:unlabeled-div-15" class="exercise"><strong>Übung 2.10  </strong></span></p>
 <!-- 
 Ziel: 
 - Mittelwerte mit Jamovi
@@ -519,7 +602,7 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-15" class="solution"><em>Lösung</em>. </span></p>
+<p><span id="unlabeled-div-16" class="solution"><em>Lösung</em>. </span></p>
 <ol style="list-style-type: lower-alpha">
 <li>Richtig</li>
 <li>Falsch, siehe <code>Modalwert</code>.</li>
@@ -529,6 +612,12 @@ Ziel:
 </details>
 </div>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-jjstatsplot2025" class="csl-entry">
+Balci, Serdar. 2025. <em>Jjstatsplot: Wrapper for Ggstatsplot</em>. <a href="https://github.com/sbalci/ClinicoPathJamoviModule/">https://github.com/sbalci/ClinicoPathJamoviModule/</a>.
 </div>
 </div>
             </section>

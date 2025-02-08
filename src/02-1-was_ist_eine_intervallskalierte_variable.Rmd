@@ -23,7 +23,7 @@ Ein weiteres Beispiel für ein intervallskaliertes Merkmal ist der Intelligenzqu
 ## Wie kann ein intervallskaliertes Merkmal beschrieben werden? {#intervallskalierte-merkmale-beschreibung}
 
 
-```{r exm-ducktemp, echo=FALSE}
+```{r exm-ducktemp}
 gen_exm_ducktemp <- function(){
   set.seed(11242)
   n <- 40
@@ -39,8 +39,7 @@ gen_exm_ducktemp <- function(){
     geom_histogram(aes(x = temperatur, 
                        colour = 'blue'),
                    binwidth=0.2)+
-    labs(title = "Histogramm Körpertemperatur Enten", 
-         y= "Häufigkeit", 
+    labs(y= "Häufigkeit", 
          x = "Temperatur")+
     theme(legend.position = "none")+
     scale_y_continuous(breaks=c(0:17))
@@ -63,7 +62,7 @@ Für einen Menschen ist es schwierig direkt aus der Sichtung dieser Zahlen zu be
 
 Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von $0.2$°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein __Histogramm__ genannt.
 
-```{r enten_histogramm}
+```{r exm-ducktemp-histogramm, fig.cap="Histogramm Körpertemperatur Enten."}
 exm_ducktemp$hist
 ```
 
@@ -126,8 +125,10 @@ Ziel:
 -->
 Mit den Daten `r inline_code(exm_ducktemp$file_name)` aus Beispiel \@ref(exm:ducktemp):
 
-  (a) Erstellen Sie selbst ein Histogramm  mit Jamovi und begründen Sie, weshalb es nicht gleich aussieht wie das Histogramm oben. 
-  (b) Berechnen Sie zusätzlich Modus, Median, arithmetisches Mittel, IQR, $25\%$- und $75\%$-Perzentil, sowie $2.5\%$- und $97.5\%$-Perzentil, sowie die Spannweite und die Standardabweichung der Körpertemperaturen der Enten mit Jamovi.
+  (a) Erstellen Sie selbst ein Histogramm  mit Jamovi und begründen Sie, weshalb es nicht gleich aussieht wie das Histogramm in Abbildung \@ref(fig:exm-ducktemp-histogramm). 
+  (b) Berechnen Sie Modus, Median und arithmetisches Mittel der Körpertemperaturen der Enten mit `Jamovi` und berichten Sie diese mit der angemessenen Symbolik.
+  (c) ($\star$) Reproduzieren Sie das Histogramm in Abbildung \@ref(fig:exm-ducktemp-histogramm) genau mithilfe der Histogramm-Funktion des `Jamovi`-Moduls `JJStatsPlot`  [@jjstatsplot2025]. 
+  (d) Berechnen Sie IQR, $25\%$- und $75\%$-Perzentil, sowie $2.5\%$- und $97.5\%$-Perzentil, sowie die Spannweite und die Standardabweichung der Körpertemperaturen der Enten mit `Jamovi` und berichten Sie diese mit der angemessenen Symbolik.
 :::
 
 :::{.solution}
@@ -135,14 +136,23 @@ Mit den Daten `r inline_code(exm_ducktemp$file_name)` aus Beispiel \@ref(exm:duc
   knitr::include_graphics("figures/Enten_n40_instr_histogramm.jpg")
   knitr::include_graphics("figures/Enten_n40.png")
   ```
-  (a) Das Histogramm, siehe Abbildung \@ref(fig:enten-hist-mean-sd1) sieht nicht gleich aus, da Jamovi die Temperaturabschnitte kürzer gewählt hat nämlich bei 0.125°C statt 0.2°C wie oben im Text. In Jamovi gibt es aktuell keine Möglichkeit die Abschnittsweite anzupassen. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite. 
+  (a) Das Histogramm, siehe Abbildung \@ref(fig:enten-hist-mean-sd1) sieht nicht gleich aus, da Jamovi die Temperaturabschnitte mit Korbbreite $0.125$°C kürzer gewählt hat als die in Abbildung Abbildung \@ref(fig:exm-ducktemp-histogramm) dargestellte Korbbreite von $0.2$°C. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite.
   
 ```{r enten-hist-mean-sd2, echo=FALSE, fig.cap="Links: Jamovi-Anleitung zur Berechnung der gewünschten Parameter; rechts: Parameterwerte.", fig.show="hold", out.width="50%"}
   knitr::include_graphics("figures/02-exr-enten-hist-mean-sd-input.jpg")
   knitr::include_graphics("figures/02-exr-enten-hist-mean-sd-output.jpg")
 ```
   
-  (b) Eine Anleitung zur Berechnung in Jamovi sowie die berechneten Werte können in Abbildung \@ref(fig:enten-hist-mean-sd2) abgelesen werden.
+  (b) Eine Anleitung zur Berechnung in `Jamovi` sowie die berechneten Werte können in Abbildung  \@ref(fig:enten-hist-mean-sd2) abgelesen und sind Modus $= 41.5$°C, Median $Mdn = 41.7$ und arithmetisches Mittel $M=41.7$.
+  (c) Im Modul `JJStatsPlot` kann die Korbgrösse mit `Change Bin Width` angepasst werden. In Abbildung Abbildung \@ref(fig:exm-ducktemp-histogramm) kann beobachtet werden, dass die Balken und also auch die Körbe $0.2$ Einheiten breit sind. Dies wird so eingestellt, siehe Abbildung \@ref(fig:enten-hist-binwidth).
+  
+```{r enten-hist-binwidth, echo=FALSE, fig.cap="Links: Jamovi-Anleitung zur Berechnung des gewünschten Histogramms; rechts: Jamovi-Ausgabe.", fig.show="hold", out.width="50%"}
+  knitr::include_graphics("figures/02-exr-enten-hist-binwidth-jmv-input.jpg")
+  knitr::include_graphics("figures/02-exr-enten-hist-binwidth-jmv-output.jpg")
+```
+
+Es entsteht dabei glücklicherweise genau die gewünschte Darstellung. Es wäre auch möglich gewesen, dass die Körbe auf der $x$-Achse verschoben sind, zum Beispiel ein Korb $41.2$ bis $41.4$. Diese Verschiebung könnte nicht mit `JJStatsPlot` behoben werden und müsste mit einer anderen Statistiksoftware bearbeitet werden.
+  (d) Eine Anleitung zur Berechnung in `Jamovi` sowie die berechneten Werte können in Abbildung  \@ref(fig:enten-hist-mean-sd2) abgelesen und sind Interquartilabstand $IQR= 0.3$°C, $25\%$-Perzentil $=41.5$, $75\%$-Perzentil $=41.8$, $2.5\%$-Perzentil $=41.3$, $97.5\%$-Perzentil $= 42.1$, Spannweite $R=1.11$ und die Standardabweichung $SD = 0.233$.
 :::
 
 ::: {.exercise #temptag-pvai8hwv}
@@ -207,6 +217,63 @@ Damit können die beiden nächsten Teilfragen beantwortet werden.
   (d) Das Resultat in `Jamovi` ist genau gleich wie das händisch berechnete.
   (e) Durch die fälschliche Übertragung eines Wertes, ist das arithmetische Mittel sehr stark und der Median fast gar nicht beeinflusst werden. Wenn die Daten wenige fehlerhafte Beobachtungen enthalten, ist der Median das bessere Mass für den zentralen Wert als das arithmetische Mittel. Wenn die Daten keine Fehler enthalten, ist das arithmetische Mittel gleich gut geeignet wie der Median.
 
+:::
+
+::: {.exercise #theorie-variabilitaet}
+<!-- 
+Ziel: 
+- Computeranweisung mit Verfahrensberechnung verknüpfen.
+- Vor/Nachteile IQR/SD kennen.
+-->
+In einem psychologischen Test machen $5$ Probandinnen die Werte $18, 21, 20, 19, 22$. Um mit einer Zahl zu sagen, wie stark die Testresultate streuen, wird die Variabilität berechnet.
+
+  (a) Wie gross ist die Spannweite und die Standardabweichung dieser Werte? Rechnen Sie im Kopf oder mit einem Taschenrechner.
+  (b) Nehme an, der Testleiter hat den Wert der ersten Probandin falsch in seine Tabelle übertragen - statt $18$ hat er $81$ geschrieben. Wie gross ist die Spannweite und die Standardabweichung dieser Werte jetzt? Rechnen Sie im Kopf oder mit einem Taschenrechner.
+  (c) Gleich wie (a), aber führen Sie die Berechnungen aus indem die Zahlen manuell bei `Jamovi` eingegeben. Tipp: Die Messskala muss manuell auf kontinuierlich gestellt werden.
+  (d) Gleich wie (b), aber führen Sie die Berechnungen aus indem die Zahlen manuell bei `Jamovi` eingegeben.
+  (e) Vergewissern Sie sich, dass der Interquartilabstand in jedem Fall dem Abstand zwischen dem $25\%$ und dem $75\%$-Perzentil entspricht. Vergewissern Sie sich zusätzlich, dass in jedem Fall der Median dem $50\%$-Perzentil entspricht.
+  (f) Schliessen Sie aus dieser Übung auf das Verhalten der verschiedenen Variabilitätsmasse bei fehlerhaften Daten?
+:::
+
+:::{.solution}
+ 
+  (a) Die Spannweite entspricht dem höchsten minus dem kleinsten beobachteten Wert, also $R = 22- 18 = 4$. Wir haben hier $n=5$ Beobachtungen, nämlich $x_1 = 18, x_2 = 21, x_3 = 20, x_4 = 19, x_5=22$. Wird dies in die Formel \@ref(eq:sd) eingesetzt, so gibt dies die Standardabweichung
+  \begin{align}
+    s &= \sqrt{\frac{1}{n-1}\sum^n_{i=1} (x_i-\bar{x})^2} \\
+    &= \sqrt{\frac{1}{n-1} \left( (x_1-\bar{x})^2+(x_2-\bar{x})^2+(x_3-\bar{x})^2+(x_4-\bar{x})^2+(x_5-\bar{x})^2\right)} \\
+    &=  \sqrt{\frac{1}{5-1} \left( (18-20)^2+(21-20)^2+(20-20)^2+(19-20)^2+(22-20)^2\right)} \\
+    &=     \sqrt{\frac{1}{4} \left( 4+1+0+1+4\right)}\\
+    &=1.58.
+  \end{align}
+  (b) Wir haben hier $n=5$ neue Beobachtungen, nämlich $x_1 = 81, x_2 = 21, x_3 = 20, x_4 = 19, x_5=22$. Die Spannweite entspricht dem höchsten minus dem kleinsten beobachteten Wert, also $R = 81 - 19 = 62$. Wird dies in die Formel \@ref(eq:sd) eingesetzt, so gibt dies die Standardabweichung
+  \begin{align}
+    s &= \sqrt{\frac{1}{n-1}\sum^n_{i=1} (x_i-\bar{x})^2} \\
+    &= \sqrt{\frac{1}{n-1} \left( (x_1-\bar{x})^2+(x_2-\bar{x})^2+(x_3-\bar{x})^2+(x_4-\bar{x})^2+(x_5-\bar{x})^2\right)} \\
+    &=  \sqrt{\frac{1}{5-1} \left( (81-32.6)^2+(21-32.6)^2+(20-32.6)^2+(19-32.6)^2+(22-32.6)^2\right)} \\
+    &=     \sqrt{\frac{1}{4} \left( 2342.56+134.56+158.76+184.96+112.36\right)}\\
+    &=27.08.
+  \end{align}
+  Je nach Rundungsverfahren können hier kleinere Werteunterschiede im Nachkommabereich resultieren.
+  
+  Für c und d wird der Datensatz bei `Jamovi` eingegeben. Die Variablen werden bearbeitet wie in \@ref(exr:theorie-mdn-mean) beschrieben. Die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-theorie-variabilitaet-input). 
+
+
+```{r sol-theorie-variabilitaet-input, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
+knitr::include_graphics("figures/02-exr-theorie-variabilitaet-jmv-input.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-theorie-variabilitaet-output).
+
+```{r sol-theorie-variabilitaet-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/02-exr-theorie-variabilitaet-jmv-output.jpg")
+```
+
+Damit können die beiden nächsten Teilfragen beantwortet werden.
+
+  (c) Tatsächlich ist die Spannweite gemäss Jamovi auch $R=4$ (siehe `Wertebereich`) und die Standardabweichung ist $SD=1.58$.
+  (d) Tatsächlich ist die Spannweite gemäss Jamovi auch $R=62$ (siehe `Wertebereich`) und die Standardabweichung ist $SD=27.08$.
+  (e) Tatsächlich ist der $IQR = 2$ in beiden Beispielen. Dies entspricht genau den Perzentildifferenzen $21-19$ für den original und $22-20$ für den fehlerhaften Datensatz. Dass zweimal genau derselbe Wert resultiert ist Zufall. In beiden Fällen entspricht der Median dem $50\%$-Perzentil. Dies sollte immer der Fall sein, da sowohl der Median, wie auch das $50\%$-Perzentil die Beobachtungen in eine höhere und eine tiefere Hälfte teilen.
+  (f) Diese Übung zeigt, dass die Standardabweichung und die Spannweite durch fehlerhafte Beobachtungen stark beeinflusst werden. Der Interquartilabstand ist hingegen relativ stabil, solange nicht viele Beobachtungen fehlerhaft sind.
 :::
 
 ::: {.exercise #temptag-poiane}
@@ -303,7 +370,7 @@ exr_diverse_distrib$jmv_output$plots
 Die Merkmale werden mit den Befehlen in Abbildung \@ref(fig:sol-diverse-distrib1) analysiert.
 
 a. Es gibt gemäss \@ref(fig:sol-diverse-distrib2) genau $500$ Studienteilnehmende (siehe $N$).
-b. Die Histogramme für den IQ und die Aufgeschlossenheit weisen eine ähliche Form auf. Viele Beobachtungen sind um eine Mitte zentriert. Je weiter weg von der Mitte, desto seltener sind die Beobachtungen. Das Histogram des IQ zeigt, dass die Verteilung rund um 100 zentriert ist und ca von 60 bis 140 reicht. Je weiter entfernt von 100, desto weniger Beobachtungen wurden gemacht. Das Histogram der Aufgeschlossenheit stellt dar, dass diese rund um 4 zentriert ist mit Werten von 1 bis 7. Je weiter die Werte von 4 entfernt sind, desto weniger häufig sind die Beobachtungen. Der vom Histogram abgeleitete vorher genannte zentrale Wert entspricht ungefähr dem Mittelwert und dem Median für beide Merkmale. Für die Aufgeschlossenheit hat der Modalwert ebenfalls einen ähnlichen Wert. Der Modus für den IQ ist nicht belastbar, da die Fussnote besagt, dass mehrere Werte als Modus in Frage kommen. Eine genauere Durchsicht der IQ-Werte lässt folgern, dass aufgrund der vielen Nachkommastellen jeder IQ-Wert nur genau einmal vorkommt. Der angebene Modalwert des IQs entspricht also einfach einer zufälligen Beobachtung. Die Kennwerte für die Variabilität lassen ebenfalls auf Unterschiede zwischen den beiden Merkmalen schliessen. Die höheren Werte Standardabweichung, IQR und Wertebereich des IQ im Vergleich zur Aufgeschlossenheit legen nahe, dass die Streuung der Werte für den IQ viel grösser ist. Zum Beispiel ist eine durchschnittliche IQ-Beobachtung 15.5 IQ-Werte weg vom durchschnittlichen IQ und eine durchschnittliche Aufgeschlossenheits-Beobachtung nur 1.3 Aufgeschlossenheits-Werte weg von der duchschnittlichen Aufgeschlossenheit. Dies ist auf dem Histogramm zu erkennen, wenn die Skala der horizontalen Achse betrachtet wird. Für den IQ reicht diese von 50 bis 125 und für die Aufgeschlossenheit von 2 bis 6.
+b. Die Histogramme für den IQ und die Aufgeschlossenheit weisen eine ähliche Form auf. Viele Beobachtungen sind um eine Mitte zentriert. Je weiter weg von der Mitte, desto seltener sind die Beobachtungen. Das Histogramm des IQ zeigt, dass die Verteilung rund um 100 zentriert ist und ca von 60 bis 140 reicht. Je weiter entfernt von 100, desto weniger Beobachtungen wurden gemacht. Das Histogramm der Aufgeschlossenheit stellt dar, dass diese rund um 4 zentriert ist mit Werten von 1 bis 7. Je weiter die Werte von 4 entfernt sind, desto weniger häufig sind die Beobachtungen. Der vom Histogramm abgeleitete vorher genannte zentrale Wert entspricht ungefähr dem Mittelwert und dem Median für beide Merkmale. Für die Aufgeschlossenheit hat der Modalwert ebenfalls einen ähnlichen Wert. Der Modus für den IQ ist nicht belastbar, da die Fussnote besagt, dass mehrere Werte als Modus in Frage kommen. Eine genauere Durchsicht der IQ-Werte lässt folgern, dass aufgrund der vielen Nachkommastellen jeder IQ-Wert nur genau einmal vorkommt. Der angebene Modalwert des IQs entspricht also einfach einer zufälligen Beobachtung. Die Kennwerte für die Variabilität lassen ebenfalls auf Unterschiede zwischen den beiden Merkmalen schliessen. Die höheren Werte Standardabweichung, IQR und Wertebereich des IQ im Vergleich zur Aufgeschlossenheit legen nahe, dass die Streuung der Werte für den IQ viel grösser ist. Zum Beispiel ist eine durchschnittliche IQ-Beobachtung 15.5 IQ-Werte weg vom durchschnittlichen IQ und eine durchschnittliche Aufgeschlossenheits-Beobachtung nur 1.3 Aufgeschlossenheits-Werte weg von der duchschnittlichen Aufgeschlossenheit. Dies ist auf dem Histogramm zu erkennen, wenn die Skala der horizontalen Achse betrachtet wird. Für den IQ reicht diese von 50 bis 125 und für die Aufgeschlossenheit von 2 bis 6.
 c. Die Wartezeiten wurden einmal in Minuten und einmal in Stunden abgespeichtert. Die resultierenden Histogramme sind deshalb genau identisch bis auf die Werte der horizontalen Achse, welche von 0 bis 0.6 Stunden und von 0 bis 40 Minuten reicht. Im Vergleich zu den Histogrammen des IQ und der Aufmerksamkeit kann für die Wartezeit und eine asymetrische Verteilung beobachtet werden. Kurze Wartezeiten werden demnach häufiger beobachtet als längere Wartezeiten. Die meisten Wartezeiten liegen unter 10 Minuten, sehr selten kommt es zu Wartezeiten über 20 Minuten. Die Kennzahlen für die Wartezeit in Stunden können aus den Kennzahlen der Wartezeit in Stunden hergeleitet werden indem die Werte durch $60$ geteilt werden. Es reicht deshalb die Kennzahlen für die Wartezeit in Minuten zu betrachten. Die durchscnittliche Wartezeit liegt bei $M=5.07, Mdn = 3.97$ Minuten. Der Modalwert ist wiederum nicht interpretierbar aus demselben Grund wie oben. Der Median bedeutet, dass $50\%$ der Wartezeiten kleiner und $50\%$ der Wartezeiten grösser waren als $3.97$ Minuten. Das arithmetische Mittel ist höher als der Median. Die einigen wenigen Beobachtungen mit sehr langen Wartezeiten haben also das arithmetische Mittel im Vergleich zum Median stärker beeinflusst.
 d. TODO.
 e. TODO: Zentraler Wert hier nicht identifiziertbar, streuung auch nicht.
@@ -340,11 +407,16 @@ Welche der folgenden Aussagen sind wahr, welche falsch?
 
 a) Der Median ist immer kleiner als das arithmetische Mittel.
 b) Das arithmetische Mittel ist anfälliger für Messfehler als der Median.
+c) Die Balkenhöhe eines Histogramms steht für die Anzahl Beobachtungen.
+d) Bei einem Histogramm ist steht das beobachtete Merkmal auf der $x$-Achse.
+
 :::
 
 :::{.solution}
 a) Falsch
 b) Richtig, siehe Übung \@ref(exr:theorie-mdn-mean)
+c) Richtig
+d) Richtig
 :::
 
 ::: {.exercise}
