@@ -372,7 +372,7 @@ Abbildung 2.7: Jamovi Ausgabe.
 <!-- 
 Ziel: 
 - Computeranweisung mit Verfahrensberechnung verknüpfen.
-- Vor/Nachteile Mean/median kennen.
+- Vor/Nachteile IQR/SD kennen.
 -->
 <p>In einem psychologischen Test machen <span class="math inline">\(5\)</span> Probandinnen die Werte <span class="math inline">\(18, 21, 20, 19, 22\)</span>. Um mit einer Zahl zu sagen, wie stark die Testresultate streuen, wird die Variabilität berechnet.</p>
 <ol style="list-style-type: lower-alpha">
@@ -431,19 +431,59 @@ Abbildung 2.9: Jamovi Ausgabe.
 </details>
 </div>
 <div class="exercise">
-<p><span id="exr:temptag-poiane" class="exercise"><strong>Übung 2.5  </strong></span></p>
+<p><span id="exr:koerpergroesse" class="exercise"><strong>Übung 2.5  </strong></span></p>
 <!-- 
 Ziel: 
 - Berechnung mit Jamovi festigen
 - Output-interpretation
 - Berichten
 -->
-<p>TODO: Exercise body</p>
+<p>Bei einer Befragung wurden die Körpergrösse und das Geschlecht im Datensatz <code>02-exr-koerpergroesse-sex.sav</code> festgehalten.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Stellen Sie die Körpergrösse in einem Histogramm dar und berechnen sie alle bekannten Zentralitäts- und Variabilitätsmasse und berichten Sie mit dem korrekten Symbol.</li>
+<li>Wiederholen Sie die Übung aber teilen Sie die Daten nach Geschlecht auf. Was fällt auf?</li>
+<li>Was bedeutet der Kommentar <em>Es gibt mehr als einen Modalwert, nur der erste wird berichtet</em> und welche Bedeutung hat er für die Interpretation des Modus?</li>
+</ol>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-7" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
+<p><span id="unlabeled-div-7" class="solution"><em>Lösung</em>. </span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Der Datensatz wird bei <code>Jamovi</code> eingelesen und die Analyseparameter wie in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-koerpergroesse-sex-input-a">2.10</a> gesetzt.</li>
+</ol>
+<div class="figure"><span style="display:block;" id="fig:sol-koerpergroesse-sex-input-a"></span>
+<img src="figures/02-exr-koerpergroesse-sex-jmv-input-a.jpg" alt="Jamovi setzen der Analyseparameter." width="100%" />
+<p class="caption">
+Abbildung 2.10: Jamovi setzen der Analyseparameter.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-koerpergroesse-sex-output-a">2.11</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-koerpergroesse-sex-output-a"></span>
+<img src="figures/02-exr-koerpergroesse-sex-jmv-output-a.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 2.11: Jamovi Ausgabe.
+</p>
+</div>
+<p>Die Körpergrösse ist demnach <span class="math inline">\(N=326\)</span> mal beobachtet worden. Die Zentralitätmasse sind <span class="math inline">\(M=173.13\)</span> cm, <span class="math inline">\(Mdn=172\)</span> (Rundung nach 2 Kommastellen), Modus <span class="math inline">\(144.77\)</span>. Die Variabilitätsmasse sind <span class="math inline">\(SD=12.09\)</span> cm, <span class="math inline">\(IQR=17.11\)</span> und <span class="math inline">\(R=57.78\)</span>. Auf dem Histogramm ist ausserdem ersichtlich, dass die meisten Leute zwischen <span class="math inline">\(160\)</span> und <span class="math inline">\(180\)</span> cm gross sind und dass nur weniger unter <span class="math inline">\(155\)</span> oder über <span class="math inline">\(200\)</span> cm gross sind.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Die Analyse wird mit Gruppierungsvariable Geschlecht wiederholt wie in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-koerpergroesse-sex-input-b">2.12</a></li>
+</ol>
+<div class="figure"><span style="display:block;" id="fig:sol-koerpergroesse-sex-input-b"></span>
+<img src="figures/02-exr-koerpergroesse-sex-jmv-input-b.jpg" alt="Jamovi setzen der Analyseparameter." width="100%" />
+<p class="caption">
+Abbildung 2.12: Jamovi setzen der Analyseparameter.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-koerpergroesse-sex-output-b">2.13</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-koerpergroesse-sex-output-b"></span>
+<img src="figures/02-exr-koerpergroesse-sex-jmv-output-b.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 2.13: Jamovi Ausgabe.
+</p>
+</div>
+<p>Die Körpergrösse ist demnach bei den Frauen <span class="math inline">\(N=163\)</span> mal beobachtet worden. Die Zentralitätmasse sind <span class="math inline">\(M=166.00\)</span> cm, <span class="math inline">\(Mdn=166.09\)</span>, Modus <span class="math inline">\(144.77\)</span>. Die Variabilitätsmasse sind <span class="math inline">\(SD=8.41\)</span> cm, <span class="math inline">\(IQR=11.27\)</span> und <span class="math inline">\(R=41.45\)</span>. Die Körpergrösse ist bei den Männern auch <span class="math inline">\(N=163\)</span> mal beobachtet worden. Die Zentralitätmasse sind <span class="math inline">\(M=180.27\)</span> cm, <span class="math inline">\(Mdn=180.54\)</span>, Modus <span class="math inline">\(149.17\)</span>. Die Variabilitätsmasse sind <span class="math inline">\(SD=10.96\)</span> cm, <span class="math inline">\(IQR=15.35\)</span> und <span class="math inline">\(R=53.39\)</span>. Auf dem Histogramm ist ausserdem ersichtlich, dass die beiden Gruppen eine Spitze rund um den Mittelwert bei der Häufigkeit aufweisen. Beobachtungen, welche von der Spitze weiter weg sind werden seltener. Diese zwei Spitzen und somit unterschiedliche Körpergrössenverteilungen nach Geschlecht war aus (a) nicht ersichtlich. Es ist immer möglich, dass bei nicht-Experimenten ein zusätzliches Merkmal (hier das Geschlecht) ganz neue Erkenntnisse bringen kann.
+(c) In den Daten der Körpergrösse ist ersichtlich, dass aufgrund der detaillierten Aufzeichnung der Körpergrössen im hundertstel Millimeterbereich keine Beobachtung zweimal vorkommt. Jede Beobachtung ist somit die häufigste Beobachtung. Der Modus ist hier also bedeutungslos. Um einen sinnvolleren Wert für den Modus zu erhalten könnten die Körpergrössen vorab auf Zentimeter gerundet werden. In <code>Jamovi</code> kann dies mit der Funktion <code>ROUND</code> gemacht werden. Der Modus ist dann <span class="math inline">\(165\)</span> cm für die Frauen und <span class="math inline">\(172\)</span> für die Männer, was sich mit den Erwartungen aus dem Histogramm deckt.</p>
 </details>
 </div>
 <div class="exercise">
@@ -479,24 +519,24 @@ Ziel:
 <div class="figure"><span style="display:block;" id="fig:sol-diverse-distrib1"></span>
 <img src="figures/02-exr-diverse-distrib-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
-Abbildung 2.10: Jamovi Eingabe.
+Abbildung 2.14: Jamovi Eingabe.
 </p>
 </div>
 <div class="figure"><span style="display:block;" id="fig:sol-diverse-distrib2"></span>
 <img src="figures/02-exr-diverse-distrib-output.jpg" alt="Deskriptive Statistiken." width="100%" />
 <p class="caption">
-Abbildung 2.11: Deskriptive Statistiken.
+Abbildung 2.15: Deskriptive Statistiken.
 </p>
 </div>
 <div class="figure"><span style="display:block;" id="fig:sol-diverse-distrib3"></span>
 <img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-1.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-2.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-3.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-4.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-5.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-6.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-7.png" alt="Histogramme." width="33%" />
 <p class="caption">
-Abbildung 2.12: Histogramme.
+Abbildung 2.16: Histogramme.
 </p>
 </div>
-<p>Die Merkmale werden mit den Befehlen in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-diverse-distrib1">2.10</a> analysiert.</p>
+<p>Die Merkmale werden mit den Befehlen in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-diverse-distrib1">2.14</a> analysiert.</p>
 <ol style="list-style-type: lower-alpha">
-<li>Es gibt gemäss <a href="intervallskalierte-merkmale.html#fig:sol-diverse-distrib2">2.11</a> genau <span class="math inline">\(500\)</span> Studienteilnehmende (siehe <span class="math inline">\(N\)</span>).</li>
+<li>Es gibt gemäss <a href="intervallskalierte-merkmale.html#fig:sol-diverse-distrib2">2.15</a> genau <span class="math inline">\(500\)</span> Studienteilnehmende (siehe <span class="math inline">\(N\)</span>).</li>
 <li>Die Histogramme für den IQ und die Aufgeschlossenheit weisen eine ähliche Form auf. Viele Beobachtungen sind um eine Mitte zentriert. Je weiter weg von der Mitte, desto seltener sind die Beobachtungen. Das Histogramm des IQ zeigt, dass die Verteilung rund um 100 zentriert ist und ca von 60 bis 140 reicht. Je weiter entfernt von 100, desto weniger Beobachtungen wurden gemacht. Das Histogramm der Aufgeschlossenheit stellt dar, dass diese rund um 4 zentriert ist mit Werten von 1 bis 7. Je weiter die Werte von 4 entfernt sind, desto weniger häufig sind die Beobachtungen. Der vom Histogramm abgeleitete vorher genannte zentrale Wert entspricht ungefähr dem Mittelwert und dem Median für beide Merkmale. Für die Aufgeschlossenheit hat der Modalwert ebenfalls einen ähnlichen Wert. Der Modus für den IQ ist nicht belastbar, da die Fussnote besagt, dass mehrere Werte als Modus in Frage kommen. Eine genauere Durchsicht der IQ-Werte lässt folgern, dass aufgrund der vielen Nachkommastellen jeder IQ-Wert nur genau einmal vorkommt. Der angebene Modalwert des IQs entspricht also einfach einer zufälligen Beobachtung. Die Kennwerte für die Variabilität lassen ebenfalls auf Unterschiede zwischen den beiden Merkmalen schliessen. Die höheren Werte Standardabweichung, IQR und Wertebereich des IQ im Vergleich zur Aufgeschlossenheit legen nahe, dass die Streuung der Werte für den IQ viel grösser ist. Zum Beispiel ist eine durchschnittliche IQ-Beobachtung 15.5 IQ-Werte weg vom durchschnittlichen IQ und eine durchschnittliche Aufgeschlossenheits-Beobachtung nur 1.3 Aufgeschlossenheits-Werte weg von der duchschnittlichen Aufgeschlossenheit. Dies ist auf dem Histogramm zu erkennen, wenn die Skala der horizontalen Achse betrachtet wird. Für den IQ reicht diese von 50 bis 125 und für die Aufgeschlossenheit von 2 bis 6.</li>
 <li>Die Wartezeiten wurden einmal in Minuten und einmal in Stunden abgespeichtert. Die resultierenden Histogramme sind deshalb genau identisch bis auf die Werte der horizontalen Achse, welche von 0 bis 0.6 Stunden und von 0 bis 40 Minuten reicht. Im Vergleich zu den Histogrammen des IQ und der Aufmerksamkeit kann für die Wartezeit und eine asymetrische Verteilung beobachtet werden. Kurze Wartezeiten werden demnach häufiger beobachtet als längere Wartezeiten. Die meisten Wartezeiten liegen unter 10 Minuten, sehr selten kommt es zu Wartezeiten über 20 Minuten. Die Kennzahlen für die Wartezeit in Stunden können aus den Kennzahlen der Wartezeit in Stunden hergeleitet werden indem die Werte durch <span class="math inline">\(60\)</span> geteilt werden. Es reicht deshalb die Kennzahlen für die Wartezeit in Minuten zu betrachten. Die durchscnittliche Wartezeit liegt bei <span class="math inline">\(M=5.07, Mdn = 3.97\)</span> Minuten. Der Modalwert ist wiederum nicht interpretierbar aus demselben Grund wie oben. Der Median bedeutet, dass <span class="math inline">\(50\%\)</span> der Wartezeiten kleiner und <span class="math inline">\(50\%\)</span> der Wartezeiten grösser waren als <span class="math inline">\(3.97\)</span> Minuten. Das arithmetische Mittel ist höher als der Median. Die einigen wenigen Beobachtungen mit sehr langen Wartezeiten haben also das arithmetische Mittel im Vergleich zum Median stärker beeinflusst.</li>
 <li>TODO.</li>
@@ -608,6 +648,58 @@ Ziel:
 <li>Falsch, siehe <code>Modalwert</code>.</li>
 <li>Falsch, richtig wäre <span class="math inline">\(Mdn=1\)</span>.</li>
 <li>Falsch, es wurden Haushalte beobachtet nicht Personen.</li>
+</ol>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-17" class="exercise"><strong>Übung 2.11  </strong></span></p>
+<!-- 
+Ziel: 
+- Veriabilitätsmasse mit Zahlen
+-->
+<p>Von einem intervallskalierten Merkmal wurden folgende fünf Beobachtungen gemacht: <span class="math inline">\(12, 23, 15, 12, 7\)</span>. Welche der folgenden Aussagen sind wahr, welche falsch?</p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(SD = 5.89\)</span>.</li>
+<li><span class="math inline">\(R = 5\)</span>.</li>
+<li><span class="math inline">\(IQR = 3\)</span>.</li>
+<li><span class="math inline">\(s = 5.89\)</span>.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-18" class="solution"><em>Lösung</em>. </span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Richtig</li>
+<li>Falsch</li>
+<li>Richtig</li>
+<li>Richtig</li>
+</ol>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-19" class="exercise"><strong>Übung 2.12  </strong></span></p>
+<!-- 
+Ziel: 
+- Veriabilitätsmasse mit theoretisch
+-->
+<p>Welche der folgenden Aussagen sind wahr, welche falsch?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Die Spannweite ist immer grösser als der Interquartilabstand.</li>
+<li><span class="math inline">\(50\%\)</span> der Beobachtungen sind auf einer Distanz ausgebreitet, welche dem Interquartilabstand entspricht.</li>
+<li>Der Interquartilabstand entspricht der Datenstreuung von der kleinsten Beobachtung bis zum Median.</li>
+<li>Die Standardabweichung wird durch Messfehler weniger beeinflusst als der Interquartilabstand.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-20" class="solution"><em>Lösung</em>. </span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Richtig</li>
+<li>Richtig</li>
+<li>Falsch</li>
+<li>Falsch</li>
 </ol>
 </details>
 </div>

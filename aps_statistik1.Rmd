@@ -416,18 +416,67 @@ Damit können die beiden nächsten Teilfragen beantwortet werden.
   (f) Diese Übung zeigt, dass die Standardabweichung und die Spannweite durch fehlerhafte Beobachtungen stark beeinflusst werden. Der Interquartilabstand ist hingegen relativ stabil, solange nicht viele Beobachtungen fehlerhaft sind.
 :::
 
-::: {.exercise #temptag-poiane}
+::: {.exercise #koerpergroesse}
 <!-- 
 Ziel: 
 - Berechnung mit Jamovi festigen
 - Output-interpretation
 - Berichten
 -->
-TODO: Exercise body
+```{r exr-koerpergroesse-sex}
+gen_exr_koerpergroesse_sex <- function() {
+  n <- 163
+  set.seed(1298)
+  file_name <- '02-exr-koerpergroesse-sex.sav'
+  tab <- tibble(
+    koerpergroesse = c(rnorm(n, 167, 8), 
+                       rnorm(n, 180, 10)),
+    geschlecht = c(rep("w", n), rep("m", n))
+  )
+  tab %>%
+    write_sav(file_name)
+  return(mget(ls()))
+}
+exr_koerpergroesse_sex <- gen_exr_koerpergroesse_sex()
+```
+Bei einer Befragung wurden die Körpergrösse und das Geschlecht im Datensatz `r inline_code(exr_koerpergroesse_sex$file_name)` festgehalten.
+
+(a) Stellen Sie die Körpergrösse in einem Histogramm dar und berechnen sie alle bekannten Zentralitäts- und Variabilitätsmasse und berichten Sie mit dem korrekten Symbol. 
+(b) Wiederholen Sie die Übung aber teilen Sie die Daten nach Geschlecht auf. Was fällt auf?
+(c) Was bedeutet der Kommentar _Es gibt mehr als einen Modalwert, nur der erste wird berichtet_ und welche Bedeutung hat er für die Interpretation des Modus?
 :::
 
 :::{.solution}
-TODO: solution body
+(a) Der Datensatz wird bei `Jamovi` eingelesen und die  Analyseparameter wie in Abbildung \@ref(fig:sol-koerpergroesse-sex-input-a) gesetzt.
+
+
+```{r sol-koerpergroesse-sex-input-a, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
+knitr::include_graphics("figures/02-exr-koerpergroesse-sex-jmv-input-a.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-koerpergroesse-sex-output-a).
+
+```{r sol-koerpergroesse-sex-output-a, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/02-exr-koerpergroesse-sex-jmv-output-a.jpg")
+```
+
+Die Körpergrösse ist demnach $N=326$ mal beobachtet worden. Die Zentralitätmasse sind $M=173.13$ cm, $Mdn=172$ (Rundung nach 2 Kommastellen), Modus $144.77$. Die Variabilitätsmasse sind $SD=12.09$ cm, $IQR=17.11$ und $R=57.78$. Auf dem Histogramm ist ausserdem ersichtlich, dass die meisten Leute zwischen $160$ und $180$ cm gross sind und dass nur weniger unter $155$ oder über $200$ cm gross sind.
+
+(b) Die Analyse wird mit Gruppierungsvariable Geschlecht wiederholt wie in Abbildung \@ref(fig:sol-koerpergroesse-sex-input-b)
+
+
+```{r sol-koerpergroesse-sex-input-b, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
+knitr::include_graphics("figures/02-exr-koerpergroesse-sex-jmv-input-b.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-koerpergroesse-sex-output-b).
+
+```{r sol-koerpergroesse-sex-output-b, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/02-exr-koerpergroesse-sex-jmv-output-b.jpg")
+```
+
+Die Körpergrösse ist demnach bei den Frauen $N=163$ mal beobachtet worden. Die Zentralitätmasse sind $M=166.00$ cm, $Mdn=166.09$, Modus $144.77$. Die Variabilitätsmasse sind $SD=8.41$ cm, $IQR=11.27$ und $R=41.45$. Die Körpergrösse ist bei den Männern auch $N=163$ mal beobachtet worden. Die Zentralitätmasse sind $M=180.27$ cm, $Mdn=180.54$, Modus $149.17$. Die Variabilitätsmasse sind $SD=10.96$ cm, $IQR=15.35$ und $R=53.39$. Auf dem Histogramm ist ausserdem ersichtlich, dass die beiden Gruppen eine Spitze rund um den Mittelwert bei der Häufigkeit aufweisen. Beobachtungen, welche von der Spitze weiter weg sind werden seltener. Diese zwei Spitzen und somit unterschiedliche Körpergrössenverteilungen nach Geschlecht war aus (a) nicht ersichtlich. Es ist immer möglich, dass bei nicht-Experimenten ein zusätzliches Merkmal (hier das Geschlecht) ganz neue Erkenntnisse bringen kann.
+(c) In den Daten der Körpergrösse ist ersichtlich, dass aufgrund der detaillierten Aufzeichnung der Körpergrössen im hundertstel Millimeterbereich keine Beobachtung zweimal vorkommt. Jede Beobachtung ist somit die häufigste Beobachtung. Der Modus ist hier also bedeutungslos. Um einen sinnvolleren Wert für den Modus zu erhalten könnten die Körpergrössen vorab auf Zentimeter gerundet werden. In `Jamovi` kann dies mit der Funktion `ROUND` gemacht werden. Der Modus ist dann $165$ cm für die Frauen und $172$ für die Männer, was sich mit den Erwartungen aus dem Histogramm deckt.
 :::
 
 
@@ -610,7 +659,45 @@ c) Falsch, richtig wäre $Mdn=1$.
 d) Falsch, es wurden Haushalte beobachtet nicht Personen.
 :::
 
+::: {.exercise}
+<!-- 
+Ziel: 
+- Veriabilitätsmasse mit Zahlen
+-->
+Von einem intervallskalierten Merkmal wurden folgende fünf Beobachtungen gemacht: $12, 23, 15, 12, 7$. Welche der folgenden Aussagen sind wahr, welche falsch?
 
+a) $SD = 5.89$.
+b) $R = 5$.
+c) $IQR = 3$.
+d) $s = 5.89$.
+:::
+
+:::{.solution}
+a) Richtig
+b) Falsch
+c) Richtig
+d) Richtig
+:::
+
+::: {.exercise}
+<!-- 
+Ziel: 
+- Veriabilitätsmasse mit theoretisch
+-->
+Welche der folgenden Aussagen sind wahr, welche falsch?
+
+a) Die Spannweite ist immer grösser als der Interquartilabstand.
+b) $50\%$ der Beobachtungen sind auf einer Distanz ausgebreitet, welche dem Interquartilabstand entspricht.
+c) Der Interquartilabstand entspricht der Datenstreuung von der kleinsten Beobachtung bis zum Median.
+d) Die Standardabweichung wird durch Messfehler weniger beeinflusst als der Interquartilabstand.
+:::
+
+:::{.solution}
+a) Richtig
+b) Richtig
+c) Falsch
+d) Falsch
+:::
 
 
 <!--chapter:end:src/02-1-was_ist_eine_intervallskalierte_variable.Rmd-->
