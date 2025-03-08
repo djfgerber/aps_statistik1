@@ -27,22 +27,22 @@ gen_exm_angst <- function(){
 exm_angst <- gen_exm_angst()
 ```
 
-Forschende haben ein Messinstrument State-Trait Anxiety Inentory _STAI_, welches Angst misst [@spielberger1983manual]. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst man aktuell empfindet. Die so gemessene Angst enstpricht einem Wert zwischen $20$ und $80$. A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit $n =`r exm_angst$n`$ zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte $M=`r round(mean(exm_angst$x), 2)`, s = `r round(sd(exm_angst$x),2)`, n = `r exm_angst$n`$ für die Angst in ihren Beobachtungen.
+Forschende haben das Messinstrument State-Trait Anxiety Inentory _STAI_ entwickelt, welches Angst misst [@spielberger1983manual]. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst aktuell empfunden wird. Die so gemessene Angst enstpricht einem Wert zwischen $20$ und $80$. A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit $n =`r exm_angst$n`$ zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte $M=`r round(mean(exm_angst$x), 2)`, s = `r round(sd(exm_angst$x),2)`, n = `r exm_angst$n`$ für die Angst in ihren Beobachtungen.
 :::
 
-[Zufällig ausgewählte Beobachtungen eines Merkmals werden als __Stichprobe__ bezeichnet.]{.customdef #customdef-stichprobe} [Nach der Auswahl der Stichprobe ist die __Stichprobenziehung__.]{.customdef #customdef-stichprobenziehung} Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? [Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als __Population__]{.customdef #customdef-population} [oder __Grundgesamtheit__ bezeichnet]{.customdef #customdef-grundgesamtheit}. [Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als __Zufallsstichprobe__ bezeichnet.]{.customdef #customdef-zufallsstichprobe} 
+[Zufällig ausgewählte Beobachtungen eines Merkmals werden als __Stichprobe__ bezeichnet.]{.customdef #customdef-stichprobe} [Die Auswahl der Beobachtungen für die Stichprobe ist die __Stichprobenziehung__.]{.customdef #customdef-stichprobenziehung} Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? [Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als __Population__]{.customdef #customdef-population} [oder __Grundgesamtheit__ bezeichnet]{.customdef #customdef-grundgesamtheit}. [Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als __Zufallsstichprobe__ bezeichnet.]{.customdef #customdef-zufallsstichprobe} 
 
 ::::{.caution}
 
 :::{.remark}
-Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am Forschungsbetrieb sind und damit über Studien informiert sind oder für wenig Geld oder Bildungsanerkennung an Studien teilnehmen. Einige dieser Studien generalisieren ihre Forschungsresultate nachher auf alle Personen. Dies ist in der Regel falsch, da Studierende nicht repräsentativ für die Gesamtbevölkerung sind (Altersstruktur, Geschlechtsverteilung, Vermögen, usw.). Die Frage, wie eine repräsentative Stichprobe würde den Rahmen dieses Buches sprengen.
+Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am Forschungsbetrieb sind und damit über Studien informiert sind oder für wenig Geld oder Bildungsanerkennung an Studien teilnehmen. Einige dieser Studien generalisieren ihre Forschungsresultate nachher auf alle Personen. Dies ist in der Regel falsch, da Studierende nicht repräsentativ für die Gesamtbevölkerung sind (Altersstruktur, Geschlechtsverteilung, Vermögen, usw.). Die Frage, wie am besten eine repräsentative Stichprobe gezogen werden kann, kann hier aus Platzgründen nicht diskutiert werden.
 :::
 
 ::::
 
 ## Was ist das Problem der Stichprobenziehung? {#stichprobenziehung-problem}
 
-Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung \@ref(fig:srs-intervall-nocol) ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population. Die Personen im Zimmer, respektive die Beobachtungen in der Population sind normalerweise nicht sichtbar. Aus diesem Zimmer wurden also `r exm_angst$n` Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die Punkte über dem Zimmer, oberhalb des Pfeils. Die Farben der Punkte sind jetzt bekannt und entsprechen der jeweiligen Zustandesangst der beobachteten Personen.
+Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung \@ref(fig:srs-intervall-nocol) ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population entspricht. Von den Personen im Zimmer, respektive die Beobachtungen in der Population, ist die Angst nicht bekannt (Punkte in grau). Aus diesem Zimmer wurden zufällig `r exm_angst$n` Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die farbigen Punkte über dem Zimmer, oberhalb des Pfeils. Die Farben der Punkte sind jetzt bekannt und entsprechen der jeweiligen Zustandesangst der beobachteten Personen.
 
 
 ```{r srs-intervall-nocol, echo = FALSE, fig.cap="Population mit unbekannter Angst."}
@@ -56,7 +56,7 @@ plot_ball_bag(
 )
 ```
 
-Da die Stichprobe nun eben zufällig gezogen wurde, das heisst zufällig Personen aus dem Zimmer geholt wurden, kann es nun sein, dass die Stichprobe einer Population wie in Abbildung \@ref(fig:srs-intervall-high-p) entstammt.
+Da die Stichprobe zufällig gezogen wurde, das heisst zufällig Personen aus dem Zimmer geholt wurden, kann es nun sein, dass die Stichprobe einer Population wie in Abbildung \@ref(fig:srs-intervall-high-p) entstammt.
 
 
 ```{r srs-intervall-high-p, fig.cap="Population mit ähnlichen Angst-Werten wie in der Stichprobe.", echo = FALSE}
@@ -87,7 +87,7 @@ Das Problem der zufälligen Stichprobenziehung ist also, dass nie ganz klar ist,
 
 Die Lösung dieses Problems funktioniert intuitiv wie folgt: Man stellt sich vor, die Stichprobenziehung würde erneut gemacht, und dann nochmal und dann nochmal. So oft, bis man einen guten Eindruck davon hat, wie häufig eine Stichprobe mit eher tiefen Angst-Werten wie bei der Stichprobe im Beispiel vorkommt. Im Szenario, in welchem in der Population tatsächlich tiefe Werte häufig vorkommen, kann dies aussehen wie in Abbildung \@ref(fig:srs-intervall-high-p-many). Stichproben mit eher tiefen Angst-Werten kommen hier häufig vor.
 
-```{r srs-intervall-high-p-many, fig.cap="TODO.", echo = FALSE}
+```{r srs-intervall-high-p-many, fig.cap="Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher tiefen Angst-Werten.", echo = FALSE}
 plots <- list()
 for (i in 1:6) {
   set.seed(i * 5 + 789)
@@ -105,7 +105,7 @@ do.call(grid.arrange, c(plots, ncol = 3))
 
 Im Szenario, in welchem in der Population tatsächlich höhere Werte häufig vorkommen, kann dies aussehen wie in Abbildung \@ref(fig:srs-intervall-low-p-many). Stichproben mit eher tiefen Angst-Werten kommen hier selten oder gar nicht vor.
 
-```{r srs-intervall-low-p-many, fig.cap="TODO.", echo = FALSE}
+```{r srs-intervall-low-p-many, fig.cap="Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten.", echo = FALSE}
 plots <- list()
 for(i in 1:6){
   set.seed(i*5+789)
@@ -124,28 +124,55 @@ Es kann also zusammenfassend gesagt werden, dass die gezogene Stichprobe wohl eh
 
 ## Übungen
 
-::: {.exercise  #tagname-alskfdieu}
+::: {.exercise  #redhair}
 <!-- 
 Ziel: 
 - Begriffsklärung Stichprobe / Population / Grundgesamtheit / Zufallsstichprobe
 -->
-TODO: Exercise body
+In einer Studie zum Schmerzempfinden von Personen mit dem Gen MC1R (welche meistens als rothaariger Phenotyp auftreten) werden $20$ rothaarige Studierende und $54$ Studierende mit andere Haarfarbe auf ihr Schmerzempfinden getestet. Identifizieren Sie die Population und die Stichprobe und erklären Sie ob es sich um eine Zufallsstichprobe handelt.
 :::
 
 :::{.solution}
-TODO: solution body
+Die Studie will eine Aussage über alle Personen mit dem Gen MC1R treffen im Vergleich zu Personen ohne das MC1R Gen. Alle Personen mit diesem Gen sind also der eine Teil der Population und alle Personen ohne das Gen sind der andere Teil der Population. Die beobachteten $20$ rothaarigen Studierenden und die $54$ anderen Studierenden sollen eine Stichprobe von dieser Population darstellen. Dies ist den Studienleitenden jedoch nicht gelungen, da bei der Auswahl der Studierenden auf ihre Haarfarbe geachtet wurde und nicht auf die Ausprägung des MC1R-Gens. Da auch blonde Personen das MC1R-Gen in sich tragen können und sich auch Personen die Haare rot färben können, ist hier nicht davon auszugehen, dass es sich um eine Stichprobe der erwünschten Population handelt. Wenn davon ausgegangen wird, dass die rothaarigen tatsächlich alle das erwünschte Gen in sich tragen und die anderen Teilnehmenden nicht, dann kann zusätzlich bemängelt werden, dass eine Aussage über alle Personen getroffen werden soll, sich aber nur Studierende in der Stichprobe befinden - also vorwiegend junge Personen mit wenig Geld. Mit dieser Stichprobe kann dann also eigentlich nur eine Aussage zu allen jungen Rothaarigen und jungen Leuten mit anderer Haarfarbe getroffen werden. Zudem muss davon ausgangen werden, dass die Studierenden aus folgenden möglichen Gründen nicht zufällig ausgewählt wurden:
+
+- Teilnehmende brauchen das Geld oder Punkte für ihr Studium
+- Teilnehmende tendieren dazu zusammen mit Freunden an Studien teilzunehmen
+- Teilnhemende müssen Zeit haben, sind also tendenziell weniger durch Erwerbstätigkeit oder Care-Arbeit blockiert als andere
+- etc.
 :::
+
+::: {.exercise  #armwrestling}
+<!-- 
+Ziel: 
+- Begriffsklärung Stichprobe / Population / Grundgesamtheit / Zufallsstichprobe
+-->
+Anna und Isabel wollen mit einmaligem Armdrücken herauszufinden, wer die stärkere Person ist. Identifizieren Sie Population und Stichprobe. Isabel gewinnt. Können Anna und Isabel nachher mit Gewissheit sagen, dass Isabel stärker ist? Wie könnte mehr Sicherheit erlangt werden?
+:::
+
+:::{.solution}
+Die Population beinhaltet in diesem Fall alle hypothetischen je gemachten oder noch durchzuführende Armdrücken zwischen Anna und Isabel. Die Stichprobe ist das jetzt durchgeführte Armdrücken, bei welchem Isabel gewonnen hat. Anna könnte zu recht behaupten, dass nur weil Isabel einmal gewonnen hat, dies relativ wenig aussagekräftig ist für die Population also für die Frage, ob Isabel stärker ist. Vielleicht hatte Isabel einfach einen sehr starken Tag und Anna ist aber normalerweise eigentlich stärker. Um diese zufälligen Effekte zu minimieren, könnten Anna und Isabel das Armdrücken regelmässig wiederholen.
+:::
+
+## Test
 
 ::: {.exercise  #tagname-apwioev}
 <!-- 
 Ziel: 
 - Verständnis Problem/chance der zufallsstichprobe
 -->
-TODO: Exercise body
+Eine Aktiengesellschaft hat die Addressen aller ihrer $10000$ Aktionär:innen. Mit einer Umfrage soll herausgefunden werden, ob die Aktionär:innen den neuen umweltfreundlichen Unternehmenskurs begrüssen. Dazu werden per losverfahren $100$ Aktionär:innen bestimmt und an der Generalversammlung kurz um eine Stellungnahme gebeten. Welche der folgenden Aussagen sind wahr, welche falsch?
+
+a) Die Stichprobengrösse ist $10000$.
+b) Die Grundgesamtheit sind alle Aktionär:innen.
+c) Es handelt sich um eine Zufallsstichprobe.
+d) Die Population umfasst $100$ Aktionär:innen.
 :::
 
 :::{.solution}
-TODO: solution body
+a) Falsch
+b) Richtig
+c) Richtig
+d) Falsch
 :::
 
 

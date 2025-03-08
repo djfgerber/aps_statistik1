@@ -146,7 +146,7 @@ $$ \bar{x} - \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1} < \mu < \bar{x} + \frac{s}
 
 berechnet werden, wobei $\bar{x}$ das arithmetische Mittel, $s$ die Standardabweichung und $t_{97.5\%, n-1}$ dem Wert des 97.5%-Perzentil einer auf 0 zentrierten $t$-Verteilung mit $n-1$ Freiheitsgraden entspricht. Letzere Perzentile der $t$-Verteilung können bei Bedarf in entsprechenden Tabellen nachgeschlagen werden. Als Gedankenstütze kann für $t_{97.5\%, n-1}$ immer $2$ gedacht werden, da dies ungefähr dem wahren Wert entspricht, wenn $n$ grösser als $50$ ist.
 
-Das $2.5\%$ und das $97.5\%$ Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines [**Intervalles**. Ein Intervall bezeichnet durch die Symbolik $[$untere Schranke, obere Schranke$]$ beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.]{.customdef #customdef-interval} [Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in $95\%$ der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu $95\%$ sicher oder _konfident_ sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als $95\%$-**Konfidenzintervall** (symbol KI) bezeichnet.]{.customdef #customdef-confidence-interval}
+Das $2.5\%$ und das $97.5\%$ Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines [**Intervalles**. Ein Intervall bezeichnet durch die Symbolik $[$untere Schranke, obere Schranke$]$ beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.]{.customdef #customdef-interval} [Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in $95\%$ der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu $95\%$ sicher oder _konfident_ sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als $95\%$-**Konfidenzintervall** (Symbol KI) bezeichnet.]{.customdef #customdef-confidence-interval}
 
 In Beispiel \@ref(exm:angst), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Angst in der Population bei $M = `r round(mean(exm_angst$x),2)`$ $95\%$ KI $[`r round(exm_angst$lb_means_t,2)`,`r round(exm_angst$ub_means_t,2)`]$ liegt. In Beispiel \@ref(exm:agreableness), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Verträglichkeit in der Population bei $M = `r round(mean(x1), 2)`$ $95\%$ KI $[`r round(lb1_t,2)`,`r round(ub1_t,2)`]$ liegt. Wann immer eine Schätzung eines zentralen Wertes berichtet wird, soll dies ab jetzt in der soeben gezeigten Darstellung inklusive Angabe des Konfidenzintervalls erfolgen. Damit wird der Leserin aufgezeigt, wo der Schätzwert der zentralen Tendenz liegt und gleichzeigtig wird intuitiv vermittelt wie genau die Schätzung ist.
 
@@ -197,41 +197,97 @@ Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse $n$ oder die
 
 ## Übungen
 
-::: {.exercise #interpret-report1}
+::: {.exercise #marktpreisanalyse}
 <!-- 
 Ziel: 
-- 
+- Konfidenzintervall mit Jamovi berechnen und berichten
 -->
-```{r exr-interpret-report1}
-print('hi')
+```{r exr-marktpreisanalyse}
+gen_exr_marktpreisanalyse <- function(){
+  set.seed(234)
+  n <- 70
+  tab <- tibble(preis = rchisq(n, 10)*30)
+  file_name <- '04-exr-marktpreisanalyse.sav'
+  tab %>%
+    write_sav(file_name)
+  return(mget(ls()))
+} 
+exr_marktpreisanalyse <- gen_exr_marktpreisanalyse()
 ```
 
+Die Firma Pear bringt ein neues Smartphone das F42 der Reihe Supernova X auf den Markt. Das Smartphone ist für Jugendliche im Alter von $15-20$ Jahre konzipiert. Um herauszufinden, welcher Marktpreis für das F42 verlangt werden kann, erfragt Pear bei $`r exr_marktpreisanalyse$n`$ Jugendlichen die Zahlbereitschaft. Die Daten stehen unter `r inline_code(exr_marktpreisanalyse$file_name)` zur Verfügung. Wie gross ist die durchschnittliche Zahlbereitschaft der Jugendlichen? Berichten Sie die Ergebnisse der Marktanalyse mit einem $95\%$-Konfidenzintervall.
 :::
 
 :::{.solution}
-TODO
-:::
+Der Datensatz wird bei `Jamovi` eingelesen und die  Analyseparameter wie in Abbildung \@ref(fig:sol-marktpreisanalyse-input) gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.
 
-::: {.exercise #interpret-report2}
-<!-- 
-Ziel: 
-- 
--->
-```{r exr-interpret-report2}
-print('hi')
+
+```{r sol-marktpreisanalyse-input, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
+knitr::include_graphics("figures/04-exr-marktpreisanalyse-jmv-input.jpg")
 ```
 
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-marktpreisanalyse-output).
+
+```{r sol-marktpreisanalyse-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/04-exr-marktpreisanalyse-jmv-output.jpg")
+```
+
+Die Marktanalyse mit $N = 70$ Befragten hat ergeben, dass Jugendliche im Alter von $15-20$ Jahren bereit sind durchschnittlich $M = 288.34$ CHF $95\%$-KI $[260.92,315.76]$ auszugeben für das neue Supernova X F42 von Pear.
+:::
+
+::: {.exercise #stranger}
+<!-- 
+Ziel: 
+- Konfidenzintervall mit Jamovi berechnen, interpretieren und berichten
+-->
+```{r exr-stranger}
+gen_exr_stranger <- function(){
+  set.seed(234)
+  n <- 421
+  s <- 0.21
+  tab <- tibble(vorher = rnorm(n, 3.78, s),
+         nachher = rnorm(n, 3.34, s))
+  file_name <- '04-exr-stranger.sav'
+  tab %>%
+    write_sav(file_name)
+  return(mget(ls()))
+} 
+exr_stranger <- gen_exr_stranger()
+```
+
+In einer Studie werden $`r exr_stranger$n`$ Probandinnen über eine Woche lang beauftragt immer wieder fremde Personen anzusprechen. Dabei wird unter anderem am Anfang und am Ende der Woche gemessen, wie unangenehm auf einer Skala von $1$ bis $5$ dies für die Probandinnen ist. Die Daten stehen unter `r inline_code(exr_stranger$file_name)` zur Verfügung. Verwenden Sie für drei Nachkommastellen in `Jamovi` für die folgenden Teilaufgaben.
+
+(a) Berechnen Sie das $95\%$-Konfidenzintervall für die durchschnittliche Unangenehmheit in der Grundgesamtheit für die Situation am Anfang und am Ende der Studie und berichten und interpretieren Sie das Resultat. Denken Sie die Intervention hat die Unangenehmheit, welche durch das Ansprechen von Fremden entsteht, in der Grundgesamtheit durchschnittlich gesenkt? 
+(b) Vergleichen Sie die Längen der errechneten Konfidenzintervalle. 
+(c) Wiederholen Sie die Aufgabe und berechnen Sie jetzt das $90\%$ und das $99\%$-Konfidenzintervall. Wie verhält sich die Länge des Konfidenzintervalls bei unterschiedlichen Vertrauenswahrscheinlichkeiten?
+
+Diese Aufgabe ist angelehnt an @sandstrom2022.
 :::
 
 :::{.solution}
-TODO
+Der Datensatz wird bei `Jamovi` eingelesen und die  Analyseparameter wie in Abbildung \@ref(fig:sol-stranger-input) gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.
+
+
+```{r sol-stranger-input, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
+knitr::include_graphics("figures/04-exr-stranger-jmv-input.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-stranger-output).
+
+```{r sol-stranger-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/04-exr-stranger-jmv-output.jpg")
+```
+
+(a) Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei $M=3.784, 95\%$ KI $[3.764, 3.803]$ Punkten und am ende der Woche bei $M=3.328, 95\%$ KI $[3.309, 3.348]$ Punkten. Wenn die Studie $100$ mal wiederholt wird und jedes mal ein $95\%$ Konfidenzintervall für den Erwartungswert der Unangenehmheit berechnet wird, so wird der tatsächliche Erwartungswert in $95\%$ der Fälle also ungefähr $95$ mal vom Konfidenzintervall überdeckt. Da die Konfidenzintervalle weit auseinander liegen, kann davon ausgegangen werden, dass die Unangenehmheit durchschnittlich tatsächlich nach dem Versuch tiefer liegt als vor dem Versuch. Die Unangenehmheit kann also durch Training vermindert werden.
+(b) Die Länge der Konfidenzintervalle betragen am Anfang der Woche $3.803-3.764=0.039$ und am Ende der Woche $3.348-3.309= 0.039$. 
+(c) Um das $90\%$ Konfidenzintervall zu berechnen kann in der in Abbildung \@ref(fig:sol-stranger-input) dargestellten Maske der Wert für `Konfidenzintervall für den Mittelwert` auf $90$ gesetzt werden. Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei $M=3.784, 90\%$ KI $[3.767, 3.800]$ Punkten und am ende der Woche bei $M=3.328, 90\%$ KI $[3.312, 3.345]$ Punkten. Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei $M=3.784, 99\%$ KI $[3.758, 3.809]$ Punkten und am ende der Woche bei $M=3.328, 99\%$ KI $[3.303, 3.354]$ Punkten. Die Länge der $90\%$ Konfidenzintervalle ist $3.800-3.767=0.033$ und $3.345-3.312=0.033$. Die Länge der $99\%$ Konfidenzintervalle ist $3.809-3.758=0.051$ und $3.354-3.303=0.051$. Es kann also hier empirisch festgestellt werden, dass das Konfidenzintervall grösser wird, je höher die Vertrauenswahrscheinlichkeit sein soll. 
 :::
 
 
 ::: {.exercise #ki-approx-normal}
 <!-- 
 Ziel: 
-- 
+- Erleben, dass Mittelwerte normalverteilt sind.
 -->
 
 ```{r ki-approx-normal}
@@ -274,7 +330,7 @@ map_dfr(c(1:3),
   labs(x="Wert", y = 'Häufigkeit')
 ```
 
-Die arithmetischen Mittel der 10'000 Stichproben sind im Datensatz `04-exr-zentraler-grenzwertsatz.sav` festgehalten. In der Spalte `n_10` zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallstichprobe mit 10 Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse $n$. Erstellen Sie ein Histogramm mit der Erweiterung `JJStatsPlot` und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.
+Die arithmetischen Mittel der $10'000$ Stichproben sind im Datensatz `04-exr-zentraler-grenzwertsatz.sav` festgehalten. In der Spalte `n_10` zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallstichprobe mit $10$ Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse $n$. Erstellen Sie ein Histogramm mit der Erweiterung `JJStatsPlot` und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.
 
 :::
 

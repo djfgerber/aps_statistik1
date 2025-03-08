@@ -559,10 +559,10 @@ exr_diverse_distrib$jmv_output$plots
 Die Merkmale werden mit den Befehlen in Abbildung \@ref(fig:sol-diverse-distrib1) analysiert.
 
 a. Es gibt gemäss \@ref(fig:sol-diverse-distrib2) genau $500$ Studienteilnehmende (siehe $N$).
-b. Die Histogramme für den IQ und die Aufgeschlossenheit weisen eine ähliche Form auf. Viele Beobachtungen sind um eine Mitte zentriert. Je weiter weg von der Mitte, desto seltener sind die Beobachtungen. Das Histogramm des IQ zeigt, dass die Verteilung rund um 100 zentriert ist und ca von 60 bis 140 reicht. Je weiter entfernt von 100, desto weniger Beobachtungen wurden gemacht. Das Histogramm der Aufgeschlossenheit stellt dar, dass diese rund um 4 zentriert ist mit Werten von 1 bis 7. Je weiter die Werte von 4 entfernt sind, desto weniger häufig sind die Beobachtungen. Der vom Histogramm abgeleitete vorher genannte zentrale Wert entspricht ungefähr dem Mittelwert und dem Median für beide Merkmale. Für die Aufgeschlossenheit hat der Modalwert ebenfalls einen ähnlichen Wert. Der Modus für den IQ ist nicht belastbar, da die Fussnote besagt, dass mehrere Werte als Modus in Frage kommen. Eine genauere Durchsicht der IQ-Werte lässt folgern, dass aufgrund der vielen Nachkommastellen jeder IQ-Wert nur genau einmal vorkommt. Der angebene Modalwert des IQs entspricht also einfach einer zufälligen Beobachtung. Die Kennwerte für die Variabilität lassen ebenfalls auf Unterschiede zwischen den beiden Merkmalen schliessen. Die höheren Werte Standardabweichung, IQR und Wertebereich des IQ im Vergleich zur Aufgeschlossenheit legen nahe, dass die Streuung der Werte für den IQ viel grösser ist. Zum Beispiel ist eine durchschnittliche IQ-Beobachtung 15.5 IQ-Werte weg vom durchschnittlichen IQ und eine durchschnittliche Aufgeschlossenheits-Beobachtung nur 1.3 Aufgeschlossenheits-Werte weg von der duchschnittlichen Aufgeschlossenheit. Dies ist auf dem Histogramm zu erkennen, wenn die Skala der horizontalen Achse betrachtet wird. Für den IQ reicht diese von 50 bis 125 und für die Aufgeschlossenheit von 2 bis 6.
-c. Die Wartezeiten wurden einmal in Minuten und einmal in Stunden abgespeichtert. Die resultierenden Histogramme sind deshalb genau identisch bis auf die Werte der horizontalen Achse, welche von 0 bis 0.6 Stunden und von 0 bis 40 Minuten reicht. Im Vergleich zu den Histogrammen des IQ und der Aufmerksamkeit kann für die Wartezeit und eine asymetrische Verteilung beobachtet werden. Kurze Wartezeiten werden demnach häufiger beobachtet als längere Wartezeiten. Die meisten Wartezeiten liegen unter 10 Minuten, sehr selten kommt es zu Wartezeiten über 20 Minuten. Die Kennzahlen für die Wartezeit in Stunden können aus den Kennzahlen der Wartezeit in Stunden hergeleitet werden indem die Werte durch $60$ geteilt werden. Es reicht deshalb die Kennzahlen für die Wartezeit in Minuten zu betrachten. Die durchscnittliche Wartezeit liegt bei $M=5.07, Mdn = 3.97$ Minuten. Der Modalwert ist wiederum nicht interpretierbar aus demselben Grund wie oben. Der Median bedeutet, dass $50\%$ der Wartezeiten kleiner und $50\%$ der Wartezeiten grösser waren als $3.97$ Minuten. Das arithmetische Mittel ist höher als der Median. Die einigen wenigen Beobachtungen mit sehr langen Wartezeiten haben also das arithmetische Mittel im Vergleich zum Median stärker beeinflusst.
+b. Die Histogramme für den IQ und die Aufgeschlossenheit weisen eine ähliche Form auf. Viele Beobachtungen sind um eine Mitte zentriert. Je weiter weg von der Mitte, desto seltener sind die Beobachtungen. Das Histogramm des IQ zeigt, dass die Verteilung rund um $100$ zentriert ist und ca. von $60$ bis $140$ reicht. Je weiter entfernt von $100$, desto weniger Beobachtungen wurden gemacht. Das Histogramm der Aufgeschlossenheit stellt dar, dass diese rund um 4 zentriert ist mit Werten von 1 bis 7. Je weiter die Werte von 4 entfernt sind, desto weniger häufig sind die Beobachtungen. Der vom Histogramm abgeleitete vorher genannte zentrale Wert entspricht ungefähr dem Mittelwert und dem Median für beide Merkmale. Für die Aufgeschlossenheit hat der Modalwert ebenfalls einen ähnlichen Wert. Der Modus für den IQ ist nicht belastbar, da die Fussnote besagt, dass mehrere Werte als Modus in Frage kommen. Eine genauere Durchsicht der IQ-Werte lässt folgern, dass aufgrund der vielen Nachkommastellen jeder IQ-Wert nur genau einmal vorkommt. Der angebene Modalwert des IQs entspricht also einfach einer zufälligen Beobachtung. Die Kennwerte für die Variabilität lassen ebenfalls auf Unterschiede zwischen den beiden Merkmalen schliessen. Die höheren Werte Standardabweichung, IQR und Wertebereich des IQ im Vergleich zur Aufgeschlossenheit legen nahe, dass die Streuung der Werte für den IQ viel grösser ist. Zum Beispiel ist eine durchschnittliche IQ-Beobachtung $15.5$ IQ-Werte weg vom durchschnittlichen IQ und eine durchschnittliche Aufgeschlossenheits-Beobachtung nur $1.3$ Aufgeschlossenheits-Werte weg von der duchschnittlichen Aufgeschlossenheit. Dies ist auf dem Histogramm zu erkennen, wenn die Skala der horizontalen Achse betrachtet wird. Für den IQ reicht diese von 50 bis 125 und für die Aufgeschlossenheit von $2$ bis $6$.
+c. Die Wartezeiten wurden einmal in Minuten und einmal in Stunden abgespeichtert. Die resultierenden Histogramme sind deshalb genau identisch bis auf die Werte der horizontalen Achse, welche von $0$ bis $0.6$ Stunden und von $0$ bis $40$ Minuten reicht. Im Vergleich zu den Histogrammen des IQ und der Aufmerksamkeit kann für die Wartezeit und eine asymetrische Verteilung beobachtet werden. Kurze Wartezeiten werden demnach häufiger beobachtet als längere Wartezeiten. Die meisten Wartezeiten liegen unter $10$ Minuten, sehr selten kommt es zu Wartezeiten über $20$ Minuten. Die Kennzahlen für die Wartezeit in Stunden können aus den Kennzahlen der Wartezeit in Stunden hergeleitet werden indem die Werte durch $60$ geteilt werden. Es reicht deshalb die Kennzahlen für die Wartezeit in Minuten zu betrachten. Die durchschnittliche Wartezeit liegt bei $M=5.07$ Minuten, $Mdn = 3.35$. Der Modalwert ist wiederum nicht interpretierbar aus demselben Grund wie oben. Der Median bedeutet, dass $50\%$ der Wartezeiten kleiner und $50\%$ der Wartezeiten grösser waren als $3.35$ Minuten. Das arithmetische Mittel ist höher als der Median. Die einigen wenigen Beobachtungen mit sehr langen Wartezeiten haben also das arithmetische Mittel im Vergleich zum Median stärker beeinflusst.
 d. TODO.
-e. TODO: Zentraler Wert hier nicht identifiziertbar, streuung auch nicht.
+e. TODO: Zentraler Wert hier nicht identifiziertbar, Streuung auch nicht.
 :::
 
 ## Test  {#intervallskaliertes-merkmal-test}
@@ -731,22 +731,22 @@ gen_exm_angst <- function(){
 exm_angst <- gen_exm_angst()
 ```
 
-Forschende haben ein Messinstrument State-Trait Anxiety Inentory _STAI_, welches Angst misst [@spielberger1983manual]. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst man aktuell empfindet. Die so gemessene Angst enstpricht einem Wert zwischen $20$ und $80$. A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit $n =`r exm_angst$n`$ zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte $M=`r round(mean(exm_angst$x), 2)`, s = `r round(sd(exm_angst$x),2)`, n = `r exm_angst$n`$ für die Angst in ihren Beobachtungen.
+Forschende haben das Messinstrument State-Trait Anxiety Inentory _STAI_ entwickelt, welches Angst misst [@spielberger1983manual]. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst aktuell empfunden wird. Die so gemessene Angst enstpricht einem Wert zwischen $20$ und $80$. A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit $n =`r exm_angst$n`$ zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte $M=`r round(mean(exm_angst$x), 2)`, s = `r round(sd(exm_angst$x),2)`, n = `r exm_angst$n`$ für die Angst in ihren Beobachtungen.
 :::
 
-[Zufällig ausgewählte Beobachtungen eines Merkmals werden als __Stichprobe__ bezeichnet.]{.customdef #customdef-stichprobe} [Nach der Auswahl der Stichprobe ist die __Stichprobenziehung__.]{.customdef #customdef-stichprobenziehung} Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? [Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als __Population__]{.customdef #customdef-population} [oder __Grundgesamtheit__ bezeichnet]{.customdef #customdef-grundgesamtheit}. [Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als __Zufallsstichprobe__ bezeichnet.]{.customdef #customdef-zufallsstichprobe} 
+[Zufällig ausgewählte Beobachtungen eines Merkmals werden als __Stichprobe__ bezeichnet.]{.customdef #customdef-stichprobe} [Die Auswahl der Beobachtungen für die Stichprobe ist die __Stichprobenziehung__.]{.customdef #customdef-stichprobenziehung} Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? [Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als __Population__]{.customdef #customdef-population} [oder __Grundgesamtheit__ bezeichnet]{.customdef #customdef-grundgesamtheit}. [Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als __Zufallsstichprobe__ bezeichnet.]{.customdef #customdef-zufallsstichprobe} 
 
 ::::{.caution}
 
 :::{.remark}
-Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am Forschungsbetrieb sind und damit über Studien informiert sind oder für wenig Geld oder Bildungsanerkennung an Studien teilnehmen. Einige dieser Studien generalisieren ihre Forschungsresultate nachher auf alle Personen. Dies ist in der Regel falsch, da Studierende nicht repräsentativ für die Gesamtbevölkerung sind (Altersstruktur, Geschlechtsverteilung, Vermögen, usw.). Die Frage, wie eine repräsentative Stichprobe würde den Rahmen dieses Buches sprengen.
+Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am Forschungsbetrieb sind und damit über Studien informiert sind oder für wenig Geld oder Bildungsanerkennung an Studien teilnehmen. Einige dieser Studien generalisieren ihre Forschungsresultate nachher auf alle Personen. Dies ist in der Regel falsch, da Studierende nicht repräsentativ für die Gesamtbevölkerung sind (Altersstruktur, Geschlechtsverteilung, Vermögen, usw.). Die Frage, wie am besten eine repräsentative Stichprobe gezogen werden kann, kann hier aus Platzgründen nicht diskutiert werden.
 :::
 
 ::::
 
 ## Was ist das Problem der Stichprobenziehung? {#stichprobenziehung-problem}
 
-Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung \@ref(fig:srs-intervall-nocol) ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population. Die Personen im Zimmer, respektive die Beobachtungen in der Population sind normalerweise nicht sichtbar. Aus diesem Zimmer wurden also `r exm_angst$n` Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die Punkte über dem Zimmer, oberhalb des Pfeils. Die Farben der Punkte sind jetzt bekannt und entsprechen der jeweiligen Zustandesangst der beobachteten Personen.
+Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung \@ref(fig:srs-intervall-nocol) ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population entspricht. Von den Personen im Zimmer, respektive die Beobachtungen in der Population, ist die Angst nicht bekannt (Punkte in grau). Aus diesem Zimmer wurden zufällig `r exm_angst$n` Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die farbigen Punkte über dem Zimmer, oberhalb des Pfeils. Die Farben der Punkte sind jetzt bekannt und entsprechen der jeweiligen Zustandesangst der beobachteten Personen.
 
 
 ```{r srs-intervall-nocol, echo = FALSE, fig.cap="Population mit unbekannter Angst."}
@@ -760,7 +760,7 @@ plot_ball_bag(
 )
 ```
 
-Da die Stichprobe nun eben zufällig gezogen wurde, das heisst zufällig Personen aus dem Zimmer geholt wurden, kann es nun sein, dass die Stichprobe einer Population wie in Abbildung \@ref(fig:srs-intervall-high-p) entstammt.
+Da die Stichprobe zufällig gezogen wurde, das heisst zufällig Personen aus dem Zimmer geholt wurden, kann es nun sein, dass die Stichprobe einer Population wie in Abbildung \@ref(fig:srs-intervall-high-p) entstammt.
 
 
 ```{r srs-intervall-high-p, fig.cap="Population mit ähnlichen Angst-Werten wie in der Stichprobe.", echo = FALSE}
@@ -791,7 +791,7 @@ Das Problem der zufälligen Stichprobenziehung ist also, dass nie ganz klar ist,
 
 Die Lösung dieses Problems funktioniert intuitiv wie folgt: Man stellt sich vor, die Stichprobenziehung würde erneut gemacht, und dann nochmal und dann nochmal. So oft, bis man einen guten Eindruck davon hat, wie häufig eine Stichprobe mit eher tiefen Angst-Werten wie bei der Stichprobe im Beispiel vorkommt. Im Szenario, in welchem in der Population tatsächlich tiefe Werte häufig vorkommen, kann dies aussehen wie in Abbildung \@ref(fig:srs-intervall-high-p-many). Stichproben mit eher tiefen Angst-Werten kommen hier häufig vor.
 
-```{r srs-intervall-high-p-many, fig.cap="TODO.", echo = FALSE}
+```{r srs-intervall-high-p-many, fig.cap="Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher tiefen Angst-Werten.", echo = FALSE}
 plots <- list()
 for (i in 1:6) {
   set.seed(i * 5 + 789)
@@ -809,7 +809,7 @@ do.call(grid.arrange, c(plots, ncol = 3))
 
 Im Szenario, in welchem in der Population tatsächlich höhere Werte häufig vorkommen, kann dies aussehen wie in Abbildung \@ref(fig:srs-intervall-low-p-many). Stichproben mit eher tiefen Angst-Werten kommen hier selten oder gar nicht vor.
 
-```{r srs-intervall-low-p-many, fig.cap="TODO.", echo = FALSE}
+```{r srs-intervall-low-p-many, fig.cap="Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten.", echo = FALSE}
 plots <- list()
 for(i in 1:6){
   set.seed(i*5+789)
@@ -828,28 +828,55 @@ Es kann also zusammenfassend gesagt werden, dass die gezogene Stichprobe wohl eh
 
 ## Übungen
 
-::: {.exercise  #tagname-alskfdieu}
+::: {.exercise  #redhair}
 <!-- 
 Ziel: 
 - Begriffsklärung Stichprobe / Population / Grundgesamtheit / Zufallsstichprobe
 -->
-TODO: Exercise body
+In einer Studie zum Schmerzempfinden von Personen mit dem Gen MC1R (welche meistens als rothaariger Phenotyp auftreten) werden $20$ rothaarige Studierende und $54$ Studierende mit andere Haarfarbe auf ihr Schmerzempfinden getestet. Identifizieren Sie die Population und die Stichprobe und erklären Sie ob es sich um eine Zufallsstichprobe handelt.
 :::
 
 :::{.solution}
-TODO: solution body
+Die Studie will eine Aussage über alle Personen mit dem Gen MC1R treffen im Vergleich zu Personen ohne das MC1R Gen. Alle Personen mit diesem Gen sind also der eine Teil der Population und alle Personen ohne das Gen sind der andere Teil der Population. Die beobachteten $20$ rothaarigen Studierenden und die $54$ anderen Studierenden sollen eine Stichprobe von dieser Population darstellen. Dies ist den Studienleitenden jedoch nicht gelungen, da bei der Auswahl der Studierenden auf ihre Haarfarbe geachtet wurde und nicht auf die Ausprägung des MC1R-Gens. Da auch blonde Personen das MC1R-Gen in sich tragen können und sich auch Personen die Haare rot färben können, ist hier nicht davon auszugehen, dass es sich um eine Stichprobe der erwünschten Population handelt. Wenn davon ausgegangen wird, dass die rothaarigen tatsächlich alle das erwünschte Gen in sich tragen und die anderen Teilnehmenden nicht, dann kann zusätzlich bemängelt werden, dass eine Aussage über alle Personen getroffen werden soll, sich aber nur Studierende in der Stichprobe befinden - also vorwiegend junge Personen mit wenig Geld. Mit dieser Stichprobe kann dann also eigentlich nur eine Aussage zu allen jungen Rothaarigen und jungen Leuten mit anderer Haarfarbe getroffen werden. Zudem muss davon ausgangen werden, dass die Studierenden aus folgenden möglichen Gründen nicht zufällig ausgewählt wurden:
+
+- Teilnehmende brauchen das Geld oder Punkte für ihr Studium
+- Teilnehmende tendieren dazu zusammen mit Freunden an Studien teilzunehmen
+- Teilnhemende müssen Zeit haben, sind also tendenziell weniger durch Erwerbstätigkeit oder Care-Arbeit blockiert als andere
+- etc.
 :::
+
+::: {.exercise  #armwrestling}
+<!-- 
+Ziel: 
+- Begriffsklärung Stichprobe / Population / Grundgesamtheit / Zufallsstichprobe
+-->
+Anna und Isabel wollen mit einmaligem Armdrücken herauszufinden, wer die stärkere Person ist. Identifizieren Sie Population und Stichprobe. Isabel gewinnt. Können Anna und Isabel nachher mit Gewissheit sagen, dass Isabel stärker ist? Wie könnte mehr Sicherheit erlangt werden?
+:::
+
+:::{.solution}
+Die Population beinhaltet in diesem Fall alle hypothetischen je gemachten oder noch durchzuführende Armdrücken zwischen Anna und Isabel. Die Stichprobe ist das jetzt durchgeführte Armdrücken, bei welchem Isabel gewonnen hat. Anna könnte zu recht behaupten, dass nur weil Isabel einmal gewonnen hat, dies relativ wenig aussagekräftig ist für die Population also für die Frage, ob Isabel stärker ist. Vielleicht hatte Isabel einfach einen sehr starken Tag und Anna ist aber normalerweise eigentlich stärker. Um diese zufälligen Effekte zu minimieren, könnten Anna und Isabel das Armdrücken regelmässig wiederholen.
+:::
+
+## Test
 
 ::: {.exercise  #tagname-apwioev}
 <!-- 
 Ziel: 
 - Verständnis Problem/chance der zufallsstichprobe
 -->
-TODO: Exercise body
+Eine Aktiengesellschaft hat die Addressen aller ihrer $10000$ Aktionär:innen. Mit einer Umfrage soll herausgefunden werden, ob die Aktionär:innen den neuen umweltfreundlichen Unternehmenskurs begrüssen. Dazu werden per losverfahren $100$ Aktionär:innen bestimmt und an der Generalversammlung kurz um eine Stellungnahme gebeten. Welche der folgenden Aussagen sind wahr, welche falsch?
+
+a) Die Stichprobengrösse ist $10000$.
+b) Die Grundgesamtheit sind alle Aktionär:innen.
+c) Es handelt sich um eine Zufallsstichprobe.
+d) Die Population umfasst $100$ Aktionär:innen.
 :::
 
 :::{.solution}
-TODO: solution body
+a) Falsch
+b) Richtig
+c) Richtig
+d) Falsch
 :::
 
 
@@ -1007,7 +1034,7 @@ $$ \bar{x} - \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1} < \mu < \bar{x} + \frac{s}
 
 berechnet werden, wobei $\bar{x}$ das arithmetische Mittel, $s$ die Standardabweichung und $t_{97.5\%, n-1}$ dem Wert des 97.5%-Perzentil einer auf 0 zentrierten $t$-Verteilung mit $n-1$ Freiheitsgraden entspricht. Letzere Perzentile der $t$-Verteilung können bei Bedarf in entsprechenden Tabellen nachgeschlagen werden. Als Gedankenstütze kann für $t_{97.5\%, n-1}$ immer $2$ gedacht werden, da dies ungefähr dem wahren Wert entspricht, wenn $n$ grösser als $50$ ist.
 
-Das $2.5\%$ und das $97.5\%$ Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines [**Intervalles**. Ein Intervall bezeichnet durch die Symbolik $[$untere Schranke, obere Schranke$]$ beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.]{.customdef #customdef-interval} [Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in $95\%$ der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu $95\%$ sicher oder _konfident_ sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als $95\%$-**Konfidenzintervall** (symbol KI) bezeichnet.]{.customdef #customdef-confidence-interval}
+Das $2.5\%$ und das $97.5\%$ Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines [**Intervalles**. Ein Intervall bezeichnet durch die Symbolik $[$untere Schranke, obere Schranke$]$ beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.]{.customdef #customdef-interval} [Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in $95\%$ der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu $95\%$ sicher oder _konfident_ sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als $95\%$-**Konfidenzintervall** (Symbol KI) bezeichnet.]{.customdef #customdef-confidence-interval}
 
 In Beispiel \@ref(exm:angst), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Angst in der Population bei $M = `r round(mean(exm_angst$x),2)`$ $95\%$ KI $[`r round(exm_angst$lb_means_t,2)`,`r round(exm_angst$ub_means_t,2)`]$ liegt. In Beispiel \@ref(exm:agreableness), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Verträglichkeit in der Population bei $M = `r round(mean(x1), 2)`$ $95\%$ KI $[`r round(lb1_t,2)`,`r round(ub1_t,2)`]$ liegt. Wann immer eine Schätzung eines zentralen Wertes berichtet wird, soll dies ab jetzt in der soeben gezeigten Darstellung inklusive Angabe des Konfidenzintervalls erfolgen. Damit wird der Leserin aufgezeigt, wo der Schätzwert der zentralen Tendenz liegt und gleichzeigtig wird intuitiv vermittelt wie genau die Schätzung ist.
 
@@ -1058,41 +1085,97 @@ Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse $n$ oder die
 
 ## Übungen
 
-::: {.exercise #interpret-report1}
+::: {.exercise #marktpreisanalyse}
 <!-- 
 Ziel: 
-- 
+- Konfidenzintervall mit Jamovi berechnen und berichten
 -->
-```{r exr-interpret-report1}
-print('hi')
+```{r exr-marktpreisanalyse}
+gen_exr_marktpreisanalyse <- function(){
+  set.seed(234)
+  n <- 70
+  tab <- tibble(preis = rchisq(n, 10)*30)
+  file_name <- '04-exr-marktpreisanalyse.sav'
+  tab %>%
+    write_sav(file_name)
+  return(mget(ls()))
+} 
+exr_marktpreisanalyse <- gen_exr_marktpreisanalyse()
 ```
 
+Die Firma Pear bringt ein neues Smartphone das F42 der Reihe Supernova X auf den Markt. Das Smartphone ist für Jugendliche im Alter von $15-20$ Jahre konzipiert. Um herauszufinden, welcher Marktpreis für das F42 verlangt werden kann, erfragt Pear bei $`r exr_marktpreisanalyse$n`$ Jugendlichen die Zahlbereitschaft. Die Daten stehen unter `r inline_code(exr_marktpreisanalyse$file_name)` zur Verfügung. Wie gross ist die durchschnittliche Zahlbereitschaft der Jugendlichen? Berichten Sie die Ergebnisse der Marktanalyse mit einem $95\%$-Konfidenzintervall.
 :::
 
 :::{.solution}
-TODO
-:::
+Der Datensatz wird bei `Jamovi` eingelesen und die  Analyseparameter wie in Abbildung \@ref(fig:sol-marktpreisanalyse-input) gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.
 
-::: {.exercise #interpret-report2}
-<!-- 
-Ziel: 
-- 
--->
-```{r exr-interpret-report2}
-print('hi')
+
+```{r sol-marktpreisanalyse-input, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
+knitr::include_graphics("figures/04-exr-marktpreisanalyse-jmv-input.jpg")
 ```
 
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-marktpreisanalyse-output).
+
+```{r sol-marktpreisanalyse-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/04-exr-marktpreisanalyse-jmv-output.jpg")
+```
+
+Die Marktanalyse mit $N = 70$ Befragten hat ergeben, dass Jugendliche im Alter von $15-20$ Jahren bereit sind durchschnittlich $M = 288.34$ CHF $95\%$-KI $[260.92,315.76]$ auszugeben für das neue Supernova X F42 von Pear.
+:::
+
+::: {.exercise #stranger}
+<!-- 
+Ziel: 
+- Konfidenzintervall mit Jamovi berechnen, interpretieren und berichten
+-->
+```{r exr-stranger}
+gen_exr_stranger <- function(){
+  set.seed(234)
+  n <- 421
+  s <- 0.21
+  tab <- tibble(vorher = rnorm(n, 3.78, s),
+         nachher = rnorm(n, 3.34, s))
+  file_name <- '04-exr-stranger.sav'
+  tab %>%
+    write_sav(file_name)
+  return(mget(ls()))
+} 
+exr_stranger <- gen_exr_stranger()
+```
+
+In einer Studie werden $`r exr_stranger$n`$ Probandinnen über eine Woche lang beauftragt immer wieder fremde Personen anzusprechen. Dabei wird unter anderem am Anfang und am Ende der Woche gemessen, wie unangenehm auf einer Skala von $1$ bis $5$ dies für die Probandinnen ist. Die Daten stehen unter `r inline_code(exr_stranger$file_name)` zur Verfügung. Verwenden Sie für drei Nachkommastellen in `Jamovi` für die folgenden Teilaufgaben.
+
+(a) Berechnen Sie das $95\%$-Konfidenzintervall für die durchschnittliche Unangenehmheit in der Grundgesamtheit für die Situation am Anfang und am Ende der Studie und berichten und interpretieren Sie das Resultat. Denken Sie die Intervention hat die Unangenehmheit, welche durch das Ansprechen von Fremden entsteht, in der Grundgesamtheit durchschnittlich gesenkt? 
+(b) Vergleichen Sie die Längen der errechneten Konfidenzintervalle. 
+(c) Wiederholen Sie die Aufgabe und berechnen Sie jetzt das $90\%$ und das $99\%$-Konfidenzintervall. Wie verhält sich die Länge des Konfidenzintervalls bei unterschiedlichen Vertrauenswahrscheinlichkeiten?
+
+Diese Aufgabe ist angelehnt an @sandstrom2022.
 :::
 
 :::{.solution}
-TODO
+Der Datensatz wird bei `Jamovi` eingelesen und die  Analyseparameter wie in Abbildung \@ref(fig:sol-stranger-input) gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.
+
+
+```{r sol-stranger-input, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
+knitr::include_graphics("figures/04-exr-stranger-jmv-input.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-stranger-output).
+
+```{r sol-stranger-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/04-exr-stranger-jmv-output.jpg")
+```
+
+(a) Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei $M=3.784, 95\%$ KI $[3.764, 3.803]$ Punkten und am ende der Woche bei $M=3.328, 95\%$ KI $[3.309, 3.348]$ Punkten. Wenn die Studie $100$ mal wiederholt wird und jedes mal ein $95\%$ Konfidenzintervall für den Erwartungswert der Unangenehmheit berechnet wird, so wird der tatsächliche Erwartungswert in $95\%$ der Fälle also ungefähr $95$ mal vom Konfidenzintervall überdeckt. Da die Konfidenzintervalle weit auseinander liegen, kann davon ausgegangen werden, dass die Unangenehmheit durchschnittlich tatsächlich nach dem Versuch tiefer liegt als vor dem Versuch. Die Unangenehmheit kann also durch Training vermindert werden.
+(b) Die Länge der Konfidenzintervalle betragen am Anfang der Woche $3.803-3.764=0.039$ und am Ende der Woche $3.348-3.309= 0.039$. 
+(c) Um das $90\%$ Konfidenzintervall zu berechnen kann in der in Abbildung \@ref(fig:sol-stranger-input) dargestellten Maske der Wert für `Konfidenzintervall für den Mittelwert` auf $90$ gesetzt werden. Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei $M=3.784, 90\%$ KI $[3.767, 3.800]$ Punkten und am ende der Woche bei $M=3.328, 90\%$ KI $[3.312, 3.345]$ Punkten. Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei $M=3.784, 99\%$ KI $[3.758, 3.809]$ Punkten und am ende der Woche bei $M=3.328, 99\%$ KI $[3.303, 3.354]$ Punkten. Die Länge der $90\%$ Konfidenzintervalle ist $3.800-3.767=0.033$ und $3.345-3.312=0.033$. Die Länge der $99\%$ Konfidenzintervalle ist $3.809-3.758=0.051$ und $3.354-3.303=0.051$. Es kann also hier empirisch festgestellt werden, dass das Konfidenzintervall grösser wird, je höher die Vertrauenswahrscheinlichkeit sein soll. 
 :::
 
 
 ::: {.exercise #ki-approx-normal}
 <!-- 
 Ziel: 
-- 
+- Erleben, dass Mittelwerte normalverteilt sind.
 -->
 
 ```{r ki-approx-normal}
@@ -1135,7 +1218,7 @@ map_dfr(c(1:3),
   labs(x="Wert", y = 'Häufigkeit')
 ```
 
-Die arithmetischen Mittel der 10'000 Stichproben sind im Datensatz `04-exr-zentraler-grenzwertsatz.sav` festgehalten. In der Spalte `n_10` zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallstichprobe mit 10 Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse $n$. Erstellen Sie ein Histogramm mit der Erweiterung `JJStatsPlot` und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.
+Die arithmetischen Mittel der $10'000$ Stichproben sind im Datensatz `04-exr-zentraler-grenzwertsatz.sav` festgehalten. In der Spalte `n_10` zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallstichprobe mit $10$ Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse $n$. Erstellen Sie ein Histogramm mit der Erweiterung `JJStatsPlot` und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.
 
 :::
 

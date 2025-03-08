@@ -37,7 +37,8 @@ fig:srs-intervall-high-p
 fig:srs-intervall-low-p
 fig:srs-intervall-high-p-many
 fig:srs-intervall-low-p-many
-exr:tagname-alskfdieu
+exr:redhair
+exr:armwrestling
 exr:tagname-apwioev
 fig:exm-angst-hist-means
 fig:exm-angst-hist-means-emp-ci
@@ -48,8 +49,12 @@ fig:exm-angst-normal-approx
 fig:exm-agreableness-normal-approx
 tab:quantiles-norm
 fig:t-distribution
-exr:interpret-report1
-exr:interpret-report2
+exr:marktpreisanalyse
+fig:sol-marktpreisanalyse-input
+fig:sol-marktpreisanalyse-output
+exr:stranger
+fig:sol-stranger-input
+fig:sol-stranger-output
 exr:ki-approx-normal
 fig:ki-approx-normal1
 fig:sol-ki-approx-normal
@@ -118,6 +123,7 @@ stichprobenziehung
 stichprobenziehung-problem
 stichprobenziehung-loesung
 übungen
+test
 durchschnitt-und-standardabweichung-schätzen
 wo-liegt-der-durchschnitt-der-grundgesamtheit
 übungen-1

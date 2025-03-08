@@ -124,6 +124,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.1" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#stichprobenziehung-problem"><i class="fa fa-check"></i><b>3.1</b> Was ist das Problem der Stichprobenziehung?</a></li>
 <li class="chapter" data-level="3.2" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#stichprobenziehung-loesung"><i class="fa fa-check"></i><b>3.2</b> Wie kann man Aussagen über die Grundgesamtheit machen?</a></li>
 <li class="chapter" data-level="3.3" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#übungen"><i class="fa fa-check"></i><b>3.3</b> Übungen</a></li>
+<li class="chapter" data-level="3.4" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#test"><i class="fa fa-check"></i><b>3.4</b> Test</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html"><i class="fa fa-check"></i><b>4</b> Durchschnitt und Standardabweichung schätzen</a>
 <ul>
@@ -220,7 +221,7 @@ Abbildung 4.4: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen
 <p><span id="customdef-zentraler-grenzwertsatz" class="customdef">Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie <strong>Zentraler Grenzwertsatz</strong> genannt wurde.</span> Der zentrale Grenzwertsatz besagt geneauer, dass bei einem Merkmal mit Erwartungswert <span class="math inline">\(\mu\)</span> und Standardabweichung <span class="math inline">\(\sigma\)</span>, der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit <span class="math inline">\(\mu_g = \mu\)</span> und <span class="math inline">\(\sigma_g = \frac{\sigma}{\sqrt{n}}\)</span> entspricht, wobei <span class="math inline">\(n\)</span> die Stichprobengrösse bezeichnet.</p>
 <div class="caution">
 <div class="remark">
-<p><span id="unlabeled-div-24" class="remark"><em>Hinweis</em>. </span></p>
+<p><span id="unlabeled-div-25" class="remark"><em>Hinweis</em>. </span></p>
 <ul>
 <li><span class="math inline">\(\mu_g = \mu\)</span> bedeutet, dass der Wert, welcher unter der normalverteilung am wahrscheinlichsten ist, genau dem Erwartungswert des untersuchten Merkmales entspricht.</li>
 <li><span class="math inline">\(\sigma_g = \frac{\sigma}{\sqrt{n}}\)</span> hat zwei Implikationen:
@@ -354,7 +355,7 @@ Abbildung 4.7: Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleic
 <p>Die arithmetischen Mittel bei unbekannter Standardabweichung sind bei wiederholter Stichprobenziehung genau <span class="math inline">\(t\)</span>-verteilt. Um die Genauigkeit der Schätzung des Erwartungswertes zu bestimmen genügt es folglich, das 2.5% und das 97.5% Perzentil der <span class="math inline">\(t\)</span>-Verteilung mit <span class="math inline">\(n-1\)</span> Freiheitsgraden zu bestimmen. Diese Perzentile können mit</p>
 <p><span class="math display">\[ \bar{x} - \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1} &lt; \mu &lt; \bar{x} + \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1}\]</span></p>
 <p>berechnet werden, wobei <span class="math inline">\(\bar{x}\)</span> das arithmetische Mittel, <span class="math inline">\(s\)</span> die Standardabweichung und <span class="math inline">\(t_{97.5\%, n-1}\)</span> dem Wert des 97.5%-Perzentil einer auf 0 zentrierten <span class="math inline">\(t\)</span>-Verteilung mit <span class="math inline">\(n-1\)</span> Freiheitsgraden entspricht. Letzere Perzentile der <span class="math inline">\(t\)</span>-Verteilung können bei Bedarf in entsprechenden Tabellen nachgeschlagen werden. Als Gedankenstütze kann für <span class="math inline">\(t_{97.5\%, n-1}\)</span> immer <span class="math inline">\(2\)</span> gedacht werden, da dies ungefähr dem wahren Wert entspricht, wenn <span class="math inline">\(n\)</span> grösser als <span class="math inline">\(50\)</span> ist.</p>
-<p>Das <span class="math inline">\(2.5\%\)</span> und das <span class="math inline">\(97.5\%\)</span> Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines <span id="customdef-interval" class="customdef"><strong>Intervalles</strong>. Ein Intervall bezeichnet durch die Symbolik <span class="math inline">\([\)</span>untere Schranke, obere Schranke<span class="math inline">\(]\)</span> beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.</span> <span id="customdef-confidence-interval" class="customdef">Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in <span class="math inline">\(95\%\)</span> der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu <span class="math inline">\(95\%\)</span> sicher oder <em>konfident</em> sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als <span class="math inline">\(95\%\)</span>-<strong>Konfidenzintervall</strong> (symbol KI) bezeichnet.</span></p>
+<p>Das <span class="math inline">\(2.5\%\)</span> und das <span class="math inline">\(97.5\%\)</span> Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines <span id="customdef-interval" class="customdef"><strong>Intervalles</strong>. Ein Intervall bezeichnet durch die Symbolik <span class="math inline">\([\)</span>untere Schranke, obere Schranke<span class="math inline">\(]\)</span> beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.</span> <span id="customdef-confidence-interval" class="customdef">Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in <span class="math inline">\(95\%\)</span> der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu <span class="math inline">\(95\%\)</span> sicher oder <em>konfident</em> sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als <span class="math inline">\(95\%\)</span>-<strong>Konfidenzintervall</strong> (Symbol KI) bezeichnet.</span></p>
 <p>In Beispiel <a href="stichprobenziehung.html#exm:angst">3.1</a>, kann aus der Tabelle <a href="durchschnitt-und-standardabweichung-schätzen.html#tab:quantiles-norm">4.1</a> entnommen werden, dass die Angst in der Population bei <span class="math inline">\(M = 43.34\)</span> <span class="math inline">\(95\%\)</span> KI <span class="math inline">\([42.18,44.5]\)</span> liegt. In Beispiel <a href="durchschnitt-und-standardabweichung-schätzen.html#exm:agreableness">4.1</a>, kann aus der Tabelle <a href="durchschnitt-und-standardabweichung-schätzen.html#tab:quantiles-norm">4.1</a> entnommen werden, dass die Verträglichkeit in der Population bei <span class="math inline">\(M = 3.91\)</span> <span class="math inline">\(95\%\)</span> KI <span class="math inline">\([3.66,4.34]\)</span> liegt. Wann immer eine Schätzung eines zentralen Wertes berichtet wird, soll dies ab jetzt in der soeben gezeigten Darstellung inklusive Angabe des Konfidenzintervalls erfolgen. Damit wird der Leserin aufgezeigt, wo der Schätzwert der zentralen Tendenz liegt und gleichzeigtig wird intuitiv vermittelt wie genau die Schätzung ist.</p>
 <p>Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse <span class="math inline">\(n\)</span> oder die geschätzte Standardabweichung <span class="math inline">\(s\)</span> auf die Länge des Konfidenzintervalls auswirkt. Dies kann in den Übungen <a href="durchschnitt-und-standardabweichung-schätzen.html#exr:ki-mean-n-vary">4.4</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#exr:ki-mean-s-vary">4.5</a> selbst erforscht werden.</p>
 <!-- ## Wo liegt die Standardabweichung? -->
@@ -396,56 +397,94 @@ Abbildung 4.7: Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleic
 <div id="übungen-1" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Übungen<a href="durchschnitt-und-standardabweichung-schätzen.html#übungen-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:interpret-report1" class="exercise"><strong>Übung 4.1  </strong></span></p>
+<p><span id="exr:marktpreisanalyse" class="exercise"><strong>Übung 4.1  </strong></span></p>
 <!-- 
 Ziel: 
-- 
+- Konfidenzintervall mit Jamovi berechnen und berichten
 -->
-<pre><code>## [1] &quot;hi&quot;</code></pre>
+<p>Die Firma Pear bringt ein neues Smartphone das F42 der Reihe Supernova X auf den Markt. Das Smartphone ist für Jugendliche im Alter von <span class="math inline">\(15-20\)</span> Jahre konzipiert. Um herauszufinden, welcher Marktpreis für das F42 verlangt werden kann, erfragt Pear bei <span class="math inline">\(70\)</span> Jugendlichen die Zahlbereitschaft. Die Daten stehen unter <code>04-exr-marktpreisanalyse.sav</code> zur Verfügung. Wie gross ist die durchschnittliche Zahlbereitschaft der Jugendlichen? Berichten Sie die Ergebnisse der Marktanalyse mit einem <span class="math inline">\(95\%\)</span>-Konfidenzintervall.</p>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-25" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-26" class="solution"><em>Lösung</em>. </span>Der Datensatz wird bei <code>Jamovi</code> eingelesen und die Analyseparameter wie in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-marktpreisanalyse-input">4.8</a> gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-marktpreisanalyse-input"></span>
+<img src="figures/04-exr-marktpreisanalyse-jmv-input.jpg" alt="Jamovi setzen der Analyseparameter." width="100%" />
+<p class="caption">
+Abbildung 4.8: Jamovi setzen der Analyseparameter.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-marktpreisanalyse-output">4.9</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-marktpreisanalyse-output"></span>
+<img src="figures/04-exr-marktpreisanalyse-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 4.9: Jamovi Ausgabe.
+</p>
+</div>
+<p>Die Marktanalyse mit <span class="math inline">\(N = 70\)</span> Befragten hat ergeben, dass Jugendliche im Alter von <span class="math inline">\(15-20\)</span> Jahren bereit sind durchschnittlich <span class="math inline">\(M = 288.34\)</span> CHF <span class="math inline">\(95\%\)</span>-KI <span class="math inline">\([260.92,315.76]\)</span> auszugeben für das neue Supernova X F42 von Pear.</p>
 </details>
 </div>
 <div class="exercise">
-<p><span id="exr:interpret-report2" class="exercise"><strong>Übung 4.2  </strong></span></p>
+<p><span id="exr:stranger" class="exercise"><strong>Übung 4.2  </strong></span></p>
 <!-- 
 Ziel: 
-- 
+- Konfidenzintervall mit Jamovi berechnen, interpretieren und berichten
 -->
-<pre><code>## [1] &quot;hi&quot;</code></pre>
+<p>In einer Studie werden <span class="math inline">\(421\)</span> Probandinnen über eine Woche lang beauftragt immer wieder fremde Personen anzusprechen. Dabei wird unter anderem am Anfang und am Ende der Woche gemessen, wie unangenehm auf einer Skala von <span class="math inline">\(1\)</span> bis <span class="math inline">\(5\)</span> dies für die Probandinnen ist. Die Daten stehen unter <code>04-exr-stranger.sav</code> zur Verfügung. Verwenden Sie für drei Nachkommastellen in <code>Jamovi</code> für die folgenden Teilaufgaben.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Berechnen Sie das <span class="math inline">\(95\%\)</span>-Konfidenzintervall für die durchschnittliche Unangenehmheit in der Grundgesamtheit für die Situation am Anfang und am Ende der Studie und berichten und interpretieren Sie das Resultat. Denken Sie die Intervention hat die Unangenehmheit, welche durch das Ansprechen von Fremden entsteht, in der Grundgesamtheit durchschnittlich gesenkt?</li>
+<li>Vergleichen Sie die Längen der errechneten Konfidenzintervalle.</li>
+<li>Wiederholen Sie die Aufgabe und berechnen Sie jetzt das <span class="math inline">\(90\%\)</span> und das <span class="math inline">\(99\%\)</span>-Konfidenzintervall. Wie verhält sich die Länge des Konfidenzintervalls bei unterschiedlichen Vertrauenswahrscheinlichkeiten?</li>
+</ol>
+<p>Diese Aufgabe ist angelehnt an <span class="citation">Sandstrom, Boothby, and Cooney (<a href="#ref-sandstrom2022">2022</a>)</span>.</p>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-26" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-27" class="solution"><em>Lösung</em>. </span>Der Datensatz wird bei <code>Jamovi</code> eingelesen und die Analyseparameter wie in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-stranger-input">4.10</a> gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-stranger-input"></span>
+<img src="figures/04-exr-stranger-jmv-input.jpg" alt="Jamovi setzen der Analyseparameter." width="100%" />
+<p class="caption">
+Abbildung 4.10: Jamovi setzen der Analyseparameter.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-stranger-output">4.11</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-stranger-output"></span>
+<img src="figures/04-exr-stranger-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 4.11: Jamovi Ausgabe.
+</p>
+</div>
+<ol style="list-style-type: lower-alpha">
+<li>Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei <span class="math inline">\(M=3.784, 95\%\)</span> KI <span class="math inline">\([3.764, 3.803]\)</span> Punkten und am ende der Woche bei <span class="math inline">\(M=3.328, 95\%\)</span> KI <span class="math inline">\([3.309, 3.348]\)</span> Punkten. Wenn die Studie <span class="math inline">\(100\)</span> mal wiederholt wird und jedes mal ein <span class="math inline">\(95\%\)</span> Konfidenzintervall für den Erwartungswert der Unangenehmheit berechnet wird, so wird der tatsächliche Erwartungswert in <span class="math inline">\(95\%\)</span> der Fälle also ungefähr <span class="math inline">\(95\)</span> mal vom Konfidenzintervall überdeckt. Da die Konfidenzintervalle weit auseinander liegen, kann davon ausgegangen werden, dass die Unangenehmheit durchschnittlich tatsächlich nach dem Versuch tiefer liegt als vor dem Versuch. Die Unangenehmheit kann also durch Training vermindert werden.</li>
+<li>Die Länge der Konfidenzintervalle betragen am Anfang der Woche <span class="math inline">\(3.803-3.764=0.039\)</span> und am Ende der Woche <span class="math inline">\(3.348-3.309= 0.039\)</span>.</li>
+<li>Um das <span class="math inline">\(90\%\)</span> Konfidenzintervall zu berechnen kann in der in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-stranger-input">4.10</a> dargestellten Maske der Wert für <code>Konfidenzintervall für den Mittelwert</code> auf <span class="math inline">\(90\)</span> gesetzt werden. Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei <span class="math inline">\(M=3.784, 90\%\)</span> KI <span class="math inline">\([3.767, 3.800]\)</span> Punkten und am ende der Woche bei <span class="math inline">\(M=3.328, 90\%\)</span> KI <span class="math inline">\([3.312, 3.345]\)</span> Punkten. Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei <span class="math inline">\(M=3.784, 99\%\)</span> KI <span class="math inline">\([3.758, 3.809]\)</span> Punkten und am ende der Woche bei <span class="math inline">\(M=3.328, 99\%\)</span> KI <span class="math inline">\([3.303, 3.354]\)</span> Punkten. Die Länge der <span class="math inline">\(90\%\)</span> Konfidenzintervalle ist <span class="math inline">\(3.800-3.767=0.033\)</span> und <span class="math inline">\(3.345-3.312=0.033\)</span>. Die Länge der <span class="math inline">\(99\%\)</span> Konfidenzintervalle ist <span class="math inline">\(3.809-3.758=0.051\)</span> und <span class="math inline">\(3.354-3.303=0.051\)</span>. Es kann also hier empirisch festgestellt werden, dass das Konfidenzintervall grösser wird, je höher die Vertrauenswahrscheinlichkeit sein soll.</li>
+</ol>
 </details>
 </div>
 <div class="exercise">
 <p><span id="exr:ki-approx-normal" class="exercise"><strong>Übung 4.3  </strong></span></p>
 <!-- 
 Ziel: 
-- 
+- Erleben, dass Mittelwerte normalverteilt sind.
 -->
-<p>Für ein Experiment werden in drei Runden jeweils <span class="math inline">\(10000\)</span> Zufallsstichproben erhoben mit respektive <span class="math inline">\(10\)</span>, <span class="math inline">\(40\)</span> und <span class="math inline">\(100\)</span> Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:ki-approx-normal1">4.8</a> dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.</p>
+<p>Für ein Experiment werden in drei Runden jeweils <span class="math inline">\(10000\)</span> Zufallsstichproben erhoben mit respektive <span class="math inline">\(10\)</span>, <span class="math inline">\(40\)</span> und <span class="math inline">\(100\)</span> Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:ki-approx-normal1">4.12</a> dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.</p>
 <div class="figure"><span style="display:block;" id="fig:ki-approx-normal1"></span>
 <img src="aps_statistik1_files/figure-html/ki-approx-normal1-1.png" alt="TODO." width="672" />
 <p class="caption">
-Abbildung 4.8: TODO.
+Abbildung 4.12: TODO.
 </p>
 </div>
-<p>Die arithmetischen Mittel der 10’000 Stichproben sind im Datensatz <code>04-exr-zentraler-grenzwertsatz.sav</code> festgehalten. In der Spalte <code>n_10</code> zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallstichprobe mit 10 Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse <span class="math inline">\(n\)</span>. Erstellen Sie ein Histogramm mit der Erweiterung <code>JJStatsPlot</code> und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.</p>
+<p>Die arithmetischen Mittel der <span class="math inline">\(10&#39;000\)</span> Stichproben sind im Datensatz <code>04-exr-zentraler-grenzwertsatz.sav</code> festgehalten. In der Spalte <code>n_10</code> zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallstichprobe mit <span class="math inline">\(10\)</span> Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse <span class="math inline">\(n\)</span>. Erstellen Sie ein Histogramm mit der Erweiterung <code>JJStatsPlot</code> und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.</p>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-27" class="solution"><em>Lösung</em>. </span>Die Übereinanderlegung des jeweiligen Histograms und der Wahrscheinlichkeitsdichte der Normalverteilung wird in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-ki-approx-normal">4.9</a> gezeigt. Es ist deutlich zu sehen, dass die Linie nur bei <span class="math inline">\(n=100\)</span> die Häufigkeitsverteilung der arithmetischen Mittel gut nachbilden kann. Bei <span class="math inline">\(n=10\)</span> und <span class="math inline">\(n=50\)</span> ist ein grosser Unterschied zwischen Häufigkeitsverteilung und Linie sichtbar. Das genaue <span class="math inline">\(n\)</span> ab welchem eine Häufigkeitsverteilung gut durch die Normalverteilung angenähert wird hängt von der ursprünglichen Verteilung der Daten ab, d.h. der Verteilung in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:ki-approx-normal1">4.8</a>. Es kann deshalb nicht generell gesagt werden, dass ab <span class="math inline">\(n=100\)</span> die Annäherung immer gut sei, so wie in diesem Beispiel. Der zentrale Grenzwertsatz besagt demnach auch lediglich, dass man immer ein grosses <span class="math inline">\(n\)</span> wählen kann, so dass die Annäherung gut ist. Er besagt nichts darüber, wie gross <span class="math inline">\(n\)</span> sein muss.</p>
+<p><span id="unlabeled-div-28" class="solution"><em>Lösung</em>. </span>Die Übereinanderlegung des jeweiligen Histograms und der Wahrscheinlichkeitsdichte der Normalverteilung wird in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-ki-approx-normal">4.13</a> gezeigt. Es ist deutlich zu sehen, dass die Linie nur bei <span class="math inline">\(n=100\)</span> die Häufigkeitsverteilung der arithmetischen Mittel gut nachbilden kann. Bei <span class="math inline">\(n=10\)</span> und <span class="math inline">\(n=50\)</span> ist ein grosser Unterschied zwischen Häufigkeitsverteilung und Linie sichtbar. Das genaue <span class="math inline">\(n\)</span> ab welchem eine Häufigkeitsverteilung gut durch die Normalverteilung angenähert wird hängt von der ursprünglichen Verteilung der Daten ab, d.h. der Verteilung in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:ki-approx-normal1">4.12</a>. Es kann deshalb nicht generell gesagt werden, dass ab <span class="math inline">\(n=100\)</span> die Annäherung immer gut sei, so wie in diesem Beispiel. Der zentrale Grenzwertsatz besagt demnach auch lediglich, dass man immer ein grosses <span class="math inline">\(n\)</span> wählen kann, so dass die Annäherung gut ist. Er besagt nichts darüber, wie gross <span class="math inline">\(n\)</span> sein muss.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-ki-approx-normal"></span>
 <img src="figures/04-exr-ki-approx-normal-jmv-input.jpg" alt="TODO" width="50%" /><img src="figures/04-exr-ki-approx-normal-jmv-output1.jpg" alt="TODO" width="50%" /><img src="figures/04-exr-ki-approx-normal-jmv-output2.jpg" alt="TODO" width="50%" /><img src="figures/04-exr-ki-approx-normal-jmv-output3.jpg" alt="TODO" width="50%" />
 <p class="caption">
-Abbildung 4.9: TODO
+Abbildung 4.13: TODO
 </p>
 </div>
 </details>
@@ -473,11 +512,11 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-28" class="solution"><em>Lösung</em>. </span>Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-ki-mean-n-vary">4.10</a> zeigt die Berechnunganweisungen für Jamovi und die resultierende Tabelle daraus.</p>
+<p><span id="unlabeled-div-29" class="solution"><em>Lösung</em>. </span>Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-ki-mean-n-vary">4.14</a> zeigt die Berechnunganweisungen für Jamovi und die resultierende Tabelle daraus.</p>
 <div class="figure"><span style="display:block;" id="fig:sol-ki-mean-n-vary"></span>
 <img src="figures/04-exr-stichprobengroesse-jmv-input.jpg" alt="Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen." width="50%" /><img src="figures/04-exr-stichprobengroesse-jmv-output.jpg" alt="Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen." width="50%" />
 <p class="caption">
-Abbildung 4.10: Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen.
+Abbildung 4.14: Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen.
 </p>
 </div>
 <ol style="list-style-type: lower-alpha">
@@ -503,7 +542,7 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-29" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-30" class="solution"><em>Lösung</em>. </span>TODO</p>
 </details>
 </div>
 
@@ -513,6 +552,9 @@ Ziel:
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-gosling2003" class="csl-entry">
 Gosling, Samuel D, Peter J Rentfrow, and William B Swann. 2003. <span>“A Very Brief Measure of the Big-Five Personality Domains.”</span> <em>Journal of Research in Personality</em> 37 (6): 504–28. https://doi.org/<a href="https://doi.org/10.1016/S0092-6566(03)00046-1">https://doi.org/10.1016/S0092-6566(03)00046-1</a>.
+</div>
+<div id="ref-sandstrom2022" class="csl-entry">
+Sandstrom, Gillian M., Erica J. Boothby, and Gus Cooney. 2022. <span>“Talking to Strangers: A Week-Long Intervention Reduces Psychological Barriers to Social Connection.”</span> <em>Journal of Experimental Social Psychology</em> 102 (September): 104356. <a href="https://doi.org/10.1016/j.jesp.2022.104356">https://doi.org/10.1016/j.jesp.2022.104356</a>.
 </div>
 </div>
             </section>
