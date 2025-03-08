@@ -904,13 +904,13 @@ lb1_t <- m_means1 - qt(0.975, n1 - 1) * s_means1
 ub1_t <- m_means1 + qt(0.975, n1 - 1) * s_means1
 ```
 
-Wie die in Abschnitt \@ref(stichprobenziehung-loesung) skizzierte Lösung für das Problem der zufälligen Stichprobe konkret umgesetzt wird, hängt von der Problemstellung ab. Im folgenden wird ein Verfahren zur Generalisierung der Schätzung der zentralen Tendenz 
+Wie die in Abschnitt \@ref(stichprobenziehung-loesung) skizzierte Lösung für das Problem der zufälligen Stichprobe konkret umgesetzt wird, hängt von der Problemstellung ab. Im Folgenden wird ein Verfahren zur Generalisierung der Schätzung der zentralen Tendenz 
 <!-- und eines für die Schätzung der Variabilität  -->
 basierend auf einer Stichprobe präsentiert.
 
 ## Wo liegt der Durchschnitt der Grundgesamtheit?
 
-Ein Parameter über welchen wir gerne eine Aussage treffen würden ist die zentrale Tendenz in der Grundgesamtheit. [Diese wird **Erwartungswert** (Symbol $\mu$ [gr.: mü]) genannt.]{.customdef #customdef-erwartungswert} Wenn das arithmetische Mittel der Stichprobe berechnet wird, ergibt dies auch ein Schätzwert für besagten Erwartungswert. Aufgrund der zufälligen Stichprobenziehung ist jedoch auch klar, dass dieser Schätzwert nie genau dem wahren Erwartungswert entspricht. 
+Ein Parameter, über welchen wir gerne eine Aussage treffen würden, ist die zentrale Tendenz in der Grundgesamtheit. [Diese wird **Erwartungswert** (Symbol $\mu$ [gr.: mü]) genannt.]{.customdef #customdef-erwartungswert} Wenn das arithmetische Mittel der Stichprobe berechnet wird, ergibt dies auch ein Schätzwert für besagten Erwartungswert. Aufgrund der zufälligen Stichprobenziehung ist jedoch auch klar, dass dieser Schätzwert nie genau dem wahren Erwartungswert entspricht. 
 
 In Beispiel \@ref(exm:angst) liegt das arithmetische Mittel in der Stichprobe der Studierenden bei $M=`r exm_angst$x_mean`$. Dieser Wert entspricht nun auch der Schätzung des Erwartungswertes, also der geschätzten durchschnittlichen Angst aller Menschen. Die Folgefrage ist also wie genau unsere Schätzung ist. Um dies zu quantifizieren, wiederholen wir die Stichprobenziehung und berechnen das arithmetische Mittel dieser zweiten Stichprobe. Dann wiederholen wir diesen Prozess, zum Beispiel $`r exm_angst$n_samples`$ mal.
 
@@ -921,7 +921,7 @@ tibble(x = exm_angst$x_means) %>%
   labs(y = 'Häufigkeit', x = 'Angst')
 ```
 
-Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \@ref(fig:exm-angst-hist-means) lässt nun Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die 30 ist hier am wahrscheinlichsten und ein Wert tiefer als $27$ oder höher $33$ eher selten. Um diese Aussage präziser zu gestalten, werden konventionell die $95$% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die $5$% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das $2.5$% Perzentil trennt die $2.5$% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei $`r  exm_angst$lb_means_emp`$. Das $97.5$%-Perzentil trennt die höchsten $2.5$% (oder eben die tiefsten $97.5$%) arthmetischen Mittel ab und liegt bei $`r exm_angst$ub_means_emp`$. Dies ist in Abbildung \@ref(fig:exm-angst-hist-means-emp-ci) ersichtlich.
+Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \@ref(fig:exm-angst-hist-means) lässt nun Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die 30 ist hier am wahrscheinlichsten und ein Wert tiefer als $27$ oder höher $33$ eher selten. Um diese Aussage präziser zu gestalten, werden konventionell die $95$% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die $5$% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das $2.5$% Perzentil trennt die $2.5$% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei $`r  exm_angst$lb_means_emp`$. Das $97.5$%-Perzentil trennt die höchsten $2.5$% (oder eben die tiefsten $97.5$%) arithmetischen Mittel ab und liegt bei $`r exm_angst$ub_means_emp`$. Dies ist in Abbildung \@ref(fig:exm-angst-hist-means-emp-ci) ersichtlich.
 
 
 ```{r exm-angst-hist-means-emp-ci, fig.cap = paste0("Verteilung der arithmetischen Mittel von ",exm_angst$n_samples," zufällig gezogenen Stichproben der Angst.")}
@@ -939,7 +939,7 @@ tibble(x = x1) %>%
   labs(y = 'Häufigkeit', x = 'Verträglichkeit')
 ```
 
-Die Verteilung der Beobachtungen, siehe Abbildung \@ref(fig:exm-agreableness-hist), zeigt, dass alle Werte zwischen $1$ und $7$ vorkommen, aber keine zentrale Tendenz greifbar ist. Um herauszufinden wie zutreffend die Schätzung des Erwartungswertes der Verträglichkeit von $M=`r round(mean(x1), 2)`$ ist, stelle man sich wieder vor, dass der Student $`r m`$-mal die Stichprobenziehung wiederholt und jedes mal das arithmetische Mittel $M$ von neuem berechnet. Die Verteilung der arithmetischen Mittel dieser Stichproben ist in Abbildung \@ref(fig:exm-agreableness-hist-means) dargestellt. Bei dieser Verteilung kann erneut links und rechts $2.5\%$ der Werte abgeschnitten werden, um zum Schluss zu gelangen, dass das arithmetische Mittel in $95\%$ der Fälle zwischen $`r lb1`$ und $`r ub1`$ zu liegen kommt.
+Die Verteilung der Beobachtungen, siehe Abbildung \@ref(fig:exm-agreableness-hist), zeigt, dass alle Werte zwischen $1$ und $7$ vorkommen, aber keine zentrale Tendenz greifbar ist. Um herauszufinden wie zutreffend die Schätzung des Erwartungswertes der Verträglichkeit von $M=`r round(mean(x1), 2)`$ ist, stelle man sich wieder vor, dass der Student $`r m`$-mal die Stichprobenziehung wiederholt und jedes Mal das arithmetische Mittel $M$ von neuem berechnet. Die Verteilung der arithmetischen Mittel dieser Stichproben ist in Abbildung \@ref(fig:exm-agreableness-hist-means) dargestellt. Bei dieser Verteilung kann erneut links und rechts $2.5\%$ der Werte abgeschnitten werden, um zum Schluss zu gelangen, dass das arithmetische Mittel in $95\%$ der Fälle zwischen $`r lb1`$ und $`r ub1`$ zu liegen kommt.
 
 ```{r exm-agreableness-hist-means, fig.cap = paste0("Verteilung der arithmetischen Mittel von ",m," zufällig gezogenen Stichproben der Verträglichkeit.")}
 plot_hist_means(means1, lb1, ub1, 0.05, "Verträglichkeit")
@@ -954,12 +954,12 @@ Die Normalverteilung sieht eine Glocke ähnlich. Deshalb wird sie auch Gausssche
 
 Auf [seeing-theory.brown.edu > Continuous > Normal](https://seeing-theory.brown.edu/probability-distributions/index.html#section2) kann der Einfluss von $\mu$ und $\sigma$ auf die Normalverteilung erfahren werden. 
 
-[Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie **Zentraler Grenzwertsatz** genannt wurde.]{.customdef #customdef-zentraler-grenzwertsatz} Der zentrale Grenzwertsatz besagt geneauer, dass bei einem Merkmal mit Erwartungswert $\mu$ und Standardabweichung $\sigma$, der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit $\mu_g = \mu$ und $\sigma_g = \frac{\sigma}{\sqrt{n}}$ entspricht, wobei $n$ die Stichprobengrösse bezeichnet.
+[Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie **Zentraler Grenzwertsatz** genannt wurde.]{.customdef #customdef-zentraler-grenzwertsatz} Der zentrale Grenzwertsatz besagt genauer, dass bei einem Merkmal mit Erwartungswert $\mu$ und Standardabweichung $\sigma$, der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit $\mu_g = \mu$ und $\sigma_g = \frac{\sigma}{\sqrt{n}}$ entspricht, wobei $n$ die Stichprobengrösse bezeichnet.
 
 ::::{.caution data-latex=""}
 :::{.remark}
 
-- $\mu_g = \mu$ bedeutet, dass der Wert, welcher unter der normalverteilung am wahrscheinlichsten ist, genau dem Erwartungswert des untersuchten Merkmales entspricht.
+- $\mu_g = \mu$ bedeutet, dass der Wert, welcher unter der Normalverteilung am wahrscheinlichsten ist, genau dem Erwartungswert des untersuchten Merkmales entspricht.
 - $\sigma_g = \frac{\sigma}{\sqrt{n}}$ hat zwei Implikationen:
   - je grösser die Streuung des Merkmals (grosses $\sigma$) desto breiter ist auch die Streuung der arithmetischen Mittel (grosses $\sigma_g$). Dies bedeutet, je weniger Streuung das Merkmal aufweist, desto genauer ist die Bestimmung des Erwartungswertes des Merkmales.
   - je grösser die Anzahl Beobachtungen $n$, desto kleiner die Streuung der arithmetischen Mittel (kleines $\sigma_g$). Dies bedeutet, je grösser die Stichprobe ist, desto genauer ist die Bestimmung des Erwartungswertes des Merkmales.
@@ -976,7 +976,7 @@ plot_hist_denstiy_expected_value(exm_angst$x_means, exm_angst$x_mean, exm_angst$
 plot_hist_denstiy_expected_value(means1, 4, sqrt((b - a) ^ 2 / 12), n1, "Verträglichkeit", 0.05)
 ```
 
-Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte ziehen von Stichproben unnötig. Die Normalverteilung ist theoretisch konstruiert und ihr $2.5\%$- und $97.5\%$-Perzentil können theoretisch hergeleitet werden. Tabelle \@ref(tab:quantiles-norm) wird kann beobachtet werden, dass für unsere zwei Beispiele die Perzentile der Stichprobe und der Normalverteilung sehr ähnlich, wenn auch nicht exakt gleich sind. Die Ungenauigkeit rührt daher, dass der zentrale Grenzwertsatz nur dann exakt funktioniert, wenn die Anzahl Beobachtungen (unendlich) gross ist.
+Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte Ziehen von Stichproben unnötig. Die Normalverteilung ist theoretisch konstruiert und ihr $2.5\%$- und $97.5\%$-Perzentil können theoretisch hergeleitet werden. Tabelle \@ref(tab:quantiles-norm) wird kann beobachtet werden, dass für unsere zwei Beispiele die Perzentile der Stichprobe und der Normalverteilung sehr ähnlich, wenn auch nicht exakt gleich sind. Die Ungenauigkeit rührt daher, dass der zentrale Grenzwertsatz nur dann exakt funktioniert, wenn die Anzahl Beobachtungen (unendlich) gross ist.
 
 
 ```{r quantiles-norm}
@@ -1010,9 +1010,9 @@ Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte ziehen von
 ```
 
 
-Einstweilen wurde hier angenommen, dass die Streuung des Merkmals $\sigma$ bekannt ist. Dies ist in der Realität nie der Fall und eine weitere, wenn auch weniger grosse Ungenauigkeitsquelle. [Wenn $\sigma$ also auch aus der Stichprobe geschätzt werden muss, ist die Ännäherung der Verteilung der arithmetischen Mittel besser gegeben mit einer **Student-$t$-Verteilung** oder kurz $t$-Verteilung.]{.customdef #customdef-student-verteilung} Die grüne gestrichtelte Linie in den Abbildungen \@ref(fig:exm-angst-normal-approx) und \@ref(fig:exm-agreableness-normal-approx) entspricht der $t$-Verteilung im jeweiligen Beispiel. 
+Einstweilen wurde hier angenommen, dass die Streuung des Merkmals $\sigma$ bekannt ist. Dies ist in der Realität nie der Fall und eine weitere, wenn auch weniger grosse Ungenauigkeitsquelle. [Wenn $\sigma$ also auch aus der Stichprobe geschätzt werden muss, ist die Annäherung der Verteilung der arithmetischen Mittel besser gegeben mit einer **Student-$t$-Verteilung** oder kurz $t$-Verteilung.]{.customdef #customdef-student-verteilung} Die grüne gestrichelte Linie in den Abbildungen \@ref(fig:exm-angst-normal-approx) und \@ref(fig:exm-agreableness-normal-approx) entspricht der $t$-Verteilung im jeweiligen Beispiel. 
 
-Der Unterschied zwischen der Normalverteilung und der $t$-Verteilung ist nur sichtbar, wenn $n$ klein ist. In Beispiel \@ref(exm:angst) mit $n = `r exm_angst$n`$ ist ein kleiner Unterschied, in Beispiel \@ref(exm:agreableness) mit $n = `r n1`$ ist kein Unterschied zwischen der Normalverteilung und der $t$-Verteilung sichtbar. [Tatsächlich wird die $t$-Verteilung mit einem Parameter charaktisiert, welcher __Freiheitsgrade__ (eng. degrees of freedom, $df$) genannt wird.]{.customdef #customdef-freiheitsgrade} In Abbildung \@ref(fig:t-distribution) wird die $t$-Verteilung mit verschiedenen Freiheitsgraden mit der Normalverteilung verglichen. Bei der $t$-Verteilung mit den kleinsten Freiheitsgraden sind extremere Werte wahrscheinlicher als $t$-Verteilungen mit grösseren Freiheitsgraden. 
+Der Unterschied zwischen der Normalverteilung und der $t$-Verteilung ist nur sichtbar, wenn $n$ klein ist. In Beispiel \@ref(exm:angst) mit $n = `r exm_angst$n`$ ist ein kleiner Unterschied, in Beispiel \@ref(exm:agreableness) mit $n = `r n1`$ ist kein Unterschied zwischen der Normalverteilung und der $t$-Verteilung sichtbar. [Tatsächlich wird die $t$-Verteilung mit einem Parameter charakterisiert, welcher __Freiheitsgrade__ (eng. degrees of freedom, $df$) genannt wird.]{.customdef #customdef-freiheitsgrade} In Abbildung \@ref(fig:t-distribution) wird die $t$-Verteilung mit verschiedenen Freiheitsgraden mit der Normalverteilung verglichen. Bei der $t$-Verteilung mit den kleinsten Freiheitsgraden sind extremere Werte wahrscheinlicher als $t$-Verteilungen mit grösseren Freiheitsgraden. 
 
 ```{r t-distribution, fig.cap="Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleich zu der Normalverteilung."}
 tibble(x = seq(-4, 4, by = 0.1),
@@ -1026,9 +1026,9 @@ tibble(x = seq(-4, 4, by = 0.1),
   labs(x="")
 ```
 
-Die Freiheitsgrade der $t$-Verteilung in der Annäherung oben entsprechen der Anzahl Beobachtungen minus 1, also $df = n-1$. Die höhere Wahrscheinlichkeit von extremeren Werten bei kleinen Freiheitsgraden spiegelt die grössere Unsicherheit der Schätzung des Erwartungswertes wieder, wenn die Standardabweichung unbekannt und damit auch geschätzt werden muss. Je kleiner $n$ ist, desto stärker fällt diese Unsicherheit aus.
+Die Freiheitsgrade der $t$-Verteilung in der Annäherung oben entsprechen der Anzahl Beobachtungen minus 1, also $df = n-1$. Die höhere Wahrscheinlichkeit von extremeren Werten bei kleinen Freiheitsgraden spiegelt die grössere Unsicherheit der Schätzung des Erwartungswertes wider, wenn die Standardabweichung unbekannt und damit auch geschätzt werden muss. Je kleiner $n$ ist, desto stärker fällt diese Unsicherheit aus.
 
-Die arithmetischen Mittel bei unbekannter Standardabweichung sind bei wiederholter Stichprobenziehung genau $t$-verteilt. Um die Genauigkeit der Schätzung des Erwartungswertes zu bestimmen genügt es folglich, das 2.5% und das 97.5% Perzentil der $t$-Verteilung mit $n-1$ Freiheitsgraden zu bestimmen. Diese Perzentile können mit 
+Die arithmetischen Mittel bei unbekannter Standardabweichung sind bei wiederholter Stichprobenziehung genau $t$-verteilt. Um die Genauigkeit der Schätzung des Erwartungswertes zu bestimmen, genügt es folglich, das 2.5% und das 97.5% Perzentil der $t$-Verteilung mit $n-1$ Freiheitsgraden zu bestimmen. Diese Perzentile können mit 
 
 \begin{equation}
 \bar{x} - \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1} < \mu < \bar{x} + \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1}(\#eq:ki-mean)
@@ -1036,10 +1036,10 @@ Die arithmetischen Mittel bei unbekannter Standardabweichung sind bei wiederholt
 
 berechnet werden, wobei $\bar{x}$ das arithmetische Mittel, $s$ die Standardabweichung und $t_{97.5\%, n-1}$ dem Wert des 97.5%-Perzentil einer auf 0 zentrierten $t$-Verteilung mit $n-1$ Freiheitsgraden entspricht. Letzere Perzentile der $t$-Verteilung können bei Bedarf in entsprechenden Tabellen nachgeschlagen werden. Als Gedankenstütze kann für $t_{97.5\%, n-1}$ immer $2$ gedacht werden, da dies ungefähr dem wahren Wert entspricht, wenn $n$ grösser als $50$ ist.
 
-Das $2.5\%$ und das $97.5\%$ Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines [**Intervalles**. Ein Intervall bezeichnet durch die Symbolik $[$untere Schranke, obere Schranke$]$ beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.]{.customdef #customdef-interval} [Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in $95\%$ der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu $95\%$ sicher oder _konfident_ sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als $95\%$-**Konfidenzintervall** (Symbol KI) bezeichnet.]{.customdef #customdef-confidence-interval}
+Das $2.5\%$ und das $97.5\%$ Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines [**Intervalls**. Ein Intervall bezeichnet durch die Symbolik $[$untere Schranke, obere Schranke$]$ beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.]{.customdef #customdef-interval} [Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederholter Stichprobenziehung der wahre Erwartungswert in $95\%$ der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu $95\%$ sicher oder _konfident_ sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als $95\%$-**Konfidenzintervall** (Symbol KI) bezeichnet.]{.customdef #customdef-confidence-interval}
 [Als Sicherheit wird konventionell oft $95\%$ gewählt, andere Sicherheitswerte sind aber ebenfalls möglich und sinnvoll. Diese Werte heissen **Vertrauenswahrscheinlichkeit**. Ein $95\%$-Konfidenzintervall ist also ein Konfidenzintervall mit $95\%$ Vertrauenswahrscheinlichkeit.]{.customdef #customdef-confidence-level} [Andersherum betrachtet kann auch festgestellt werden, dass bei einem $95\%$-Konfidenzintervall die Wahrscheinlichkeit sich zu irren bei $5\%$ liegt. Irren bedeutet hier, dass der wahre Erwartungswert bei wiederholter Stichprobenziehung von $5\%$ der Konfidenzintervallen nicht überdeckt wird. Dieser Wert wird demnach **Irrtumswahrscheinlichkeit** genannt und mit $\alpha$ bezeichnet]{.customdef #customdef-erring-level}. Es ist demnach äquivalent von einem $99\%$ Konfidenzintervall oder von einem Konfidenzintervall mit $1\%$ Irrtumswahrscheinlichkeit zu sprechen.
 
-In Beispiel \@ref(exm:angst), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Angst in der Population bei $M = `r round(mean(exm_angst$x),2)`$ $95\%$ KI $[`r round(exm_angst$lb_means_t,2)`,`r round(exm_angst$ub_means_t,2)`]$ liegt. In Beispiel \@ref(exm:agreableness), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Verträglichkeit in der Population bei $M = `r round(mean(x1), 2)`$ $95\%$ KI $[`r round(lb1_t,2)`,`r round(ub1_t,2)`]$ liegt. Wann immer eine Schätzung eines zentralen Wertes berichtet wird, soll dies ab jetzt in der soeben gezeigten Darstellung inklusive Angabe des Konfidenzintervalls erfolgen. Damit wird der Leserin aufgezeigt, wo der Schätzwert der zentralen Tendenz liegt und gleichzeigtig wird intuitiv vermittelt wie genau die Schätzung ist.
+In Beispiel \@ref(exm:angst), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Angst in der Population bei $M = `r round(mean(exm_angst$x),2)`$ $95\%$ KI $[`r round(exm_angst$lb_means_t,2)`,`r round(exm_angst$ub_means_t,2)`]$ liegt. In Beispiel \@ref(exm:agreableness), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Verträglichkeit in der Population bei $M = `r round(mean(x1), 2)`$ $95\%$ KI $[`r round(lb1_t,2)`,`r round(ub1_t,2)`]$ liegt. Wann immer eine Schätzung eines zentralen Wertes berichtet wird, soll dies ab jetzt in der soeben gezeigten Darstellung inklusive Angabe des Konfidenzintervalls erfolgen. Damit wird der Leserin aufgezeigt, wo der Schätzwert der zentralen Tendenz liegt und gleichzeitig wird intuitiv vermittelt, wie genau die Schätzung ist.
 
 Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse $n$ oder die geschätzte Standardabweichung $s$ auf die Länge des Konfidenzintervalls auswirkt. Dies kann in den Übungen \@ref(exr:ki-mean-n-vary) und \@ref(exr:biologietest) selbst erforscht werden.
 
@@ -1169,9 +1169,9 @@ Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-stranger-output).
 knitr::include_graphics("figures/04-exr-stranger-jmv-output.jpg")
 ```
 
-(a) Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei $M=3.784, 95\%$ KI $[3.764, 3.803]$ Punkten und am ende der Woche bei $M=3.328, 95\%$ KI $[3.309, 3.348]$ Punkten. Wenn die Studie $100$ mal wiederholt wird und jedes mal ein $95\%$ Konfidenzintervall für den Erwartungswert der Unangenehmheit berechnet wird, so wird der tatsächliche Erwartungswert in $95\%$ der Fälle also ungefähr $95$ mal vom Konfidenzintervall überdeckt. Da die Konfidenzintervalle weit auseinander liegen, kann davon ausgegangen werden, dass die Unangenehmheit durchschnittlich tatsächlich nach dem Versuch tiefer liegt als vor dem Versuch. Die Unangenehmheit kann also durch Training vermindert werden.
+(a) Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei $M=3.784, 95\%$ KI $[3.764, 3.803]$ Punkten und am Ende der Woche bei $M=3.328, 95\%$ KI $[3.309, 3.348]$ Punkten. Wenn die Studie $100$ mal wiederholt wird und jedes Mal ein $95\%$ Konfidenzintervall für den Erwartungswert der Unangenehmheit berechnet wird, so wird der tatsächliche Erwartungswert in $95\%$ der Fälle also ungefähr $95$ mal vom Konfidenzintervall überdeckt. Da die Konfidenzintervalle weit auseinander liegen, kann davon ausgegangen werden, dass die Unangenehmheit durchschnittlich tatsächlich nach dem Versuch tiefer liegt als vor dem Versuch. Die Unangenehmheit kann also durch Training vermindert werden.
 (b) Die Länge der Konfidenzintervalle betragen am Anfang der Woche $3.803-3.764=0.039$ und am Ende der Woche $3.348-3.309= 0.039$. 
-(c) Um das $90\%$ Konfidenzintervall zu berechnen kann in der in Abbildung \@ref(fig:sol-stranger-input) dargestellten Maske der Wert für `Konfidenzintervall für den Mittelwert` auf $90$ gesetzt werden. Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei $M=3.784, 90\%$ KI $[3.767, 3.800]$ Punkten und am ende der Woche bei $M=3.328, 90\%$ KI $[3.312, 3.345]$ Punkten. Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei $M=3.784, 99\%$ KI $[3.758, 3.809]$ Punkten und am ende der Woche bei $M=3.328, 99\%$ KI $[3.303, 3.354]$ Punkten. Die Länge der $90\%$ Konfidenzintervalle ist $3.800-3.767=0.033$ und $3.345-3.312=0.033$. Die Länge der $99\%$ Konfidenzintervalle ist $3.809-3.758=0.051$ und $3.354-3.303=0.051$. Es kann also hier empirisch festgestellt werden, dass das Konfidenzintervall grösser wird, je höher die Vertrauenswahrscheinlichkeit sein soll. 
+(c) Um das $90\%$ Konfidenzintervall zu berechnen kann in der in Abbildung \@ref(fig:sol-stranger-input) dargestellten Maske der Wert für `Konfidenzintervall für den Mittelwert` auf $90$ gesetzt werden. Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei $M=3.784, 90\%$ KI $[3.767, 3.800]$ Punkten und am Ende der Woche bei $M=3.328, 90\%$ KI $[3.312, 3.345]$ Punkten. Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei $M=3.784, 99\%$ KI $[3.758, 3.809]$ Punkten und am Ende der Woche bei $M=3.328, 99\%$ KI $[3.303, 3.354]$ Punkten. Die Länge der $90\%$ Konfidenzintervalle ist $3.800-3.767=0.033$ und $3.345-3.312=0.033$. Die Länge der $99\%$ Konfidenzintervalle ist $3.809-3.758=0.051$ und $3.354-3.303=0.051$. Es kann also hier empirisch festgestellt werden, dass das Konfidenzintervall grösser wird, je höher die Vertrauenswahrscheinlichkeit sein soll. 
 :::
 
 
@@ -1211,7 +1211,7 @@ tibble(!!!setNames(
 
 Für ein Experiment werden in drei Runden jeweils $`r list_experiments[[1]]$m`$ Zufallsstichproben erhoben mit respektive $10$, $40$ und $100$ Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung \@ref(fig:ki-approx-normal1) dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.
 
-```{r ki-approx-normal1, fig.cap="Verteilung der Werte einer Stichprobe. (Achtung es handelt sich hierbei nicht um Mittelwerte sondern die Effektiv gemessenen Beobachtungen einer Stichprobe.)"}
+```{r ki-approx-normal1, fig.cap="Verteilung der Werte einer Stichprobe. (Achtung es handelt sich hierbei nicht um Mittelwerte, sondern die Effektiv gemessenen Beobachtungen einer Stichprobe.)"}
 map_dfr(c(1:3),
         ~tibble(x = list_experiments[[.x]]$x_samples[[1]],
        n = list_experiments[[.x]]$n)) %>% 
@@ -1221,15 +1221,15 @@ map_dfr(c(1:3),
   labs(x="Wert", y = 'Häufigkeit')
 ```
 
-Die arithmetischen Mittel der $10'000$ Stichproben sind im Datensatz `04-exr-zentraler-grenzwertsatz.sav` festgehalten. In der Spalte `n_10` zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallstichprobe mit $10$ Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse $n$. Erstellen Sie ein Histogramm mit der Erweiterung `JJStatsPlot` und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.
+Die arithmetischen Mittel der $10'000$ Stichproben sind im Datensatz `04-exr-zentraler-grenzwertsatz.sav` festgehalten. In der Spalte `n_10` zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallsstichprobe mit $10$ Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse $n$. Erstellen Sie ein Histogramm mit der Erweiterung `JJStatsPlot` und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.
 
 :::
 
 :::{.solution}
 
-Die Übereinanderlegung des jeweiligen Histograms und der Wahrscheinlichkeitsdichte der Normalverteilung wird in Abbildung \@ref(fig:sol-ki-approx-normal) gezeigt. Es ist deutlich zu sehen, dass die Linie nur bei $n=100$ die Häufigkeitsverteilung der arithmetischen Mittel gut nachbilden kann. Bei $n=10$ und $n=50$ ist ein grosser Unterschied zwischen Häufigkeitsverteilung und Linie sichtbar. Das genaue $n$ ab welchem eine Häufigkeitsverteilung gut durch die Normalverteilung angenähert wird hängt von der ursprünglichen Verteilung der Daten ab, d.h. der Verteilung in Abbildung \@ref(fig:ki-approx-normal1). Es kann deshalb nicht generell gesagt werden, dass ab $n=100$ die Annäherung immer gut sei, so wie in diesem Beispiel. Der zentrale Grenzwertsatz besagt demnach auch lediglich, dass man immer ein grosses $n$ wählen kann, so dass die Annäherung gut ist. Er besagt nichts darüber, wie gross $n$ sein muss.
+Das Übereinanderlegen des jeweiligen Histogramms und der Wahrscheinlichkeitsdichte der Normalverteilung wird in Abbildung \@ref(fig:sol-ki-approx-normal) gezeigt. Es ist deutlich zu sehen, dass die Linie nur bei $n=100$ die Häufigkeitsverteilung der arithmetischen Mittel gut nachbilden kann. Bei $n=10$ und $n=50$ ist ein grosser Unterschied zwischen Häufigkeitsverteilung und Linie sichtbar. Das genaue $n$ ab welchem eine Häufigkeitsverteilung gut durch die Normalverteilung angenähert wird hängt von der ursprünglichen Verteilung der Daten ab, d.h. der Verteilung in Abbildung \@ref(fig:ki-approx-normal1). Es kann deshalb nicht generell gesagt werden, dass ab $n=100$ die Annäherung immer gut sei, so wie in diesem Beispiel. Der zentrale Grenzwertsatz besagt demnach auch lediglich, dass man immer ein grosses $n$ wählen kann, so dass die Annäherung gut ist. Er besagt nichts darüber, wie gross $n$ sein muss.
 
-```{r sol-ki-approx-normal, fig.cap="TODO", fig.show="hold", out.width="50%"}
+```{r sol-ki-approx-normal, fig.cap="Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100.", fig.show="hold", out.width="50%"}
 knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-input.jpg")
 knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-output1.jpg")
 knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-output2.jpg")
@@ -1287,19 +1287,19 @@ Vergleichen Sie die Resultate der Berechnungen für jede Stichprobe:
 
 :::{.solution}
 
-Abbildung \@ref(fig:sol-ki-mean-n-vary) zeigt die Berechnunganweisungen für Jamovi und die resultierende Tabelle daraus.
+Abbildung \@ref(fig:sol-ki-mean-n-vary) zeigt die Berechnungsanweisungen für Jamovi und die resultierende Tabelle daraus.
 
 ```{r sol-ki-mean-n-vary, fig.cap="Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen.", fig.show="hold", out.width="50%"}
   knitr::include_graphics("figures/04-exr-stichprobengroesse-jmv-input.jpg")
   knitr::include_graphics("figures/04-exr-stichprobengroesse-jmv-output.jpg")
 ```
 
-  a. Der Erwartungswert der Wartezeiten (das heisst der Populationmittelwerte der Wartezeiten) wird mit dem arithmetischen Mittel der Stichprobe geschätzt und kann in der Tabelle bei `Mittelwert` abgelesen werden. Der Erwartungswert der Wartezeiten beträgt bei allen Stichproben ausser bei der ersten ungefähr 0.22 Stunden, also ein bisschen weniger als eine Viertelstunde.
+  a. Der Erwartungswert der Wartezeiten (das heisst der Populationsmittelwert der Wartezeiten) wird mit dem arithmetischen Mittel der Stichprobe geschätzt und kann in der Tabelle bei `Mittelwert` abgelesen werden. Der Erwartungswert der Wartezeiten beträgt bei allen Stichproben ausser bei der ersten ungefähr 0.22 Stunden, also ein bisschen weniger als eine Viertelstunde.
   b. Der Standardabweichung der Wartezeiten der Stichprobe sind in der Tabelle bei `Std.-abw.` abzulesen. Die Standardabweichungen sind für alle Stichproben ausser der ersten ungefähr bei 0.23.
   c. Die Standardabweichung der arithmetischen Mittel liegt bei $s/\sqrt{n}$. Für die erste Stichprobe ist dies $0.157 / \sqrt{5} = `r 0.157/sqrt(5)`$. Diese Werte werden auch als Standardfehler bezeichnet und sind in der Tabelle bei `Std.-fehler` ablesbar.
   d. Die untere und obere Schranke der 95%-Konfidenzintervalle sind bei `Untere` und `Obere` respektive abzulesen.  
   e. Die Länge des Konfidenzintervalls entspricht jeweils dem höheren Wert minus dem tieferen Wert. Für die erste Stichprobe ist dies $0.597 - 0.208 = `r (0.597 - 0.208)`$, für die anderen `r knitr::combine_words(map_dbl(exr_ki_mean_n_vary$ki_table$il[-c(1)], ~ round(.x, 2)), and = " und ", oxford_comma = FALSE)`.
-  f. Die Schätzung des Erwartungswertes ist das arithmetische Mittel der Stichprobe. Da jedesmal eine neue Zufallsstichprobe gezogen wurde und diese nicht dieselben Beobachtungen enthalten, ergeben sich auch jedesmal andere Stichprobenmittelewerte.
+  f. Die Schätzung des Erwartungswertes ist das arithmetische Mittel der Stichprobe. Da jedes Mal eine neue Zufallsstichprobe gezogen wurde und diese nicht dieselben Beobachtungen enthalten, ergeben sich auch jedes Mal andere Stichprobenmittelwerte.
   g. Je grösser $n$, desto kleiner ist das Konfidenzintervall. Wenn man also ein kleines Konfidenzintervall erreichen will, braucht man eine grössere Stichprobe.
 :::
 
