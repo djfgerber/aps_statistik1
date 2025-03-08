@@ -130,6 +130,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.1" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#wo-liegt-der-durchschnitt-der-grundgesamtheit"><i class="fa fa-check"></i><b>4.1</b> Wo liegt der Durchschnitt der Grundgesamtheit?</a></li>
 <li class="chapter" data-level="4.2" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#übungen-1"><i class="fa fa-check"></i><b>4.2</b> Übungen</a></li>
+<li class="chapter" data-level="4.3" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#test-1"><i class="fa fa-check"></i><b>4.3</b> Test</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html"><i class="fa fa-check"></i><b>5</b> Zentrale Tendenz testen</a>
 <ul>
@@ -353,11 +354,14 @@ Abbildung 4.7: Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleic
 </div>
 <p>Die Freiheitsgrade der <span class="math inline">\(t\)</span>-Verteilung in der Annäherung oben entsprechen der Anzahl Beobachtungen minus 1, also <span class="math inline">\(df = n-1\)</span>. Die höhere Wahrscheinlichkeit von extremeren Werten bei kleinen Freiheitsgraden spiegelt die grössere Unsicherheit der Schätzung des Erwartungswertes wieder, wenn die Standardabweichung unbekannt und damit auch geschätzt werden muss. Je kleiner <span class="math inline">\(n\)</span> ist, desto stärker fällt diese Unsicherheit aus.</p>
 <p>Die arithmetischen Mittel bei unbekannter Standardabweichung sind bei wiederholter Stichprobenziehung genau <span class="math inline">\(t\)</span>-verteilt. Um die Genauigkeit der Schätzung des Erwartungswertes zu bestimmen genügt es folglich, das 2.5% und das 97.5% Perzentil der <span class="math inline">\(t\)</span>-Verteilung mit <span class="math inline">\(n-1\)</span> Freiheitsgraden zu bestimmen. Diese Perzentile können mit</p>
-<p><span class="math display">\[ \bar{x} - \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1} &lt; \mu &lt; \bar{x} + \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1}\]</span></p>
+<p><span class="math display" id="eq:ki-mean">\[\begin{equation}
+\bar{x} - \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1} &lt; \mu &lt; \bar{x} + \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1}\tag{4.1}
+\end{equation}\]</span></p>
 <p>berechnet werden, wobei <span class="math inline">\(\bar{x}\)</span> das arithmetische Mittel, <span class="math inline">\(s\)</span> die Standardabweichung und <span class="math inline">\(t_{97.5\%, n-1}\)</span> dem Wert des 97.5%-Perzentil einer auf 0 zentrierten <span class="math inline">\(t\)</span>-Verteilung mit <span class="math inline">\(n-1\)</span> Freiheitsgraden entspricht. Letzere Perzentile der <span class="math inline">\(t\)</span>-Verteilung können bei Bedarf in entsprechenden Tabellen nachgeschlagen werden. Als Gedankenstütze kann für <span class="math inline">\(t_{97.5\%, n-1}\)</span> immer <span class="math inline">\(2\)</span> gedacht werden, da dies ungefähr dem wahren Wert entspricht, wenn <span class="math inline">\(n\)</span> grösser als <span class="math inline">\(50\)</span> ist.</p>
-<p>Das <span class="math inline">\(2.5\%\)</span> und das <span class="math inline">\(97.5\%\)</span> Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines <span id="customdef-interval" class="customdef"><strong>Intervalles</strong>. Ein Intervall bezeichnet durch die Symbolik <span class="math inline">\([\)</span>untere Schranke, obere Schranke<span class="math inline">\(]\)</span> beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.</span> <span id="customdef-confidence-interval" class="customdef">Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in <span class="math inline">\(95\%\)</span> der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu <span class="math inline">\(95\%\)</span> sicher oder <em>konfident</em> sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als <span class="math inline">\(95\%\)</span>-<strong>Konfidenzintervall</strong> (Symbol KI) bezeichnet.</span></p>
+<p>Das <span class="math inline">\(2.5\%\)</span> und das <span class="math inline">\(97.5\%\)</span> Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines <span id="customdef-interval" class="customdef"><strong>Intervalles</strong>. Ein Intervall bezeichnet durch die Symbolik <span class="math inline">\([\)</span>untere Schranke, obere Schranke<span class="math inline">\(]\)</span> beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.</span> <span id="customdef-confidence-interval" class="customdef">Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in <span class="math inline">\(95\%\)</span> der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu <span class="math inline">\(95\%\)</span> sicher oder <em>konfident</em> sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als <span class="math inline">\(95\%\)</span>-<strong>Konfidenzintervall</strong> (Symbol KI) bezeichnet.</span>
+<span id="customdef-confidence-level" class="customdef">Als Sicherheit wird konventionell oft <span class="math inline">\(95\%\)</span> gewählt, andere Sicherheitswerte sind aber ebenfalls möglich und sinnvoll. Diese Werte heissen <strong>Vertrauenswahrscheinlichkeit</strong>. Ein <span class="math inline">\(95\%\)</span>-Konfidenzintervall ist also ein Konfidenzintervall mit <span class="math inline">\(95\%\)</span> Vertrauenswahrscheinlichkeit.</span> <span id="customdef-erring-level" class="customdef">Andersherum betrachtet kann auch festgestellt werden, dass bei einem <span class="math inline">\(95\%\)</span>-Konfidenzintervall die Wahrscheinlichkeit sich zu irren bei <span class="math inline">\(5\%\)</span> liegt. Irren bedeutet hier, dass der wahre Erwartungswert bei wiederholter Stichprobenziehung von <span class="math inline">\(5\%\)</span> der Konfidenzintervallen nicht überdeckt wird. Dieser Wert wird demnach <strong>Irrtumswahrscheinlichkeit</strong> genannt und mit <span class="math inline">\(\alpha\)</span> bezeichnet</span>. Es ist demnach äquivalent von einem <span class="math inline">\(99\%\)</span> Konfidenzintervall oder von einem Konfidenzintervall mit <span class="math inline">\(1\%\)</span> Irrtumswahrscheinlichkeit zu sprechen.</p>
 <p>In Beispiel <a href="stichprobenziehung.html#exm:angst">3.1</a>, kann aus der Tabelle <a href="durchschnitt-und-standardabweichung-schätzen.html#tab:quantiles-norm">4.1</a> entnommen werden, dass die Angst in der Population bei <span class="math inline">\(M = 43.34\)</span> <span class="math inline">\(95\%\)</span> KI <span class="math inline">\([42.18,44.5]\)</span> liegt. In Beispiel <a href="durchschnitt-und-standardabweichung-schätzen.html#exm:agreableness">4.1</a>, kann aus der Tabelle <a href="durchschnitt-und-standardabweichung-schätzen.html#tab:quantiles-norm">4.1</a> entnommen werden, dass die Verträglichkeit in der Population bei <span class="math inline">\(M = 3.91\)</span> <span class="math inline">\(95\%\)</span> KI <span class="math inline">\([3.66,4.34]\)</span> liegt. Wann immer eine Schätzung eines zentralen Wertes berichtet wird, soll dies ab jetzt in der soeben gezeigten Darstellung inklusive Angabe des Konfidenzintervalls erfolgen. Damit wird der Leserin aufgezeigt, wo der Schätzwert der zentralen Tendenz liegt und gleichzeigtig wird intuitiv vermittelt wie genau die Schätzung ist.</p>
-<p>Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse <span class="math inline">\(n\)</span> oder die geschätzte Standardabweichung <span class="math inline">\(s\)</span> auf die Länge des Konfidenzintervalls auswirkt. Dies kann in den Übungen <a href="durchschnitt-und-standardabweichung-schätzen.html#exr:ki-mean-n-vary">4.4</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#exr:ki-mean-s-vary">4.5</a> selbst erforscht werden.</p>
+<p>Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse <span class="math inline">\(n\)</span> oder die geschätzte Standardabweichung <span class="math inline">\(s\)</span> auf die Länge des Konfidenzintervalls auswirkt. Dies kann in den Übungen <a href="durchschnitt-und-standardabweichung-schätzen.html#exr:ki-mean-n-vary">4.4</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#exr:biologietest">4.5</a> selbst erforscht werden.</p>
 <!-- ## Wo liegt die Standardabweichung? -->
 <!-- This is probably wrong. Skip the chapter? -->
 <!-- ```{r} -->
@@ -470,9 +474,9 @@ Ziel:
 -->
 <p>Für ein Experiment werden in drei Runden jeweils <span class="math inline">\(10000\)</span> Zufallsstichproben erhoben mit respektive <span class="math inline">\(10\)</span>, <span class="math inline">\(40\)</span> und <span class="math inline">\(100\)</span> Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:ki-approx-normal1">4.12</a> dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.</p>
 <div class="figure"><span style="display:block;" id="fig:ki-approx-normal1"></span>
-<img src="aps_statistik1_files/figure-html/ki-approx-normal1-1.png" alt="TODO." width="672" />
+<img src="aps_statistik1_files/figure-html/ki-approx-normal1-1.png" alt="Verteilung der Werte einer Stichprobe. (Achtung es handelt sich hierbei nicht um Mittelwerte sondern die Effektiv gemessenen Beobachtungen einer Stichprobe.)" width="672" />
 <p class="caption">
-Abbildung 4.12: TODO.
+Abbildung 4.12: Verteilung der Werte einer Stichprobe. (Achtung es handelt sich hierbei nicht um Mittelwerte sondern die Effektiv gemessenen Beobachtungen einer Stichprobe.)
 </p>
 </div>
 <p>Die arithmetischen Mittel der <span class="math inline">\(10&#39;000\)</span> Stichproben sind im Datensatz <code>04-exr-zentraler-grenzwertsatz.sav</code> festgehalten. In der Spalte <code>n_10</code> zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallstichprobe mit <span class="math inline">\(10\)</span> Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse <span class="math inline">\(n\)</span>. Erstellen Sie ein Histogramm mit der Erweiterung <code>JJStatsPlot</code> und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.</p>
@@ -525,24 +529,83 @@ Abbildung 4.14: Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relev
 <li>Die Standardabweichung der arithmetischen Mittel liegt bei <span class="math inline">\(s/\sqrt{n}\)</span>. Für die erste Stichprobe ist dies <span class="math inline">\(0.157 / \sqrt{5} = 0.0702125\)</span>. Diese Werte werden auch als Standardfehler bezeichnet und sind in der Tabelle bei <code>Std.-fehler</code> ablesbar.</li>
 <li>Die untere und obere Schranke der 95%-Konfidenzintervalle sind bei <code>Untere</code> und <code>Obere</code> respektive abzulesen.<br />
 </li>
-<li>Die Länge des Konfidenzintervalls entspricht jeweils dem höheren Wert minus dem tieferen Wert. Für die erste Stichprobe ist dies 0.597 - 0.208 = 0.389, für die anderen 0.23, 0.13, 0.09 und 0.03.</li>
+<li>Die Länge des Konfidenzintervalls entspricht jeweils dem höheren Wert minus dem tieferen Wert. Für die erste Stichprobe ist dies <span class="math inline">\(0.597 - 0.208 = 0.389\)</span>, für die anderen 0.23, 0.13, 0.09 und 0.03.</li>
 <li>Die Schätzung des Erwartungswertes ist das arithmetische Mittel der Stichprobe. Da jedesmal eine neue Zufallsstichprobe gezogen wurde und diese nicht dieselben Beobachtungen enthalten, ergeben sich auch jedesmal andere Stichprobenmittelewerte.</li>
 <li>Je grösser <span class="math inline">\(n\)</span>, desto kleiner ist das Konfidenzintervall. Wenn man also ein kleines Konfidenzintervall erreichen will, braucht man eine grössere Stichprobe.</li>
 </ol>
 </details>
 </div>
 <div class="exercise">
-<p><span id="exr:ki-mean-s-vary" class="exercise"><strong>Übung 4.5  </strong></span></p>
+<p><span id="exr:biologietest" class="exercise"><strong>Übung 4.5  </strong></span></p>
 <!-- 
 Ziel: 
-- 
+- Einfluss der Standardabweichung auf das Konfidenzintervall erforschen.
 -->
-<pre><code>## [1] &quot;hi&quot;</code></pre>
+<p>Eine Klasse bringt bei einem Biologietest eine durchwachsene Leistung. Die Lehrkraft entscheidet sich die genau gleichen Test zu wiederholen. Berichten Sie das durchschnittliche Resultat der beiden Tests und schätzen Sie den Einfluss der Standardabweichung auf die Länge des Konfidenzintervalls ein.</p>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-30" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-30" class="solution"><em>Lösung</em>. </span>Der Datensatz wird bei <code>Jamovi</code> eingelesen und die Analyseparameter wie in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-biologietest-input">4.15</a> gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-biologietest-input"></span>
+<img src="figures/04-exr-biologietest-jmv-input.jpg" alt="Jamovi setzen der Analyseparameter." width="100%" />
+<p class="caption">
+Abbildung 4.15: Jamovi setzen der Analyseparameter.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-biologietest-output">4.16</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-biologietest-output"></span>
+<img src="figures/04-exr-biologietest-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 4.16: Jamovi Ausgabe.
+</p>
+</div>
+<p>Die Klasse mit <span class="math inline">\(N=20\)</span> Lernenden hat beim ersten Biologietest eine durchschnittliche Punktzahl von <span class="math inline">\(M=14.6\)</span> Punkten <span class="math inline">\(95\%\)</span> KI <span class="math inline">\([11.9,17.3]\)</span> erzielt. Bei der Wiederholung des Tests wurde eine durchschnittliche Punktzahl von <span class="math inline">\(M=14.8\)</span> Punkten <span class="math inline">\(95\%\)</span> KI <span class="math inline">\([14.0,15.6]\)</span> erzielt. Die Standardabweichung des Testergebnisses war beim ersten Mal <span class="math inline">\(SD=5.8\)</span> Punkte und bei der Wiederholung <span class="math inline">\(SD=1.7\)</span> Punkte. Die Länge des Konfidenzintervalls war bei der ersten Durchführung mit <span class="math inline">\(17.3-11.9=5.4\)</span> Punkten bedeutend grösser als bei der zweiten Durchführung mit <span class="math inline">\(15.6-14.0=1.6\)</span>. Eine grössere Standardabweichung führt also zu einer grösseren Länge des Konfidenzintervalls. Dies kann auch durch Durchprobieren von Testwerten in Gleichung <a href="durchschnitt-und-standardabweichung-schätzen.html#eq:ki-mean">(4.1)</a> festgestellt werden.</p>
+</details>
+</div>
+</div>
+<div id="test-1" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Test<a href="durchschnitt-und-standardabweichung-schätzen.html#test-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:ki-theory" class="exercise"><strong>Übung 4.6  </strong></span>Welche der folgenden Aussagen zum Konfidenzintervall des Erwartungswertes sind wahr, welche falsch?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Je mehr Personen befragt werden, desto grösser wird das Konfidenzintervall.</li>
+<li>Je grösser die Standardabweichung des Merkmals, desto grösser wird das Konfidenzintervall.</li>
+<li>Um ein kleineres Konfidenzintervall zu erreichen, können mehr Beobachtungen gemacht werden.</li>
+<li>Je grösser die Irrtumswahrscheinlichkeit, desto grösser das Konfidenzintervall.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-31" class="solution"><em>Lösung</em>. </span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Falsch</li>
+<li>Richtig</li>
+<li>Richtig</li>
+<li>Falsch</li>
+</ol>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:ki-praxis" class="exercise"><strong>Übung 4.7  </strong></span>Im Datensatz <code>02-exr-koerpergroesse-sex.sav</code> wurden Körpergrössen von Versuchsteilnehmenden erfasst. Welche der folgenden Aussagen sind wahr, welche falsch?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Die durchschnittliche Körpergrösse der Frauen liegt bei <span class="math inline">\(M = 166.0\)</span> cm <span class="math inline">\(90\%\)</span> KI <span class="math inline">\([164.7, 167.3]\)</span>.</li>
+<li>Die durchschnittliche Körpergrösse der Männer liegt bei <span class="math inline">\(M = 180.3\)</span> cm <span class="math inline">\(95\%\)</span> KI <span class="math inline">\([178.6, 181.0]\)</span>.</li>
+<li>Es wurden <span class="math inline">\(N= 163\)</span> Frauen beobachtet.</li>
+<li>Die durchschnittliche Körpergrösse der Männer und Frauen liegt bei <span class="math inline">\(M = 173.1\)</span> cm <span class="math inline">\(99\%\)</span> KI <span class="math inline">\([171.4, 174.9]\)</span>.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-32" class="solution"><em>Lösung</em>. </span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Falsch</li>
+<li>Richtig</li>
+<li>Richtig</li>
+<li>Richtig</li>
+</ol>
 </details>
 </div>
 
@@ -554,7 +617,7 @@ Ziel:
 Gosling, Samuel D, Peter J Rentfrow, and William B Swann. 2003. <span>“A Very Brief Measure of the Big-Five Personality Domains.”</span> <em>Journal of Research in Personality</em> 37 (6): 504–28. https://doi.org/<a href="https://doi.org/10.1016/S0092-6566(03)00046-1">https://doi.org/10.1016/S0092-6566(03)00046-1</a>.
 </div>
 <div id="ref-sandstrom2022" class="csl-entry">
-Sandstrom, Gillian M., Erica J. Boothby, and Gus Cooney. 2022. <span>“Talking to Strangers: A Week-Long Intervention Reduces Psychological Barriers to Social Connection.”</span> <em>Journal of Experimental Social Psychology</em> 102 (September): 104356. <a href="https://doi.org/10.1016/j.jesp.2022.104356">https://doi.org/10.1016/j.jesp.2022.104356</a>.
+Sandstrom, Gillian M., Erica J. Boothby, and Gus Cooney. 2022. <span>“Talking to Strangers: A Week-Long Intervention Reduces Psychological Barriers to Social Connection.”</span> <em>Journal of Experimental Social Psychology</em> 102: 104356. <a href="https://doi.org/10.1016/j.jesp.2022.104356">https://doi.org/10.1016/j.jesp.2022.104356</a>.
 </div>
 </div>
             </section>

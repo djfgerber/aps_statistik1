@@ -58,7 +58,11 @@ create_glossary <- function(book_dir = "src", output_file = "98-glossary.Rmd") {
   
   mapping_glossary <- mapping_glossary %>% 
     distinct(link_text,.keep_all = TRUE) %>% 
-    arrange(bold_text)
+    mutate(arranged_bold_text = bold_text %>% 
+             str_remove_all("\\$") %>% 
+             tolower()) %>% 
+    arrange(arranged_bold_text) %>% 
+    select(-arranged_bold_text)
 
   # Create the glossary content
   c("# Begriffsverzeichnis {-}", # Header

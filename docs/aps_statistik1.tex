@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{05 February, 2025}
+\date{08 March, 2025}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -290,7 +290,9 @@ Die Inhalte nach Zweck zu gruppieren ist eine Option, die andere ist die Verfahr
 
 \section{Wie soll ich dieses Buch lesen?}\label{buch-lesen}
 
-Dieses Buch enthält zu jedem Thema eine kurze Beschreibung der Theorie, Beispiele und Übungen. Das selbstständige Lösen der Übungen ist unerlässlich für das Verständnis und die Emanzipation im korrekten Umgang mit Daten. Ohne Übungen fehlt die Auseinandersetzung mit dem Unterrichtsstoff und ohne diese fällt es den allermeisten schwer sogar einfachste Zusammenhänge zu begreifen. Es wird deshalb empfohlen, dass die Übungen zum jeweiligen Thema zeitnah zur Theorie gelöst werden. Damit überprüft werden kann, ob die Übungen richtig gelöst wurden, ist zu jeder Übung eine kurze Lösung hinterlegt. Wer beim ersten selbstständigen Versuch der Übungslösung scheitert - was garantiert den meisten Lesenden hier ein oder mehrmals passieren wird -, kann die Übung mit Hilfe der Lösung lösen und zu einem späteren Zeitpunkt die Übung selbstständig nochmal machen ohne Lösung. Für die Statistik ist es also \emph{nicht} genug den Stoff einmal auswendig zu lernen, Übung ist unerlässlich.
+Dieses Buch enthält zu jedem Thema eine kurze Beschreibung der Theorie, Beispiele und Übungen. Das selbstständige Lösen der Übungen ist unerlässlich für das Verständnis und die Emanzipation im korrekten Umgang mit Daten. Ohne Übungen fehlt die Auseinandersetzung mit dem Unterrichtsstoff und ohne diese fällt es den allermeisten schwer sogar einfachste Zusammenhänge zu begreifen. Es wird deshalb empfohlen, dass die Übungen zum jeweiligen Thema zeitnah zur Theorie gelöst werden. Damit überprüft werden kann, ob die Übungen richtig gelöst wurden, ist zu jeder Übung eine kurze Lösung hinterlegt. Wer beim ersten selbstständigen Versuch der Übungslösung scheitert - was garantiert den meisten Lesenden hier ein oder mehrmals passieren wird -, kann die Übung mit Hilfe der Lösung lösen und zu einem späteren Zeitpunkt die Übung selbstständig nochmal machen ohne Lösung. Für die Statistik ist es also \emph{nicht} genug den Stoff einmal auswendig zu lernen, Übung ist unerlässlich. Übungen oder Teilaufgaben welche mit einem \(\star\) gekennzeichnet sind, dienen zwar dem tieferen Verständnis der Materie, sind aber für den Kurs nicht absolut notwendig.
+
+Weiter sind Testaufgaben, analog zu einem Multiple-Choice-Test verfügbar, welche zur Überprüfung des Wissens und der Emulation einer Prüfungssituation dienen sollen. Auch diese Fragen werden am besten mehrmals wiederholt bis die Lösung selbstständig korrekt erarbeitet werden kann.
 
 \section{Formeln, Symbole und Zahlen}\label{formeln}
 
@@ -348,7 +350,11 @@ Für einen Menschen ist es schwierig direkt aus der Sichtung dieser Zahlen zu be
 
 Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von \(0.2\)°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein \textbf{Histogramm} genannt.
 
-\includegraphics{aps_statistik1_files/figure-latex/enten_histogramm-1.pdf}
+\begin{figure}
+\centering
+\includegraphics{aps_statistik1_files/figure-latex/exm-ducktemp-histogramm-1.pdf}
+\caption{\label{fig:exm-ducktemp-histogramm}Histogramm Körpertemperatur Enten.}
+\end{figure}
 
 Aufgrund dieser Darstellung kann die Veterinärin nun sehen, wie häufig welche Körpertemperaturen sind. Dies wird die \textbf{Verteilung} des Merkmals genannt. Sie bemerkt zum Beispiel, dass Beobachtungen der Körpertemperatur rund um 41.6°C am häufigsten sind und tiefere und höhere Temperaturen seltener vorkommen. Auf einen Blick sieht sie auch, dass die Temperatur aller Enten zwischen 41°C und 42.2°C war.
 
@@ -421,9 +427,13 @@ Mit den Daten \texttt{02-exm-ducktemp.sav} aus Beispiel \ref{exm:ducktemp}:
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Erstellen Sie selbst ein Histogramm mit Jamovi und begründen Sie, weshalb es nicht gleich aussieht wie das Histogramm oben.
+  Erstellen Sie selbst ein Histogramm mit Jamovi und begründen Sie, weshalb es nicht gleich aussieht wie das Histogramm in Abbildung \ref{fig:exm-ducktemp-histogramm}.
 \item
-  Berechnen Sie zusätzlich Modus, Median, arithmetisches Mittel, IQR, \(25\%\)- und \(75\%\)-Perzentil, sowie \(2.5\%\)- und \(97.5\%\)-Perzentil, sowie die Spannweite und die Standardabweichung der Körpertemperaturen der Enten mit Jamovi.
+  Berechnen Sie Modus, Median und arithmetisches Mittel der Körpertemperaturen der Enten mit \texttt{Jamovi} und berichten Sie diese mit der angemessenen Symbolik.
+\item
+  (\(\star\)) Reproduzieren Sie das Histogramm in Abbildung \ref{fig:exm-ducktemp-histogramm} genau mithilfe der Histogramm-Funktion des \texttt{Jamovi}-Moduls \texttt{JJStatsPlot} \citep{jjstatsplot2025}.
+\item
+  Berechnen Sie IQR, \(25\%\)- und \(75\%\)-Perzentil, sowie \(2.5\%\)- und \(97.5\%\)-Perzentil, sowie die Spannweite und die Standardabweichung der Körpertemperaturen der Enten mit \texttt{Jamovi} und berichten Sie diese mit der angemessenen Symbolik.
 \end{enumerate}
 
 \end{exercise}
@@ -439,7 +449,7 @@ Mit den Daten \texttt{02-exm-ducktemp.sav} aus Beispiel \ref{exm:ducktemp}:
 \def\labelenumi{(\alph{enumi})}
 \tightlist
 \item
-  Das Histogramm, siehe Abbildung \ref{fig:enten-hist-mean-sd1} sieht nicht gleich aus, da Jamovi die Temperaturabschnitte kürzer gewählt hat nämlich bei 0.125°C statt 0.2°C wie oben im Text. In Jamovi gibt es aktuell keine Möglichkeit die Abschnittsweite anzupassen. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite.
+  Das Histogramm, siehe Abbildung \ref{fig:enten-hist-mean-sd1} sieht nicht gleich aus, da Jamovi die Temperaturabschnitte mit Korbbreite \(0.125\)°C kürzer gewählt hat als die in Abbildung Abbildung \ref{fig:exm-ducktemp-histogramm} dargestellte Korbbreite von \(0.2\)°C. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite.
 \end{enumerate}
 
 \begin{figure}
@@ -451,8 +461,17 @@ Mit den Daten \texttt{02-exm-ducktemp.sav} aus Beispiel \ref{exm:ducktemp}:
 \setcounter{enumi}{1}
 \tightlist
 \item
-  Eine Anleitung zur Berechnung in Jamovi sowie die berechneten Werte können in Abbildung \ref{fig:enten-hist-mean-sd2} abgelesen werden.
+  Eine Anleitung zur Berechnung in \texttt{Jamovi} sowie die berechneten Werte können in Abbildung \ref{fig:enten-hist-mean-sd2} abgelesen und sind Modus \(= 41.5\)°C, Median \(Mdn = 41.7\) und arithmetisches Mittel \(M=41.7\).
+\item
+  Im Modul \texttt{JJStatsPlot} kann die Korbgrösse mit \texttt{Change\ Bin\ Width} angepasst werden. In Abbildung Abbildung \ref{fig:exm-ducktemp-histogramm} kann beobachtet werden, dass die Balken und also auch die Körbe \(0.2\) Einheiten breit sind. Dies wird so eingestellt, siehe Abbildung \ref{fig:enten-hist-binwidth}.
 \end{enumerate}
+
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-binwidth-jmv-input} \includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-binwidth-jmv-output} \caption{Links: Jamovi-Anleitung zur Berechnung des gewünschten Histogramms; rechts: Jamovi-Ausgabe.}\label{fig:enten-hist-binwidth}
+\end{figure}
+
+Es entsteht dabei glücklicherweise genau die gewünschte Darstellung. Es wäre auch möglich gewesen, dass die Körbe auf der \(x\)-Achse verschoben sind, zum Beispiel ein Korb \(41.2\) bis \(41.4\). Diese Verschiebung könnte nicht mit \texttt{JJStatsPlot} behoben werden und müsste mit einer anderen Statistiksoftware bearbeitet werden.
+(d) Eine Anleitung zur Berechnung in \texttt{Jamovi} sowie die berechneten Werte können in Abbildung \ref{fig:enten-hist-mean-sd2} abgelesen und sind Interquartilabstand \(IQR= 0.3\)°C, \(25\%\)-Perzentil \(=41.5\), \(75\%\)-Perzentil \(=41.8\), \(2.5\%\)-Perzentil \(=41.3\), \(97.5\%\)-Perzentil \(= 42.1\), Spannweite \(R=1.11\) und die Standardabweichung \(SD = 0.233\).
 
 \end{solution}
 
@@ -536,14 +555,147 @@ Damit können die beiden nächsten Teilfragen beantwortet werden.
 \end{solution}
 
 \begin{exercise}
-\protect\hypertarget{exr:temptag-poiane}{}\label{exr:temptag-poiane}\leavevmode
+\protect\hypertarget{exr:theorie-variabilitaet}{}\label{exr:theorie-variabilitaet}\leavevmode
 
-TODO: Exercise body
+In einem psychologischen Test machen \(5\) Probandinnen die Werte \(18, 21, 20, 19, 22\). Um mit einer Zahl zu sagen, wie stark die Testresultate streuen, wird die Variabilität berechnet.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Wie gross ist die Spannweite und die Standardabweichung dieser Werte? Rechnen Sie im Kopf oder mit einem Taschenrechner.
+\item
+  Nehme an, der Testleiter hat den Wert der ersten Probandin falsch in seine Tabelle übertragen - statt \(18\) hat er \(81\) geschrieben. Wie gross ist die Spannweite und die Standardabweichung dieser Werte jetzt? Rechnen Sie im Kopf oder mit einem Taschenrechner.
+\item
+  Gleich wie (a), aber führen Sie die Berechnungen aus indem die Zahlen manuell bei \texttt{Jamovi} eingegeben. Tipp: Die Messskala muss manuell auf kontinuierlich gestellt werden.
+\item
+  Gleich wie (b), aber führen Sie die Berechnungen aus indem die Zahlen manuell bei \texttt{Jamovi} eingegeben.
+\item
+  Vergewissern Sie sich, dass der Interquartilabstand in jedem Fall dem Abstand zwischen dem \(25\%\) und dem \(75\%\)-Perzentil entspricht. Vergewissern Sie sich zusätzlich, dass in jedem Fall der Median dem \(50\%\)-Perzentil entspricht.
+\item
+  Schliessen Sie aus dieser Übung auf das Verhalten der verschiedenen Variabilitätsmasse bei fehlerhaften Daten?
+\end{enumerate}
 
 \end{exercise}
 
 \begin{solution}
-TODO: solution body
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Die Spannweite entspricht dem höchsten minus dem kleinsten beobachteten Wert, also \(R = 22- 18 = 4\). Wir haben hier \(n=5\) Beobachtungen, nämlich \(x_1 = 18, x_2 = 21, x_3 = 20, x_4 = 19, x_5=22\). Wird dies in die Formel \eqref{eq:sd} eingesetzt, so gibt dies die Standardabweichung
+  \begin{align}
+      s &= \sqrt{\frac{1}{n-1}\sum^n_{i=1} (x_i-\bar{x})^2} \\
+      &= \sqrt{\frac{1}{n-1} \left( (x_1-\bar{x})^2+(x_2-\bar{x})^2+(x_3-\bar{x})^2+(x_4-\bar{x})^2+(x_5-\bar{x})^2\right)} \\
+      &=  \sqrt{\frac{1}{5-1} \left( (18-20)^2+(21-20)^2+(20-20)^2+(19-20)^2+(22-20)^2\right)} \\
+      &=     \sqrt{\frac{1}{4} \left( 4+1+0+1+4\right)}\\
+      &=1.58.
+    \end{align}
+\item
+  Wir haben hier \(n=5\) neue Beobachtungen, nämlich \(x_1 = 81, x_2 = 21, x_3 = 20, x_4 = 19, x_5=22\). Die Spannweite entspricht dem höchsten minus dem kleinsten beobachteten Wert, also \(R = 81 - 19 = 62\). Wird dies in die Formel \eqref{eq:sd} eingesetzt, so gibt dies die Standardabweichung
+  \begin{align}
+      s &= \sqrt{\frac{1}{n-1}\sum^n_{i=1} (x_i-\bar{x})^2} \\
+      &= \sqrt{\frac{1}{n-1} \left( (x_1-\bar{x})^2+(x_2-\bar{x})^2+(x_3-\bar{x})^2+(x_4-\bar{x})^2+(x_5-\bar{x})^2\right)} \\
+      &=  \sqrt{\frac{1}{5-1} \left( (81-32.6)^2+(21-32.6)^2+(20-32.6)^2+(19-32.6)^2+(22-32.6)^2\right)} \\
+      &=     \sqrt{\frac{1}{4} \left( 2342.56+134.56+158.76+184.96+112.36\right)}\\
+      &=27.08.
+    \end{align}
+  Je nach Rundungsverfahren können hier kleinere Werteunterschiede im Nachkommabereich resultieren.
+\end{enumerate}
+
+Für c und d wird der Datensatz bei \texttt{Jamovi} eingegeben. Die Variablen werden bearbeitet wie in \ref{exr:theorie-mdn-mean} beschrieben. Die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-theorie-variabilitaet-input}.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-theorie-variabilitaet-jmv-input} \caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-theorie-variabilitaet-input}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-theorie-variabilitaet-output}.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-theorie-variabilitaet-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-theorie-variabilitaet-output}
+\end{figure}
+
+Damit können die beiden nächsten Teilfragen beantwortet werden.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Tatsächlich ist die Spannweite gemäss Jamovi auch \(R=4\) (siehe \texttt{Wertebereich}) und die Standardabweichung ist \(SD=1.58\).
+\item
+  Tatsächlich ist die Spannweite gemäss Jamovi auch \(R=62\) (siehe \texttt{Wertebereich}) und die Standardabweichung ist \(SD=27.08\).
+\item
+  Tatsächlich ist der \(IQR = 2\) in beiden Beispielen. Dies entspricht genau den Perzentildifferenzen \(21-19\) für den original und \(22-20\) für den fehlerhaften Datensatz. Dass zweimal genau derselbe Wert resultiert ist Zufall. In beiden Fällen entspricht der Median dem \(50\%\)-Perzentil. Dies sollte immer der Fall sein, da sowohl der Median, wie auch das \(50\%\)-Perzentil die Beobachtungen in eine höhere und eine tiefere Hälfte teilen.
+\item
+  Diese Übung zeigt, dass die Standardabweichung und die Spannweite durch fehlerhafte Beobachtungen stark beeinflusst werden. Der Interquartilabstand ist hingegen relativ stabil, solange nicht viele Beobachtungen fehlerhaft sind.
+\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:koerpergroesse}{}\label{exr:koerpergroesse}\leavevmode
+
+Bei einer Befragung wurden die Körpergrösse und das Geschlecht im Datensatz \texttt{02-exr-koerpergroesse-sex.sav} festgehalten.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Stellen Sie die Körpergrösse in einem Histogramm dar und berechnen sie alle bekannten Zentralitäts- und Variabilitätsmasse und berichten Sie mit dem korrekten Symbol.
+\item
+  Wiederholen Sie die Übung aber teilen Sie die Daten nach Geschlecht auf. Was fällt auf?
+\item
+  Was bedeutet der Kommentar \emph{Es gibt mehr als einen Modalwert, nur der erste wird berichtet} und welche Bedeutung hat er für die Interpretation des Modus?
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Der Datensatz wird bei \texttt{Jamovi} eingelesen und die Analyseparameter wie in Abbildung \ref{fig:sol-koerpergroesse-sex-input-a} gesetzt.
+\end{enumerate}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-input-a} \caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-koerpergroesse-sex-input-a}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-koerpergroesse-sex-output-a}.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-output-a} \caption{Jamovi Ausgabe.}\label{fig:sol-koerpergroesse-sex-output-a}
+\end{figure}
+
+Die Körpergrösse ist demnach \(N=326\) mal beobachtet worden. Die Zentralitätmasse sind \(M=173.13\) cm, \(Mdn=172\) (Rundung nach 2 Kommastellen), Modus \(144.77\). Die Variabilitätsmasse sind \(SD=12.09\) cm, \(IQR=17.11\) und \(R=57.78\). Auf dem Histogramm ist ausserdem ersichtlich, dass die meisten Leute zwischen \(160\) und \(180\) cm gross sind und dass nur weniger unter \(155\) oder über \(200\) cm gross sind.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Die Analyse wird mit Gruppierungsvariable Geschlecht wiederholt wie in Abbildung \ref{fig:sol-koerpergroesse-sex-input-b}
+\end{enumerate}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-input-b} \caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-koerpergroesse-sex-input-b}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-koerpergroesse-sex-output-b}.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-output-b} \caption{Jamovi Ausgabe.}\label{fig:sol-koerpergroesse-sex-output-b}
+\end{figure}
+
+Die Körpergrösse ist demnach bei den Frauen \(N=163\) mal beobachtet worden. Die Zentralitätmasse sind \(M=166.00\) cm, \(Mdn=166.09\), Modus \(144.77\). Die Variabilitätsmasse sind \(SD=8.41\) cm, \(IQR=11.27\) und \(R=41.45\). Die Körpergrösse ist bei den Männern auch \(N=163\) mal beobachtet worden. Die Zentralitätmasse sind \(M=180.27\) cm, \(Mdn=180.54\), Modus \(149.17\). Die Variabilitätsmasse sind \(SD=10.96\) cm, \(IQR=15.35\) und \(R=53.39\). Auf dem Histogramm ist ausserdem ersichtlich, dass die beiden Gruppen eine Spitze rund um den Mittelwert bei der Häufigkeit aufweisen. Beobachtungen, welche von der Spitze weiter weg sind werden seltener. Diese zwei Spitzen und somit unterschiedliche Körpergrössenverteilungen nach Geschlecht war aus (a) nicht ersichtlich. Es ist immer möglich, dass bei nicht-Experimenten ein zusätzliches Merkmal (hier das Geschlecht) ganz neue Erkenntnisse bringen kann.
+(c) In den Daten der Körpergrösse ist ersichtlich, dass aufgrund der detaillierten Aufzeichnung der Körpergrössen im hundertstel Millimeterbereich keine Beobachtung zweimal vorkommt. Jede Beobachtung ist somit die häufigste Beobachtung. Der Modus ist hier also bedeutungslos. Um einen sinnvolleren Wert für den Modus zu erhalten könnten die Körpergrössen vorab auf Zentimeter gerundet werden. In \texttt{Jamovi} kann dies mit der Funktion \texttt{ROUND} gemacht werden. Der Modus ist dann \(165\) cm für die Frauen und \(172\) für die Männer, was sich mit den Erwartungen aus dem Histogramm deckt.
+
 \end{solution}
 
 \begin{exercise}
@@ -611,13 +763,13 @@ Die Merkmale werden mit den Befehlen in Abbildung \ref{fig:sol-diverse-distrib1}
 \item
   Es gibt gemäss \ref{fig:sol-diverse-distrib2} genau \(500\) Studienteilnehmende (siehe \(N\)).
 \item
-  Die Histogramme für den IQ und die Aufgeschlossenheit weisen eine ähliche Form auf. Viele Beobachtungen sind um eine Mitte zentriert. Je weiter weg von der Mitte, desto seltener sind die Beobachtungen. Das Histogram des IQ zeigt, dass die Verteilung rund um 100 zentriert ist und ca von 60 bis 140 reicht. Je weiter entfernt von 100, desto weniger Beobachtungen wurden gemacht. Das Histogram der Aufgeschlossenheit stellt dar, dass diese rund um 4 zentriert ist mit Werten von 1 bis 7. Je weiter die Werte von 4 entfernt sind, desto weniger häufig sind die Beobachtungen. Der vom Histogram abgeleitete vorher genannte zentrale Wert entspricht ungefähr dem Mittelwert und dem Median für beide Merkmale. Für die Aufgeschlossenheit hat der Modalwert ebenfalls einen ähnlichen Wert. Der Modus für den IQ ist nicht belastbar, da die Fussnote besagt, dass mehrere Werte als Modus in Frage kommen. Eine genauere Durchsicht der IQ-Werte lässt folgern, dass aufgrund der vielen Nachkommastellen jeder IQ-Wert nur genau einmal vorkommt. Der angebene Modalwert des IQs entspricht also einfach einer zufälligen Beobachtung. Die Kennwerte für die Variabilität lassen ebenfalls auf Unterschiede zwischen den beiden Merkmalen schliessen. Die höheren Werte Standardabweichung, IQR und Wertebereich des IQ im Vergleich zur Aufgeschlossenheit legen nahe, dass die Streuung der Werte für den IQ viel grösser ist. Zum Beispiel ist eine durchschnittliche IQ-Beobachtung 15.5 IQ-Werte weg vom durchschnittlichen IQ und eine durchschnittliche Aufgeschlossenheits-Beobachtung nur 1.3 Aufgeschlossenheits-Werte weg von der duchschnittlichen Aufgeschlossenheit. Dies ist auf dem Histogramm zu erkennen, wenn die Skala der horizontalen Achse betrachtet wird. Für den IQ reicht diese von 50 bis 125 und für die Aufgeschlossenheit von 2 bis 6.
+  Die Histogramme für den IQ und die Aufgeschlossenheit weisen eine ähliche Form auf. Viele Beobachtungen sind um eine Mitte zentriert. Je weiter weg von der Mitte, desto seltener sind die Beobachtungen. Das Histogramm des IQ zeigt, dass die Verteilung rund um \(100\) zentriert ist und ca. von \(60\) bis \(140\) reicht. Je weiter entfernt von \(100\), desto weniger Beobachtungen wurden gemacht. Das Histogramm der Aufgeschlossenheit stellt dar, dass diese rund um 4 zentriert ist mit Werten von 1 bis 7. Je weiter die Werte von 4 entfernt sind, desto weniger häufig sind die Beobachtungen. Der vom Histogramm abgeleitete vorher genannte zentrale Wert entspricht ungefähr dem Mittelwert und dem Median für beide Merkmale. Für die Aufgeschlossenheit hat der Modalwert ebenfalls einen ähnlichen Wert. Der Modus für den IQ ist nicht belastbar, da die Fussnote besagt, dass mehrere Werte als Modus in Frage kommen. Eine genauere Durchsicht der IQ-Werte lässt folgern, dass aufgrund der vielen Nachkommastellen jeder IQ-Wert nur genau einmal vorkommt. Der angebene Modalwert des IQs entspricht also einfach einer zufälligen Beobachtung. Die Kennwerte für die Variabilität lassen ebenfalls auf Unterschiede zwischen den beiden Merkmalen schliessen. Die höheren Werte Standardabweichung, IQR und Wertebereich des IQ im Vergleich zur Aufgeschlossenheit legen nahe, dass die Streuung der Werte für den IQ viel grösser ist. Zum Beispiel ist eine durchschnittliche IQ-Beobachtung \(15.5\) IQ-Werte weg vom durchschnittlichen IQ und eine durchschnittliche Aufgeschlossenheits-Beobachtung nur \(1.3\) Aufgeschlossenheits-Werte weg von der duchschnittlichen Aufgeschlossenheit. Dies ist auf dem Histogramm zu erkennen, wenn die Skala der horizontalen Achse betrachtet wird. Für den IQ reicht diese von 50 bis 125 und für die Aufgeschlossenheit von \(2\) bis \(6\).
 \item
-  Die Wartezeiten wurden einmal in Minuten und einmal in Stunden abgespeichtert. Die resultierenden Histogramme sind deshalb genau identisch bis auf die Werte der horizontalen Achse, welche von 0 bis 0.6 Stunden und von 0 bis 40 Minuten reicht. Im Vergleich zu den Histogrammen des IQ und der Aufmerksamkeit kann für die Wartezeit und eine asymetrische Verteilung beobachtet werden. Kurze Wartezeiten werden demnach häufiger beobachtet als längere Wartezeiten. Die meisten Wartezeiten liegen unter 10 Minuten, sehr selten kommt es zu Wartezeiten über 20 Minuten. Die Kennzahlen für die Wartezeit in Stunden können aus den Kennzahlen der Wartezeit in Stunden hergeleitet werden indem die Werte durch \(60\) geteilt werden. Es reicht deshalb die Kennzahlen für die Wartezeit in Minuten zu betrachten. Die durchscnittliche Wartezeit liegt bei \(M=5.07, Mdn = 3.97\) Minuten. Der Modalwert ist wiederum nicht interpretierbar aus demselben Grund wie oben. Der Median bedeutet, dass \(50\%\) der Wartezeiten kleiner und \(50\%\) der Wartezeiten grösser waren als \(3.97\) Minuten. Das arithmetische Mittel ist höher als der Median. Die einigen wenigen Beobachtungen mit sehr langen Wartezeiten haben also das arithmetische Mittel im Vergleich zum Median stärker beeinflusst.
+  Die Wartezeiten wurden einmal in Minuten und einmal in Stunden abgespeichtert. Die resultierenden Histogramme sind deshalb genau identisch bis auf die Werte der horizontalen Achse, welche von \(0\) bis \(0.6\) Stunden und von \(0\) bis \(40\) Minuten reicht. Im Vergleich zu den Histogrammen des IQ und der Aufmerksamkeit kann für die Wartezeit und eine asymetrische Verteilung beobachtet werden. Kurze Wartezeiten werden demnach häufiger beobachtet als längere Wartezeiten. Die meisten Wartezeiten liegen unter \(10\) Minuten, sehr selten kommt es zu Wartezeiten über \(20\) Minuten. Die Kennzahlen für die Wartezeit in Stunden können aus den Kennzahlen der Wartezeit in Stunden hergeleitet werden indem die Werte durch \(60\) geteilt werden. Es reicht deshalb die Kennzahlen für die Wartezeit in Minuten zu betrachten. Die durchschnittliche Wartezeit liegt bei \(M=5.07\) Minuten, \(Mdn = 3.35\). Der Modalwert ist wiederum nicht interpretierbar aus demselben Grund wie oben. Der Median bedeutet, dass \(50\%\) der Wartezeiten kleiner und \(50\%\) der Wartezeiten grösser waren als \(3.35\) Minuten. Das arithmetische Mittel ist höher als der Median. Die einigen wenigen Beobachtungen mit sehr langen Wartezeiten haben also das arithmetische Mittel im Vergleich zum Median stärker beeinflusst.
 \item
   TODO.
 \item
-  TODO: Zentraler Wert hier nicht identifiziertbar, streuung auch nicht.
+  TODO: Zentraler Wert hier nicht identifiziertbar, Streuung auch nicht.
 \end{enumerate}
 
 \end{solution}
@@ -776,21 +928,97 @@ Es wird beobachtet wie viele Autos ein Haushalt hat. Die Daten sind in \texttt{0
 
 \end{solution}
 
+\begin{exercise}
+\leavevmode
+
+Von einem intervallskalierten Merkmal wurden folgende fünf Beobachtungen gemacht: \(12, 23, 15, 12, 7\). Welche der folgenden Aussagen sind wahr, welche falsch?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  \(SD = 5.89\).
+\item
+  \(R = 5\).
+\item
+  \(IQR = 3\).
+\item
+  \(s = 5.89\).
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Richtig
+\item
+  Falsch
+\item
+  Richtig
+\item
+  Richtig
+\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+\leavevmode
+
+Welche der folgenden Aussagen sind wahr, welche falsch?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Die Spannweite ist immer grösser als der Interquartilabstand.
+\item
+  \(50\%\) der Beobachtungen sind auf einer Distanz ausgebreitet, welche dem Interquartilabstand entspricht.
+\item
+  Der Interquartilabstand entspricht der Datenstreuung von der kleinsten Beobachtung bis zum Median.
+\item
+  Die Standardabweichung wird durch Messfehler weniger beeinflusst als der Interquartilabstand.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Richtig
+\item
+  Richtig
+\item
+  Falsch
+\item
+  Falsch
+\end{enumerate}
+
+\end{solution}
+
 \chapter{Stichprobenziehung}\label{stichprobenziehung}
 
 \begin{example}[Angst]
-\protect\hypertarget{exm:angst}{}\label{exm:angst}Forschende haben ein Messinstrument State-Trait Anxiety Inentory \emph{STAI}, welches Angst misst \citep{spielberger1983manual}. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst man aktuell empfindet. Die so gemessene Angst enstpricht einem Wert zwischen \(20\) und \(80\). A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit \(n =30\) zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte \(M=43.34, s = 9.72, n = 30\) für die Angst in ihren Beobachtungen.
+\protect\hypertarget{exm:angst}{}\label{exm:angst}Forschende haben das Messinstrument State-Trait Anxiety Inentory \emph{STAI} entwickelt, welches Angst misst \citep{spielberger1983manual}. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst aktuell empfunden wird. Die so gemessene Angst enstpricht einem Wert zwischen \(20\) und \(80\). A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit \(n =30\) zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte \(M=43.34, s = 9.72, n = 30\) für die Angst in ihren Beobachtungen.
 \end{example}
 
-\phantomsection\label{customdef-stichprobe}{Zufällig ausgewählte Beobachtungen eines Merkmals werden als \textbf{Stichprobe} bezeichnet.} \phantomsection\label{customdef-stichprobenziehung}{Nach der Auswahl der Stichprobe ist die \textbf{Stichprobenziehung}.} Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? \phantomsection\label{customdef-population}{Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als \textbf{Population}} \phantomsection\label{customdef-grundgesamtheit}{oder \textbf{Grundgesamtheit} bezeichnet}. \phantomsection\label{customdef-zufallsstichprobe}{Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als \textbf{Zufallsstichprobe} bezeichnet.}
+\phantomsection\label{customdef-stichprobe}{Zufällig ausgewählte Beobachtungen eines Merkmals werden als \textbf{Stichprobe} bezeichnet.} \phantomsection\label{customdef-stichprobenziehung}{Die Auswahl der Beobachtungen für die Stichprobe ist die \textbf{Stichprobenziehung}.} Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? \phantomsection\label{customdef-population}{Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als \textbf{Population}} \phantomsection\label{customdef-grundgesamtheit}{oder \textbf{Grundgesamtheit} bezeichnet}. \phantomsection\label{customdef-zufallsstichprobe}{Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als \textbf{Zufallsstichprobe} bezeichnet.}
 
 \begin{remark}
-Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am Forschungsbetrieb sind und damit über Studien informiert sind oder für wenig Geld oder Bildungsanerkennung an Studien teilnehmen. Einige dieser Studien generalisieren ihre Forschungsresultate nachher auf alle Personen. Dies ist in der Regel falsch, da Studierende nicht repräsentativ für die Gesamtbevölkerung sind (Altersstruktur, Geschlechtsverteilung, Vermögen, usw.). Die Frage, wie eine repräsentative Stichprobe würde den Rahmen dieses Buches sprengen.
+Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am Forschungsbetrieb sind und damit über Studien informiert sind oder für wenig Geld oder Bildungsanerkennung an Studien teilnehmen. Einige dieser Studien generalisieren ihre Forschungsresultate nachher auf alle Personen. Dies ist in der Regel falsch, da Studierende nicht repräsentativ für die Gesamtbevölkerung sind (Altersstruktur, Geschlechtsverteilung, Vermögen, usw.). Die Frage, wie am besten eine repräsentative Stichprobe gezogen werden kann, kann hier aus Platzgründen nicht diskutiert werden.
 \end{remark}
 
 \section{Was ist das Problem der Stichprobenziehung?}\label{stichprobenziehung-problem}
 
-Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung \ref{fig:srs-intervall-nocol} ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population. Die Personen im Zimmer, respektive die Beobachtungen in der Population sind normalerweise nicht sichtbar. Aus diesem Zimmer wurden also 30 Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die Punkte über dem Zimmer, oberhalb des Pfeils. Die Farben der Punkte sind jetzt bekannt und entsprechen der jeweiligen Zustandesangst der beobachteten Personen.
+Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung \ref{fig:srs-intervall-nocol} ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population entspricht. Von den Personen im Zimmer, respektive die Beobachtungen in der Population, ist die Angst nicht bekannt (Punkte in grau). Aus diesem Zimmer wurden zufällig 30 Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die farbigen Punkte über dem Zimmer, oberhalb des Pfeils. Die Farben der Punkte sind jetzt bekannt und entsprechen der jeweiligen Zustandesangst der beobachteten Personen.
 
 \begin{figure}
 \centering
@@ -798,7 +1026,7 @@ Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befin
 \caption{\label{fig:srs-intervall-nocol}Population mit unbekannter Angst.}
 \end{figure}
 
-Da die Stichprobe nun eben zufällig gezogen wurde, das heisst zufällig Personen aus dem Zimmer geholt wurden, kann es nun sein, dass die Stichprobe einer Population wie in Abbildung \ref{fig:srs-intervall-high-p} entstammt.
+Da die Stichprobe zufällig gezogen wurde, das heisst zufällig Personen aus dem Zimmer geholt wurden, kann es nun sein, dass die Stichprobe einer Population wie in Abbildung \ref{fig:srs-intervall-high-p} entstammt.
 
 \begin{figure}
 \centering
@@ -823,7 +1051,7 @@ Die Lösung dieses Problems funktioniert intuitiv wie folgt: Man stellt sich vor
 \begin{figure}
 \centering
 \includegraphics{aps_statistik1_files/figure-latex/srs-intervall-high-p-many-1.pdf}
-\caption{\label{fig:srs-intervall-high-p-many}TODO.}
+\caption{\label{fig:srs-intervall-high-p-many}Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher tiefen Angst-Werten.}
 \end{figure}
 
 Im Szenario, in welchem in der Population tatsächlich höhere Werte häufig vorkommen, kann dies aussehen wie in Abbildung \ref{fig:srs-intervall-low-p-many}. Stichproben mit eher tiefen Angst-Werten kommen hier selten oder gar nicht vor.
@@ -831,7 +1059,7 @@ Im Szenario, in welchem in der Population tatsächlich höhere Werte häufig vor
 \begin{figure}
 \centering
 \includegraphics{aps_statistik1_files/figure-latex/srs-intervall-low-p-many-1.pdf}
-\caption{\label{fig:srs-intervall-low-p-many}TODO.}
+\caption{\label{fig:srs-intervall-low-p-many}Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten.}
 \end{figure}
 
 Es kann also zusammenfassend gesagt werden, dass die gezogene Stichprobe wohl eher aus einer Population mit tiefen Angst-Werten gezogen wurde als aus einer Population mit eher höheren Angst-Werten. Ganz sicher kann man jedoch nie sein, da die Werte in der Population eigentlich unbekannt sind. Eine genaue Quantifizierung dieser Unsicherheit kann mit Hilfe der Statistik erreicht werden und wird in den folgenden Kapiteln dieses Buches erläutert.
@@ -839,25 +1067,79 @@ Es kann also zusammenfassend gesagt werden, dass die gezogene Stichprobe wohl eh
 \section{Übungen}\label{uxfcbungen}
 
 \begin{exercise}
-\protect\hypertarget{exr:tagname-alskfdieu}{}\label{exr:tagname-alskfdieu}\leavevmode
+\protect\hypertarget{exr:redhair}{}\label{exr:redhair}\leavevmode
 
-TODO: Exercise body
+In einer Studie zum Schmerzempfinden von Personen mit dem Gen MC1R (welche meistens als rothaariger Phenotyp auftreten) werden \(20\) rothaarige Studierende und \(54\) Studierende mit andere Haarfarbe auf ihr Schmerzempfinden getestet. Identifizieren Sie die Population und die Stichprobe und erklären Sie ob es sich um eine Zufallsstichprobe handelt.
 
 \end{exercise}
 
 \begin{solution}
-TODO: solution body
+
+Die Studie will eine Aussage über alle Personen mit dem Gen MC1R treffen im Vergleich zu Personen ohne das MC1R Gen.~Alle Personen mit diesem Gen sind also der eine Teil der Population und alle Personen ohne das Gen sind der andere Teil der Population. Die beobachteten \(20\) rothaarigen Studierenden und die \(54\) anderen Studierenden sollen eine Stichprobe von dieser Population darstellen. Dies ist den Studienleitenden jedoch nicht gelungen, da bei der Auswahl der Studierenden auf ihre Haarfarbe geachtet wurde und nicht auf die Ausprägung des MC1R-Gens. Da auch blonde Personen das MC1R-Gen in sich tragen können und sich auch Personen die Haare rot färben können, ist hier nicht davon auszugehen, dass es sich um eine Stichprobe der erwünschten Population handelt. Wenn davon ausgegangen wird, dass die rothaarigen tatsächlich alle das erwünschte Gen in sich tragen und die anderen Teilnehmenden nicht, dann kann zusätzlich bemängelt werden, dass eine Aussage über alle Personen getroffen werden soll, sich aber nur Studierende in der Stichprobe befinden - also vorwiegend junge Personen mit wenig Geld. Mit dieser Stichprobe kann dann also eigentlich nur eine Aussage zu allen jungen Rothaarigen und jungen Leuten mit anderer Haarfarbe getroffen werden. Zudem muss davon ausgangen werden, dass die Studierenden aus folgenden möglichen Gründen nicht zufällig ausgewählt wurden:
+
+\begin{itemize}
+\tightlist
+\item
+  Teilnehmende brauchen das Geld oder Punkte für ihr Studium
+\item
+  Teilnehmende tendieren dazu zusammen mit Freunden an Studien teilzunehmen
+\item
+  Teilnhemende müssen Zeit haben, sind also tendenziell weniger durch Erwerbstätigkeit oder Care-Arbeit blockiert als andere
+\item
+  etc.
+\end{itemize}
+
 \end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:armwrestling}{}\label{exr:armwrestling}\leavevmode
+
+Anna und Isabel wollen mit einmaligem Armdrücken herauszufinden, wer die stärkere Person ist. Identifizieren Sie Population und Stichprobe. Isabel gewinnt. Können Anna und Isabel nachher mit Gewissheit sagen, dass Isabel stärker ist? Wie könnte mehr Sicherheit erlangt werden?
+
+\end{exercise}
+
+\begin{solution}
+Die Population beinhaltet in diesem Fall alle hypothetischen je gemachten oder noch durchzuführende Armdrücken zwischen Anna und Isabel. Die Stichprobe ist das jetzt durchgeführte Armdrücken, bei welchem Isabel gewonnen hat. Anna könnte zu recht behaupten, dass nur weil Isabel einmal gewonnen hat, dies relativ wenig aussagekräftig ist für die Population also für die Frage, ob Isabel stärker ist. Vielleicht hatte Isabel einfach einen sehr starken Tag und Anna ist aber normalerweise eigentlich stärker. Um diese zufälligen Effekte zu minimieren, könnten Anna und Isabel das Armdrücken regelmässig wiederholen.
+\end{solution}
+
+\section{Test}\label{test}
 
 \begin{exercise}
 \protect\hypertarget{exr:tagname-apwioev}{}\label{exr:tagname-apwioev}\leavevmode
 
-TODO: Exercise body
+Eine Aktiengesellschaft hat die Addressen aller ihrer \(10000\) Aktionär:innen. Mit einer Umfrage soll herausgefunden werden, ob die Aktionär:innen den neuen umweltfreundlichen Unternehmenskurs begrüssen. Dazu werden per losverfahren \(100\) Aktionär:innen bestimmt und an der Generalversammlung kurz um eine Stellungnahme gebeten. Welche der folgenden Aussagen sind wahr, welche falsch?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Die Stichprobengrösse ist \(10000\).
+\item
+  Die Grundgesamtheit sind alle Aktionär:innen.
+\item
+  Es handelt sich um eine Zufallsstichprobe.
+\item
+  Die Population umfasst \(100\) Aktionär:innen.
+\end{enumerate}
 
 \end{exercise}
 
 \begin{solution}
-TODO: solution body
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Falsch
+\item
+  Richtig
+\item
+  Richtig
+\item
+  Falsch
+\end{enumerate}
+
 \end{solution}
 
 \chapter{Durchschnitt und Standardabweichung schätzen}\label{durchschnitt-und-standardabweichung-schuxe4tzen}
@@ -990,42 +1272,89 @@ Die Freiheitsgrade der \(t\)-Verteilung in der Annäherung oben entsprechen der 
 
 Die arithmetischen Mittel bei unbekannter Standardabweichung sind bei wiederholter Stichprobenziehung genau \(t\)-verteilt. Um die Genauigkeit der Schätzung des Erwartungswertes zu bestimmen genügt es folglich, das 2.5\% und das 97.5\% Perzentil der \(t\)-Verteilung mit \(n-1\) Freiheitsgraden zu bestimmen. Diese Perzentile können mit
 
-\[ \bar{x} - \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1} < \mu < \bar{x} + \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1}\]
+\begin{equation}
+\bar{x} - \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1} < \mu < \bar{x} + \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1}\label{eq:ki-mean}
+\end{equation}
 
 berechnet werden, wobei \(\bar{x}\) das arithmetische Mittel, \(s\) die Standardabweichung und \(t_{97.5\%, n-1}\) dem Wert des 97.5\%-Perzentil einer auf 0 zentrierten \(t\)-Verteilung mit \(n-1\) Freiheitsgraden entspricht. Letzere Perzentile der \(t\)-Verteilung können bei Bedarf in entsprechenden Tabellen nachgeschlagen werden. Als Gedankenstütze kann für \(t_{97.5\%, n-1}\) immer \(2\) gedacht werden, da dies ungefähr dem wahren Wert entspricht, wenn \(n\) grösser als \(50\) ist.
 
-Das \(2.5\%\) und das \(97.5\%\) Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines \phantomsection\label{customdef-interval}{\textbf{Intervalles}. Ein Intervall bezeichnet durch die Symbolik \([\)untere Schranke, obere Schranke\(]\) beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.} \phantomsection\label{customdef-confidence-interval}{Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in \(95\%\) der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu \(95\%\) sicher oder \emph{konfident} sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als \(95\%\)-\textbf{Konfidenzintervall} (symbol KI) bezeichnet.}
+Das \(2.5\%\) und das \(97.5\%\) Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines \phantomsection\label{customdef-interval}{\textbf{Intervalles}. Ein Intervall bezeichnet durch die Symbolik \([\)untere Schranke, obere Schranke\(]\) beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.} \phantomsection\label{customdef-confidence-interval}{Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederhohlter Stichprobenziehung der wahre Erwarungswert in \(95\%\) der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu \(95\%\) sicher oder \emph{konfident} sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als \(95\%\)-\textbf{Konfidenzintervall} (Symbol KI) bezeichnet.}
+\phantomsection\label{customdef-confidence-level}{Als Sicherheit wird konventionell oft \(95\%\) gewählt, andere Sicherheitswerte sind aber ebenfalls möglich und sinnvoll. Diese Werte heissen \textbf{Vertrauenswahrscheinlichkeit}. Ein \(95\%\)-Konfidenzintervall ist also ein Konfidenzintervall mit \(95\%\) Vertrauenswahrscheinlichkeit.} \phantomsection\label{customdef-erring-level}{Andersherum betrachtet kann auch festgestellt werden, dass bei einem \(95\%\)-Konfidenzintervall die Wahrscheinlichkeit sich zu irren bei \(5\%\) liegt. Irren bedeutet hier, dass der wahre Erwartungswert bei wiederholter Stichprobenziehung von \(5\%\) der Konfidenzintervallen nicht überdeckt wird. Dieser Wert wird demnach \textbf{Irrtumswahrscheinlichkeit} genannt und mit \(\alpha\) bezeichnet}. Es ist demnach äquivalent von einem \(99\%\) Konfidenzintervall oder von einem Konfidenzintervall mit \(1\%\) Irrtumswahrscheinlichkeit zu sprechen.
 
 In Beispiel \ref{exm:angst}, kann aus der Tabelle \ref{tab:quantiles-norm} entnommen werden, dass die Angst in der Population bei \(M = 43.34\) \(95\%\) KI \([42.18,44.5]\) liegt. In Beispiel \ref{exm:agreableness}, kann aus der Tabelle \ref{tab:quantiles-norm} entnommen werden, dass die Verträglichkeit in der Population bei \(M = 3.91\) \(95\%\) KI \([3.66,4.34]\) liegt. Wann immer eine Schätzung eines zentralen Wertes berichtet wird, soll dies ab jetzt in der soeben gezeigten Darstellung inklusive Angabe des Konfidenzintervalls erfolgen. Damit wird der Leserin aufgezeigt, wo der Schätzwert der zentralen Tendenz liegt und gleichzeigtig wird intuitiv vermittelt wie genau die Schätzung ist.
 
-Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse \(n\) oder die geschätzte Standardabweichung \(s\) auf die Länge des Konfidenzintervalls auswirkt. Dies kann in den Übungen \ref{exr:ki-mean-n-vary} und \ref{exr:ki-mean-s-vary} selbst erforscht werden.
+Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse \(n\) oder die geschätzte Standardabweichung \(s\) auf die Länge des Konfidenzintervalls auswirkt. Dies kann in den Übungen \ref{exr:ki-mean-n-vary} und \ref{exr:biologietest} selbst erforscht werden.
 
 \section{Übungen}\label{uxfcbungen-1}
 
 \begin{exercise}
-\protect\hypertarget{exr:interpret-report1}{}\label{exr:interpret-report1}\leavevmode
+\protect\hypertarget{exr:marktpreisanalyse}{}\label{exr:marktpreisanalyse}\leavevmode
 
-\begin{verbatim}
-## [1] "hi"
-\end{verbatim}
+Die Firma Pear bringt ein neues Smartphone das F42 der Reihe Supernova X auf den Markt. Das Smartphone ist für Jugendliche im Alter von \(15-20\) Jahre konzipiert. Um herauszufinden, welcher Marktpreis für das F42 verlangt werden kann, erfragt Pear bei \(70\) Jugendlichen die Zahlbereitschaft. Die Daten stehen unter \texttt{04-exr-marktpreisanalyse.sav} zur Verfügung. Wie gross ist die durchschnittliche Zahlbereitschaft der Jugendlichen? Berichten Sie die Ergebnisse der Marktanalyse mit einem \(95\%\)-Konfidenzintervall.
 
 \end{exercise}
 
 \begin{solution}
-TODO
+Der Datensatz wird bei \texttt{Jamovi} eingelesen und die Analyseparameter wie in Abbildung \ref{fig:sol-marktpreisanalyse-input} gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/04-exr-marktpreisanalyse-jmv-input} \caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-marktpreisanalyse-input}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-marktpreisanalyse-output}.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/04-exr-marktpreisanalyse-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-marktpreisanalyse-output}
+\end{figure}
+
+Die Marktanalyse mit \(N = 70\) Befragten hat ergeben, dass Jugendliche im Alter von \(15-20\) Jahren bereit sind durchschnittlich \(M = 288.34\) CHF \(95\%\)-KI \([260.92,315.76]\) auszugeben für das neue Supernova X F42 von Pear.
 \end{solution}
 
 \begin{exercise}
-\protect\hypertarget{exr:interpret-report2}{}\label{exr:interpret-report2}\leavevmode
+\protect\hypertarget{exr:stranger}{}\label{exr:stranger}\leavevmode
 
-\begin{verbatim}
-## [1] "hi"
-\end{verbatim}
+In einer Studie werden \(421\) Probandinnen über eine Woche lang beauftragt immer wieder fremde Personen anzusprechen. Dabei wird unter anderem am Anfang und am Ende der Woche gemessen, wie unangenehm auf einer Skala von \(1\) bis \(5\) dies für die Probandinnen ist. Die Daten stehen unter \texttt{04-exr-stranger.sav} zur Verfügung. Verwenden Sie für drei Nachkommastellen in \texttt{Jamovi} für die folgenden Teilaufgaben.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Berechnen Sie das \(95\%\)-Konfidenzintervall für die durchschnittliche Unangenehmheit in der Grundgesamtheit für die Situation am Anfang und am Ende der Studie und berichten und interpretieren Sie das Resultat. Denken Sie die Intervention hat die Unangenehmheit, welche durch das Ansprechen von Fremden entsteht, in der Grundgesamtheit durchschnittlich gesenkt?
+\item
+  Vergleichen Sie die Längen der errechneten Konfidenzintervalle.
+\item
+  Wiederholen Sie die Aufgabe und berechnen Sie jetzt das \(90\%\) und das \(99\%\)-Konfidenzintervall. Wie verhält sich die Länge des Konfidenzintervalls bei unterschiedlichen Vertrauenswahrscheinlichkeiten?
+\end{enumerate}
+
+Diese Aufgabe ist angelehnt an \citet{sandstrom2022}.
 
 \end{exercise}
 
 \begin{solution}
-TODO
+
+Der Datensatz wird bei \texttt{Jamovi} eingelesen und die Analyseparameter wie in Abbildung \ref{fig:sol-stranger-input} gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/04-exr-stranger-jmv-input} \caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-stranger-input}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-stranger-output}.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/04-exr-stranger-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-stranger-output}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei \(M=3.784, 95\%\) KI \([3.764, 3.803]\) Punkten und am ende der Woche bei \(M=3.328, 95\%\) KI \([3.309, 3.348]\) Punkten. Wenn die Studie \(100\) mal wiederholt wird und jedes mal ein \(95\%\) Konfidenzintervall für den Erwartungswert der Unangenehmheit berechnet wird, so wird der tatsächliche Erwartungswert in \(95\%\) der Fälle also ungefähr \(95\) mal vom Konfidenzintervall überdeckt. Da die Konfidenzintervalle weit auseinander liegen, kann davon ausgegangen werden, dass die Unangenehmheit durchschnittlich tatsächlich nach dem Versuch tiefer liegt als vor dem Versuch. Die Unangenehmheit kann also durch Training vermindert werden.
+\item
+  Die Länge der Konfidenzintervalle betragen am Anfang der Woche \(3.803-3.764=0.039\) und am Ende der Woche \(3.348-3.309= 0.039\).
+\item
+  Um das \(90\%\) Konfidenzintervall zu berechnen kann in der in Abbildung \ref{fig:sol-stranger-input} dargestellten Maske der Wert für \texttt{Konfidenzintervall\ für\ den\ Mittelwert} auf \(90\) gesetzt werden. Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei \(M=3.784, 90\%\) KI \([3.767, 3.800]\) Punkten und am ende der Woche bei \(M=3.328, 90\%\) KI \([3.312, 3.345]\) Punkten. Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei \(M=3.784, 99\%\) KI \([3.758, 3.809]\) Punkten und am ende der Woche bei \(M=3.328, 99\%\) KI \([3.303, 3.354]\) Punkten. Die Länge der \(90\%\) Konfidenzintervalle ist \(3.800-3.767=0.033\) und \(3.345-3.312=0.033\). Die Länge der \(99\%\) Konfidenzintervalle ist \(3.809-3.758=0.051\) und \(3.354-3.303=0.051\). Es kann also hier empirisch festgestellt werden, dass das Konfidenzintervall grösser wird, je höher die Vertrauenswahrscheinlichkeit sein soll.
+\end{enumerate}
+
 \end{solution}
 
 \begin{exercise}
@@ -1036,10 +1365,10 @@ Für ein Experiment werden in drei Runden jeweils \(10000\) Zufallsstichproben e
 \begin{figure}
 \centering
 \includegraphics{aps_statistik1_files/figure-latex/ki-approx-normal1-1.pdf}
-\caption{\label{fig:ki-approx-normal1}TODO.}
+\caption{\label{fig:ki-approx-normal1}Verteilung der Werte einer Stichprobe. (Achtung es handelt sich hierbei nicht um Mittelwerte sondern die Effektiv gemessenen Beobachtungen einer Stichprobe.)}
 \end{figure}
 
-Die arithmetischen Mittel der 10'000 Stichproben sind im Datensatz \texttt{04-exr-zentraler-grenzwertsatz.sav} festgehalten. In der Spalte \texttt{n\_10} zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallstichprobe mit 10 Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse \(n\). Erstellen Sie ein Histogramm mit der Erweiterung \texttt{JJStatsPlot} und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.
+Die arithmetischen Mittel der \(10'000\) Stichproben sind im Datensatz \texttt{04-exr-zentraler-grenzwertsatz.sav} festgehalten. In der Spalte \texttt{n\_10} zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallstichprobe mit \(10\) Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse \(n\). Erstellen Sie ein Histogramm mit der Erweiterung \texttt{JJStatsPlot} und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.
 
 \end{exercise}
 
@@ -1107,7 +1436,7 @@ Abbildung \ref{fig:sol-ki-mean-n-vary} zeigt die Berechnunganweisungen für Jamo
 \item
   Die untere und obere Schranke der 95\%-Konfidenzintervalle sind bei \texttt{Untere} und \texttt{Obere} respektive abzulesen.\\
 \item
-  Die Länge des Konfidenzintervalls entspricht jeweils dem höheren Wert minus dem tieferen Wert. Für die erste Stichprobe ist dies 0.597 - 0.208 = 0.389, für die anderen 0.23, 0.13, 0.09 und 0.03.
+  Die Länge des Konfidenzintervalls entspricht jeweils dem höheren Wert minus dem tieferen Wert. Für die erste Stichprobe ist dies \(0.597 - 0.208 = 0.389\), für die anderen 0.23, 0.13, 0.09 und 0.03.
 \item
   Die Schätzung des Erwartungswertes ist das arithmetische Mittel der Stichprobe. Da jedesmal eine neue Zufallsstichprobe gezogen wurde und diese nicht dieselben Beobachtungen enthalten, ergeben sich auch jedesmal andere Stichprobenmittelewerte.
 \item
@@ -1117,16 +1446,104 @@ Abbildung \ref{fig:sol-ki-mean-n-vary} zeigt die Berechnunganweisungen für Jamo
 \end{solution}
 
 \begin{exercise}
-\protect\hypertarget{exr:ki-mean-s-vary}{}\label{exr:ki-mean-s-vary}\leavevmode
+\protect\hypertarget{exr:biologietest}{}\label{exr:biologietest}\leavevmode
 
-\begin{verbatim}
-## [1] "hi"
-\end{verbatim}
+Eine Klasse bringt bei einem Biologietest eine durchwachsene Leistung. Die Lehrkraft entscheidet sich die genau gleichen Test zu wiederholen. Berichten Sie das durchschnittliche Resultat der beiden Tests und schätzen Sie den Einfluss der Standardabweichung auf die Länge des Konfidenzintervalls ein.
 
 \end{exercise}
 
 \begin{solution}
-TODO
+Der Datensatz wird bei \texttt{Jamovi} eingelesen und die Analyseparameter wie in Abbildung \ref{fig:sol-biologietest-input} gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/04-exr-biologietest-jmv-input} \caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-biologietest-input}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-biologietest-output}.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/04-exr-biologietest-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-biologietest-output}
+\end{figure}
+
+Die Klasse mit \(N=20\) Lernenden hat beim ersten Biologietest eine durchschnittliche Punktzahl von \(M=14.6\) Punkten \(95\%\) KI \([11.9,17.3]\) erzielt. Bei der Wiederholung des Tests wurde eine durchschnittliche Punktzahl von \(M=14.8\) Punkten \(95\%\) KI \([14.0,15.6]\) erzielt. Die Standardabweichung des Testergebnisses war beim ersten Mal \(SD=5.8\) Punkte und bei der Wiederholung \(SD=1.7\) Punkte. Die Länge des Konfidenzintervalls war bei der ersten Durchführung mit \(17.3-11.9=5.4\) Punkten bedeutend grösser als bei der zweiten Durchführung mit \(15.6-14.0=1.6\). Eine grössere Standardabweichung führt also zu einer grösseren Länge des Konfidenzintervalls. Dies kann auch durch Durchprobieren von Testwerten in Gleichung \eqref{eq:ki-mean} festgestellt werden.
+\end{solution}
+
+\section{Test}\label{test-1}
+
+\begin{exercise}
+\protect\hypertarget{exr:ki-theory}{}\label{exr:ki-theory}
+
+Welche der folgenden Aussagen zum Konfidenzintervall des Erwartungswertes sind wahr, welche falsch?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Je mehr Personen befragt werden, desto grösser wird das Konfidenzintervall.
+\item
+  Je grösser die Standardabweichung des Merkmals, desto grösser wird das Konfidenzintervall.
+\item
+  Um ein kleineres Konfidenzintervall zu erreichen, können mehr Beobachtungen gemacht werden.
+\item
+  Je grösser die Irrtumswahrscheinlichkeit, desto grösser das Konfidenzintervall.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Falsch
+\item
+  Richtig
+\item
+  Richtig
+\item
+  Falsch
+\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:ki-praxis}{}\label{exr:ki-praxis}
+
+Im Datensatz \texttt{02-exr-koerpergroesse-sex.sav} wurden Körpergrössen von Versuchsteilnehmenden erfasst. Welche der folgenden Aussagen sind wahr, welche falsch?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Die durchschnittliche Körpergrösse der Frauen liegt bei \(M = 166.0\) cm \(90\%\) KI \([164.7, 167.3]\).
+\item
+  Die durchschnittliche Körpergrösse der Männer liegt bei \(M = 180.3\) cm \(95\%\) KI \([178.6, 181.0]\).
+\item
+  Es wurden \(N= 163\) Frauen beobachtet.
+\item
+  Die durchschnittliche Körpergrösse der Männer und Frauen liegt bei \(M = 173.1\) cm \(99\%\) KI \([171.4, 174.9]\).
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Falsch
+\item
+  Richtig
+\item
+  Richtig
+\item
+  Richtig
+\end{enumerate}
+
 \end{solution}
 
 \chapter{Zentrale Tendenz testen}\label{zentrale-tendenz-testen}
@@ -2114,17 +2531,25 @@ TODO: solution body
 \begin{itemize}
 \tightlist
 \item
-  \hyperref[customdef-t-test]{\(t\)-Test}
-\item
   \hyperref[customdef-ablehnungsbereich]{Ablehnungsbereich}
 \item
   \hyperref[customdef-alternativhypothese]{Alternativhypothese}
+\item
+  \hyperref[customdef-arithmetisches-mittel]{arithmetische Mittel}
+\item
+  \hyperref[customdef-welch-cohens-d]{Cohens \(d\) für den Welch-Test}
+\item
+  \hyperref[customdef-cohens-d]{Cohens \(d\) für Zweistichproben-t-Test}
 \item
   \hyperref[customdef-erwartungswert]{Erwartungswert}
 \item
   \hyperref[customdef-freiheitsgrade]{Freiheitsgrade}
 \item
+  \hyperref[customdef-glass-delta]{Glass \(\Delta\)}
+\item
   \hyperref[customdef-grundgesamtheit]{Grundgesamtheit}
+\item
+  \hyperref[customdef-hedges-g]{Hedges \(g\)}
 \item
   \hyperref[customdef-hypothese]{Hypothese}
 \item
@@ -2132,15 +2557,23 @@ TODO: solution body
 \item
   \hyperref[customdef-interval]{Intervalles}
 \item
+  \hyperref[customdef-intervallskaliert]{intervallskaliert}
+\item
+  \hyperref[customdef-erring-level]{Irrtumswahrscheinlichkeit}
+\item
   \hyperref[customdef-confidence-interval]{Konfidenzintervall}
 \item
   \hyperref[customdef-median]{Median}
 \item
   \hyperref[customdef-modus]{Modus}
 \item
+  \hyperref[customdef-signifikanz]{nicht signifikant}
+\item
   \hyperref[customdef-normalverteilung]{Normalverteilung}
 \item
   \hyperref[customdef-nullhypothese]{Nullhypothese}
+\item
+  \hyperref[customdef-pwert]{p-Wert}
 \item
   \hyperref[customdef-perzentil]{Perzentil}
 \item
@@ -2158,21 +2591,21 @@ TODO: solution body
 \item
   \hyperref[customdef-student-verteilung]{Student-\(t\)-Verteilung}
 \item
+  \hyperref[customdef-t-test]{\(t\)-Test}
+\item
   \hyperref[customdef-teststatistik]{Teststatistik}
+\item
+  \hyperref[customdef-confidence-level]{Vertrauenswahrscheinlichkeit}
+\item
+  \hyperref[customdef-welch-test]{Welch-Test}
 \item
   \hyperref[customdef-zentraler-grenzwertsatz]{Zentraler Grenzwertsatz}
 \item
   \hyperref[customdef-zufallsstichprobe]{Zufallsstichprobe}
 \item
-  \hyperref[customdef-arithmetisches-mittel]{arithmetische Mittel}
-\item
-  \hyperref[customdef-intervallskaliert]{intervallskaliert}
-\item
-  \hyperref[customdef-signifikanz]{nicht signifikant}
-\item
-  \hyperref[customdef-pwert]{p-Wert}
-\item
   \hyperref[customdef-zweiseitige-hypothese]{zweiseitige Hypothese}
+\item
+  \hyperref[customdef-twosample-t-test]{Zweistichproben-\(t\)-Test}
 \end{itemize}
 
   \bibliography{book.bib,packages.bib}
