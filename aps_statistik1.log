@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  8 MAR 2025 22:21
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  19 MAR 2025 23:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1333,11 +1333,6 @@ File: aps_statistik1_files/figure-latex/exm-angst-hist-means-emp-ci-1.pdf Graphi
 File: aps_statistik1_files/figure-latex/exm-agreableness-hist-1.pdf Graphic file (type pdf)
 <use aps_statistik1_files/figure-latex/exm-agreableness-hist-1.pdf>
 
-Underfull \hbox (badness 1024) in paragraph at lines 1180--1181
-[]\TU/lmr/m/n/10 Die Verteilung der Beobachtungen, siehe Abbildung []4.3[], zeigt, dass alle
- []
-
-
 
 
 Overfull \hbox (21.45671pt too wide) has occurred while \output is active
@@ -1345,6 +1340,10 @@ Overfull \hbox (21.45671pt too wide) has occurred while \output is active
  []
 
 [48]
+Underfull \hbox (badness 1024) in paragraph at lines 1180--1181
+[]\TU/lmr/m/n/10 Die Verteilung der Beobachtungen, siehe Abbildung []4.3[], zeigt, dass alle
+ []
+
 File: aps_statistik1_files/figure-latex/exm-agreableness-hist-means-1.pdf Graphic file (type pdf)
 <use aps_statistik1_files/figure-latex/exm-agreableness-hist-means-1.pdf>
 
@@ -1504,12 +1503,13 @@ Overfull \hbox (2.22226pt too wide) in paragraph at lines 1424--1424
  []
 
 
-
-[63]
 Underfull \hbox (badness 10000) in paragraph at lines 1437--1439
 
  []
 
+
+
+[63]
 File: figures/04-exr-biologietest-jmv-input.jpg Graphic file (type bmp)
 <figures/04-exr-biologietest-jmv-input.jpg>
 File: figures/04-exr-biologietest-jmv-output.jpg Graphic file (type bmp)

@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{08 March, 2025}
+\date{19 March, 2025}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -1159,7 +1159,7 @@ In Beispiel \ref{exm:angst} liegt das arithmetische Mittel in der Stichprobe der
 \caption{\label{fig:exm-angst-hist-means}Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.}
 \end{figure}
 
-Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \ref{fig:exm-angst-hist-means} lässt nun Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die 30 ist hier am wahrscheinlichsten und ein Wert tiefer als \(27\) oder höher \(33\) eher selten. Um diese Aussage präziser zu gestalten, werden konventionell die \(95\)\% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die \(5\)\% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das \(2.5\)\% Perzentil trennt die \(2.5\)\% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei \(40.4\). Das \(97.5\)\%-Perzentil trennt die höchsten \(2.5\)\% (oder eben die tiefsten \(97.5\)\%) arithmetischen Mittel ab und liegt bei \(46\). Dies ist in Abbildung \ref{fig:exm-angst-hist-means-emp-ci} ersichtlich.
+Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \ref{fig:exm-angst-hist-means} lässt nun eine Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die \(43\) ist hier am wahrscheinlichsten und ein Wert tiefer als \(41\) oder höher \(45\) eher selten. Um diese Aussage präziser zu gestalten, werden konventionell die \(95\)\% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die \(5\)\% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das \(2.5\)\% Perzentil trennt die \(2.5\)\% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei \(40.4\). Das \(97.5\)\%-Perzentil trennt die höchsten \(2.5\)\% (oder eben die tiefsten \(97.5\)\%) arithmetischen Mittel ab und liegt bei \(46\). Dies ist in Abbildung \ref{fig:exm-angst-hist-means-emp-ci} ersichtlich.
 
 \begin{figure}
 \centering
@@ -1197,9 +1197,9 @@ Die Normalverteilung sieht eine Glocke ähnlich. Deshalb wird sie auch Gausssche
   \(\sigma_g\) gibt an, wie flach die Glockenform ist (ein grosser Wert entspricht einer flachen Glockenform, ein tiefer Wert einer steilen Glockenform).
 \end{itemize}
 
-Auf \href{https://seeing-theory.brown.edu/probability-distributions/index.html\#section2}{seeing-theory.brown.edu \textgreater{} Continuous \textgreater{} Normal} kann der Einfluss von \(\mu\) und \(\sigma\) auf die Normalverteilung erfahren werden.
+Auf \href{https://seeing-theory.brown.edu/probability-distributions/index.html\#section2}{seeing-theory.brown.edu \textgreater{} Continuous \textgreater{} Normal} kann der Einfluss von \(\mu_g\) und \(\sigma_g\) auf die Normalverteilung erfahren werden.
 
-\phantomsection\label{customdef-zentraler-grenzwertsatz}{Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie \textbf{Zentraler Grenzwertsatz} genannt wurde.} Der zentrale Grenzwertsatz besagt genauer, dass bei einem Merkmal mit Erwartungswert \(\mu\) und Standardabweichung \(\sigma\), der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit \(\mu_g = \mu\) und \(\sigma_g = \frac{\sigma}{\sqrt{n}}\) entspricht, wobei \(n\) die Stichprobengrösse bezeichnet.
+\phantomsection\label{customdef-zentraler-grenzwertsatz}{Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie \textbf{Zentraler Grenzwertsatz} genannt wurde.} Der zentrale Grenzwertsatz besagt genauer, dass bei einem Merkmal mit Erwartungswert \(\mu\) und Standardabweichung \(\sigma\), der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit \(\mu_g = \mu\) und \(\sigma_g = \frac{\sigma}{\sqrt{n}}\) entspricht, wobei \(n\) die Stichprobengrösse und \(\sigma\) die Standardabweichung des Merkmals in der Population bezeichnet.
 
 \begin{caution}
 
@@ -1360,7 +1360,7 @@ Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-stranger-output}.
 \begin{exercise}
 \protect\hypertarget{exr:ki-approx-normal}{}\label{exr:ki-approx-normal}\leavevmode
 
-Für ein Experiment werden in drei Runden jeweils \(10000\) Zufallsstichproben erhoben mit respektive \(10\), \(40\) und \(100\) Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung \ref{fig:ki-approx-normal1} dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.
+(TODO, Achtung: Diese Augabe funktioniert je nach Version von Jamovi und JJStatsPlot nicht. Wenn die Normalverteilungskurve trotz Anwählen nicht angezeigt wird, kann die Lösung der Aufgabe nachgelesen werden. Diese Aufgabe ist wichtig für das Verständnis, nicht aber zur Nachahmung an der Prüfung.) Für ein Experiment werden in drei Runden jeweils \(10000\) Zufallsstichproben erhoben mit respektive \(10\), \(40\) und \(100\) Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung \ref{fig:ki-approx-normal1} dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.
 
 \begin{figure}
 \centering
@@ -1519,7 +1519,7 @@ Im Datensatz \texttt{02-exr-koerpergroesse-sex.sav} wurden Körpergrössen von V
 \item
   Die durchschnittliche Körpergrösse der Frauen liegt bei \(M = 166.0\) cm \(90\%\) KI \([164.7, 167.3]\).
 \item
-  Die durchschnittliche Körpergrösse der Männer liegt bei \(M = 180.3\) cm \(95\%\) KI \([178.6, 181.0]\).
+  Die durchschnittliche Körpergrösse der Männer liegt bei \(M = 180.3\) cm \(95\%\) KI \([178.6, 182.0]\).
 \item
   Es wurden \(N= 163\) Frauen beobachtet.
 \item

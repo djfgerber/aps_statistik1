@@ -9,6 +9,9 @@ gen_exm_angst <- function(){
   x_mean <- 43.2
   x_sd <- 7.8
   x <- rnorm(n, x_mean, x_sd)
+  file_name <- '03-exm-angst.sav'
+  tibble(angst = x) %>%
+    write_sav(file_name)
   
   set.seed(1928)
   n_samples <- 1000
