@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{19 March, 2025}
+\date{24 March, 2025}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -1548,13 +1548,13 @@ Im Datensatz \texttt{02-exr-koerpergroesse-sex.sav} wurden Körpergrössen von V
 
 \chapter{Zentrale Tendenz testen}\label{zentrale-tendenz-testen}
 
-Eine andere Fragestellung, die mit Daten oft beantwortet wird ist, ob eine gewisse Aussage wahr ist oder falsch. \phantomsection\label{customdef-hypothese}{Eine solche Aussage wird \textbf{Hypothese} (Symbol: \(H\)) genannt.} Eine Hypothese könnte zum Beispiel sein:
+Eine andere Fragestellung, welche mit Daten beantwortet werden soll, ist, ob eine gewisse Aussage wahr ist oder falsch. \phantomsection\label{customdef-hypothese}{Eine solche Aussage wird \textbf{Hypothese} (Symbol: \(H\)) genannt.} Eine Hypothese könnte zum Beispiel sein:
 
 \begin{quote}
 \(H:\) Es regnet.
 \end{quote}
 
-Ist die Hypothese einmal gefunden, können Daten gesammelt werden, um diese Hypothese zu bestätigen oder zu falsifizieren. Man geht nach draussen und spürt Regen auf der Haut bedeutet \(H\) ist wahr, spürt man keinen Regen, so ist \(H\) falsch.
+Ist die Hypothese einmal gefunden, können Daten gesammelt werden, um diese Hypothese zu bestätigen oder zu falsifizieren. Das heisst man geht nach raus ins Feld. Spürt man Regen auf der Haut bedeutet dies, dass \(H\) wahr ist. Spürt man keinen Regen, so ist \(H\) falsch.
 
 Wenn eine Hypothese wahr ist, dann ist das Gegenteil der Hypothese falsch. Weil oft über die Hypothese und ihr Gegenteil debattiert wird, ist es nützlich die beiden auch terminologisch auseinanderhalten zu können. \phantomsection\label{customdef-nullhypothese}{Die Hypothese, welche den bisherigen Informationsstand reflektiert wird \textbf{Nullhypothese} (Symbol \(H_0\)) genannt.} War es draussen bei der letzten Messung vor einer Stunde schönes Wetter, dann ist die Nullhypothese
 
@@ -1567,6 +1567,8 @@ Wenn eine Hypothese wahr ist, dann ist das Gegenteil der Hypothese falsch. Weil 
 \begin{quote}
 \(H_1:\) Es regnet.
 \end{quote}
+
+Die Nullhypothese bleibt der Stand der Wahrheit, bis sie durch Daten widerlegt wurde. Wenn man noch drinnen ist kann keine Aussage über die Wahrheit von \(H_0\) und \(H_1\) gemacht werden, da die Daten fehlen. In diesem Fall wird angenommen, dass \(H_0\) weiterhin wahr ist. Wenn man draussen Regen auf der Haut spürt, deutet dieser Datenpunkt darauf hin, dass \(H_0\) nicht länger wahr ist und jetzt wahrscheinlich \(H_1\) wahr ist. In diesem Fall spricht man davon, dass \(H_0\) \textbf{abgelehnt} und \(H_1\) \textbf{angenommen} wird.
 
 \section{Entspricht der Erwartungswert einem gewissen Wert?}\label{entspricht-der-erwartungswert-einem-gewissen-wert}
 
@@ -1588,7 +1590,7 @@ Abstrahiert, soll bei dieser Problemstellung herausgefunden werden, ob der Erwar
 \(H_1: \mu \neq 100'000\).
 \end{quote}
 
-Dies bedeutet, dass das Vermögen der Population nicht bei \(100'000\) CHF liegt. \phantomsection\label{customdef-zweiseitige-hypothese}{Weil die Alternativhypothese hier zwei Ausgänge zulässt, nämlich kleiner oder grösser als \(100'000\) CHF wird diese Art \textbf{zweiseitige Hypothese} bezeichnet.}
+Dies bedeutet, dass das durchschnittliche Vermögen der Population nicht bei \(100'000\) CHF liegt. \phantomsection\label{customdef-zweiseitige-hypothese}{Weil die Alternativhypothese hier zwei Ausgänge zulässt, nämlich kleiner oder grösser als \(100'000\) CHF wird diese Art der Hypothesenstellung als \textbf{zweiseitige Hypothese} bezeichnet.}
 
 Eine weitere Form der Hypothese wäre
 
@@ -1607,6 +1609,8 @@ Das Gegenteil davon ist, wenn das durchschnittliche Vermögen grösser und ungle
 \begin{quote}
 \(H_1: \mu > 100'000\).
 \end{quote}
+
+\phantomsection\label{customdef-einseitige-hypothese}{Weil die Alternativhypothese hier nur einen Ausgang zulässt, nämlich grösser als \(100'000\) CHF wird dies als \textbf{einseitige Hypothese} bezeichnet. Eine einseitige Hypothese kann auf beide Seiten formuliert sein: \(H_0:\mu \leq 100'000\) und \(H_1: \mu > 100'000\), wie eben erwähnt oder auch \(H_0:\mu \geq 100'000\) und \(H_1: \mu < 100'000\).}
 
 \begin{caution}
 
@@ -1707,14 +1711,14 @@ Um die Hypothesen auf einer Datengrundlage zu evaluieren, erfragt es das Vermög
 
 \end{example}
 
-Es kann nun schnell gesagt werden, dass das durchschnittliche Vermögen in der Population gestiegen ist, weil \(193'000\) CHF grösser ist als \(100'000\) CHF. Dies so zu behaupten wäre jedoch falsch, weil nicht alle Personen in der Population befragt wurden, sondern lediglich eine Zufallsstichprobe. Wie in Kapitel \ref{stichprobenziehung} muss hier für eine Generalisierung der Stichprobe auf die Population der Effekt der zufälligen Stichprobenziehung miteinbezogen werden.
+Es kann nun schnell gesagt werden, dass das durchschnittliche Vermögen in der Population gestiegen ist, weil \(119853\) CHF grösser ist als \(100'000\) CHF. Dies so zu behaupten wäre jedoch falsch, weil nicht alle Personen in der Population befragt wurden, sondern lediglich eine Zufallsstichprobe. Wie in Kapitel \ref{stichprobenziehung} muss hier für eine Generalisierung der Stichprobe auf die Population der Effekt der zufälligen Stichprobenziehung miteinbezogen werden.
 
 Aufgrund der Zufallsstichprobe ist es unmöglich zu sagen, ob unsere Stichprobe eine eher seltene Stichprobenziehung aus einer Population mit unverändertem durchschnittlichen Vermögen von \(100'000\) CHF ist (Abbildung \ref{fig:exm-vermoegen-sampling-plot} links) oder ob es eine eher häufig vorkommende Stichprobenziehung aus einer Population mit höherem durchschnittlichen Vermögen ist (Abbildung \ref{fig:exm-vermoegen-sampling-plot} rechts).
 
 \begin{figure}
 \centering
 \includegraphics{aps_statistik1_files/figure-latex/exm-vermoegen-sampling-plot-1.pdf}
-\caption{\label{fig:exm-vermoegen-sampling-plot}Vorgestellte Zufallsstichprobenziehung. Links: Nullhypothese ist wahr. Rechts: Nullhypothese ist falsch.}
+\caption{\label{fig:exm-vermoegen-sampling-plot}Vorgestellte Zufallsstichprobenziehung. Links: Nullhypothese ist wahr. Rechts: Nullhypothese ist falsch. Die grauen Punkte entsprechen Vermögen über 400'000 CHF.}
 \end{figure}
 
 Es kann jedoch ausgesagt werden, mit welcher Wahrscheinlichkeit der gefundene Stichprobenmittelwert realisiert wird, gegeben dass die Nullhypothese wahr ist. Hier wird also angenommen, dass eine Population mit Erwartungswert \(\mu = 100'000\) CHF vorliegt und dass anschliessend zum Beispiel \(3000\) Stichproben an je \(20\) Beobachtungen pro Stichprobe gezogen werden. Von jeder dieser Stichproben wird das arithmetische Mittel berechnet. In der Verteilung dieser Mittelwerte, siehe Abbildung \ref{fig:exm-vermoegen-histogram-plot}, wird nun der tatsächliche Mittelwert der Stichprobe \(\bar{x} = 119853\) verortet.
@@ -1727,9 +1731,9 @@ Es kann jedoch ausgesagt werden, mit welcher Wahrscheinlichkeit der gefundene St
 
 Der beobachtete Mittelwert ist zwar nicht genau bei \(100'000\) CHF, aber trotzdem noch einigermassen plausibel, wenn die Nullhypothese stimmt. Um diesen Gedanken zu formalisieren, gibt es zwei Denkweisen, welche nun vorgestellt werden.
 
-Die eine von Ronald Fisher Denkweise ist die Frage nach der Wahrscheinlichkeit, dass der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert. Im Beispiel entspricht dies der Wahrscheinlichkeit den Wert \(119853\) oder einen grösseren Wert zu beobachten, wenn der Erwartungswert tatsächlich bei \(100'000\) CHF liegt. Um diese Wahrscheinlichkeit zu bestimmen, kann einfach gezählt werden, welcher Anteil der Stichprobenmittel werte grösser oder gleich \(119853\) CHF ist. Im Beispiel sind dies \(0.143 = 14.3\%\). \phantomsection\label{customdef-pwert}{Dieser Wert wird, abgeleitet vom englischen \emph{probability} auch \textbf{p-Wert} (Symbol: \(p\)) genannt. Beim Berichten des p-Werts wird normalerweise die führende \(0\) nicht geschrieben, also \(p = .143\).}
+Die eine Denkweise wurde von \href{https://en.wikipedia.org/wiki/Ronald_Fisher}{Ronald Fisher} propagierte. Sie stellt die Frage nach der Wahrscheinlichkeit, dass zufällig der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert, gegeben die Nullhypothese ist wahr. Im Beispiel entspricht dies der Wahrscheinlichkeit den Wert \(119853\) oder einen grösseren Wert zu beobachten, wenn der Erwartungswert tatsächlich bei \(100'000\) CHF liegt. Um diese Wahrscheinlichkeit zu bestimmen, kann einfach gezählt werden, welcher Anteil der Stichprobenmittelwerte grösser oder gleich \(119853\) CHF ist. Im Beispiel sind dies \(0.143 = 14.3\%\). \phantomsection\label{customdef-pwert}{Dieser Wert wird, abgeleitet vom englischen \emph{probability}, \textbf{p-Wert} (Symbol: \(p\)) genannt. Beim Berichten des \(p\)-Werts wird normalerweise die führende \(0\) nicht geschrieben, also \(p = .143\).}
 
-\phantomsection\label{customdef-signifikanzniveau}{Bei der anderen Denkweise muss noch vor der Datenerhebung ein sogenanntes \textbf{Signifikanzniveau} (Symbol \(\alpha\), sprich `alpha') bestimmt werden. Dieser Wert entspricht der Wahrscheinlichkeit, dass der statistische Test die Nullhypothese verwirft, obwohl diese wahr gewesen wäre. Normalerweise wird \(\alpha = 5\%\) gesetzt.} Es wird also akzeptiert, dass ein statistischer Test in \(5\%\) der Fälle gegen die Nullhypothese entscheidet, obwohl diese wahr wäre. \phantomsection\label{customdef-ablehnungsbereich}{In einem zweiten Schritt wird bestimmt, welches die \(5\%\) unwahrscheinlichsten Werte sind, wenn die Nullhypothese wahr ist. Diese Werte werden \textbf{Ablehnungsbereich} genannt.} Im Beispiel sind dies die \(5\%\) höchsten Werte, nämlich Vermögen von \(131511\) CHF und grössere Vermögen. Nun wird bestimmt, ob der tatsächliche beobachtete Wert im Ablehnungsbereich liegt oder nicht. \phantomsection\label{customdef-signifikanz}{Im Beispiel liegt der Stichprobenmittelwert \(119853\) CHF nicht im Ablehnungsbereich. In diesem Fall wird die Nullhypothese nicht verworfen und das Testresultat erhält das Prädikat \textbf{nicht signifikant}. Läge der Stichprobenmittelwert im Ablehnungsbereich, so wäre das Testresultat als \textbf{signifikant} einzustufen.}
+\phantomsection\label{customdef-signifikanzniveau}{Bei der anderen von Neyman und Pearson propagierten Denkweise muss noch vor der Datenerhebung ein sogenanntes \textbf{Signifikanzniveau} (Symbol \(\alpha\), sprich `alpha') bestimmt werden. Dieser Wert entspricht der Wahrscheinlichkeit, dass der statistische Test die Nullhypothese verwirft, obwohl diese wahr gewesen wäre. Normalerweise wird \(\alpha = 5\%\) gesetzt.} Es wird also akzeptiert, dass ein statistischer Test in \(5\%\) der Fälle gegen die Nullhypothese entscheidet, obwohl diese wahr wäre. \phantomsection\label{customdef-ablehnungsbereich}{In einem zweiten Schritt wird bestimmt, welches die \(5\%\) unwahrscheinlichsten Werte sind, wenn die Nullhypothese wahr ist. Diese Werte werden \textbf{Ablehnungsbereich} genannt.} Im Beispiel sind dies die \(5\%\) höchsten Werte, nämlich Vermögen von \(131511\) CHF und grössere Vermögen. Nun wird bestimmt, ob der tatsächliche beobachtete Wert im Ablehnungsbereich liegt oder nicht. \phantomsection\label{customdef-signifikanz}{Im Beispiel liegt der Stichprobenmittelwert \(119853\) CHF nicht im Ablehnungsbereich. In diesem Fall wird die Nullhypothese nicht verworfen und das Testresultat erhält das Prädikat \textbf{nicht signifikant}. Läge der Stichprobenmittelwert im Ablehnungsbereich, so wäre das Testresultat als \textbf{signifikant} einzustufen.}
 
 \begin{caution}
 
@@ -1745,12 +1749,12 @@ Es wird ausserdem empfohlen, das Wort signifikant immer nur als Prädikat für e
 
 \end{caution}
 
-Die beiden Denkarten entsprechen sich insofern, als ein \(p\)-Wert kleiner als \(5\%\) ein signifikantes Resultat bei Signifikanzniveau \(\alpha = 5\%\) bedeutet. In der Praxis werden beide Methoden verwendet. Im Beispiel liegt der \(p\)-Wert bei \(p = .143\). Dies bedeutet, dass die Wahrscheinlichkeit zufällig den realisierten Stichprobenmittelwert zu kommen, gegeben, dass die Nullhypothese stimmt, grösser als \(5\%\) ist und demnach auch der Unterschied nicht signifikant ist.
+Die beiden Denkarten entsprechen sich insofern, als ein \(p\)-Wert kleiner als \(5\%\) ein signifikantes Resultat bei Signifikanzniveau \(\alpha = 5\%\) bedeutet. In der Praxis werden beide Methoden verwendet. Im Beispiel liegt der \(p\)-Wert bei \(p = .143\). Dies bedeutet, dass die Wahrscheinlichkeit zufällig den realisierten Stichprobenmittelwert zu erhalten, gegeben, dass die Nullhypothese stimmt, grösser als \(5\%\) ist und demnach auch der Unterschied nicht signifikant ist.
 
 Ein noch zu lösendes Problem ist, dass normalerweise Geld, Zeit und Nerven fehlen, um eine Stichprobenziehung \(3000\) mal zu wiederholen. Hier hilft es wieder zu beobachten, dass die Verteilung der Werte des Histogramms in Abbildung \ref{fig:exm-vermoegen-histogram-plot} wieder mit zunehmender Stichprobengrösse immer genauer einer Normalverteilung folgen. Tatsächlich trifft es aufgrund des \hyperref[customdef-zentraler-grenzwertsatz]{zentralen Grenzwertsatzes} immer zu, dass wenn ein Merkmal mit \(N\) Beobachtungen, Erwartungswert \(\mu\) und Standardabweichung \(\sigma\) hat, der Wert
 
 \[z = \frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}\]
-normalverteilt ist, wobei \(\mu\) hier dem Wert der Nullhypothese entspricht, also \(100'000\) CHF. Dies entspricht der roten Linie in Abbildung \ref{fig:exm-vermoegen-histogram-plot}. Ist die Standardabweichung des Merkmals unbekannt, so wird diese mit \(s\) geschätzt. Diese zusätzliche Unsicherheit führt dazu, dass
+normalverteilt ist, wobei \(\mu\) hier dem Wert der Nullhypothese entspricht, also \(100'000\) CHF. Dies entspricht der roten Linie in Abbildung \ref{fig:exm-vermoegen-histogram-plot}. Ist die Standardabweichung des Merkmals \(\sigma\) in der Population unbekannt, so wird diese mit der Standardabweichung in der Stichprobe \(s\) geschätzt. Diese zusätzliche Unsicherheit führt dazu, dass
 \begin{equation}
 t = \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
 \label{eq:t-emp-onesample}
@@ -1773,7 +1777,7 @@ nicht mehr normal-, sondern \(t\)-verteilt ist bei \(n-1\) Freiheitsgraden (grü
 \caption{\label{fig:exm-vermoegen-plots-sampling-theorie}Oben: Histogramm der simulierten Verteilung; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert.}
 \end{figure}
 
-\phantomsection\label{customdef-teststatistik}{Die Berechnung des für den Test relevanten Wertes, hier des \(t\)-Wertes wird \textbf{Teststatistik} (oder auch \emph{Prüfgrösse} oder nur \emph{Statistik}) genannt.} Eine Teststatistik hat normalerweise eine bekannte theoretische Verteilung, welcher die Teststatistik folgt, wenn die Nullhypothese wahr ist. \phantomsection\label{customdef-t-test}{Aufgrund der theoretischen \(t\)-Verteilung der Statistik wird dieser Test \textbf{\(t\)-Test} genannt.}
+\phantomsection\label{customdef-teststatistik}{Die Berechnung des für den Test relevanten Wertes, hier des \(t\)-Wertes wird \textbf{Teststatistik} (oder auch \emph{Prüfgrösse} oder nur \emph{Statistik}) genannt.} Eine Teststatistik hat normalerweise eine bekannte theoretische Verteilung, welcher die Teststatistik folgt, wenn die Nullhypothese wahr ist. \phantomsection\label{customdef-t-test}{Aufgrund der theoretischen \(t\)-Verteilung der vorliegenden Statistik wird dieser Test \textbf{\(t\)-Test} genannt.}
 
 Das oben gefundene Resultat wird in der folgenden Form berichtet:
 
@@ -1827,7 +1831,7 @@ Die Alternativhypothese besagt das Gegenteil davon, also hier, dass die durchsch
 \(H_1: \mu \neq 100\) Punkte.
 \end{quote}
 
-Um die Wahrscheinlichkeit des beobachteten arithmetischen Mittels der Stichprobe von \(M = 96.7\) Punkten zu ermitteln, gegeben, dass die Nullhypothese wahr ist, kann erneut auf eine Simulation zurückgegriffen werden. Bei diesem Gedankenexperiment wird angenommen, dass Nullhypothese wahr ist und dass das die Untersuchung \(4000\)-mal wiederholt wurde mit jeweils \(391\) Beobachtungen. Von jeder dieser Stichproben kann wiederum das arithmetische Mittel berechnet werden. Die Verteilung dieser arithmetischen Mittel ist in Abbildung \ref{fig:exm-alexithymie-plot} oben dargestellt.
+Um die Wahrscheinlichkeit des beobachteten arithmetischen Mittels der Stichprobe von \(M = 96.7\) Punkten zu ermitteln, gegeben, dass die Nullhypothese wahr ist, kann erneut auf den Gedanken der wiederholten Stichprobenziehung zurückgegriffen werden. Bei diesem Gedankenexperiment wird angenommen, dass Nullhypothese wahr ist und dass das die Untersuchung \(4000\)-mal wiederholt wurde mit jeweils \(391\) Beobachtungen. Von jeder dieser Stichproben kann wiederum das arithmetische Mittel berechnet werden. Die Verteilung dieser arithmetischen Mittel ist in Abbildung \ref{fig:exm-alexithymie-plot} oben dargestellt.
 
 \begin{verbatim}
 ## Warning: Removed 2 rows containing non-finite outside the scale range
@@ -1842,10 +1846,10 @@ Um die Wahrscheinlichkeit des beobachteten arithmetischen Mittels der Stichprobe
 \begin{figure}
 \centering
 \includegraphics{aps_statistik1_files/figure-latex/exm-alexithymie-plot-1.pdf}
-\caption{\label{fig:exm-alexithymie-plot}TODO:}
+\caption{\label{fig:exm-alexithymie-plot}Oben: Histogramm der simulierten Verteilung der Alexithymie-Mittelwerte; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert.}
 \end{figure}
 
-Der \(p\)-Wert, also die Wahrscheinlichkeit, dass der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert, wird hier aufgrund der zweiseitigen Hypothesenstellung auch zweiseitig ausgelegt. Extremer in Richtung der Alternativhypothese meint hier alle Werte, die weiter weg als der beobachtete Durchschnittswert \(96.7\) vom hypothetischen Erwartungswert \(\mu = 100\) sind. Konkret sind dies alle Werte, welche kleiner als \(96.7\), und alle Werte, welche grösser als \(103.3\) sind (roter Bereich in Abbildung \ref{fig:exm-alexithymie-plot} oben rechts). Der Anteil der Werte, welche diese Bedinung erfüllen liegt bei \(p = 0.7\%\). Es ist demnach recht unwahrscheinlich, dass die Nullhypothese stimmt und zufällig ein Stichprobendurchschnittswert von \(96.7\) Alexithymie-Punkten herauskommt.
+Der \(p\)-Wert, also die Wahrscheinlichkeit, dass der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert, wird hier aufgrund der zweiseitigen Hypothesenstellung auch zweiseitig ausgelegt. Extremer in Richtung der Alternativhypothese meint hier alle Werte, die weiter weg als der beobachtete Durchschnittswert \(96.7\) vom hypothetischen Erwartungswert \(\mu = 100\) sind. Konkret sind dies alle Werte, welche kleiner als \(96.7\), und alle Werte, welche grösser als \(103.3\) sind (roter Bereich in Abbildung \ref{fig:exm-alexithymie-plot} oben rechts). Der Anteil der Werte, welche diese Bedingung erfüllen liegt bei \(p = 0.7\%\). Es ist demnach recht unwahrscheinlich, dass die Nullhypothese stimmt und zufällig ein Stichprobendurchschnittswert von \(96.7\) Alexithymie-Punkten herauskommt.
 
 Aufgrund der zweiseitigen Hypothesenstellung beinhaltet auch der Ablehnungsbereich sowohl die tiefsten \(2.5\%\) und höchsten \(2.5\%\), also insgesamt die \(5\%\) extremen Durchschnittswerte. Dies sind alle Werte tiefer als \(97.48\) und alle Werte höher als \(102.45\) (roter Bereich in Abbildung \ref{fig:exm-alexithymie-plot} oben links). Da das arithmetische Mittel der Stichprobe \(96.7\) im Ablehnungsbereich liegt, liegt hier ein signifikantes Resultat vor bei Signifikanzniveau \(5\%\).
 
@@ -1861,15 +1865,15 @@ Die durchschnittliche Alexithymie (\(M = 96.7\) Punkte, \(SD = 24.4\), \(N = 391
 
 In einem so berichteten Testresultat sind essenziell zwei Informationen enthalten: (1) was sind die getesteten Hypothesen und (2) wie wahrscheinlich es ist, dass das gefundene Resultat eine Folge der Zufallsstichprobenziehung ist. Was hier noch fehlt ist eine Angabe darüber wie gross die praktische Relevanz dieses Testresultates ist.
 
-Um eine solche Relevanz zu messen wurde der Begriff der Effektstärke eingeführt. Eine Effektstärke ist eine Zahl ohne Einheit (Meter, Franken, \ldots), welche unabhängig von der Stichprobengrösse ist und nahe bei Null liegt, wenn die Nullhypothese nicht abgelehnt wurde.
+Um eine solche Relevanz zu messen wurde der Begriff der Effektstärke eingeführt. Eine Effektstärke ist eine Zahl ohne Einheit (Meter, Franken, \ldots), welche unabhängig von der Stichprobengrösse ist und nahe bei null liegt, wenn die Nullhypothese nicht abgelehnt wurde.
 
-Wird im Vermögensbeispiel \ref{exm:vermoegen} die Differenz zwischen geschätzem Erwartungswert und hypothetischem Erwartungswert
+Wird im Vermögensbeispiel \ref{exm:vermoegen} die Differenz zwischen geschätztem Erwartungswert und hypothetischem Erwartungswert
 \[\bar{x} - \mu = 119853 \text{CHF} - 100000 \text{CHF}  = 19853\]
 betrachtet, so fällt auf, dass dieser Wert bereits zwei der oben genannten Eigenschaften aufweist. Tatsächlich ist dieser Wert unabhängig von der Stichprobengrösse und er liegt nahe bei \(0\), wenn das Testresultat nicht signifikant war. Letzteres kann beobachtet werde indem in der Formel \eqref{eq:t-emp-onesample} verschiedene Differenzen eingesetzt werden und mit der Abbildung \ref{fig:t-distribution} verglichen werden.
 
 Wenn jetzt ein anderer Sozialpsychologe die Auswertung wiederholen würde, aber statt in CHF in Rappen Rp rechnet, dann erhält er den Wert
 \[\bar{x} - \mu = 11985300 \text{Rp} - 10000000 \text{Rp}  = 1985300.\]
-Dass mit den gleichen Zahlen je nach Einheit eine andere Effektstärke gefunden wird ist unpraktisch für den Vergleich der Testresultate. Die Lösung in diesem Fall ist diese Differenz durch die geschätzte Standardabweichung zu rechnen. Dies ergibt
+Dass mit den gleichen Zahlen je nach Einheit eine andere Effektstärke gefunden wird, ist unpraktisch für den Vergleich der Testresultate. Die Lösung in diesem Fall ist diese Differenz durch die geschätzte Standardabweichung zu rechnen. Dies ergibt
 
 \begin{itemize}
 \tightlist
@@ -1879,7 +1883,7 @@ Dass mit den gleichen Zahlen je nach Einheit eine andere Effektstärke gefunden 
   in Rp: \(d = \frac{\bar{x} - \mu}{s} = \frac{11985300 \text{Rp} - 10000000 \text{Rp}}{8852800\text{Rp}}  = 0.22 .\)
 \end{itemize}
 
-Mit dieser Formel werden für beide Einheiten derselbe Wert berechnet. Effektiv dient jetzt als Einheit die Standardabweichung: Eine grosse Differenz bei einer grossen Standardabweichung des Merkmals führt zur selben Effektstärke wie eine kleine Differenz bei kleiner Standardabweichung eines Merkmals. Da Menschen sich nicht gewohnt sind Zahlen als Standardabweichungen zu interpretieren hat \citep{cohen1988} ein folgende Richtwerte entwickelt:
+Mit dieser Formel werden für beide Einheiten derselbe Wert berechnet. Effektiv dient jetzt als Einheit die Standardabweichung: Eine grosse Differenz bei einer grossen Standardabweichung des Merkmals führt zur selben Effektstärke wie eine kleine Differenz bei kleiner Standardabweichung eines Merkmals. Da Menschen sich nicht gewohnt sind Zahlen als Standardabweichungen zu interpretieren hat \citep{cohen1988} folgende Richtwerte entwickelt:
 
 \begin{itemize}
 \tightlist
@@ -1891,7 +1895,7 @@ Mit dieser Formel werden für beide Einheiten derselbe Wert berechnet. Effektiv 
   \(|d| \approx 0.8\): starker Effekt
 \end{itemize}
 
-Cohen selbst hat davor gewarnt diese Werte als absolut darzustellen. Vielmehr sollte die Interpretation der Effektstärke vom Forschungsgebiet und dem Messinstrument abhängen. Um im Unterricht eine beurteilbare Praxis zu etablieren sollen folgende Regeln gelten:
+Cohen selbst hat davor gewarnt diese Werte als absolut darzustellen. Vielmehr sollte die Interpretation der Effektstärke vom Forschungsgebiet und dem Messinstrument abhängen. Um im Unterricht eine beurteilbare Praxis zu etablieren, sollen folgende Regeln gelten:
 
 \begin{itemize}
 \tightlist
