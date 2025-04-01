@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  24 MAR 2025 12:09
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  1 APR 2025 14:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1663,11 +1663,10 @@ Underfull \hbox (badness 1810) in paragraph at lines 1870--1871
 
 
 [82]
-File: figures/05-exr-vermoegen-jmv-input.jpg Graphic file (type bmp)
-<figures/05-exr-vermoegen-jmv-input.jpg>
-
 
 [83]
+File: figures/05-exr-vermoegen-jmv-input.jpg Graphic file (type bmp)
+<figures/05-exr-vermoegen-jmv-input.jpg>
 File: figures/05-exr-vermoegen-jmv-output.jpg Graphic file (type bmp)
 <figures/05-exr-vermoegen-jmv-output.jpg>
 
@@ -1704,21 +1703,39 @@ File: figures/05-exr-schwimmen-jmv-output.jpg Graphic file (type bmp)
 [89]
 
 [90]
+File: figures/05-exr-marktpreisanalyse-testen-jmv-input.jpg Graphic file (type bmp)
+<figures/05-exr-marktpreisanalyse-testen-jmv-input.jpg>
+File: figures/05-exr-marktpreisanalyse-testen-jmv-output.jpg Graphic file (type bmp)
+<figures/05-exr-marktpreisanalyse-testen-jmv-output.jpg>
 
-[91
+
+[91]
+Underfull \hbox (badness 1565) in paragraph at lines 2128--2129
+[]\TU/lmr/m/n/10 Der Stichprobenmittelwert sagt aus, dass in dieser Stichprobe die
+ []
+
+
+
+[92]
+
+[93]
+
+[94
 
 ]
 
-[92]
+[95]
+
+[96]
 \bbl@ensure@ngerman {Kapitel} 6.
 
-Underfull \hbox (badness 2409) in paragraph at lines 2092--2092
+Underfull \hbox (badness 2409) in paragraph at lines 2243--2243
 []\TU/lmr/bx/n/14.4 Was ist das Problem der Stichproben-
  []
 
 
 
-[93
+[97
 
 ]
 File: aps_statistik1_files/figure-latex/exm-breakup-bagplot-1.pdf Graphic file (type pdf)
@@ -1727,21 +1744,21 @@ File: aps_statistik1_files/figure-latex/exm-breakup-bagplot-1.pdf Graphic file (
 
 
 Overfull \hbox (84.75671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 94 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
+\TU/lmr/m/n/10 98 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
  []
 
-[94]
+[98]
 File: aps_statistik1_files/figure-latex/exm-breakup-hist-1.pdf Graphic file (type pdf)
 <use aps_statistik1_files/figure-latex/exm-breakup-hist-1.pdf>
 
 
-[95]
-Overfull \hbox (33.0pt too wide) in paragraph at lines 2133--2133
+[99]
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2284--2284
 []\TU/lmtt/m/n/10 ## Warning: Removed 2 rows containing non-finite outside the scale range 
  []
 
 
-Overfull \hbox (106.5pt too wide) in paragraph at lines 2138--2138
+Overfull \hbox (106.5pt too wide) in paragraph at lines 2289--2289
 []\TU/lmtt/m/n/10 ## Warning: Removed 8 rows containing missing values or values outside the scale range 
  []
 
@@ -1750,73 +1767,25 @@ File: aps_statistik1_files/figure-latex/exm-breakup-hist-pval-reja-1.pdf Graphic
 
 
 
-Overfull \hbox (84.75671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 96 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
- []
-
-[96]
-Underfull \hbox (badness 6792) in paragraph at lines 2168--2169
-[][]\TU/lmr/bx/n/10 Beispiel 6.2 \TU/lmr/m/n/10 (Emotionaler Stroop-Test bei posttraumatischer Belas-
- []
-
-
-Underfull \hbox (badness 3547) in paragraph at lines 2168--2169
-\TU/lmr/m/n/10 tungsstörung.)\TU/lmr/bx/n/10 . []\TU/lmr/m/n/10 Analog zum klassischen Stroop-Test werden bei einem
- []
-
-
-
-[97]
-File: aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-1.pdf Graphic file (type pdf)
-<use aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-1.pdf>
-
-
-
-Overfull \hbox (84.75671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 98 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
- []
-
-[98]
-Overfull \hbox (106.5pt too wide) in paragraph at lines 2202--2202
-[]\TU/lmtt/m/n/10 ## Warning: Removed 8 rows containing missing values or values outside the scale range 
- []
-
-File: aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-pval-reja-1.pdf Graphic file (type pdf)
-<use aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-pval-reja-1.pdf>
-
-
-[99]
-
-
 Overfull \hbox (89.75671pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 100 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
  []
 
 [100]
-File: figures/icons/caution.png Graphic file (type bmp)
-<figures/icons/caution.png>
+Underfull \hbox (badness 6792) in paragraph at lines 2319--2320
+[][]\TU/lmr/bx/n/10 Beispiel 6.2 \TU/lmr/m/n/10 (Emotionaler Stroop-Test bei posttraumatischer Belas-
+ []
+
+
+Underfull \hbox (badness 3547) in paragraph at lines 2319--2320
+\TU/lmr/m/n/10 tungsstörung.)\TU/lmr/bx/n/10 . []\TU/lmr/m/n/10 Analog zum klassischen Stroop-Test werden bei einem
+ []
+
 
 
 [101]
-File: figures/06-exr-bobo2groups-jmv-input.jpg Graphic file (type bmp)
-<figures/06-exr-bobo2groups-jmv-input.jpg>
-File: figures/06-exr-bobo2groups-jmv-output.jpg Graphic file (type bmp)
-<figures/06-exr-bobo2groups-jmv-output.jpg>
-
-Underfull \hbox (badness 2478) in paragraph at lines 2314--2315
-[]\TU/lmr/m/n/10 Es werden Mittelwerte von einer intervallskalierten Variabel über
- []
-
-
-Underfull \hbox (badness 1436) in paragraph at lines 2314--2315
-\TU/lmr/m/n/10 zwei Gruppen verglichen. Als statischer Test kommt demnach der
- []
-
-
-Underfull \hbox (badness 2913) in paragraph at lines 2314--2315
-\TU/lmr/m/n/10 Zweistichproben-$[]$-Test oder der Welch-Test infrage. Aufgrund der
- []
-
+File: aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-1.pdf Graphic file (type pdf)
+<use aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-1.pdf>
 
 
 
@@ -1825,8 +1794,56 @@ Overfull \hbox (89.75671pt too wide) has occurred while \output is active
  []
 
 [102]
+Overfull \hbox (106.5pt too wide) in paragraph at lines 2353--2353
+[]\TU/lmtt/m/n/10 ## Warning: Removed 8 rows containing missing values or values outside the scale range 
+ []
+
+File: aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-pval-reja-1.pdf Graphic file (type pdf)
+<use aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-pval-reja-1.pdf>
+
 
 [103]
+
+
+Overfull \hbox (89.75671pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 104 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
+ []
+
+[104]
+File: figures/icons/caution.png Graphic file (type bmp)
+<figures/icons/caution.png>
+
+
+[105]
+File: figures/06-exr-bobo2groups-jmv-input.jpg Graphic file (type bmp)
+<figures/06-exr-bobo2groups-jmv-input.jpg>
+File: figures/06-exr-bobo2groups-jmv-output.jpg Graphic file (type bmp)
+<figures/06-exr-bobo2groups-jmv-output.jpg>
+
+Underfull \hbox (badness 2478) in paragraph at lines 2465--2466
+[]\TU/lmr/m/n/10 Es werden Mittelwerte von einer intervallskalierten Variabel über
+ []
+
+
+Underfull \hbox (badness 1436) in paragraph at lines 2465--2466
+\TU/lmr/m/n/10 zwei Gruppen verglichen. Als statischer Test kommt demnach der
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 2465--2466
+\TU/lmr/m/n/10 Zweistichproben-$[]$-Test oder der Welch-Test infrage. Aufgrund der
+ []
+
+
+
+
+Overfull \hbox (89.75671pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 106 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
+ []
+
+[106]
+
+[107]
 File: figures/06-exr-gruppenpuzzle-jmv-input.jpg Graphic file (type bmp)
 <figures/06-exr-gruppenpuzzle-jmv-input.jpg>
 File: figures/06-exr-gruppenpuzzle-jmv-output.jpg Graphic file (type bmp)
@@ -1835,60 +1852,12 @@ File: figures/06-exr-gruppenpuzzle-jmv-output.jpg Graphic file (type bmp)
 
 
 Overfull \hbox (89.75671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 104 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
- []
-
-[104]
-
-[105]
-
-
-Overfull \hbox (89.75671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 106 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
- []
-
-[106]
-File: figures/06-exr-music-memory-jmv-input.jpg Graphic file (type bmp)
-<figures/06-exr-music-memory-jmv-input.jpg>
-File: figures/06-exr-music-memory-jmv-output.jpg Graphic file (type bmp)
-<figures/06-exr-music-memory-jmv-output.jpg>
-
-Underfull \hbox (badness 1281) in paragraph at lines 2404--2406
-\TU/lmr/m/n/10 ter Wortsilben beim Lernen mit oder ohne Musik gleich ist, also
- []
-
-
-
-[107]
-
-
-Overfull \hbox (89.75671pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 108 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
  []
 
 [108]
-File: figures/06-exr-hypnose-jmv-input.jpg Graphic file (type bmp)
-<figures/06-exr-hypnose-jmv-input.jpg>
-File: figures/06-exr-hypnose-jmv-output.jpg Graphic file (type bmp)
-<figures/06-exr-hypnose-jmv-output.jpg>
-
 
 [109]
-Underfull \hbox (badness 4205) in paragraph at lines 2455--2456
-\TU/lmr/m/n/10 Schmerz bei einer Behandlung mit der neuen Hypnose-Methode
- []
-
-
-Underfull \hbox (badness 1418) in paragraph at lines 2463--2464
-\TU/lmr/m/n/10 Umfrage zufällig verheiratete und unverheiratete Ärztinnen. Diese füllen
- []
-
-
-Underfull \hbox (badness 3098) in paragraph at lines 2469--2471
-[]\TU/lmr/m/n/10 Wie viele verheiratete und unverheiratete haben den Fragebogen
- []
-
-
 
 
 Overfull \hbox (89.75671pt too wide) has occurred while \output is active
@@ -1896,14 +1865,15 @@ Overfull \hbox (89.75671pt too wide) has occurred while \output is active
  []
 
 [110]
-Underfull \hbox (badness 2547) in paragraph at lines 2473--2475
-[]\TU/lmr/m/n/10 Übersetzen Sie die Hypothese der Forscherin in eine Statistische
+File: figures/06-exr-music-memory-jmv-input.jpg Graphic file (type bmp)
+<figures/06-exr-music-memory-jmv-input.jpg>
+File: figures/06-exr-music-memory-jmv-output.jpg Graphic file (type bmp)
+<figures/06-exr-music-memory-jmv-output.jpg>
+
+Underfull \hbox (badness 1281) in paragraph at lines 2555--2557
+\TU/lmr/m/n/10 ter Wortsilben beim Lernen mit oder ohne Musik gleich ist, also
  []
 
-File: figures/06-exr-ehe-burnout-jmv-input.jpg Graphic file (type bmp)
-<figures/06-exr-ehe-burnout-jmv-input.jpg>
-File: figures/06-exr-ehe-burnout-jmv-output.jpg Graphic file (type bmp)
-<figures/06-exr-ehe-burnout-jmv-output.jpg>
 
 
 [111]
@@ -1914,20 +1884,67 @@ Overfull \hbox (89.75671pt too wide) has occurred while \output is active
  []
 
 [112]
+File: figures/06-exr-hypnose-jmv-input.jpg Graphic file (type bmp)
+<figures/06-exr-hypnose-jmv-input.jpg>
+File: figures/06-exr-hypnose-jmv-output.jpg Graphic file (type bmp)
+<figures/06-exr-hypnose-jmv-output.jpg>
+
+
+[113]
+Underfull \hbox (badness 4205) in paragraph at lines 2606--2607
+\TU/lmr/m/n/10 Schmerz bei einer Behandlung mit der neuen Hypnose-Methode
+ []
+
+
+Underfull \hbox (badness 1418) in paragraph at lines 2614--2615
+\TU/lmr/m/n/10 Umfrage zufällig verheiratete und unverheiratete Ärztinnen. Diese füllen
+ []
+
+
+Underfull \hbox (badness 3098) in paragraph at lines 2620--2622
+[]\TU/lmr/m/n/10 Wie viele verheiratete und unverheiratete haben den Fragebogen
+ []
+
+
+
+
+Overfull \hbox (89.75671pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 114 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
+ []
+
+[114]
+Underfull \hbox (badness 2547) in paragraph at lines 2624--2626
+[]\TU/lmr/m/n/10 Übersetzen Sie die Hypothese der Forscherin in eine Statistische
+ []
+
+File: figures/06-exr-ehe-burnout-jmv-input.jpg Graphic file (type bmp)
+<figures/06-exr-ehe-burnout-jmv-input.jpg>
+File: figures/06-exr-ehe-burnout-jmv-output.jpg Graphic file (type bmp)
+<figures/06-exr-ehe-burnout-jmv-output.jpg>
+
+
+[115]
+
+
+Overfull \hbox (89.75671pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 116 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
+ []
+
+[116]
 \bbl@ensure@ngerman {Kapitel} 7.
 
 
-[113
+[117
 
 ]
 
-[114
+[118
 
 ]
 
-[115] (./aps_statistik1.bbl
+[119] (./aps_statistik1.bbl
 
-[116]
+[120]
 Underfull \hbox (badness 10000) in paragraph at lines 4--7
 []\TU/lmr/m/n/10 Balci, S. (2025).  \TU/lmr/m/it/10 jjstatsplot: Wrapper for ggstatsplot\TU/lmr/m/n/10 .  R
  []
@@ -1944,23 +1961,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--7
 
 
 
-[117
+[121
 
 ])
 
-[118] (./aps_statistik1.aux)
+[122] (./aps_statistik1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 33736 strings out of 475846
- 719262 string characters out of 5773212
- 1180026 words of memory out of 5000000
- 56080 multiletter control sequences out of 15000+600000
+ 33791 strings out of 475846
+ 722148 string characters out of 5773212
+ 1180377 words of memory out of 5000000
+ 56133 multiletter control sequences out of 15000+600000
  565418 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,10n,114p,2090b,738s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aps_statistik1.pdf (118 pages).
+Output written on aps_statistik1.pdf (122 pages).

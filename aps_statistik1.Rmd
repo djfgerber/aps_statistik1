@@ -700,7 +700,7 @@ d) Falsch
 :::
 
 
-<!--chapter:end:src/02-1-was_ist_eine_intervallskalierte_variable.Rmd-->
+<!--chapter:end:src/02-was_ist_eine_intervallskalierte_variable.Rmd-->
 
 # Stichprobenziehung {#stichprobenziehung}
 
@@ -887,7 +887,7 @@ d) Falsch
 
 
 
-<!--chapter:end:src/03-1-stichprobenziehung.Rmd-->
+<!--chapter:end:src/03-stichprobenziehung.Rmd-->
 
 # Durchschnitt und Standardabweichung schätzen
 
@@ -1395,7 +1395,7 @@ d) Richtig
 :::
 
 
-<!--chapter:end:src/04-1-durchschnitt_und_standardabweichung_schaetzen.Rmd-->
+<!--chapter:end:src/04-durchschnitt_und_standardabweichung_schaetzen.Rmd-->
 
 # Zentrale Tendenz testen {#zentrale-tendenz-testen}
 
@@ -1413,7 +1413,7 @@ Wenn eine Hypothese wahr ist, dann ist das Gegenteil der Hypothese falsch. Weil 
 
 > $H_1:$ Es regnet.
 
-Die Nullhypothese bleibt der Stand der Wahrheit, bis sie durch Daten widerlegt wurde. Wenn man noch drinnen ist kann keine Aussage über die Wahrheit von $H_0$ und $H_1$ gemacht werden, da die Daten fehlen. In diesem Fall wird angenommen, dass $H_0$ weiterhin wahr ist. Wenn man draussen Regen auf der Haut spürt, deutet dieser Datenpunkt darauf hin, dass $H_0$ nicht länger wahr ist und jetzt wahrscheinlich $H_1$ wahr ist. In diesem Fall spricht man davon, dass $H_0$ **abgelehnt** und $H_1$ **angenommen** wird.
+Die Nullhypothese bleibt der Stand der Wahrheit, bis sie durch Daten widerlegt wurde. Wenn man noch drinnen ist, kann keine Aussage über die Wahrheit von $H_0$ und $H_1$ gemacht werden, da die Daten fehlen. In diesem Fall wird angenommen, dass $H_0$ weiterhin wahr ist. Wenn man draussen Regen auf der Haut spürt, deutet dieser Datenpunkt darauf hin, dass $H_0$ nicht länger wahr ist und jetzt wahrscheinlich $H_1$ wahr ist. In diesem Fall spricht man davon, dass $H_0$ **abgelehnt** und $H_1$ **angenommen** wird.
 
 ## Entspricht der Erwartungswert einem gewissen Wert?
 
@@ -1669,7 +1669,7 @@ Es wird ausserdem empfohlen, das Wort signifikant immer nur als Prädikat für e
 
 Die beiden Denkarten entsprechen sich insofern, als ein $p$-Wert kleiner als $5\%$ ein signifikantes Resultat bei Signifikanzniveau $\alpha = 5\%$ bedeutet. In der Praxis werden beide Methoden verwendet. Im Beispiel liegt der $p$-Wert bei $p = `r round(exm_vermoegen$p_value_emp,3) %>% str_sub(2)`$. Dies bedeutet, dass die Wahrscheinlichkeit zufällig den realisierten Stichprobenmittelwert zu erhalten, gegeben, dass die Nullhypothese stimmt, grösser als $5\%$ ist und demnach auch der Unterschied nicht signifikant ist.
 
-Ein noch zu lösendes Problem ist, dass normalerweise Geld, Zeit und Nerven fehlen, um eine Stichprobenziehung $`r exm_vermoegen$n_samples`$ mal zu wiederholen. Hier hilft es wieder zu beobachten, dass die Verteilung der Werte des Histogramms in Abbildung \@ref(fig:exm-vermoegen-histogram-plot) wieder mit zunehmender Stichprobengrösse immer genauer einer Normalverteilung folgen. Tatsächlich trifft es aufgrund des [zentralen Grenzwertsatzes](#customdef-zentraler-grenzwertsatz) immer zu, dass wenn ein Merkmal mit $N$ Beobachtungen, Erwartungswert $\mu$ und Standardabweichung $\sigma$ hat, der Wert
+Ein noch zu lösendes Problem ist, dass normalerweise Geld, Zeit und Nerven fehlen, um eine Stichprobenziehung $`r exm_vermoegen$n_samples`$-mal zu wiederholen. Hier hilft es wieder zu beobachten, dass die Verteilung der Werte des Histogramms in Abbildung \@ref(fig:exm-vermoegen-histogram-plot) wieder mit zunehmender Stichprobengrösse immer genauer einer Normalverteilung folgen. Tatsächlich trifft es aufgrund des [zentralen Grenzwertsatzes](#customdef-zentraler-grenzwertsatz) immer zu, dass wenn ein Merkmal mit $N$ Beobachtungen, Erwartungswert $\mu$ und Standardabweichung $\sigma$ hat, der Wert
 
 $$z = \frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}$$
 normalverteilt ist, wobei $\mu$ hier dem Wert der Nullhypothese entspricht, also $100'000$ CHF. Dies entspricht der roten Linie in Abbildung \@ref(fig:exm-vermoegen-histogram-plot). Ist die Standardabweichung des Merkmals $\sigma$ in der Population unbekannt, so wird diese mit der Standardabweichung in der Stichprobe $s$ geschätzt. Diese zusätzliche Unsicherheit führt dazu, dass
@@ -1688,11 +1688,11 @@ nicht mehr normal-, sondern $t$-verteilt ist bei $n-1$ Freiheitsgraden (grüne L
 exm_vermoegen$plot_hist_curve_pval_reja
 ```
 
-[Die Berechnung des für den Test relevanten Wertes, hier des $t$-Wertes wird **Teststatistik** (oder auch _Prüfgrösse_ oder nur _Statistik_) genannt.]{.customdef #customdef-teststatistik} Eine Teststatistik hat normalerweise eine bekannte theoretische Verteilung, welcher die Teststatistik folgt, wenn die Nullhypothese wahr ist. [Aufgrund der theoretischen $t$-Verteilung der vorliegenden Statistik wird dieser Test **$t$-Test** genannt.]{.customdef #customdef-t-test}
+[Die Berechnung des für den Test relevanten Wertes, hier des $t$-Wertes wird **Teststatistik** (oder auch _Prüfgrösse_ oder nur _Statistik_) genannt.]{.customdef #customdef-teststatistik} Eine Teststatistik hat normalerweise eine bekannte theoretische Verteilung, welcher die Teststatistik folgt, wenn die Nullhypothese wahr ist. [Aufgrund der theoretischen $t$-Verteilung der vorliegenden Statistik und der einen Stichprobe (vgl. nächstes Kapitel) wird dieser Test **Einstichproben-$t$-Test** genannt.]{.customdef #customdef-t-test}
 
 Das oben gefundene Resultat wird in der folgenden Form berichtet:
 
-> Das durchschnittliche Vermögen ($M = `r round(exm_vermoegen$x_mean)`$ CHF, $SD = `r round(exm_vermoegen$x_sd)`$, $N = `r round(exm_vermoegen$n)`$) ist in diesem Jahr nicht signifikant grösser als $100'000$ CHF, $t(`r round(exm_vermoegen$n-1)`) = `r round(exm_vermoegen$t_emp,3)`$, $p = `r round(exm_vermoegen$p_value_the,3) %>% str_sub(start = 2L)`$.
+> Ein Einstichproben-$t$-Test ergibt, dass das durchschnittliche Vermögen ($M = `r round(exm_vermoegen$x_mean)`$ CHF, $SD = `r round(exm_vermoegen$x_sd)`$, $N = `r round(exm_vermoegen$n)`$) in diesem Jahr nicht signifikant grösser als $100'000$ CHF ist, $t(`r round(exm_vermoegen$n-1)`) = `r round(exm_vermoegen$t_emp,3)`$, $p = `r round(exm_vermoegen$p_value_the,3) %>% str_sub(start = 2L)`$.
 
 ::::{.caution data-latex=""}
 ::: {.remark}
@@ -1859,14 +1859,14 @@ Auch in diesem Fall kann die Verteilung der Stichprobenmittelwerte mit dem zentr
 
 Die Psychologin kann nun wie folgt berichten:
 
-> Die durchschnittliche Alexithymie ($M = `r round(exm_alexithymie$x_mean,1)`$ Punkte, $SD = `r round(exm_alexithymie$x_sd,1)`$, $N = `r round(exm_alexithymie$n)`$) unterscheidet sich bei den unter 25-jährigen signifikant vom Populationsdurchschnitt von $100$ Punkte, $t(`r round(exm_alexithymie$n-1)`) = `r round(exm_alexithymie$t_emp,3)`$, $p = `r round(exm_alexithymie$p_value_the,3) %>% str_sub(start = 2L)`$.
+> Ein Einstichproben-$t$-Test ergibt, dass die durchschnittliche Alexithymie ($M = `r round(exm_alexithymie$x_mean,1)`$ Punkte, $SD = `r round(exm_alexithymie$x_sd,1)`$, $N = `r round(exm_alexithymie$n)`$) sich bei den unter 25-jährigen signifikant vom Populationsdurchschnitt von $100$ Punkten unterscheidet, $t(`r round(exm_alexithymie$n-1)`) = `r round(exm_alexithymie$t_emp,3)`$, $p = `r round(exm_alexithymie$p_value_the,3) %>% str_sub(start = 2L)`$.
 
 
 ## Weicht der gefundene Durchschnitt stark vom hypothetischen Wert ab?
 
 <!-- Discuss: Probleme (grosses n -> immer signifikant, je nach Einheit ist Erwartungswertunterschied ganz anders). -->
 
-In einem so berichteten Testresultat sind essenziell zwei Informationen enthalten: (1) was sind die getesteten Hypothesen und (2) wie wahrscheinlich es ist, dass das gefundene Resultat eine Folge der Zufallsstichprobenziehung ist. Was hier noch fehlt ist eine Angabe darüber wie gross die praktische Relevanz dieses Testresultates ist.
+In einem so berichteten Testresultat sind essenziell zwei Informationen enthalten: (1) was sind die getesteten Hypothesen und (2) wie wahrscheinlich es ist, dass das gefundene Resultat eine Folge der Zufallsstichprobenziehung ist. Was hier noch fehlt ist eine Angabe darüber, wie gross die praktische Relevanz dieses Testresultates ist.
 
 Um eine solche Relevanz zu messen wurde der Begriff der Effektstärke eingeführt. Eine Effektstärke ist eine Zahl ohne Einheit (Meter, Franken, ...), welche unabhängig von der Stichprobengrösse ist und nahe bei null liegt, wenn die Nullhypothese nicht abgelehnt wurde.
 
@@ -1901,9 +1901,9 @@ Cohen selbst hat davor gewarnt diese Werte als absolut darzustellen. Vielmehr so
 
 Das Berichten der Testresultate wird mit der Effektstärke ergänzt:
 
-> Das durchschnittliche Vermögen ($M = `r round(exm_vermoegen$x_mean)`$ CHF, $SD = `r round(exm_vermoegen$x_sd)`$, $N = `r round(exm_vermoegen$n)`$) ist in diesem Jahr nicht signifikant grösser als $100'000$ CHF, $t(`r round(exm_vermoegen$n-1)`) = `r round(exm_vermoegen$t_emp,3)`$, $p = `r round(exm_vermoegen$p_value_the,3) %>% str_sub(start = 2L)`, d = `r round(exm_vermoegen$effect_size,2)`$.
+> Ein Einstichproben-$t$-Test ergibt, dass das durchschnittliche Vermögen ($M = `r round(exm_vermoegen$x_mean)`$ CHF, $SD = `r round(exm_vermoegen$x_sd)`$, $N = `r round(exm_vermoegen$n)`$) in diesem Jahr nicht signifikant grösser als $100'000$ CHF ist, $t(`r round(exm_vermoegen$n-1)`) = `r round(exm_vermoegen$t_emp,3)`$, $p = `r round(exm_vermoegen$p_value_the,3) %>% str_sub(start = 2L)`, d = `r round(exm_vermoegen$effect_size,2)`$.
 
-> Die durchschnittliche Alexithymie ($M = `r round(exm_alexithymie$x_mean,1)`$ Punkte, $SD = `r round(exm_alexithymie$x_sd,1)`$, $N = `r round(exm_alexithymie$n)`$) unterscheidet sich bei den unter 25-jährigen signifikant vom Populationsdurchschnitt von $100$ Punkte, $t(`r round(exm_alexithymie$n-1)`) = `r round(exm_alexithymie$t_emp,3)`$, $p = `r round(exm_alexithymie$p_value_the,3) %>% str_sub(start = 2L)`, d = `r round(exm_alexithymie$effect_size,2)`$.
+> Ein Einstichproben-$t$-Test ergibt, dass die durchschnittliche Alexithymie ($M = `r round(exm_alexithymie$x_mean,1)`$ Punkte, $SD = `r round(exm_alexithymie$x_sd,1)`$, $N = `r round(exm_alexithymie$n)`$) sich bei den unter 25-jährigen signifikant vom Populationsdurchschnitt von $100$ Punkten unterscheidet, $t(`r round(exm_alexithymie$n-1)`) = `r round(exm_alexithymie$t_emp,3)`$, $p = `r round(exm_alexithymie$p_value_the,3) %>% str_sub(start = 2L)`, d = `r round(exm_alexithymie$effect_size,2)`$.
 
 In beiden Fällen liegt ein schwacher Effekt vor. Der Effekt bei der Alexithymie ist schwächer als der Effekt bei der Vermögensstudie. Der $p$-Wert sagt aber aus, dass der Effekt beim Vermögen durch die Zufallsstichprobe zustande gekommen ist, während es bei der Alexithymie unwahrscheinlich ist, dass der Effekt durch die Zufallsstichprobe zustande gekommen ist.
 
@@ -1927,7 +1927,7 @@ Reproduziere das Beispiel Vermögen \@ref(exm:vermoegen) mit `Jamovi` indem folg
 knitr::include_graphics("figures/05-exr-vermoegen-jmv-input.jpg")
 ```
 
-```{r sol-vermoegen-output, out.width='100%', fig.cap='Deskriptive Statistiken.', fig.show='hold'}
+```{r sol-vermoegen-output, out.width='100%', fig.cap='Testresultat Einstichproben-t-Test und deskriptive Statistiken.', fig.show='hold'}
 knitr::include_graphics("figures/05-exr-vermoegen-jmv-output.jpg")
 ```  
 :::
@@ -1949,7 +1949,7 @@ Reproduziere das Beispiel Alexithymie \@ref(exm:alexithymie) mit `Jamovi` indem 
 knitr::include_graphics("figures/05-exr-alexithymie-jmv-input.jpg")
 ```
 
-```{r sol-alexithymie-output, out.width='100%', fig.cap='Deskriptive Statistiken.', fig.show='hold'}
+```{r sol-alexithymie-output, out.width='100%', fig.cap='Testresultat Einstichproben-t-Test und deskriptive Statistiken.', fig.show='hold'}
 knitr::include_graphics("figures/05-exr-alexithymie-jmv-output.jpg")
 ```  
 :::
@@ -2009,7 +2009,7 @@ knitr::include_graphics("figures/05-exr-circadian-jmv-output.jpg")
 a) Die Versuchpersonen haben einen durchschnittlichen zirkadianen Rhythmus von $M = `r round(exr_circadian$x_mean,1)`$ Stunden. Dies ist länger als die regulären $24$ Stunden. Es ist unklar, ob hier gerade zufällig Personen beobachtet wurden bei welche sich der zirkadiane Rhytmus verlängert. Um die Wahrscheinlichkeit dieses Zufalls zu quantifizieren wird ein statistischer Test durchgeführt.
 b) Die Nullhypothese geht vom aktuell bekannten aus, also in diesem Fall, dass sich der durchschnittliche zirkadiane Rhythmus unter den Versuchsbedinungen nicht verändert. Der normale zirkadiane Rhythmus ist Sonnenbedingt $24$ Stunden lang, also wird die Nullhypothese $H_0: \mu = 24$ Stunden aufgestellt. $\mu$ ist hier die durchschnittiche Dauer des zirkadianen Rhythmus in der Population. Im Versuch geht es darum festzustellen, ob der normale zirkadiane Rhythmus gehalten wird oder nicht. Ein nicht gehaltener zirkadianer Rhythmus würde bedeuten, dass sich die Tagesdauer verkürzt oder verlängert gegenüber der Nullhypothese. Es ist hier also eine zweiseitige Hypothesenstellung und die Alternativhypothese lautet $H_1: \mu \neq 24$ Stunden.
 
-> Die durchschnittliche Tageslänge ($M = `r round(exr_circadian$x_mean,1)`$ Stunden, $SD = `r round(exr_circadian$x_sd,1)`$, $N = `r round(exr_circadian$n)`$) unter Experimentalbedingungen unterscheidet sich signifikant von $24$ Stunden, $t(`r round(exr_circadian$n-1)`) = `r round(exr_circadian$t_emp,2)`$, $p = `r round(exr_circadian$p_value_the,3) %>% str_sub(start = 2L)`, d = `r round(exr_circadian$effect_size,3)`$.
+> Ein Einstichproben-$t$-Test ergibt, dass die durchschnittliche Tageslänge ($M = `r round(exr_circadian$x_mean,1)`$ Stunden, $SD = `r round(exr_circadian$x_sd,1)`$, $N = `r round(exr_circadian$n)`$) unter Experimentalbedingungen  sich signifikant von $24$ Stunden unterscheidet, $t(`r round(exr_circadian$n-1)`) = `r round(exr_circadian$t_emp,2)`$, $p = `r round(exr_circadian$p_value_the,3) %>% str_sub(start = 2L)`, d = `r round(exr_circadian$effect_size,3)`$.
 
 c) $M, SD,$ und $N$ sind das arithmetische Mittel, die geschätzte Standardabweichung und die Anzahl Beobachtungen der Stichprobe. $p$ ist die Wahrscheinlichkeit, zufällig den Stichprobenmittelwert oder einen noch extremeren Wert im Sinne der Alternativehypothese zu beobachten, falls die Nullhypothese stimmt. Dieser Wert ist kleiner als $5\%$. Deswegen wird von einem signifikanten Unterschied der durchschnittlichen Tageslänge zum Erwartungswert gesprochen. $24$ Stunden ist der Vergleichswert der Nullhypothese. $t(`r round(exr_circadian$n-1)`)$ bedeutet, dass die Teststatistik $t$-verteilt ist mit `r exr_circadian$n-1` Freiheitsgraden, sofern die Nullhypothese wahr ist. Mit der aktuellen Stichprobenziehung wurde ein Wert von $`r round(exr_circadian$t_emp,2)`$ realisiert. Dieser Wert ist mit der $t$-Verteilung in Abbildung \@ref(fig:t-distribution) zu vergleichen. Der Wert entspricht einer eher unwahrscheinlichen Beobachtung dieser Verteilung. $d = `r round(exr_circadian$effect_size,3)`$, schliesslich, bezieht sich auf die Effektstärke. Das Testresultat entspricht einem mittleren Effekt.
 :::
@@ -2074,14 +2074,174 @@ knitr::include_graphics("figures/05-exr-schwimmen-jmv-output.jpg")
 a) Die Sportstudentin hat $N = `r exr_schwimmen$jmv_res_desc$num`$ Schwimmer trainiert.
 b) Die Forschungsfrage ist hier, ob die neue Trainingsmethode besser ist. Besser meint hier, dass die mit dieser Trainingsmethode trianierten Schwimmer nach dem Training durchschnittlich schneller schwimmen als die anderen. Die Alternativhypothese ist also $H_1: \mu < `r exr_schwimmen$mu0`$. Die Nullhypothese sagt genau das Gegenteil davon aus, nämlich, dass die durchschnittliche Schimmzeit mit der neuen Methode gleich bleibt oder sogar noch länger wird $H_0: \mu \geq `r exr_schwimmen$mu0`$. Das Testresultat lässt sich wie folgt berichten:
 
-> Die durchschnittliche Schwimmzeit ($M = `r round(exr_schwimmen$jmv_res_desc$mean,2)`$ Minuten, $SD = `r round(exr_schwimmen$jmv_res_desc$sd,2)`$, $N = `r exr_schwimmen$jmv_res_desc$num`$) mit der neuen Trainingsmethode ist nicht signifikant tiefer als $`r exr_schwimmen$mu0`$ Minuten, $t(`r exr_schwimmen$jmv_res_test$df`) = `r round(exr_schwimmen$jmv_res_test$stat,2)`$, $p = `r round(exr_schwimmen$jmv_res_test$p,3) %>% str_sub(start = 2L)`, d = `r round(exr_schwimmen$jmv_res_test$es,3)`$.
+> Ein Einstichproben-$t$-Test ergibt, dass die durchschnittliche Schwimmzeit ($M = `r round(exr_schwimmen$jmv_res_desc$mean,2)`$ Minuten, $SD = `r round(exr_schwimmen$jmv_res_desc$sd,2)`$, $N = `r exr_schwimmen$jmv_res_desc$num`$) mit der neuen Trainingsmethode nicht signifikant tiefer als $`r exr_schwimmen$mu0`$ Minuten ist, $t(`r exr_schwimmen$jmv_res_test$df`) = `r round(exr_schwimmen$jmv_res_test$stat,2)`$, $p = `r round(exr_schwimmen$jmv_res_test$p,3) %>% str_sub(start = 2L)`, d = `r round(exr_schwimmen$jmv_res_test$es,3)`$.
 
 Das Testresultat ist nicht signifikant, da der $p$-Wert grösser als $5\%$ ist. Tatsächlich bedeutet $p = `r round(exr_schwimmen$jmv_res_test$p,3) %>% str_sub(start = 2L)`$, dass, wenn die Nullhypothese wahr ist, das gefundene Testresultat oder dass die Schwimmer noch schneller sind in $`r round(100*exr_schwimmen$jmv_res_test$p,1)`\%$ zufällig durch die Zufallsstichprobenziehung zustande kommt. Kurz gesagt, das Resulat könnt auch Zufall sein.
 
 Die gefundene Effektstärke ist mittel. Wenn das Resultat nicht zufällig wäre, dann würde die Trainingsmethode immerhin einen mittleren Effekt erzielen. Wenn es tatsächlich einen mittleren Effekt gibt, dann könnte die Sportstudentin das Experiment nochmal mit mehr Probanden wiederholen, um den Effekt auch als statistisch signifikan nachweisen zu können. Falls der gefundene Effekt nur zufällig zustande gekommen ist und er nicht exisitiert, wird auch eine Experimentwiederholung mit mehr Probandinnen immernoch kein signifikantes Testergebnis liefern. 
 :::
 
-<!--chapter:end:src/05-1-durchschnitt_testen.Rmd-->
+
+::: {.exercise  #markpreisanalyse-testen}
+<!-- 
+Ziel: 
+- Ungerichtete Hypothese 
+-->
+
+Die Firma Pear bringt ein neues Smartphone das F42 der Reihe Supernova X auf den Markt. Das Smartphone ist für Jugendliche im Alter von $15-20$ Jahre konzipiert. Das Vorgängermodell F41 wurde für durchschnittlich $300$ CHF verkauft. Um herauszufinden, ob sich die durchschnittliche Zahlbereitschaft des neuen Modells von der Zahlbereitschaft für das alte Modell abweicht, erfragt Pear bei $`r exr_marktpreisanalyse$n`$ Jugendlichen die Zahlbereitschaft. Die Daten stehen unter `r inline_code(exr_marktpreisanalyse$file_name)` zur Verfügung. 
+
+a) Stellen Sie die oben formulierte Hypothese mit mathematischer Schreibweise dar.
+b) Testen Sie die Hypothese.
+c) Berichten Sie die Testergebnisse.
+d) Was bedeuten die Werte Statistik, $df$, $p$ und Effektstärke.
+e) Der Stichprobenmittelwert liegt tiefer als $300$ CHF. Hätte man bereits hier feststellen können, dass sich die durchschnittliche Zahlungsbereitschaft verändert hat?
+
+:::
+
+:::{.solution}
+Für diese Übung werden die Daten in `Jamovi` wie in Abbildung \@ref(fig:sol-marktpreisanalyse-testen-input) analysiert. Das Resultat der Analyse ist in Abbildung \@ref(fig:sol-marktpreisanalyse-testen-output) festgehalten.
+
+```{r sol-marktpreisanalyse-testen-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
+knitr::include_graphics("figures/05-exr-marktpreisanalyse-testen-jmv-input.jpg")
+```
+
+```{r sol-marktpreisanalyse-testen-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/05-exr-marktpreisanalyse-testen-jmv-output.jpg")
+```
+
+a) Es gibt zunächst keinen Anhaltspunkt, weshalb sich die Zahlbereitschaft geändert haben sollte. Deshalb ist die Nullhypothese $H_0: \mu = 300$ CHF, wobei $\mu$ für den Erwartungswert des Merkmals Preis ist. Pear fragt sich, ob der $\mu$ von $300$ abweicht, gibt aber keine Richtung vor. Deshalb wurde $H_0$ zweiseitig formuliert. Das Gegenteil der Nullhypothese ist die Alternativhypothese $H_1: \mu \neq 300$ CHF.
+b) Das Testen erfolgt wie oben in den Bildschirmaufnahmen von `Jamovi` dargestellt.
+c) Ein Einstichproben-$t$-Test ergibt, dass sich die durchschnittliche Zahlbereitschaft ($M=`r round(mean(exr_marktpreisanalyse$tab$preis),2)`$ CHF, $SD = `r round(sd(exr_marktpreisanalyse$tab$preis),2)`$, $N = `r length(exr_marktpreisanalyse$tab$preis)`$) nicht signifikant von $300$ CHF unterscheidet, $t(`r exr_marktpreisanalyse$tab$preis %>% length()-1`)= -0.848, p = .399, d = -0.101$.
+d) Statistik entspricht der beobachteten Teststatistik in der Stichprobe. Der Wert kann im Vergleich zur $t$-Verteilung in Abbildung \@ref(fig:t-distribution) gelesen werden. $-0.848$ ist bei allen dargestellten Verteilungen kein seltener Wert, wenn die Nullhypothese stimmt. Dieser Wert der Statistik deutet also nicht darauf hin, dass die Nullhypothese falsch ist. Die Freiheitsgrade $df$ bestimmen die genaue Form der t-Verteilung. In Abbildung \@ref(fig:t-distribution) sind die genauen Formen für $df = 1$, $df = 4$ und $df = 9$ dargestellt. Die $t$-Verteilung, welche die Verteilung der Mittelwerte am besten abbildet ist die mit $df = n-1$, wobei $n$ die Anzahl Beobachtungen ist. Es sind $70$ Beobachtungen gemacht worden, also ist $df = 69$. Die $t$-Verteilung sieht in diesem Fall ungefähr aus wie die Normalverteilung in Abbildung \@ref(fig:t-distribution). Der $p$-Wert von $0.399$ bedeutet, dass die Wahrscheinlichkeit diesen Stichprobenmittelwert oder einen extremeren im Sinne der Alternativhypothese bei $39.9\%$ liegt und damit ziemlich wahrscheinlich ist, gegeben dass die Nullhypohthese wahr ist. Auch dies reflektiert also, dass aufgrund der Stichprobe nicht geschlossen werden kann, dass der Erwartungswert von $300$ CHF abweicht. Die Effektstärke $d= -0.101$ ist gemäss Cohen als schwach einzustufen.
+e) Der Stichprobenmittelwert sagt aus, dass in dieser Stichprobe die Zahlungsbereitschaft nicht gleich war wie für das Modell F41. Diese Aussage ist jedoch limitiert auf die Stichprobe und kann nur auf die Population ausgeweitet werden, wenn ein statistischer Test durchgeführt wurde. Es könnte ja sein, dass es einen Unterschied im Populationsmittelwert gibt, dieser aber aufgrund einer seltenen Zufallsstichprobenziehung nicht offenbar wird.
+:::
+
+::: {.exercise  #aslkdfjoeiu12342}
+
+<!-- ```{r exr-test-drink-usa} -->
+<!-- gen_exr_test_drink_usa <- function(){ -->
+<!--   set.seed(1982) -->
+<!--   mu0 <- 3 -->
+<!--   n <- 15 -->
+
+<!--   x <- rnorm(n, 3.8, 1.4)  -->
+<!--   file_name <- '05-exr-test-drink-usa.sav' -->
+<!--   dd <- tibble(fluessigkeit_liter = x)  -->
+<!--   dd %>% write_sav(file_name) -->
+<!--   jmv_res <- (dd %>%  -->
+<!--     jmv::ttestOneS(vars = 'fluessigkeit_liter',  -->
+<!--                    testValue = mu0,  -->
+<!--                    hypothesis = 'gt', desc = TRUE, -->
+<!--                    effectSize = TRUE)) -->
+<!--   jmv_res_test <- jmv_res$ttest$asDF %>%  -->
+<!--     rename_with(~ .x %>% str_remove('\\[stud\\]')) -->
+<!--   jmv_res_desc <- jmv_res$descriptives$asDF -->
+
+<!--   return(mget(ls())) -->
+<!-- } -->
+<!-- exr_test_drink_usa <- gen_exr_test_drink_usa() -->
+<!-- ``` -->
+
+TODO
+:::
+
+:::{.solution}
+TODO
+:::
+
+## Test
+
+::: {.exercise  #test-theorie}
+Welche der folgenden Aussagen zum Einstichproben-$t$-Test sind wahr, welche falsch?
+
+a) Der Einstichproben-$t$-Test überprüft, ob der Stichprobenmittelwert einer bestimmten Zahl entspricht.
+b) Beim Einstichproben-$t$-Test ist die Teststatistik $t$-verteilt mit $n-1$ Freiheitsgraden.
+c) Der $p$-Wert ist immer kleiner als das Signifikanzniveau.
+d) $H_1: \mu > 50$ ist eine mögliche Formulierung für die Alternativhypothese des Einstichproben-$t$-Test.
+:::
+
+:::{.solution}
+a) Falsch
+b) Richtig
+c) Falsch
+d) Richtig
+:::
+
+::: {.exercise  #test-drink-usa}
+
+```{r exr-test-drink-usa}
+gen_exr_test_drink_usa <- function(){
+  set.seed(1982)
+  mu0 <- 3
+  n <- 15
+  
+  x <- rnorm(n, 3.8, 1.4) 
+  file_name <- '05-exr-test-drink-usa.sav'
+  dd <- tibble(fluessigkeit_liter = x) 
+  dd %>% write_sav(file_name)
+  jmv_res <- (dd %>% 
+    jmv::ttestOneS(vars = 'fluessigkeit_liter', 
+                   testValue = mu0, 
+                   hypothesis = 'gt', desc = TRUE,
+                   effectSize = TRUE))
+  jmv_res_test <- jmv_res$ttest$asDF %>% 
+    rename_with(~ .x %>% str_remove('\\[stud\\]'))
+  jmv_res_desc <- jmv_res$descriptives$asDF
+  
+  return(mget(ls()))
+}
+exr_test_drink_usa <- gen_exr_test_drink_usa()
+```
+
+In der Schweiz wird empfohlen $3$ Liter Flüssigkeit pro Tag zu sich zu nehmen. Auf einer Reise in die USA fragt Karin zufällige Leute nach ihrer Flüssigkeitsaufnahme. Die Daten notiert sie im Datensatz `r inline_code("05-exr-drink-usa")`. Sie will nun testen, ob alle Leute in den USA durchschnittlich mehr Flüssigkeit pro Tag zu sich nehmen, als es in der Schweiz empfohlen ist. Testen Sie die Hypothese einem Einstichproben-$t$-Test, stellen Sie dabei `Jamovi` auf $3$ Nachkommastellenrundung ein. Welche der folgenden Aussagen sind wahr, welche falsch.
+
+a) Die durchschnittliche Flüssigkeitsaufnahme ist in den USA signifikant grösser als in der Schweiz empfohlen.
+b) Der gefundene Effekt ist gemäss Cohen als gross einzustufen.
+c) Karin hat $14$ Personen befragt.
+d) Die Nullhypothese lautet $H_0: \mu \leq 3$ Liter.
+:::
+
+:::{.solution}
+a) Richtig
+b) Falsch
+c) Falsch
+d) Richtig
+:::
+
+::: {.exercise  #98zvh3blbel}
+
+<!-- ```{r exr-test-drink-usa} -->
+<!-- gen_exr_test_drink_usa <- function(){ -->
+<!--   set.seed(1982) -->
+<!--   mu0 <- 3 -->
+<!--   n <- 15 -->
+
+<!--   x <- rnorm(n, 3.8, 1.4)  -->
+<!--   file_name <- '05-exr-test-drink-usa.sav' -->
+<!--   dd <- tibble(fluessigkeit_liter = x)  -->
+<!--   dd %>% write_sav(file_name) -->
+<!--   jmv_res <- (dd %>%  -->
+<!--     jmv::ttestOneS(vars = 'fluessigkeit_liter',  -->
+<!--                    testValue = mu0,  -->
+<!--                    hypothesis = 'gt', desc = TRUE, -->
+<!--                    effectSize = TRUE)) -->
+<!--   jmv_res_test <- jmv_res$ttest$asDF %>%  -->
+<!--     rename_with(~ .x %>% str_remove('\\[stud\\]')) -->
+<!--   jmv_res_desc <- jmv_res$descriptives$asDF -->
+
+<!--   return(mget(ls())) -->
+<!-- } -->
+<!-- exr_test_drink_usa <- gen_exr_test_drink_usa() -->
+<!-- ``` -->
+
+TODO
+:::
+
+:::{.solution}
+TODO
+:::
+
+<!--chapter:end:src/05-durchschnitt_testen.Rmd-->
 
 # (PART) Zwei Gruppen vergleichen {-}
 
@@ -2855,7 +3015,7 @@ TODO: Exercise body
 TODO: solution body
 :::
 
-<!--chapter:end:src/06-2-gruppenvergleich_intervallskalierte_variablen.Rmd-->
+<!--chapter:end:src/06-gruppenvergleich_intervallskalierte_variablen.Rmd-->
 
 # Welch-Test
 
@@ -2867,7 +3027,7 @@ TODO: solution body
 
 ## Übungen
 
-<!--chapter:end:src/07-2-welch_test.Rmd-->
+<!--chapter:end:src/07-u_test.Rmd-->
 
 # Begriffsverzeichnis {-}
 
@@ -2876,6 +3036,8 @@ TODO: solution body
 - [arithmetische Mittel](#customdef-arithmetisches-mittel)
 - [Cohens $d$ für den Welch-Test](#customdef-welch-cohens-d)
 - [Cohens $d$ für Zweistichproben-t-Test](#customdef-cohens-d)
+- [einseitige Hypothese](#customdef-einseitige-hypothese)
+- [Einstichproben-$t$-Test](#customdef-t-test)
 - [Erwartungswert](#customdef-erwartungswert)
 - [Freiheitsgrade](#customdef-freiheitsgrade)
 - [Glass $\Delta$](#customdef-glass-delta)
@@ -2883,7 +3045,7 @@ TODO: solution body
 - [Hedges $g$](#customdef-hedges-g)
 - [Hypothese](#customdef-hypothese)
 - [Interquartilabstand](#customdef-iqr)
-- [Intervalles](#customdef-interval)
+- [Intervalls](#customdef-interval)
 - [intervallskaliert](#customdef-intervallskaliert)
 - [Irrtumswahrscheinlichkeit](#customdef-erring-level)
 - [Konfidenzintervall](#customdef-confidence-interval)
@@ -2892,7 +3054,6 @@ TODO: solution body
 - [nicht signifikant](#customdef-signifikanz)
 - [Normalverteilung](#customdef-normalverteilung)
 - [Nullhypothese](#customdef-nullhypothese)
-- [p-Wert](#customdef-pwert)
 - [Perzentil](#customdef-perzentil)
 - [Population](#customdef-population)
 - [Signifikanzniveau](#customdef-signifikanzniveau)
@@ -2901,7 +3062,6 @@ TODO: solution body
 - [Stichprobe](#customdef-stichprobe)
 - [Stichprobenziehung](#customdef-stichprobenziehung)
 - [Student-$t$-Verteilung](#customdef-student-verteilung)
-- [$t$-Test](#customdef-t-test)
 - [Teststatistik](#customdef-teststatistik)
 - [Vertrauenswahrscheinlichkeit](#customdef-confidence-level)
 - [Welch-Test](#customdef-welch-test)

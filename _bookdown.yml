@@ -22,11 +22,11 @@ language:
 rmd_files: [
   "index.Rmd",
   "src/01-einleitung.Rmd",                                    
-  "src/02-1-was_ist_eine_intervallskalierte_variable.Rmd",    
-  "src/03-1-stichprobenziehung.Rmd",                          
-  "src/04-1-durchschnitt_und_standardabweichung_schaetzen.Rmd",
-  "src/05-1-durchschnitt_testen.Rmd",
-  "src/06-2-gruppenvergleich_intervallskalierte_variablen.Rmd",
-  "src/07-2-welch_test.Rmd",
+  "src/02-was_ist_eine_intervallskalierte_variable.Rmd",    
+  "src/03-stichprobenziehung.Rmd",                          
+  "src/04-durchschnitt_und_standardabweichung_schaetzen.Rmd",
+  "src/05-durchschnitt_testen.Rmd",
+  "src/06-gruppenvergleich_intervallskalierte_variablen.Rmd",
+  "src/07-u_test.Rmd",
   "src/98-glossary.Rmd"
 ]

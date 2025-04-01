@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{24 March, 2025}
+\date{01 April, 2025}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -1568,7 +1568,7 @@ Wenn eine Hypothese wahr ist, dann ist das Gegenteil der Hypothese falsch. Weil 
 \(H_1:\) Es regnet.
 \end{quote}
 
-Die Nullhypothese bleibt der Stand der Wahrheit, bis sie durch Daten widerlegt wurde. Wenn man noch drinnen ist kann keine Aussage über die Wahrheit von \(H_0\) und \(H_1\) gemacht werden, da die Daten fehlen. In diesem Fall wird angenommen, dass \(H_0\) weiterhin wahr ist. Wenn man draussen Regen auf der Haut spürt, deutet dieser Datenpunkt darauf hin, dass \(H_0\) nicht länger wahr ist und jetzt wahrscheinlich \(H_1\) wahr ist. In diesem Fall spricht man davon, dass \(H_0\) \textbf{abgelehnt} und \(H_1\) \textbf{angenommen} wird.
+Die Nullhypothese bleibt der Stand der Wahrheit, bis sie durch Daten widerlegt wurde. Wenn man noch drinnen ist, kann keine Aussage über die Wahrheit von \(H_0\) und \(H_1\) gemacht werden, da die Daten fehlen. In diesem Fall wird angenommen, dass \(H_0\) weiterhin wahr ist. Wenn man draussen Regen auf der Haut spürt, deutet dieser Datenpunkt darauf hin, dass \(H_0\) nicht länger wahr ist und jetzt wahrscheinlich \(H_1\) wahr ist. In diesem Fall spricht man davon, dass \(H_0\) \textbf{abgelehnt} und \(H_1\) \textbf{angenommen} wird.
 
 \section{Entspricht der Erwartungswert einem gewissen Wert?}\label{entspricht-der-erwartungswert-einem-gewissen-wert}
 
@@ -1751,7 +1751,7 @@ Es wird ausserdem empfohlen, das Wort signifikant immer nur als Prädikat für e
 
 Die beiden Denkarten entsprechen sich insofern, als ein \(p\)-Wert kleiner als \(5\%\) ein signifikantes Resultat bei Signifikanzniveau \(\alpha = 5\%\) bedeutet. In der Praxis werden beide Methoden verwendet. Im Beispiel liegt der \(p\)-Wert bei \(p = .143\). Dies bedeutet, dass die Wahrscheinlichkeit zufällig den realisierten Stichprobenmittelwert zu erhalten, gegeben, dass die Nullhypothese stimmt, grösser als \(5\%\) ist und demnach auch der Unterschied nicht signifikant ist.
 
-Ein noch zu lösendes Problem ist, dass normalerweise Geld, Zeit und Nerven fehlen, um eine Stichprobenziehung \(3000\) mal zu wiederholen. Hier hilft es wieder zu beobachten, dass die Verteilung der Werte des Histogramms in Abbildung \ref{fig:exm-vermoegen-histogram-plot} wieder mit zunehmender Stichprobengrösse immer genauer einer Normalverteilung folgen. Tatsächlich trifft es aufgrund des \hyperref[customdef-zentraler-grenzwertsatz]{zentralen Grenzwertsatzes} immer zu, dass wenn ein Merkmal mit \(N\) Beobachtungen, Erwartungswert \(\mu\) und Standardabweichung \(\sigma\) hat, der Wert
+Ein noch zu lösendes Problem ist, dass normalerweise Geld, Zeit und Nerven fehlen, um eine Stichprobenziehung \(3000\)-mal zu wiederholen. Hier hilft es wieder zu beobachten, dass die Verteilung der Werte des Histogramms in Abbildung \ref{fig:exm-vermoegen-histogram-plot} wieder mit zunehmender Stichprobengrösse immer genauer einer Normalverteilung folgen. Tatsächlich trifft es aufgrund des \hyperref[customdef-zentraler-grenzwertsatz]{zentralen Grenzwertsatzes} immer zu, dass wenn ein Merkmal mit \(N\) Beobachtungen, Erwartungswert \(\mu\) und Standardabweichung \(\sigma\) hat, der Wert
 
 \[z = \frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}\]
 normalverteilt ist, wobei \(\mu\) hier dem Wert der Nullhypothese entspricht, also \(100'000\) CHF. Dies entspricht der roten Linie in Abbildung \ref{fig:exm-vermoegen-histogram-plot}. Ist die Standardabweichung des Merkmals \(\sigma\) in der Population unbekannt, so wird diese mit der Standardabweichung in der Stichprobe \(s\) geschätzt. Diese zusätzliche Unsicherheit führt dazu, dass
@@ -1777,12 +1777,12 @@ nicht mehr normal-, sondern \(t\)-verteilt ist bei \(n-1\) Freiheitsgraden (grü
 \caption{\label{fig:exm-vermoegen-plots-sampling-theorie}Oben: Histogramm der simulierten Verteilung; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert.}
 \end{figure}
 
-\phantomsection\label{customdef-teststatistik}{Die Berechnung des für den Test relevanten Wertes, hier des \(t\)-Wertes wird \textbf{Teststatistik} (oder auch \emph{Prüfgrösse} oder nur \emph{Statistik}) genannt.} Eine Teststatistik hat normalerweise eine bekannte theoretische Verteilung, welcher die Teststatistik folgt, wenn die Nullhypothese wahr ist. \phantomsection\label{customdef-t-test}{Aufgrund der theoretischen \(t\)-Verteilung der vorliegenden Statistik wird dieser Test \textbf{\(t\)-Test} genannt.}
+\phantomsection\label{customdef-teststatistik}{Die Berechnung des für den Test relevanten Wertes, hier des \(t\)-Wertes wird \textbf{Teststatistik} (oder auch \emph{Prüfgrösse} oder nur \emph{Statistik}) genannt.} Eine Teststatistik hat normalerweise eine bekannte theoretische Verteilung, welcher die Teststatistik folgt, wenn die Nullhypothese wahr ist. \phantomsection\label{customdef-t-test}{Aufgrund der theoretischen \(t\)-Verteilung der vorliegenden Statistik und der einen Stichprobe (vgl. nächstes Kapitel) wird dieser Test \textbf{Einstichproben-\(t\)-Test} genannt.}
 
 Das oben gefundene Resultat wird in der folgenden Form berichtet:
 
 \begin{quote}
-Das durchschnittliche Vermögen (\(M = 119853\) CHF, \(SD = 88528\), \(N = 20\)) ist in diesem Jahr nicht signifikant grösser als \(100'000\) CHF, \(t(19) = 1.003\), \(p = .164\).
+Ein Einstichproben-\(t\)-Test ergibt, dass das durchschnittliche Vermögen (\(M = 119853\) CHF, \(SD = 88528\), \(N = 20\)) in diesem Jahr nicht signifikant grösser als \(100'000\) CHF ist, \(t(19) = 1.003\), \(p = .164\).
 \end{quote}
 
 \begin{caution}
@@ -1858,12 +1858,12 @@ Auch in diesem Fall kann die Verteilung der Stichprobenmittelwerte mit dem zentr
 Die Psychologin kann nun wie folgt berichten:
 
 \begin{quote}
-Die durchschnittliche Alexithymie (\(M = 96.7\) Punkte, \(SD = 24.4\), \(N = 391\)) unterscheidet sich bei den unter 25-jährigen signifikant vom Populationsdurchschnitt von \(100\) Punkte, \(t(390) = -2.698\), \(p = .007\).
+Ein Einstichproben-\(t\)-Test ergibt, dass die durchschnittliche Alexithymie (\(M = 96.7\) Punkte, \(SD = 24.4\), \(N = 391\)) sich bei den unter 25-jährigen signifikant vom Populationsdurchschnitt von \(100\) Punkten unterscheidet, \(t(390) = -2.698\), \(p = .007\).
 \end{quote}
 
 \section{Weicht der gefundene Durchschnitt stark vom hypothetischen Wert ab?}\label{weicht-der-gefundene-durchschnitt-stark-vom-hypothetischen-wert-ab}
 
-In einem so berichteten Testresultat sind essenziell zwei Informationen enthalten: (1) was sind die getesteten Hypothesen und (2) wie wahrscheinlich es ist, dass das gefundene Resultat eine Folge der Zufallsstichprobenziehung ist. Was hier noch fehlt ist eine Angabe darüber wie gross die praktische Relevanz dieses Testresultates ist.
+In einem so berichteten Testresultat sind essenziell zwei Informationen enthalten: (1) was sind die getesteten Hypothesen und (2) wie wahrscheinlich es ist, dass das gefundene Resultat eine Folge der Zufallsstichprobenziehung ist. Was hier noch fehlt ist eine Angabe darüber, wie gross die praktische Relevanz dieses Testresultates ist.
 
 Um eine solche Relevanz zu messen wurde der Begriff der Effektstärke eingeführt. Eine Effektstärke ist eine Zahl ohne Einheit (Meter, Franken, \ldots), welche unabhängig von der Stichprobengrösse ist und nahe bei null liegt, wenn die Nullhypothese nicht abgelehnt wurde.
 
@@ -1910,11 +1910,11 @@ Cohen selbst hat davor gewarnt diese Werte als absolut darzustellen. Vielmehr so
 Das Berichten der Testresultate wird mit der Effektstärke ergänzt:
 
 \begin{quote}
-Das durchschnittliche Vermögen (\(M = 119853\) CHF, \(SD = 88528\), \(N = 20\)) ist in diesem Jahr nicht signifikant grösser als \(100'000\) CHF, \(t(19) = 1.003\), \(p = .164, d = 0.22\).
+Ein Einstichproben-\(t\)-Test ergibt, dass das durchschnittliche Vermögen (\(M = 119853\) CHF, \(SD = 88528\), \(N = 20\)) in diesem Jahr nicht signifikant grösser als \(100'000\) CHF ist, \(t(19) = 1.003\), \(p = .164, d = 0.22\).
 \end{quote}
 
 \begin{quote}
-Die durchschnittliche Alexithymie (\(M = 96.7\) Punkte, \(SD = 24.4\), \(N = 391\)) unterscheidet sich bei den unter 25-jährigen signifikant vom Populationsdurchschnitt von \(100\) Punkte, \(t(390) = -2.698\), \(p = .007, d = -0.14\).
+Ein Einstichproben-\(t\)-Test ergibt, dass die durchschnittliche Alexithymie (\(M = 96.7\) Punkte, \(SD = 24.4\), \(N = 391\)) sich bei den unter 25-jährigen signifikant vom Populationsdurchschnitt von \(100\) Punkten unterscheidet, \(t(390) = -2.698\), \(p = .007, d = -0.14\).
 \end{quote}
 
 In beiden Fällen liegt ein schwacher Effekt vor. Der Effekt bei der Alexithymie ist schwächer als der Effekt bei der Vermögensstudie. Der \(p\)-Wert sagt aber aus, dass der Effekt beim Vermögen durch die Zufallsstichprobe zustande gekommen ist, während es bei der Alexithymie unwahrscheinlich ist, dass der Effekt durch die Zufallsstichprobe zustande gekommen ist.
@@ -1946,7 +1946,7 @@ Reproduziere das Beispiel Vermögen \ref{exm:vermoegen} mit \texttt{Jamovi} inde
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/05-exr-vermoegen-jmv-output} \caption{Deskriptive Statistiken.}\label{fig:sol-vermoegen-output}
+\includegraphics[width=1\linewidth]{figures/05-exr-vermoegen-jmv-output} \caption{Testresultat Einstichproben-t-Test und deskriptive Statistiken.}\label{fig:sol-vermoegen-output}
 \end{figure}
 
 \end{solution}
@@ -1976,7 +1976,7 @@ Reproduziere das Beispiel Alexithymie \ref{exm:alexithymie} mit \texttt{Jamovi} 
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/05-exr-alexithymie-jmv-output} \caption{Deskriptive Statistiken.}\label{fig:sol-alexithymie-output}
+\includegraphics[width=1\linewidth]{figures/05-exr-alexithymie-jmv-output} \caption{Testresultat Einstichproben-t-Test und deskriptive Statistiken.}\label{fig:sol-alexithymie-output}
 \end{figure}
 
 \end{solution}
@@ -2021,7 +2021,7 @@ Für diese Übung werden die Daten in \texttt{Jamovi} wie in Abbildung \ref{fig:
 \end{enumerate}
 
 \begin{quote}
-Die durchschnittliche Tageslänge (\(M = 24.6\) Stunden, \(SD = 1.8\), \(N = 57\)) unter Experimentalbedingungen unterscheidet sich signifikant von \(24\) Stunden, \(t(56) = 2.41\), \(p = 0.981, d = 0.319\).
+Ein Einstichproben-\(t\)-Test ergibt, dass die durchschnittliche Tageslänge (\(M = 24.6\) Stunden, \(SD = 1.8\), \(N = 57\)) unter Experimentalbedingungen sich signifikant von \(24\) Stunden unterscheidet, \(t(56) = 2.41\), \(p = 0.981, d = 0.319\).
 \end{quote}
 
 \begin{enumerate}
@@ -2071,12 +2071,163 @@ Für diese Übung werden die Daten in \texttt{Jamovi} wie in Abbildung \ref{fig:
 \end{enumerate}
 
 \begin{quote}
-Die durchschnittliche Schwimmzeit (\(M = 1.31\) Minuten, \(SD = 0.63\), \(N = 13\)) mit der neuen Trainingsmethode ist nicht signifikant tiefer als \(1.58\) Minuten, \(t(12) = -1.54\), \(p = .075, d = -0.426\).
+Ein Einstichproben-\(t\)-Test ergibt, dass die durchschnittliche Schwimmzeit (\(M = 1.31\) Minuten, \(SD = 0.63\), \(N = 13\)) mit der neuen Trainingsmethode nicht signifikant tiefer als \(1.58\) Minuten ist, \(t(12) = -1.54\), \(p = .075, d = -0.426\).
 \end{quote}
 
 Das Testresultat ist nicht signifikant, da der \(p\)-Wert grösser als \(5\%\) ist. Tatsächlich bedeutet \(p = .075\), dass, wenn die Nullhypothese wahr ist, das gefundene Testresultat oder dass die Schwimmer noch schneller sind in \(7.5\%\) zufällig durch die Zufallsstichprobenziehung zustande kommt. Kurz gesagt, das Resulat könnt auch Zufall sein.
 
 Die gefundene Effektstärke ist mittel. Wenn das Resultat nicht zufällig wäre, dann würde die Trainingsmethode immerhin einen mittleren Effekt erzielen. Wenn es tatsächlich einen mittleren Effekt gibt, dann könnte die Sportstudentin das Experiment nochmal mit mehr Probanden wiederholen, um den Effekt auch als statistisch signifikan nachweisen zu können. Falls der gefundene Effekt nur zufällig zustande gekommen ist und er nicht exisitiert, wird auch eine Experimentwiederholung mit mehr Probandinnen immernoch kein signifikantes Testergebnis liefern.
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:markpreisanalyse-testen}{}\label{exr:markpreisanalyse-testen}\leavevmode
+
+Die Firma Pear bringt ein neues Smartphone das F42 der Reihe Supernova X auf den Markt. Das Smartphone ist für Jugendliche im Alter von \(15-20\) Jahre konzipiert. Das Vorgängermodell F41 wurde für durchschnittlich \(300\) CHF verkauft. Um herauszufinden, ob sich die durchschnittliche Zahlbereitschaft des neuen Modells von der Zahlbereitschaft für das alte Modell abweicht, erfragt Pear bei \(70\) Jugendlichen die Zahlbereitschaft. Die Daten stehen unter \texttt{04-exr-marktpreisanalyse.sav} zur Verfügung.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Stellen Sie die oben formulierte Hypothese mit mathematischer Schreibweise dar.
+\item
+  Testen Sie die Hypothese.
+\item
+  Berichten Sie die Testergebnisse.
+\item
+  Was bedeuten die Werte Statistik, \(df\), \(p\) und Effektstärke.
+\item
+  Der Stichprobenmittelwert liegt tiefer als \(300\) CHF. Hätte man bereits hier feststellen können, dass sich die durchschnittliche Zahlungsbereitschaft verändert hat?
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+
+Für diese Übung werden die Daten in \texttt{Jamovi} wie in Abbildung \ref{fig:sol-marktpreisanalyse-testen-input} analysiert. Das Resultat der Analyse ist in Abbildung \ref{fig:sol-marktpreisanalyse-testen-output} festgehalten.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-marktpreisanalyse-testen-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-marktpreisanalyse-testen-input}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-marktpreisanalyse-testen-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-marktpreisanalyse-testen-output}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Es gibt zunächst keinen Anhaltspunkt, weshalb sich die Zahlbereitschaft geändert haben sollte. Deshalb ist die Nullhypothese \(H_0: \mu = 300\) CHF, wobei \(\mu\) für den Erwartungswert des Merkmals Preis ist. Pear fragt sich, ob der \(\mu\) von \(300\) abweicht, gibt aber keine Richtung vor. Deshalb wurde \(H_0\) zweiseitig formuliert. Das Gegenteil der Nullhypothese ist die Alternativhypothese \(H_1: \mu \neq 300\) CHF.
+\item
+  Das Testen erfolgt wie oben in den Bildschirmaufnahmen von \texttt{Jamovi} dargestellt.
+\item
+  Ein Einstichproben-\(t\)-Test ergibt, dass sich die durchschnittliche Zahlbereitschaft (\(M=288.34\) CHF, \(SD = 115.01\), \(N = 70\)) nicht signifikant von \(300\) CHF unterscheidet, \(t(69)= -0.848, p = .399, d = -0.101\).
+\item
+  Statistik entspricht der beobachteten Teststatistik in der Stichprobe. Der Wert kann im Vergleich zur \(t\)-Verteilung in Abbildung \ref{fig:t-distribution} gelesen werden. \(-0.848\) ist bei allen dargestellten Verteilungen kein seltener Wert, wenn die Nullhypothese stimmt. Dieser Wert der Statistik deutet also nicht darauf hin, dass die Nullhypothese falsch ist. Die Freiheitsgrade \(df\) bestimmen die genaue Form der t-Verteilung. In Abbildung \ref{fig:t-distribution} sind die genauen Formen für \(df = 1\), \(df = 4\) und \(df = 9\) dargestellt. Die \(t\)-Verteilung, welche die Verteilung der Mittelwerte am besten abbildet ist die mit \(df = n-1\), wobei \(n\) die Anzahl Beobachtungen ist. Es sind \(70\) Beobachtungen gemacht worden, also ist \(df = 69\). Die \(t\)-Verteilung sieht in diesem Fall ungefähr aus wie die Normalverteilung in Abbildung \ref{fig:t-distribution}. Der \(p\)-Wert von \(0.399\) bedeutet, dass die Wahrscheinlichkeit diesen Stichprobenmittelwert oder einen extremeren im Sinne der Alternativhypothese bei \(39.9\%\) liegt und damit ziemlich wahrscheinlich ist, gegeben dass die Nullhypohthese wahr ist. Auch dies reflektiert also, dass aufgrund der Stichprobe nicht geschlossen werden kann, dass der Erwartungswert von \(300\) CHF abweicht. Die Effektstärke \(d= -0.101\) ist gemäss Cohen als schwach einzustufen.
+\item
+  Der Stichprobenmittelwert sagt aus, dass in dieser Stichprobe die Zahlungsbereitschaft nicht gleich war wie für das Modell F41. Diese Aussage ist jedoch limitiert auf die Stichprobe und kann nur auf die Population ausgeweitet werden, wenn ein statistischer Test durchgeführt wurde. Es könnte ja sein, dass es einen Unterschied im Populationsmittelwert gibt, dieser aber aufgrund einer seltenen Zufallsstichprobenziehung nicht offenbar wird.
+\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:aslkdfjoeiu12342}{}\label{exr:aslkdfjoeiu12342}\leavevmode
+
+TODO
+
+\end{exercise}
+
+\begin{solution}
+TODO
+\end{solution}
+
+\section{Test}\label{test-2}
+
+\begin{exercise}
+\protect\hypertarget{exr:test-theorie}{}\label{exr:test-theorie}
+
+Welche der folgenden Aussagen zum Einstichproben-\(t\)-Test sind wahr, welche falsch?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Der Einstichproben-\(t\)-Test überprüft, ob der Stichprobenmittelwert einer bestimmten Zahl entspricht.
+\item
+  Beim Einstichproben-\(t\)-Test ist die Teststatistik \(t\)-verteilt mit \(n-1\) Freiheitsgraden.
+\item
+  Der \(p\)-Wert ist immer kleiner als das Signifikanzniveau.
+\item
+  \(H_1: \mu > 50\) ist eine mögliche Formulierung für die Alternativhypothese des Einstichproben-\(t\)-Test.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Falsch
+\item
+  Richtig
+\item
+  Falsch
+\item
+  Richtig
+\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:test-drink-usa}{}\label{exr:test-drink-usa}
+
+In der Schweiz wird empfohlen \(3\) Liter Flüssigkeit pro Tag zu sich zu nehmen. Auf einer Reise in die USA fragt Karin zufällige Leute nach ihrer Flüssigkeitsaufnahme. Die Daten notiert sie im Datensatz \texttt{05-exr-drink-usa}. Sie will nun testen, ob alle Leute in den USA durchschnittlich mehr Flüssigkeit pro Tag zu sich nehmen, als es in der Schweiz empfohlen ist. Testen Sie die Hypothese einem Einstichproben-\(t\)-Test, stellen Sie dabei \texttt{Jamovi} auf \(3\) Nachkommastellenrundung ein. Welche der folgenden Aussagen sind wahr, welche falsch.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Die durchschnittliche Flüssigkeitsaufnahme ist in den USA signifikant grösser als in der Schweiz empfohlen.
+\item
+  Der gefundene Effekt ist gemäss Cohen als gross einzustufen.
+\item
+  Karin hat \(14\) Personen befragt.
+\item
+  Die Nullhypothese lautet \(H_0: \mu \leq 3\) Liter.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Richtig
+\item
+  Falsch
+\item
+  Falsch
+\item
+  Richtig
+\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:98zvh3blbel}{}\label{exr:98zvh3blbel}\leavevmode
+
+TODO
+
+\end{exercise}
+
+\begin{solution}
+TODO
 \end{solution}
 
 \part{Zwei Gruppen vergleichen}\label{part-zwei-gruppen-vergleichen}
@@ -2545,6 +2696,10 @@ TODO: solution body
 \item
   \hyperref[customdef-cohens-d]{Cohens \(d\) für Zweistichproben-t-Test}
 \item
+  \hyperref[customdef-einseitige-hypothese]{einseitige Hypothese}
+\item
+  \hyperref[customdef-t-test]{Einstichproben-\(t\)-Test}
+\item
   \hyperref[customdef-erwartungswert]{Erwartungswert}
 \item
   \hyperref[customdef-freiheitsgrade]{Freiheitsgrade}
@@ -2559,7 +2714,7 @@ TODO: solution body
 \item
   \hyperref[customdef-iqr]{Interquartilabstand}
 \item
-  \hyperref[customdef-interval]{Intervalles}
+  \hyperref[customdef-interval]{Intervalls}
 \item
   \hyperref[customdef-intervallskaliert]{intervallskaliert}
 \item
@@ -2577,8 +2732,6 @@ TODO: solution body
 \item
   \hyperref[customdef-nullhypothese]{Nullhypothese}
 \item
-  \hyperref[customdef-pwert]{p-Wert}
-\item
   \hyperref[customdef-perzentil]{Perzentil}
 \item
   \hyperref[customdef-population]{Population}
@@ -2594,8 +2747,6 @@ TODO: solution body
   \hyperref[customdef-stichprobenziehung]{Stichprobenziehung}
 \item
   \hyperref[customdef-student-verteilung]{Student-\(t\)-Verteilung}
-\item
-  \hyperref[customdef-t-test]{\(t\)-Test}
 \item
   \hyperref[customdef-teststatistik]{Teststatistik}
 \item
