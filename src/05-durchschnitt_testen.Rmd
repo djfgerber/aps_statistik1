@@ -578,7 +578,7 @@ gen_exr_circadian <- function(){
   x_mean_sym <- mu0 + (mu0 - x_mean)
   x_sd <- x %>% sd()
   t_emp <- (x_mean - mu0)/(x_sd/sqrt(n))
-  p_value_the <- 1-2*pt((x_mean - mu0)/ (x_sd / sqrt(n)), n-1)
+  p_value_the <- 2*(1-pt(abs((x_mean - mu0)/ (x_sd / sqrt(n))), n-1))
   effect_size <- (x_mean - mu0) / x_sd
   
   file_name <- '05-exr-circadian.sav'
