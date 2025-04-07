@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  4 APR 2025 12:18
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  7 APR 2025 13:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1963,7 +1963,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--7
 
 [121
 
-])
+]
+Underfull \hbox (badness 10000) in paragraph at lines 89--93
+[]\TU/lmr/m/n/10 Zimmerman, D. W. (2004).  A note on preliminary tests
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--93
+\TU/lmr/m/n/10 of equality of variances.  57(1):173–181.  _eprint:
+ []
+
+)
 
 [122] (./aps_statistik1.aux)
  ***********

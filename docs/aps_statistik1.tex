@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{04 April, 2025}
+\date{07 April, 2025}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2327,7 +2327,7 @@ Es wird keine Annahme über die Richtung einer eventualen Mittelwertdifferenz an
 \(H_1: \mu_\text{PTSD} \neq \mu_\text{non-PTSD}.\)
 \end{quote}
 
-In diesem Beispiel sind die Standardabweichungen und demnach auch die Varianzen der Reaktionszeiten in den beiden Gruppen sehr unterschiedlich. Wenn das Experiment wiederum wiederholt wird, kann der Verteilung der Mittelwertdifferenzen entnommen werden, dass der Zweistichproben-\(t\)-Test nach Student diese Verteilung nicht gut abbildet. Die rote Linie in Abbildung \ref{fig:exm-emotional-stroop-hist} liegt mittig zu tief und an den Enden zu hoch. Wird diese Annäherung in diesem Fall verwendet, dann besteht die Gefahr, dass ein signifikanter Mittelwertunterschied nicht erkannt wird.
+In diesem Beispiel sind die Standardabweichungen und demnach auch die Varianzen der Reaktionszeiten in den beiden Gruppen sehr unterschiedlich. Wenn das Experiment wiederum wiederholt wird, kann der Verteilung der Mittelwertdifferenzen entnommen werden, dass der Zweistichproben-\(t\)-Test nach Student diese Verteilung nicht gut abbildet. Die rote Linie in Abbildung \ref{fig:exm-emotional-stroop-hist} liegt mittig zu hoch und an den Enden zu tief Wird diese Annäherung in diesem Fall verwendet, dann besteht die Gefahr, dass ein signifikanter Mittelwertunterschied nicht erkannt wird.
 
 \begin{figure}
 \centering
@@ -2362,7 +2362,7 @@ Der Zweistichproben-\(t\)-Test und der Welch-Test sind also zwei Testvarianten, 
 
 \section{Effektstärken}\label{effektstuxe4rken}
 
-In den Fromeln \eqref{eq:t-emp-twosample-t} und \eqref{eq:t-emp-twosample-welch} kann beobachtet werden, dass mit zunehmenden Stichprobengrössen der Gruppen der Nenner immer kleiner und damit die Teststatistik \(t\) für eine gleichbleibende Mittelwert differenz immer grösser wird. Dies bedeutet, dass auch kleine Mittelwertdifferenzen bei grossen Stichprobengrösse signifikanten - also nicht auf die zufällige Stichprobenziehung zurückzuführenden - Unterschied darstellen. Beim Trennungsschmerzbeispiel ist der Mittelwertunterschied von \(0.25\) gering. Dies trotz dem \(p\)-Wert des Welch-Test von \(p=.004\), welcher auf einen stark signifikanten Mittelwertunterschied hindeutet. Umgekehrt bei der posttraumatischen Belastungsstörung: Hier ist der Mittelwertunterschied mit \(104\) ms substanziell, aber der \(p\)-Wert des Welch-Test von \(p=.052\) deutet knapp auf keine signifikante Mittelwertdifferenz hin.
+In den Formeln \eqref{eq:t-emp-twosample-t} und \eqref{eq:t-emp-twosample-welch} kann beobachtet werden, dass mit zunehmenden Stichprobengrössen der Gruppen der Nenner immer kleiner und damit die Teststatistik \(t\) für eine gleichbleibende Mittelwertdifferenz immer grösser wird. Dies bedeutet, dass auch kleine Mittelwertdifferenzen bei grossen Stichprobengrösse signifikanten - also nicht auf die zufällige Stichprobenziehung zurückzuführenden - Unterschied darstellen. Beim Trennungsschmerzbeispiel ist der Mittelwertunterschied von \(0.25\) gering. Dies trotz dem \(p\)-Wert des Welch-Test von \(p=.004\), welcher auf einen stark signifikanten Mittelwertunterschied hindeutet. Umgekehrt bei der posttraumatischen Belastungsstörung: Hier ist der Mittelwertunterschied mit \(104\) ms substanziell, aber der \(p\)-Wert des Welch-Test von \(p=.052\) deutet knapp auf keine signifikante Mittelwertdifferenz hin.
 
 Würde die Relevanz des beobachteten Effekts mit der Mittelwertsdifferenz gemessen, dann wäre, analog zu Kapitel \ref{zentrale-tendenz-testen}, dieses Mass wieder abhängig von der Einheit. Um dies zu verhindern, wird die Mittelwertdifferenz wieder durch die Standardabweichung geteilt. Für die konkrete Berechnung der Effektstärke gibt es verschiedene Methoden, wovon drei hier vorgestellt werden:
 
@@ -2393,7 +2393,7 @@ Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche emotionale Antwor
 \end{quote}
 
 \begin{quote}
-Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Reaktionszeit beim emotionalen Stroop-Test bei Veteranen ohne PTSD (\(M = 636.86\), \(SD = 106.08\), \(N = 16\)) nicht signifikant anders ist als bei Menschen mit PTSD (\(M = 740.98\), \(SD = 226.81\), \(N = 26\)), \(t(37.9) = -2.01\), \(p = .052, d = -0.096\).
+Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Reaktionszeit beim emotionalen Stroop-Test bei Veteranen ohne PTSD (\(M = 636.86\), \(SD = 106.08\), \(N = 16\)) nicht signifikant anders ist als bei Menschen mit PTSD (\(M = 740.98\), \(SD = 226.81\), \(N = 26\)), \(t(37.9) = -2.01\), \(p = .052, d = -0.588\).
 \end{quote}
 
 Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit auf den EST um einen mittleren Effekt.
