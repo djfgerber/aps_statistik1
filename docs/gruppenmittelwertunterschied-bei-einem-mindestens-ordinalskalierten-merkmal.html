@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 7 Gruppenmittelwertunterschied bei einem mindestens ordinalskalierten Merkmal | Statistik 1</title>
+  <meta name="description" content="Kapitel 7 Gruppenmittelwertunterschied bei einem mindestens ordinalskalierten Merkmal | Statistik 1" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 7 Gruppenmittelwertunterschied bei einem mindestens ordinalskalierten Merkmal | Statistik 1" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 7 Gruppenmittelwertunterschied bei einem mindestens ordinalskalierten Merkmal | Statistik 1" />
+  
+  
+  
+
+<meta name="author" content="Daniel J. F. Gerber" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"/>
+<link rel="next" href="begriffsverzeichnis.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Vorwort</a></li>
+<li class="chapter" data-level="1" data-path="einleitung.html"><a href="einleitung.html"><i class="fa fa-check"></i><b>1</b> Einleitung</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="einleitung.html"><a href="einleitung.html#worum-geht-es"><i class="fa fa-check"></i><b>1.1</b> Worum geht es?</a></li>
+<li class="chapter" data-level="1.2" data-path="einleitung.html"><a href="einleitung.html#inhaltlicher-aufbau"><i class="fa fa-check"></i><b>1.2</b> Inhaltlicher Aufbau</a></li>
+<li class="chapter" data-level="1.3" data-path="einleitung.html"><a href="einleitung.html#buch-lesen"><i class="fa fa-check"></i><b>1.3</b> Wie soll ich dieses Buch lesen?</a></li>
+<li class="chapter" data-level="1.4" data-path="einleitung.html"><a href="einleitung.html#formeln"><i class="fa fa-check"></i><b>1.4</b> Formeln, Symbole und Zahlen</a></li>
+<li class="chapter" data-level="1.5" data-path="einleitung.html"><a href="einleitung.html#software"><i class="fa fa-check"></i><b>1.5</b> Software</a></li>
+</ul></li>
+<li class="part"><span><b>I Eine intervallskaliertes Merkmal</b></span></li>
+<li class="chapter" data-level="2" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html"><i class="fa fa-check"></i><b>2</b> Intervallskalierte Merkmale</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskalierte-merkmale-definition"><i class="fa fa-check"></i><b>2.1</b> Was ist ein intervallskaliertes Merkmal?</a></li>
+<li class="chapter" data-level="2.2" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskalierte-merkmale-beschreibung"><i class="fa fa-check"></i><b>2.2</b> Wie kann ein intervallskaliertes Merkmal beschrieben werden?</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#verteilung"><i class="fa fa-check"></i><b>2.2.1</b> Verteilung</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#zentralitaet"><i class="fa fa-check"></i><b>2.2.2</b> Zentralität</a></li>
+<li class="chapter" data-level="2.2.3" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#variabilitaet"><i class="fa fa-check"></i><b>2.2.3</b> Variabilität</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskaliertes-merkmal-uebungen"><i class="fa fa-check"></i><b>2.3</b> Übungen</a></li>
+<li class="chapter" data-level="2.4" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskaliertes-merkmal-test"><i class="fa fa-check"></i><b>2.4</b> Test</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html"><i class="fa fa-check"></i><b>3</b> Stichprobenziehung</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#stichprobenziehung-problem"><i class="fa fa-check"></i><b>3.1</b> Was ist das Problem der Stichprobenziehung?</a></li>
+<li class="chapter" data-level="3.2" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#stichprobenziehung-loesung"><i class="fa fa-check"></i><b>3.2</b> Wie kann man Aussagen über die Grundgesamtheit machen?</a></li>
+<li class="chapter" data-level="3.3" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#übungen"><i class="fa fa-check"></i><b>3.3</b> Übungen</a></li>
+<li class="chapter" data-level="3.4" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#test"><i class="fa fa-check"></i><b>3.4</b> Test</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html"><i class="fa fa-check"></i><b>4</b> Durchschnitt und Standardabweichung schätzen</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#wo-liegt-der-durchschnitt-der-grundgesamtheit"><i class="fa fa-check"></i><b>4.1</b> Wo liegt der Durchschnitt der Grundgesamtheit?</a></li>
+<li class="chapter" data-level="4.2" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#übungen-1"><i class="fa fa-check"></i><b>4.2</b> Übungen</a></li>
+<li class="chapter" data-level="4.3" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#test-1"><i class="fa fa-check"></i><b>4.3</b> Test</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html"><i class="fa fa-check"></i><b>5</b> Zentrale Tendenz testen</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html#entspricht-der-erwartungswert-einem-gewissen-wert"><i class="fa fa-check"></i><b>5.1</b> Entspricht der Erwartungswert einem gewissen Wert?</a></li>
+<li class="chapter" data-level="5.2" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html#weicht-der-gefundene-durchschnitt-stark-vom-hypothetischen-wert-ab"><i class="fa fa-check"></i><b>5.2</b> Weicht der gefundene Durchschnitt stark vom hypothetischen Wert ab?</a></li>
+<li class="chapter" data-level="5.3" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html#übungen-2"><i class="fa fa-check"></i><b>5.3</b> Übungen</a></li>
+<li class="chapter" data-level="5.4" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html#test-2"><i class="fa fa-check"></i><b>5.4</b> Test</a></li>
+</ul></li>
+<li class="part"><span><b>II Zwei Gruppen vergleichen</b></span></li>
+<li class="chapter" data-level="6" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><i class="fa fa-check"></i><b>6</b> Gruppenmittelwertunterschied bei einem intervallskalierten und normalverteilten Merkmal</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#was-ist-das-problem-der-stichprobenziehung"><i class="fa fa-check"></i><b>6.1</b> Was ist das Problem der Stichprobenziehung?</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#erwartungswertunterschied-zweistichproben-t-test-nach-student"><i class="fa fa-check"></i><b>6.1.1</b> Erwartungswertunterschied Zweistichproben-<span class="math inline">\(t\)</span>-Test nach Student</a></li>
+<li class="chapter" data-level="6.1.2" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#erwartungswertunterschied-welch-test"><i class="fa fa-check"></i><b>6.1.2</b> Erwartungswertunterschied Welch Test</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#effektstärken"><i class="fa fa-check"></i><b>6.2</b> Effektstärken</a></li>
+<li class="chapter" data-level="6.3" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#testvoraussetzungen"><i class="fa fa-check"></i><b>6.3</b> Testvoraussetzungen</a></li>
+<li class="chapter" data-level="6.4" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#übungen-3"><i class="fa fa-check"></i><b>6.4</b> Übungen</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><i class="fa fa-check"></i><b>7</b> Gruppenmittelwertunterschied bei einem mindestens ordinalskalierten Merkmal</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#wie-stark-unterscheiden-sich-die-mediane"><i class="fa fa-check"></i><b>7.1</b> Wie stark unterscheiden sich die Mediane?</a></li>
+<li class="chapter" data-level="7.2" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#effektstärke"><i class="fa fa-check"></i><b>7.2</b> Effektstärke</a></li>
+<li class="chapter" data-level="7.3" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#übungen-4"><i class="fa fa-check"></i><b>7.3</b> Übungen</a></li>
+<li class="chapter" data-level="7.4" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#test-3"><i class="fa fa-check"></i><b>7.4</b> Test</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="begriffsverzeichnis.html"><a href="begriffsverzeichnis.html"><i class="fa fa-check"></i>Begriffsverzeichnis</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistik 1</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Kapitel 7</span> Gruppenmittelwertunterschied bei einem mindestens ordinalskalierten Merkmal<a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Um einen Gruppenmittelwertunterschied mit dem Zweistichproben-<span class="math inline">\(t\)</span>-Test oder dem Welch Test testen zu können muss das betrachtete Merkmal intervallskaliert und die Beobachtungen beider Gruppen einer Normalverteilung entstammen. Dies ist in der Realität nicht immer gegeben. Eine Alternative zu den oben genannten Tests, welche ohne diese Voraussetzungen auskommt, ist der <span class="math inline">\(U\)</span>-Test nach Mann und Whitney. Dieser kann bei mindestens ordinalskalierten Variablen eingesetzt werden und es wird keine Verteilung der Daten vorausgesetzt.</p>
+<p>Da der <span class="math inline">\(U\)</span>-Test keine Verteilung voraussetzt und auch bei nicht intervallskalierten Merkmalen eingesetzt werden kann sind jedoch auch die Hypothesen leicht anders als beim Welch Test. Der <span class="math inline">\(U\)</span>-Test testet in jedem Fall, ob die Verteilungen in den beiden Gruppen gleich sind. Unter ein paar Zusatzannahmen ist dies Äquivalent zur Hypothese, dass die beiden Populationsmediane sich entsprechen. Auf diese letzte Subtilität wird hier nicht eingegangen.</p>
+<div id="wie-stark-unterscheiden-sich-die-mediane" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Wie stark unterscheiden sich die Mediane?<a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#wie-stark-unterscheiden-sich-die-mediane" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="example">
+<p><span id="exm:red-hair-pain" class="example"><strong>Beispiel 7.1  (Schmerzen bei Rothaarigen.) </strong></span>Beispiel frei nach <span class="citation">Robinson et al. (<a href="#ref-robinson2021">2021</a>)</span>. Viele rothaarige Menschen haben eine höhere Schmerztoleranz. Der Mechanismus dazu ist auf das MC4R-Gen zurückzuführen, welches vor allem bei Rothaarigen vorkommt. Um dies zu testen haben Forschende die Schmerztoleranz von Mäusen mit und ohne MC4R-Gen-Variante untersucht, indem sie den sogenannten <em>Hot Plate Test</em> durchgeführt haben. Dabei werden die Mäuse auf eine erhitzte Platte gestellt und die Zeit in Sekunden gemessen, bis die Maus anfängt zu hüpfen oder sich die Pfoten zu lecken, um den Schmerz zu reduzieren. Dies bei einer maximalen Versuchszeit von <span class="math inline">\(20\)</span> Sekunden. Die Daten sind unter <code>07-exm-red-hair-pain.sav</code> verfügbar. Die Beobachtete Stichprobe ergibt, dass es die <span class="math inline">\(N = 13\)</span> MC4R-Mäuse <span class="math inline">\(M = 12s, SD = 1.93\)</span> und die <span class="math inline">\(15\)</span> Non-MC4R-Mäuse <span class="math inline">\(M = 7.8s, SD = 2.16\)</span> auf der heissen Platte ausgehalten haben. Werden die Daten auf die Normalverteilung getestet ergibt sich kein klares Bild. Es könnte sein, dass die Daten nicht normalverteilt sind. Ein Welch Test wäre in diesem Fall nicht angebracht. Da der <span class="math inline">\(U\)</span>-Test keine Normalverteilung voraussetzt, kann dieser hier verwendet werden.</p>
+</div>
+<p>Beim <span class="math inline">\(U\)</span>-Test nach Mann und Whitney, werden zunächst die Beobachtungen ungeachtet der Gruppenzugehörigkeit in eine aufsteigende Reihenfolge gebracht, siehe mittige Punkte in Abbildung <a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#fig:exm-red-hair-pain-utest-order">7.1</a>. Die so sortierten Beobachtungen werden nummeriert, was den sogenannten Rangnummern entspricht. Für gleiche Ränge wird den betreffenden Rängen ein mittlerer Rang zugewiesen.</p>
+<div class="figure"><span style="display:block;" id="fig:exm-red-hair-pain-utest-order"></span>
+<img src="aps_statistik1_files/figure-html/exm-red-hair-pain-utest-order-1.png" alt="Mitte: Aufsteigend sortierte Beobachtungen des Merkmals Schmerztoleranz für MC4R und Non-MC4R Mäuse. Die Zahlen stehen für die Rangnummern. Oben (MC4R) und unten (Non-MC4R) stellt die Gruppenaufteilung der Rangnummern dar." width="672" />
+<p class="caption">
+Abbildung 7.1: Mitte: Aufsteigend sortierte Beobachtungen des Merkmals Schmerztoleranz für MC4R und Non-MC4R Mäuse. Die Zahlen stehen für die Rangnummern. Oben (MC4R) und unten (Non-MC4R) stellt die Gruppenaufteilung der Rangnummern dar.
+</p>
+</div>
+<p>In einem zweiten Schritt werden die Beobachtungen wieder in die Gruppen aufgeteilt (siehe obere und untere Reihe in der Abbildung) und die jeweiligen Rangnummern innerhalb einer Gruppe addiert. Diese Gruppensummen werden Rangsummen genannt und sind hier
+<span class="math display">\[R_\text{MC4R} = 273 \quad R_\text{Non-MC4R} = 133.\]</span></p>
+<p>Die Idee dabei ist, dass wenn sich die Messungen in den beiden Gruppen nicht oder kaum unterscheiden, dann müssten auch die Rangnummern mehr oder weniger zufällig auf die beiden Gruppen verteilt sein. Gegeben, dass die beiden Gruppen gleich gross sind, müssten in diesem Fall auch die Rangsummen ungefähr gleich gross sein. Um in einem dritten Schritt für unterschiedliche Gruppengrössen zu korrigieren, wird nun noch die kleinste Rangsumme abgezogen, welche mit den Beobachtungen erreicht werden könnte. Für die <span class="math inline">\(15\)</span> Non-MC4R Beobachtungen wäre dies also <span class="math inline">\(1+2+\ldots+ 15 = 120\)</span> oder kurz <span class="math inline">\(n\cdot (n+1)/2 = 120\)</span>. Der so korrigierte Wert wird <span class="math inline">\(U\)</span>-Wert genannt und ist im Beispiel
+<span class="math display">\[U_\text{MC4R} = 273 - 91 = 182 \quad U_\text{Non-MC4R} = 133-120 = 13.\]</span>
+Wenn es keinen Gruppenunterschied gibt, dann wären diese <span class="math inline">\(U\)</span>-Werte nahe beieinander und beide Werte wären nicht nahe bei <span class="math inline">\(0\)</span>. Wenn es einen Gruppenunterschied gibt, dann sind die <span class="math inline">\(U\)</span>-Werte weit auseinander und der kleinere der beiden Werte läge nahe bei <span class="math inline">\(0\)</span>. Dies macht sich der <span class="math inline">\(U\)</span>-Test zu Nutze, indem er nun den kleineren der beiden <span class="math inline">\(U\)</span>-Werte, hier <span class="math inline">\(13\)</span> - die sogenannte Teststatistik - mit einer Referenztabelle vergleicht, wo die Wahrscheinlichkeiten für einen solchen <span class="math inline">\(U\)</span>-Wert, gegeben dass die Nullhypothese wahr ist, hinterlegt sind. Dieser Prozess ist in <code>Jamovi</code> automatisiert und es kann direkt der <span class="math inline">\(p\)</span>-Wert in der Ausgabe abgelesen werden, hier <span class="math inline">\(p &lt; 0.001\)</span>.</p>
+<div class="example">
+<p><span id="exm:aufgeschlossenheit-jung-alt" class="example"><strong>Beispiel 7.2  (Aufgeschlossenheit bei Jung und Alt.) </strong></span>Eine Studentin will herausfinden, ob jüngere Menschen unter <span class="math inline">\(30\)</span> Jahren aufgeschlossener sind als ältere Menschen mit über <span class="math inline">\(30\)</span> oder genau <span class="math inline">\(30\)</span> Jahren. Dazu befragt sie zufällig Leute der beiden Gruppen mit dem TIPI, welcher die Aufgeschlossenheit auf einer Skala von <span class="math inline">\(1\)</span> bis <span class="math inline">\(7\)</span> misst, wobei das kleinste Messintervall <span class="math inline">\(0.5\)</span> Punkte beträgt. Die Daten sind also eher ordinal als intervallskaliert. In der Stichprobe waren <span class="math inline">\(N = 13\)</span> junge mit einer Aufgeschlossenheit von <span class="math inline">\(M = 5.38, SD = 0.92\)</span> und <span class="math inline">\(N = 7\)</span> alte mit einer Aufgeschlossenheit von <span class="math inline">\(M = 5, SD = 0.87\)</span>. Die Daten sind unter <code>07-exm-aufgeschlossenheit-jung-alt.sav</code> verfügbar. (Beispiel frei erfunden.)</p>
+</div>
+<p>Auch in diesem Fall werden für den <span class="math inline">\(U\)</span>-Test zunächst die Beobachtungen gruppenunabhängig aufsteigend sortiert wie in der Mitte der Abbildung <a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#fig:exm-aufgeschlossenheit-jung-alt-utest-oder">7.2</a> dargestellt. Danach werden Rangnummern vergeben und die Beobachtungen wieder in ihre Gruppen geteilt, siehe die Reihen oben und unten der Abbildung. Die Ränge scheinen zufällig in die beiden Gruppen zu fallen.</p>
+<div class="figure"><span style="display:block;" id="fig:exm-aufgeschlossenheit-jung-alt-utest-oder"></span>
+<img src="aps_statistik1_files/figure-html/exm-aufgeschlossenheit-jung-alt-utest-oder-1.png" alt="Mitte: Aufsteigend sortierte Beobachtungen des Merkmals Schmerztoleranz für Junge und Alte. Die Zahlen stehen für die Rangnummern. Oben (Jung) und unten (Alt) stellt die Gruppenaufteilung der Rangnummern dar." width="672" />
+<p class="caption">
+Abbildung 7.2: Mitte: Aufsteigend sortierte Beobachtungen des Merkmals Schmerztoleranz für Junge und Alte. Die Zahlen stehen für die Rangnummern. Oben (Jung) und unten (Alt) stellt die Gruppenaufteilung der Rangnummern dar.
+</p>
+</div>
+<p>Nun werden die Ränge innerhalb einer Gruppe addiert
+<span class="math display">\[R_\text{Jung} = 143   \quad R_\text{Alt} = 67.\]</span>
+Die Rangsummen unterschieden sich hier nicht, weil eine Gruppe systematisch höhere Ränge erreicht, sondern, weil die Gruppe der Jungen mehr Beobachtungen enthält und damit in dieser Gruppe auch mehr Rangnummern addiert werden.</p>
+<p>Wird dies nun korrigiert, ergeben sich die <span class="math inline">\(U\)</span>-Werte
+<span class="math display">\[U_\text{Jung} = 143 - \frac{13\cdot(13+1)}{2} = 52 \quad U_\text{Alt} = 67-\frac{7\cdot(7+1)}{2} = 39.\]</span>
+Es kann festgestellt werden, dass die <span class="math inline">\(U\)</span>-Werte nicht weit auseinander und damit weit entfernt von <span class="math inline">\(0\)</span>-liegen. Dies deutet darauf hin, dass es keinen signifikanten Gruppenunterschied in der Aufgeschlossenheit gibt.</p>
+<p>Tatsächlich gibt <code>Jamovi</code> für dieses Beispiel <span class="math inline">\(p = 0.35\)</span> zurück. Letzteres kann unter <code>Analysen &gt; t-Tests &gt; t-Test für unabhängige Stichproben</code> herausgefunden werden, wenn unter <code>Tests</code> der Test <code>Mann-Whitney U</code> ausgewählt wird.</p>
+</div>
+<div id="effektstärke" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Effektstärke<a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#effektstärke" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Als Effektstärke können die bisher gesehene Masse wie Cohens <span class="math inline">\(d\)</span> nicht mehr dienen, da diese auf Parametern basieren, welche auf intervallskalierten Merkmalen beruhen. Stattdessen wird als Effektstärke die biserielle Rangkorrelation verwendet (mehr zum Thema Korrelation folgt in den nächsten Kapiteln).</p>
+<p>Zur Illustration der Berechnung der biseriellen Rangkorrelation wird folgendes Beispiel verwendet. Es soll getestet werden, ob Hasen oder Schildkröten schneller laufen können. Dazu wird auf einer Rennstrecke die Zeit von <span class="math inline">\(10\)</span> Hasen und <span class="math inline">\(10\)</span> Schildkröten gestoppt. Um die biserielle Rangkorrelation zu berechnen, werden zwischen den Beobachtungsgruppen alle möglichen Paare aufgelistet - also Hase <span class="math inline">\(1\)</span> mit Schildkröte <span class="math inline">\(1\)</span>, Hase <span class="math inline">\(1\)</span> mit Schildkröte <span class="math inline">\(2\)</span>, usw., Hase <span class="math inline">\(2\)</span> mit Schildkröte <span class="math inline">\(1\)</span>, Hase <span class="math inline">\(2\)</span> mit Schildkröte <span class="math inline">\(2\)</span>, usw., bis Hase <span class="math inline">\(10\)</span> mit Schildkröte <span class="math inline">\(10\)</span>. Dabei ergeben sich in diesem Beispiel genau <span class="math inline">\(100\)</span> Paarungen. Nehmen wir nun an, dass für <span class="math inline">\(90\)</span> dieser Paare, der Hase schneller lief als die Schildkröte und für <span class="math inline">\(10\)</span> Paare die Schildkröte schneller als der Hase. Die biserielle Rangkorrelation entspricht nun der Anzahl Paare <span class="math inline">\(f\)</span> für welche Gruppe 1 höhere Werte hatte minus der Anzahl Paare <span class="math inline">\(u\)</span> für welche Gruppe 2 höhere Werte hatte und ist
+<span class="math display">\[r = f - u = 0.9 - 0.1 = 0.8.\]</span></p>
+<p>Wären die Schildkröten in der Hälfte der so aufgelisteten Paarungen besser gewesen wäre die biserielle Rangkorrelation <span class="math inline">\(r = f-u=0.5 - 0.5 = 0\)</span>. Wären die Hasen immer besser gewesen, wäre die biserielle Rangkorrelation <span class="math inline">\(r = f-u = 1-0 = 1\)</span>. Wären die Schildkröten immer besser gewesen, wäre die biserielle Rangkorrelation <span class="math inline">\(r = f-u = 0-1 = -1\)</span>. Kein Effekt entspricht also <span class="math inline">\(r = 0\)</span>, je weiter weg von <span class="math inline">\(0\)</span> die biserielle Rangkorrelation, desto stärker ist der Effekt. Es spielt keine Rolle, ob der Effekt positiv oder negativ ist.</p>
+<p>Die biserielle Effektstärke kann auch aus der Teststatistik <span class="math inline">\(U\)</span> berechnet werden mit der Formel
+<span class="math display">\[r = \frac{2\cdot U}{n_1\cdot n_2}-1,\]</span>
+wobei hier das Vorzeichen ändert, je nach dem, für welche Gruppen <span class="math inline">\(U_1\)</span> resp. <span class="math inline">\(U_2\)</span> stehen.</p>
+<p>Die Interpretation einer Korrelation als Effektstärke unterliegt einer anderen Referenz als die bisher gesehenen Effektstärken. <span class="citation">Cohen (<a href="#ref-cohen1988">1988</a>)</span> schlägt zur Interpretation einer Korrelation die Richtgrössen</p>
+<ul>
+<li><span class="math inline">\(|r| \approx 0.1\)</span>: schwacher Effekt</li>
+<li><span class="math inline">\(|r| \approx 0.3\)</span>: mittlerer Effekt</li>
+<li><span class="math inline">\(|r| \approx 0.5\)</span>: starker Effekt</li>
+</ul>
+<p>vor. Um wieder Klarheit im Unterrichtssetting zu schaffen, werden hier die folgenden Abgrenzungen verwendet:</p>
+<ul>
+<li><span class="math inline">\(0 &lt; |r| \leq 0.2\)</span>: schwacher Effekt</li>
+<li><span class="math inline">\(0.2 &lt; |r| \leq 0.4\)</span>: mittlerer Effekt</li>
+<li><span class="math inline">\(0.4 &lt; |r|\)</span>: starker Effekt</li>
+</ul>
+<p>In Jamovi kann die biserielle Rankorrelation unter <code>Zusätzliche Statistiken &gt; Effektstärke</code> eingeblendet werden. Für die beiden Beispiele <a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#exm:red-hair-pain">7.1</a> und <a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#exm:aufgeschlossenheit-jung-alt">7.2</a> führt dies zu folgenden Effektstärken und Berichtensätzen:</p>
+<blockquote>
+<p>Ein zweiseitiger <span class="math inline">\(U\)</span>-Test nach Mann und Whitney ergibt, dass sich die mediane Schmerztoleranz von Mäusen mit MC4R Gen (<span class="math inline">\(\text{Mdn}= 11.5, N =13\)</span>) und ohne MC4R Gen (<span class="math inline">\(\text{Mdn}=7, N = 15\)</span>) signifikant unterscheidet, <span class="math inline">\(U = 13, p &lt; .001, r = -0.87\)</span> Der Effekt ist als gross einzustufen.</p>
+<p>Ein zweiseitiger <span class="math inline">\(U\)</span>-Test nach Mann und Whitney ergibt, dass sich die mediane Aufgeschlossenheit von jungen Menschen (<span class="math inline">\(\text{Mdn}= 5, N =13\)</span>) und alten Menschen (<span class="math inline">\(\text{Mdn}=5, N = 7\)</span>) nicht signifikant unterscheidet, <span class="math inline">\(U = 33.5, p = .35, r = -0.26\)</span>. Der Effekt ist als mittel einzustufen.</p>
+</blockquote>
+<div class="caution">
+<div class="remark">
+<p><span id="unlabeled-div-52" class="remark"><em>Hinweis</em>. </span>Im Berichtensatz muss Folgendes enthalten sein:</p>
+<ul>
+<li>Test und Art der Hypothesenstellung</li>
+<li>Dass es sich um einen Unterschied der Mediane handelt</li>
+<li>Zusammenfassende deskriptive Statistiken der Stichproben</li>
+<li>Statistiken des Tests inklusive Teststatistik, <span class="math inline">\(p\)</span>-Wert und Effektstärke</li>
+<li>Die Interpretation der Effektstärke kann, wenn gefragt, hinzugefügt werden.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="übungen-4" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Übungen<a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#übungen-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:tempo30" class="exercise"><strong>Übung 7.1  </strong></span></p>
+<!-- 
+Ziel: 
+- Anwendung U-Test mit Jamovi zweiseitig
+-->
+<p>Für die Dorfstrasse in Köniz wurden zwei Verkehrskonzepte verglichen Tempo 50 mit Fussgängerstreifen und Tempo 30 ohne Fussgängerstreifen. Um die beiden Verkehrskonzepte zu evaluieren, wurden verschiedene Zahlen erhoben unter anderem die Durchfahrtszeit von Autos, die Anzahl Strassenquerungen von Fussgängern und die Anzahl Unfälle. Hier soll nur die Durchfahrtszeit von Autos in Minuten betrachtet und herausgefunden werden wie sich die Verkehrskonzepte auf diese ausgewirkt haben. Fiktive Daten dazu wurden als Datensatz <code>07-exr-tempo30.sav</code> abgelegt.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Prüfen Sie, ob die Testvoraussetzung für einen Welch Test gegeben ist.</li>
+<li>Beschreiben Sie die Population und das Merkmal.</li>
+<li>Testen Sie mit einem <span class="math inline">\(U\)</span>-Test bei Signifikanzniveau <span class="math inline">\(5\%\)</span>, ob sich die medianen Durchfahrtszeiten in der Population unterscheiden. Berichten Sie das Resultat und interpretieren Sie die Effektstärke.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-53" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#fig:sol-tempo30-input">7.3</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-tempo30-input"></span>
+<img src="figures/07-exr-tempo30-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
+<p class="caption">
+Abbildung 7.3: Jamovi Eingabe.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#fig:sol-tempo30-output">7.4</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-tempo30-output"></span>
+<img src="figures/07-exr-tempo30-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 7.4: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit können die Teilfragen beantwortet werden.</p>
+<ol style="list-style-type: lower-alpha">
+<li>TODO.</li>
+<li>Die Population sind alle Autos die durch die betroffene Strasse fahren. Das Merkmal ist die Durchfahrtszeit von Autos in Minuten.</li>
+<li>Es soll getestet werden, ob sich die medianen Durchfahrtszeiten unterscheiden. Die Hypothesen für den <span class="math inline">\(U\)</span>-Test sind also zweiseitig formuliert <span class="math inline">\(H_0: \mu_\text{Tempo 30} = \mu_\text{Tempo 50}\)</span> und <span class="math inline">\(H_1: \mu_\text{Tempo 30} \neq \mu_\text{Tempo 50}\)</span>. Das Testergebnis kann aus Jamovi abgelesen werden und wird wie folgt berichtet und interpretiert:</li>
+</ol>
+<blockquote>
+<p>Ein zweiseitiger <span class="math inline">\(U\)</span>-Test nach Mann und Whitney ergibt, dass sich die mediane Durchfahrtszeit durch Köniz bei Tempo 30 (<span class="math inline">\(\text{Mdn}= 3.05 \text{Min}, N =54\)</span>) und Tempo 50 (<span class="math inline">\(\text{Mdn}=4.27 \text{Min}, N = 65\)</span>) signifikant unterscheidet, <span class="math inline">\(U = 1357, p = .034, r = -0.227\)</span>. Der Effekt ist als mittel einzustufen.</p>
+</blockquote>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:warteschlangen" class="exercise"><strong>Übung 7.2  </strong></span></p>
+<!-- 
+Ziel: 
+- Anwendung U-Test mit Jamovi zweiseitig
+-->
+<p>Ein Flughafen nimmt ein neues Terminal in betrieb. Um den Betrieb für die Zukunft zu optimieren und die Wartezeit der Gäste möglichst kurz zu halten, werden zwei Warteschlangenkonzepte getestet. Gäste werden dabei per Kamera getrackt und ihre Wartezeit in Minuten wird im Datensatz <code>07-exr-warteschlangen.sav</code> festgehalten.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Prüfen Sie, ob die Testvoraussetzung für einen Welch Test gegeben ist.</li>
+<li>Beschreiben Sie die Population und das Merkmal.</li>
+<li>Testen Sie mit einem <span class="math inline">\(U\)</span>-Test bei Signifikanzniveau <span class="math inline">\(5\%\)</span>, ob sich die medianen Wartezeiten der beiden Gruppen in der Population unterscheiden. Berichten Sie das Resultat und interpretieren Sie die Effektstärke.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-54" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#fig:sol-warteschlangen-input">7.5</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-warteschlangen-input"></span>
+<img src="figures/07-exr-warteschlangen-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
+<p class="caption">
+Abbildung 7.5: Jamovi Eingabe.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#fig:sol-warteschlangen-output">7.6</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-warteschlangen-output"></span>
+<img src="figures/07-exr-warteschlangen-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 7.6: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit können die Teilfragen beantwortet werden.</p>
+<ol style="list-style-type: lower-alpha">
+<li>TODO.</li>
+<li>Die Population sind alle Gäste, die den neuen Terminal benutzen. Das Merkmal ist die Wartezeit der Gäste in Minuten.</li>
+<li>Es soll getestet werden, ob sich die medianen Durchfahrtszeiten unterscheiden. Die Hypothesen für den <span class="math inline">\(U\)</span>-Test sind also zweiseitig formuliert <span class="math inline">\(H_0: \mu_\text{Konzept 1} = \mu_\text{Konzept 2}\)</span> und <span class="math inline">\(H_1: \mu_\text{Konzept 1} \neq \mu_\text{Konzept 2}\)</span>. Das Testergebnis kann aus <code>Jamovi</code> abgelesen werden und wird wie folgt berichtet und interpretiert:</li>
+</ol>
+<blockquote>
+<p>Ein zweiseitiger <span class="math inline">\(U\)</span>-Test nach Mann und Whitney ergibt, dass sich die mediane Wartezeit am neuen Terminal bei Konzept 1 (<span class="math inline">\(\text{Mdn}= 3.41 \text{Min}, N =51\)</span>) und Konzept 2 (<span class="math inline">\(\text{Mdn}=4.18 \text{Min}, N = 107\)</span>) nicht signifikant unterscheidet, <span class="math inline">\(U = 2345, p = .154, r = 0.141\)</span>. Der Effekt ist als klein einzustufen.</p>
+</blockquote>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:statistik-herausforderung" class="exercise"><strong>Übung 7.3  </strong></span></p>
+<!--
+Ziel:
+- Anwendung U-Test mit Jamovi einseitig
+-->
+<p>Studierende der Kurse Statistik <span class="math inline">\(1\)</span> und <span class="math inline">\(2\)</span> sollen auf einer Skala von <span class="math inline">\(1\)</span> bis <span class="math inline">\(10\)</span> bewerten (<span class="math inline">\(1=\)</span> gar nicht herausfordernd, <span class="math inline">\(10 =\)</span> äusserst herausfordernd), wie herausfordernd der Statistikunterricht für sie ist. Wird von allen Studierenden der Kurs Statistik <span class="math inline">\(2\)</span> durchschnittlich als herausfordernder betrachtet als Statistik <span class="math inline">\(1\)</span>?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Stellen Sie die Testhypothesen auf.</li>
+<li>Weshalb wird hier ein <span class="math inline">\(U\)</span>-Test gegenüber einem Welch Test bevorzugt?</li>
+<li>Führen Sie einen <span class="math inline">\(U\)</span>-Test durch mit Signifikanzniveau <span class="math inline">\(5\%\)</span>, berichten Sie das Ergebnis in einem Satz und interpretieren Sie die Effektstärke. Die Daten sind unter <code>07-exr-statistik-herausforderung.sav</code> verfügbar. (Beispiel frei erfunden.)</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-55" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#fig:sol-statistik-herausforderung-input">7.7</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-statistik-herausforderung-input"></span>
+<img src="figures/07-exr-statistik-herausforderung-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
+<p class="caption">
+Abbildung 7.7: Jamovi Eingabe.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#fig:sol-statistik-herausforderung-output">7.8</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-statistik-herausforderung-output"></span>
+<img src="figures/07-exr-statistik-herausforderung-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 7.8: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit können die Teilfragen beantwortet werden.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Die Frage “Wird von allen Studierenden der Kurs Statistik <span class="math inline">\(2\)</span> durchschnittlich als herausfordernder betrachtet als Statistik <span class="math inline">\(1\)</span>” ist einseitig formuliert. Es soll getestet werden, ob <span class="math inline">\(H_1: \mu_\text{Statistik 1} &lt; \mu_\text{Statistik 2}\)</span>. Dies entspricht der Nullhypothese <span class="math inline">\(H_0: \mu_\text{Statistik 1} \geq \mu_\text{Statistik 2}\)</span></li>
+<li>Hier wird ein <span class="math inline">\(U\)</span>-Test verwendet, da das Merkmal auf einem einzigen Likert-skaliertem Merkmal beruht. Dieses ist demnach ordinalskaliert. Ein Welch Test eignet sich nur für intervallskalierte Merkmale.</li>
+<li>Das Testergebnis kann aus <code>Jamovi</code> abgelesen werden und wird wie folgt berichtet und interpretiert:</li>
+</ol>
+<blockquote>
+<p>Ein einseitiger <span class="math inline">\(U\)</span>-Test nach Mann und Whitney ergibt, dass die mediane Herausforderung in Statistik 2 (<span class="math inline">\(\text{Mdn}=7, N = 5\)</span>) signifikant grösser ist als in Statistik 1 (<span class="math inline">\(\text{Mdn}= 3.5, N =6\)</span>), <span class="math inline">\(U = 2, p = .011, r = 0.867\)</span>. Der Effekt ist als gross einzustufen.</p>
+</blockquote>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:depression-ecstasy" class="exercise"><strong>Übung 7.4  </strong></span>Eine Neurologin sammelt Daten, um die depressive Wirkung bestimmter Freizeitdrogen zu untersuchen. Sie schickt dazu <span class="math inline">\(20\)</span> männliche Clubgänger unter kontrollierten Bedingungen während vier Stunden in ein Tanzlokal. Zehn Testpersonen nehmen eine Ecstasy Pille ein, die zehn anderen trinken einen Liter Bier. Der Grad der Depression wird mit dem Beck Depression Inventory (BDI) zwölf Stunden nach dem Verlassen des Tanzlokals gemessen. Die Daten sind unter <code>07-exr-depression-ecstasy.sav</code> verfügbar. Ist die durchschnittliche Schwere der Nachtanzdepression bei der Ecstasy-Gruppe schlimmer als bei der Alkohol-Gruppe? Testen Sie mit einem <span class="math inline">\(U\)</span>-Test, berichten Sie das Testresultat und schätzen sie die Effektstärke ein.</p>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-56" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#fig:sol-depression-ecstasy-input">7.9</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-depression-ecstasy-input"></span>
+<img src="figures/07-exr-depression-ecstasy-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
+<p class="caption">
+Abbildung 7.9: Jamovi Eingabe.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#fig:sol-depression-ecstasy-output">7.10</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-depression-ecstasy-output"></span>
+<img src="figures/07-exr-depression-ecstasy-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 7.10: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit kann die Frage nun beantwortet werden:</p>
+<blockquote>
+<p>Ein einseitiger <span class="math inline">\(U\)</span>-Test nach Mann und Whitney ergibt, dass die mediane Nachtanzdepression in der Ecstasy-Gruppe (<span class="math inline">\(\text{Mdn}=17.5, N = 10\)</span>) nicht signifikant grösser ist als in der Alkohol-Gruppe (<span class="math inline">\(\text{Mdn}= 16, N =10\)</span>), <span class="math inline">\(U = 35.5, p = .143, r = -0.290\)</span>. Der Effekt ist als mittel einzustufen.</p>
+</blockquote>
+</details>
+</div>
+</div>
+<div id="test-3" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Test<a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#test-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>TODO.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-cohen1988" class="csl-entry">
+Cohen, Jacob. 1988. <em>Statistical Power Analysis for the Behavioral Sciences</em>. 2nd ed. Routledge.
+</div>
+<div id="ref-robinson2021" class="csl-entry">
+Robinson, Kathleen C., Lajos V. Kemény, Gillian L. Fell, Andrea L. Hermann, Jennifer Allouche, Weihua Ding, Ajay Yekkirala, et al. 2021. <span>“Reduced <span>MC</span>4R Signaling Alters Nociceptive Thresholds Associated with Red Hair.”</span> <em>Science Advances</em> 7 (14): eabd1310. <a href="https://doi.org/10.1126/sciadv.abd1310">https://doi.org/10.1126/sciadv.abd1310</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="begriffsverzeichnis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": true,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": null
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/djfgerber/aps_statistik1/edit/main/src/07-u_test.Rmd",
+"text": "Edit this page"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["aps_statistik1.pdf", "pdf"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"info": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

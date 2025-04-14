@@ -24,6 +24,7 @@ library(kableExtra)
 source('src/r/bag_sampling.R')
 source('src/r/plots.R')
 source('src/r/effect_size.R')
+source('src/r/u_test.R')
 
 options(scipen=999)
 

@@ -1,7 +1,7 @@
 # (PART) Zwei Gruppen vergleichen {-}
 
 
-# Mittelwertunterschied einer intervallskalierten Variable
+# Gruppenmittelwertunterschied bei einem intervallskalierten und normalverteilten Merkmal
 
 Bislang wurde versucht mithilfe _einer_ Stichprobe eine Aussage über _eine_ Population zu treffen. Dies setzt voraus, dass der Erwartungswert bereits aus früheren Untersuchungen bekannt ist oder theoretisch hergeleitet werden kann (Beispiel zirkadianer Rhythmus). In der Realität ist dies oft nicht der Fall. Es muss also gleichzeitig etwas über eine potenziell veränderte Population und über die Referenzpopulation herausgefunden werden. Im experimentellen Kontext entspricht dies dem Vergleich der Experimental- mit der Kontrollgruppe. Im observationellen Kontext wird die Referenzgruppe willkürlich bestimmt.
 
@@ -421,8 +421,9 @@ Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit 
 
 ::::
 
+## Testvoraussetzungen
 
-
+TODO.
 
 
 ## Übungen
@@ -451,6 +452,8 @@ gen_exr_bobo2groups <- function(){
 
   jmv_res <- dd %>%
     jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
+                 norm = TRUE,
+                 qq=TRUE,
                 desc = TRUE,
                  welchs = TRUE, 
                  mann = FALSE, 
@@ -518,6 +521,7 @@ gen_exr_gruppenpuzzle <- function(){
 
   jmv_res <- dd %>%
     jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
+                 qq=TRUE, norm = TRUE,
                 desc = TRUE,
                  welchs = TRUE, 
                  mann = FALSE, 
@@ -582,7 +586,7 @@ gen_exr_music_memory <- function(){
 
   jmv_res <- dd %>%
     jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
-                desc = TRUE,
+                desc = TRUE, qq = TRUE, norm = TRUE,
                  welchs = TRUE, 
                  mann = FALSE, 
                  effectSize = TRUE)

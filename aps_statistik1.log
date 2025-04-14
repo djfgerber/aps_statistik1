@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  7 APR 2025 13:12
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  14 APR 2025 13:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1027,7 +1027,12 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line 4.
 
 
-[3])
+[3]
+Underfull \hbox (badness 1210) in paragraph at lines 33--33
+  [][]\TU/lmr/bx/n/10 Gruppenmittelwertunterschied bei einem intervallskalierten 
+ []
+
+)
 \tf@toc=\write4
 \openout4 = `aps_statistik1.toc'.
 
@@ -1729,9 +1734,17 @@ Underfull \hbox (badness 1565) in paragraph at lines 2128--2129
 [96]
 \bbl@ensure@ngerman {Kapitel} 6.
 
+Overfull \hbox (32.00671pt too wide) in paragraph at lines 2235--2235
+[]\TU/lmr/bx/n/24.88 Gruppenmittelwertunterschied 
+ []
+
+
 Underfull \hbox (badness 2409) in paragraph at lines 2243--2243
 []\TU/lmr/bx/n/14.4 Was ist das Problem der Stichproben-
  []
+
+
+Underfull \vbox (badness 5802) has occurred while \output is active []
 
 
 
@@ -1740,19 +1753,25 @@ Underfull \hbox (badness 2409) in paragraph at lines 2243--2243
 ]
 File: aps_statistik1_files/figure-latex/exm-breakup-bagplot-1.pdf Graphic file (type pdf)
 <use aps_statistik1_files/figure-latex/exm-breakup-bagplot-1.pdf>
-
-
-
-Overfull \hbox (84.75671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 98 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
- []
-
-[98]
 File: aps_statistik1_files/figure-latex/exm-breakup-hist-1.pdf Graphic file (type pdf)
 <use aps_statistik1_files/figure-latex/exm-breakup-hist-1.pdf>
 
 
+
+Overfull \hbox (295.14345pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 98 \TU/lmr/m/sl/10 KAPITEL 6.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM INTERVALLSKALIERTEN UND NORMALVERTEILTEN MERKMAL
+ []
+
+[98]
+
 [99]
+
+
+Overfull \hbox (300.14345pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 100 \TU/lmr/m/sl/10 KAPITEL 6.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM INTERVALLSKALIERTEN UND NORMALVERTEILTEN MERKMAL
+ []
+
+[100]
 Overfull \hbox (33.0pt too wide) in paragraph at lines 2284--2284
 []\TU/lmtt/m/n/10 ## Warning: Removed 2 rows containing non-finite outside the scale range 
  []
@@ -1766,12 +1785,7 @@ File: aps_statistik1_files/figure-latex/exm-breakup-hist-pval-reja-1.pdf Graphic
 <use aps_statistik1_files/figure-latex/exm-breakup-hist-pval-reja-1.pdf>
 
 
-
-Overfull \hbox (89.75671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 100 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
- []
-
-[100]
+[101]
 Underfull \hbox (badness 6792) in paragraph at lines 2319--2320
 [][]\TU/lmr/bx/n/10 Beispiel 6.2 \TU/lmr/m/n/10 (Emotionaler Stroop-Test bei posttraumatischer Belas-
  []
@@ -1783,17 +1797,17 @@ Underfull \hbox (badness 3547) in paragraph at lines 2319--2320
 
 
 
-[101]
+
+Overfull \hbox (300.14345pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 102 \TU/lmr/m/sl/10 KAPITEL 6.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM INTERVALLSKALIERTEN UND NORMALVERTEILTEN MERKMAL
+ []
+
+[102]
 File: aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-1.pdf Graphic file (type pdf)
 <use aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-1.pdf>
 
 
-
-Overfull \hbox (89.75671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 102 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
- []
-
-[102]
+[103]
 Overfull \hbox (106.5pt too wide) in paragraph at lines 2353--2353
 []\TU/lmtt/m/n/10 ## Warning: Removed 8 rows containing missing values or values outside the scale range 
  []
@@ -1802,118 +1816,117 @@ File: aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-pval-reja-1.pd
 <use aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-pval-reja-1.pdf>
 
 
-[103]
 
-
-Overfull \hbox (89.75671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 104 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
+Overfull \hbox (300.14345pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 104 \TU/lmr/m/sl/10 KAPITEL 6.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM INTERVALLSKALIERTEN UND NORMALVERTEILTEN MERKMAL
  []
 
 [104]
+
+[105]
 File: figures/icons/caution.png Graphic file (type bmp)
 <figures/icons/caution.png>
 
 
-[105]
+
+Overfull \hbox (300.14345pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 106 \TU/lmr/m/sl/10 KAPITEL 6.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM INTERVALLSKALIERTEN UND NORMALVERTEILTEN MERKMAL
+ []
+
+[106]
 File: figures/06-exr-bobo2groups-jmv-input.jpg Graphic file (type bmp)
 <figures/06-exr-bobo2groups-jmv-input.jpg>
 File: figures/06-exr-bobo2groups-jmv-output.jpg Graphic file (type bmp)
 <figures/06-exr-bobo2groups-jmv-output.jpg>
 
-Underfull \hbox (badness 2478) in paragraph at lines 2465--2466
+
+[107]
+
+
+Overfull \hbox (300.14345pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 108 \TU/lmr/m/sl/10 KAPITEL 6.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM INTERVALLSKALIERTEN UND NORMALVERTEILTEN MERKMAL
+ []
+
+[108]
+Underfull \hbox (badness 2478) in paragraph at lines 2469--2470
 []\TU/lmr/m/n/10 Es werden Mittelwerte von einer intervallskalierten Variabel über
  []
 
 
-Underfull \hbox (badness 1436) in paragraph at lines 2465--2466
+Underfull \hbox (badness 1436) in paragraph at lines 2469--2470
 \TU/lmr/m/n/10 zwei Gruppen verglichen. Als statischer Test kommt demnach der
  []
 
 
-Underfull \hbox (badness 2913) in paragraph at lines 2465--2466
+Underfull \hbox (badness 2913) in paragraph at lines 2469--2470
 \TU/lmr/m/n/10 Zweistichproben-$[]$-Test oder der Welch-Test infrage. Aufgrund der
  []
 
-
-
-
-Overfull \hbox (89.75671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 106 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
- []
-
-[106]
-
-[107]
 File: figures/06-exr-gruppenpuzzle-jmv-input.jpg Graphic file (type bmp)
 <figures/06-exr-gruppenpuzzle-jmv-input.jpg>
 File: figures/06-exr-gruppenpuzzle-jmv-output.jpg Graphic file (type bmp)
 <figures/06-exr-gruppenpuzzle-jmv-output.jpg>
 
 
-
-Overfull \hbox (89.75671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 108 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
- []
-
-[108]
-
 [109]
 
 
-Overfull \hbox (89.75671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 110 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
+Overfull \hbox (300.14345pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 110 \TU/lmr/m/sl/10 KAPITEL 6.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM INTERVALLSKALIERTEN UND NORMALVERTEILTEN MERKMAL
  []
 
 [110]
+
+[111]
 File: figures/06-exr-music-memory-jmv-input.jpg Graphic file (type bmp)
 <figures/06-exr-music-memory-jmv-input.jpg>
 File: figures/06-exr-music-memory-jmv-output.jpg Graphic file (type bmp)
 <figures/06-exr-music-memory-jmv-output.jpg>
 
-Underfull \hbox (badness 1281) in paragraph at lines 2555--2557
+Underfull \hbox (badness 1281) in paragraph at lines 2559--2561
 \TU/lmr/m/n/10 ter Wortsilben beim Lernen mit oder ohne Musik gleich ist, also
  []
 
 
 
-[111]
 
-
-Overfull \hbox (89.75671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 112 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
+Overfull \hbox (300.14345pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 112 \TU/lmr/m/sl/10 KAPITEL 6.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM INTERVALLSKALIERTEN UND NORMALVERTEILTEN MERKMAL
  []
 
 [112]
+
+[113]
 File: figures/06-exr-hypnose-jmv-input.jpg Graphic file (type bmp)
 <figures/06-exr-hypnose-jmv-input.jpg>
 File: figures/06-exr-hypnose-jmv-output.jpg Graphic file (type bmp)
 <figures/06-exr-hypnose-jmv-output.jpg>
 
-
-[113]
-Underfull \hbox (badness 4205) in paragraph at lines 2606--2607
+Underfull \hbox (badness 4205) in paragraph at lines 2610--2611
 \TU/lmr/m/n/10 Schmerz bei einer Behandlung mit der neuen Hypnose-Methode
  []
 
 
-Underfull \hbox (badness 1418) in paragraph at lines 2614--2615
+Underfull \hbox (badness 1418) in paragraph at lines 2618--2619
 \TU/lmr/m/n/10 Umfrage zufällig verheiratete und unverheiratete Ärztinnen. Diese füllen
  []
 
 
-Underfull \hbox (badness 3098) in paragraph at lines 2620--2622
+Underfull \hbox (badness 3098) in paragraph at lines 2624--2626
 []\TU/lmr/m/n/10 Wie viele verheiratete und unverheiratete haben den Fragebogen
  []
 
 
 
 
-Overfull \hbox (89.75671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 114 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
+Overfull \hbox (300.14345pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 114 \TU/lmr/m/sl/10 KAPITEL 6.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM INTERVALLSKALIERTEN UND NORMALVERTEILTEN MERKMAL
  []
 
 [114]
-Underfull \hbox (badness 2547) in paragraph at lines 2624--2626
+
+[115]
+Underfull \hbox (badness 2547) in paragraph at lines 2628--2630
 []\TU/lmr/m/n/10 Übersetzen Sie die Hypothese der Forscherin in eine Statistische
  []
 
@@ -1923,28 +1936,155 @@ File: figures/06-exr-ehe-burnout-jmv-output.jpg Graphic file (type bmp)
 <figures/06-exr-ehe-burnout-jmv-output.jpg>
 
 
-[115]
 
-
-Overfull \hbox (89.75671pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 116 \TU/lmr/m/sl/10 KAPITEL 6.  MITTELWERTUNTERSCHIED EINER INTERVALLSKALIERTEN VARIABLE
+Overfull \hbox (300.14345pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 116 \TU/lmr/m/sl/10 KAPITEL 6.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM INTERVALLSKALIERTEN UND NORMALVERTEILTEN MERKMAL
  []
 
 [116]
+
+[117]
+
+
+Overfull \hbox (300.14345pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 118 \TU/lmr/m/sl/10 KAPITEL 6.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM INTERVALLSKALIERTEN UND NORMALVERTEILTEN MERKMAL
+ []
+
+[118]
 \bbl@ensure@ngerman {Kapitel} 7.
 
+Overfull \hbox (32.00671pt too wide) in paragraph at lines 2677--2677
+[]\TU/lmr/bx/n/24.88 Gruppenmittelwertunterschied 
+ []
 
-[117
+
+
+[119
 
 ]
+File: aps_statistik1_files/figure-latex/exm-red-hair-pain-utest-order-1.pdf Graphic file (type pdf)
+<use aps_statistik1_files/figure-latex/exm-red-hair-pain-utest-order-1.pdf>
 
-[118
 
-]
 
-[119] (./aps_statistik1.bbl
+Overfull \hbox (222.64455pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 120 \TU/lmr/m/sl/10 KAPITEL 7.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM MINDESTENS ORDINALSKALIERTEN MERKMAL
+ []
 
 [120]
+File: aps_statistik1_files/figure-latex/exm-aufgeschlossenheit-jung-alt-utest-oder-1.pdf Graphic file (type pdf)
+<use aps_statistik1_files/figure-latex/exm-aufgeschlossenheit-jung-alt-utest-oder-1.pdf>
+
+
+[121]
+
+
+Overfull \hbox (222.64455pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 122 \TU/lmr/m/sl/10 KAPITEL 7.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM MINDESTENS ORDINALSKALIERTEN MERKMAL
+ []
+
+[122]
+Underfull \hbox (badness 2142) in paragraph at lines 2724--2725
+\TU/lmr/m/n/10 unter \TU/lmtt/m/n/10 Analysen > t-Tests > t-Test für unabhängige Stichproben \TU/lmr/m/n/10 her-
+ []
+
+
+
+[123]
+File: figures/icons/caution.png Graphic file (type bmp)
+<figures/icons/caution.png>
+
+
+
+Overfull \hbox (222.64455pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 124 \TU/lmr/m/sl/10 KAPITEL 7.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM MINDESTENS ORDINALSKALIERTEN MERKMAL
+ []
+
+[124]
+File: figures/07-exr-tempo30-jmv-input.jpg Graphic file (type bmp)
+<figures/07-exr-tempo30-jmv-input.jpg>
+File: figures/07-exr-tempo30-jmv-output.jpg Graphic file (type bmp)
+<figures/07-exr-tempo30-jmv-output.jpg>
+
+
+[125]
+
+
+Overfull \hbox (222.64455pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 126 \TU/lmr/m/sl/10 KAPITEL 7.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM MINDESTENS ORDINALSKALIERTEN MERKMAL
+ []
+
+[126]
+
+[127]
+File: figures/07-exr-warteschlangen-jmv-input.jpg Graphic file (type bmp)
+<figures/07-exr-warteschlangen-jmv-input.jpg>
+File: figures/07-exr-warteschlangen-jmv-output.jpg Graphic file (type bmp)
+<figures/07-exr-warteschlangen-jmv-output.jpg>
+
+
+
+Overfull \hbox (222.64455pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 128 \TU/lmr/m/sl/10 KAPITEL 7.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM MINDESTENS ORDINALSKALIERTEN MERKMAL
+ []
+
+[128]
+
+[129]
+
+
+Overfull \hbox (222.64455pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 130 \TU/lmr/m/sl/10 KAPITEL 7.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM MINDESTENS ORDINALSKALIERTEN MERKMAL
+ []
+
+[130]
+File: figures/07-exr-statistik-herausforderung-jmv-input.jpg Graphic file (type bmp)
+<figures/07-exr-statistik-herausforderung-jmv-input.jpg>
+File: figures/07-exr-statistik-herausforderung-jmv-output.jpg Graphic file (type bmp)
+<figures/07-exr-statistik-herausforderung-jmv-output.jpg>
+File: figures/07-exr-depression-ecstasy-jmv-input.jpg Graphic file (type bmp)
+<figures/07-exr-depression-ecstasy-jmv-input.jpg>
+File: figures/07-exr-depression-ecstasy-jmv-output.jpg Graphic file (type bmp)
+<figures/07-exr-depression-ecstasy-jmv-output.jpg>
+
+
+[131]
+
+
+Overfull \hbox (222.64455pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 132 \TU/lmr/m/sl/10 KAPITEL 7.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM MINDESTENS ORDINALSKALIERTEN MERKMAL
+ []
+
+[132]
+
+[133]
+
+
+Overfull \hbox (222.64455pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 134 \TU/lmr/m/sl/10 KAPITEL 7.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM MINDESTENS ORDINALSKALIERTEN MERKMAL
+ []
+
+[134]
+
+[135]
+
+
+Overfull \hbox (222.64455pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 136 \TU/lmr/m/sl/10 KAPITEL 7.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM MINDESTENS ORDINALSKALIERTEN MERKMAL
+ []
+
+[136
+
+]
+
+[137] (./aps_statistik1.bbl
+
+
+Overfull \hbox (222.64455pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 138 \TU/lmr/m/sl/10 KAPITEL 7.  GRUPPENMITTELWERTUNTERSCHIED BEI EINEM MINDESTENS ORDINALSKALIERTEN MERKMAL
+ []
+
+[138]
 Underfull \hbox (badness 10000) in paragraph at lines 4--7
 []\TU/lmr/m/n/10 Balci, S. (2025).  \TU/lmr/m/it/10 jjstatsplot: Wrapper for ggstatsplot\TU/lmr/m/n/10 .  R
  []
@@ -1961,33 +2101,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--7
 
 
 
-[121
+[139
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 89--93
+Underfull \hbox (badness 10000) in paragraph at lines 94--98
 []\TU/lmr/m/n/10 Zimmerman, D. W. (2004).  A note on preliminary tests
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--93
+Underfull \hbox (badness 10000) in paragraph at lines 94--98
 \TU/lmr/m/n/10 of equality of variances.  57(1):173–181.  _eprint:
  []
 
 )
 
-[122] (./aps_statistik1.aux)
+[140] (./aps_statistik1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 33791 strings out of 475846
- 722148 string characters out of 5773212
- 1180377 words of memory out of 5000000
- 56133 multiletter control sequences out of 15000+600000
+ 34015 strings out of 475846
+ 733436 string characters out of 5773212
+ 1181531 words of memory out of 5000000
+ 56347 multiletter control sequences out of 15000+600000
  565418 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,10n,114p,2090b,738s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aps_statistik1.pdf (122 pages).
+Output written on aps_statistik1.pdf (140 pages).
