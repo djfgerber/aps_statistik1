@@ -508,6 +508,14 @@ Das Berichten der Testresultate wird mit der Effektstärke ergänzt:
 
 In beiden Fällen liegt ein schwacher Effekt vor. Der Effekt bei der Alexithymie ist schwächer als der Effekt bei der Vermögensstudie. Der $p$-Wert sagt aber aus, dass der Effekt beim Vermögen durch die Zufallsstichprobe zustande gekommen ist, während es bei der Alexithymie unwahrscheinlich ist, dass der Effekt durch die Zufallsstichprobe zustande gekommen ist.
 
+## Testvoraussetzungen
+
+Damit der Einstichproben-$t$-Test durchgeführt werden dürfen, müssen einige Voraussetzungen eingehalten werden.
+
+1. Das Merkmal muss intervallskaliert sein.
+2. Die Beobachtungen müssen einer Zufallsstichprobe der Population entsprechen.
+3. Die Beobachtungen müssen einer Normalverteilung entstammen oder die Anzahl der Beobachtungen muss gross genug sein. Häufig wird die Faustregel mehr als $30$ Beobachtungen verwendet.
+
 ## Übungen
 
 ::: {.exercise  #vermoegen}

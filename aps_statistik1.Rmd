@@ -1908,6 +1908,14 @@ Das Berichten der Testresultate wird mit der Effektstärke ergänzt:
 
 In beiden Fällen liegt ein schwacher Effekt vor. Der Effekt bei der Alexithymie ist schwächer als der Effekt bei der Vermögensstudie. Der $p$-Wert sagt aber aus, dass der Effekt beim Vermögen durch die Zufallsstichprobe zustande gekommen ist, während es bei der Alexithymie unwahrscheinlich ist, dass der Effekt durch die Zufallsstichprobe zustande gekommen ist.
 
+## Testvoraussetzungen
+
+Damit der Einstichproben-$t$-Test durchgeführt werden dürfen, müssen einige Voraussetzungen eingehalten werden.
+
+1. Das Merkmal muss intervallskaliert sein.
+2. Die Beobachtungen müssen einer Zufallsstichprobe der Population entsprechen.
+3. Die Beobachtungen müssen einer Normalverteilung entstammen oder die Anzahl der Beobachtungen muss gross genug sein. Häufig wird die Faustregel mehr als $30$ Beobachtungen verwendet.
+
 ## Übungen
 
 ::: {.exercise  #vermoegen}
@@ -2669,7 +2677,12 @@ Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit 
 
 ## Testvoraussetzungen
 
-TODO.
+Damit der Zweistichproben-$t$-Test und der Welch Test durchgeführt werden dürfen, müssen einige Voraussetzungen eingehalten werden.
+
+1. Das Merkmal muss intervallskaliert sein.
+2. Die Beobachtungen müssen einer Zufallsstichprobe der jeweiligen Gruppe entsprechen.
+3. Die Beobachtungen beider Gruppen müssen einer Normalverteilung entstammen oder die Anzahl der Beobachtungen muss gross genug sein. Häufig wird die Faustregel mehr als $30$ Beobachtungen pro Gruppe verwendet.
+4. Für den Zweistichproben-$t$-Test müssen die Varianzen gleich sein. Für den Welch Test gilt diese Voraussetzung nicht.
 
 
 ## Übungen
@@ -2782,7 +2795,7 @@ gen_exr_gruppenpuzzle <- function(){
 exr_gruppenpuzzle <- gen_exr_gruppenpuzzle()
 ```
 
-In den 1970er Jahren hat eine Gruppe um @blaney1977 Versuche durchgeführt zu neuen Lehrmethoden. Insbesondere wurde dabei das sogenannte Gruppenpuzzle `gruppenpuzzle`, eine Lernform bei welcher die Lernenden den Inhalt mit und in Abhängigkeit voneinander erarbeiten, mit dem traditionellen Frontalunterricht `traditionell` verglichen. Die Forschenden wollten unter anderem Herausfinden, ob sich die Gruppenpuzzleteilnehmende nach dem Unterricht besser mochten (_liking_), als traditionell unterrichtete Lernende. Fiktive Daten zu dem Experiment sind als `r inline_code(exr_gruppenpuzzle$file_name)` verfügbar.
+In den 1970er Jahren hat eine Gruppe um @blaney1977 Versuche durchgeführt zu neuen Lehrmethoden. Insbesondere wurde dabei das sogenannte Gruppenpuzzle `gruppenpuzzle`, eine Lernform bei welcher die Lernenden den Inhalt mit und in Abhängigkeit voneinander erarbeiten, mit dem traditionellen Frontalunterricht `traditionell` verglichen. Die Forschenden wollten unter anderem Herausfinden, ob sich die Gruppenpuzzleteilnehmende nach dem Unterricht besser oder schlechter mochten (_liking_), als traditionell unterrichtete Lernende. Fiktive Daten zu dem Experiment sind als `r inline_code(exr_gruppenpuzzle$file_name)` verfügbar.
 
 a) Stellen Sie die Testhypothesen auf für einen zweiseitigen Welch-Test.
 b) Führen Sie den Test durch und berichten Sie das Resultat.
@@ -2806,7 +2819,7 @@ Damit können und die Teilfragen beantwortet werden.
 
 a) Angenommen die Zuneigung zur Personen der einen Gruppe ist unabhängig von der Lehrmethode, dann sollten beide Gruppen im durchschnitt denselben Erwartungswert $\mu$ bei der Zuneigung haben. Die Nullhypothese ist also $H_0: \mu_\text{Gruppenpuzzle} = \mu_\text{Traditionell}$. Ein Unterschied dazu wäre, wenn es die Lernenden der beiden Gruppen einen unterschiedlichen Erwartungswert aufweisen, formell $H_1: \mu_\text{Gruppenpuzzle} \neq \mu_\text{Traditionell}$. 
 b) Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Zuneigung in der Gruppenpuzzlegruppe ($M = `r round(exr_gruppenpuzzle$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_gruppenpuzzle$jmv_res_desc$sd1,2)`$, $N = `r exr_gruppenpuzzle$jmv_res_desc$num1`$) signifikant anders ist als in der traditionell unterrichteten Gruppe($M = `r round(exr_gruppenpuzzle$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_gruppenpuzzle$jmv_res_desc$sd2,2)`$, $N = `r exr_gruppenpuzzle$jmv_res_desc$num2`$), $t(`r round(exr_gruppenpuzzle$jmv_res_test$dfwelc,1)`) = `r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$, $`r report_p(exr_gruppenpuzzle$jmv_res_test$pwelc)`, \Delta = `r round(glass_delta(exr_gruppenpuzzle$jmv_res_desc, TRUE),3)`$.
-c) Die Statistik von $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ ist ein Wert, welcher eine Verteilung wie in \@ref(fig:t-distribution) aufweist. Diese Verteilung weist  die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zweigt, dass der beobachtete Wert $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ selten zufällig vorkommt (tiefer Wert der Linie weist auf eine tiefe Wahrscheinlichkeit der Statistik hin). Die Freiheitsgrade `r round(exr_gruppenpuzzle$jmv_res_test$dfwelc,1)` bestimmen die Form der oben referenzierten Verteilung. Wo bei kleinen Freiheitsgraden die beobachtete Statistik noch mit einer nicht allzukleinen Wahrscheinlichkeit beobachtet werden kann (vgl. $df = 1$ in der Abbildung), so ist es bei dieser Anzahl Freiheitsgrade sehr selten (vgl. `Normalverteilung` in der Abbildung). $`r report_p(exr_gruppenpuzzle$jmv_res_test$pwelc)`$ bedeutet, dass der $p$-Wert kleiner als $0.001 = 0.1\%$ ist. Damit ist die Wahrscheinlichkeit den Statistik-Wert $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ oder einen extremeren Wert im Sinne der Alternativhypothese zu beobachten, gegeben dass die Nullhypothese wahr ist, kleiner als $0.1\%$ also sehr selten. Da der $p$-Wert kleiner ist als $5\%$ ist wird geschlossen, dass die Annahme, dass die Nullhypothese wahr ist, wahrscheinlich falsch ist. Die Effektstärke von $\Delta = `r round(glass_delta(exr_gruppenpuzzle$jmv_res_desc, TRUE),3)`$ bedeutet, dass hier ein Mittelwertunterschied von ungefähr $`r round(glass_delta(exr_gruppenpuzzle$jmv_res_desc, TRUE),3)`$ Standardabweichungen des Merkmals Zuneigung entspricht. Dies heisst, auf der Skala des Merkmals ist der Mittelwertunterschied gross oder anders gesagt: es handelt sich um einen starken Effekt. Das Vorzeichen hängt von der Gruppenbeschriftung ab und hat keine spezielle Bedeutung.
+c) Die Statistik von $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ ist ein Wert, welcher eine Verteilung wie in \@ref(fig:t-distribution) aufweist. Diese Verteilung weist  die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zweigt, dass der beobachtete Wert $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ selten zufällig vorkommt (tiefer Wert der Linie weist auf eine tiefe Wahrscheinlichkeit der Statistik hin). Die Freiheitsgrade `r round(exr_gruppenpuzzle$jmv_res_test$dfwelc,1)` bestimmen die Form der oben referenzierten Verteilung. Wo bei kleinen Freiheitsgraden die beobachtete Statistik noch mit einer nicht allzukleinen Wahrscheinlichkeit beobachtet werden kann (vgl. $df = 1$ in der Abbildung), so ist es bei dieser Anzahl Freiheitsgrade sehr selten (vgl. `Normalverteilung` in der Abbildung). $`r report_p(exr_gruppenpuzzle$jmv_res_test$pwelc)`$ bedeutet, dass der $p$-Wert kleiner als $0.001 = 0.1\%$ ist. Damit ist die Wahrscheinlichkeit den Statistik-Wert $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ oder einen extremeren Wert im Sinne der Alternativhypothese zu beobachten, gegeben dass die Nullhypothese wahr ist, kleiner als $0.1\%$ also sehr selten. Da der $p$-Wert kleiner ist als $5\%$ ist wird geschlossen, dass die Annahme, dass die Nullhypothese wahr ist, wahrscheinlich falsch ist. Die Effektstärke von $\Delta = `r round(glass_delta(exr_gruppenpuzzle$jmv_res_desc, FALSE),3)`$ bedeutet, dass hier ein Mittelwertunterschied von ungefähr $`r round(glass_delta(exr_gruppenpuzzle$jmv_res_desc, FALSE),3)`$ Standardabweichungen des Merkmals Zuneigung entspricht. Dies heisst, auf der Skala des Merkmals ist der Mittelwertunterschied gross oder anders gesagt: es handelt sich um einen starken Effekt. Das Vorzeichen hängt von der Gruppenbeschriftung ab und hat keine spezielle Bedeutung.
 :::
 
 ::: {.exercise  #music-memory}
@@ -3024,7 +3037,7 @@ TODO: solution body
 
 # Gruppenmittelwertunterschied bei einem mindestens ordinalskalierten Merkmal
 
-Um einen Gruppenmittelwertunterschied mit dem Zweistichproben-$t$-Test oder dem Welch Test testen zu können muss das betrachtete Merkmal intervallskaliert und die Beobachtungen beider Gruppen einer Normalverteilung entstammen. Dies ist in der Realität nicht immer gegeben. Eine Alternative zu den oben genannten Tests, welche ohne diese Voraussetzungen auskommt, ist der $U$-Test nach Mann und Whitney. Dieser kann bei mindestens ordinalskalierten Variablen eingesetzt werden und es wird keine Verteilung der Daten vorausgesetzt.
+Um einen Gruppenmittelwertunterschied mit dem Zweistichproben-$t$-Test oder dem Welch Test testen zu können muss das betrachtete Merkmal intervallskaliert und (a) die Beobachtungen beider Gruppen einer Normalverteilung entstammen oder (b) genügend Beobachtungen, normalerweise mehr als $30$ pro Gruppe, vorhanden sein. Dies ist in der Realität nicht immer gegeben. Eine Alternative zu den oben genannten Tests, welche ohne diese Voraussetzungen auskommt, ist der $U$-Test nach Mann und Whitney. Dieser kann bei mindestens ordinalskalierten Variablen eingesetzt werden und es wird keine Verteilung der Daten vorausgesetzt.
 
 Da der $U$-Test keine Verteilung voraussetzt und auch bei nicht intervallskalierten Merkmalen eingesetzt werden kann sind jedoch auch die Hypothesen leicht anders als beim Welch Test. Der $U$-Test testet in jedem Fall, ob die Verteilungen in den beiden Gruppen gleich sind. Unter ein paar Zusatzannahmen ist dies Äquivalent zur Hypothese, dass die beiden Populationsmediane sich entsprechen. Auf diese letzte Subtilität wird hier nicht eingegangen.
 
@@ -3206,7 +3219,7 @@ exr_tempo30 <- gen_exr_tempo30()
 
 Für die Dorfstrasse in Köniz wurden zwei Verkehrskonzepte verglichen Tempo 50 mit Fussgängerstreifen und Tempo 30 ohne Fussgängerstreifen. Um die beiden Verkehrskonzepte zu evaluieren, wurden verschiedene Zahlen erhoben unter anderem die Durchfahrtszeit von Autos, die Anzahl Strassenquerungen von Fussgängern und die Anzahl Unfälle. Hier soll nur die Durchfahrtszeit von Autos in Minuten betrachtet und herausgefunden werden wie sich die Verkehrskonzepte auf diese ausgewirkt haben. Fiktive Daten dazu wurden als Datensatz `r inline_code(exr_tempo30$file_name)` abgelegt. 
 
-a) Prüfen Sie, ob die Testvoraussetzung für einen Welch Test gegeben ist.
+a) Prüfen Sie, ob die Testvoraussetzungen für einen Welch Test gegeben sind.
 b) Beschreiben Sie die Population und das Merkmal.
 c) Testen Sie mit einem $U$-Test bei Signifikanzniveau $5\%$, ob sich die medianen Durchfahrtszeiten in der Population unterscheiden. Berichten Sie das Resultat und interpretieren Sie die Effektstärke.
 :::
@@ -3226,7 +3239,7 @@ knitr::include_graphics("figures/07-exr-tempo30-jmv-output.jpg")
 
 Damit können die Teilfragen beantwortet werden. 
 
-a) TODO.
+a) Die Durchfahrtszeit ist ein intervallskaliertes Merkmal. Ob die Beobachtungen einer Zufallsstichprobe entstammen oder nicht muss beim Versuchsaufbau berücksichtigt werden und kann nicht im Nachhinein aus den Daten gelesen werden. Es sind mehr als $30$ Beobachtungen pro Gruppe vorhanden. Damit sind alle Voraussetzungen für den Welch Test gegeben und es könnte hier auch ein Welch Test durchgeführt werden.
 b) Die Population sind alle Autos die durch die betroffene Strasse fahren. Das Merkmal ist die Durchfahrtszeit von Autos in Minuten.
 c) Es soll getestet werden, ob sich die medianen Durchfahrtszeiten unterscheiden. Die Hypothesen für den $U$-Test sind also zweiseitig formuliert $H_0: \mu_\text{Tempo 30} = \mu_\text{Tempo 50}$ und $H_1: \mu_\text{Tempo 30} \neq \mu_\text{Tempo 50}$. Das Testergebnis kann aus Jamovi abgelesen werden und wird wie folgt berichtet und interpretiert:
 
@@ -3289,7 +3302,7 @@ knitr::include_graphics("figures/07-exr-warteschlangen-jmv-output.jpg")
 
 Damit können die Teilfragen beantwortet werden. 
 
-a) TODO.
+a) Die Wartezeit ist ein intervallskaliertes Merkmal. Ob die Beobachtungen einer Zufallsstichprobe entstammen oder nicht muss beim Versuchsaufbau berücksichtigt werden und kann nicht im Nachhinein aus den Daten gelesen werden. Es sind mehr als $30$ Beobachtungen pro Gruppe vorhanden. Damit sind alle Voraussetzungen für den Welch Test gegeben und es könnte hier auch ein Welch Test durchgeführt werden.
 b) Die Population sind alle Gäste, die den neuen Terminal benutzen. Das Merkmal ist die Wartezeit der Gäste in Minuten.
 c) Es soll getestet werden, ob sich die medianen Durchfahrtszeiten unterscheiden. Die Hypothesen für den $U$-Test sind also zweiseitig formuliert $H_0: \mu_\text{Konzept 1} = \mu_\text{Konzept 2}$ und $H_1: \mu_\text{Konzept 1} \neq \mu_\text{Konzept 2}$. Das Testergebnis kann aus `Jamovi` abgelesen werden und wird wie folgt berichtet und interpretiert:
 
@@ -3412,6 +3425,12 @@ Damit kann die Frage nun beantwortet werden:
 TODO.
 
 <!--chapter:end:src/07-u_test.Rmd-->
+
+# (PART) Zusammenhang zweier Merkmale {-}
+
+# Korrelation
+
+<!--chapter:end:src/08-korrelation.Rmd-->
 
 # Begriffsverzeichnis {-}
 

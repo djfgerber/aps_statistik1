@@ -1,6 +1,6 @@
 # Gruppenmittelwertunterschied bei einem mindestens ordinalskalierten Merkmal
 
-Um einen Gruppenmittelwertunterschied mit dem Zweistichproben-$t$-Test oder dem Welch Test testen zu können muss das betrachtete Merkmal intervallskaliert und die Beobachtungen beider Gruppen einer Normalverteilung entstammen. Dies ist in der Realität nicht immer gegeben. Eine Alternative zu den oben genannten Tests, welche ohne diese Voraussetzungen auskommt, ist der $U$-Test nach Mann und Whitney. Dieser kann bei mindestens ordinalskalierten Variablen eingesetzt werden und es wird keine Verteilung der Daten vorausgesetzt.
+Um einen Gruppenmittelwertunterschied mit dem Zweistichproben-$t$-Test oder dem Welch Test testen zu können muss das betrachtete Merkmal intervallskaliert und (a) die Beobachtungen beider Gruppen einer Normalverteilung entstammen oder (b) genügend Beobachtungen, normalerweise mehr als $30$ pro Gruppe, vorhanden sein. Dies ist in der Realität nicht immer gegeben. Eine Alternative zu den oben genannten Tests, welche ohne diese Voraussetzungen auskommt, ist der $U$-Test nach Mann und Whitney. Dieser kann bei mindestens ordinalskalierten Variablen eingesetzt werden und es wird keine Verteilung der Daten vorausgesetzt.
 
 Da der $U$-Test keine Verteilung voraussetzt und auch bei nicht intervallskalierten Merkmalen eingesetzt werden kann sind jedoch auch die Hypothesen leicht anders als beim Welch Test. Der $U$-Test testet in jedem Fall, ob die Verteilungen in den beiden Gruppen gleich sind. Unter ein paar Zusatzannahmen ist dies Äquivalent zur Hypothese, dass die beiden Populationsmediane sich entsprechen. Auf diese letzte Subtilität wird hier nicht eingegangen.
 
@@ -182,7 +182,7 @@ exr_tempo30 <- gen_exr_tempo30()
 
 Für die Dorfstrasse in Köniz wurden zwei Verkehrskonzepte verglichen Tempo 50 mit Fussgängerstreifen und Tempo 30 ohne Fussgängerstreifen. Um die beiden Verkehrskonzepte zu evaluieren, wurden verschiedene Zahlen erhoben unter anderem die Durchfahrtszeit von Autos, die Anzahl Strassenquerungen von Fussgängern und die Anzahl Unfälle. Hier soll nur die Durchfahrtszeit von Autos in Minuten betrachtet und herausgefunden werden wie sich die Verkehrskonzepte auf diese ausgewirkt haben. Fiktive Daten dazu wurden als Datensatz `r inline_code(exr_tempo30$file_name)` abgelegt. 
 
-a) Prüfen Sie, ob die Testvoraussetzung für einen Welch Test gegeben ist.
+a) Prüfen Sie, ob die Testvoraussetzungen für einen Welch Test gegeben sind.
 b) Beschreiben Sie die Population und das Merkmal.
 c) Testen Sie mit einem $U$-Test bei Signifikanzniveau $5\%$, ob sich die medianen Durchfahrtszeiten in der Population unterscheiden. Berichten Sie das Resultat und interpretieren Sie die Effektstärke.
 :::
@@ -202,7 +202,7 @@ knitr::include_graphics("figures/07-exr-tempo30-jmv-output.jpg")
 
 Damit können die Teilfragen beantwortet werden. 
 
-a) TODO.
+a) Die Durchfahrtszeit ist ein intervallskaliertes Merkmal. Ob die Beobachtungen einer Zufallsstichprobe entstammen oder nicht muss beim Versuchsaufbau berücksichtigt werden und kann nicht im Nachhinein aus den Daten gelesen werden. Es sind mehr als $30$ Beobachtungen pro Gruppe vorhanden. Damit sind alle Voraussetzungen für den Welch Test gegeben und es könnte hier auch ein Welch Test durchgeführt werden.
 b) Die Population sind alle Autos die durch die betroffene Strasse fahren. Das Merkmal ist die Durchfahrtszeit von Autos in Minuten.
 c) Es soll getestet werden, ob sich die medianen Durchfahrtszeiten unterscheiden. Die Hypothesen für den $U$-Test sind also zweiseitig formuliert $H_0: \mu_\text{Tempo 30} = \mu_\text{Tempo 50}$ und $H_1: \mu_\text{Tempo 30} \neq \mu_\text{Tempo 50}$. Das Testergebnis kann aus Jamovi abgelesen werden und wird wie folgt berichtet und interpretiert:
 
@@ -265,7 +265,7 @@ knitr::include_graphics("figures/07-exr-warteschlangen-jmv-output.jpg")
 
 Damit können die Teilfragen beantwortet werden. 
 
-a) TODO.
+a) Die Wartezeit ist ein intervallskaliertes Merkmal. Ob die Beobachtungen einer Zufallsstichprobe entstammen oder nicht muss beim Versuchsaufbau berücksichtigt werden und kann nicht im Nachhinein aus den Daten gelesen werden. Es sind mehr als $30$ Beobachtungen pro Gruppe vorhanden. Damit sind alle Voraussetzungen für den Welch Test gegeben und es könnte hier auch ein Welch Test durchgeführt werden.
 b) Die Population sind alle Gäste, die den neuen Terminal benutzen. Das Merkmal ist die Wartezeit der Gäste in Minuten.
 c) Es soll getestet werden, ob sich die medianen Durchfahrtszeiten unterscheiden. Die Hypothesen für den $U$-Test sind also zweiseitig formuliert $H_0: \mu_\text{Konzept 1} = \mu_\text{Konzept 2}$ und $H_1: \mu_\text{Konzept 1} \neq \mu_\text{Konzept 2}$. Das Testergebnis kann aus `Jamovi` abgelesen werden und wird wie folgt berichtet und interpretiert:
 

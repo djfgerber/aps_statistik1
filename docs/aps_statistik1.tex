@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{14 April, 2025}
+\date{15 April, 2025}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -1919,6 +1919,21 @@ Ein Einstichproben-\(t\)-Test ergibt, dass die durchschnittliche Alexithymie (\(
 
 In beiden Fällen liegt ein schwacher Effekt vor. Der Effekt bei der Alexithymie ist schwächer als der Effekt bei der Vermögensstudie. Der \(p\)-Wert sagt aber aus, dass der Effekt beim Vermögen durch die Zufallsstichprobe zustande gekommen ist, während es bei der Alexithymie unwahrscheinlich ist, dass der Effekt durch die Zufallsstichprobe zustande gekommen ist.
 
+\section{Testvoraussetzungen}\label{testvoraussetzungen}
+
+Damit der Einstichproben-\(t\)-Test durchgeführt werden dürfen, müssen einige Voraussetzungen eingehalten werden.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Das Merkmal muss intervallskaliert sein.
+\item
+  Die Beobachtungen müssen einer Zufallsstichprobe der Population entsprechen.
+\item
+  Die Beobachtungen müssen einer Normalverteilung entstammen oder die Anzahl der Beobachtungen muss gross genug sein. Häufig wird die Faustregel mehr als \(30\) Beobachtungen verwendet.
+\end{enumerate}
+
 \section{Übungen}\label{uxfcbungen-2}
 
 \begin{exercise}
@@ -2415,9 +2430,22 @@ Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit 
 
 \end{caution}
 
-\section{Testvoraussetzungen}\label{testvoraussetzungen}
+\section{Testvoraussetzungen}\label{testvoraussetzungen-1}
 
-TODO.
+Damit der Zweistichproben-\(t\)-Test und der Welch Test durchgeführt werden dürfen, müssen einige Voraussetzungen eingehalten werden.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Das Merkmal muss intervallskaliert sein.
+\item
+  Die Beobachtungen müssen einer Zufallsstichprobe der jeweiligen Gruppe entsprechen.
+\item
+  Die Beobachtungen beider Gruppen müssen einer Normalverteilung entstammen oder die Anzahl der Beobachtungen muss gross genug sein. Häufig wird die Faustregel mehr als \(30\) Beobachtungen pro Gruppe verwendet.
+\item
+  Für den Zweistichproben-\(t\)-Test müssen die Varianzen gleich sein. Für den Welch Test gilt diese Voraussetzung nicht.
+\end{enumerate}
 
 \section{Übungen}\label{uxfcbungen-3}
 
@@ -2474,7 +2502,7 @@ Damit können und beide Teilfragen beantwortet werden.
 \begin{exercise}
 \protect\hypertarget{exr:gruppenpuzzle}{}\label{exr:gruppenpuzzle}\leavevmode
 
-In den 1970er Jahren hat eine Gruppe um \citet{blaney1977} Versuche durchgeführt zu neuen Lehrmethoden. Insbesondere wurde dabei das sogenannte Gruppenpuzzle \texttt{gruppenpuzzle}, eine Lernform bei welcher die Lernenden den Inhalt mit und in Abhängigkeit voneinander erarbeiten, mit dem traditionellen Frontalunterricht \texttt{traditionell} verglichen. Die Forschenden wollten unter anderem Herausfinden, ob sich die Gruppenpuzzleteilnehmende nach dem Unterricht besser mochten (\emph{liking}), als traditionell unterrichtete Lernende. Fiktive Daten zu dem Experiment sind als \texttt{06-exr-gruppenpuzzle.sav} verfügbar.
+In den 1970er Jahren hat eine Gruppe um \citet{blaney1977} Versuche durchgeführt zu neuen Lehrmethoden. Insbesondere wurde dabei das sogenannte Gruppenpuzzle \texttt{gruppenpuzzle}, eine Lernform bei welcher die Lernenden den Inhalt mit und in Abhängigkeit voneinander erarbeiten, mit dem traditionellen Frontalunterricht \texttt{traditionell} verglichen. Die Forschenden wollten unter anderem Herausfinden, ob sich die Gruppenpuzzleteilnehmende nach dem Unterricht besser oder schlechter mochten (\emph{liking}), als traditionell unterrichtete Lernende. Fiktive Daten zu dem Experiment sind als \texttt{06-exr-gruppenpuzzle.sav} verfügbar.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
@@ -2513,7 +2541,7 @@ Damit können und die Teilfragen beantwortet werden.
 \item
   Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Zuneigung in der Gruppenpuzzlegruppe (\(M = 5.11\), \(SD = 0.25\), \(N = 35\)) signifikant anders ist als in der traditionell unterrichteten Gruppe(\(M = 4.82\), \(SD = 0.31\), \(N = 21\)), \(t(35.6) = 3.69\), \(p < 0.001, \Delta = -1.172\).
 \item
-  Die Statistik von \(3.69\) ist ein Wert, welcher eine Verteilung wie in \ref{fig:t-distribution} aufweist. Diese Verteilung weist die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zweigt, dass der beobachtete Wert \(3.69\) selten zufällig vorkommt (tiefer Wert der Linie weist auf eine tiefe Wahrscheinlichkeit der Statistik hin). Die Freiheitsgrade 35.6 bestimmen die Form der oben referenzierten Verteilung. Wo bei kleinen Freiheitsgraden die beobachtete Statistik noch mit einer nicht allzukleinen Wahrscheinlichkeit beobachtet werden kann (vgl. \(df = 1\) in der Abbildung), so ist es bei dieser Anzahl Freiheitsgrade sehr selten (vgl. \texttt{Normalverteilung} in der Abbildung). \(p < 0.001\) bedeutet, dass der \(p\)-Wert kleiner als \(0.001 = 0.1\%\) ist. Damit ist die Wahrscheinlichkeit den Statistik-Wert \(3.69\) oder einen extremeren Wert im Sinne der Alternativhypothese zu beobachten, gegeben dass die Nullhypothese wahr ist, kleiner als \(0.1\%\) also sehr selten. Da der \(p\)-Wert kleiner ist als \(5\%\) ist wird geschlossen, dass die Annahme, dass die Nullhypothese wahr ist, wahrscheinlich falsch ist. Die Effektstärke von \(\Delta = -1.172\) bedeutet, dass hier ein Mittelwertunterschied von ungefähr \(-1.172\) Standardabweichungen des Merkmals Zuneigung entspricht. Dies heisst, auf der Skala des Merkmals ist der Mittelwertunterschied gross oder anders gesagt: es handelt sich um einen starken Effekt. Das Vorzeichen hängt von der Gruppenbeschriftung ab und hat keine spezielle Bedeutung.
+  Die Statistik von \(3.69\) ist ein Wert, welcher eine Verteilung wie in \ref{fig:t-distribution} aufweist. Diese Verteilung weist die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zweigt, dass der beobachtete Wert \(3.69\) selten zufällig vorkommt (tiefer Wert der Linie weist auf eine tiefe Wahrscheinlichkeit der Statistik hin). Die Freiheitsgrade 35.6 bestimmen die Form der oben referenzierten Verteilung. Wo bei kleinen Freiheitsgraden die beobachtete Statistik noch mit einer nicht allzukleinen Wahrscheinlichkeit beobachtet werden kann (vgl. \(df = 1\) in der Abbildung), so ist es bei dieser Anzahl Freiheitsgrade sehr selten (vgl. \texttt{Normalverteilung} in der Abbildung). \(p < 0.001\) bedeutet, dass der \(p\)-Wert kleiner als \(0.001 = 0.1\%\) ist. Damit ist die Wahrscheinlichkeit den Statistik-Wert \(3.69\) oder einen extremeren Wert im Sinne der Alternativhypothese zu beobachten, gegeben dass die Nullhypothese wahr ist, kleiner als \(0.1\%\) also sehr selten. Da der \(p\)-Wert kleiner ist als \(5\%\) ist wird geschlossen, dass die Annahme, dass die Nullhypothese wahr ist, wahrscheinlich falsch ist. Die Effektstärke von \(\Delta = 0.95\) bedeutet, dass hier ein Mittelwertunterschied von ungefähr \(0.95\) Standardabweichungen des Merkmals Zuneigung entspricht. Dies heisst, auf der Skala des Merkmals ist der Mittelwertunterschied gross oder anders gesagt: es handelt sich um einen starken Effekt. Das Vorzeichen hängt von der Gruppenbeschriftung ab und hat keine spezielle Bedeutung.
 \end{enumerate}
 
 \end{solution}
@@ -2676,7 +2704,7 @@ TODO: solution body
 
 \chapter{Gruppenmittelwertunterschied bei einem mindestens ordinalskalierten Merkmal}\label{gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal}
 
-Um einen Gruppenmittelwertunterschied mit dem Zweistichproben-\(t\)-Test oder dem Welch Test testen zu können muss das betrachtete Merkmal intervallskaliert und die Beobachtungen beider Gruppen einer Normalverteilung entstammen. Dies ist in der Realität nicht immer gegeben. Eine Alternative zu den oben genannten Tests, welche ohne diese Voraussetzungen auskommt, ist der \(U\)-Test nach Mann und Whitney. Dieser kann bei mindestens ordinalskalierten Variablen eingesetzt werden und es wird keine Verteilung der Daten vorausgesetzt.
+Um einen Gruppenmittelwertunterschied mit dem Zweistichproben-\(t\)-Test oder dem Welch Test testen zu können muss das betrachtete Merkmal intervallskaliert und (a) die Beobachtungen beider Gruppen einer Normalverteilung entstammen oder (b) genügend Beobachtungen, normalerweise mehr als \(30\) pro Gruppe, vorhanden sein. Dies ist in der Realität nicht immer gegeben. Eine Alternative zu den oben genannten Tests, welche ohne diese Voraussetzungen auskommt, ist der \(U\)-Test nach Mann und Whitney. Dieser kann bei mindestens ordinalskalierten Variablen eingesetzt werden und es wird keine Verteilung der Daten vorausgesetzt.
 
 Da der \(U\)-Test keine Verteilung voraussetzt und auch bei nicht intervallskalierten Merkmalen eingesetzt werden kann sind jedoch auch die Hypothesen leicht anders als beim Welch Test. Der \(U\)-Test testet in jedem Fall, ob die Verteilungen in den beiden Gruppen gleich sind. Unter ein paar Zusatzannahmen ist dies Äquivalent zur Hypothese, dass die beiden Populationsmediane sich entsprechen. Auf diese letzte Subtilität wird hier nicht eingegangen.
 
@@ -2803,7 +2831,7 @@ Für die Dorfstrasse in Köniz wurden zwei Verkehrskonzepte verglichen Tempo 50 
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  Prüfen Sie, ob die Testvoraussetzung für einen Welch Test gegeben ist.
+  Prüfen Sie, ob die Testvoraussetzungen für einen Welch Test gegeben sind.
 \item
   Beschreiben Sie die Population und das Merkmal.
 \item
@@ -2832,7 +2860,7 @@ Damit können die Teilfragen beantwortet werden.
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  TODO.
+  Die Durchfahrtszeit ist ein intervallskaliertes Merkmal. Ob die Beobachtungen einer Zufallsstichprobe entstammen oder nicht muss beim Versuchsaufbau berücksichtigt werden und kann nicht im Nachhinein aus den Daten gelesen werden. Es sind mehr als \(30\) Beobachtungen pro Gruppe vorhanden. Damit sind alle Voraussetzungen für den Welch Test gegeben und es könnte hier auch ein Welch Test durchgeführt werden.
 \item
   Die Population sind alle Autos die durch die betroffene Strasse fahren. Das Merkmal ist die Durchfahrtszeit von Autos in Minuten.
 \item
@@ -2883,7 +2911,7 @@ Damit können die Teilfragen beantwortet werden.
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  TODO.
+  Die Wartezeit ist ein intervallskaliertes Merkmal. Ob die Beobachtungen einer Zufallsstichprobe entstammen oder nicht muss beim Versuchsaufbau berücksichtigt werden und kann nicht im Nachhinein aus den Daten gelesen werden. Es sind mehr als \(30\) Beobachtungen pro Gruppe vorhanden. Damit sind alle Voraussetzungen für den Welch Test gegeben und es könnte hier auch ein Welch Test durchgeführt werden.
 \item
   Die Population sind alle Gäste, die den neuen Terminal benutzen. Das Merkmal ist die Wartezeit der Gäste in Minuten.
 \item
@@ -2976,6 +3004,10 @@ Ein einseitiger \(U\)-Test nach Mann und Whitney ergibt, dass die mediane Nachta
 \section{Test}\label{test-3}
 
 TODO.
+
+\part{Zusammenhang zweier Merkmale}\label{part-zusammenhang-zweier-merkmale}
+
+\chapter{Korrelation}\label{korrelation}
 
 \chapter*{Begriffsverzeichnis}\label{begriffsverzeichnis}
 \addcontentsline{toc}{chapter}{Begriffsverzeichnis}
