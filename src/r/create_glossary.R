@@ -70,7 +70,9 @@ create_glossary <- function(book_dir = "src", output_file = "98-glossary.Rmd") {
     mapping_glossary %>% 
     pmap_chr(function(link_text, bold_text){
       sprintf("- [%s](#%s)", bold_text, link_text)
-      })) %>% 
+      }),
+    "",
+    "# Literaturverzeichnis {-}") %>% 
   writeLines(file.path(book_dir, output_file))
 
   cat("Glossary created successfully in", output_file, "\n")

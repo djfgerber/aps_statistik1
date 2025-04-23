@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 8 Zusammenhang zweier Merkmale | Statistik 1</title>
+  <meta name="description" content="Kapitel 8 Zusammenhang zweier Merkmale | Statistik 1" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 8 Zusammenhang zweier Merkmale | Statistik 1" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 8 Zusammenhang zweier Merkmale | Statistik 1" />
+  
+  
+  
+
+<meta name="author" content="Daniel J. F. Gerber" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"/>
+<link rel="next" href="begriffsverzeichnis.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Vorwort</a></li>
+<li class="chapter" data-level="1" data-path="einleitung.html"><a href="einleitung.html"><i class="fa fa-check"></i><b>1</b> Einleitung</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="einleitung.html"><a href="einleitung.html#worum-geht-es"><i class="fa fa-check"></i><b>1.1</b> Worum geht es?</a></li>
+<li class="chapter" data-level="1.2" data-path="einleitung.html"><a href="einleitung.html#inhaltlicher-aufbau"><i class="fa fa-check"></i><b>1.2</b> Inhaltlicher Aufbau</a></li>
+<li class="chapter" data-level="1.3" data-path="einleitung.html"><a href="einleitung.html#buch-lesen"><i class="fa fa-check"></i><b>1.3</b> Wie soll ich dieses Buch lesen?</a></li>
+<li class="chapter" data-level="1.4" data-path="einleitung.html"><a href="einleitung.html#formeln"><i class="fa fa-check"></i><b>1.4</b> Formeln, Symbole und Zahlen</a></li>
+<li class="chapter" data-level="1.5" data-path="einleitung.html"><a href="einleitung.html#software"><i class="fa fa-check"></i><b>1.5</b> Software</a></li>
+</ul></li>
+<li class="part"><span><b>I Eine intervallskaliertes Merkmal</b></span></li>
+<li class="chapter" data-level="2" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html"><i class="fa fa-check"></i><b>2</b> Intervallskalierte Merkmale</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskalierte-merkmale-definition"><i class="fa fa-check"></i><b>2.1</b> Was ist ein intervallskaliertes Merkmal?</a></li>
+<li class="chapter" data-level="2.2" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskalierte-merkmale-beschreibung"><i class="fa fa-check"></i><b>2.2</b> Wie kann ein intervallskaliertes Merkmal beschrieben werden?</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#verteilung"><i class="fa fa-check"></i><b>2.2.1</b> Verteilung</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#zentralitaet"><i class="fa fa-check"></i><b>2.2.2</b> Zentralität</a></li>
+<li class="chapter" data-level="2.2.3" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#variabilitaet"><i class="fa fa-check"></i><b>2.2.3</b> Variabilität</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskaliertes-merkmal-uebungen"><i class="fa fa-check"></i><b>2.3</b> Übungen</a></li>
+<li class="chapter" data-level="2.4" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskaliertes-merkmal-test"><i class="fa fa-check"></i><b>2.4</b> Test</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html"><i class="fa fa-check"></i><b>3</b> Stichprobenziehung</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#stichprobenziehung-problem"><i class="fa fa-check"></i><b>3.1</b> Was ist das Problem der Stichprobenziehung?</a></li>
+<li class="chapter" data-level="3.2" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#stichprobenziehung-loesung"><i class="fa fa-check"></i><b>3.2</b> Wie kann man Aussagen über die Grundgesamtheit machen?</a></li>
+<li class="chapter" data-level="3.3" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#übungen"><i class="fa fa-check"></i><b>3.3</b> Übungen</a></li>
+<li class="chapter" data-level="3.4" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#test"><i class="fa fa-check"></i><b>3.4</b> Test</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html"><i class="fa fa-check"></i><b>4</b> Durchschnitt und Standardabweichung schätzen</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#wo-liegt-der-durchschnitt-der-grundgesamtheit"><i class="fa fa-check"></i><b>4.1</b> Wo liegt der Durchschnitt der Grundgesamtheit?</a></li>
+<li class="chapter" data-level="4.2" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#übungen-1"><i class="fa fa-check"></i><b>4.2</b> Übungen</a></li>
+<li class="chapter" data-level="4.3" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#test-1"><i class="fa fa-check"></i><b>4.3</b> Test</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html"><i class="fa fa-check"></i><b>5</b> Zentrale Tendenz testen</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html#entspricht-der-erwartungswert-einem-gewissen-wert"><i class="fa fa-check"></i><b>5.1</b> Entspricht der Erwartungswert einem gewissen Wert?</a></li>
+<li class="chapter" data-level="5.2" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html#weicht-der-gefundene-durchschnitt-stark-vom-hypothetischen-wert-ab"><i class="fa fa-check"></i><b>5.2</b> Weicht der gefundene Durchschnitt stark vom hypothetischen Wert ab?</a></li>
+<li class="chapter" data-level="5.3" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html#testvoraussetzungen"><i class="fa fa-check"></i><b>5.3</b> Testvoraussetzungen</a></li>
+<li class="chapter" data-level="5.4" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html#übungen-2"><i class="fa fa-check"></i><b>5.4</b> Übungen</a></li>
+<li class="chapter" data-level="5.5" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html#test-2"><i class="fa fa-check"></i><b>5.5</b> Test</a></li>
+</ul></li>
+<li class="part"><span><b>II Zwei Gruppen vergleichen</b></span></li>
+<li class="chapter" data-level="6" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><i class="fa fa-check"></i><b>6</b> Gruppenmittelwertunterschied bei einem intervallskalierten und normalverteilten Merkmal</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#was-ist-das-problem-der-stichprobenziehung"><i class="fa fa-check"></i><b>6.1</b> Was ist das Problem der Stichprobenziehung?</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#erwartungswertunterschied-zweistichproben-t-test-nach-student"><i class="fa fa-check"></i><b>6.1.1</b> Erwartungswertunterschied Zweistichproben-<span class="math inline">\(t\)</span>-Test nach Student</a></li>
+<li class="chapter" data-level="6.1.2" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#erwartungswertunterschied-welch-test"><i class="fa fa-check"></i><b>6.1.2</b> Erwartungswertunterschied Welch Test</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#effektstärken"><i class="fa fa-check"></i><b>6.2</b> Effektstärken</a></li>
+<li class="chapter" data-level="6.3" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#testvoraussetzungen-1"><i class="fa fa-check"></i><b>6.3</b> Testvoraussetzungen</a></li>
+<li class="chapter" data-level="6.4" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#übungen-3"><i class="fa fa-check"></i><b>6.4</b> Übungen</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><i class="fa fa-check"></i><b>7</b> Gruppenmittelwertunterschied bei einem mindestens ordinalskalierten Merkmal</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#wie-stark-unterscheiden-sich-die-mediane"><i class="fa fa-check"></i><b>7.1</b> Wie stark unterscheiden sich die Mediane?</a></li>
+<li class="chapter" data-level="7.2" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#effektstärke"><i class="fa fa-check"></i><b>7.2</b> Effektstärke</a></li>
+<li class="chapter" data-level="7.3" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#übungen-4"><i class="fa fa-check"></i><b>7.3</b> Übungen</a></li>
+<li class="chapter" data-level="7.4" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#test-3"><i class="fa fa-check"></i><b>7.4</b> Test</a></li>
+</ul></li>
+<li class="part"><span><b>III Zusammenhang zweier Merkmale</b></span></li>
+<li class="chapter" data-level="8" data-path="zusammenhang-zweier-merkmale.html"><a href="zusammenhang-zweier-merkmale.html"><i class="fa fa-check"></i><b>8</b> Zusammenhang zweier Merkmale</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="zusammenhang-zweier-merkmale.html"><a href="zusammenhang-zweier-merkmale.html#wie-stark-ist-der-zusammenhang-zwischen-zwei-intervallskalierten-und-normalverteilten-variablen"><i class="fa fa-check"></i><b>8.1</b> Wie stark ist der Zusammenhang zwischen zwei intervallskalierten und normalverteilten Variablen?</a></li>
+<li class="chapter" data-level="8.2" data-path="zusammenhang-zweier-merkmale.html"><a href="zusammenhang-zweier-merkmale.html#wie-stark-ist-der-zusammenhang-zwischen-zwei-mindestens-ordinalskalierten-merkmalen"><i class="fa fa-check"></i><b>8.2</b> Wie stark ist der Zusammenhang zwischen zwei mindestens ordinalskalierten Merkmalen?</a></li>
+<li class="chapter" data-level="8.3" data-path="zusammenhang-zweier-merkmale.html"><a href="zusammenhang-zweier-merkmale.html#wie-stark-ist-der-zusammenhang-zwischen-einem-mindestens-ordinalskalierten-merkmale-und-einem-dichotomen-merkmal"><i class="fa fa-check"></i><b>8.3</b> Wie stark ist der Zusammenhang zwischen einem mindestens ordinalskalierten Merkmale und einem dichotomen Merkmal?</a></li>
+<li class="chapter" data-level="8.4" data-path="zusammenhang-zweier-merkmale.html"><a href="zusammenhang-zweier-merkmale.html#stoergroesse"><i class="fa fa-check"></i><b>8.4</b> Was ist eine Störgrösse und wie wird damit umgegangen?</a></li>
+<li class="chapter" data-level="8.5" data-path="zusammenhang-zweier-merkmale.html"><a href="zusammenhang-zweier-merkmale.html#übungen-5"><i class="fa fa-check"></i><b>8.5</b> Übungen</a></li>
+<li class="chapter" data-level="8.6" data-path="zusammenhang-zweier-merkmale.html"><a href="zusammenhang-zweier-merkmale.html#test-4"><i class="fa fa-check"></i><b>8.6</b> Test</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="begriffsverzeichnis.html"><a href="begriffsverzeichnis.html"><i class="fa fa-check"></i>Begriffsverzeichnis</a></li>
+<li class="chapter" data-level="" data-path="literaturverzeichnis.html"><a href="literaturverzeichnis.html"><i class="fa fa-check"></i>Literaturverzeichnis</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistik 1</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="zusammenhang-zweier-merkmale" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Kapitel 8</span> Zusammenhang zweier Merkmale<a href="zusammenhang-zweier-merkmale.html#zusammenhang-zweier-merkmale" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Bislang wurde immer ein Merkmal separat betrachtet und manchmal wurden Untergruppen verglichen. Dabei ging es um die Frage, wo der Erwartungswert des Merkmals liegt und ob er einem gewissen Wert entspricht respektive für zwei Gruppen identisch ist. Wird jetzt noch ein zweites Merkmal beobachtet stellt sich die Frage, wie sich die Merkmale zueinander verhalten.</p>
+<div class="example">
+<p><span id="exm:zahlungsbereitschaft" class="example"><strong>Beispiel 8.1  (Zahlungsbereitschaft) </strong></span>Eine Firma will eine Kickstarteridee für ein Kinderspielzeug auf den Markt bringen. Dazu muss sie herausfinden wie viel die Konsumierenden bereit sind für das Spielzeug zu bezahlen. Es werden <span class="math inline">\(375\)</span> Konsumierende gefragt, wie viel sie für das Spielzeug zahlen würden. Zusätzlich wurde auch nach dem Jahreseinkommen in CHF und der Anzahl Spielzeuge im Haushalt gefragt.</p>
+</div>
+<p><span id="customdef-streudiagramm" class="customdef">Um den Zusammenhang zwischen zwei intervallskalierten Merkmalen aufzuzeigen wird ein sogenanntes <strong>Streudiagramm</strong> verwendet.</span>
+Um den Zusammenhang zwischen zwei intervallskalierten Merkmalen aufzuzeigen wird ein sogenanntes Streudiagramm verwendet. Dabei wird ein Koordinatensystem erstellt mit einem Merkmal auf der x-Achse und dem anderen Merkmal auf der y-Achse. Danach wird für jede Beobachtung ein Punkt bei den entsprechenden Werten für die beiden betrachteten Merkmale in dieses Koordinatensystem eingezeichnet.</p>
+<div class="figure"><span style="display:block;" id="fig:exm-zahlungsbereitschaft-streudiagramm"></span>
+<img src="aps_statistik1_files/figure-html/exm-zahlungsbereitschaft-streudiagramm-1.png" alt="Die drei Streudiagramme zeigen jeweils die Zahlungsbereitschaft (Preis in CHF) auf der y-Achse und das Alter in Jahren, die Anzahl Spiele im Haushalt und das Jahreseinkommen in 1'000 CHF respektive auf der x-Achse." width="672" />
+<p class="caption">
+Abbildung 8.1: Die drei Streudiagramme zeigen jeweils die Zahlungsbereitschaft (Preis in CHF) auf der y-Achse und das Alter in Jahren, die Anzahl Spiele im Haushalt und das Jahreseinkommen in 1’000 CHF respektive auf der x-Achse.
+</p>
+</div>
+<p>In Abbildung <a href="zusammenhang-zweier-merkmale.html#fig:exm-zahlungsbereitschaft-streudiagramm">8.1</a> sind drei Streudiagramme aufgezeichnet. Sie setzen jeweils die Zahlungsbereitschaft (Preis) mit dem Alter in Jahren, der Anzahl vorhandener Spiele im Haushalt und dem Einkommen respektive in Bezug. Es kann beobachtet werden, dass die Zahlungsbereitschaft unabhängig vom Alter immer ungefähr ähnlich hoch ist. Es ist des Weiteren klar zu sehen, dass die Zahlungsbereitschaft mit der Anzahl im Haushalt vorhandener Spiele sinkt. Ein bisschen weniger klar ist die Beobachtung, dass die Zahlungsbereitschaft mit dem Jahreseinkommen ansteigt.</p>
+<p><span id="customdef-korrelation" class="customdef">Diese drei Beobachtungen können mit der sogenannten <strong>Korrelation</strong> digitalisiert werden.</span> Die Korrelation ist eine Zahl zwischen <span class="math inline">\(-1\)</span> und <span class="math inline">\(+1\)</span>. Negative Zahlen bedeuten, dass es einen gegenläufigen Zusammenhang gibt. <span id="customdef-gegenlaeufig" class="customdef"><strong>Gegenläufig</strong> bedeutet je mehr von Merkmal A, desto weniger von Merkmal B.</span> Positive Zahlen bedeuten, dass es einen gleichläufigen Zusammenhang gibt. <span id="customdef-gleichlaeufig" class="customdef"><strong>Gleichläufig</strong> bedeutet je mehr von Merkmal A, desto weniger von Merkmal B.</span> Eine Korrelation von <span class="math inline">\(0\)</span> schliesslich bedeutet, dass es keinen Zusammenhang zwischen den beiden Merkmalen gibt. Je weiter weg von <span class="math inline">\(0\)</span> die Korrelation liegt, desto eindeutiger ist ein Zusammenhang auf dem Streudiagramm erkennbar. Die Korrelationen für die in der Abbildung gezeigten Zusammenhänge liegen bei <span class="math inline">\(-0.002\)</span> für Alter und Zahlungsbereitschaft, <span class="math inline">\(-0.770\)</span> für die Anzahl Spiele im Haushalt und Zahlungsbereitschaft und <span class="math inline">\(0.484\)</span> für das Einkommen und die Zahlungsbereitschaft.</p>
+<p>Die Korrelation erfasst nur lineare Zusammenhänge, also nur wenn Punkte entlang einer Linie streuen im Streudiagramm. Je weiter weg die Korrelation von <span class="math inline">\(0\)</span> ist, desto weniger streuen die Punkte entlang einer Linie, siehe erste und zweite Zeile der Abbildung <a href="zusammenhang-zweier-merkmale.html#fig:correlation-examples">8.2</a>. Die Korrelation sagt lediglich, ob die Linie steigt oder fällt, jedoch nicht wie stark. Nicht lineare Zusammenhänge wie in der dritten Zeile von Abbildung <a href="zusammenhang-zweier-merkmale.html#fig:correlation-examples">8.2</a> können mit der Korrelation nicht richtig erfasst werden und gängige Korrelationsberechnungen geben zufällige Resultate.</p>
+<div class="figure"><span style="display:block;" id="fig:correlation-examples"></span>
+<img src="figures/Correlation-examples2.svg" alt="Streudiagramme und dazugehörige Korrelation." width="100%" />
+<p class="caption">
+Abbildung 8.2: Streudiagramme und dazugehörige Korrelation.
+</p>
+</div>
+<p>Liegt eine Korrelation vor bedeutet dies, dass die Merkmale sich gemeinsam verändern. In Beispiel <a href="zusammenhang-zweier-merkmale.html#exm:zahlungsbereitschaft">8.1</a> scheint intuitiv klar, dass das Einkommen und die Anzahl vorhandene Spiele pro Haushalt die Zahlungsbereitschaft beeinflussen. Das Einkommen und die Anzahl Spiele sind also ursächlich. Dass die Zahlungsbereitschaft ursächlich wäre und zum Beispiel das Einkommen beeinflusst ist eher unwahrscheinlich. Welches von zwei Merkmalen ursächlich ist, bzw. wie die Merkmale kausal zusammenhängen, lässt sich jedoch nicht immer einfach beantworten, wie das folgende Beispiel zeigt.</p>
+<div class="example">
+<p><span id="exm:depression-alkohol-angst" class="example"><strong>Beispiel 8.2  (Depression, Angststörungen und Alkohol) </strong></span>In der Psychotherapie ist aufgefallen, dass sich Alkoholabhängigkeit, Angststörungen und Depression in der Tendenz wechselwirkend positiv beeinflussen [schuckit1996]. Dies soll mit den fiktiven Daten in <code>08-exm-depression-alkohol-angst.sav</code> illustriert werden. Für die Messung der Schwere der drei Merkmale Alkoholismus, Angststörung und Depression wurden die folgenden Messinstrumente verwendet: Das Beck Depression Inventory <em>BDI</em> für die Depression <span class="citation">(<a href="#ref-beck1988">Beck, Steer, and Carbin 1988</a>)</span>, das state trait anxiety inventory <em>STAI</em> für die Angststörungen <span class="citation">(<a href="#ref-spielberger1983manual">Spielberger et al. 1983</a>)</span> und das alcohol use inventory für den Alkoholismus <span class="citation">(<a href="#ref-skinner1982">Skinner and Allen 1982</a>)</span>.</p>
+</div>
+<p>Streudiagramme aller möglicher bivariaten Zusammenhänge sind in Abbildung <a href="zusammenhang-zweier-merkmale.html#fig:exm-depression-alkohol-angst-scatter">8.3</a> dargestellt. Während der lineare Zusammenhang zwischen Alkoholismus und Angststörung kaum erkennbar ist, so kann zwischen Depression und Alkoholismus ein leichter und zwischen Depression und Angststörung ein deutlich gleichläufiger linearer Zusammenhang festgestellt werden. Die geschätzten Korrelationen sind <span class="math inline">\(0.32\)</span> zwischen Alkoholismus und Depression, <span class="math inline">\(0.1\)</span> zwischen Alkoholismus und Angststörung und <span class="math inline">\(0.46\)</span> zwischen Depression und Angststörung.</p>
+<div class="figure"><span style="display:block;" id="fig:exm-depression-alkohol-angst-scatter"></span>
+<img src="aps_statistik1_files/figure-html/exm-depression-alkohol-angst-scatter-1.png" alt="Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten." width="672" />
+<p class="caption">
+Abbildung 8.3: Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten.
+</p>
+</div>
+<p>In diesem Fall ist unklar, ob jemand mit Alkoholismus eher eine Angststörung entwickelt, oder jemand mit Angststörung eher eine Alkoholabhängigkeit entwickelt. Die Korrelation gibt nur einen Anhaltspunkt über die Art des Zusammenhangs, nicht aber über die Ursächlichkeit der Variablen. Es könnte auch sein, dass die beiden Merkmale eigentlich unabhängig voneinander sind, aber ein drittes Merkmal die beiden Merkmale beeinflusst. Dazu später mehr unter <a href="zusammenhang-zweier-merkmale.html#stoergroesse">8.4</a>.</p>
+<p>Für die genaue Berechnung der Korrelation gibt es verschiedene Möglichkeiten, wovon auf einige im Verlauf dieses Kapitels eingegangen wird.</p>
+<div id="wie-stark-ist-der-zusammenhang-zwischen-zwei-intervallskalierten-und-normalverteilten-variablen" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Wie stark ist der Zusammenhang zwischen zwei intervallskalierten und normalverteilten Variablen?<a href="zusammenhang-zweier-merkmale.html#wie-stark-ist-der-zusammenhang-zwischen-zwei-intervallskalierten-und-normalverteilten-variablen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Wenn die beiden Merkmale je intervallskaliert sind und deren Beobachtungen <span class="math inline">\(x_1, \ldots, x_n\)</span> und <span class="math inline">\(y_1,\ldots, y_n\)</span> einer normalverteilten Population entstammen, dann ist wird Korrelation mit dem <span id="customdef-pearson-korrelation" class="customdef"><strong>Korrelationskoeffizient nach Person</strong></span>, auch <span id="customdef-podukt-moment-korrelation" class="customdef"><strong>Produkt-Moment-Korrelation</strong></span> genannt,</p>
+<p><span class="math display">\[
+r = \frac{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2}\cdot \sqrt{\frac{1}{n-1}\sum_{i=1}^n (y_i - \bar{y})^2}}
+\]</span>
+geschätzt. Im Zähler steht dabei die sogenannte Kovarianz. Diese misst mit Wert der Summanden, wie stark ein Punkt vom Durchschnitt abweicht und mit dem Vorzeichen der Summanden, ob beide Merkmale in dieselbe Richtung vom Durchschnitt abweichen oder nicht. Der Wert der Kovarianz hängt von der Einheit der Merkmale ab. Um dies zu vermeiden wird die Korrelation durch das Produkt der Standardabweichungen der beiden Merkmale geteilt. So wird <span class="math inline">\(-1&lt;r&lt;1\)</span> erreicht.</p>
+<p>Die oben in den Beispielen angegebenen Korrelationen wurden mit dem Korrelationskoeffizient nach Pearson basierende auf einer Zufallsstichprobe geschätzt. Der so berechnetet Wert gilt deshalb für die Stichprobe und ist die beste Schätzung für die Korrelation in der Population. Aufgrund der Überlegungen aus Kapiel <a href="stichprobenziehung.html#stichprobenziehung">3</a> ist diese Schätzung jedoch mit Unsicherheit behaftet. Diese Unsicherheit kann mit einem Konfidenzintervall abgeschätzt werden. Die genaue Berechnung davon wird hier nicht erläutert.</p>
+<p>Wichtig für die Beurteilung der Korrelation ist die Frage, ob eine Korrelation besteht oder nicht. Die Korrelation in der Population wird mit <span class="math inline">\(\rho\)</span>, sprich ‘rho’ bezeichnet. Es wird also gefragt, ob <span class="math inline">\(H_1: \rho \neq 0\)</span>, <span class="math inline">\(H_1: \rho &gt; 0\)</span> oder <span class="math inline">\(H_1: \rho &lt; 0\)</span> ist. Diese Fragestellungen können mit einem zweiseitigen respektive einseitigen statistischen Test getestet werden. Da getestet wird, ob die Korrelation sich von <span class="math inline">\(0\)</span> unterscheidet wird dieser Test <span id="customdef-podukt-moment-absichern-null" class="customdef"><strong>Absicherung gegen Null</strong></span> genannt.</p>
+<p>Die Teststatistik für die Absicherung gegen Null der Korrelation nach Pearson ist</p>
+<p><span class="math display">\[t = r\cdot \sqrt{\frac{n-2}{1-r^2}}. \]</span></p>
+<p>Wenn wiederholt Stichproben gezogen werden und immer wieder die Teststatistik berechnet wird, kann beobachtet werden, dass die Teststatistik <span class="math inline">\(t\)</span>-verteilt bei <span class="math inline">\(n-2\)</span> Freiheitsgraden ist.</p>
+<p>In <code>Jamovi</code> wird die Korrelation nach Pearson unter <code>Analysen &gt; Regression &gt; Korrelationsmatrix</code> und <code>Korrelationskoeffizienten: Pearson</code> geschätzt und mit der Zusatzoption <code>Zusätzliche Optionen: Signifikanzniveau</code> gegen Null abgesichert. Angenommen, es gäbe kein Vorwissen über die Richtung des Zusammenhangs zwischen den Merkmalen Alkoholismus, Depression und Angst. In diesem Fall werden zweiseitige Tests berechnet und wie folgt berichtet:</p>
+<blockquote>
+<p>Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Alkoholismus und Depression (<span class="math inline">\(r = 0.32\)</span>) sich signifikant von <span class="math inline">\(0\)</span> unterscheidet, <span class="math inline">\(t(373) = 6.41\)</span>, <span class="math inline">\(p &lt; 0.001\)</span>.</p>
+<p>Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Alkoholismus und Angststörung (<span class="math inline">\(r = 0.1\)</span>) sich nicht signifikant von <span class="math inline">\(0\)</span> unterscheidet, <span class="math inline">\(t(373) = 1.96\)</span>, <span class="math inline">\(p = .051\)</span>.</p>
+</blockquote>
+<p>Ist eine klare Hypothese über die Richtung des linearen Zusammenhangs vorhanden, zum Beispiel Leute mit mehr Geld kaufen mehr Geld für Spielzeuge ausgeben wollen, so kann auch einseitig getestet werden: <span class="math inline">\(H_0: \rho \leq 0\)</span> und <span class="math inline">\(H_1: \rho &gt; 0\)</span> und</p>
+<blockquote>
+<p>Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Einkommen (<span class="math inline">\(r = 0.48\)</span>) signifikant grösser ist als <span class="math inline">\(0\)</span>, <span class="math inline">\(t(373) = 10.7\)</span>, <span class="math inline">\(p &lt; 0.001\)</span>.</p>
+</blockquote>
+<p>Da die Teststatistik nicht von <code>Jamovi</code> direkt ausgegeben wird, muss diese händisch berechnet werden.</p>
+</div>
+<div id="wie-stark-ist-der-zusammenhang-zwischen-zwei-mindestens-ordinalskalierten-merkmalen" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Wie stark ist der Zusammenhang zwischen zwei mindestens ordinalskalierten Merkmalen?<a href="zusammenhang-zweier-merkmale.html#wie-stark-ist-der-zusammenhang-zwischen-zwei-mindestens-ordinalskalierten-merkmalen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span id="customdef-spearman-korrelation" class="customdef"><strong>Spearman</strong></span></p>
+</div>
+<div id="wie-stark-ist-der-zusammenhang-zwischen-einem-mindestens-ordinalskalierten-merkmale-und-einem-dichotomen-merkmal" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Wie stark ist der Zusammenhang zwischen einem mindestens ordinalskalierten Merkmale und einem dichotomen Merkmal?<a href="zusammenhang-zweier-merkmale.html#wie-stark-ist-der-zusammenhang-zwischen-einem-mindestens-ordinalskalierten-merkmale-und-einem-dichotomen-merkmal" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span id="customdef-punktbiseriale-korrelation" class="customdef"><strong>Punktbiseriale Korrelation</strong></span></p>
+<p>Ref: rangbiseriale Korrelation.</p>
+</div>
+<div id="stoergroesse" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Was ist eine Störgrösse und wie wird damit umgegangen?<a href="zusammenhang-zweier-merkmale.html#stoergroesse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span id="customdef-partielle-korrelation" class="customdef"><strong>partielle Korrelation</strong></span></p>
+</div>
+<div id="übungen-5" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Übungen<a href="zusammenhang-zweier-merkmale.html#übungen-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:depression-alkohol-angst-berichten" class="exercise"><strong>Übung 8.1  </strong></span></p>
+<!-- 
+Ziel: 
+- Korrelation mit Jamovi berechnen und zweiseitig gegen 0 absichern.
+-->
+<p>Sichern Sie die Korrelation nach Pearson zwischen Angststörung und Depression in Beispiel <a href="zusammenhang-zweier-merkmale.html#exm:depression-alkohol-angst">8.2</a> mit dem Datensatz <code>08-exm-depression-alkohol-angst.sav</code> zweiseitig gegen Null ab, berichten Sie das Ergebnis und interpretieren Sie die Stärke des Zusammenhangs.</p>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-57" class="solution"><em>Lösung</em>. </span></p>
+<blockquote>
+<p>Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Depression und Angststörung (<span class="math inline">\(r = 0.46\)</span>) sich signifikant von <span class="math inline">\(0\)</span> unterscheidet, <span class="math inline">\(t(373) = 9.98\)</span>, <span class="math inline">\(p &lt; 0.001\)</span>. Der Zusammenhang ist stark.</p>
+</blockquote>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:zahlungsbereitschaft-berichten" class="exercise"><strong>Übung 8.2  </strong></span></p>
+<!-- 
+Ziel: 
+- Korrelation mit Jamovi berechnen und einseitig gegen 0 absichern.
+-->
+<p>Testen Sie mit dem Datensatz <code>08-exm-zahlungsbereitschaft.sav</code> aus Beispiel <a href="zusammenhang-zweier-merkmale.html#exm:zahlungsbereitschaft">8.1</a>, ob die Korrelation nach Pearson zwischen der Zahlungsbereitschaft <code>Preis</code> und Alter positiv und ob die Korrelation zwischen der Zahlungsbereitschaft und der Anzahl Spiele im Haushalt negativ ist. Berichten Sie das Ergebnis und interpretieren Sie die Stärke des Zusammenhangs.</p>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-58" class="solution"><em>Lösung</em>. </span></p>
+<blockquote>
+<p>Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Alter (<span class="math inline">\(r = 0\)</span>) nicht signifikant grösser ist als <span class="math inline">\(0\)</span>, <span class="math inline">\(t(373) = -0.04\)</span>, <span class="math inline">\(p = .515\)</span>. Der Zusammenhang ist schwach.</p>
+<p>Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Anzahl Spiele (<span class="math inline">\(r = -0.77\)</span>) signifikant kleiner ist als <span class="math inline">\(0\)</span>, <span class="math inline">\(t(373) = -23.33\)</span>, <span class="math inline">\(p &lt; 0.001\)</span>. Der Zusammenhnag ist stark.</p>
+</blockquote>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:big-five-cor" class="exercise"><strong>Übung 8.3  </strong></span></p>
+<!-- 
+Ziel: Psychologische Anwendung.
+- 
+-->
+<p>Im Rahmen einer Studie wurde die Big-5-Persönlichkeitszüge von <span class="math inline">\(500\)</span> psychologie Studierenden abgefragt <span class="citation">(<a href="#ref-dolan2009">Dolan et al. 2009</a>)</span>. Der Datensatz ist unter <code>Jamovi &gt; Öffnen &gt; Datenbibliothek &gt; Big 5 (Dolan, Oort, Stoel &amp; Wicherts, 2009)</code> verfügbar.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Berechnen Sie paarweise die Korrelation nach Pearson zwischen allen fünf Merkmalen. Erklären und interpretieren Sie die stärkste negative, die stärkste positive Korrelation und die schwächste Korrelation.</li>
+<li>Zeichnen Sie die Korrelationsmatrix als Diagramm, inklusive Variablendichte und Statistiken und erklären Sie, was für Diagrammtypen Sie sehen.</li>
+<li>Testen Sie, ob die Korrelationen von Null abweichen und berichten Sie das Ergebnis für die stärkste negative, die stärkste positive Korrelation und die schwächste Korrelation.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-59" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="zusammenhang-zweier-merkmale.html#fig:sol-big-five-cor-input">8.4</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-big-five-cor-input"></span>
+<img src="figures/08-exr-big-five-cor-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
+<p class="caption">
+Abbildung 8.4: Jamovi Eingabe.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildungen <a href="zusammenhang-zweier-merkmale.html#fig:sol-big-five-cor-output-koorelationsmatrix">8.5</a> und <a href="zusammenhang-zweier-merkmale.html#fig:sol-big-five-cor-output-koorelationsmatrixdiagramm">8.6</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:sol-big-five-cor-output-koorelationsmatrix"></span>
+<img src="figures/08-exr-big-five-cor-jmv-output-korrelationsmatrix.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 8.5: Jamovi Ausgabe.
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:sol-big-five-cor-output-koorelationsmatrixdiagramm"></span>
+<img src="figures/08-exr-big-five-cor-jmv-output-korrelationsmatrixdiagramm.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 8.6: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit können die Teilfragen beantwortet werden.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Die Korrelationen können direkt aus Abbildung <a href="zusammenhang-zweier-merkmale.html#fig:sol-big-five-cor-output-koorelationsmatrix">8.5</a> entnommen werden. Die stärkste positive Korrelation beschreibt den Zusammenhang zwischen Extraversion und Openness (<span class="math inline">\(r = 0.27\)</span>). Diese Korrelation ist als mittel einzustufen und bedeutet je extravertierter eine Person ist desto höhere Werte hat sie tendenziell auch bei der Offenheit. Die stärkste negative Korrelation beschreibt den Zusammenhang zwischen Neuroticism und Conscientiousness (<span class="math inline">\(r = -0.37\)</span>). Dies ist ebenfalls eine mittlere Korrelation. Sie bedeutet je neurotischer jemand ist, desto tiefere Werte für Conscientiousness hat die Person. Die schwächste Korrelation beschreibt den Zusammenhang zwischen Neuroticism und Openness (<span class="math inline">\(r = -0.010\)</span>). Es handelt sich um einen schwachen Zusammenhang. Da die Korrelation quasi Null ist, bedeutet dies, dass Neuroticism und Openness unabhängig voneinander sind. Das Vorzeichen der Korrelation deutet darauf hin, dass je höhere Neuroticism-Werte jemand hat, desto tiefere Openness-Werte hat die Person tendenziell.</li>
+<li>Die Korrelationsmatrix als Diagramm in Abbildung <a href="zusammenhang-zweier-merkmale.html#fig:sol-big-five-cor-output-koorelationsmatrixdiagramm">8.6</a> hat folgende Bestandteile: Auf der Diagonalen befinden sich die geschätzten Verteilungen der Merkmale. Je höher die Linie bei einem gewissen Wert, desto wahrscheinlicher ist eine Beobachtung an diesem Punkt. Im oberen Dreieck sind die paarweise Korrelationen abgetragen. Die Sterne stehen für den <span class="math inline">\(p\)</span>-Wert der Absicherung gegen Null, wobei ein Stern einer Korrelation entspricht, welche bei Signifikanzniveau <span class="math inline">\(5\%\)</span> signifikant anders ist als Null. Im unteren Dreieck sind paarweise Streudiagramme aufgeführt und eine sogenannte Regressionsgerade, welche die Punkte am besten linear abbildet. Hier können Korrelationen grafisch erkannt werde und Anomalien wie zum Beispiel Aussreisser oder nicht lineare Zusammenhänge erkannt werden.</li>
+<li>TODO</li>
+</ol>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:body-shoe" class="exercise"><strong>Übung 8.4  </strong></span></p>
+<!-- 
+Ziel: 
+- Starke Korrelation gegen Null absichern
+-->
+<p>TODO:</p>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-60" class="solution"><em>Lösung</em>. </span>TODO: solution body</p>
+</details>
+</div>
+</div>
+<div id="test-4" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Test<a href="zusammenhang-zweier-merkmale.html#test-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+<h3>Literaturverzeichnis<a href="literaturverzeichnis.html#literaturverzeichnis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-beck1988" class="csl-entry">
+Beck, Aaron T., Robert A. Steer, and Margery G. Carbin. 1988. <span>“Psychometric Properties of the Beck Depression Inventory: Twenty-Five Years of Evaluation.”</span> <em>Clinical Psychology Review</em> 8 (1): 77–100. <a href="https://doi.org/10.1016/0272-7358(88)90050-5">https://doi.org/10.1016/0272-7358(88)90050-5</a>.
+</div>
+<div id="ref-dolan2009" class="csl-entry">
+Dolan, C. V., F. J. Oort, R. D. Stoel, and J. M. Wicherts. 2009. <span>“Testing Measurement Invariance in the Target Rotated Multi-Group Exploratory Factor Model.”</span> <em>Structural Equation Modeling</em> 16 (2): 295–314. <a href="https://doi.org/10.1080/10705510902751416">https://doi.org/10.1080/10705510902751416</a>.
+</div>
+<div id="ref-skinner1982" class="csl-entry">
+Skinner, Harvey A., and Barbara A. Allen. 1982. <span>“Alcohol Dependence Syndrome: Measurement and Validation.”</span> <em>Journal of Abnormal Psychology</em> 91 (3): 199–209. <a href="https://doi.org/10.1037/0021-843X.91.3.199">https://doi.org/10.1037/0021-843X.91.3.199</a>.
+</div>
+<div id="ref-spielberger1983manual" class="csl-entry">
+Spielberger, Charles D., Richard L. Gorsuch, Robert Lushene, Peter R. Vagg, and Gerard A. Jacobs. 1983. <em>Manual for the State-Trait Anxiety Inventory</em>. Palo Alto, CA: Consulting Psychologists Press.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="begriffsverzeichnis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": true,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": null
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/djfgerber/aps_statistik1/edit/main/src/08-korrelation.Rmd",
+"text": "Edit this page"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["aps_statistik1.pdf", "pdf"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"info": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

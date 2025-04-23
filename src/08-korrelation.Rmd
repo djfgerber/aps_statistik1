@@ -1,3 +1,257 @@
 # (PART) Zusammenhang zweier Merkmale {-}
 
-# Korrelation
+# Zusammenhang zweier Merkmale
+
+Bislang wurde immer ein Merkmal separat betrachtet und manchmal wurden Untergruppen verglichen. Dabei ging es um die Frage, wo der Erwartungswert des Merkmals liegt und ob er einem gewissen Wert entspricht respektive für zwei Gruppen identisch ist. Wird jetzt noch ein zweites Merkmal beobachtet stellt sich die Frage, wie sich die Merkmale zueinander verhalten. 
+
+:::{.example #zahlungsbereitschaft name="Zahlungsbereitschaft"}
+
+```{r exm-zahlungsbereitschaft}
+gen_exm_zahlungsbereitschaft <- function(){
+  set.seed(23)
+  n <- 375
+
+  file_name <- '08-exm-zahlungsbereitschaft.sav'
+  dd <- tibble(
+    Einkommen = rnorm(n, 80, 10),
+    Alter = runif(n, 18, 50),
+    Anzahl_spiele = rexp(n, 1/10),
+    Preis = (Einkommen / 80) *10 - (Anzahl_spiele-10) *0.2 + rnorm(n, 10, 1)) %>% 
+  write_sav(file_name)
+  jmv_corr <- jmv::corrMatrix(dd)$matrix$asDF %>% 
+    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  jmv_pos <- jmv::corrMatrix(dd, hypothesis = "pos")$matrix$asDF %>% 
+    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  jmv_neg <- jmv::corrMatrix(dd, hypothesis = "neg")$matrix$asDF %>% 
+    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  corr_mat <- dd %>% cor()
+  dd %>% ggplot()+geom_point(aes(y = Preis, x = Einkommen))
+  scatterplot <- dd %>% 
+    pivot_longer(cols = c(1:3), names_to = "Variable", values_to = "Wert") %>%
+    ggplot()+
+    geom_point(aes(y = Preis, x = Wert))+
+    facet_wrap(~Variable,nrow = 1, scales = "free_x")+
+    labs(x = "")+ 
+    theme(aspect.ratio=1)
+  # jmv_res <- dd 
+  return(mget(ls()))
+}
+exm_zahlungsbereitschaft <- gen_exm_zahlungsbereitschaft()
+```
+
+Eine Firma will eine Kickstarteridee für ein Kinderspielzeug auf den Markt bringen. Dazu muss sie herausfinden wie viel die Konsumierenden bereit sind für das Spielzeug zu bezahlen. Es werden $`r exm_zahlungsbereitschaft$n`$ Konsumierende gefragt, wie viel sie für das Spielzeug zahlen würden. Zusätzlich wurde auch nach dem Jahreseinkommen in CHF und der Anzahl Spielzeuge im Haushalt gefragt. 
+
+:::
+
+[Um den Zusammenhang zwischen zwei intervallskalierten Merkmalen aufzuzeigen wird ein sogenanntes **Streudiagramm** verwendet.]{.customdef #customdef-streudiagramm} 
+Um den Zusammenhang zwischen zwei intervallskalierten Merkmalen aufzuzeigen wird ein sogenanntes Streudiagramm verwendet. Dabei wird ein Koordinatensystem erstellt mit einem Merkmal auf der x-Achse und dem anderen Merkmal auf der y-Achse. Danach wird für jede Beobachtung ein Punkt bei den entsprechenden Werten für die beiden betrachteten Merkmale in dieses Koordinatensystem eingezeichnet.
+
+```{r exm-zahlungsbereitschaft-streudiagramm, fig.cap="Die drei Streudiagramme zeigen jeweils die Zahlungsbereitschaft (Preis in CHF) auf der y-Achse und das Alter in Jahren, die Anzahl Spiele im Haushalt und das Jahreseinkommen in 1'000 CHF respektive auf der x-Achse."}
+exm_zahlungsbereitschaft$scatterplot
+```
+
+In Abbildung \@ref(fig:exm-zahlungsbereitschaft-streudiagramm) sind drei Streudiagramme aufgezeichnet. Sie setzen jeweils die Zahlungsbereitschaft (Preis) mit dem Alter in Jahren, der Anzahl vorhandener Spiele im Haushalt und dem Einkommen respektive in Bezug. Es kann beobachtet werden, dass die Zahlungsbereitschaft unabhängig vom Alter immer ungefähr ähnlich hoch ist. Es ist des Weiteren klar zu sehen, dass die Zahlungsbereitschaft mit der Anzahl im Haushalt vorhandener Spiele sinkt. Ein bisschen weniger klar ist die Beobachtung, dass die Zahlungsbereitschaft mit dem Jahreseinkommen ansteigt. 
+
+[Diese drei Beobachtungen können mit der sogenannten **Korrelation** digitalisiert werden.]{.customdef #customdef-korrelation} Die Korrelation ist eine Zahl zwischen $-1$ und $+1$. Negative Zahlen bedeuten, dass es einen gegenläufigen Zusammenhang gibt. [**Gegenläufig**  bedeutet je mehr von Merkmal A, desto weniger von Merkmal B.]{.customdef #customdef-gegenlaeufig} Positive Zahlen bedeuten, dass es einen gleichläufigen Zusammenhang gibt. [**Gleichläufig**  bedeutet je mehr von Merkmal A, desto weniger von Merkmal B.]{.customdef #customdef-gleichlaeufig} Eine Korrelation von $0$ schliesslich bedeutet, dass es keinen Zusammenhang zwischen den beiden Merkmalen gibt. Je weiter weg von $0$ die Korrelation liegt, desto eindeutiger ist ein Zusammenhang auf dem Streudiagramm erkennbar. Die Korrelationen für die in der Abbildung gezeigten Zusammenhänge liegen bei $-0.002$ für Alter und Zahlungsbereitschaft, $-0.770$ für die Anzahl Spiele im Haushalt und Zahlungsbereitschaft und $0.484$ für das Einkommen und die Zahlungsbereitschaft. 
+
+
+Die Korrelation erfasst nur lineare Zusammenhänge, also nur wenn Punkte entlang einer Linie streuen im Streudiagramm. Je weiter weg die Korrelation von $0$ ist, desto weniger streuen die Punkte entlang einer Linie, siehe erste und zweite Zeile der Abbildung \@ref(fig:correlation-examples). Die Korrelation sagt lediglich, ob die Linie steigt oder fällt, jedoch nicht wie stark. Nicht lineare Zusammenhänge wie in der dritten Zeile von Abbildung \@ref(fig:correlation-examples) können mit der Korrelation nicht richtig erfasst werden und gängige Korrelationsberechnungen geben zufällige Resultate.
+
+
+```{r correlation-examples, out.width='100%', fig.cap='Streudiagramme und dazugehörige Korrelation.'}
+knitr::include_graphics("figures/Correlation-examples2.svg")
+```
+
+
+Liegt eine Korrelation vor bedeutet dies, dass die Merkmale sich gemeinsam verändern. In Beispiel \@ref(exm:zahlungsbereitschaft) scheint intuitiv klar, dass das Einkommen und die Anzahl vorhandene Spiele pro Haushalt die Zahlungsbereitschaft beeinflussen. Das Einkommen und die Anzahl Spiele sind also ursächlich. Dass die Zahlungsbereitschaft ursächlich wäre und zum Beispiel das Einkommen beeinflusst ist eher unwahrscheinlich. Welches von zwei Merkmalen ursächlich ist, bzw. wie die Merkmale kausal zusammenhängen, lässt sich jedoch nicht immer einfach beantworten, wie das folgende Beispiel zeigt.
+
+
+:::{.example #depression-alkohol-angst name="Depression, Angststörungen und Alkohol"}
+
+```{r exm-depression-alkohol-angst}
+gen_exm_depression_alkohol_angst <- function(){
+  set.seed(23)
+  n <- 375
+  # alcoholism, Depression (0-63), Angst
+  Sigma <- diag(3)
+  diag(Sigma) <- c(4,5,7.8)
+  Sigma[1,2] <- 1.3
+  Sigma[2,3] <- 3.25
+  Sigma[1,3] <- 0.3
+  Sigma[lower.tri(Sigma)] <- Sigma[upper.tri(Sigma)]
+  
+  x = mvtnorm::rmvnorm(n, c(15, 19, 43.2), sigma = Sigma)
+  colnames(x) <-  c("Alkohol", "Depression", "Angst")
+  x <- x %>% as_tibble() 
+  file_name <- '08-exm-depression-alkohol-angst.sav'
+  dd <- x %>% 
+    write_sav(file_name)
+  jmv_corr <- jmv::corrMatrix(dd)$matrix$asDF %>% 
+    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  corr_mat <- dd %>% cor()
+  scatter1 <- dd %>% ggplot()+geom_point(aes(y = Alkohol, x = Depression))
+  scatter2 <- dd %>% ggplot()+geom_point(aes(y = Alkohol, x = Angst))
+  scatter3 <- dd %>% ggplot()+geom_point(aes(y = Depression, x = Angst))
+  return(mget(ls()))
+}
+exm_depression_alkohol_angst <- gen_exm_depression_alkohol_angst()
+```
+
+In der Psychotherapie ist aufgefallen, dass sich Alkoholabhängigkeit, Angststörungen und Depression in der Tendenz wechselwirkend positiv beeinflussen [schuckit1996]. Dies soll mit den fiktiven Daten in `r inline_code(exm_depression_alkohol_angst$file_name)` illustriert werden. Für die Messung der Schwere der drei Merkmale Alkoholismus, Angststörung und Depression wurden die folgenden Messinstrumente verwendet: Das Beck Depression Inventory _BDI_ für die Depression [@beck1988], das state trait anxiety inventory _STAI_ für die Angststörungen [@spielberger1983manual] und das alcohol use inventory für den Alkoholismus [@skinner1982].
+
+:::
+
+Streudiagramme aller möglicher bivariaten Zusammenhänge sind in Abbildung \@ref(fig:exm-depression-alkohol-angst-scatter) dargestellt. Während der lineare Zusammenhang zwischen Alkoholismus und Angststörung kaum erkennbar ist, so kann zwischen Depression und Alkoholismus ein leichter und zwischen Depression und Angststörung ein deutlich gleichläufiger linearer Zusammenhang festgestellt werden. Die geschätzten Korrelationen sind $`r round(exm_depression_alkohol_angst$corr_mat['Alkohol', 'Depression'],2)`$ zwischen Alkoholismus und Depression, $`r round(exm_depression_alkohol_angst$corr_mat['Alkohol', 'Angst'],2)`$ zwischen Alkoholismus und Angststörung und $`r round(exm_depression_alkohol_angst$corr_mat['Depression', 'Angst'],2)`$ zwischen Depression und Angststörung.
+
+```{r exm-depression-alkohol-angst-scatter, fig.cap="Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten.", echo = FALSE}
+plots <- with(exm_depression_alkohol_angst, 
+              list(scatter1, scatter2, scatter3)) %>% 
+  map(~ .x + theme(aspect.ratio=1))
+do.call(grid.arrange, c(plots, ncol = 3))
+```
+
+In diesem Fall ist unklar, ob jemand mit Alkoholismus eher eine Angststörung entwickelt, oder jemand mit Angststörung eher eine Alkoholabhängigkeit entwickelt. Die Korrelation gibt nur einen Anhaltspunkt über die Art des Zusammenhangs, nicht aber über die Ursächlichkeit der Variablen. Es könnte auch sein, dass die beiden Merkmale eigentlich unabhängig voneinander sind, aber ein drittes Merkmal die beiden Merkmale beeinflusst. Dazu später mehr unter \@ref(stoergroesse).
+
+Für die genaue Berechnung der Korrelation gibt es verschiedene Möglichkeiten, wovon auf einige im Verlauf dieses Kapitels eingegangen wird.
+
+## Wie stark ist der Zusammenhang zwischen zwei intervallskalierten und normalverteilten Variablen?
+
+Wenn die beiden Merkmale je intervallskaliert sind und deren Beobachtungen $x_1, \ldots, x_n$ und $y_1,\ldots, y_n$ einer normalverteilten Population entstammen, dann ist wird Korrelation mit dem [**Korrelationskoeffizient nach Person**]{.customdef #customdef-pearson-korrelation}, auch [**Produkt-Moment-Korrelation**]{.customdef #customdef-podukt-moment-korrelation} genannt,
+
+$$
+r = \frac{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2}\cdot \sqrt{\frac{1}{n-1}\sum_{i=1}^n (y_i - \bar{y})^2}}
+$$
+geschätzt. Im Zähler steht dabei die sogenannte Kovarianz. Diese misst mit Wert der  Summanden, wie stark ein Punkt vom Durchschnitt abweicht und mit dem Vorzeichen der Summanden, ob beide Merkmale in dieselbe Richtung vom Durchschnitt abweichen oder nicht. Der Wert der Kovarianz hängt von der Einheit der Merkmale ab. Um dies zu vermeiden wird die Korrelation durch das Produkt der Standardabweichungen der beiden Merkmale geteilt. So wird $-1<r<1$ erreicht. 
+
+Die oben in den Beispielen angegebenen Korrelationen wurden mit dem Korrelationskoeffizient nach Pearson basierende auf einer Zufallsstichprobe geschätzt. Der so berechnetet Wert gilt deshalb für die Stichprobe und ist die beste Schätzung für die Korrelation in der Population. Aufgrund der Überlegungen aus Kapiel \@ref(stichprobenziehung) ist diese Schätzung jedoch mit Unsicherheit behaftet. Diese Unsicherheit kann mit einem Konfidenzintervall abgeschätzt werden. Die genaue Berechnung davon wird hier nicht erläutert.
+
+Wichtig für die Beurteilung der Korrelation ist die Frage, ob eine Korrelation besteht oder nicht. Die Korrelation in der Population wird mit $\rho$, sprich 'rho' bezeichnet. Es wird also gefragt, ob $H_1: \rho \neq 0$, $H_1: \rho > 0$ oder $H_1: \rho < 0$ ist. Diese Fragestellungen können mit einem zweiseitigen respektive einseitigen statistischen Test getestet werden. Da getestet wird, ob die Korrelation sich von $0$ unterscheidet wird dieser Test [**Absicherung gegen Null**]{.customdef #customdef-podukt-moment-absichern-null} genannt.
+
+Die Teststatistik für die Absicherung gegen Null der Korrelation nach Pearson ist
+
+$$t = r\cdot \sqrt{\frac{n-2}{1-r^2}}. $$ 
+
+Wenn wiederholt Stichproben gezogen werden und immer wieder die Teststatistik berechnet wird, kann beobachtet werden, dass die Teststatistik $t$-verteilt bei $n-2$ Freiheitsgraden ist. 
+
+In `Jamovi` wird die Korrelation nach Pearson unter `Analysen > Regression > Korrelationsmatrix` und `Korrelationskoeffizienten: Pearson` geschätzt und mit der Zusatzoption `Zusätzliche Optionen: Signifikanzniveau` gegen Null abgesichert. Angenommen, es gäbe kein Vorwissen über die Richtung des Zusammenhangs zwischen den Merkmalen Alkoholismus, Depression und Angst. In diesem Fall werden zweiseitige Tests berechnet und wie folgt berichtet:
+
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Alkoholismus und Depression ($r = `r round(exm_depression_alkohol_angst$corr_mat['Alkohol', 'Depression'],2)`$) sich signifikant von $0$ unterscheidet,  `r absichern_pearson(exm_depression_alkohol_angst$corr_mat['Alkohol', 'Depression'], exm_depression_alkohol_angst$n)`, $`r exm_depression_alkohol_angst$jmv_corr %>% filter(name_r == "Depression") %>% pull(Alkohol_rp) %>% as.numeric() %>% report_p(3)`$. 
+>
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Alkoholismus und Angststörung ($r = `r round(exm_depression_alkohol_angst$corr_mat['Alkohol', 'Angst'],2)`$) sich nicht signifikant von $0$ unterscheidet,  `r absichern_pearson(exm_depression_alkohol_angst$corr_mat['Alkohol', 'Angst'], exm_depression_alkohol_angst$n)`, $`r exm_depression_alkohol_angst$jmv_corr %>% filter(name_r == "Angst") %>% pull(Alkohol_rp) %>% as.numeric() %>% report_p(3)`$. 
+
+Ist eine klare Hypothese über die Richtung des linearen Zusammenhangs vorhanden, zum Beispiel Leute mit mehr Geld kaufen mehr Geld für Spielzeuge ausgeben wollen, so kann auch einseitig getestet werden: $H_0: \rho \leq 0$ und $H_1: \rho > 0$ und 
+
+> Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Einkommen ($r = `r round(exm_zahlungsbereitschaft$corr_mat['Preis', 'Einkommen'],2)`$) signifikant grösser ist als $0$,  `r absichern_pearson(exm_zahlungsbereitschaft$corr_mat['Preis', 'Einkommen'], exm_zahlungsbereitschaft$n)`, $`r exm_zahlungsbereitschaft$jmv_pos %>% filter(name_r == "Preis") %>% pull(Einkommen_rp) %>% as.numeric() %>% report_p(3)`$. 
+
+Da die Teststatistik nicht von `Jamovi` direkt ausgegeben wird, muss diese händisch berechnet werden.
+
+## Wie stark ist der Zusammenhang zwischen zwei mindestens ordinalskalierten Merkmalen?
+
+[**Spearman**]{.customdef #customdef-spearman-korrelation}
+
+## Wie stark ist der Zusammenhang zwischen einem mindestens ordinalskalierten Merkmale und einem dichotomen Merkmal?
+
+[**Punktbiseriale Korrelation**]{.customdef #customdef-punktbiseriale-korrelation}
+
+Ref: rangbiseriale Korrelation.
+
+
+## Was ist eine Störgrösse und wie wird damit umgegangen? {#stoergroesse}
+
+[**partielle Korrelation**]{.customdef #customdef-partielle-korrelation}
+
+
+## Übungen 
+
+::: {.exercise  #depression-alkohol-angst-berichten}
+<!-- 
+Ziel: 
+- Korrelation mit Jamovi berechnen und zweiseitig gegen 0 absichern.
+-->
+Sichern Sie die Korrelation nach Pearson zwischen Angststörung und Depression in Beispiel \@ref(exm:depression-alkohol-angst) mit dem Datensatz `r inline_code(exm_depression_alkohol_angst$file_name)` zweiseitig gegen Null ab, berichten Sie das Ergebnis und interpretieren Sie die Stärke des Zusammenhangs.
+:::
+
+:::{.solution}
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Depression und Angststörung ($r = `r round(exm_depression_alkohol_angst$corr_mat['Depression', 'Angst'],2)`$) sich signifikant von $0$ unterscheidet,  `r absichern_pearson(exm_depression_alkohol_angst$corr_mat['Depression', 'Angst'], exm_depression_alkohol_angst$n)`, $`r exm_depression_alkohol_angst$jmv_corr %>% filter(name_r == "Angst") %>% pull(Depression_rp) %>% as.numeric() %>% report_p(3)`$. Der Zusammenhang ist stark. 
+:::
+
+::: {.exercise  #zahlungsbereitschaft-berichten}
+<!-- 
+Ziel: 
+- Korrelation mit Jamovi berechnen und einseitig gegen 0 absichern.
+-->
+Testen Sie mit dem Datensatz `r inline_code(exm_zahlungsbereitschaft$file_name)` aus Beispiel \@ref(exm:zahlungsbereitschaft), ob die Korrelation nach Pearson zwischen der Zahlungsbereitschaft `Preis` und Alter positiv und ob die Korrelation zwischen der Zahlungsbereitschaft und der Anzahl Spiele im Haushalt negativ ist. Berichten Sie das Ergebnis und interpretieren Sie die Stärke des Zusammenhangs.
+:::
+
+:::{.solution}
+> Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Alter ($r = `r round(exm_zahlungsbereitschaft$corr_mat['Preis', 'Alter'],2)`$) nicht signifikant grösser ist als $0$,  `r absichern_pearson(exm_zahlungsbereitschaft$corr_mat['Preis', 'Alter'], exm_zahlungsbereitschaft$n)`, $`r exm_zahlungsbereitschaft$jmv_pos %>% filter(name_r == "Preis") %>% pull(Alter_rp) %>% as.numeric() %>% report_p(3)`$. Der Zusammenhang ist schwach.
+>
+> Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Anzahl Spiele ($r = `r round(exm_zahlungsbereitschaft$corr_mat['Preis', 'Anzahl_spiele'],2)`$) signifikant kleiner ist als $0$,  `r absichern_pearson(exm_zahlungsbereitschaft$corr_mat['Preis', 'Anzahl_spiele'], exm_zahlungsbereitschaft$n)`, $`r exm_zahlungsbereitschaft$jmv_neg %>% filter(name_r == "Preis") %>% pull(Anzahl_spiele_rp) %>% as.numeric() %>% report_p(3)`$. Der Zusammenhnag ist stark.
+:::
+
+
+
+::: {.exercise  #big-five-cor}
+<!-- 
+Ziel: Psychologische Anwendung.
+- 
+-->
+Im Rahmen einer Studie wurde die Big-5-Persönlichkeitszüge von $500$ psychologie Studierenden abgefragt [@dolan2009]. Der Datensatz ist unter `Jamovi > Öffnen > Datenbibliothek > Big 5 (Dolan, Oort, Stoel & Wicherts, 2009)` verfügbar.
+
+a) Berechnen Sie paarweise die Korrelation nach Pearson zwischen allen fünf Merkmalen. Erklären und interpretieren Sie die stärkste negative, die stärkste positive Korrelation und die schwächste Korrelation.
+b) Zeichnen Sie die Korrelationsmatrix als Diagramm, inklusive Variablendichte und Statistiken und erklären Sie, was für Diagrammtypen Sie sehen.
+c) Testen Sie, ob die Korrelationen von Null abweichen und berichten Sie das Ergebnis für die stärkste negative, die stärkste positive Korrelation und die schwächste Korrelation.
+:::
+
+:::{.solution}
+Zuerst wird der Datensatz mit `Jamovi` eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-big-five-cor-input). 
+
+```{r sol-big-five-cor-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
+knitr::include_graphics("figures/08-exr-big-five-cor-jmv-input.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildungen \@ref(fig:sol-big-five-cor-output-koorelationsmatrix) und \@ref(fig:sol-big-five-cor-output-koorelationsmatrixdiagramm).
+
+```{r sol-big-five-cor-output-koorelationsmatrix, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/08-exr-big-five-cor-jmv-output-korrelationsmatrix.jpg")
+```
+
+```{r sol-big-five-cor-output-koorelationsmatrixdiagramm, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/08-exr-big-five-cor-jmv-output-korrelationsmatrixdiagramm.jpg")
+```
+
+Damit können die Teilfragen beantwortet werden. 
+
+a) Die Korrelationen können direkt aus Abbildung \@ref(fig:sol-big-five-cor-output-koorelationsmatrix) entnommen werden. Die stärkste positive Korrelation beschreibt den Zusammenhang zwischen Extraversion und Openness ($r = 0.27$). Diese Korrelation ist als mittel einzustufen und bedeutet je extravertierter eine Person ist desto höhere Werte hat sie tendenziell auch bei der Offenheit. Die stärkste negative Korrelation beschreibt den Zusammenhang zwischen Neuroticism und Conscientiousness ($r = -0.37$). Dies ist ebenfalls eine mittlere Korrelation. Sie bedeutet je neurotischer jemand ist, desto tiefere Werte für Conscientiousness hat die Person. Die schwächste Korrelation beschreibt den Zusammenhang zwischen Neuroticism und Openness ($r = -0.010$). Es handelt sich um einen schwachen Zusammenhang. Da die Korrelation quasi Null ist, bedeutet dies, dass Neuroticism und Openness unabhängig voneinander sind. Das Vorzeichen der Korrelation deutet darauf hin, dass je höhere Neuroticism-Werte jemand hat, desto tiefere Openness-Werte hat die Person tendenziell. 
+b) Die Korrelationsmatrix als Diagramm in Abbildung \@ref(fig:sol-big-five-cor-output-koorelationsmatrixdiagramm) hat folgende Bestandteile: Auf der Diagonalen befinden sich die geschätzten Verteilungen der Merkmale. Je höher die Linie bei einem gewissen Wert, desto wahrscheinlicher ist eine Beobachtung an diesem Punkt. Im oberen Dreieck sind die paarweise Korrelationen abgetragen. Die Sterne stehen für den $p$-Wert der Absicherung gegen Null, wobei ein Stern einer Korrelation entspricht, welche bei Signifikanzniveau $5\%$ signifikant anders ist als Null. Im unteren Dreieck sind paarweise Streudiagramme aufgeführt und eine sogenannte Regressionsgerade, welche die Punkte am besten linear abbildet. Hier können Korrelationen grafisch erkannt werde und Anomalien wie zum Beispiel Aussreisser oder nicht lineare Zusammenhänge erkannt werden.
+c) TODO
+:::
+
+::: {.exercise  #body-shoe}
+<!-- 
+Ziel: 
+- Starke Korrelation gegen Null absichern
+-->
+```{r exr-body-shoe}
+gen_exr_body_shoe <- function(){
+  dd <- read_rds("../../06 Data/Data_Students/2021 APS STAT1 FS22.rds")
+  colnames(dd)[5:6] <- c("schuhgroesse", "koerpergroesse")
+  dd <- dd %>% select(schuhgroesse, koerpergroesse)
+  
+  file_name <- '08-exr-body-shoe.sav'
+  dd %>% write_sav(file_name)
+  jmv_corr <- jmv::corrMatrix(dd)$matrix$asDF %>% 
+    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  return(mget(ls()))
+}
+exr_body_shoe <- gen_exr_body_shoe()
+```
+
+TODO:
+:::
+
+:::{.solution}
+TODO: solution body
+:::
+
+## Test

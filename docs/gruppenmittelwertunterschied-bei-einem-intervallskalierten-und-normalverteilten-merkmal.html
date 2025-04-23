@@ -160,8 +160,17 @@ div.csl-indent {
 <li class="chapter" data-level="7.4" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#test-3"><i class="fa fa-check"></i><b>7.4</b> Test</a></li>
 </ul></li>
 <li class="part"><span><b>III Zusammenhang zweier Merkmale</b></span></li>
-<li class="chapter" data-level="8" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>8</b> Korrelation</a></li>
+<li class="chapter" data-level="8" data-path="zusammenhang-zweier-merkmale.html"><a href="zusammenhang-zweier-merkmale.html"><i class="fa fa-check"></i><b>8</b> Zusammenhang zweier Merkmale</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="zusammenhang-zweier-merkmale.html"><a href="zusammenhang-zweier-merkmale.html#wie-stark-ist-der-zusammenhang-zwischen-zwei-intervallskalierten-und-normalverteilten-variablen"><i class="fa fa-check"></i><b>8.1</b> Wie stark ist der Zusammenhang zwischen zwei intervallskalierten und normalverteilten Variablen?</a></li>
+<li class="chapter" data-level="8.2" data-path="zusammenhang-zweier-merkmale.html"><a href="zusammenhang-zweier-merkmale.html#wie-stark-ist-der-zusammenhang-zwischen-zwei-mindestens-ordinalskalierten-merkmalen"><i class="fa fa-check"></i><b>8.2</b> Wie stark ist der Zusammenhang zwischen zwei mindestens ordinalskalierten Merkmalen?</a></li>
+<li class="chapter" data-level="8.3" data-path="zusammenhang-zweier-merkmale.html"><a href="zusammenhang-zweier-merkmale.html#wie-stark-ist-der-zusammenhang-zwischen-einem-mindestens-ordinalskalierten-merkmale-und-einem-dichotomen-merkmal"><i class="fa fa-check"></i><b>8.3</b> Wie stark ist der Zusammenhang zwischen einem mindestens ordinalskalierten Merkmale und einem dichotomen Merkmal?</a></li>
+<li class="chapter" data-level="8.4" data-path="zusammenhang-zweier-merkmale.html"><a href="zusammenhang-zweier-merkmale.html#stoergroesse"><i class="fa fa-check"></i><b>8.4</b> Was ist eine Störgrösse und wie wird damit umgegangen?</a></li>
+<li class="chapter" data-level="8.5" data-path="zusammenhang-zweier-merkmale.html"><a href="zusammenhang-zweier-merkmale.html#übungen-5"><i class="fa fa-check"></i><b>8.5</b> Übungen</a></li>
+<li class="chapter" data-level="8.6" data-path="zusammenhang-zweier-merkmale.html"><a href="zusammenhang-zweier-merkmale.html#test-4"><i class="fa fa-check"></i><b>8.6</b> Test</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="begriffsverzeichnis.html"><a href="begriffsverzeichnis.html"><i class="fa fa-check"></i>Begriffsverzeichnis</a></li>
+<li class="chapter" data-level="" data-path="literaturverzeichnis.html"><a href="literaturverzeichnis.html"><i class="fa fa-check"></i>Literaturverzeichnis</a></li>
 </ul>
 
       </nav>
@@ -217,8 +226,8 @@ Abbildung 6.2: Verteilung simulierter ER-Mittelwertdifferenzen bei wiederholten 
 <p>Es kann beobachtet werden, dass, wenn es keine Erwartungswertdifferenz gibt, die Mittelwertdifferenzen der Stichproben am häufigsten bei <span class="math inline">\(0\)</span> liegen und mit zunehmender Entfernung von <span class="math inline">\(0\)</span> unwahrscheinlicher werden. Dies kann wieder formalisiert werden indem die <span class="math inline">\(5\%\)</span> unwahrscheinlichsten Werte (<span class="math inline">\(2.5\%\)</span> links und <span class="math inline">\(2.5\%\)</span> rechts) zum Ablehnungsbereich erklärt werden und entspricht der roten Fläche in Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:exm-breakup-hist-pval-reja">6.3</a> links. Die tatsächlich beobachtete Mittelwertdifferenz (schwarze Linie) liegt im Ablehnungsbereich. Dies bedeutet dass sich die Erwartungswertdifferenz bei Signifikanzniveau <span class="math inline">\(5\%\)</span> signifikant von <span class="math inline">\(0\)</span> unterscheidet. Dies ist äquivalent zu der Aussage, dass sich die ER-Erwartungswerte der Männer und Frauen signifikant unterscheidet.</p>
 <pre><code>## Warning: Removed 2 rows containing non-finite outside the scale range
 ## (`stat_bin()`).</code></pre>
-<pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale range
-## (`geom_bar()`).</code></pre>
+<pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale
+## range (`geom_bar()`).</code></pre>
 <div class="figure"><span style="display:block;" id="fig:exm-breakup-hist-pval-reja"></span>
 <img src="aps_statistik1_files/figure-html/exm-breakup-hist-pval-reja-1.png" alt="TODO" width="672" />
 <p class="caption">
@@ -268,8 +277,8 @@ t = \frac{\bar{x_1}-\bar{x_2} - \omega_0}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n
 <p><span id="customdef-welch-test" class="customdef">Freiheitsgraden und ein damit durchgeführter Test wird <strong>Welch-Test</strong> genannt.</span> Sie nähert die Verteilung der Mittelwertdifferenzen trotz unterschiedlicher Gruppenvarianzen gut an, siehe grüne Linie in Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:exm-emotional-stroop-hist">6.4</a>.</p>
 <p>Der Zweistichproben-<span class="math inline">\(t\)</span>-Test und der Welch-Test sind also zwei Testvarianten, um zu testen, ob der Erwartungswert in zwei Gruppen unterschiedlich ist. Dabei hat sich gezeigt, dass der Welch-Test die wahre Verteilung besser annähert als der Zweistichproben-<span class="math inline">\(t\)</span>-Test, wenn die beiden Gruppen unterschiedliche Varianzen aufweisen, siehe Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:exm-emotional-stroop-hist">6.4</a>. Wenn beide Varianzen ungefähr gleich sind, so geben beide Tests jedoch ähnlich gute Resultate, siehe Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:exm-breakup-hist">6.2</a>. Es wird deshalb empfohlen immer den Welch-Test durchzuführen <span class="citation">(<a href="#ref-zimmerman2004">Zimmerman 2004</a>)</span>. Ein Vergleich der Abbildungen <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:exm-breakup-hist-pval-reja">6.3</a> und <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:exm-emotional-stroop-hist-pval-reja">6.5</a> zeigt auch, dass der Unterschied von Ablehnungsbereich und <span class="math inline">\(p\)</span>-Wert beim im Falle der ähnlichen Varianzen gering und im Falle der unterschiedlichen Varianzen augenscheinlich wird.</p>
 <!-- Discuss: klären, Welch-Test praktisch relevant, zweistichproben-t-test historisch und als referenz wichtig. -->
-<pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale range
-## (`geom_bar()`).</code></pre>
+<pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale
+## range (`geom_bar()`).</code></pre>
 <div class="figure"><span style="display:block;" id="fig:exm-emotional-stroop-hist-pval-reja"></span>
 <img src="aps_statistik1_files/figure-html/exm-emotional-stroop-hist-pval-reja-1.png" alt="TODO" width="672" />
 <p class="caption">
@@ -550,7 +559,7 @@ Ziel:
 
 </div>
 </div>
-<h3>References</h3>
+<h3>Literaturverzeichnis<a href="literaturverzeichnis.html#literaturverzeichnis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-bandura1961" class="csl-entry">
 Bandura, A., D. Ross, and S. A. Ross. 1961. <span>“Transmission of Aggression Through Imitation of Aggressive Models.”</span> <em>Journal of Abnormal and Social Psychology</em> 63 (3): 575–82. <a href="https://doi.org/10.1037/h0045925">https://doi.org/10.1037/h0045925</a>.
