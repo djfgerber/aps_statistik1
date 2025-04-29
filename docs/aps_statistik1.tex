@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{25 April, 2025}
+\date{30 April, 2025}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2704,17 +2704,53 @@ TODO: solution body
 
 \chapter{Gruppenmittelwertunterschied bei einem mindestens ordinalskalierten Merkmal}\label{gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal}
 
-Um einen Gruppenmittelwertunterschied mit dem Zweistichproben-\(t\)-Test oder dem Welch Test testen zu können muss das betrachtete Merkmal intervallskaliert und (a) die Beobachtungen beider Gruppen einer Normalverteilung entstammen oder (b) genügend Beobachtungen, normalerweise mehr als \(30\) pro Gruppe, vorhanden sein. Dies ist in der Realität nicht immer gegeben. Eine Alternative zu den oben genannten Tests, welche ohne diese Voraussetzungen auskommt, ist der \(U\)-Test nach Mann und Whitney. Dieser kann bei mindestens ordinalskalierten Variablen eingesetzt werden und es wird keine Verteilung der Daten vorausgesetzt.
+Um einen Gruppenmittelwertunterschied mit dem Zweistichproben-\(t\)-Test
+oder dem Welch Test testen zu können muss das betrachtete Merkmal
+intervallskaliert und (a) die Beobachtungen beider Gruppen einer
+Normalverteilung entstammen oder (b) genügend Beobachtungen,
+normalerweise mehr als \(30\) pro Gruppe, vorhanden sein. Dies ist in der
+Realität nicht immer gegeben. Eine Alternative zu den oben genannten
+Tests, welche ohne diese Voraussetzungen auskommt, ist der \(U\)-Test nach
+Mann und Whitney. Dieser kann bei mindestens ordinalskalierten Variablen
+eingesetzt werden und es wird keine Verteilung der Daten vorausgesetzt.
 
-Da der \(U\)-Test keine Verteilung voraussetzt und auch bei nicht intervallskalierten Merkmalen eingesetzt werden kann sind jedoch auch die Hypothesen leicht anders als beim Welch Test. Der \(U\)-Test testet in jedem Fall, ob die Verteilungen in den beiden Gruppen gleich sind. Unter ein paar Zusatzannahmen ist dies Äquivalent zur Hypothese, dass die beiden Populationsmediane sich entsprechen. Auf diese letzte Subtilität wird hier nicht eingegangen.
+Da der \(U\)-Test keine Verteilung voraussetzt und auch bei nicht
+intervallskalierten Merkmalen eingesetzt werden kann sind jedoch auch
+die Hypothesen leicht anders als beim Welch Test. Der \(U\)-Test testet in
+jedem Fall, ob die Verteilungen in den beiden Gruppen gleich sind. Unter
+ein paar Zusatzannahmen ist dies Äquivalent zur Hypothese, dass die
+beiden Populationsmediane sich entsprechen. Auf diese letzte Subtilität
+wird hier nicht eingegangen.
 
 \section{Wie stark unterscheiden sich die Mediane?}\label{wie-stark-unterscheiden-sich-die-mediane}
 
 \begin{example}[Schmerzen bei Rothaarigen.]
-\protect\hypertarget{exm:red-hair-pain}{}\label{exm:red-hair-pain}Beispiel frei nach \citet{robinson2021}. Viele rothaarige Menschen haben eine höhere Schmerztoleranz. Der Mechanismus dazu ist auf das MC4R-Gen zurückzuführen, welches vor allem bei Rothaarigen vorkommt. Um dies zu testen haben Forschende die Schmerztoleranz von Mäusen mit und ohne MC4R-Gen-Variante untersucht, indem sie den sogenannten \emph{Hot Plate Test} durchgeführt haben. Dabei werden die Mäuse auf eine erhitzte Platte gestellt und die Zeit in Sekunden gemessen, bis die Maus anfängt zu hüpfen oder sich die Pfoten zu lecken, um den Schmerz zu reduzieren. Dies bei einer maximalen Versuchszeit von \(20\) Sekunden. Die Daten sind unter \texttt{07-exm-red-hair-pain.sav} verfügbar. Die Beobachtete Stichprobe ergibt, dass es die \(N = 13\) MC4R-Mäuse \(M = 12s, SD = 1.93\) und die \(15\) Non-MC4R-Mäuse \(M = 7.8s, SD = 2.16\) auf der heissen Platte ausgehalten haben. Werden die Daten auf die Normalverteilung getestet ergibt sich kein klares Bild. Es könnte sein, dass die Daten nicht normalverteilt sind. Ein Welch Test wäre in diesem Fall nicht angebracht. Da der \(U\)-Test keine Normalverteilung voraussetzt, kann dieser hier verwendet werden.
+\protect\hypertarget{exm:red-hair-pain}{}\label{exm:red-hair-pain}Beispiel frei nach \citet{robinson2021}. Viele rothaarige Menschen haben eine
+höhere Schmerztoleranz. Der Mechanismus dazu ist auf das MC4R-Gen
+zurückzuführen, welches vor allem bei Rothaarigen vorkommt. Um dies zu
+testen haben Forschende die Schmerztoleranz von Mäusen mit und ohne
+MC4R-Gen-Variante untersucht, indem sie den sogenannten \emph{Hot Plate Test}
+durchgeführt haben. Dabei werden die Mäuse auf eine erhitzte Platte
+gestellt und die Zeit in Sekunden gemessen, bis die Maus anfängt zu
+hüpfen oder sich die Pfoten zu lecken, um den Schmerz zu reduzieren.
+Dies bei einer maximalen Versuchszeit von \(20\) Sekunden. Die Daten sind
+unter \texttt{07-exm-red-hair-pain.sav} verfügbar. Die
+Beobachtete Stichprobe ergibt, dass es die \(N = 13\) MC4R-Mäuse
+\(M = 12s, SD = 1.93\) und die \(15\) Non-MC4R-Mäuse \(M = 7.8s, SD = 2.16\)
+auf der heissen Platte ausgehalten haben. Werden die Daten auf die
+Normalverteilung getestet ergibt sich kein klares Bild. Es könnte sein,
+dass die Daten nicht normalverteilt sind. Ein Welch Test wäre in diesem
+Fall nicht angebracht. Da der \(U\)-Test keine Normalverteilung
+voraussetzt, kann dieser hier verwendet werden.
 \end{example}
 
-Beim \(U\)-Test nach Mann und Whitney, werden zunächst die Beobachtungen ungeachtet der Gruppenzugehörigkeit in eine aufsteigende Reihenfolge gebracht, siehe mittige Punkte in Abbildung \ref{fig:exm-red-hair-pain-utest-order}. Die so sortierten Beobachtungen werden nummeriert, was den sogenannten Rangnummern entspricht. Für gleiche Ränge wird den betreffenden Rängen ein mittlerer Rang zugewiesen.
+Beim \(U\)-Test nach Mann und Whitney, werden zunächst die Beobachtungen
+ungeachtet der Gruppenzugehörigkeit in eine aufsteigende Reihenfolge
+gebracht, siehe mittige Punkte in Abbildung
+\ref{fig:exm-red-hair-pain-utest-order}. Die so sortierten
+Beobachtungen werden nummeriert, was den sogenannten Rangnummern
+entspricht. Für gleiche Ränge wird den betreffenden Rängen ein mittlerer
+Rang zugewiesen.
 
 \begin{figure}
 \centering
@@ -2722,18 +2758,55 @@ Beim \(U\)-Test nach Mann und Whitney, werden zunächst die Beobachtungen ungeac
 \caption{\label{fig:exm-red-hair-pain-utest-order}Mitte: Aufsteigend sortierte Beobachtungen des Merkmals Schmerztoleranz für MC4R und Non-MC4R Mäuse. Die Zahlen stehen für die Rangnummern. Oben (MC4R) und unten (Non-MC4R) stellt die Gruppenaufteilung der Rangnummern dar.}
 \end{figure}
 
-In einem zweiten Schritt werden die Beobachtungen wieder in die Gruppen aufgeteilt (siehe obere und untere Reihe in der Abbildung) und die jeweiligen Rangnummern innerhalb einer Gruppe addiert. Diese Gruppensummen werden Rangsummen genannt und sind hier
+In einem zweiten Schritt werden die Beobachtungen wieder in die Gruppen
+aufgeteilt (siehe obere und untere Reihe in der Abbildung) und die
+jeweiligen Rangnummern innerhalb einer Gruppe addiert. Diese
+Gruppensummen werden Rangsummen genannt und sind hier
 \[R_\text{MC4R} = 273 \quad R_\text{Non-MC4R} = 133.\]
 
-Die Idee dabei ist, dass wenn sich die Messungen in den beiden Gruppen nicht oder kaum unterscheiden, dann müssten auch die Rangnummern mehr oder weniger zufällig auf die beiden Gruppen verteilt sein. Gegeben, dass die beiden Gruppen gleich gross sind, müssten in diesem Fall auch die Rangsummen ungefähr gleich gross sein. Um in einem dritten Schritt für unterschiedliche Gruppengrössen zu korrigieren, wird nun noch die kleinste Rangsumme abgezogen, welche mit den Beobachtungen erreicht werden könnte. Für die \(15\) Non-MC4R Beobachtungen wäre dies also \(1+2+\ldots+ 15 = 120\) oder kurz \(n\cdot (n+1)/2 = 120\). Der so korrigierte Wert wird \(U\)-Wert genannt und ist im Beispiel
+Die Idee dabei ist, dass wenn sich die Messungen in den beiden Gruppen
+nicht oder kaum unterscheiden, dann müssten auch die Rangnummern mehr
+oder weniger zufällig auf die beiden Gruppen verteilt sein. Gegeben,
+dass die beiden Gruppen gleich gross sind, müssten in diesem Fall auch
+die Rangsummen ungefähr gleich gross sein. Um in einem dritten Schritt
+für unterschiedliche Gruppengrössen zu korrigieren, wird nun noch die
+kleinste Rangsumme abgezogen, welche mit den Beobachtungen erreicht
+werden könnte. Für die \(15\) Non-MC4R Beobachtungen wäre dies also
+\(1+2+\ldots+ 15 = 120\) oder kurz \(n\cdot (n+1)/2 = 120\). Der so
+korrigierte Wert wird \(U\)-Wert genannt und ist im Beispiel
 \[U_\text{MC4R} = 273 - 91 = 182 \quad U_\text{Non-MC4R} = 133-120 = 13.\]
-Wenn es keinen Gruppenunterschied gibt, dann wären diese \(U\)-Werte nahe beieinander und beide Werte wären nicht nahe bei \(0\). Wenn es einen Gruppenunterschied gibt, dann sind die \(U\)-Werte weit auseinander und der kleinere der beiden Werte läge nahe bei \(0\). Dies macht sich der \(U\)-Test zu Nutze, indem er nun den kleineren der beiden \(U\)-Werte, hier \(13\) - die sogenannte Teststatistik - mit einer Referenztabelle vergleicht, wo die Wahrscheinlichkeiten für einen solchen \(U\)-Wert, gegeben dass die Nullhypothese wahr ist, hinterlegt sind. Dieser Prozess ist in \texttt{Jamovi} automatisiert und es kann direkt der \(p\)-Wert in der Ausgabe abgelesen werden, hier \(p < 0.001\).
+Wenn es keinen Gruppenunterschied gibt, dann wären diese \(U\)-Werte nahe
+beieinander und beide Werte wären nicht nahe bei \(0\). Wenn es einen
+Gruppenunterschied gibt, dann sind die \(U\)-Werte weit auseinander und
+der kleinere der beiden Werte läge nahe bei \(0\). Dies macht sich der
+\(U\)-Test zu Nutze, indem er nun den kleineren der beiden \(U\)-Werte, hier
+\(13\) - die sogenannte Teststatistik - mit einer Referenztabelle
+vergleicht, wo die Wahrscheinlichkeiten für einen solchen \(U\)-Wert,
+gegeben dass die Nullhypothese wahr ist, hinterlegt sind. Dieser Prozess
+ist in \texttt{Jamovi} automatisiert und es kann direkt der \(p\)-Wert in der
+Ausgabe abgelesen werden, hier \(p < 0.001\).
 
 \begin{example}[Aufgeschlossenheit bei Jung und Alt.]
-\protect\hypertarget{exm:aufgeschlossenheit-jung-alt}{}\label{exm:aufgeschlossenheit-jung-alt}Eine Studentin will herausfinden, ob sich die durchschnittliche Aufgeschlossenheit von jüngere Menschen unter \(30\) Jahren und älteren Menschen mit über \(30\) oder genau \(30\) Jahren unterscheidet. Dazu befragt sie zufällig Leute der beiden Gruppen mit dem TIPI, welcher die Aufgeschlossenheit auf einer Skala von \(1\) bis \(7\) misst, wobei das kleinste Messintervall \(0.5\) Punkte beträgt. Die Daten sind also eher ordinal als intervallskaliert. In der Stichprobe waren \(N = 13\) junge mit einer Aufgeschlossenheit von \(M = 5.38, SD = 0.92\) und \(N = 7\) alte mit einer Aufgeschlossenheit von \(M = 5, SD = 0.87\). Die Daten sind unter \texttt{07-exm-aufgeschlossenheit-jung-alt.sav} verfügbar. (Beispiel frei erfunden.)
+\protect\hypertarget{exm:aufgeschlossenheit-jung-alt}{}\label{exm:aufgeschlossenheit-jung-alt}Eine Studentin will herausfinden, ob sich die durchschnittliche
+Aufgeschlossenheit von jüngere Menschen unter \(30\) Jahren und älteren
+Menschen mit über \(30\) oder genau \(30\) Jahren unterscheidet. Dazu
+befragt sie zufällig Leute der beiden Gruppen mit dem TIPI, welcher die
+Aufgeschlossenheit auf einer Skala von \(1\) bis \(7\) misst, wobei das
+kleinste Messintervall \(0.5\) Punkte beträgt. Die Daten sind also eher
+ordinal als intervallskaliert. In der Stichprobe waren
+\(N = 13\) junge mit einer Aufgeschlossenheit von \(M = 5.38, SD = 0.92\) und \(N =`r
+exm_aufgeschlossenheit_jung_alt\)n2`\$ alte mit einer Aufgeschlossenheit
+von \(M = 5, SD = 0.87\). Die Daten sind unter
+\texttt{07-exm-aufgeschlossenheit-jung-alt.sav} verfügbar.
+(Beispiel frei erfunden.)
 \end{example}
 
-Auch in diesem Fall werden für den \(U\)-Test zunächst die Beobachtungen gruppenunabhängig aufsteigend sortiert wie in der Mitte der Abbildung \ref{fig:exm-aufgeschlossenheit-jung-alt-utest-oder} dargestellt. Danach werden Rangnummern vergeben und die Beobachtungen wieder in ihre Gruppen geteilt, siehe die Reihen oben und unten der Abbildung. Die Ränge scheinen zufällig in die beiden Gruppen zu fallen.
+Auch in diesem Fall werden für den \(U\)-Test zunächst die Beobachtungen
+gruppenunabhängig aufsteigend sortiert wie in der Mitte der Abbildung
+\ref{fig:exm-aufgeschlossenheit-jung-alt-utest-oder} dargestellt.
+Danach werden Rangnummern vergeben und die Beobachtungen wieder in ihre
+Gruppen geteilt, siehe die Reihen oben und unten der Abbildung. Die
+Ränge scheinen zufällig in die beiden Gruppen zu fallen.
 
 \begin{figure}
 \centering
@@ -2742,29 +2815,64 @@ Auch in diesem Fall werden für den \(U\)-Test zunächst die Beobachtungen grupp
 \end{figure}
 
 Nun werden die Ränge innerhalb einer Gruppe addiert
-\[R_\text{Jung} = 143   \quad R_\text{Alt} = 67.\]
-Die Rangsummen unterschieden sich hier nicht, weil eine Gruppe systematisch höhere Ränge erreicht, sondern, weil die Gruppe der Jungen mehr Beobachtungen enthält und damit in dieser Gruppe auch mehr Rangnummern addiert werden.
+\[R_\text{Jung} = 143   \quad R_\text{Alt} = 67.\] Die Rangsummen
+unterschieden sich hier nicht, weil eine Gruppe systematisch höhere
+Ränge erreicht, sondern, weil die Gruppe der Jungen mehr Beobachtungen
+enthält und damit in dieser Gruppe auch mehr Rangnummern addiert werden.
 
 Wird dies nun korrigiert, ergeben sich die \(U\)-Werte
 \[U_\text{Jung} = 143 - \frac{13\cdot(13+1)}{2} = 52 \quad U_\text{Alt} = 67-\frac{7\cdot(7+1)}{2} = 39.\]
-Es kann festgestellt werden, dass die \(U\)-Werte nicht weit auseinander und damit weit entfernt von \(0\)-liegen. Dies deutet darauf hin, dass es keinen signifikanten Gruppenunterschied in der Aufgeschlossenheit gibt.
+Es kann festgestellt werden, dass die \(U\)-Werte nicht weit auseinander
+und damit weit entfernt von \(0\)-liegen. Dies deutet darauf hin, dass es
+keinen signifikanten Gruppenunterschied in der Aufgeschlossenheit gibt.
 
-Tatsächlich gibt \texttt{Jamovi} für dieses Beispiel \(p = 0.35\) zurück. Letzteres kann unter \texttt{Analysen\ \textgreater{}\ t-Tests\ \textgreater{}\ t-Test\ für\ unabhängige\ Stichproben} herausgefunden werden, wenn unter \texttt{Tests} der Test \texttt{Mann-Whitney\ U} ausgewählt wird.
+Tatsächlich gibt \texttt{Jamovi} für dieses Beispiel \(p = 0.35\) zurück.
+Letzteres kann unter
+\texttt{Analysen\ \textgreater{}\ t-Tests\ \textgreater{}\ t-Test\ für\ unabhängige\ Stichproben} herausgefunden
+werden, wenn unter \texttt{Tests} der Test \texttt{Mann-Whitney\ U} ausgewählt wird.
 
-\section{Effektstärke}\label{effektstuxe4rke}
+\section{Effektstärke}\label{u-test-effect}
 
-Als Effektstärke können die bisher gesehene Masse wie Cohens \(d\) nicht mehr dienen, da diese auf Parametern basieren, welche auf intervallskalierten Merkmalen beruhen. Stattdessen wird als Effektstärke die biserielle Rangkorrelation verwendet (mehr zum Thema Korrelation folgt in den nächsten Kapiteln).
+Als Effektstärke können die bisher gesehene Masse wie Cohens \(d\) nicht
+mehr dienen, da diese auf Parametern basieren, welche auf
+intervallskalierten Merkmalen beruhen. Stattdessen wird als Effektstärke
+die \phantomsection\label{customdef-biserielle-rangkorrelation}{\textbf{biserielle
+Rangkorrelation}} verwendet (mehr zum Thema Korrelation folgt in den nächsten
+Kapiteln).
 
-Zur Illustration der Berechnung der biseriellen Rangkorrelation wird folgendes Beispiel verwendet. Es soll getestet werden, ob Hasen oder Schildkröten schneller laufen können. Dazu wird auf einer Rennstrecke die Zeit von \(10\) Hasen und \(10\) Schildkröten gestoppt. Um die biserielle Rangkorrelation zu berechnen, werden zwischen den Beobachtungsgruppen alle möglichen Paare aufgelistet - also Hase \(1\) mit Schildkröte \(1\), Hase \(1\) mit Schildkröte \(2\), usw., Hase \(2\) mit Schildkröte \(1\), Hase \(2\) mit Schildkröte \(2\), usw., bis Hase \(10\) mit Schildkröte \(10\). Dabei ergeben sich in diesem Beispiel genau \(100\) Paarungen. Nehmen wir nun an, dass für \(90\) dieser Paare, der Hase schneller lief als die Schildkröte und für \(10\) Paare die Schildkröte schneller als der Hase. Die biserielle Rangkorrelation entspricht nun der Anzahl Paare \(f\) für welche Gruppe 1 höhere Werte hatte minus der Anzahl Paare \(u\) für welche Gruppe 2 höhere Werte hatte und ist
+Zur Illustration der Berechnung der biseriellen Rangkorrelation wird
+folgendes Beispiel verwendet. Es soll getestet werden, ob Hasen oder
+Schildkröten schneller laufen können. Dazu wird auf einer Rennstrecke
+die Zeit von \(10\) Hasen und \(10\) Schildkröten gestoppt. Um die
+biserielle Rangkorrelation zu berechnen, werden zwischen den
+Beobachtungsgruppen alle möglichen Paare aufgelistet - also Hase \(1\) mit
+Schildkröte \(1\), Hase \(1\) mit Schildkröte \(2\), usw., Hase \(2\) mit
+Schildkröte \(1\), Hase \(2\) mit Schildkröte \(2\), usw., bis Hase \(10\) mit
+Schildkröte \(10\). Dabei ergeben sich in diesem Beispiel genau \(100\)
+Paarungen. Nehmen wir nun an, dass für \(90\) dieser Paare, der Hase
+schneller lief als die Schildkröte und für \(10\) Paare die Schildkröte
+schneller als der Hase. Die biserielle Rangkorrelation entspricht nun
+der Anzahl Paare \(f\) für welche Gruppe 1 höhere Werte hatte minus der
+Anzahl Paare \(u\) für welche Gruppe 2 höhere Werte hatte und ist
 \[r = f - u = 0.9 - 0.1 = 0.8.\]
 
-Wären die Schildkröten in der Hälfte der so aufgelisteten Paarungen besser gewesen wäre die biserielle Rangkorrelation \(r = f-u=0.5 - 0.5 = 0\). Wären die Hasen immer besser gewesen, wäre die biserielle Rangkorrelation \(r = f-u = 1-0 = 1\). Wären die Schildkröten immer besser gewesen, wäre die biserielle Rangkorrelation \(r = f-u = 0-1 = -1\). Kein Effekt entspricht also \(r = 0\), je weiter weg von \(0\) die biserielle Rangkorrelation, desto stärker ist der Effekt. Es spielt keine Rolle, ob der Effekt positiv oder negativ ist.
+Wären die Schildkröten in der Hälfte der so aufgelisteten Paarungen
+besser gewesen wäre die biserielle Rangkorrelation
+\(r = f-u=0.5 - 0.5 = 0\). Wären die Hasen immer besser gewesen, wäre die
+biserielle Rangkorrelation \(r = f-u = 1-0 = 1\). Wären die Schildkröten
+immer besser gewesen, wäre die biserielle Rangkorrelation
+\(r = f-u = 0-1 = -1\). Kein Effekt entspricht also \(r = 0\), je weiter weg
+von \(0\) die biserielle Rangkorrelation, desto stärker ist der Effekt. Es
+spielt keine Rolle, ob der Effekt positiv oder negativ ist.
 
-Die biserielle Effektstärke kann auch aus der Teststatistik \(U\) berechnet werden mit der Formel
-\[r = \frac{2\cdot U}{n_1\cdot n_2}-1,\]
-wobei hier das Vorzeichen ändert, je nach dem, für welche Gruppen \(U_1\) resp. \(U_2\) stehen.
+Die biserielle Effektstärke kann auch aus der Teststatistik \(U\)
+berechnet werden mit der Formel \[r = \frac{2\cdot U}{n_1\cdot n_2}-1,\]
+wobei hier das Vorzeichen ändert, je nach dem, für welche Gruppen \(U_1\)
+resp. \(U_2\) stehen.
 
-Die Interpretation einer Korrelation als Effektstärke unterliegt einer anderen Referenz als die bisher gesehenen Effektstärken. \citet{cohen1988} schlägt zur Interpretation einer Korrelation die Richtgrössen
+Die Interpretation einer Korrelation als Effektstärke unterliegt einer
+anderen Referenz als die bisher gesehenen Effektstärken. \citet{cohen1988}
+schlägt zur Interpretation einer Korrelation die Richtgrössen
 
 \begin{itemize}
 \tightlist
@@ -2776,7 +2884,8 @@ Die Interpretation einer Korrelation als Effektstärke unterliegt einer anderen 
   \(|r| \approx 0.5\): starker Effekt
 \end{itemize}
 
-vor. Um wieder Klarheit im Unterrichtssetting zu schaffen, werden hier die folgenden Abgrenzungen verwendet:
+vor. Um wieder Klarheit im Unterrichtssetting zu schaffen, werden hier
+die folgenden Abgrenzungen verwendet:
 
 \begin{itemize}
 \tightlist
@@ -2788,12 +2897,24 @@ vor. Um wieder Klarheit im Unterrichtssetting zu schaffen, werden hier die folge
   \(0.4 < |r|\): starker Effekt
 \end{itemize}
 
-In Jamovi kann die biserielle Rankorrelation unter \texttt{Zusätzliche\ Statistiken\ \textgreater{}\ Effektstärke} eingeblendet werden. Für die beiden Beispiele \ref{exm:red-hair-pain} und \ref{exm:aufgeschlossenheit-jung-alt} führt dies zu folgenden Effektstärken und Berichtensätzen:
+In Jamovi kann die biserielle Rankorrelation unter
+\texttt{Zusätzliche\ Statistiken\ \textgreater{}\ Effektstärke} eingeblendet werden. Für die
+beiden Beispiele \ref{exm:red-hair-pain} und
+\ref{exm:aufgeschlossenheit-jung-alt} führt dies zu folgenden
+Effektstärken und Berichtensätzen:
 
 \begin{quote}
-Ein zweiseitiger \(U\)-Test nach Mann und Whitney ergibt, dass sich die mediane Schmerztoleranz von Mäusen mit MC4R Gen (\(\text{Mdn}= 11.5, N =13\)) und ohne MC4R Gen (\(\text{Mdn}=7, N = 15\)) signifikant unterscheidet, \(U = 13, p < .001, r = -0.87\) Der Effekt ist als gross einzustufen.
+Ein zweiseitiger \(U\)-Test nach Mann und Whitney ergibt, dass sich die
+mediane Schmerztoleranz von Mäusen mit MC4R Gen
+(\(\text{Mdn}= 11.5, N =13\)) und ohne MC4R Gen (\(\text{Mdn}=7, N = 15\))
+signifikant unterscheidet, \(U = 13, p < .001, r = -0.87\) Der Effekt
+ist als gross einzustufen.
 
-Ein zweiseitiger \(U\)-Test nach Mann und Whitney ergibt, dass sich die mediane Aufgeschlossenheit von jungen Menschen (\(\text{Mdn}= 5, N =13\)) und alten Menschen (\(\text{Mdn}=5, N = 7\)) nicht signifikant unterscheidet, \(U = 33.5, p = .35, r = -0.26\). Der Effekt ist als mittel einzustufen.
+Ein zweiseitiger \(U\)-Test nach Mann und Whitney ergibt, dass sich die
+mediane Aufgeschlossenheit von jungen Menschen
+(\(\text{Mdn}= 5, N =13\)) und alten Menschen (\(\text{Mdn}=5, N = 7\))
+nicht signifikant unterscheidet, \(U = 33.5, p = .35, r = -0.26\). Der
+Effekt ist als mittel einzustufen.
 \end{quote}
 
 \begin{caution}
@@ -2811,9 +2932,11 @@ Im Berichtensatz muss Folgendes enthalten sein:
 \item
   Zusammenfassende deskriptive Statistiken der Stichproben
 \item
-  Statistiken des Tests inklusive Teststatistik, \(p\)-Wert und Effektstärke
+  Statistiken des Tests inklusive Teststatistik, \(p\)-Wert und
+  Effektstärke
 \item
-  Die Interpretation der Effektstärke kann, wenn gefragt, hinzugefügt werden.
+  Die Interpretation der Effektstärke kann, wenn gefragt, hinzugefügt
+  werden.
 \end{itemize}
 
 \end{remark}
@@ -2825,30 +2948,44 @@ Im Berichtensatz muss Folgendes enthalten sein:
 \begin{exercise}
 \protect\hypertarget{exr:tempo30}{}\label{exr:tempo30}\leavevmode
 
-Für die Dorfstrasse in Köniz wurden zwei Verkehrskonzepte verglichen Tempo 50 mit Fussgängerstreifen und Tempo 30 ohne Fussgängerstreifen. Um die beiden Verkehrskonzepte zu evaluieren, wurden verschiedene Zahlen erhoben unter anderem die Durchfahrtszeit von Autos, die Anzahl Strassenquerungen von Fussgängern und die Anzahl Unfälle. Hier soll nur die Durchfahrtszeit von Autos in Minuten betrachtet und herausgefunden werden wie sich die Verkehrskonzepte auf diese ausgewirkt haben. Fiktive Daten dazu wurden als Datensatz \texttt{07-exr-tempo30.sav} abgelegt.
+Für die Dorfstrasse in Köniz wurden zwei Verkehrskonzepte verglichen
+Tempo 50 mit Fussgängerstreifen und Tempo 30 ohne Fussgängerstreifen. Um
+die beiden Verkehrskonzepte zu evaluieren, wurden verschiedene Zahlen
+erhoben unter anderem die Durchfahrtszeit von Autos, die Anzahl
+Strassenquerungen von Fussgängern und die Anzahl Unfälle. Hier soll nur
+die Durchfahrtszeit von Autos in Minuten betrachtet und herausgefunden
+werden wie sich die Verkehrskonzepte auf diese ausgewirkt haben. Fiktive
+Daten dazu wurden als Datensatz \texttt{07-exr-tempo30.sav}
+abgelegt.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  Prüfen Sie, ob die Testvoraussetzungen für einen Welch Test gegeben sind.
+  Prüfen Sie, ob die Testvoraussetzungen für einen Welch Test gegeben
+  sind.
 \item
   Beschreiben Sie die Population und das Merkmal.
 \item
-  Testen Sie mit einem \(U\)-Test bei Signifikanzniveau \(5\%\), ob sich die medianen Durchfahrtszeiten in der Population unterscheiden. Berichten Sie das Resultat und interpretieren Sie die Effektstärke.
+  Testen Sie mit einem \(U\)-Test bei Signifikanzniveau \(5\%\), ob sich
+  die medianen Durchfahrtszeiten in der Population unterscheiden.
+  Berichten Sie das Resultat und interpretieren Sie die Effektstärke.
 \end{enumerate}
 
 \end{exercise}
 
 \begin{solution}
 
-Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-tempo30-input}.
+Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+\ref{fig:sol-tempo30-input}.
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{figures/07-exr-tempo30-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-tempo30-input}
 \end{figure}
 
-Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-tempo30-output}.
+Dies produziert das Analyseergebnis in Abbildung
+\ref{fig:sol-tempo30-output}.
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{figures/07-exr-tempo30-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-tempo30-output}
@@ -2860,15 +2997,32 @@ Damit können die Teilfragen beantwortet werden.
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  Die Durchfahrtszeit ist ein intervallskaliertes Merkmal. Ob die Beobachtungen einer Zufallsstichprobe entstammen oder nicht muss beim Versuchsaufbau berücksichtigt werden und kann nicht im Nachhinein aus den Daten gelesen werden. Es sind mehr als \(30\) Beobachtungen pro Gruppe vorhanden. Damit sind alle Voraussetzungen für den Welch Test gegeben und es könnte hier auch ein Welch Test durchgeführt werden.
+  Die Durchfahrtszeit ist ein intervallskaliertes Merkmal. Ob die
+  Beobachtungen einer Zufallsstichprobe entstammen oder nicht muss
+  beim Versuchsaufbau berücksichtigt werden und kann nicht im
+  Nachhinein aus den Daten gelesen werden. Es sind mehr als \(30\)
+  Beobachtungen pro Gruppe vorhanden. Damit sind alle Voraussetzungen
+  für den Welch Test gegeben und es könnte hier auch ein Welch Test
+  durchgeführt werden.
 \item
-  Die Population sind alle Autos die durch die betroffene Strasse fahren. Das Merkmal ist die Durchfahrtszeit von Autos in Minuten.
+  Die Population sind alle Autos die durch die betroffene Strasse
+  fahren. Das Merkmal ist die Durchfahrtszeit von Autos in Minuten.
 \item
-  Es soll getestet werden, ob sich die medianen Durchfahrtszeiten unterscheiden. Die Hypothesen für den \(U\)-Test sind also zweiseitig formuliert \(H_0: \mu_\text{Tempo 30} = \mu_\text{Tempo 50}\) und \(H_1: \mu_\text{Tempo 30} \neq \mu_\text{Tempo 50}\). Das Testergebnis kann aus Jamovi abgelesen werden und wird wie folgt berichtet und interpretiert:
+  Es soll getestet werden, ob sich die medianen Durchfahrtszeiten
+  unterscheiden. Die Hypothesen für den \(U\)-Test sind also zweiseitig
+  formuliert \(H_0: \mu_\text{Tempo 30} = \mu_\text{Tempo 50}\) und
+  \(H_1: \mu_\text{Tempo 30} \neq \mu_\text{Tempo 50}\). Das
+  Testergebnis kann aus Jamovi abgelesen werden und wird wie folgt
+  berichtet und interpretiert:
 \end{enumerate}
 
 \begin{quote}
-Ein zweiseitiger \(U\)-Test nach Mann und Whitney ergibt, dass sich die mediane Durchfahrtszeit durch Köniz bei Tempo 30 (\(\text{Mdn}= 3.05 \text{Min}, N =54\)) und Tempo 50 (\(\text{Mdn}=4.27 \text{Min}, N = 65\)) signifikant unterscheidet, \(U = 1357, p = .034, r = -0.227\). Der Effekt ist als mittel einzustufen.
+Ein zweiseitiger \(U\)-Test nach Mann und Whitney ergibt, dass sich die
+mediane Durchfahrtszeit durch Köniz bei Tempo 30
+(\(\text{Mdn}= 3.05 \text{Min}, N =54\)) und Tempo 50
+(\(\text{Mdn}=4.27 \text{Min}, N = 65\)) signifikant unterscheidet,
+\(U = 1357, p = .034, r = -0.227\). Der Effekt ist als mittel
+einzustufen.
 \end{quote}
 
 \end{solution}
@@ -2876,30 +3030,41 @@ Ein zweiseitiger \(U\)-Test nach Mann und Whitney ergibt, dass sich die mediane 
 \begin{exercise}
 \protect\hypertarget{exr:warteschlangen}{}\label{exr:warteschlangen}\leavevmode
 
-Ein Flughafen nimmt ein neues Terminal in betrieb. Um den Betrieb für die Zukunft zu optimieren und die Wartezeit der Gäste möglichst kurz zu halten, werden zwei Warteschlangenkonzepte getestet. Gäste werden dabei per Kamera getrackt und ihre Wartezeit in Minuten wird im Datensatz \texttt{07-exr-warteschlangen.sav} festgehalten.
+Ein Flughafen nimmt ein neues Terminal in betrieb. Um den Betrieb für
+die Zukunft zu optimieren und die Wartezeit der Gäste möglichst kurz zu
+halten, werden zwei Warteschlangenkonzepte getestet. Gäste werden dabei
+per Kamera getrackt und ihre Wartezeit in Minuten wird im Datensatz
+\texttt{07-exr-warteschlangen.sav} festgehalten.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  Prüfen Sie, ob die Testvoraussetzung für einen Welch Test gegeben ist.
+  Prüfen Sie, ob die Testvoraussetzung für einen Welch Test gegeben
+  ist.
 \item
   Beschreiben Sie die Population und das Merkmal.
 \item
-  Testen Sie mit einem \(U\)-Test bei Signifikanzniveau \(5\%\), ob sich die medianen Wartezeiten der beiden Gruppen in der Population unterscheiden. Berichten Sie das Resultat und interpretieren Sie die Effektstärke.
+  Testen Sie mit einem \(U\)-Test bei Signifikanzniveau \(5\%\), ob sich
+  die medianen Wartezeiten der beiden Gruppen in der Population
+  unterscheiden. Berichten Sie das Resultat und interpretieren Sie die
+  Effektstärke.
 \end{enumerate}
 
 \end{exercise}
 
 \begin{solution}
 
-Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-warteschlangen-input}.
+Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+\ref{fig:sol-warteschlangen-input}.
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{figures/07-exr-warteschlangen-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-warteschlangen-input}
 \end{figure}
 
-Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-warteschlangen-output}.
+Dies produziert das Analyseergebnis in Abbildung
+\ref{fig:sol-warteschlangen-output}.
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{figures/07-exr-warteschlangen-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-warteschlangen-output}
@@ -2911,15 +3076,32 @@ Damit können die Teilfragen beantwortet werden.
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  Die Wartezeit ist ein intervallskaliertes Merkmal. Ob die Beobachtungen einer Zufallsstichprobe entstammen oder nicht muss beim Versuchsaufbau berücksichtigt werden und kann nicht im Nachhinein aus den Daten gelesen werden. Es sind mehr als \(30\) Beobachtungen pro Gruppe vorhanden. Damit sind alle Voraussetzungen für den Welch Test gegeben und es könnte hier auch ein Welch Test durchgeführt werden.
+  Die Wartezeit ist ein intervallskaliertes Merkmal. Ob die
+  Beobachtungen einer Zufallsstichprobe entstammen oder nicht muss
+  beim Versuchsaufbau berücksichtigt werden und kann nicht im
+  Nachhinein aus den Daten gelesen werden. Es sind mehr als \(30\)
+  Beobachtungen pro Gruppe vorhanden. Damit sind alle Voraussetzungen
+  für den Welch Test gegeben und es könnte hier auch ein Welch Test
+  durchgeführt werden.
 \item
-  Die Population sind alle Gäste, die den neuen Terminal benutzen. Das Merkmal ist die Wartezeit der Gäste in Minuten.
+  Die Population sind alle Gäste, die den neuen Terminal benutzen. Das
+  Merkmal ist die Wartezeit der Gäste in Minuten.
 \item
-  Es soll getestet werden, ob sich die medianen Durchfahrtszeiten unterscheiden. Die Hypothesen für den \(U\)-Test sind also zweiseitig formuliert \(H_0: \mu_\text{Konzept 1} = \mu_\text{Konzept 2}\) und \(H_1: \mu_\text{Konzept 1} \neq \mu_\text{Konzept 2}\). Das Testergebnis kann aus \texttt{Jamovi} abgelesen werden und wird wie folgt berichtet und interpretiert:
+  Es soll getestet werden, ob sich die medianen Durchfahrtszeiten
+  unterscheiden. Die Hypothesen für den \(U\)-Test sind also zweiseitig
+  formuliert \(H_0: \mu_\text{Konzept 1} = \mu_\text{Konzept 2}\) und
+  \(H_1: \mu_\text{Konzept 1} \neq \mu_\text{Konzept 2}\). Das
+  Testergebnis kann aus \texttt{Jamovi} abgelesen werden und wird wie folgt
+  berichtet und interpretiert:
 \end{enumerate}
 
 \begin{quote}
-Ein zweiseitiger \(U\)-Test nach Mann und Whitney ergibt, dass sich die mediane Wartezeit am neuen Terminal bei Konzept 1 (\(\text{Mdn}= 3.41 \text{Min}, N =51\)) und Konzept 2 (\(\text{Mdn}=4.18 \text{Min}, N = 107\)) nicht signifikant unterscheidet, \(U = 2345, p = .154, r = 0.141\). Der Effekt ist als klein einzustufen.
+Ein zweiseitiger \(U\)-Test nach Mann und Whitney ergibt, dass sich die
+mediane Wartezeit am neuen Terminal bei Konzept 1
+(\(\text{Mdn}= 3.41 \text{Min}, N =51\)) und Konzept 2
+(\(\text{Mdn}=4.18 \text{Min}, N = 107\)) nicht signifikant
+unterscheidet, \(U = 2345, p = .154, r = 0.141\). Der Effekt ist als
+klein einzustufen.
 \end{quote}
 
 \end{solution}
@@ -2927,7 +3109,11 @@ Ein zweiseitiger \(U\)-Test nach Mann und Whitney ergibt, dass sich die mediane 
 \begin{exercise}
 \protect\hypertarget{exr:statistik-herausforderung}{}\label{exr:statistik-herausforderung}\leavevmode
 
-Studierende der Kurse Statistik \(1\) und \(2\) sollen auf einer Skala von \(1\) bis \(10\) bewerten (\(1=\) gar nicht herausfordernd, \(10 =\) äusserst herausfordernd), wie herausfordernd der Statistikunterricht für sie ist. Wird von allen Studierenden der Kurs Statistik \(2\) durchschnittlich als herausfordernder betrachtet als Statistik \(1\)?
+Studierende der Kurse Statistik \(1\) und \(2\) sollen auf einer Skala von
+\(1\) bis \(10\) bewerten (\(1=\) gar nicht herausfordernd, \(10 =\) äusserst
+herausfordernd), wie herausfordernd der Statistikunterricht für sie ist.
+Wird von allen Studierenden der Kurs Statistik \(2\) durchschnittlich als
+herausfordernder betrachtet als Statistik \(1\)?
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
@@ -2937,20 +3123,27 @@ Studierende der Kurse Statistik \(1\) und \(2\) sollen auf einer Skala von \(1\)
 \item
   Weshalb wird hier ein \(U\)-Test gegenüber einem Welch Test bevorzugt?
 \item
-  Führen Sie einen \(U\)-Test durch mit Signifikanzniveau \(5\%\), berichten Sie das Ergebnis in einem Satz und interpretieren Sie die Effektstärke. Die Daten sind unter \texttt{07-exr-statistik-herausforderung.sav} verfügbar. (Beispiel frei erfunden.)
+  Führen Sie einen \(U\)-Test durch mit Signifikanzniveau \(5\%\),
+  berichten Sie das Ergebnis in einem Satz und interpretieren Sie die
+  Effektstärke. Die Daten sind unter
+  \texttt{07-exr-statistik-herausforderung.sav} verfügbar.
+  (Beispiel frei erfunden.)
 \end{enumerate}
 
 \end{exercise}
 
 \begin{solution}
 
-Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-statistik-herausforderung-input}.
+Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+\ref{fig:sol-statistik-herausforderung-input}.
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{figures/07-exr-statistik-herausforderung-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-statistik-herausforderung-input}
 \end{figure}
 
-Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-statistik-herausforderung-output}.
+Dies produziert das Analyseergebnis in Abbildung
+\ref{fig:sol-statistik-herausforderung-output}.
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{figures/07-exr-statistik-herausforderung-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-statistik-herausforderung-output}
@@ -2962,32 +3155,57 @@ Damit können die Teilfragen beantwortet werden.
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  Die Frage ``Wird von allen Studierenden der Kurs Statistik \(2\) durchschnittlich als herausfordernder betrachtet als Statistik \(1\)'' ist einseitig formuliert. Es soll getestet werden, ob \(H_1: \mu_\text{Statistik 1} < \mu_\text{Statistik 2}\). Dies entspricht der Nullhypothese \(H_0: \mu_\text{Statistik 1} \geq \mu_\text{Statistik 2}\)
+  Die Frage ``Wird von allen Studierenden der Kurs Statistik \(2\)
+  durchschnittlich als herausfordernder betrachtet als Statistik \(1\)''
+  ist einseitig formuliert. Es soll getestet werden, ob
+  \(H_1: \mu_\text{Statistik 1} < \mu_\text{Statistik 2}\). Dies
+  entspricht der Nullhypothese
+  \(H_0: \mu_\text{Statistik 1} \geq \mu_\text{Statistik 2}\)
 \item
-  Hier wird ein \(U\)-Test verwendet, da das Merkmal auf einem einzigen Likert-skaliertem Merkmal beruht. Dieses ist demnach ordinalskaliert. Ein Welch Test eignet sich nur für intervallskalierte Merkmale.
+  Hier wird ein \(U\)-Test verwendet, da das Merkmal auf einem einzigen
+  Likert-skaliertem Merkmal beruht. Dieses ist demnach
+  ordinalskaliert. Ein Welch Test eignet sich nur für
+  intervallskalierte Merkmale.
 \item
-  Das Testergebnis kann aus \texttt{Jamovi} abgelesen werden und wird wie folgt berichtet und interpretiert:
+  Das Testergebnis kann aus \texttt{Jamovi} abgelesen werden und wird wie
+  folgt berichtet und interpretiert:
 \end{enumerate}
 
 \begin{quote}
-Ein einseitiger \(U\)-Test nach Mann und Whitney ergibt, dass die mediane Herausforderung in Statistik 2 (\(\text{Mdn}=7, N = 5\)) signifikant grösser ist als in Statistik 1 (\(\text{Mdn}= 3.5, N =6\)), \(U = 2, p = .011, r = 0.867\). Der Effekt ist als gross einzustufen.
+Ein einseitiger \(U\)-Test nach Mann und Whitney ergibt, dass die
+mediane Herausforderung in Statistik 2 (\(\text{Mdn}=7, N = 5\))
+signifikant grösser ist als in Statistik 1 (\(\text{Mdn}= 3.5, N =6\)),
+\(U = 2, p = .011, r = 0.867\). Der Effekt ist als gross einzustufen.
 \end{quote}
 
 \end{solution}
 
 \begin{exercise}
-\protect\hypertarget{exr:depression-ecstasy}{}\label{exr:depression-ecstasy}Eine Neurologin sammelt Daten, um die depressive Wirkung bestimmter Freizeitdrogen zu untersuchen. Sie schickt dazu \(20\) männliche Clubgänger unter kontrollierten Bedingungen während vier Stunden in ein Tanzlokal. Zehn Testpersonen nehmen eine Ecstasy Pille ein, die zehn anderen trinken einen Liter Bier. Der Grad der Depression wird mit dem Beck Depression Inventory (BDI) zwölf Stunden nach dem Verlassen des Tanzlokals gemessen. Die Daten sind unter \texttt{07-exr-depression-ecstasy.sav} verfügbar. Ist die durchschnittliche Schwere der Nachtanzdepression bei der Ecstasy-Gruppe schlimmer als bei der Alkohol-Gruppe? Testen Sie mit einem \(U\)-Test, berichten Sie das Testresultat und schätzen sie die Effektstärke ein.
+\protect\hypertarget{exr:depression-ecstasy}{}\label{exr:depression-ecstasy}Eine Neurologin sammelt Daten, um die depressive Wirkung bestimmter
+Freizeitdrogen zu untersuchen. Sie schickt dazu \(20\) männliche
+Clubgänger unter kontrollierten Bedingungen während vier Stunden in ein
+Tanzlokal. Zehn Testpersonen nehmen eine Ecstasy Pille ein, die zehn
+anderen trinken einen Liter Bier. Der Grad der Depression wird mit dem
+Beck Depression Inventory (BDI) zwölf Stunden nach dem Verlassen des
+Tanzlokals gemessen. Die Daten sind unter
+\texttt{07-exr-depression-ecstasy.sav} verfügbar. Ist die
+durchschnittliche Schwere der Nachtanzdepression bei der Ecstasy-Gruppe
+schlimmer als bei der Alkohol-Gruppe? Testen Sie mit einem \(U\)-Test,
+berichten Sie das Testresultat und schätzen sie die Effektstärke ein.
 \end{exercise}
 
 \begin{solution}
 
-Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-depression-ecstasy-input}.
+Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+\ref{fig:sol-depression-ecstasy-input}.
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{figures/07-exr-depression-ecstasy-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-depression-ecstasy-input}
 \end{figure}
 
-Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-depression-ecstasy-output}.
+Dies produziert das Analyseergebnis in Abbildung
+\ref{fig:sol-depression-ecstasy-output}.
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{figures/07-exr-depression-ecstasy-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-depression-ecstasy-output}
@@ -2996,7 +3214,12 @@ Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-depression-ecstasy
 Damit kann die Frage nun beantwortet werden:
 
 \begin{quote}
-Ein einseitiger \(U\)-Test nach Mann und Whitney ergibt, dass die mediane Nachtanzdepression in der Ecstasy-Gruppe (\(\text{Mdn}=17.5, N = 10\)) nicht signifikant grösser ist als in der Alkohol-Gruppe (\(\text{Mdn}= 16, N =10\)), \(U = 35.5, p = .143, r = -0.290\). Der Effekt ist als mittel einzustufen.
+Ein einseitiger \(U\)-Test nach Mann und Whitney ergibt, dass die
+mediane Nachtanzdepression in der Ecstasy-Gruppe
+(\(\text{Mdn}=17.5, N = 10\)) nicht signifikant grösser ist als in der
+Alkohol-Gruppe (\(\text{Mdn}= 16, N =10\)),
+\(U = 35.5, p = .143, r = -0.290\). Der Effekt ist als mittel
+einzustufen.
 \end{quote}
 
 \end{solution}
@@ -3015,8 +3238,7 @@ Bislang wurde immer ein Merkmal separat betrachtet und manchmal wurden Untergrup
 \protect\hypertarget{exm:zahlungsbereitschaft}{}\label{exm:zahlungsbereitschaft}Eine Firma will eine Kickstarteridee für ein Kinderspielzeug auf den Markt bringen. Dazu muss sie herausfinden wie viel die Konsumierenden bereit sind für das Spielzeug zu bezahlen. Es werden \(375\) Konsumierende gefragt, wie viel sie für das Spielzeug zahlen würden. Zusätzlich wurde auch nach dem Jahreseinkommen in CHF und der Anzahl Spielzeuge im Haushalt gefragt.
 \end{example}
 
-\phantomsection\label{customdef-streudiagramm}{Um den Zusammenhang zwischen zwei intervallskalierten Merkmalen aufzuzeigen wird ein sogenanntes \textbf{Streudiagramm} verwendet.}
-Um den Zusammenhang zwischen zwei intervallskalierten Merkmalen aufzuzeigen wird ein sogenanntes Streudiagramm verwendet. Dabei wird ein Koordinatensystem erstellt mit einem Merkmal auf der x-Achse und dem anderen Merkmal auf der y-Achse. Danach wird für jede Beobachtung ein Punkt bei den entsprechenden Werten für die beiden betrachteten Merkmale in dieses Koordinatensystem eingezeichnet.
+\phantomsection\label{customdef-streudiagramm}{Um den Zusammenhang zwischen zwei intervallskalierten Merkmalen aufzuzeigen wird ein sogenanntes \textbf{Streudiagramm} verwendet.} Um den Zusammenhang zwischen zwei intervallskalierten Merkmalen aufzuzeigen wird ein sogenanntes Streudiagramm verwendet. Dabei wird ein Koordinatensystem erstellt mit einem Merkmal auf der x-Achse und dem anderen Merkmal auf der y-Achse. Danach wird für jede Beobachtung ein Punkt bei den entsprechenden Werten für die beiden betrachteten Merkmale in dieses Koordinatensystem eingezeichnet.
 
 \begin{figure}
 \centering
@@ -3037,7 +3259,7 @@ Die Korrelation erfasst nur lineare Zusammenhänge, also nur wenn Punkte entlang
 Liegt eine Korrelation vor bedeutet dies, dass die Merkmale sich gemeinsam verändern. In Beispiel \ref{exm:zahlungsbereitschaft} scheint intuitiv klar, dass das Einkommen und die Anzahl vorhandene Spiele pro Haushalt die Zahlungsbereitschaft beeinflussen. Das Einkommen und die Anzahl Spiele sind also ursächlich. Dass die Zahlungsbereitschaft ursächlich wäre und zum Beispiel das Einkommen beeinflusst ist eher unwahrscheinlich. Welches von zwei Merkmalen ursächlich ist, bzw. wie die Merkmale kausal zusammenhängen, lässt sich jedoch nicht immer einfach beantworten, wie das folgende Beispiel zeigt.
 
 \begin{example}[Depression, Angststörungen und Alkohol]
-\protect\hypertarget{exm:depression-alkohol-angst}{}\label{exm:depression-alkohol-angst}In der Psychotherapie ist aufgefallen, dass sich Alkoholabhängigkeit, Angststörungen und Depression in der Tendenz wechselwirkend positiv beeinflussen {[}schuckit1996{]}. Dies soll mit den fiktiven Daten in \texttt{08-exm-depression-alkohol-angst.sav} illustriert werden. Für die Messung der Schwere der drei Merkmale Alkoholismus, Angststörung und Depression wurden die folgenden Messinstrumente verwendet: Das Beck Depression Inventory \emph{BDI} für die Depression \citep{beck1988}, das state trait anxiety inventory \emph{STAI} für die Angststörungen \citep{spielberger1983manual} und das alcohol use inventory für den Alkoholismus \citep{skinner1982}.
+\protect\hypertarget{exm:depression-alkohol-angst}{}\label{exm:depression-alkohol-angst}In der Psychotherapie ist aufgefallen, dass sich Alkoholabhängigkeit, Angststörungen und Depression in der Tendenz wechselwirkend positiv beeinflussen \citep{schuckit1996}. Dies soll mit den fiktiven Daten in \texttt{08-exm-depression-alkohol-angst.sav} illustriert werden. Für die Messung der Schwere der drei Merkmale Alkoholismus, Angststörung und Depression wurden die folgenden Messinstrumente verwendet: Das Beck Depression Inventory \emph{BDI} für die Depression \citep{beck1988}, das state trait anxiety inventory \emph{STAI} für die Angststörungen \citep{spielberger1983manual} und das alcohol use inventory für den Alkoholismus \citep{skinner1982}.
 \end{example}
 
 Streudiagramme aller möglicher bivariaten Zusammenhänge sind in Abbildung \ref{fig:exm-depression-alkohol-angst-scatter} dargestellt. Während der lineare Zusammenhang zwischen Alkoholismus und Angststörung kaum erkennbar ist, so kann zwischen Depression und Alkoholismus ein leichter und zwischen Depression und Angststörung ein deutlich gleichläufiger linearer Zusammenhang festgestellt werden. Die geschätzten Korrelationen sind \(0.32\) zwischen Alkoholismus und Depression, \(0.1\) zwischen Alkoholismus und Angststörung und \(0.46\) zwischen Depression und Angststörung.
@@ -3059,16 +3281,18 @@ Wenn die beiden Merkmale je intervallskaliert sind und deren Beobachtungen \(x_1
 \[
 r = \frac{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2}\cdot \sqrt{\frac{1}{n-1}\sum_{i=1}^n (y_i - \bar{y})^2}}
 \]
+
 geschätzt. Im Zähler steht dabei die sogenannte Kovarianz. Diese misst mit Wert der Summanden, wie stark ein Punkt vom Durchschnitt abweicht und mit dem Vorzeichen der Summanden, ob beide Merkmale in dieselbe Richtung vom Durchschnitt abweichen oder nicht. Der Wert der Kovarianz hängt von der Einheit der Merkmale ab. Um dies zu vermeiden wird die Korrelation durch das Produkt der Standardabweichungen der beiden Merkmale geteilt. So wird \(-1<r<1\) erreicht.
 
-Die oben in den Beispielen angegebenen Korrelationen wurden mit dem Korrelationskoeffizient nach Pearson basierende auf einer Zufallsstichprobe geschätzt. Der so berechnetet Wert gilt deshalb für die Stichprobe und ist die beste Schätzung für die Korrelation in der Population. Aufgrund der Überlegungen aus Kapiel \ref{stichprobenziehung} ist diese Schätzung jedoch mit Unsicherheit behaftet. Diese Unsicherheit kann mit einem Konfidenzintervall abgeschätzt werden. Die genaue Berechnung davon wird hier nicht erläutert.
+Die oben in den Beispielen angegebenen Korrelationen wurden mit dem Korrelationskoeffizient nach Pearson basierende auf einer Zufallsstichprobe geschätzt. Der so berechnetet Wert gilt deshalb für die Stichprobe und ist die beste Schätzung für die Korrelation in der Population. Aufgrund der Überlegungen aus Kapitel \ref{stichprobenziehung} ist diese Schätzung jedoch mit Unsicherheit behaftet. Diese Unsicherheit kann mit einem Konfidenzintervall abgeschätzt werden. Die genaue Berechnung davon wird hier nicht erläutert.
 
 Wichtig für die Beurteilung der Korrelation ist die Frage, ob eine Korrelation besteht oder nicht. Die Korrelation in der Population wird mit \(\rho\), sprich `rho' bezeichnet. Es wird also gefragt, ob \(H_1: \rho \neq 0\), \(H_1: \rho > 0\) oder \(H_1: \rho < 0\) ist. Diese Fragestellungen können mit einem zweiseitigen respektive einseitigen statistischen Test getestet werden. Da getestet wird, ob die Korrelation sich von \(0\) unterscheidet wird dieser Test \phantomsection\label{customdef-podukt-moment-absichern-null}{\textbf{Absicherung gegen Null}} genannt.
 
 Die Teststatistik für die Absicherung gegen Null der Korrelation nach Pearson ist
 
 \begin{equation}
-t = r\cdot \sqrt{\frac{n-2}{1-r^2}}.(\#eq:absichern_pearson)
+t = r\cdot \sqrt{\frac{n-2}{1-r^2}}.
+\label{eq:absichern-pearson}
 \end{equation}
 
 Wenn wiederholt Stichproben gezogen werden und immer wieder die Teststatistik berechnet wird, kann beobachtet werden, dass die Teststatistik \(t\)-verteilt bei \(n-2\) Freiheitsgraden ist.
@@ -3076,9 +3300,9 @@ Wenn wiederholt Stichproben gezogen werden und immer wieder die Teststatistik be
 In \texttt{Jamovi} wird die Korrelation nach Pearson unter \texttt{Analysen\ \textgreater{}\ Regression\ \textgreater{}\ Korrelationsmatrix} und \texttt{Korrelationskoeffizienten:\ Pearson} geschätzt und mit der Zusatzoption \texttt{Zusätzliche\ Optionen:\ Signifikanzniveau} gegen Null abgesichert. Angenommen, es gäbe kein Vorwissen über die Richtung des Zusammenhangs zwischen den Merkmalen Alkoholismus, Depression und Angst. In diesem Fall werden zweiseitige Tests berechnet und wie folgt berichtet:
 
 \begin{quote}
-Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Alkoholismus und Depression (\(r = 0.32\)) sich signifikant von \(0\) unterscheidet, \(t(373) = 6.41\), \(p < 0.001\).
+Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Alkoholismus und Depression (\(r = 0.32\)) signifikant von \(0\) unterscheidet, \(t(373) = 6.41\), \(p < 0.001\).
 
-Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Alkoholismus und Angststörung (\(r = 0.1\)) sich nicht signifikant von \(0\) unterscheidet, \(t(373) = 1.96\), \(p = .051\).
+Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Alkoholismus und Angststörung (\(r = 0.1\)) nicht signifikant von \(0\) unterscheidet, \(t(373) = 1.96\), \(p = .051\).
 \end{quote}
 
 Ist eine klare Hypothese über die Richtung des linearen Zusammenhangs vorhanden, zum Beispiel Leute mit mehr Geld kaufen mehr Geld für Spielzeuge ausgeben wollen, so kann auch einseitig getestet werden: \(H_0: \rho \leq 0\) und \(H_1: \rho > 0\) und
@@ -3093,31 +3317,116 @@ Da die Teststatistik nicht von \texttt{Jamovi} direkt ausgegeben wird, muss dies
 
 Manchmal ist ein Merkmal oder beide Merkmale nicht intervallskaliert und normalverteilt. Sind die Daten beider Merkmale dennoch mindestens ordinalskaliert, so kann die \phantomsection\label{customdef-spearman-korrelation}{\textbf{Korrelation nach Spearman}}, auch \textbf{Spearmans Korrelationskoeffizient} genannt, verwendet werden.
 
-Diese wird berechnet indem den Beobachtungen jedes Merkmals aufsteigende sortiert und entsprechend der Reihenfolge Rangplätze vergeben werden. Die Differenz der Ränge von Merkmal \(X\) und \(Y\) für Beobachtung \(i\) wird mit \(d_i\) bezeichnet. Die Korrelation nach Spearman ist definiert als
+\begin{example}[Facebook und Lebenszufriedenheit.]
+\protect\hypertarget{exm:fb-life}{}\label{exm:fb-life}Je intensiver Facebook konsumiert wird, desto tiefer ist die Lebenszufriedenheit \citep{blachnio2016}. Eine Studie will dieses Resultat reproduzieren. Die Facebook-Nutzungsintensität wurde dafür mit einer Skala von \(1\) (keine) bis \(7\) (sehr intensive Nutzung) und die Lebenszufriedenheit mit Punkten von \(1\) (sehr unzufrieden) bis \(10\) (sehr zufrieden) gemessen. Es wurden \(73\) Personen befragt. Ihre Antworten wurden bereinigt im Datensatz \texttt{08-exm-fb-life.sav} abgelegt. Nach der Erhebung wird festgestellt, dass die beiden Merkmale nicht normalverteilt sind.
+\end{example}
+
+Wenn die Daten beider Merkmale mindestens ordinalskaliert sind, diese aber nicht die Voraussetzungen für die Korrelation nach Pearson erfüllen, kann die Korrelation nach Spearman angewendet werden. Diese wird berechnet indem den Beobachtungen jedes Merkmals aufsteigende sortiert und entsprechend der Reihenfolge Rangplätze vergeben werden. Die Differenz der Ränge der beiden Merkmale für Beobachtung \(i\) wird mit \(d_i\) bezeichnet. Die Korrelation nach Spearman ist
 
 \[r = 1 - \frac{6\cdot \sum_{i = 1}^n d_i^2}{n\cdot (n^2 -1)}.\]
 
-Die Absicherung gegen Null der Korrelation nach Spearman erfolgt gleich wie bei der Korrelation nach Pearson. Die Teststatistik wird also auch mit Gleichung @ref(eq:absichern\_pearson) berechnet und ist ebenfalls \(t\)-verteilt bei \(n-2\) Freiheitsgraden, wobei \(n\) für die Anzahl Beobachtungspaare steht.
+\begin{caution}
+
+\begin{remark}
+
+Exploration der Definition der Spearman'schen Korrelation
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Alle Punkte sind entlang einer aufsteigenden Linie: In diesem Fall entsprechen sich die Ränge der beiden Merkmale genau und \(d_i = 0\) für alle Beobachtungen. Dies führt zu \(d_i^2 = 0\) und demnach zu \(r = 1\).
+\item
+  \(n= 5\) Punkte sind entlang einer absteigenden Linie: In diesem Fall entspricht der kleinste Rang des einen Merkmals dem grössten des anderen Merkmals, der zweitgrösste Rang dem zweitkleinsten, usw. Die Rangdifferenzen sind in dem Fall \(d_1 = 5-1=4, d_2 = 4-2=2, d_3 = 3-3 = 0, d_4 = 2-4 = -2, d_5 = 1-5 = -4\). Dies führt zu
+  \[r = 1 - \frac{6\cdot (4^2+2^2+0^2+(-2)^2+(-4)^2 )}{5\cdot (5^2 -1)} = 1 - \frac{240}{120} = 1-2 = -1.\]
+  Die Formel ist also so ausgestaltet, dass bei perfektem gegenläufigem Zusammenhang eine Korrelation von \(-1\) erreicht wird.
+\end{enumerate}
+
+\end{remark}
+
+\end{caution}
+
+Die Absicherung gegen Null der Korrelation nach Spearman erfolgt gleich wie bei der Korrelation nach Pearson. Die Teststatistik wird also auch mit Gleichung \eqref{eq:absichern-pearson} berechnet und ist ebenfalls \(t\)-verteilt bei \(n-2\) Freiheitsgraden, wobei \(n\) für die Anzahl Beobachtungspaare steht.
+
+In \texttt{Jamovi} wird die Korrelation nach Spearman unter \texttt{Analysen\ \textgreater{}\ Regression\ \textgreater{}\ Korrelationsmatrix} und \texttt{Korrelationskoeffizienten:\ Spearman} geschätzt und mit der Zusatzoption \texttt{Zusätzliche\ Optionen:\ Signifikanzniveau} gegen Null abgesichert. Angenommen, es gäbe kein Vorwissen über die Richtung des Zusammenhangs zwischen den Merkmalen Facebook-Nutzungsintensität und Lebenszufriedenheit. In diesem Fall werden zweiseitige Tests berechnet und wie folgt berichtet:
+
+\begin{quote}
+Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Spearman ergibt, dass sich die Korrelation zwischen Facebook-Nutzungsintensität und Lebenszufriedenheit (\(r = -0.29\)) signifikant von \(0\) unterscheidet, \(t(71) = -2.58\), \(p = .007\).
+\end{quote}
 
 \section{Wie stark ist der Zusammenhang zwischen einem intervallskalierten und normalverteilten Merkmal und einem dichotomen Merkmal?}\label{wie-stark-ist-der-zusammenhang-zwischen-einem-intervallskalierten-und-normalverteilten-merkmal-und-einem-dichotomen-merkmal}
 
-\phantomsection\label{customdef-punktbiseriale-korrelation}{\textbf{punktbiseriale Korrelation}}
+Ein mit dem BDI gemessener Wert für Depression kann kategorisiert werden in leichte Depression (\(1-19\)) Punkte und schwere Depression (\(20-63\)) Punkte. Es folgt also eine neues dichotomes Merkmal Depressionsdiagnose mit Ausprägungen leichte und schwere Depression. Hier kann ebenfalls die Frage gestellt werden, wie stark der Zusammenhang zwischen Depressionsdiagnose und dem intervallskalierten Wert für den Alkoholismus. \phantomsection\label{customdef-punktbiseriale-korrelation}{Die \textbf{punktbiseriale Korrelation} ist dazu geeignet den Zusammenhang zwischen einer dichotomen und einem intervallskalierten normalverteilten Merkmal zu messen.} gemessen. Sie wird berechnet mit
 
-\[ r = \frac{\bar{x}_1- \bar{x}_2}{(n_1+n_2)\cdot s}\sqrt{n_1\cdot n_2}\]
+\[ r = \frac{\bar{x}_1- \bar{x}_2}{(n_1+n_2)\cdot s}\sqrt{n_1\cdot n_2},\]
+wobei \(s\) die Standardabweichung des intervallskalierten Merkmals bezeichnet.
+
+Die Berechnung der punktbiserialen Korrelation ist in Jamovi nicht implementiert. Die Kenngrössen für die Berechnung können jedoch aus der \texttt{Erforschung\ \textgreater{}\ Deskriptivstatistik} von \texttt{Jamovi} abgelesen werden. Dabei ist zu beachten, dass für \(\bar{x}_1, n_1, \bar{x}_2, n_2\) die Option \texttt{Aufgeteilt\ nach} mit dem dichotomen Merkmal befüllt sein muss. Für die Berechnung von \(s\) muss dieses Feld jedoch leer sein. Im Beispiel ist die punktbiseriale Korrelation
+
+\[ r = \frac{\bar{x}_1- \bar{x}_2}{(n_1+n_2)\cdot s}\sqrt{n_1\cdot n_2}
+= \frac{15.88- 14.59}{(122+253)\cdot 1.97}\sqrt{122\cdot 253} = 0.31.\]
+
+Da ein dichotomes Merkmal wie die Depressionsdiagnostik nur zwei Ausprägungen hat, funktioniert die übliche Interpretation dieses gleichläufigen Zusammenhangs mit ``je mehr schwere Depression, desto höher der Alkoholismus-Wert'' nicht mehr. Stattdessen kann die leicht angepasste Interpretation ``je eher eine Person eine schwere Depression hat, desto höher der Alkoholismus-Wert'' oder ``je höher der Alkoholismus-Wert, desto eher hat eine Person eine schwere Depression'' verwendet werden.
+
+Eine genaue Betrachtung dieser Formel lässt eine Ähnlichkeit zur Effektstärke des Zweistichproben-\(t\)-Tests und Welch Tests erkennen. Tatsächlich kommt die punktbiseriale Korrelation in den gleichen Fällen zur Anwendung wie besagte Tests und ist äquivalent zu deren Effektstärken.
+
+Die punktbiseriale Korrelation wird ähnlich wie die Korrelation nach Pearson abgesichert. Die Teststatistik ist
 
 \begin{equation}
-t = r\cdot \sqrt{\frac{n_1 + n_2 -2}{1-r^2}}.(\#eq:absichern_punktbiserial)
+t = r\cdot \sqrt{\frac{n_1 + n_2 -2}{1-r^2}}.
 \end{equation}
 
-Ref: rangbiseriale Korrelation.
+Sie folgt einer t-Verteilung bei \(n_1 + n_2 -2\) Freiheitsgraden. Dieser Wert kann mit der entsprechenden \(t\)-Verteilung in Abbildung \ref{fig:t-distribution} verglichen werden. Da die Absicherung nicht in \texttt{Jamovi} implementiert ist, wird die Absicherung gegen null der punktbiserialen Korrelation an der Prüfung nicht erwartet. Um die Zufälligkeit des gefundenen Zusammenhangs zu beurteilen, kann behelfsmässig auf das Resultat des Zweistichproben-\(t\)-Tests resp. Welch Test abgestellt werden.
+
+\section{Wie stark ist der Zusammenhang zwischen einem mindestens ordinalskalierten Merkmal und einem dichotomen Merkmal?}\label{wie-stark-ist-der-zusammenhang-zwischen-einem-mindestens-ordinalskalierten-merkmal-und-einem-dichotomen-merkmal}
+
+Genau wie die vorherige Situation äquivalent zum Zweistichproben-\(t\)-Test und Welch Test war, ist die Situation mit einem mindestens ordinalskaliertem Merkmal und einem dichotomen Merkmal äquivalent zur Effektstärke des U-Tests nach Mann und Whitney. Für die Effektstärke des \(U\)-Test wurde tatsächlich bereits die biseriale Rangkorrelation definiert und in Abschnitt \ref{u-test-effect} hinlänglich beschrieben. Für das Beispiel \ref{exm:depression-alkohol-angst} mit Depressionsdiagnose kann die biseriale Rangkorrelation herausgefunden werden, indem ein \(U\)-Test und dessen Effektstärke berechnet wird, was \(r = 0.357\) ergibt.
+
+Da auch die Absicherung gegen Null der biserialen Rangkorrelation nicht in \texttt{Jamovi} implementiert ist, wird dies an der Prüfung nicht erwartet. Um die Zufälligkeit des gefundenen Zusammenhangs zu beurteilen, kann behelfsmässig auf das Resultat des \(U\)-Tests abgestellt werden.
 
 \section{Was ist eine Störfaktor und wie wird damit umgegangen?}\label{stoerfaktor}
 
-\phantomsection\label{customdef-partielle-korrelation}{\textbf{partielle Korrelation}}
+Im Beispiel \ref{exm:depression-alkohol-angst} wurde festgestellt, dass es einen Zusammenhang schwachen Zusammenhang zwischen Alkoholismus und Angststörung gibt. Je stärker der Alkoholismus ausgeprägt ist, desto höher ist auch der Wert für die Angststörung. Dies ist im oberen Teil der Abbildung \ref{fig:exm-depression-alkohol-angst-stoervardiagramm} abstrahiert dargestellt.
 
-\[r_{12.3} = \frac{r_{12}- r_{23}\cdot r_{13}}{\sqrt{(1-r_{23})\cdot(1-r_{13})}}.\]
+Es wurde jedoch auch festgestellt, dass die Merkmale Angst und Alkoholismus jeweils mit dem Merkmal Depression korrelieren. Es könnte also sein, dass der Zusammenhang zwischen Alkoholismus und Angststörung lediglich darauf beruht, dass Menschen mit schwerer Depression zu höherem Alkoholismus und ebenfalls zu mehr Angststörungen neigen. Die Angststörung und der Alkoholismus könnten schwächer korreliert oder gar unabhängig voneinander sein. Wenn ein drittes Merkmal den Zusammenhang zweier Merkmale auf irgendeine Weise verfälsch, wird dieses Merkmal \phantomsection\label{customdef-stoerfaktor}{\textbf{Störfaktor}} oder \textbf{Störvariable} genannt.
 
-Die Absicherung gegen Null der partiellen Korrelation erfolgt ähnlich wie bei der Korrelation nach Pearson. Die Teststatistik wird auch mit Gleichung @ref(eq:absichern\_pearson) berechnet, ist aber \(t\)-verteilt bei \(n-3\) Freiheitsgraden, wobei \(n\) für die Anzahl Beobachtungstripel steht.
+Um den Einfluss einer Störvariable \(X_3\) auf den Zusammenhang zweier Merkmale \(X_1\) und \(X_2\) zu beurteilen, kann die \phantomsection\label{customdef-partielle-korrelation}{\textbf{partielle Korrelation}}
+\[r_{12.3} = \frac{r_{12}- r_{23}\cdot r_{13}}{\sqrt{(1-r_{23}^2)\cdot(1-r_{13}^2)}}\]
+berechnet werden. Die \(r\) stehen dabei für die Korrelation nach Pearson zwischen den zwei indexierten Merkmalen.
+
+\begin{caution}
+
+\begin{remark}
+
+Exploration der Formel der partiellen Korrelation:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Das dritte Merkmal korreliert nicht mit den ersten beiden \(r_{23} = r_{13} = 0\). In diesem Fall ist \(r_{12.3} = r_{12}\).
+\item
+  Das dritte Merkmal korreliert sehr schwach mit den ersten beiden \(r_{23} = r_{13} = 0.01\). In diesem Fall ist \(r_{12.3} \approx r_{12}\).
+\end{enumerate}
+
+\end{remark}
+
+\end{caution}
+
+Die partielle Korrelation kann in \texttt{Jamovi} unter \texttt{Analysen\ \textgreater{}\ Regression\ \textgreater{}\ Partielle\ Korrelation} berechnet werden und beträgt \(r = -0.05\). Unter Berücksichtigung der Störvariable Depression, ist der Zusammenhang zwischen Alkoholismus und Angststörung also nicht nur kleiner geworden, sondern hat sich sogar in einen gegenläufigen Zusammenhang gewandelt. Dies ist abstrahiert im
+unteren Teil der Abbildung \ref{fig:exm-depression-alkohol-angst-stoervardiagramm} dargestellt. Wird die partielle Korrelation unter Berücksichtigung einer Störvariable angegeben, spricht man auch von es wurde für die Störvariable \textbf{kontrolliert}.
+
+\label{fig:exm-depression-alkohol-angst-stoervardiagramm}Zusammenhang zwischen Angst und Alkoholismus ohne (oben) und mit (unten) Berücksichtigung der Störvariable.
+
+\label{fig:exm-depression-alkohol-angst-stoervardiagramm}Zusammenhang zwischen Angst und Alkoholismus ohne (oben) und mit (unten) Berücksichtigung der Störvariable.
+
+Die Absicherung gegen Null der partiellen Korrelation erfolgt ähnlich wie bei der Korrelation nach Pearson. Die Teststatistik wird auch mit Gleichung \eqref{eq:absichern-pearson} berechnet, ist aber \(t\)-verteilt bei \(n-3\) Freiheitsgraden, wobei \(n\) für die Anzahl Beobachtungstripel steht. Die Teststatistik wird von \texttt{Jamovi} nicht berechnet und muss händisch eruiert werden.
+
+\begin{quote}
+Die zweiseitige Absicherung gegen Null der partiellen Korrelation ergibt, dass sich die Korrelation zwischen Alkoholismus und Angststörung unter Berücksichtigung der Depression als Störfaktor (\(r = -0.05\)) nicht signifikant von \(0\) unterscheidet, \(t(372) = -1\), \(p = .316\). Die Korrelation ist als schwach einzustufen.
+\end{quote}
+
+In diesem Beispiel wurde die Angst arbiträr als Störfaktor gehandelt. Die selben Überlegungen und Berechnungen wären aber auch zum Beispiel für den Alkoholismus als Störfaktor für den Zusammenhang zwischen Angst und Depression zulässig. Die Identifikation von Störvariablen muss also theoriegeleitet erfolgen.
 
 \section{Übungen}\label{uxfcbungen-5}
 
@@ -3150,7 +3459,7 @@ Testen Sie mit dem Datensatz \texttt{08-exm-zahlungsbereitschaft.sav} aus Beispi
 \begin{quote}
 Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Alter (\(r = 0\)) nicht signifikant grösser ist als \(0\), \(t(373) = -0.04\), \(p = .515\). Der Zusammenhang ist schwach.
 
-Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Anzahl Spiele (\(r = -0.77\)) signifikant kleiner ist als \(0\), \(t(373) = -23.33\), \(p < 0.001\). Der Zusammenhnag ist stark.
+Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Anzahl Spiele (\(r = -0.77\)) signifikant kleiner ist als \(0\),\(t(373) = -23.33\), \(p < 0.001\). Der Zusammenhang ist stark.
 \end{quote}
 
 \end{solution}
@@ -3209,12 +3518,126 @@ Damit können die Teilfragen beantwortet werden.
 \begin{exercise}
 \protect\hypertarget{exr:body-shoe}{}\label{exr:body-shoe}\leavevmode
 
-TODO:
+Mit einer Studie soll der Zusammenhang zwischen Haarausfall und erfülltem Sexualleben bei männlichen Patienten eruiert werden \citep{tas2018}. Die Schwere des Haarausfalls wird mit der Hamilton-Norwood-Schema HNS ganzzahlig von \(1\) bis \(7\) gemessen, wobei jede höhere Zahl für ein neues zunehmendes Haarausfallstadium steht\citep{hamilton1951}. Die Dysfunktionalität des Sexuallebens wird mit der Arizona Sexual Experience Scale ASES von \(5\) bis \(30\) Punkten gemessen, wobei höhere Zahlen auf eine sexuelle Dysfunktion hindeuten \citep{mcgahuey2016}. Bei diesem Instrument führen mehrere Likert-skalierte Items zum Endpunkteergebnis.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Welcher Korrelationskoeffizient ist hier am ehesten angebracht?
+\item
+  Berechnen Sie die Korrelation nach Spearman, sichern Sie diese zweiseitig gegen Null ab und interpretieren Sie die Stärke des Zusammenhangs.
+\item
+  Angenommen alle Merkmale wären intervallskaliert und normalverteilt. Berechnen Sie die partielle Korrelation zwischen Haarausfall und der Dysfunktionalität des Sexlebens unter Berücksichtigung des Störfaktor Alter, sichern sie diese gegen Null ab und interpretieren Sie die Stärke des Zusammenhangs vor und nach dem Herausrechnen des Störfaktors.
+\end{enumerate}
 
 \end{exercise}
 
 \begin{solution}
-TODO: solution body
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Die Messung mit der ASES ist intervallskaliert. Die Messung des Haarausfalls dagegen kann sowohl als ordinalskaliert oder intervallskaliert betrachtet werden. Einerseits entsprechen die Zahlen auf der HNS verschiedenen abgegrenzten und klassifizierten Stadien der Progression des Haarausfalls. Dies deutet auf eine ordinalskaliertes Merkmal hin. Andererseits braucht es hier keine grosse Vorstellungskraft, sich eine \(3.23\) vorzustellen. Das wäre wie Stadium \(3\) mit ein wenig zusätzlichem Haarausfall. Aufgrund dieser Überlegung wäre hier sowohl der Korrelationskoeffizient nach Pearson wie der nach Spearman angebracht. Für letzteren müsste noch die Normalverteilung überprüft werden, was hier nicht gemacht wird.
+\item
+  Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-hairloss-sex-input-spearman}.
+\end{enumerate}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/08-exr-hairloss-sex-jmv-input-spearman} \caption{Jamovi Eingabe.}\label{fig:sol-hairloss-sex-input-spearman}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-hairloss-sex-output-spearman}
+
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/08-exr-hairloss-sex-jmv-output-spearman} \caption{Jamovi Ausgabe.}\label{fig:sol-hairloss-sex-output-spearman}
+\end{figure}
+
+\begin{quote}
+Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Spearman ergibt, dass sich die Korrelation zwischen Haarausfall und Dysfunktion der Sexualität (\(r = 0.24\)) signifikant von \(0\) unterscheidet, \(t(373) = 4.7\), \(p < 0.001\). Die Korrelation ist als mittel einzustufen.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-hairloss-sex-input-partiell}.
+\end{enumerate}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/08-exr-hairloss-sex-jmv-input-partiell} \caption{Jamovi Eingabe.}\label{fig:sol-hairloss-sex-input-partiell}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-hairloss-sex-output-partiell}
+
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/08-exr-hairloss-sex-jmv-output-partiell} \caption{Jamovi Ausgabe.}\label{fig:sol-hairloss-sex-output-partiell}
+\end{figure}
+
+\begin{quote}
+Die zweiseitige Absicherung gegen Null der partiellen Korrelation ergibt, dass sich die Korrelation zwischen Haarausfall und Dysfunktion der Sexualität unter Berücksichtigung des Alters als Störfaktor (\(r = 0.02\)) nicht signifikant von \(0\) unterscheidet, \(t(372) = 0.35\), \(p = .728\). Die Korrelation ist als schwach einzustufen.
+\end{quote}
+
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:ehe-burnout-correlation}{}\label{exr:ehe-burnout-correlation}\leavevmode
+
+Berechnen Sie (a) Punktbiseriale Korrelation und (b) die biserielle Rangkorrelation für die Übung \ref{exr:ehe-burnout}, wo das Burnout-Risiko von verheirateten und unverheirateten Ärztinnen analysiert wird und interpretieren Sie die Werte.
+
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-ehe-burnout-pointcorrelation-input}.
+\end{enumerate}
+
+\begin{figure}
+\includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input1} \includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input2} \caption{Jamovi Eingabe.}\label{fig:sol-ehe-burnout-pointcorrelation-input}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-ehe-burnout-pointcorrelation-output}
+
+\begin{figure}
+\includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output1} \includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output2} \caption{Jamovi Ausgabe.}\label{fig:sol-ehe-burnout-pointcorrelation-output}
+\end{figure}
+
+Daraus ergibt sich
+\[ r = \frac{10.99- 10.15}{(51+61)\cdot 2.01}\sqrt{51\cdot 61} = 0.21.\]
+Hier wurden die Zwischenresultate mit zwei Nachkommastellen aus \texttt{Jamovi} gezogen. Je eher eine Ärztin unverheiratet ist, desto höher ist der Burnout-Wert. Der Zusammenhang ist als mittel einzustufen.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Die Analyseparameter in \texttt{Jamovi} werden nun geändert, siehe Abbildung \ref{fig:sol-ehe-burnout-rankcorrelation-input}.
+\end{enumerate}
+
+\begin{figure}
+\centering
+\includegraphics{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input3.jpg}
+\caption{\label{fig:sol-ehe-burnout-rankcorrelation-input}Jamovi Eingabe.}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-ehe-burnout-rankcorrelation-output}
+
+\begin{figure}
+\centering
+\includegraphics{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output3.jpg}
+\caption{\label{fig:sol-ehe-burnout-rankcorrelation-output}Jamovi Ausgabe.}
+\end{figure}
+
+Die biseriale Rangkorrelation ist also \(r = -0.212\). Je eher eine Ärztin verheiratet ist, desto tiefer ist der Burnout-Wert. Der Zusammenhang ist als mittel einzustufen. Achtung das Vorzeichen der biserialen Rangkorrelation hängt einzig davon ab, welche Gruppe (verheiratet/unverheiratet) als erste Gruppe in \texttt{Jamovi} hinterlegt ist. In diesem Datensatz ist dies, sofern nichts geändert wird die unverheiratete Gruppe.
+
 \end{solution}
 
 \section{Test}\label{test-4}
