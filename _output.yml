@@ -37,3 +37,4 @@ bookdown::pdf_book:
   citation_package: natbib
   extra_dependencies: ["amsthm"]
   keep_tex: yes
+  always_allow_html: true

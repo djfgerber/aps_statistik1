@@ -21,12 +21,13 @@ knitr::opts_chunk$set(echo = FALSE)
 library(gridExtra)
 library(jmv)
 library(kableExtra)
+library(DiagrammeR)
 source('src/r/bag_sampling.R')
 source('src/r/plots.R')
 source('src/r/effect_size.R')
 source('src/r/u_test.R')
 source('src/r/absichern.R')
-
+source('src/r/generate_random.R')
 options(scipen=999)
 
 knitr::write_bib(c(

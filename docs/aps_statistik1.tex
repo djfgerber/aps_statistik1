@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{24 April, 2025}
+\date{25 April, 2025}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2730,7 +2730,7 @@ Die Idee dabei ist, dass wenn sich die Messungen in den beiden Gruppen nicht ode
 Wenn es keinen Gruppenunterschied gibt, dann wären diese \(U\)-Werte nahe beieinander und beide Werte wären nicht nahe bei \(0\). Wenn es einen Gruppenunterschied gibt, dann sind die \(U\)-Werte weit auseinander und der kleinere der beiden Werte läge nahe bei \(0\). Dies macht sich der \(U\)-Test zu Nutze, indem er nun den kleineren der beiden \(U\)-Werte, hier \(13\) - die sogenannte Teststatistik - mit einer Referenztabelle vergleicht, wo die Wahrscheinlichkeiten für einen solchen \(U\)-Wert, gegeben dass die Nullhypothese wahr ist, hinterlegt sind. Dieser Prozess ist in \texttt{Jamovi} automatisiert und es kann direkt der \(p\)-Wert in der Ausgabe abgelesen werden, hier \(p < 0.001\).
 
 \begin{example}[Aufgeschlossenheit bei Jung und Alt.]
-\protect\hypertarget{exm:aufgeschlossenheit-jung-alt}{}\label{exm:aufgeschlossenheit-jung-alt}Eine Studentin will herausfinden, ob jüngere Menschen unter \(30\) Jahren aufgeschlossener sind als ältere Menschen mit über \(30\) oder genau \(30\) Jahren. Dazu befragt sie zufällig Leute der beiden Gruppen mit dem TIPI, welcher die Aufgeschlossenheit auf einer Skala von \(1\) bis \(7\) misst, wobei das kleinste Messintervall \(0.5\) Punkte beträgt. Die Daten sind also eher ordinal als intervallskaliert. In der Stichprobe waren \(N = 13\) junge mit einer Aufgeschlossenheit von \(M = 5.38, SD = 0.92\) und \(N = 7\) alte mit einer Aufgeschlossenheit von \(M = 5, SD = 0.87\). Die Daten sind unter \texttt{07-exm-aufgeschlossenheit-jung-alt.sav} verfügbar. (Beispiel frei erfunden.)
+\protect\hypertarget{exm:aufgeschlossenheit-jung-alt}{}\label{exm:aufgeschlossenheit-jung-alt}Eine Studentin will herausfinden, ob sich die durchschnittliche Aufgeschlossenheit von jüngere Menschen unter \(30\) Jahren und älteren Menschen mit über \(30\) oder genau \(30\) Jahren unterscheidet. Dazu befragt sie zufällig Leute der beiden Gruppen mit dem TIPI, welcher die Aufgeschlossenheit auf einer Skala von \(1\) bis \(7\) misst, wobei das kleinste Messintervall \(0.5\) Punkte beträgt. Die Daten sind also eher ordinal als intervallskaliert. In der Stichprobe waren \(N = 13\) junge mit einer Aufgeschlossenheit von \(M = 5.38, SD = 0.92\) und \(N = 7\) alte mit einer Aufgeschlossenheit von \(M = 5, SD = 0.87\). Die Daten sind unter \texttt{07-exm-aufgeschlossenheit-jung-alt.sav} verfügbar. (Beispiel frei erfunden.)
 \end{example}
 
 Auch in diesem Fall werden für den \(U\)-Test zunächst die Beobachtungen gruppenunabhängig aufsteigend sortiert wie in der Mitte der Abbildung \ref{fig:exm-aufgeschlossenheit-jung-alt-utest-oder} dargestellt. Danach werden Rangnummern vergeben und die Beobachtungen wieder in ihre Gruppen geteilt, siehe die Reihen oben und unten der Abbildung. Die Ränge scheinen zufällig in die beiden Gruppen zu fallen.
@@ -3048,7 +3048,7 @@ Streudiagramme aller möglicher bivariaten Zusammenhänge sind in Abbildung \ref
 \caption{\label{fig:exm-depression-alkohol-angst-scatter}Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten.}
 \end{figure}
 
-In diesem Fall ist unklar, ob jemand mit Alkoholismus eher eine Angststörung entwickelt, oder jemand mit Angststörung eher eine Alkoholabhängigkeit entwickelt. Die Korrelation gibt nur einen Anhaltspunkt über die Art des Zusammenhangs, nicht aber über die Ursächlichkeit der Variablen. Es könnte auch sein, dass die beiden Merkmale eigentlich unabhängig voneinander sind, aber ein drittes Merkmal die beiden Merkmale beeinflusst. Dazu später mehr unter \ref{stoergroesse}.
+In diesem Fall ist unklar, ob jemand mit Alkoholismus eher eine Angststörung entwickelt, oder jemand mit Angststörung eher eine Alkoholabhängigkeit entwickelt. Die Korrelation gibt nur einen Anhaltspunkt über die Art des Zusammenhangs, nicht aber über die Ursächlichkeit der Variablen. Es könnte auch sein, dass die beiden Merkmale eigentlich unabhängig voneinander sind, aber ein drittes Merkmal die beiden Merkmale beeinflusst. Dazu später mehr unter \ref{stoerfaktor}.
 
 Für die genaue Berechnung der Korrelation gibt es verschiedene Möglichkeiten, wovon auf einige im Verlauf dieses Kapitels eingegangen wird.
 
@@ -3067,7 +3067,9 @@ Wichtig für die Beurteilung der Korrelation ist die Frage, ob eine Korrelation 
 
 Die Teststatistik für die Absicherung gegen Null der Korrelation nach Pearson ist
 
-\[t = r\cdot \sqrt{\frac{n-2}{1-r^2}}. \]
+\begin{equation}
+t = r\cdot \sqrt{\frac{n-2}{1-r^2}}.(\#eq:absichern_pearson)
+\end{equation}
 
 Wenn wiederholt Stichproben gezogen werden und immer wieder die Teststatistik berechnet wird, kann beobachtet werden, dass die Teststatistik \(t\)-verteilt bei \(n-2\) Freiheitsgraden ist.
 
@@ -3089,17 +3091,33 @@ Da die Teststatistik nicht von \texttt{Jamovi} direkt ausgegeben wird, muss dies
 
 \section{Wie stark ist der Zusammenhang zwischen zwei mindestens ordinalskalierten Merkmalen?}\label{wie-stark-ist-der-zusammenhang-zwischen-zwei-mindestens-ordinalskalierten-merkmalen}
 
-\phantomsection\label{customdef-spearman-korrelation}{\textbf{Spearman}}
+Manchmal ist ein Merkmal oder beide Merkmale nicht intervallskaliert und normalverteilt. Sind die Daten beider Merkmale dennoch mindestens ordinalskaliert, so kann die \phantomsection\label{customdef-spearman-korrelation}{\textbf{Korrelation nach Spearman}}, auch \textbf{Spearmans Korrelationskoeffizient} genannt, verwendet werden.
 
-\section{Wie stark ist der Zusammenhang zwischen einem mindestens ordinalskalierten Merkmale und einem dichotomen Merkmal?}\label{wie-stark-ist-der-zusammenhang-zwischen-einem-mindestens-ordinalskalierten-merkmale-und-einem-dichotomen-merkmal}
+Diese wird berechnet indem den Beobachtungen jedes Merkmals aufsteigende sortiert und entsprechend der Reihenfolge Rangplätze vergeben werden. Die Differenz der Ränge von Merkmal \(X\) und \(Y\) für Beobachtung \(i\) wird mit \(d_i\) bezeichnet. Die Korrelation nach Spearman ist definiert als
 
-\phantomsection\label{customdef-punktbiseriale-korrelation}{\textbf{Punktbiseriale Korrelation}}
+\[r = 1 - \frac{6\cdot \sum_{i = 1}^n d_i^2}{n\cdot (n^2 -1)}.\]
+
+Die Absicherung gegen Null der Korrelation nach Spearman erfolgt gleich wie bei der Korrelation nach Pearson. Die Teststatistik wird also auch mit Gleichung @ref(eq:absichern\_pearson) berechnet und ist ebenfalls \(t\)-verteilt bei \(n-2\) Freiheitsgraden, wobei \(n\) für die Anzahl Beobachtungspaare steht.
+
+\section{Wie stark ist der Zusammenhang zwischen einem intervallskalierten und normalverteilten Merkmal und einem dichotomen Merkmal?}\label{wie-stark-ist-der-zusammenhang-zwischen-einem-intervallskalierten-und-normalverteilten-merkmal-und-einem-dichotomen-merkmal}
+
+\phantomsection\label{customdef-punktbiseriale-korrelation}{\textbf{punktbiseriale Korrelation}}
+
+\[ r = \frac{\bar{x}_1- \bar{x}_2}{(n_1+n_2)\cdot s}\sqrt{n_1\cdot n_2}\]
+
+\begin{equation}
+t = r\cdot \sqrt{\frac{n_1 + n_2 -2}{1-r^2}}.(\#eq:absichern_punktbiserial)
+\end{equation}
 
 Ref: rangbiseriale Korrelation.
 
-\section{Was ist eine Störgrösse und wie wird damit umgegangen?}\label{stoergroesse}
+\section{Was ist eine Störfaktor und wie wird damit umgegangen?}\label{stoerfaktor}
 
 \phantomsection\label{customdef-partielle-korrelation}{\textbf{partielle Korrelation}}
+
+\[r_{12.3} = \frac{r_{12}- r_{23}\cdot r_{13}}{\sqrt{(1-r_{23})\cdot(1-r_{13})}}.\]
+
+Die Absicherung gegen Null der partiellen Korrelation erfolgt ähnlich wie bei der Korrelation nach Pearson. Die Teststatistik wird auch mit Gleichung @ref(eq:absichern\_pearson) berechnet, ist aber \(t\)-verteilt bei \(n-3\) Freiheitsgraden, wobei \(n\) für die Anzahl Beobachtungstripel steht.
 
 \section{Übungen}\label{uxfcbungen-5}
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  24 APR 2025 01:44
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  25 APR 2025 15:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2139,31 +2139,36 @@ Overfull \hbox (297.33902pt too wide) has occurred while \output is active
  []
 
 [145]
-Underfull \hbox (badness 2269) in paragraph at lines 3090--3090
+Underfull \hbox (badness 2269) in paragraph at lines 3092--3092
 \TU/lmr/bx/n/14.4 zwei mindestens ordinalskalierten Merk-
  []
 
 
+Underfull \vbox (badness 1231) has occurred while \output is active []
+
+
 
 [146]
-Underfull \hbox (badness 2495) in paragraph at lines 3125--3126
+
+
+Overfull \hbox (228.19012pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 8.2.  WIE STARK IST DER ZUSAMMENHANG ZWISCHEN ZWEI MINDESTENS ORDINALSKALIERTEN MERKMALEN? \TU/lmr/m/n/10 147
+ []
+
+[147]
+Underfull \hbox (badness 2495) in paragraph at lines 3143--3144
 []\TU/lmr/m/n/10 Testen Sie mit dem Datensatz \TU/lmtt/m/n/10 08-exm-zahlungsbereitschaft.sav \TU/lmr/m/n/10 aus
  []
 
 
 
-
-Overfull \hbox (419.46576pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 8.3.  WIE STARK IST DER ZUSAMMENHANG ZWISCHEN EINEM MINDESTENS ORDINALSKALIERTEN MERKMALE UND EINEM DICHOTOMEN MERKMAL? \TU/lmr/m/n/10 147
- []
-
-[147]
-Underfull \hbox (badness 10000) in paragraph at lines 3143--3144
+[148]
+Underfull \hbox (badness 10000) in paragraph at lines 3161--3162
 \TU/lmtt/m/n/10 Jamovi > Öffnen > Datenbibliothek > Big 5 (Dolan, Oort, Stoel &
  []
 
 
-Underfull \hbox (badness 1577) in paragraph at lines 3151--3153
+Underfull \hbox (badness 1577) in paragraph at lines 3169--3171
 []\TU/lmr/m/n/10 Zeichnen Sie die Korrelationsmatrix als Diagramm, inklusive Vari-
  []
 
@@ -2175,8 +2180,6 @@ File: figures/08-exr-big-five-cor-jmv-output-korrelationsmatrixdiagramm.jpg Grap
 <figures/08-exr-big-five-cor-jmv-output-korrelationsmatrixdiagramm.jpg>
 
 
-[148]
-
 [149]
 
 [150]
@@ -2185,17 +2188,21 @@ File: figures/08-exr-big-five-cor-jmv-output-korrelationsmatrixdiagramm.jpg Grap
 
 [152]
 
-[153
+[153]
+
+[154
 
 ]
 
-[154] (./aps_statistik1.bbl
+[155]
 
-[155
+[156] (./aps_statistik1.bbl
+
+[157
 
 ]
 
-[156
+[158
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 4--7
@@ -2214,7 +2221,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--7
 
 
 
-[157]
+[159]
 Underfull \hbox (badness 10000) in paragraph at lines 110--114
 []\TU/lmr/m/n/10 Zimmerman, D. W. (2004).  A note on preliminary tests
  []
@@ -2226,7 +2233,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 110--114
 
 )
 
-[158] (./aps_statistik1.aux)
+[160] (./aps_statistik1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -2234,11 +2241,11 @@ L3 programming layer <2025-01-18>
  ) 
 Here is how much of TeX's memory you used:
  34176 strings out of 475846
- 741489 string characters out of 5773212
- 1184093 words of memory out of 5000000
+ 741499 string characters out of 5773212
+ 1184116 words of memory out of 5000000
  56502 multiletter control sequences out of 15000+600000
  565418 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,10n,114p,2090b,738s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aps_statistik1.pdf (158 pages).
+Output written on aps_statistik1.pdf (160 pages).
