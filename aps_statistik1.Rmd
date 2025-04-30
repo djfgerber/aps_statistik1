@@ -4086,7 +4086,7 @@ gen_exr_hairloss_sex <- function(){
 exr_hairloss_sex <- gen_exr_hairloss_sex()
 ```
 
-Mit einer Studie soll der Zusammenhang zwischen Haarausfall und erfülltem Sexualleben bei männlichen Patienten eruiert werden [@tas2018]. Die Schwere des Haarausfalls wird mit der Hamilton-Norwood-Schema HNS ganzzahlig von $1$ bis $7$ gemessen, wobei jede höhere Zahl für ein neues zunehmendes Haarausfallstadium steht[@hamilton1951]. Die Dysfunktionalität des Sexuallebens wird mit der Arizona Sexual Experience Scale ASES von $5$ bis $30$ Punkten gemessen, wobei höhere Zahlen auf eine sexuelle Dysfunktion hindeuten [@mcgahuey2016]. Bei diesem Instrument führen mehrere Likert-skalierte Items zum Endpunkteergebnis.
+Mit einer Studie soll der Zusammenhang zwischen Haarausfall und erfülltem Sexualleben bei männlichen Patienten eruiert werden [@tas2018]. Die Schwere des Haarausfalls wird mit der Hamilton-Norwood-Schema HNS ganzzahlig von $1$ bis $7$ gemessen, wobei jede höhere Zahl für ein neues zunehmendes Haarausfallstadium steht[@hamilton1951]. Die Dysfunktionalität des Sexuallebens wird mit der Arizona Sexual Experience Scale ASES von $5$ bis $30$ Punkten gemessen, wobei höhere Zahlen auf eine sexuelle Dysfunktion hindeuten [@mcgahuey2016]. Bei diesem Instrument führen mehrere Likert-skalierte Items zum Endpunkteergebnis. Es wurden Daten erhoben, welche unter `r inline_code(exr_hairloss_sex$file_name)` verfügbar sind.
 
 a) Welcher Korrelationskoeffizient ist hier am ehesten angebracht?
 b) Berechnen Sie die Korrelation nach Spearman, sichern Sie diese zweiseitig gegen Null ab und interpretieren Sie die Stärke des Zusammenhangs.
