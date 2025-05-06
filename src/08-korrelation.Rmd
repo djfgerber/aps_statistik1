@@ -301,7 +301,14 @@ digraph G {
 ```
 
 
-Die Absicherung gegen Null der partiellen Korrelation erfolgt ähnlich wie bei der Korrelation nach Pearson. Die Teststatistik wird auch mit Gleichung \@ref(eq:absichern-pearson) berechnet, ist aber $t$-verteilt bei $n-3$ Freiheitsgraden, wobei $n$ für die Anzahl Beobachtungstripel steht. Die Teststatistik wird von `Jamovi` nicht berechnet und muss händisch eruiert werden.
+Die Absicherung gegen Null der partiellen Korrelation erfolgt ähnlich wie bei der Korrelation nach Pearson. Die Teststatistik wird mit
+
+\begin{equation}
+t = r\cdot \sqrt{\frac{n-3}{1-r^2}}.
+(\#eq:absichern-partial)
+\end{equation}
+
+berechnet und ist $t$-verteilt bei $n-3$ Freiheitsgraden, wobei $n$ für die Anzahl Beobachtungstripel steht. Die Teststatistik wird von `Jamovi` nicht berechnet und muss händisch eruiert werden.
 
 > Die zweiseitige Absicherung gegen Null der partiellen Korrelation ergibt, dass sich die Korrelation zwischen Alkoholismus und Angststörung unter Berücksichtigung der Depression als Störfaktor ($r = `r round(exm_depression_alkohol_angst$jmv_partcorr %>% filter(name_r == "Alkohol") %>% pull("Angst_r") %>% as.numeric(),2)`$) nicht signifikant von $0$ unterscheidet, `r absichern_partiell(exm_depression_alkohol_angst$jmv_partcorr %>% filter(name_r == "Alkohol") %>% pull("Angst_r") %>% as.numeric(), exm_depression_alkohol_angst$n)`, $`r exm_depression_alkohol_angst$jmv_partcorr %>% filter(name_r == "Alkohol") %>% pull(Angst_rp) %>% as.numeric() %>% report_p(3)`$. Die Korrelation ist als schwach einzustufen.
 

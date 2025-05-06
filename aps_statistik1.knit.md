@@ -1,7 +1,7 @@
 ---
 title: "Statistik 1"
 author: "Daniel J. F. Gerber"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+date: "06 May, 2025"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -17,43 +17,7 @@ always_allow_html: true
 
 Dieses Buch ist im Rahmen meiner Lehrtätigkeit an der FHNW entstanden und frei verfügbar.
 
-```{r load_packages, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-library(gridExtra)
-library(jmv)
-library(kableExtra)
-library(DiagrammeR)
-source('src/r/bag_sampling.R')
-source('src/r/plots.R')
-source('src/r/effect_size.R')
-source('src/r/u_test.R')
-source('src/r/absichern.R')
-source('src/r/generate_random.R')
-options(scipen=999)
 
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'jmv'
-), 'packages.bib')
-
-combine_words <- function(x){
-  knitr::combine_words(x, and = " und ", oxford_comma = FALSE)
-}
-inline_code <- function(x) {
-  paste0("``", x, "``")
-}
-
-path_data <- 'data/'
-write_sav <- function(x, file_name){
-  x %>% 
-    haven::write_sav(paste0(path_data, file_name))
-}
-
-crop <- function(x, x_min, x_max){
-    x[which(x < x_min)] <- x_min
-    x[which(x > x_max)] <- x_max
-    return(x)
-}
-```
 
 <!--chapter:end:index.Rmd-->
 
@@ -167,37 +131,10 @@ Ein weiteres Beispiel für ein intervallskaliertes Merkmal ist der Intelligenzqu
 ## Wie kann ein intervallskaliertes Merkmal beschrieben werden? {#intervallskalierte-merkmale-beschreibung}
 
 
-```{r exm-ducktemp}
-gen_exm_ducktemp <- function(){
-  set.seed(11242)
-  n <- 40
-  x <- round(rnorm(n, 41.1+(42.2-41.1)/2, (42.2-41.1)/4), 2)
-  sorted_x <- sort(x)
-  tab <- tibble(temperatur = x)
-  file_name <- '02-exm-ducktemp.sav'
-  tab %>% 
-    haven::write_sav(paste0(path_data, file_name))
-  
-  hist <- tab %>% 
-    ggplot()+
-    geom_histogram(aes(x = temperatur, 
-                       colour = 'blue'),
-                   binwidth=0.2)+
-    labs(y= "Häufigkeit", 
-         x = "Temperatur")+
-    theme(legend.position = "none")+
-    scale_y_continuous(breaks=c(0:17))
-  
-  counts_x <- table(x)
-  mode_x <- counts_x[counts_x == max(counts_x)]
-  return(mget(ls()))
-}
 
-exm_ducktemp <- gen_exm_ducktemp()
-```
 
 :::{.example #ducktemp name="Körpertemperatur Enten"}
-Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen. Dazu untersucht sie `r exm_ducktemp$n` Enten und misst die Körpertemperaturen `r combine_words(exm_ducktemp$x)`.
+Eine Veterinärin möchte herausfinden, welche Körpertemperatur Enten aufweisen. Dazu untersucht sie 40 Enten und misst die Körpertemperaturen 42.01, 41.72, 41.51, 41.52, 41.5, 41.6, 41.46, 41.81, 42.14, 41.82, 42.06, 41.53, 41.66, 41.65, 41.46, 41.48, 41.92, 41.58, 41.32, 41.58, 41.81, 41.7, 41.62, 41.52, 41.89, 41.53, 41.67, 41.43, 42.18, 41.52, 41.82, 41.96, 41.8, 41.54, 41.88, 41.69, 41.92, 41.35, 41.07 und 41.67.
 :::
 
 Für einen Menschen ist es schwierig direkt aus der Sichtung dieser Zahlen zu begreifen, welche Körpertemperatur Enten haben. Ein Mensch kann sich jedoch helfen, indem er die Zahlen zusammenfasst.
@@ -206,9 +143,7 @@ Für einen Menschen ist es schwierig direkt aus der Sichtung dieser Zahlen zu be
 
 Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von $0.2$°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein __Histogramm__ genannt.
 
-```{r exm-ducktemp-histogramm, fig.cap="Histogramm Körpertemperatur Enten."}
-exm_ducktemp$hist
-```
+![(\#fig:exm-ducktemp-histogramm)Histogramm Körpertemperatur Enten.](aps_statistik1_files/figure-latex/exm-ducktemp-histogramm-1.pdf) 
 
 Aufgrund dieser Darstellung kann die Veterinärin nun sehen, wie häufig welche Körpertemperaturen sind. Dies wird die __Verteilung__ des Merkmals genannt. Sie bemerkt zum Beispiel, dass Beobachtungen der Körpertemperatur rund um 41.6°C am häufigsten sind und tiefere und höhere Temperaturen seltener vorkommen. Auf einen Blick sieht sie auch, dass die Temperatur aller Enten zwischen 41°C und 42.2°C war.
 
@@ -218,20 +153,20 @@ Die Verteilung eines Merkmals zu kennen ist hilfreich, jedoch in vielen Situatio
 
 Mit der Zentralität ist ein Wert gemeint, welcher die zentrale Tendenz des Merkmals abbildet. Um die Zentralität zu messen, gibt es drei Möglichkeiten:
 
-- [Der __Modus__ ist der am häufigsten vorkommende Wert.]{.customdef #customdef-modus} Im Beispiel ist das der Wert `r names(exm_ducktemp$mode_x)`, welcher `r unname(exm_ducktemp$mode_x)` mal und damit am häufigsten vorkommt. In Jamovi wird der Modus mit `Modalwert` bezeichnet.
-- [Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als __Median__ (abgekürzt _Mdn_, Symbol $\tilde{x}$) bezeichnet.]{.customdef #customdef-median} Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir `r exm_ducktemp[['n']]` Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte `r combine_words(exm_ducktemp$sorted_x)`, also `r median(exm_ducktemp$x)`. In Jamovi wird der Median mit `Median` bezeichnet.
+- [Der __Modus__ ist der am häufigsten vorkommende Wert.]{.customdef #customdef-modus} Im Beispiel ist das der Wert 41.52, welcher 3 mal und damit am häufigsten vorkommt. In Jamovi wird der Modus mit `Modalwert` bezeichnet.
+- [Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine tiefere und eine höhere Hälfte teilt, dann wird dieser Wert als __Median__ (abgekürzt _Mdn_, Symbol $\tilde{x}$) bezeichnet.]{.customdef #customdef-median} Bei einer geraden Anzahl Beobachtungen, wird in der Regel der Durchschnittswert der beiden mittigsten Beobachtungen verwendet. Im Beispiel haben wir 40 Beobachtungen. Der Median entspricht also dem Durchschnittswert zwischen dem 20. und dem 21. der aufsteigend sortierten Werte 41.07, 41.32, 41.35, 41.43, 41.46, 41.46, 41.48, 41.5, 41.51, 41.52, 41.52, 41.52, 41.53, 41.53, 41.54, 41.58, 41.58, 41.6, 41.62, 41.65, 41.66, 41.67, 41.67, 41.69, 41.7, 41.72, 41.8, 41.81, 41.81, 41.82, 41.82, 41.88, 41.89, 41.92, 41.92, 41.96, 42.01, 42.06, 42.14 und 42.18, also 41.655. In Jamovi wird der Median mit `Median` bezeichnet.
 - [Das __arithmetische Mittel__ (abgekürzt _M_, Symbol $\bar{x}$) bezeichnet, was gemeinhin mit Durchschnitt gemeint ist.]{.customdef #customdef-arithmetisches-mittel} Wenn wir die erste von insgesamt $n$ Beobachtung mit $x_1$ und die letzte Beobachtung mit $x_n$ bezeichnen, so ist das arithmetische Mittel
 \begin{equation}
 \bar{x} = \frac{1}{n}\sum^n_{i=1} x_i
 (\#eq:mean)
 \end{equation}
-Im Beispiel ist das arithmetische Mittel der Körpertemperaturen `r mean(exm_ducktemp$x)`. In Jamovi wird das arithmetische Mittel als `Mittelwert` bezeichnet.
+Im Beispiel ist das arithmetische Mittel der Körpertemperaturen 41.6725. In Jamovi wird das arithmetische Mittel als `Mittelwert` bezeichnet.
 
 :::: {.caution  data-latex=""}
 
 ::: {.remark}
 
-_Erklärung der Formel_: Hier wird zum ersten Mal eine Formel verwendet. $\sum$ steht für die Summe von allen Beobachtungen $x_i$, wenn der Index $i$ in $1$-Schritten von der Zahl unter dem Summenzeichen $i=1$ bis zu der Zahl oben am Summenzeichen $i=n$ läuft. In unserem Beispiel ist $n=`r exm_ducktemp[['n']]`$, also ist $i = 1, 2, 3, 4, \ldots, `r exm_ducktemp[['n']]-1`, `r exm_ducktemp[['n']]`$. Der Teil $\sum^n_{i=1} x_i$ bedeutet also nichts anderes als $x_1 + x_2 + \ldots + x_{`r exm_ducktemp[['n']]-1`} + x_{`r exm_ducktemp[['n']]`}$, also die Summe aller Beobachtungen. $\frac{1}{n}$ bedeutet, dass wir diese Summe jetzt noch durch die Anzahl Beobachtungen teilen. 
+_Erklärung der Formel_: Hier wird zum ersten Mal eine Formel verwendet. $\sum$ steht für die Summe von allen Beobachtungen $x_i$, wenn der Index $i$ in $1$-Schritten von der Zahl unter dem Summenzeichen $i=1$ bis zu der Zahl oben am Summenzeichen $i=n$ läuft. In unserem Beispiel ist $n=40$, also ist $i = 1, 2, 3, 4, \ldots, 39, 40$. Der Teil $\sum^n_{i=1} x_i$ bedeutet also nichts anderes als $x_1 + x_2 + \ldots + x_{39} + x_{40}$, also die Summe aller Beobachtungen. $\frac{1}{n}$ bedeutet, dass wir diese Summe jetzt noch durch die Anzahl Beobachtungen teilen. 
 
 _Welchen Einfluss haben die verschiedenen Einflussgrössen_: Dies wird in Übung \@ref(exr:theorie-mdn-mean) erklärt.
 :::
@@ -243,14 +178,14 @@ Jedes dieser Masse für die Zentralität hat Vor- und Nachteile und sie werden d
 ### Variabilität {#variabilitaet}
 
 
-- [Die __Spannweite__ (abgekürzt $R$ aus dem englisch _range_) ist der höchste beobachtete Wert minus der kleinste beobachtete Wert]{.customdef #customdef-spannweite}. Im Beispiel ist der höchste beobachtet Wert $`r max(exm_ducktemp$x)`° C$ und der kleinste Beobachtete Wert $`r min(exm_ducktemp$x)`° C$. Also ist die Spannweite $`r max(exm_ducktemp$x)` - `r min(exm_ducktemp$x)` = `r max(exm_ducktemp$x) - min(exm_ducktemp$x)`° C$. Die Spannweite wird in Jamovi mit `Wertebereich` bezeichnet. 
-- [Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine $P\%$ tiefere und $(100\% - P\%)$ höhere Hälfte teilt, dann wird dieser Wert als __Perzentil__ bezeichnet.]{.customdef #customdef-perzentil} Das $5\%$-Perzentil zum Beispiel teilt die beobachteten Werte in $5\%$ kleinere und $95\%$ grössere Werte. Im Beispiel haben wir `r exm_ducktemp[['n']]` Beobachtungen. $5\%$ davon sind demnach $2$ Beobachtungen die tiefer sind als das $5\%$ Perzentil und $95\%$ also $38$ Beobachtungen die höher sind als das $5\%$ Perzentil. Das $5\%$ Perzentil liegt also zwischen $`r exm_ducktemp$sorted_x[2]`° C$ und $`r exm_ducktemp$sorted_x[3]`° C$. In diesem Fall wird ein Mittelwert der beiden nächsten Werte verwendet, hier $(`r exm_ducktemp$sorted_x[2]` + `r exm_ducktemp$sorted_x[3]`)/2=`r round((exm_ducktemp$sorted_x[2] + exm_ducktemp$sorted_x[3])/2,2)`° C$. Das $P\%$-Perzentil kann in Jamovi bei `Perzentil` gefolgt von der Zahl `P` ermittelt werden. Ein Perzentil alleine gibt jedoch noch keinen Hinweis auf die Streuung der Werte. Werden aber zwei Perzentile zusammen betrachtet, z. B. das $5\%$ und das $95\%$ Perzentil, dann geben diese Werte und der Abstand dazwischen einen Hinweis auf die Streuung der Beobachtungen. Im Beispiel ist das $5\%$ Perzentil bei $`r round((exm_ducktemp$sorted_x[2] + exm_ducktemp$sorted_x[3])/2,2)`° C$ und das $95\%$-Perzentil bei $`r round((exm_ducktemp$sorted_x[38] + exm_ducktemp$sorted_x[39])/2,2)`° C$. Hier befinden sich also $90\%$ aller Beobachtungen zwischen diesen Werten. Mehrere Perzentile können in Jamovi  gleichzeitig angezeigt werden indem die Perzentil-Werte mit Komma getrennt werden, für die Perzentile hier im Beispiel `0.05, 0.95`. [Weitere beliebte Werte sind das $25\%$ und das $75\%$-Perzentil (auch __Quartile__ genannt, da sie die beobachteten Werte vierteln), im Beispiel bei $`r round((exm_ducktemp$sorted_x[10] + exm_ducktemp$sorted_x[11])/2,2)`° C$ und $`r round((exm_ducktemp$sorted_x[30] + exm_ducktemp$sorted_x[31])/2,2)`° C$ respektive.]{.customdef #customdef-quartile} [Die Differenz dieser Perzentile wird als __Interquartilabstand__ (abkürzung IQR von interquartile range) bezeichnet und ist im Beispiel $`r round((exm_ducktemp$sorted_x[30] + exm_ducktemp$sorted_x[31])/2,2) - round((exm_ducktemp$sorted_x[10] + exm_ducktemp$sorted_x[11])/2,2)`° C$.]{.customdef #customdef-iqr}. Der Interquartilabstand wird in Jamovi mit `IQR` bezeichnet. 
+- [Die __Spannweite__ (abgekürzt $R$ aus dem englisch _range_) ist der höchste beobachtete Wert minus der kleinste beobachtete Wert]{.customdef #customdef-spannweite}. Im Beispiel ist der höchste beobachtet Wert $42.18° C$ und der kleinste Beobachtete Wert $41.07° C$. Also ist die Spannweite $42.18 - 41.07 = 1.11° C$. Die Spannweite wird in Jamovi mit `Wertebereich` bezeichnet. 
+- [Wenn die Werte des Merkmals aufsteigend sortiert werden und der Wert betrachtet wird, welcher die Beobachtungen in eine $P\%$ tiefere und $(100\% - P\%)$ höhere Hälfte teilt, dann wird dieser Wert als __Perzentil__ bezeichnet.]{.customdef #customdef-perzentil} Das $5\%$-Perzentil zum Beispiel teilt die beobachteten Werte in $5\%$ kleinere und $95\%$ grössere Werte. Im Beispiel haben wir 40 Beobachtungen. $5\%$ davon sind demnach $2$ Beobachtungen die tiefer sind als das $5\%$ Perzentil und $95\%$ also $38$ Beobachtungen die höher sind als das $5\%$ Perzentil. Das $5\%$ Perzentil liegt also zwischen $41.32° C$ und $41.35° C$. In diesem Fall wird ein Mittelwert der beiden nächsten Werte verwendet, hier $(41.32 + 41.35)/2=41.34° C$. Das $P\%$-Perzentil kann in Jamovi bei `Perzentil` gefolgt von der Zahl `P` ermittelt werden. Ein Perzentil alleine gibt jedoch noch keinen Hinweis auf die Streuung der Werte. Werden aber zwei Perzentile zusammen betrachtet, z. B. das $5\%$ und das $95\%$ Perzentil, dann geben diese Werte und der Abstand dazwischen einen Hinweis auf die Streuung der Beobachtungen. Im Beispiel ist das $5\%$ Perzentil bei $41.34° C$ und das $95\%$-Perzentil bei $42.1° C$. Hier befinden sich also $90\%$ aller Beobachtungen zwischen diesen Werten. Mehrere Perzentile können in Jamovi  gleichzeitig angezeigt werden indem die Perzentil-Werte mit Komma getrennt werden, für die Perzentile hier im Beispiel `0.05, 0.95`. [Weitere beliebte Werte sind das $25\%$ und das $75\%$-Perzentil (auch __Quartile__ genannt, da sie die beobachteten Werte vierteln), im Beispiel bei $41.52° C$ und $41.82° C$ respektive.]{.customdef #customdef-quartile} [Die Differenz dieser Perzentile wird als __Interquartilabstand__ (abkürzung IQR von interquartile range) bezeichnet und ist im Beispiel $0.3° C$.]{.customdef #customdef-iqr}. Der Interquartilabstand wird in Jamovi mit `IQR` bezeichnet. 
 - [Die __Standardabweichung__ (abgekürzt _SD_, Symbol $s$) ist die durchschnittliche Abweichung jeder Beobachtung vom arithmetischen Mittel.]{.customdef #customdef-std} Wenn wir die erste von insgesamt $n$ Beobachtung mit $x_1$ und die letzte Beobachtung mit $x_n$ bezeichnen, so ist die Standardabweichung
 \begin{equation}
 s = \sqrt{\frac{1}{n-1}\sum^n_{i=1} (x_i-\bar{x})^2}
 (\#eq:sd)
 \end{equation}
-Im Beispiel ist die Standardabweichung der Körpertemperaturen $`r round(sd(exm_ducktemp$x),3)`° C$. In Jamovi wird die Standardabweichung mit `Std.-abweichung` bezeichnet.
+Im Beispiel ist die Standardabweichung der Körpertemperaturen $0.233° C$. In Jamovi wird die Standardabweichung mit `Std.-abweichung` bezeichnet.
 
 ::::{.caution data-latex=""}
 ::: {.remark}
@@ -267,7 +202,7 @@ Ziel:
 - Erste Berechnung
 - Jamovi funktioniert
 -->
-Mit den Daten `r inline_code(exm_ducktemp$file_name)` aus Beispiel \@ref(exm:ducktemp):
+Mit den Daten ``02-exm-ducktemp.sav`` aus Beispiel \@ref(exm:ducktemp):
 
   (a) Erstellen Sie selbst ein Histogramm  mit Jamovi und begründen Sie, weshalb es nicht gleich aussieht wie das Histogramm in Abbildung \@ref(fig:exm-ducktemp-histogramm). 
   (b) Berechnen Sie Modus, Median und arithmetisches Mittel der Körpertemperaturen der Enten mit `Jamovi` und berichten Sie diese mit der angemessenen Symbolik.
@@ -276,24 +211,21 @@ Mit den Daten `r inline_code(exm_ducktemp$file_name)` aus Beispiel \@ref(exm:duc
 :::
 
 :::{.solution}
-  ```{r enten-hist-mean-sd1, echo=FALSE, fig.cap="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.", fig.show="hold", out.width="50%"}
-  knitr::include_graphics("figures/Enten_n40_instr_histogramm.jpg")
-  knitr::include_graphics("figures/Enten_n40.png")
-  ```
+  \begin{figure}
+  \includegraphics[width=0.5\linewidth]{figures/Enten_n40_instr_histogramm} \includegraphics[width=0.5\linewidth]{figures/Enten_n40} \caption{Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.}(\#fig:enten-hist-mean-sd1)
+  \end{figure}
   (a) Das Histogramm, siehe Abbildung \@ref(fig:enten-hist-mean-sd1) sieht nicht gleich aus, da Jamovi die Temperaturabschnitte mit Korbbreite $0.125$°C kürzer gewählt hat als die in Abbildung Abbildung \@ref(fig:exm-ducktemp-histogramm) dargestellte Korbbreite von $0.2$°C. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite.
   
-```{r enten-hist-mean-sd2, echo=FALSE, fig.cap="Links: Jamovi-Anleitung zur Berechnung der gewünschten Parameter; rechts: Parameterwerte.", fig.show="hold", out.width="50%"}
-  knitr::include_graphics("figures/02-exr-enten-hist-mean-sd-input.jpg")
-  knitr::include_graphics("figures/02-exr-enten-hist-mean-sd-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-mean-sd-input} \includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-mean-sd-output} \caption{Links: Jamovi-Anleitung zur Berechnung der gewünschten Parameter; rechts: Parameterwerte.}(\#fig:enten-hist-mean-sd2)
+\end{figure}
   
   (b) Eine Anleitung zur Berechnung in `Jamovi` sowie die berechneten Werte können in Abbildung  \@ref(fig:enten-hist-mean-sd2) abgelesen und sind Modus $= 41.5$°C, Median $Mdn = 41.7$ und arithmetisches Mittel $M=41.7$.
   (c) Im Modul `JJStatsPlot` kann die Korbgrösse mit `Change Bin Width` angepasst werden. In Abbildung Abbildung \@ref(fig:exm-ducktemp-histogramm) kann beobachtet werden, dass die Balken und also auch die Körbe $0.2$ Einheiten breit sind. Dies wird so eingestellt, siehe Abbildung \@ref(fig:enten-hist-binwidth).
   
-```{r enten-hist-binwidth, echo=FALSE, fig.cap="Links: Jamovi-Anleitung zur Berechnung des gewünschten Histogramms; rechts: Jamovi-Ausgabe.", fig.show="hold", out.width="50%"}
-  knitr::include_graphics("figures/02-exr-enten-hist-binwidth-jmv-input.jpg")
-  knitr::include_graphics("figures/02-exr-enten-hist-binwidth-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-binwidth-jmv-input} \includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-binwidth-jmv-output} \caption{Links: Jamovi-Anleitung zur Berechnung des gewünschten Histogramms; rechts: Jamovi-Ausgabe.}(\#fig:enten-hist-binwidth)
+\end{figure}
 
 Es entsteht dabei glücklicherweise genau die gewünschte Darstellung. Es wäre auch möglich gewesen, dass die Körbe auf der $x$-Achse verschoben sind, zum Beispiel ein Korb $41.2$ bis $41.4$. Diese Verschiebung könnte nicht mit `JJStatsPlot` behoben werden und müsste mit einer anderen Statistiksoftware bearbeitet werden.
   (d) Eine Anleitung zur Berechnung in `Jamovi` sowie die berechneten Werte können in Abbildung  \@ref(fig:enten-hist-mean-sd2) abgelesen und sind Interquartilabstand $IQR= 0.3$°C, $25\%$-Perzentil $=41.5$, $75\%$-Perzentil $=41.8$, $2.5\%$-Perzentil $=41.3$, $97.5\%$-Perzentil $= 42.1$, Spannweite $R=1.11$ und die Standardabweichung $SD = 0.233$.
@@ -334,26 +266,23 @@ In einem psychologischen Test machen $5$ Probandinnen die Werte $18, 21, 20, 19,
   (a) Wir haben hier $n=5$ Beobachtungen, nämlich $x_1 = 18, x_2 = 21, x_3 = 20, x_4 = 19, x_5=22$. Wird dies in die Formel \@ref(eq:mean) eingesetzt, so gibt dies das arithmetische Mittel
   $$\bar{x} = \frac{1}{n}\sum^n_{i=1} x_i = \frac{1}{n}(x_1 + x_2 + x_3 + x_4 + x_5) =  \frac{1}{5}(18+ 21+ 20+ 19+ 22) = 20.$$
  Um den Median zu berechnen, werden die Werte zuerst aufsteigend sortiert $18, 19, 20, 21, 22$. Der Wert, welcher die Werte in eine grössere und eine kleinere Hälfte teilt, ist hier $20$, was dem Median entspricht.
-  (b) Die Beobachtungen sind jetzt $x_1 = 81, x_2 = 21, x_3 = 20, x_4 = 19, x_5=22$. Analog wie in (a) kann demnach das arithmetische Mittel als $\bar{x} = `r mean(c(81, 19, 20, 21, 22))`$ bestimmt werden. Die aufsteigend sortierten Beobachtungen sind nun $19, 20, 21, 22, 81$. Der Median ist also $21$.
+  (b) Die Beobachtungen sind jetzt $x_1 = 81, x_2 = 21, x_3 = 20, x_4 = 19, x_5=22$. Analog wie in (a) kann demnach das arithmetische Mittel als $\bar{x} = 32.6$ bestimmt werden. Die aufsteigend sortierten Beobachtungen sind nun $19, 20, 21, 22, 81$. Der Median ist also $21$.
   
   Für c und d wird der Datensatz bei `Jamovi` eingegeben, siehe Abbildung \@ref(fig:sol-theorie-mdn-mean-data), und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-theorie-mdn-mean-input). 
 
-```{r sol-theorie-mdn-mean-data, out.width='33%', fig.show="hold", fig.cap='Jamovi Dateneingabe.'}
-c("figures/02-exr-theorie-mdn-mean-data-input.jpg",
-  "figures/02-exr-theorie-mdn-mean-data-mod.jpg",
-  "figures/02-exr-theorie-mdn-mean-data-clean.jpg") %>% 
-  knitr::include_graphics()
-```
+\begin{figure}
+\includegraphics[width=0.33\linewidth]{figures/02-exr-theorie-mdn-mean-data-input} \includegraphics[width=0.33\linewidth]{figures/02-exr-theorie-mdn-mean-data-mod} \includegraphics[width=0.33\linewidth]{figures/02-exr-theorie-mdn-mean-data-clean} \caption{Jamovi Dateneingabe.}(\#fig:sol-theorie-mdn-mean-data)
+\end{figure}
 
-```{r sol-theorie-mdn-mean-input, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
-knitr::include_graphics("figures/02-exr-theorie-mdn-mean-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-theorie-mdn-mean-jmv-input} \caption{Jamovi setzen der Analyseparameter.}(\#fig:sol-theorie-mdn-mean-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-theorie-mdn-mean-output).
 
-```{r sol-theorie-mdn-mean-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/02-exr-theorie-mdn-mean-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-theorie-mdn-mean-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-theorie-mdn-mean-output)
+\end{figure}
 
 Damit können die beiden nächsten Teilfragen beantwortet werden.
 
@@ -402,15 +331,15 @@ In einem psychologischen Test machen $5$ Probandinnen die Werte $18, 21, 20, 19,
   Für c und d wird der Datensatz bei `Jamovi` eingegeben. Die Variablen werden bearbeitet wie in \@ref(exr:theorie-mdn-mean) beschrieben. Die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-theorie-variabilitaet-input). 
 
 
-```{r sol-theorie-variabilitaet-input, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
-knitr::include_graphics("figures/02-exr-theorie-variabilitaet-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-theorie-variabilitaet-jmv-input} \caption{Jamovi setzen der Analyseparameter.}(\#fig:sol-theorie-variabilitaet-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-theorie-variabilitaet-output).
 
-```{r sol-theorie-variabilitaet-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/02-exr-theorie-variabilitaet-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-theorie-variabilitaet-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-theorie-variabilitaet-output)
+\end{figure}
 
 Damit können die beiden nächsten Teilfragen beantwortet werden.
 
@@ -427,23 +356,8 @@ Ziel:
 - Output-interpretation
 - Berichten
 -->
-```{r exr-koerpergroesse-sex}
-gen_exr_koerpergroesse_sex <- function() {
-  n <- 163
-  set.seed(1298)
-  file_name <- '02-exr-koerpergroesse-sex.sav'
-  tab <- tibble(
-    koerpergroesse = c(rnorm(n, 167, 8), 
-                       rnorm(n, 180, 10)),
-    geschlecht = c(rep("w", n), rep("m", n))
-  )
-  tab %>%
-    write_sav(file_name)
-  return(mget(ls()))
-}
-exr_koerpergroesse_sex <- gen_exr_koerpergroesse_sex()
-```
-Bei einer Befragung wurden die Körpergrösse und das Geschlecht im Datensatz `r inline_code(exr_koerpergroesse_sex$file_name)` festgehalten.
+
+Bei einer Befragung wurden die Körpergrösse und das Geschlecht im Datensatz ``02-exr-koerpergroesse-sex.sav`` festgehalten.
 
 (a) Stellen Sie die Körpergrösse in einem Histogramm dar und berechnen sie alle bekannten Zentralitäts- und Variabilitätsmasse und berichten Sie mit dem korrekten Symbol. 
 (b) Wiederholen Sie die Übung aber teilen Sie die Daten nach Geschlecht auf. Was fällt auf?
@@ -454,30 +368,30 @@ Bei einer Befragung wurden die Körpergrösse und das Geschlecht im Datensatz `r
 (a) Der Datensatz wird bei `Jamovi` eingelesen und die  Analyseparameter wie in Abbildung \@ref(fig:sol-koerpergroesse-sex-input-a) gesetzt.
 
 
-```{r sol-koerpergroesse-sex-input-a, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
-knitr::include_graphics("figures/02-exr-koerpergroesse-sex-jmv-input-a.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-input-a} \caption{Jamovi setzen der Analyseparameter.}(\#fig:sol-koerpergroesse-sex-input-a)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-koerpergroesse-sex-output-a).
 
-```{r sol-koerpergroesse-sex-output-a, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/02-exr-koerpergroesse-sex-jmv-output-a.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-output-a} \caption{Jamovi Ausgabe.}(\#fig:sol-koerpergroesse-sex-output-a)
+\end{figure}
 
 Die Körpergrösse ist demnach $N=326$ mal beobachtet worden. Die Zentralitätmasse sind $M=173.13$ cm, $Mdn=172$ (Rundung nach 2 Kommastellen), Modus $144.77$. Die Variabilitätsmasse sind $SD=12.09$ cm, $IQR=17.11$ und $R=57.78$. Auf dem Histogramm ist ausserdem ersichtlich, dass die meisten Leute zwischen $160$ und $180$ cm gross sind und dass nur weniger unter $155$ oder über $200$ cm gross sind.
 
 (b) Die Analyse wird mit Gruppierungsvariable Geschlecht wiederholt wie in Abbildung \@ref(fig:sol-koerpergroesse-sex-input-b)
 
 
-```{r sol-koerpergroesse-sex-input-b, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
-knitr::include_graphics("figures/02-exr-koerpergroesse-sex-jmv-input-b.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-input-b} \caption{Jamovi setzen der Analyseparameter.}(\#fig:sol-koerpergroesse-sex-input-b)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-koerpergroesse-sex-output-b).
 
-```{r sol-koerpergroesse-sex-output-b, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/02-exr-koerpergroesse-sex-jmv-output-b.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-output-b} \caption{Jamovi Ausgabe.}(\#fig:sol-koerpergroesse-sex-output-b)
+\end{figure}
 
 Die Körpergrösse ist demnach bei den Frauen $N=163$ mal beobachtet worden. Die Zentralitätmasse sind $M=166.00$ cm, $Mdn=166.09$, Modus $144.77$. Die Variabilitätsmasse sind $SD=8.41$ cm, $IQR=11.27$ und $R=41.45$. Die Körpergrösse ist bei den Männern auch $N=163$ mal beobachtet worden. Die Zentralitätmasse sind $M=180.27$ cm, $Mdn=180.54$, Modus $149.17$. Die Variabilitätsmasse sind $SD=10.96$ cm, $IQR=15.35$ und $R=53.39$. Auf dem Histogramm ist ausserdem ersichtlich, dass die beiden Gruppen eine Spitze rund um den Mittelwert bei der Häufigkeit aufweisen. Beobachtungen, welche von der Spitze weiter weg sind werden seltener. Diese zwei Spitzen und somit unterschiedliche Körpergrössenverteilungen nach Geschlecht war aus (a) nicht ersichtlich. Es ist immer möglich, dass bei nicht-Experimenten ein zusätzliches Merkmal (hier das Geschlecht) ganz neue Erkenntnisse bringen kann.
 (c) In den Daten der Körpergrösse ist ersichtlich, dass aufgrund der detaillierten Aufzeichnung der Körpergrössen im hundertstel Millimeterbereich keine Beobachtung zweimal vorkommt. Jede Beobachtung ist somit die häufigste Beobachtung. Der Modus ist hier also bedeutungslos. Um einen sinnvolleren Wert für den Modus zu erhalten könnten die Körpergrössen vorab auf Zentimeter gerundet werden. In `Jamovi` kann dies mit der Funktion `ROUND` gemacht werden. Der Modus ist dann $165$ cm für die Frauen und $172$ für die Männer, was sich mit den Erwartungen aus dem Histogramm deckt.
@@ -491,41 +405,7 @@ Ziel:
 - Berechnung mit Jamovi festigen
 - Vernetzung: Output-interpretation mit verschieden verteilten Merkmalen vergleichen
 -->
-```{r exr-diverse-distrib}
-gen_exr_diverse_distrib <- function() {
-  n <-  500
-  set.seed(1298)
-  file_name <- '02-exr-diverse-distrib.sav'
-  tab <- tibble(
-    IQ = rnorm(n, 100, 15),
-    Aufgeschlossenheit = round(rnorm(n, 4, 1),1),
-    Wartezeit_min = rexp(n, 1/5),
-    Wartezeit_std = Wartezeit_min / 60,
-    Geburtzeit_std_ab_mitternacht = runif(n, 0, 24),
-    Geburtzeit_std_ab_mittag = (Geburtzeit_std_ab_mitternacht - 12) %%
-      24,
-    Punkte = rbinom(n, 20, 0.9) 
-  ) %>% 
-    mutate(Aufgeschlossenheit = case_when(Aufgeschlossenheit> 7 ~7,
-                                          Aufgeschlossenheit <1 ~1,
-                                          TRUE~ Aufgeschlossenheit))
-  tab %>%
-    write_sav(file_name)
-  jmv_output <- tab %>%
-    descriptives(vars = vars(IQ, 
-                             Aufgeschlossenheit,
-                             Wartezeit_std,
-                             Wartezeit_min,
-                             Geburtzeit_std_ab_mitternacht,
-                             Geburtzeit_std_ab_mittag,
-                             Punkte),
-                 desc = "rows",
-                 hist = TRUE,
-                 mode = TRUE)
-  return(mget(ls()))
-}
-exr_diverse_distrib <- gen_exr_diverse_distrib()
-```
+
 
 Für eine Studie werden Studierende gebeten eine Aufgabe zu lösen, bei welcher Sie eine gewisse Anzahl `Punkte` erzielen. Über jede Proband:in sind ausserdem folgende Eigenschaften bekannt:
 
@@ -536,7 +416,7 @@ Für eine Studie werden Studierende gebeten eine Aufgabe zu lösen, bei welcher 
 - `Geburtzeit_std_ab_mitternacht`: Geburtszeit in Stunden ab Mitternacht. Wenn jemand um 13h30 auf die Welt kam, ist dieser Wert 13.5.
 - `Geburtzeit_std_ab_mittag`: Geburtszeit in Stunden ab Mittag. Wenn jemand um 13h30 auf die Welt kam, ist dieser Wert 1.5.
 
-Die Daten sind in Jamovi unter `r inline_code(exr_diverse_distrib$file_name)` verfügbar.
+Die Daten sind in Jamovi unter ``02-exr-diverse-distrib.sav`` verfügbar.
 
 Analysieren Sie alle erhobenen Merkmale indem Sie ein Histogramm erstellen und die zentralen Tendenzen sowie die Variabilität analysieren.
 
@@ -548,17 +428,17 @@ e. Geburtszeit. TODO.
 :::
 
 :::{.solution}
-```{r sol-diverse-distrib1, out.width='100%', fig.cap='Jamovi Eingabe.', fig.show='hold'}
-knitr::include_graphics("figures/02-exr-diverse-distrib-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-diverse-distrib-input} \caption{Jamovi Eingabe.}(\#fig:sol-diverse-distrib1)
+\end{figure}
 
-```{r sol-diverse-distrib2, out.width='100%', fig.cap='Deskriptive Statistiken.', fig.show='hold'}
-knitr::include_graphics("figures/02-exr-diverse-distrib-output.jpg")
-```            
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/02-exr-diverse-distrib-output} \caption{Deskriptive Statistiken.}(\#fig:sol-diverse-distrib2)
+\end{figure}
 
-```{r sol-diverse-distrib3, out.width='33%', fig.cap='Histogramme.', fig.show='hold'}
-exr_diverse_distrib$jmv_output$plots
-```
+\begin{figure}
+\includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-1} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-2} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-3} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-4} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-5} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-6} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-7} \caption{Histogramme.}(\#fig:sol-diverse-distrib3)
+\end{figure}
 
 Die Merkmale werden mit den Befehlen in Abbildung \@ref(fig:sol-diverse-distrib1) analysiert.
 
@@ -637,18 +517,9 @@ d) Richtig
 Ziel: 
 - Mittelwerte mit Jamovi
 -->
-```{r exr-autos-haushalt}
-gen_exr_autos_haushalt <- function() {
-  set.seed(1298)
-  file_name <- '02-exr-autos-haushalt.sav'
-  tab <- tibble(anzahl_auto = rpois(92,1)) %>%
-    write_sav(file_name)
-  return(mget(ls()))
-}
-exr_autos_haushalt <- gen_exr_autos_haushalt()
-```
 
-Es wird beobachtet wie viele Autos ein Haushalt hat. Die Daten sind in `r inline_code(exr_autos_haushalt$file_name)` abgelegt. Welche der folgenden Aussagen sind wahr, welche falsch?
+
+Es wird beobachtet wie viele Autos ein Haushalt hat. Die Daten sind in ``02-exr-autos-haushalt.sav`` abgelegt. Welche der folgenden Aussagen sind wahr, welche falsch?
 
 a) Die durchschnittliche Anzahl Autos pro Haushalt liegt bei $M=0.87$.
 b) Der Modus liegt bei $1$.
@@ -710,35 +581,9 @@ d) Falsch
 
 :::{.example #angst name="Angst"}
 
-```{r exm-angst, include=FALSE}
-gen_exm_angst <- function(){
-  set.seed(12452)
-  n <- 30
-  x_mean <- 43.2
-  x_sd <- 7.8
-  x <- rnorm(n, x_mean, x_sd)
-  file_name <- '03-exm-angst.sav'
-  tibble(angst = x) %>%
-    write_sav(file_name)
-  
-  set.seed(1928)
-  n_samples <- 1000
-  x_means <- map_dbl(1:n_samples, ~ mean(rnorm(n, x_mean, x_sd)))
-  x_sds <- map_dbl(1:n_samples, ~ sd(rnorm(n, x_mean, x_sd)))
-  lb_means_emp <- round(unname(quantile(x_means, 0.025)), 1)
-  ub_means_emp <- round(unname(quantile(x_means, 0.975)), 1)
-  
-  m_means <- mean(x)
-  s_means <- sqrt(sd(x) / n)
-  lb_means_t <- m_means - qt(0.975, n - 1) * s_means
-  ub_means_t <- m_means + qt(0.975, n - 1) * s_means
-  
-  return(mget(ls()))
-}
-exm_angst <- gen_exm_angst()
-```
 
-Forschende haben das Messinstrument State-Trait Anxiety Inentory _STAI_ entwickelt, welches Angst misst [@spielberger1983manual]. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst aktuell empfunden wird. Die so gemessene Angst enstpricht einem Wert zwischen $20$ und $80$. A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit $n =`r exm_angst$n`$ zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte $M=`r round(mean(exm_angst$x), 2)`, s = `r round(sd(exm_angst$x),2)`, n = `r exm_angst$n`$ für die Angst in ihren Beobachtungen.
+
+Forschende haben das Messinstrument State-Trait Anxiety Inentory _STAI_ entwickelt, welches Angst misst [@spielberger1983manual]. Sie unterscheiden dabei zwischen Zustandesangst und dem Persönlichkeitszug Ängslichkeit. Hier interessiert uns nur die Zustandesangst, welche fortan Angst genannt wird und misst wie grosse Angst aktuell empfunden wird. Die so gemessene Angst enstpricht einem Wert zwischen $20$ und $80$. A priori haben die Forschenden keine Ahnung, wie viel Angst eine Person im Durchschnitt hat und ob die ganze Skala der Werte genutzt wird. Die Forschenden machen deshalb eine kleine Befragung mit $n =30$ zufällig ausgewählten Studierenden. Die Forschenden finden die zusammenfassenden Werte $M=43.34, s = 9.72, n = 30$ für die Angst in ihren Beobachtungen.
 :::
 
 [Zufällig ausgewählte Beobachtungen eines Merkmals werden als __Stichprobe__ bezeichnet.]{.customdef #customdef-stichprobe} [Die Auswahl der Beobachtungen für die Stichprobe ist die __Stichprobenziehung__.]{.customdef #customdef-stichprobenziehung} Ist mit diesen Beobachtungen die Aussage beschränkt auf die Stichprobe oder kann damit auch eine Aussage zur Angst für alle Personen getroffen werden? [Alle Personen, oder generell alle möglichen Beobachtungen eines Merkmals, werden als __Population__]{.customdef #customdef-population} [oder __Grundgesamtheit__ bezeichnet]{.customdef #customdef-grundgesamtheit}. [Eine Stichprobe ist für viele Analyseverfahren repräsentativ für eine Population, wenn sie zufällig aus dieser Population gezogen. Ist dies gegeben, wird die Stichprobe auch als __Zufallsstichprobe__ bezeichnet.]{.customdef #customdef-zufallsstichprobe} 
@@ -753,44 +598,19 @@ Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am F
 
 ## Was ist das Problem der Stichprobenziehung? {#stichprobenziehung-problem}
 
-Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung \@ref(fig:srs-intervall-nocol) ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population entspricht. Von den Personen im Zimmer, respektive die Beobachtungen in der Population, ist die Angst nicht bekannt (Punkte in grau). Aus diesem Zimmer wurden zufällig `r exm_angst$n` Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die farbigen Punkte über dem Zimmer, oberhalb des Pfeils. Die Farben der Punkte sind jetzt bekannt und entsprechen der jeweiligen Zustandesangst der beobachteten Personen.
+Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung \@ref(fig:srs-intervall-nocol) ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population entspricht. Von den Personen im Zimmer, respektive die Beobachtungen in der Population, ist die Angst nicht bekannt (Punkte in grau). Aus diesem Zimmer wurden zufällig 30 Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die farbigen Punkte über dem Zimmer, oberhalb des Pfeils. Die Farben der Punkte sind jetzt bekannt und entsprechen der jeweiligen Zustandesangst der beobachteten Personen.
 
 
-```{r srs-intervall-nocol, echo = FALSE, fig.cap="Population mit unbekannter Angst."}
-plot_ball_bag(
-  scores_bag = c(20, 80, rnorm(198, exm_angst$x_mean, exm_angst$x_sd)),
-  scores_hover = exm_angst$x,
-  score_name = "Angst",
-  bag_color = "grey90",
-  seed = 123,
-  color_bag_balls = FALSE
-)
-```
+![(\#fig:srs-intervall-nocol)Population mit unbekannter Angst.](aps_statistik1_files/figure-latex/srs-intervall-nocol-1.pdf) 
 
 Da die Stichprobe zufällig gezogen wurde, das heisst zufällig Personen aus dem Zimmer geholt wurden, kann es nun sein, dass die Stichprobe einer Population wie in Abbildung \@ref(fig:srs-intervall-high-p) entstammt.
 
 
-```{r srs-intervall-high-p, fig.cap="Population mit ähnlichen Angst-Werten wie in der Stichprobe.", echo = FALSE}
-scores_bag_high_p <- c(20, 80, rnorm(198,  exm_angst$x_mean, exm_angst$x_sd))
-plot_ball_bag(
-  scores_bag = scores_bag_high_p,
-  scores_hover = exm_angst$x,
-  score_name = "Angst",
-  seed = 123
-)
-```
+![(\#fig:srs-intervall-high-p)Population mit ähnlichen Angst-Werten wie in der Stichprobe.](aps_statistik1_files/figure-latex/srs-intervall-high-p-1.pdf) 
 
 Es könnte aber auch sein, dass die Stichprobe einer Population mit viel höherer Zusatandsangst, wie in Abbildung \@ref(fig:srs-intervall-low-p) dargestellt, entstammt. Dies wird zwar weniger häufig vorkommen als der Fall oben, aber ist trotzdem möglich.
 
-```{r srs-intervall-low-p, fig.cap="Population mit höheren Angst-Werten als in der Stichprobe.", echo = FALSE}
-scores_bag_low_p <-  c(20, 80, rnorm(198, 52, exm_angst$x_sd))
-plot_ball_bag(
-  scores_bag = scores_bag_low_p,
-  scores_hover = exm_angst$x,
-  score_name = "Angst",
-  seed = 123
-)
-```
+![(\#fig:srs-intervall-low-p)Population mit höheren Angst-Werten als in der Stichprobe.](aps_statistik1_files/figure-latex/srs-intervall-low-p-1.pdf) 
 
 Das Problem der zufälligen Stichprobenziehung ist also, dass nie ganz klar ist, wie die darunterliegende Population aussieht. Sind die Werte der Stichprobe tief, weil zufällig gerade Studierende mit tiefer Angst beobachtet wurden, oder haben tatsächlich die meisten Studierenden eine tiefe Angst?
 
@@ -798,38 +618,11 @@ Das Problem der zufälligen Stichprobenziehung ist also, dass nie ganz klar ist,
 
 Die Lösung dieses Problems funktioniert intuitiv wie folgt: Man stellt sich vor, die Stichprobenziehung würde erneut gemacht, und dann nochmal und dann nochmal. So oft, bis man einen guten Eindruck davon hat, wie häufig eine Stichprobe mit eher tiefen Angst-Werten wie bei der Stichprobe im Beispiel vorkommt. Im Szenario, in welchem in der Population tatsächlich tiefe Werte häufig vorkommen, kann dies aussehen wie in Abbildung \@ref(fig:srs-intervall-high-p-many). Stichproben mit eher tiefen Angst-Werten kommen hier häufig vor.
 
-```{r srs-intervall-high-p-many, fig.cap="Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher tiefen Angst-Werten.", echo = FALSE}
-plots <- list()
-for (i in 1:6) {
-  set.seed(i * 5 + 789)
-  scores_hover <- rnorm(exm_angst$n,  exm_angst$x_mean, exm_angst$x_sd)
-  plots[[i]] <- plot_ball_bag(
-    scores_bag = scores_bag_high_p,
-    scores_hover = scores_hover,
-    score_name = "Angst",
-    seed = 123,
-    no_legend = TRUE
-  )
-}
-do.call(grid.arrange, c(plots, ncol = 3))
-```
+![(\#fig:srs-intervall-high-p-many)Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher tiefen Angst-Werten.](aps_statistik1_files/figure-latex/srs-intervall-high-p-many-1.pdf) 
 
 Im Szenario, in welchem in der Population tatsächlich höhere Werte häufig vorkommen, kann dies aussehen wie in Abbildung \@ref(fig:srs-intervall-low-p-many). Stichproben mit eher tiefen Angst-Werten kommen hier selten oder gar nicht vor.
 
-```{r srs-intervall-low-p-many, fig.cap="Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten.", echo = FALSE}
-plots <- list()
-for(i in 1:6){
-  set.seed(i*5+789)
-  scores_hover <- rnorm(exm_angst$n, 52, exm_angst$x_sd)
-  plots[[i]] <-plot_ball_bag(
-  scores_bag = scores_bag_low_p,
-  scores_hover = scores_hover,
-  score_name = "Angst",
-  seed = 123, 
-  no_legend = TRUE)
-}
-do.call(grid.arrange, c(plots, ncol = 3))
-```
+![(\#fig:srs-intervall-low-p-many)Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten.](aps_statistik1_files/figure-latex/srs-intervall-low-p-many-1.pdf) 
 
 Es kann also zusammenfassend gesagt werden, dass die gezogene Stichprobe wohl eher aus einer Population mit tiefen Angst-Werten gezogen wurde als aus einer Population mit eher höheren Angst-Werten. Ganz sicher kann man jedoch nie sein, da die Werte in der Population eigentlich unbekannt sind. Eine genaue Quantifizierung dieser Unsicherheit kann mit Hilfe der Statistik erreicht werden und wird in den folgenden Kapiteln dieses Buches erläutert.
 
@@ -903,65 +696,27 @@ basierend auf einer Stichprobe präsentiert.
 
 Ein Parameter, über welchen wir gerne eine Aussage treffen würden, ist die zentrale Tendenz in der Grundgesamtheit. [Diese wird **Erwartungswert** (Symbol $\mu$ [gr.: mü]) genannt.]{.customdef #customdef-erwartungswert} Wenn das arithmetische Mittel der Stichprobe berechnet wird, ergibt dies auch ein Schätzwert für besagten Erwartungswert. Aufgrund der zufälligen Stichprobenziehung ist jedoch auch klar, dass dieser Schätzwert nie genau dem wahren Erwartungswert entspricht. 
 
-In Beispiel \@ref(exm:angst) liegt das arithmetische Mittel in der Stichprobe der Studierenden bei $M=`r exm_angst$x_mean`$. Dieser Wert entspricht nun auch der Schätzung des Erwartungswertes, also der geschätzten durchschnittlichen Angst aller Menschen. Die Folgefrage ist also wie genau unsere Schätzung ist. Um dies zu quantifizieren, wiederholen wir die Stichprobenziehung und berechnen das arithmetische Mittel dieser zweiten Stichprobe. Dann wiederholen wir diesen Prozess, zum Beispiel $`r exm_angst$n_samples`$ mal.
+In Beispiel \@ref(exm:angst) liegt das arithmetische Mittel in der Stichprobe der Studierenden bei $M=43.2$. Dieser Wert entspricht nun auch der Schätzung des Erwartungswertes, also der geschätzten durchschnittlichen Angst aller Menschen. Die Folgefrage ist also wie genau unsere Schätzung ist. Um dies zu quantifizieren, wiederholen wir die Stichprobenziehung und berechnen das arithmetische Mittel dieser zweiten Stichprobe. Dann wiederholen wir diesen Prozess, zum Beispiel $1000$ mal.
 
-```{r exm-angst-hist-means, echo = FALSE, fig.cap = paste("Verteilung der arithmetischen Mittel von", exm_angst$n_samples, "zufällig gezogenen Stichproben der Angst.")}
-tibble(x = exm_angst$x_means) %>% 
-  ggplot(aes(x=x))+
-  geom_histogram(binwidth = 0.5)+
-  labs(y = 'Häufigkeit', x = 'Angst')
-```
+![(\#fig:exm-angst-hist-means)Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.](aps_statistik1_files/figure-latex/exm-angst-hist-means-1.pdf) 
 
-Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \@ref(fig:exm-angst-hist-means) lässt nun eine Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die $`r round(mean(exm_angst$x_means))`$ ist hier am wahrscheinlichsten und ein Wert tiefer als $`r round(quantile(exm_angst$x_means, 0.05)) %>% unname()`$ oder höher $`r round(quantile(exm_angst$x_means, 0.95)) %>% unname()`$ eher selten. Um diese Aussage präziser zu gestalten, werden konventionell die $95$% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die $5$% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das $2.5$% Perzentil trennt die $2.5$% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei $`r  exm_angst$lb_means_emp`$. Das $97.5$%-Perzentil trennt die höchsten $2.5$% (oder eben die tiefsten $97.5$%) arithmetischen Mittel ab und liegt bei $`r exm_angst$ub_means_emp`$. Dies ist in Abbildung \@ref(fig:exm-angst-hist-means-emp-ci) ersichtlich.
+Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \@ref(fig:exm-angst-hist-means) lässt nun eine Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die $43$ ist hier am wahrscheinlichsten und ein Wert tiefer als $41$ oder höher $45$ eher selten. Um diese Aussage präziser zu gestalten, werden konventionell die $95$% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die $5$% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das $2.5$% Perzentil trennt die $2.5$% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei $40.4$. Das $97.5$%-Perzentil trennt die höchsten $2.5$% (oder eben die tiefsten $97.5$%) arithmetischen Mittel ab und liegt bei $46$. Dies ist in Abbildung \@ref(fig:exm-angst-hist-means-emp-ci) ersichtlich.
 
 
-```{r exm-angst-hist-means-emp-ci, fig.cap = paste0("Verteilung der arithmetischen Mittel von ",exm_angst$n_samples," zufällig gezogenen Stichproben der Angst.")}
-plot_hist_means(exm_angst$x_means, exm_angst$lb_means_emp,  exm_angst$ub_means_emp, 0.5, 'Angst')
-```
+![(\#fig:exm-angst-hist-means-emp-ci)Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.](aps_statistik1_files/figure-latex/exm-angst-hist-means-emp-ci-1.pdf) 
 
 :::{.example #agreableness name="Verträglichkeit"}
 
-```{r 4-exm-vertraeglichkeit, include=FALSE}
-gen_exm_vertraeglichkeit <- function(){
-  m <- 1000L
-  a <- 1
-  b <- 7
-  n <- 100
-  x <- runif(n, a, b)
-  file_name <- '03-exm-vertraeglichkeit.sav'
-  tab <- tibble(vertraeglichkeit = x) 
-  tab %>%
-    write_sav(file_name)
-  means <- map_dbl(1:m, ~ mean(runif(n, a, b)))
-  sds <- map_dbl(1:m, ~ sd(runif(n, a, b)))
-  lb <- round(unname(quantile(means, 0.025)), 1)
-  ub <- round(unname(quantile(means, 0.975)), 1)
-  m_means <- a+(b - a) / 2
-  s_means <- sqrt(((b - a) ^ 2 / 12) / n)
-  lb_t <- m_means - qt(0.975, n - 1) * s_means
-  ub_t <- m_means + qt(0.975, n - 1) * s_means
-  
-  return(mget(ls()))
-}
-exm_vertraeglichkeit <- gen_exm_vertraeglichkeit()
-```
 
-Einer der Big-5 Persönlichkeitszüge ist die Verträglichkeit. Eine einfache Art die Big-5 zu messen ist mit den 10 Fragen aus dem ten-item personality inventory _TIPI_ [@gosling2003]. Für die Verträglichkeit müssen zwei Items (Item 1: Critical, quarrelsome; Item 2: Sympathetic, warm) auf einer Likert-Skala von 1 bis 7 eingeordnet werden. Anschliessend werden die Antworten gemittelt. Ein Student möchte herausfinden, ob mit diesem Messinstrument die durchschnittliche Verträglichkeit aller Menschen mittig also bei $4$ liegt. Dafür befragt er $n = `r exm_vertraeglichkeit$n`$ Personen und findet die Werte $M=`r round(mean(exm_vertraeglichkeit$x), 2)`, s = `r round(sd(exm_vertraeglichkeit$x),2)`$.
+
+Einer der Big-5 Persönlichkeitszüge ist die Verträglichkeit. Eine einfache Art die Big-5 zu messen ist mit den 10 Fragen aus dem ten-item personality inventory _TIPI_ [@gosling2003]. Für die Verträglichkeit müssen zwei Items (Item 1: Critical, quarrelsome; Item 2: Sympathetic, warm) auf einer Likert-Skala von 1 bis 7 eingeordnet werden. Anschliessend werden die Antworten gemittelt. Ein Student möchte herausfinden, ob mit diesem Messinstrument die durchschnittliche Verträglichkeit aller Menschen mittig also bei $4$ liegt. Dafür befragt er $n = 100$ Personen und findet die Werte $M=3.91, s = 1.73$.
 :::
 
-```{r exm-agreableness-hist, fig.cap = paste("Verteilung der", exm_vertraeglichkeit$n, "beobachteten Verträglichkeitswerte einer zufällig gezogenen Stichprobe.")}
-exm_vertraeglichkeit$tab %>% 
-  ggplot(aes(x=vertraeglichkeit))+
-  geom_histogram(binwidth = 0.5)+
-  labs(y = 'Häufigkeit', x = 'Verträglichkeit')
-```
+![(\#fig:exm-agreableness-hist)Verteilung der 100 beobachteten Verträglichkeitswerte einer zufällig gezogenen Stichprobe.](aps_statistik1_files/figure-latex/exm-agreableness-hist-1.pdf) 
 
-Die Verteilung der Beobachtungen, siehe Abbildung \@ref(fig:exm-agreableness-hist), zeigt, dass alle Werte zwischen $1$ und $7$ vorkommen, aber keine zentrale Tendenz greifbar ist. Um herauszufinden wie zutreffend die Schätzung des Erwartungswertes der Verträglichkeit von $M=`r round(mean(exm_vertraeglichkeit$x), 2)`$ ist, stelle man sich wieder vor, dass der Student $`r exm_vertraeglichkeit$m`$-mal die Stichprobenziehung wiederholt und jedes Mal das arithmetische Mittel $M$ von neuem berechnet. Die Verteilung der arithmetischen Mittel dieser Stichproben ist in Abbildung \@ref(fig:exm-agreableness-hist-means) dargestellt. Bei dieser Verteilung kann erneut links und rechts $2.5\%$ der Werte abgeschnitten werden, um zum Schluss zu gelangen, dass das arithmetische Mittel in $95\%$ der Fälle zwischen $`r exm_vertraeglichkeit$lb`$ und $`r exm_vertraeglichkeit$ub`$ zu liegen kommt.
+Die Verteilung der Beobachtungen, siehe Abbildung \@ref(fig:exm-agreableness-hist), zeigt, dass alle Werte zwischen $1$ und $7$ vorkommen, aber keine zentrale Tendenz greifbar ist. Um herauszufinden wie zutreffend die Schätzung des Erwartungswertes der Verträglichkeit von $M=3.91$ ist, stelle man sich wieder vor, dass der Student $1000$-mal die Stichprobenziehung wiederholt und jedes Mal das arithmetische Mittel $M$ von neuem berechnet. Die Verteilung der arithmetischen Mittel dieser Stichproben ist in Abbildung \@ref(fig:exm-agreableness-hist-means) dargestellt. Bei dieser Verteilung kann erneut links und rechts $2.5\%$ der Werte abgeschnitten werden, um zum Schluss zu gelangen, dass das arithmetische Mittel in $95\%$ der Fälle zwischen $3.7$ und $4.3$ zu liegen kommt.
 
-```{r exm-agreableness-hist-means, fig.cap = paste0("Verteilung der arithmetischen Mittel von ",exm_vertraeglichkeit$m," zufällig gezogenen Stichproben der Verträglichkeit.")}
-with(exm_vertraeglichkeit,
-     plot_hist_means(means, lb, ub, 0.05, "Verträglichkeit"))
-```
+![(\#fig:exm-agreableness-hist-means)Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Verträglichkeit.](aps_statistik1_files/figure-latex/exm-agreableness-hist-means-1.pdf) 
 
 Das Problem mit diesem Vorgehen ist, dass es aus finanziellen oder technischen Gründen selten möglich ist mehrere Stichproben aus derselben Population zu ziehen. Glücklicherweise haben Statistiker:innen herausgefunden, dass die Häufigkeitsverteilungen wie in Abbildungen \@ref(fig:exm-angst-hist-means-emp-ci) und \@ref(fig:exm-agreableness-hist-means) immer dieselbe Verteilung haben und dies unabhängig davon wie die ursprüngliche Verteilung des Merkmals aussah. [Diese Verteilung ist eine sogenannte **Normalverteilung**]{.customdef #customdef-normalverteilung}. 
 
@@ -986,65 +741,35 @@ Auf [seeing-theory.brown.edu > Continuous > Normal](https://seeing-theory.brown.
 
 Die Abbildungen \@ref(fig:exm-angst-normal-approx) und \@ref(fig:exm-agreableness-normal-approx) illustrieren den zentralen Grenzwertsatz für Beispiel \@ref(exm:angst) und \@ref(exm:agreableness) respektive, wobei die Normalverteilung der roten Linie entspricht. Dabei wird einstweilen angenommen, dass $\mu$ und $\sigma$ bekannt sind. Diese Annahme wird später aufgelöst und dient hier lediglich der Illustration.
 
-```{r exm-angst-normal-approx, fig.cap = paste0("Die arithmetischen Mittel sind Normalverteilt mit Parametern $\\mu_g = ",round(mean(exm_angst$x),2),"$ und $\\sigma_g = ",round(sd(exm_angst$x),2)," / \\sqrt{",exm_angst$n,"}$.")}
-with(exm_angst,
-     plot_hist_denstiy_expected_value(x_means, x_mean, x_sd, n, "Angst", 0.5))
-```
+![(\#fig:exm-angst-normal-approx)Die arithmetischen Mittel sind Normalverteilt mit Parametern $\mu_g = 43.34$ und $\sigma_g = 9.72 / \sqrt{30}$.](aps_statistik1_files/figure-latex/exm-angst-normal-approx-1.pdf) 
 
-```{r exm-agreableness-normal-approx, fig.cap = paste0("Die arithmetischen Mittel sind Normalverteilt mit Parametern $\\mu_g = ",round(mean(exm_vertraeglichkeit$x),2),"$ und $\\sigma_g = ",round(sd(exm_vertraeglichkeit$x),2)," / \\sqrt{",exm_vertraeglichkeit$n,"}$.")}
-with(exm_vertraeglichkeit,
-     plot_hist_denstiy_expected_value(means, 4, sqrt((b - a) ^ 2 / 12), n, "Verträglichkeit", 0.05))
-```
+![(\#fig:exm-agreableness-normal-approx)Die arithmetischen Mittel sind Normalverteilt mit Parametern $\mu_g = 3.91$ und $\sigma_g = 1.73 / \sqrt{100}$.](aps_statistik1_files/figure-latex/exm-agreableness-normal-approx-1.pdf) 
 
 Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte Ziehen von Stichproben unnötig. Die Normalverteilung ist theoretisch konstruiert und ihr $2.5\%$- und $97.5\%$-Perzentil können theoretisch hergeleitet werden. Tabelle \@ref(tab:quantiles-norm) wird kann beobachtet werden, dass für unsere zwei Beispiele die Perzentile der Stichprobe und der Normalverteilung sehr ähnlich, wenn auch nicht exakt gleich sind. Die Ungenauigkeit rührt daher, dass der zentrale Grenzwertsatz nur dann exakt funktioniert, wenn die Anzahl Beobachtungen (unendlich) gross ist.
 
 
-```{r quantiles-norm}
-(tibble(
-  Beispiel = c("Angst", "Vertraeglichkeit"),
-  "2.5%-Perzentil (sample)" = c(exm_angst$lb_means_emp, exm_vertraeglichkeit$lb),
-  "97.5%-Perzentil  (sample)" = c(exm_angst$ub_means_emp, exm_vertraeglichkeit$ub),
-  "2.5%-Perzentil norm" = c(qnorm(0.025, exm_angst$m_means, exm_angst$s_means), 
-                            qnorm(0.025, exm_vertraeglichkeit$m_means, exm_vertraeglichkeit$s_means)),
-  "97.5%-Perzentil norm" = c(qnorm(0.975, exm_angst$m_means, exm_angst$s_means), 
-                               qnorm(0.975, exm_vertraeglichkeit$m_means, exm_vertraeglichkeit$s_means)),
-  "2.5%-Perzentil t" = c(exm_angst$lb_means_t, exm_vertraeglichkeit$lb_t),
-  "97.5%-Perzentil t" = c(exm_angst$ub_means_t, exm_vertraeglichkeit$ub_t)
-) %>%
-  kableExtra::kbl(
-    booktabs = TRUE,
-    col.names = c("Beispiel","2.5%", "97.5%", "2.5%", "97.5%", "2.5%", "97.5%"),
-    digits = 2,
-    align = c("c", "r", "r", "r", "r"),
-    caption = "Vergleich Perzentile der Stichprobe und der theoretischen Verteilung."
-  )) %>%
-  kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed"),
-    full_width = FALSE
-  ) %>% 
-  add_header_above(c(" " = 1, 
-                     "Stichprobe" = 2, 
-                     "Normalverteilung" = 2, 
-                     "t-Verteilung" = 2))
-
-```
+\begin{table}
+\centering
+\caption{(\#tab:quantiles-norm)Vergleich Perzentile der Stichprobe und der theoretischen Verteilung.}
+\centering
+\begin{tabular}[t]{crrrrcr}
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{2}{c}{Stichprobe} & \multicolumn{2}{c}{Normalverteilung} & \multicolumn{2}{c}{t-Verteilung} \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7}
+Beispiel & 2.5\% & 97.5\% & 2.5\% & 97.5\% & 2.5\% & 97.5\%\\
+\midrule
+Angst & 40.4 & 46.0 & 42.23 & 44.46 & 42.18 & 44.50\\
+Vertraeglichkeit & 3.7 & 4.3 & 3.66 & 4.34 & 3.66 & 4.34\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 
 Einstweilen wurde hier angenommen, dass die Streuung des Merkmals $\sigma$ bekannt ist. Dies ist in der Realität nie der Fall und eine weitere, wenn auch weniger grosse Ungenauigkeitsquelle. [Wenn $\sigma$ also auch aus der Stichprobe geschätzt werden muss, ist die Annäherung der Verteilung der arithmetischen Mittel besser gegeben mit einer **Student-$t$-Verteilung** oder kurz $t$-Verteilung.]{.customdef #customdef-student-verteilung} Die grüne gestrichelte Linie in den Abbildungen \@ref(fig:exm-angst-normal-approx) und \@ref(fig:exm-agreableness-normal-approx) entspricht der $t$-Verteilung im jeweiligen Beispiel. 
 
-Der Unterschied zwischen der Normalverteilung und der $t$-Verteilung ist nur sichtbar, wenn $n$ klein ist. In Beispiel \@ref(exm:angst) mit $n = `r exm_angst$n`$ ist ein kleiner Unterschied, in Beispiel \@ref(exm:agreableness) mit $n = `r exm_vertraeglichkeit$n`$ ist kein Unterschied zwischen der Normalverteilung und der $t$-Verteilung sichtbar. [Tatsächlich wird die $t$-Verteilung mit einem Parameter charakterisiert, welcher __Freiheitsgrade__ (eng. degrees of freedom, $df$) genannt wird.]{.customdef #customdef-freiheitsgrade} In Abbildung \@ref(fig:t-distribution) wird die $t$-Verteilung mit verschiedenen Freiheitsgraden mit der Normalverteilung verglichen. Bei der $t$-Verteilung mit den kleinsten Freiheitsgraden sind extremere Werte wahrscheinlicher als $t$-Verteilungen mit grösseren Freiheitsgraden. 
+Der Unterschied zwischen der Normalverteilung und der $t$-Verteilung ist nur sichtbar, wenn $n$ klein ist. In Beispiel \@ref(exm:angst) mit $n = 30$ ist ein kleiner Unterschied, in Beispiel \@ref(exm:agreableness) mit $n = 100$ ist kein Unterschied zwischen der Normalverteilung und der $t$-Verteilung sichtbar. [Tatsächlich wird die $t$-Verteilung mit einem Parameter charakterisiert, welcher __Freiheitsgrade__ (eng. degrees of freedom, $df$) genannt wird.]{.customdef #customdef-freiheitsgrade} In Abbildung \@ref(fig:t-distribution) wird die $t$-Verteilung mit verschiedenen Freiheitsgraden mit der Normalverteilung verglichen. Bei der $t$-Verteilung mit den kleinsten Freiheitsgraden sind extremere Werte wahrscheinlicher als $t$-Verteilungen mit grösseren Freiheitsgraden. 
 
-```{r t-distribution, fig.cap="Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleich zu der Normalverteilung."}
-tibble(x = seq(-4, 4, by = 0.1),
-       Normalverteilung = dnorm(x),
-       t_1 = dt(x, 2-1),
-       t_4 = dt(x, 5-1),
-       t_9 = dt(x, 10-1)) %>%
-  pivot_longer(cols = 2:5, names_to = "Verteilung", values_to="Wahrscheinlichkeitsdichte") %>% 
-  ggplot(aes(x=x))+
-  geom_line(aes(y=Wahrscheinlichkeitsdichte, color = Verteilung))+
-  labs(x="")
-```
+![(\#fig:t-distribution)Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleich zu der Normalverteilung.](aps_statistik1_files/figure-latex/t-distribution-1.pdf) 
 
 Die Freiheitsgrade der $t$-Verteilung in der Annäherung oben entsprechen der Anzahl Beobachtungen minus 1, also $df = n-1$. Die höhere Wahrscheinlichkeit von extremeren Werten bei kleinen Freiheitsgraden spiegelt die grössere Unsicherheit der Schätzung des Erwartungswertes wider, wenn die Standardabweichung unbekannt und damit auch geschätzt werden muss. Je kleiner $n$ ist, desto stärker fällt diese Unsicherheit aus.
 
@@ -1059,7 +784,7 @@ berechnet werden, wobei $\bar{x}$ das arithmetische Mittel, $s$ die Standardabwe
 Das $2.5\%$ und das $97.5\%$ Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines [**Intervalls**. Ein Intervall bezeichnet durch die Symbolik $[$untere Schranke, obere Schranke$]$ beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.]{.customdef #customdef-interval} [Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederholter Stichprobenziehung der wahre Erwartungswert in $95\%$ der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu $95\%$ sicher oder _konfident_ sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als $95\%$-**Konfidenzintervall** (Symbol KI) bezeichnet.]{.customdef #customdef-confidence-interval}
 [Als Sicherheit wird konventionell oft $95\%$ gewählt, andere Sicherheitswerte sind aber ebenfalls möglich und sinnvoll. Diese Werte heissen **Vertrauenswahrscheinlichkeit**. Ein $95\%$-Konfidenzintervall ist also ein Konfidenzintervall mit $95\%$ Vertrauenswahrscheinlichkeit.]{.customdef #customdef-confidence-level} [Andersherum betrachtet kann auch festgestellt werden, dass bei einem $95\%$-Konfidenzintervall die Wahrscheinlichkeit sich zu irren bei $5\%$ liegt. Irren bedeutet hier, dass der wahre Erwartungswert bei wiederholter Stichprobenziehung von $5\%$ der Konfidenzintervallen nicht überdeckt wird. Dieser Wert wird demnach **Irrtumswahrscheinlichkeit** genannt und mit $\alpha$ bezeichnet]{.customdef #customdef-erring-level}. Es ist demnach äquivalent von einem $99\%$ Konfidenzintervall oder von einem Konfidenzintervall mit $1\%$ Irrtumswahrscheinlichkeit zu sprechen.
 
-In Beispiel \@ref(exm:angst), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Angst in der Population bei $M = `r round(mean(exm_angst$x),2)`$ $95\%$ KI $[`r round(exm_angst$lb_means_t,2)`,`r round(exm_angst$ub_means_t,2)`]$ liegt. In Beispiel \@ref(exm:agreableness), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Verträglichkeit in der Population bei $M = `r round(mean(exm_vertraeglichkeit$x), 2)`$ $95\%$ KI $[`r round(exm_vertraeglichkeit$lb_t,2)`,`r round(exm_vertraeglichkeit$ub_t,2)`]$ liegt. Wann immer eine Schätzung eines zentralen Wertes berichtet wird, soll dies ab jetzt in der soeben gezeigten Darstellung inklusive Angabe des Konfidenzintervalls erfolgen. Damit wird der Leserin aufgezeigt, wo der Schätzwert der zentralen Tendenz liegt und gleichzeitig wird intuitiv vermittelt, wie genau die Schätzung ist.
+In Beispiel \@ref(exm:angst), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Angst in der Population bei $M = 43.34$ $95\%$ KI $[42.18,44.5]$ liegt. In Beispiel \@ref(exm:agreableness), kann aus der Tabelle \@ref(tab:quantiles-norm) entnommen werden, dass die Verträglichkeit in der Population bei $M = 3.91$ $95\%$ KI $[3.66,4.34]$ liegt. Wann immer eine Schätzung eines zentralen Wertes berichtet wird, soll dies ab jetzt in der soeben gezeigten Darstellung inklusive Angabe des Konfidenzintervalls erfolgen. Damit wird der Leserin aufgezeigt, wo der Schätzwert der zentralen Tendenz liegt und gleichzeitig wird intuitiv vermittelt, wie genau die Schätzung ist.
 
 Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse $n$ oder die geschätzte Standardabweichung $s$ auf die Länge des Konfidenzintervalls auswirkt. Dies kann in den Übungen \@ref(exr:ki-mean-n-vary) und \@ref(exr:biologietest) selbst erforscht werden.
 
@@ -1113,35 +838,24 @@ Es ist nun spannend zu explorieren, wie sich die Stichprobengrösse $n$ oder die
 Ziel: 
 - Konfidenzintervall mit Jamovi berechnen und berichten
 -->
-```{r exr-marktpreisanalyse}
-gen_exr_marktpreisanalyse <- function(){
-  set.seed(234)
-  n <- 70
-  tab <- tibble(preis = rchisq(n, 10)*30)
-  file_name <- '04-exr-marktpreisanalyse.sav'
-  tab %>%
-    write_sav(file_name)
-  return(mget(ls()))
-} 
-exr_marktpreisanalyse <- gen_exr_marktpreisanalyse()
-```
 
-Die Firma Pear bringt ein neues Smartphone das F42 der Reihe Supernova X auf den Markt. Das Smartphone ist für Jugendliche im Alter von $15-20$ Jahre konzipiert. Um herauszufinden, welcher Marktpreis für das F42 verlangt werden kann, erfragt Pear bei $`r exr_marktpreisanalyse$n`$ Jugendlichen die Zahlbereitschaft. Die Daten stehen unter `r inline_code(exr_marktpreisanalyse$file_name)` zur Verfügung. Wie gross ist die durchschnittliche Zahlbereitschaft der Jugendlichen? Berichten Sie die Ergebnisse der Marktanalyse mit einem $95\%$-Konfidenzintervall.
+
+Die Firma Pear bringt ein neues Smartphone das F42 der Reihe Supernova X auf den Markt. Das Smartphone ist für Jugendliche im Alter von $15-20$ Jahre konzipiert. Um herauszufinden, welcher Marktpreis für das F42 verlangt werden kann, erfragt Pear bei $70$ Jugendlichen die Zahlbereitschaft. Die Daten stehen unter ``04-exr-marktpreisanalyse.sav`` zur Verfügung. Wie gross ist die durchschnittliche Zahlbereitschaft der Jugendlichen? Berichten Sie die Ergebnisse der Marktanalyse mit einem $95\%$-Konfidenzintervall.
 :::
 
 :::{.solution}
 Der Datensatz wird bei `Jamovi` eingelesen und die  Analyseparameter wie in Abbildung \@ref(fig:sol-marktpreisanalyse-input) gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.
 
 
-```{r sol-marktpreisanalyse-input, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
-knitr::include_graphics("figures/04-exr-marktpreisanalyse-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/04-exr-marktpreisanalyse-jmv-input} \caption{Jamovi setzen der Analyseparameter.}(\#fig:sol-marktpreisanalyse-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-marktpreisanalyse-output).
 
-```{r sol-marktpreisanalyse-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/04-exr-marktpreisanalyse-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/04-exr-marktpreisanalyse-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-marktpreisanalyse-output)
+\end{figure}
 
 Die Marktanalyse mit $N = 70$ Befragten hat ergeben, dass Jugendliche im Alter von $15-20$ Jahren bereit sind durchschnittlich $M = 288.34$ CHF $95\%$-KI $[260.92,315.76]$ auszugeben für das neue Supernova X F42 von Pear.
 :::
@@ -1151,22 +865,9 @@ Die Marktanalyse mit $N = 70$ Befragten hat ergeben, dass Jugendliche im Alter v
 Ziel: 
 - Konfidenzintervall mit Jamovi berechnen, interpretieren und berichten
 -->
-```{r exr-stranger}
-gen_exr_stranger <- function(){
-  set.seed(234)
-  n <- 421
-  s <- 0.21
-  tab <- tibble(vorher = rnorm(n, 3.78, s),
-         nachher = rnorm(n, 3.34, s))
-  file_name <- '04-exr-stranger.sav'
-  tab %>%
-    write_sav(file_name)
-  return(mget(ls()))
-} 
-exr_stranger <- gen_exr_stranger()
-```
 
-In einer Studie werden $`r exr_stranger$n`$ Probandinnen über eine Woche lang beauftragt immer wieder fremde Personen anzusprechen. Dabei wird unter anderem am Anfang und am Ende der Woche gemessen, wie unangenehm auf einer Skala von $1$ bis $5$ dies für die Probandinnen ist. Die Daten stehen unter `r inline_code(exr_stranger$file_name)` zur Verfügung. Verwenden Sie für drei Nachkommastellen in `Jamovi` für die folgenden Teilaufgaben.
+
+In einer Studie werden $421$ Probandinnen über eine Woche lang beauftragt immer wieder fremde Personen anzusprechen. Dabei wird unter anderem am Anfang und am Ende der Woche gemessen, wie unangenehm auf einer Skala von $1$ bis $5$ dies für die Probandinnen ist. Die Daten stehen unter ``04-exr-stranger.sav`` zur Verfügung. Verwenden Sie für drei Nachkommastellen in `Jamovi` für die folgenden Teilaufgaben.
 
 (a) Berechnen Sie das $95\%$-Konfidenzintervall für die durchschnittliche Unangenehmheit in der Grundgesamtheit für die Situation am Anfang und am Ende der Studie und berichten und interpretieren Sie das Resultat. Denken Sie die Intervention hat die Unangenehmheit, welche durch das Ansprechen von Fremden entsteht, in der Grundgesamtheit durchschnittlich gesenkt? 
 (b) Vergleichen Sie die Längen der errechneten Konfidenzintervalle. 
@@ -1179,15 +880,15 @@ Diese Aufgabe ist angelehnt an @sandstrom2022.
 Der Datensatz wird bei `Jamovi` eingelesen und die  Analyseparameter wie in Abbildung \@ref(fig:sol-stranger-input) gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.
 
 
-```{r sol-stranger-input, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
-knitr::include_graphics("figures/04-exr-stranger-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/04-exr-stranger-jmv-input} \caption{Jamovi setzen der Analyseparameter.}(\#fig:sol-stranger-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-stranger-output).
 
-```{r sol-stranger-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/04-exr-stranger-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/04-exr-stranger-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-stranger-output)
+\end{figure}
 
 (a) Die durchschnittliche Unangenehmheit lag am Anfang der Woche bei $M=3.784, 95\%$ KI $[3.764, 3.803]$ Punkten und am Ende der Woche bei $M=3.328, 95\%$ KI $[3.309, 3.348]$ Punkten. Wenn die Studie $100$ mal wiederholt wird und jedes Mal ein $95\%$ Konfidenzintervall für den Erwartungswert der Unangenehmheit berechnet wird, so wird der tatsächliche Erwartungswert in $95\%$ der Fälle also ungefähr $95$ mal vom Konfidenzintervall überdeckt. Da die Konfidenzintervalle weit auseinander liegen, kann davon ausgegangen werden, dass die Unangenehmheit durchschnittlich tatsächlich nach dem Versuch tiefer liegt als vor dem Versuch. Die Unangenehmheit kann also durch Training vermindert werden.
 (b) Die Länge der Konfidenzintervalle betragen am Anfang der Woche $3.803-3.764=0.039$ und am Ende der Woche $3.348-3.309= 0.039$. 
@@ -1201,45 +902,11 @@ Ziel:
 - Erleben, dass Mittelwerte normalverteilt sind.
 -->
 
-```{r ki-approx-normal}
-gen_exr_ki_approx_normal <- function(n){
-  seed <- 1928
-  set.seed(1928)
-  m <- 10000
-  lambda <- 7
-  x <- rpois(n, lambda)
-  x_samples <- map(1:m, ~ rpois(n, lambda))
-  means <- x_samples %>% map_dbl(mean)
-  sds <- x_samples %>% map_dbl(sd)
-  lb <- unname(quantile(means, 0.025))
-  ub <- unname(quantile(means, 0.975))
-  m_means <- mean(x)
-  s_means <- sqrt(sd(x) / n)
-  lb_t <- lambda - qt(0.975, n - 1) * s_means
-  ub_t <- lambda + qt(0.975, n - 1) * s_means
-  return(mget(ls()))
-}
 
-ns <- c(10, 40, 100)
-list_experiments <- map(ns, ~ gen_exr_ki_approx_normal(.x))
-tibble(!!!setNames(
-    map(list_experiments,~c(.x$means)),
-    paste0("n_", ns)
-)) %>%
-    haven::write_sav('data/04-exr-zentraler-grenzwertsatz.sav')
-```
 
-(TODO, Achtung: Diese Augabe funktioniert je nach Version von Jamovi und JJStatsPlot nicht. Wenn die Normalverteilungskurve trotz Anwählen nicht angezeigt wird, kann die Lösung der Aufgabe nachgelesen werden. Diese Aufgabe ist wichtig für das Verständnis, nicht aber zur Nachahmung an der Prüfung.) Für ein Experiment werden in drei Runden jeweils $`r list_experiments[[1]]$m`$ Zufallsstichproben erhoben mit respektive $10$, $40$ und $100$ Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung \@ref(fig:ki-approx-normal1) dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.
+(TODO, Achtung: Diese Augabe funktioniert je nach Version von Jamovi und JJStatsPlot nicht. Wenn die Normalverteilungskurve trotz Anwählen nicht angezeigt wird, kann die Lösung der Aufgabe nachgelesen werden. Diese Aufgabe ist wichtig für das Verständnis, nicht aber zur Nachahmung an der Prüfung.) Für ein Experiment werden in drei Runden jeweils $10000$ Zufallsstichproben erhoben mit respektive $10$, $40$ und $100$ Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung \@ref(fig:ki-approx-normal1) dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.
 
-```{r ki-approx-normal1, fig.cap="Verteilung der Werte einer Stichprobe. (Achtung es handelt sich hierbei nicht um Mittelwerte, sondern die Effektiv gemessenen Beobachtungen einer Stichprobe.)"}
-map_dfr(c(1:3),
-        ~tibble(x = list_experiments[[.x]]$x_samples[[1]],
-       n = list_experiments[[.x]]$n)) %>% 
-  ggplot() +
-  geom_histogram(aes(x=x), binwidth = 1)+
-  facet_wrap(~n,labeller = label_both)+
-  labs(x="Wert", y = 'Häufigkeit')
-```
+![(\#fig:ki-approx-normal1)Verteilung der Werte einer Stichprobe. (Achtung es handelt sich hierbei nicht um Mittelwerte, sondern die Effektiv gemessenen Beobachtungen einer Stichprobe.)](aps_statistik1_files/figure-latex/ki-approx-normal1-1.pdf) 
 
 Die arithmetischen Mittel der $10'000$ Stichproben sind im Datensatz `04-exr-zentraler-grenzwertsatz.sav` festgehalten. In der Spalte `n_10` zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallsstichprobe mit $10$ Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse $n$. Erstellen Sie ein Histogramm mit der Erweiterung `JJStatsPlot` und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.
 
@@ -1249,12 +916,9 @@ Die arithmetischen Mittel der $10'000$ Stichproben sind im Datensatz `04-exr-zen
 
 Das Übereinanderlegen des jeweiligen Histogramms und der Wahrscheinlichkeitsdichte der Normalverteilung wird in Abbildung \@ref(fig:sol-ki-approx-normal) gezeigt. Es ist deutlich zu sehen, dass die Linie nur bei $n=100$ die Häufigkeitsverteilung der arithmetischen Mittel gut nachbilden kann. Bei $n=10$ und $n=50$ ist ein grosser Unterschied zwischen Häufigkeitsverteilung und Linie sichtbar. Das genaue $n$ ab welchem eine Häufigkeitsverteilung gut durch die Normalverteilung angenähert wird hängt von der ursprünglichen Verteilung der Daten ab, d.h. der Verteilung in Abbildung \@ref(fig:ki-approx-normal1). Es kann deshalb nicht generell gesagt werden, dass ab $n=100$ die Annäherung immer gut sei, so wie in diesem Beispiel. Der zentrale Grenzwertsatz besagt demnach auch lediglich, dass man immer ein grosses $n$ wählen kann, so dass die Annäherung gut ist. Er besagt nichts darüber, wie gross $n$ sein muss.
 
-```{r sol-ki-approx-normal, fig.cap="Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100.", fig.show="hold", out.width="50%"}
-knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-input.jpg")
-knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-output1.jpg")
-knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-output2.jpg")
-knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-output3.jpg")
-```
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-input} \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-output1} \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-output2} \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-output3} \caption{Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100.}(\#fig:sol-ki-approx-normal)
+\end{figure}
 
 :::
 
@@ -1264,33 +928,9 @@ Ziel:
 - 
 -->
 
-```{r exr-ki-mean-n-vary}
-gen_exr_ki_mean_n_vary <- function(){
-  seed <- 1029
-  set.seed(seed)
-  sample_sizes <- c(5, 20, 50, 100, 1000)
-  samples <- sample_sizes %>%
-    map(~rexp(.x,4))
-  ki_table <- tibble(x = samples,
-         n = sample_sizes) %>%
-    mutate(
-      means = x %>% map_dbl(mean),
-           sds = x %>% map_dbl(sd),
-           lb = means - qt(0.975, n-1) * sds / sqrt(n),
-           ub = means + qt(0.975, n-1) * sds / sqrt(n),
-           il = ub - lb)
-  tibble(!!!setNames(
-      map(ki_table$x, ~c(.x, rep(NA, 1000 - length(.x)))),
-      paste0("col_", seq_along(ki_table$x))
-  )) %>%
-    haven::write_sav('data/04-exr-stichprobengroesse.sav')
-  return(mget(ls()))
-}
 
-exr_ki_mean_n_vary <- gen_exr_ki_mean_n_vary()
-```
 
-Eine Mensa will herausfinden, wie lange die Leute um 12h durchschnittlich anstehen müssen. Dazu befragt sie `r exr_ki_mean_n_vary$ki_table$n[1]` Kund:innen. Das Resultat der Untersuchung ist, dass die Kund:innen im Durchschnitt $0.4$ Stunden anstehen müssen. Leider ist das Konfidenzintervall sehr gross. Da die Mensa nicht weiss, wie viele Leute befragt werden müssen, um ein kleineres Konfidenzintervall zu erhalten befragt sie in 4 weiteren Runden jeweils `r knitr::combine_words(exr_ki_mean_n_vary$ki_table$n[-c(1)], and = " und ", oxford_comma = FALSE)` Kund:innen. Die Daten aller 5 Untersuchungen sind unter `04-exr-stichprobengroesse.sav` abgelegt. Für jede der 5 Stichproben:
+Eine Mensa will herausfinden, wie lange die Leute um 12h durchschnittlich anstehen müssen. Dazu befragt sie 5 Kund:innen. Das Resultat der Untersuchung ist, dass die Kund:innen im Durchschnitt $0.4$ Stunden anstehen müssen. Leider ist das Konfidenzintervall sehr gross. Da die Mensa nicht weiss, wie viele Leute befragt werden müssen, um ein kleineres Konfidenzintervall zu erhalten befragt sie in 4 weiteren Runden jeweils 20, 50, 100 und 1000 Kund:innen. Die Daten aller 5 Untersuchungen sind unter `04-exr-stichprobengroesse.sav` abgelegt. Für jede der 5 Stichproben:
 
   a. Was ist die Schätzung des Erwartungswertes der Wartezeit?
   b. Wie gross ist die Standardabweichung der Wartezeit?
@@ -1309,16 +949,15 @@ Vergleichen Sie die Resultate der Berechnungen für jede Stichprobe:
 
 Abbildung \@ref(fig:sol-ki-mean-n-vary) zeigt die Berechnungsanweisungen für Jamovi und die resultierende Tabelle daraus.
 
-```{r sol-ki-mean-n-vary, fig.cap="Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen.", fig.show="hold", out.width="50%"}
-  knitr::include_graphics("figures/04-exr-stichprobengroesse-jmv-input.jpg")
-  knitr::include_graphics("figures/04-exr-stichprobengroesse-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/04-exr-stichprobengroesse-jmv-input} \includegraphics[width=0.5\linewidth]{figures/04-exr-stichprobengroesse-jmv-output} \caption{Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen.}(\#fig:sol-ki-mean-n-vary)
+\end{figure}
 
   a. Der Erwartungswert der Wartezeiten (das heisst der Populationsmittelwert der Wartezeiten) wird mit dem arithmetischen Mittel der Stichprobe geschätzt und kann in der Tabelle bei `Mittelwert` abgelesen werden. Der Erwartungswert der Wartezeiten beträgt bei allen Stichproben ausser bei der ersten ungefähr 0.22 Stunden, also ein bisschen weniger als eine Viertelstunde.
   b. Der Standardabweichung der Wartezeiten der Stichprobe sind in der Tabelle bei `Std.-abw.` abzulesen. Die Standardabweichungen sind für alle Stichproben ausser der ersten ungefähr bei 0.23.
-  c. Die Standardabweichung der arithmetischen Mittel liegt bei $s/\sqrt{n}$. Für die erste Stichprobe ist dies $0.157 / \sqrt{5} = `r 0.157/sqrt(5)`$. Diese Werte werden auch als Standardfehler bezeichnet und sind in der Tabelle bei `Std.-fehler` ablesbar.
+  c. Die Standardabweichung der arithmetischen Mittel liegt bei $s/\sqrt{n}$. Für die erste Stichprobe ist dies $0.157 / \sqrt{5} = 0.0702125$. Diese Werte werden auch als Standardfehler bezeichnet und sind in der Tabelle bei `Std.-fehler` ablesbar.
   d. Die untere und obere Schranke der 95%-Konfidenzintervalle sind bei `Untere` und `Obere` respektive abzulesen.  
-  e. Die Länge des Konfidenzintervalls entspricht jeweils dem höheren Wert minus dem tieferen Wert. Für die erste Stichprobe ist dies $0.597 - 0.208 = `r (0.597 - 0.208)`$, für die anderen `r knitr::combine_words(map_dbl(exr_ki_mean_n_vary$ki_table$il[-c(1)], ~ round(.x, 2)), and = " und ", oxford_comma = FALSE)`.
+  e. Die Länge des Konfidenzintervalls entspricht jeweils dem höheren Wert minus dem tieferen Wert. Für die erste Stichprobe ist dies $0.597 - 0.208 = 0.389$, für die anderen 0.23, 0.13, 0.09 und 0.03.
   f. Die Schätzung des Erwartungswertes ist das arithmetische Mittel der Stichprobe. Da jedes Mal eine neue Zufallsstichprobe gezogen wurde und diese nicht dieselben Beobachtungen enthalten, ergeben sich auch jedes Mal andere Stichprobenmittelwerte.
   g. Je grösser $n$, desto kleiner ist das Konfidenzintervall. Wenn man also ein kleines Konfidenzintervall erreichen will, braucht man eine grössere Stichprobe.
 :::
@@ -1330,19 +969,7 @@ Abbildung \@ref(fig:sol-ki-mean-n-vary) zeigt die Berechnungsanweisungen für Ja
 Ziel: 
 - Einfluss der Standardabweichung auf das Konfidenzintervall erforschen.
 -->
-```{r exr-biologietest}
-gen_exr_biologietest <- function(){
-  set.seed(234)
-  n <- 20
-  tab <- tibble(test1 = rnorm(20, 15, 5),
-                test2 = rnorm(20, 15, 2))
-  file_name <- '04-exr-biologietest.sav'
-  tab %>%
-    write_sav(file_name)
-  return(mget(ls()))
-} 
-exr_biologietest <- gen_exr_biologietest()
-```
+
 
 Eine Klasse bringt bei einem Biologietest eine durchwachsene Leistung. Die Lehrkraft entscheidet sich die genau gleichen Test zu wiederholen. Berichten Sie das durchschnittliche Resultat der beiden Tests und schätzen Sie den Einfluss der Standardabweichung auf die Länge des Konfidenzintervalls ein.
 :::
@@ -1351,15 +978,15 @@ Eine Klasse bringt bei einem Biologietest eine durchwachsene Leistung. Die Lehrk
 Der Datensatz wird bei `Jamovi` eingelesen und die  Analyseparameter wie in Abbildung \@ref(fig:sol-biologietest-input) gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.
 
 
-```{r sol-biologietest-input, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
-knitr::include_graphics("figures/04-exr-biologietest-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/04-exr-biologietest-jmv-input} \caption{Jamovi setzen der Analyseparameter.}(\#fig:sol-biologietest-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-biologietest-output).
 
-```{r sol-biologietest-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/04-exr-biologietest-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/04-exr-biologietest-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-biologietest-output)
+\end{figure}
 
 Die Klasse mit $N=20$ Lernenden hat beim ersten Biologietest eine durchschnittliche Punktzahl von $M=14.6$ Punkten $95\%$ KI $[11.9,17.3]$ erzielt. Bei der Wiederholung des Tests wurde eine durchschnittliche Punktzahl von $M=14.8$ Punkten $95\%$ KI $[14.0,15.6]$ erzielt. Die Standardabweichung des Testergebnisses war beim ersten Mal $SD=5.8$ Punkte und bei der Wiederholung $SD=1.7$ Punkte. Die Länge des Konfidenzintervalls war bei der ersten Durchführung mit $17.3-11.9=5.4$ Punkten bedeutend grösser als bei der zweiten Durchführung mit $15.6-14.0=1.6$. Eine grössere Standardabweichung führt also zu einer grösseren Länge des Konfidenzintervalls. Dies kann auch durch Durchprobieren von Testwerten in Gleichung \@ref(eq:ki-mean) festgestellt werden.
 :::
@@ -1383,7 +1010,7 @@ d) Falsch
 :::
 
 ::: {.exercise  #ki-praxis}
-Im Datensatz `r inline_code(exr_koerpergroesse_sex$file_name)` wurden Körpergrössen von Versuchsteilnehmenden erfasst. Welche der folgenden Aussagen sind wahr, welche falsch?
+Im Datensatz ``02-exr-koerpergroesse-sex.sav`` wurden Körpergrössen von Versuchsteilnehmenden erfasst. Welche der folgenden Aussagen sind wahr, welche falsch?
 
 a) Die durchschnittliche Körpergrösse der Frauen liegt bei $M = 166.0$ cm $90\%$ KI $[164.7, 167.3]$.
 b) Die durchschnittliche Körpergrösse der Männer liegt bei $M = 180.3$ cm $95\%$ KI $[178.6, 182.0]$.
@@ -1483,140 +1110,7 @@ Die verwendeten Zeichen in den Formeln sind
 
 :::{.example #vermoegen name="Vermögen"}
 
-```{r exm-vermoegen}
-gen_exm_vermoegen <- function(){
-  # x ~ chisq(df)
-  # a * x ~ a chisq(df)
-  # E(a*x) ~ a E(chisq(df)) = a df
-  # Var(a*x) ~ a^2 Var(x) = a^2 2k / n
-  df <- 3L
-  mu0 <- 100000
-  scale_factor <- mu0/df
-  
-  n <- 20L
-  set.seed(61)
-  x <- scale_factor * rchisq(n, df)
-  scores_hover <- x / 1000 # hovering with K CHF in scale
-  x_mean <- x %>% mean()
-  x_sd <- x %>% sd()
-  t_emp <- (x_mean - mu0)/(x_sd/sqrt(n))
-  p_value_the <- 1-pt((x_mean - 100000)/ (x_sd / sqrt(n)), n-1)
-  effect_size <- (x_mean - mu0) / x_sd
 
-  
-  file_name <- '05-exm-vermoegen.sav'
-  tibble(vermoegen = x) %>% write_sav(file_name)
-  
-  # distribution if H_0 were true
-  n_samples <- 3000L
-  x_means <- 1:n_samples %>% 
-    map_dbl(~ mean(scale_factor*rchisq(n, df)))
-  q95_x_means <- x_means %>% quantile(c(0.95)) %>% unlist() %>% unname()
-  p_value_emp <- mean(x_means > x_mean)
-  
-  # plot sampling bag
-  n_bag <- 200L
-  scores_bag <- list(40*rchisq(n_bag,df),
-                   # 60*rchisq(n_bag,df)
-                   45*rchisq(n_bag,df)
-                   )
-  plots <- list()
-  for (i in 1:length(scores_bag)) {
-    plots[[i]] <- plot_ball_bag(
-      scores_bag = scores_bag[[i]],
-      scores_hover = scores_hover,
-      score_name = "1000 CHF",
-      seed = 123+i,
-      no_legend = c(TRUE, FALSE)[i],
-      limit_scores = c(0, 400)
-    )
-  }
-  
-  # plot histogram of sample means
-  plot_hist_density <- plot_hist_denstiy_expected_value(
-    x_means, 
-    scale_factor*df, 
-    sqrt((scale_factor)^2*2*df), 
-    n,
-    "Vermögen CHF",
-    5000)
-  
-  line_xlim <- xlim(c(40000, 180000))
-  sigma_g <- x_sd / sqrt(n)
-  x_range_bounds <- c(mu0-3*sigma_g, mu0+3*sigma_g)
-  x_range <- seq(x_range_bounds[1], x_range_bounds[2], length.out = 1000)
-  create_text_data <- function(x,y,z){
-    plot_attr_reja_pval$create_text_data(10000*c(6,13),x,y,z)
-  }
-  # Create data for histograms
-  histogram_data <- tibble(
-    x = rep(x_means, 2),
-    plot_type = rep(c("Histogram p-Wert", 
-                      "Histogram Ablehnungsbereich"), 
-                    each = length(x_means))
-  ) %>%
-    plot_attr_reja_pval$add_colors(side = "right", upper = q95_x_means, test_stat = x_mean)
-  
-  # Create data for density plots
-  density_data <- tibble(
-    x = rep(x_range, 2),
-    y = dt((x - mu0) / sigma_g, n - 1) / sigma_g,
-    plot_type = rep(c("Verteilung p-Wert", 
-                      "Verteilung Ablehnungsbereich"), 
-                    each = length(x_range))
-  )  %>%
-    plot_attr_reja_pval$add_colors(side = "right", upper = q95_x_means, test_stat = x_mean)
-  
-  # Create text data for all plots
-  text_sign <- c('95%', '5%')
-  text_data_all <- bind_rows(
-    create_text_data(
-      round(100 *c(1 - p_value_emp, p_value_emp),1) %>% 
-        str_c('%'),
-      200,
-      "Histogram p-Wert"
-    ),
-    create_text_data(
-      text_sign, 
-      200,
-      "Histogram Ablehnungsbereich"
-    ),
-    create_text_data(
-      round(100 *c(1-p_value_the, p_value_the),1) %>% 
-        str_c('%'),
-      0.000015, 
-      "Verteilung p-Wert"
-    ),
-    create_text_data(
-      text_sign, 
-      0.000015,
-      "Verteilung Ablehnungsbereich"
-    )
-  )
-  
-  
-  
-  plot_hist_curve_pval_reja <- ggplot() +
-    geom_histogram(data = histogram_data,
-                   aes(x = x, fill = color),
-                   binwidth = 4300) +
-    geom_area(data = density_data,
-              aes(x = x, y = y, fill = color),
-            stat = "identity") +
-    geom_vline(xintercept = x_mean) +
-    geom_text(data = text_data_all,
-              mapping = aes(x = x, y = y, label = label, colour = color)) +
-    facet_wrap(~ plot_type, nrow = 2, scales = "free_y", 
-               strip.position = "top",
-               labeller = plot_attr_reja_pval$custom_labeller) +
-    line_xlim +
-    plot_attr_reja_pval$theme +
-    labs(x = "Vermögen", y = "W.-dichte                              Häufigkeit")
-
-  return(mget(ls()))
-}
-exm_vermoegen <- gen_exm_vermoegen()
-```
 
 <!-- ```{r} -->
 <!-- 1-pnorm(mean(exm_vermoegen$x), 100000, sd(exm_vermoegen$x_means)) -->
@@ -1632,31 +1126,25 @@ Eine Sozialpolitikberatungsfirma will herausfinden, ob das durchschnittliche Ver
 
 > $H_1: \mu > 100'000$ CHF
 
-Um die Hypothesen auf einer Datengrundlage zu evaluieren, erfragt es das Vermögen von $n=`r exm_vermoegen$n`$ zufällig ausgewählten Personen und findet ein durchschnittliches Vermögen von $M=`r round(mean(exm_vermoegen$x))`$ CHF.
+Um die Hypothesen auf einer Datengrundlage zu evaluieren, erfragt es das Vermögen von $n=20$ zufällig ausgewählten Personen und findet ein durchschnittliches Vermögen von $M=119853$ CHF.
 
 :::
 
-Es kann nun schnell gesagt werden, dass das durchschnittliche Vermögen in der Population gestiegen ist, weil $`r round(mean(exm_vermoegen$x))`$ CHF grösser ist als $100'000$ CHF. Dies so zu behaupten wäre jedoch falsch, weil nicht alle Personen in der Population befragt wurden, sondern lediglich eine Zufallsstichprobe. Wie in Kapitel \@ref(stichprobenziehung) muss hier für eine Generalisierung der Stichprobe auf die Population der Effekt der zufälligen Stichprobenziehung miteinbezogen werden. 
+Es kann nun schnell gesagt werden, dass das durchschnittliche Vermögen in der Population gestiegen ist, weil $119853$ CHF grösser ist als $100'000$ CHF. Dies so zu behaupten wäre jedoch falsch, weil nicht alle Personen in der Population befragt wurden, sondern lediglich eine Zufallsstichprobe. Wie in Kapitel \@ref(stichprobenziehung) muss hier für eine Generalisierung der Stichprobe auf die Population der Effekt der zufälligen Stichprobenziehung miteinbezogen werden. 
 
 Aufgrund der Zufallsstichprobe ist es unmöglich zu sagen, ob unsere Stichprobe eine eher seltene Stichprobenziehung aus einer Population mit unverändertem durchschnittlichen Vermögen von $100'000$ CHF ist (Abbildung \@ref(fig:exm-vermoegen-sampling-plot) links) oder ob es eine eher häufig vorkommende Stichprobenziehung aus einer Population mit höherem durchschnittlichen Vermögen ist (Abbildung \@ref(fig:exm-vermoegen-sampling-plot) rechts). 
 
-```{r exm-vermoegen-sampling-plot, fig.cap="Vorgestellte Zufallsstichprobenziehung. Links: Nullhypothese ist wahr. Rechts: Nullhypothese ist falsch. Die grauen Punkte entsprechen Vermögen über 400'000 CHF.", echo = FALSE}
-do.call(grid.arrange, c(exm_vermoegen$plots, ncol = 2))
-```
+![(\#fig:exm-vermoegen-sampling-plot)Vorgestellte Zufallsstichprobenziehung. Links: Nullhypothese ist wahr. Rechts: Nullhypothese ist falsch. Die grauen Punkte entsprechen Vermögen über 400'000 CHF.](aps_statistik1_files/figure-latex/exm-vermoegen-sampling-plot-1.pdf) 
 
-Es kann jedoch ausgesagt werden, mit welcher Wahrscheinlichkeit der gefundene Stichprobenmittelwert realisiert wird, gegeben dass die Nullhypothese wahr ist. Hier wird also angenommen, dass eine Population mit Erwartungswert $\mu = 100'000$ CHF vorliegt und dass anschliessend zum Beispiel $`r exm_vermoegen$n_samples`$ Stichproben an je $`r exm_vermoegen$n`$ Beobachtungen pro Stichprobe gezogen werden. Von jeder dieser Stichproben wird das arithmetische Mittel berechnet. In der Verteilung dieser Mittelwerte, siehe Abbildung \@ref(fig:exm-vermoegen-histogram-plot), wird nun der tatsächliche Mittelwert der Stichprobe $\bar{x} = `r round(exm_vermoegen$x %>% mean())`$ verortet. 
+Es kann jedoch ausgesagt werden, mit welcher Wahrscheinlichkeit der gefundene Stichprobenmittelwert realisiert wird, gegeben dass die Nullhypothese wahr ist. Hier wird also angenommen, dass eine Population mit Erwartungswert $\mu = 100'000$ CHF vorliegt und dass anschliessend zum Beispiel $3000$ Stichproben an je $20$ Beobachtungen pro Stichprobe gezogen werden. Von jeder dieser Stichproben wird das arithmetische Mittel berechnet. In der Verteilung dieser Mittelwerte, siehe Abbildung \@ref(fig:exm-vermoegen-histogram-plot), wird nun der tatsächliche Mittelwert der Stichprobe $\bar{x} = 119853$ verortet. 
 
-```{r exm-vermoegen-histogram-plot, fig.cap="TODO.", echo = FALSE}
-exm_vermoegen$plot_hist_density + 
-  geom_vline(xintercept = exm_vermoegen$x %>% mean())+
-  scale_x_continuous(n.breaks = 10)
-```
+![(\#fig:exm-vermoegen-histogram-plot)TODO.](aps_statistik1_files/figure-latex/exm-vermoegen-histogram-plot-1.pdf) 
 
 Der beobachtete Mittelwert ist zwar nicht genau bei $100'000$ CHF, aber trotzdem noch einigermassen plausibel, wenn die Nullhypothese stimmt. Um diesen Gedanken zu formalisieren, gibt es zwei Denkweisen, welche nun vorgestellt werden.
 
-Die eine Denkweise wurde von [Ronald Fisher](https://en.wikipedia.org/wiki/Ronald_Fisher) propagierte. Sie stellt die Frage nach der Wahrscheinlichkeit, dass zufällig der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert, gegeben die Nullhypothese ist wahr. Im Beispiel entspricht dies der Wahrscheinlichkeit den Wert $`r round(exm_vermoegen$x %>% mean())`$ oder einen grösseren Wert zu beobachten, wenn der Erwartungswert tatsächlich bei $100'000$ CHF liegt. Um diese Wahrscheinlichkeit zu bestimmen, kann einfach gezählt werden, welcher Anteil der Stichprobenmittelwerte grösser oder gleich $`r round(exm_vermoegen$x %>% mean())`$ CHF ist. Im Beispiel sind dies $`r round(exm_vermoegen$p_value_emp,3)` = `r round(exm_vermoegen$p_value_emp*100,1)`\%$. [Dieser Wert wird, abgeleitet vom englischen _probability_, __p-Wert__ (Symbol: $p$) genannt. Beim Berichten des $p$-Werts wird normalerweise die führende $0$ nicht geschrieben, also $p = `r round(exm_vermoegen$p_value_emp,3) %>% str_sub(2)`$.]{.customdef #customdef-pwert} 
+Die eine Denkweise wurde von [Ronald Fisher](https://en.wikipedia.org/wiki/Ronald_Fisher) propagierte. Sie stellt die Frage nach der Wahrscheinlichkeit, dass zufällig der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert, gegeben die Nullhypothese ist wahr. Im Beispiel entspricht dies der Wahrscheinlichkeit den Wert $119853$ oder einen grösseren Wert zu beobachten, wenn der Erwartungswert tatsächlich bei $100'000$ CHF liegt. Um diese Wahrscheinlichkeit zu bestimmen, kann einfach gezählt werden, welcher Anteil der Stichprobenmittelwerte grösser oder gleich $119853$ CHF ist. Im Beispiel sind dies $0.143 = 14.3\%$. [Dieser Wert wird, abgeleitet vom englischen _probability_, __p-Wert__ (Symbol: $p$) genannt. Beim Berichten des $p$-Werts wird normalerweise die führende $0$ nicht geschrieben, also $p = .143$.]{.customdef #customdef-pwert} 
 
-[Bei der anderen von Neyman und Pearson propagierten Denkweise muss noch vor der Datenerhebung ein sogenanntes **Signifikanzniveau** (Symbol $\alpha$, sprich 'alpha')  bestimmt werden. Dieser Wert entspricht der Wahrscheinlichkeit, dass der statistische Test die Nullhypothese verwirft, obwohl diese wahr gewesen wäre. Normalerweise wird $\alpha = 5\%$ gesetzt.]{.customdef #customdef-signifikanzniveau} Es wird also akzeptiert, dass ein statistischer Test in $5\%$ der Fälle gegen die Nullhypothese entscheidet, obwohl diese wahr wäre. [In einem zweiten Schritt wird bestimmt, welches die $5\%$ unwahrscheinlichsten Werte sind, wenn die Nullhypothese wahr ist. Diese Werte werden **Ablehnungsbereich** genannt.]{.customdef #customdef-ablehnungsbereich} Im Beispiel sind dies die $5\%$ höchsten Werte, nämlich Vermögen von $`r round(exm_vermoegen$q95_x_means)`$ CHF und grössere Vermögen. Nun wird bestimmt, ob der tatsächliche beobachtete Wert im Ablehnungsbereich liegt oder nicht. [Im Beispiel liegt der Stichprobenmittelwert $`r round(exm_vermoegen$x_mean)`$ CHF nicht im Ablehnungsbereich. In diesem Fall wird die Nullhypothese nicht verworfen und das Testresultat erhält das Prädikat **nicht signifikant**. Läge der Stichprobenmittelwert im Ablehnungsbereich, so wäre das Testresultat als **signifikant** einzustufen.]{.customdef #customdef-signifikanz}
+[Bei der anderen von Neyman und Pearson propagierten Denkweise muss noch vor der Datenerhebung ein sogenanntes **Signifikanzniveau** (Symbol $\alpha$, sprich 'alpha')  bestimmt werden. Dieser Wert entspricht der Wahrscheinlichkeit, dass der statistische Test die Nullhypothese verwirft, obwohl diese wahr gewesen wäre. Normalerweise wird $\alpha = 5\%$ gesetzt.]{.customdef #customdef-signifikanzniveau} Es wird also akzeptiert, dass ein statistischer Test in $5\%$ der Fälle gegen die Nullhypothese entscheidet, obwohl diese wahr wäre. [In einem zweiten Schritt wird bestimmt, welches die $5\%$ unwahrscheinlichsten Werte sind, wenn die Nullhypothese wahr ist. Diese Werte werden **Ablehnungsbereich** genannt.]{.customdef #customdef-ablehnungsbereich} Im Beispiel sind dies die $5\%$ höchsten Werte, nämlich Vermögen von $131511$ CHF und grössere Vermögen. Nun wird bestimmt, ob der tatsächliche beobachtete Wert im Ablehnungsbereich liegt oder nicht. [Im Beispiel liegt der Stichprobenmittelwert $119853$ CHF nicht im Ablehnungsbereich. In diesem Fall wird die Nullhypothese nicht verworfen und das Testresultat erhält das Prädikat **nicht signifikant**. Läge der Stichprobenmittelwert im Ablehnungsbereich, so wäre das Testresultat als **signifikant** einzustufen.]{.customdef #customdef-signifikanz}
 
 ::::{.caution data-latex=""}
 ::: {.remark}
@@ -1671,9 +1159,9 @@ Es wird ausserdem empfohlen, das Wort signifikant immer nur als Prädikat für e
 :::
 ::::
 
-Die beiden Denkarten entsprechen sich insofern, als ein $p$-Wert kleiner als $5\%$ ein signifikantes Resultat bei Signifikanzniveau $\alpha = 5\%$ bedeutet. In der Praxis werden beide Methoden verwendet. Im Beispiel liegt der $p$-Wert bei $p = `r round(exm_vermoegen$p_value_emp,3) %>% str_sub(2)`$. Dies bedeutet, dass die Wahrscheinlichkeit zufällig den realisierten Stichprobenmittelwert zu erhalten, gegeben, dass die Nullhypothese stimmt, grösser als $5\%$ ist und demnach auch der Unterschied nicht signifikant ist.
+Die beiden Denkarten entsprechen sich insofern, als ein $p$-Wert kleiner als $5\%$ ein signifikantes Resultat bei Signifikanzniveau $\alpha = 5\%$ bedeutet. In der Praxis werden beide Methoden verwendet. Im Beispiel liegt der $p$-Wert bei $p = .143$. Dies bedeutet, dass die Wahrscheinlichkeit zufällig den realisierten Stichprobenmittelwert zu erhalten, gegeben, dass die Nullhypothese stimmt, grösser als $5\%$ ist und demnach auch der Unterschied nicht signifikant ist.
 
-Ein noch zu lösendes Problem ist, dass normalerweise Geld, Zeit und Nerven fehlen, um eine Stichprobenziehung $`r exm_vermoegen$n_samples`$-mal zu wiederholen. Hier hilft es wieder zu beobachten, dass die Verteilung der Werte des Histogramms in Abbildung \@ref(fig:exm-vermoegen-histogram-plot) wieder mit zunehmender Stichprobengrösse immer genauer einer Normalverteilung folgen. Tatsächlich trifft es aufgrund des [zentralen Grenzwertsatzes](#customdef-zentraler-grenzwertsatz) immer zu, dass wenn ein Merkmal mit $N$ Beobachtungen, Erwartungswert $\mu$ und Standardabweichung $\sigma$ hat, der Wert
+Ein noch zu lösendes Problem ist, dass normalerweise Geld, Zeit und Nerven fehlen, um eine Stichprobenziehung $3000$-mal zu wiederholen. Hier hilft es wieder zu beobachten, dass die Verteilung der Werte des Histogramms in Abbildung \@ref(fig:exm-vermoegen-histogram-plot) wieder mit zunehmender Stichprobengrösse immer genauer einer Normalverteilung folgen. Tatsächlich trifft es aufgrund des [zentralen Grenzwertsatzes](#customdef-zentraler-grenzwertsatz) immer zu, dass wenn ein Merkmal mit $N$ Beobachtungen, Erwartungswert $\mu$ und Standardabweichung $\sigma$ hat, der Wert
 
 $$z = \frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}$$
 normalverteilt ist, wobei $\mu$ hier dem Wert der Nullhypothese entspricht, also $100'000$ CHF. Dies entspricht der roten Linie in Abbildung \@ref(fig:exm-vermoegen-histogram-plot). Ist die Standardabweichung des Merkmals $\sigma$ in der Population unbekannt, so wird diese mit der Standardabweichung in der Stichprobe $s$ geschätzt. Diese zusätzliche Unsicherheit führt dazu, dass
@@ -1688,15 +1176,24 @@ nicht mehr normal-, sondern $t$-verteilt ist bei $n-1$ Freiheitsgraden (grüne L
 <!-- - why p-Wert does not correspond exactly to empirical p-Wert? -->
 <!-- - what is that uncertainty w.r.t. the rejection area? -->
 
-```{r exm-vermoegen-plots-sampling-theorie, fig.cap="Oben: Histogramm der simulierten Verteilung; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert."}
-exm_vermoegen$plot_hist_curve_pval_reja
+
 ```
+## Warning: Removed 2 rows containing non-finite outside the scale range
+## (`stat_bin()`).
+```
+
+```
+## Warning: Removed 8 rows containing missing values or values outside the scale range
+## (`geom_bar()`).
+```
+
+![(\#fig:exm-vermoegen-plots-sampling-theorie)Oben: Histogramm der simulierten Verteilung; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert.](aps_statistik1_files/figure-latex/exm-vermoegen-plots-sampling-theorie-1.pdf) 
 
 [Die Berechnung des für den Test relevanten Wertes, hier des $t$-Wertes wird **Teststatistik** (oder auch _Prüfgrösse_ oder nur _Statistik_) genannt.]{.customdef #customdef-teststatistik} Eine Teststatistik hat normalerweise eine bekannte theoretische Verteilung, welcher die Teststatistik folgt, wenn die Nullhypothese wahr ist. [Aufgrund der theoretischen $t$-Verteilung der vorliegenden Statistik und der einen Stichprobe (vgl. nächstes Kapitel) wird dieser Test **Einstichproben-$t$-Test** genannt.]{.customdef #customdef-t-test}
 
 Das oben gefundene Resultat wird in der folgenden Form berichtet:
 
-> Ein Einstichproben-$t$-Test ergibt, dass das durchschnittliche Vermögen ($M = `r round(exm_vermoegen$x_mean)`$ CHF, $SD = `r round(exm_vermoegen$x_sd)`$, $N = `r round(exm_vermoegen$n)`$) in diesem Jahr nicht signifikant grösser als $100'000$ CHF ist, $t(`r round(exm_vermoegen$n-1)`) = `r round(exm_vermoegen$t_emp,3)`$, $p = `r round(exm_vermoegen$p_value_the,3) %>% str_sub(start = 2L)`$.
+> Ein Einstichproben-$t$-Test ergibt, dass das durchschnittliche Vermögen ($M = 119853$ CHF, $SD = 88528$, $N = 20$) in diesem Jahr nicht signifikant grösser als $100'000$ CHF ist, $t(19) = 1.003$, $p = .164$.
 
 ::::{.caution data-latex=""}
 ::: {.remark}
@@ -1706,133 +1203,18 @@ Folgende Begriffe und Zahlen werden dabei verwendet:
 - $M$, $SD$, $N$ entsprechen dem arithmetischen Mittel, der geschätzten Standardabweichung und der Anzahl Beobachtungen in der Stichprobe. Die Einheit muss nicht wiederholt werden.
 - Signifikanz (siehe letzter Hinweis)
 - grösser als $100'000$ CHF ist die Referenz zur Alternativhypothese
-- $t(`r round(exm_vermoegen$n-1)`)$ bedeutet, dass die Teststatistik $t$-verteilt ist mit $`r round(exm_vermoegen$n-1)`$ Freiheitsgraden.
-- $`r round(exm_vermoegen$t_emp,3)`$ ist der Wert der Teststatistik berechnet mit Formel \@ref(eq:t-emp-onesample) aus der Stichprobe. Dieser Wert ist skaliert und muss im Kontext der standardisierten $t$-Verteilung wie in Abbildung \@ref(fig:t-distribution) interpretiert werden.
-- $p = `r round(exm_vermoegen$p_value_the,3) %>% str_sub(start = 2L)`$ entspricht dem $p$-Wert. Es wird normalerweise die führende $0$ weggelassen (also nicht $`r round(exm_vermoegen$p_value_the,3)`)$, da es sich um eine Zahl handelt, welche nie kleiner als $0$ oder grösser als $1$ sein kann.
+- $t(19)$ bedeutet, dass die Teststatistik $t$-verteilt ist mit $19$ Freiheitsgraden.
+- $1.003$ ist der Wert der Teststatistik berechnet mit Formel \@ref(eq:t-emp-onesample) aus der Stichprobe. Dieser Wert ist skaliert und muss im Kontext der standardisierten $t$-Verteilung wie in Abbildung \@ref(fig:t-distribution) interpretiert werden.
+- $p = .164$ entspricht dem $p$-Wert. Es wird normalerweise die führende $0$ weggelassen (also nicht $0.164)$, da es sich um eine Zahl handelt, welche nie kleiner als $0$ oder grösser als $1$ sein kann.
 :::
 ::::
 
 
 :::{.example #alexithymie name="Alexithymie"}
 
-```{r exm-alexithymie}
-gen_exm_alexithymie <- function(){
-  set.seed(1982)
-  mu0 <- 100
-  x_min <- 37
-  x_max <- 185
-  n <- 391
-  
-  x <- rnorm(n, 96, 25) 
-  x <- crop(x, x_min, x_max)
-  x[which(x < x_min)] <- x_min
-  x[which(x > x_max)] <- x_max
-  # x %>% summary()
-  # x %>% t.test(alternative = 'two.sided',
-  #              mu = 100)
-  x_mean <- x %>% mean()
-  x_mean_sym <- mu0 + (mu0 - x_mean)
-  x_sd <- x %>% sd()
-  t_emp <- (x_mean - mu0)/(x_sd/sqrt(n))
-  p_value_the <- 2*pt((x_mean - mu0)/ (x_sd / sqrt(n)), n-1)
-  effect_size <- (x_mean - mu0) / x_sd
-  
-  file_name <- '05-exm-alexithymie.sav'
-  tibble(alexithymie = x) %>% write_sav(file_name)
-  
-  # distribution if H_0 were true
-  n_samples <- 4000L
-  x_means <- 1:n_samples %>% 
-    map_dbl(~ mean(rnorm(n, mu0, 25)))
-  q975_x_means <- x_means %>% quantile(c(0.975)) %>% unlist() %>% unname()
-  q025_x_means <- x_means %>% quantile(c(0.025)) %>% unlist() %>% unname()
-  p_value_emp <- mean(x_means < x_mean | x_means > mu0 + (mu0 - x_mean))
-  
-  # plot histogram of sample means
-  plot_hist_density <- plot_hist_denstiy_expected_value(
-    x_means, 
-    mu0, 
-    x_sd, 
-    n,
-    "Alexithymie CHF",
-    0.25)
-  
-  line_xlim <- xlim(c(95, 105))
-  sigma_g <- x_sd / sqrt(n)
-  x_range <- seq(mu0-3*sigma_g, mu0+3*sigma_g, length.out = 1000)
-  create_text_data <- function(x,y,z){
-    plot_attr_reja_pval$create_text_data(c(98, 102),x,y,z)
-  }
-  # Create data for histograms
-  histogram_data <- tibble(
-    x = rep(x_means, 2),
-    plot_type = rep(c("Histogram p-Wert", 
-                      "Histogram Ablehnungsbereich"), 
-                    each = length(x_means))
-  ) %>%
-    plot_attr_reja_pval$add_colors(side = "both", upper = q975_x_means, lower = q025_x_means, test_stat = x_mean, mu0 = mu0)
-  
-  # Create data for density plots
-  density_data <- tibble(
-    x = rep(x_range, 2),
-    y = dt((x - mu0) / sigma_g, n - 1) / sigma_g,
-    plot_type = rep(c("Verteilung p-Wert", 
-                      "Verteilung Ablehnungsbereich"), 
-                    each = length(x_range))
-  ) %>%
-    plot_attr_reja_pval$add_colors(side = "both", upper = q975_x_means, lower = q025_x_means, test_stat = x_mean, mu0 = mu0)
-  
-  # Create text data for all plots
-  text_pval <- str_c(round(100 * c(1 - p_value_emp, p_value_emp), 1), '%')
-  text_sign <- c('95%', '5%')
-  text_data_all <- bind_rows(
-    create_text_data(
-      text_pval,
-      200,
-      "Histogram p-Wert"
-    ),
-    create_text_data(
-      text_sign, 
-      200,
-      "Histogram Ablehnungsbereich"
-    ),
-    create_text_data(
-      round(100 *c(1-p_value_the,p_value_the),1) %>% 
-        str_c('%'),
-      0.25, 
-      "Verteilung p-Wert"
-    ),
-    create_text_data(
-      text_sign, 
-      0.25,
-      "Verteilung Ablehnungsbereich"
-    )
-  )
-  
-  plot_hist_curve_pval_reja <- ggplot() +
-    geom_histogram(data = histogram_data,
-                   aes(x = x, fill = color),
-                   binwidth = 0.25) +
-    
-    geom_area(data = density_data,
-              aes(x = x, y = y, fill = color),
-            stat = "identity") +
-    geom_vline(xintercept = x_mean) +
-    geom_text(data = text_data_all,
-              mapping = aes(x = x, y = y, label = label, colour = color)) +
-    facet_wrap(~ plot_type, nrow = 2, scales = "free_y", 
-               strip.position = "top",
-               labeller = plot_attr_reja_pval$custom_labeller) +
-    line_xlim +
-    plot_attr_reja_pval$theme +
-    labs(x = "Alexithymie", y = "W.-dichte                              Häufigkeit")
 
-  return(mget(ls()))
-}
-exm_alexithymie <- gen_exm_alexithymie()
-```
 
-Mit Gefühlsblindheit oder _Alexithymie_ (griechisch: a = ohne, lexis= lesen, sprechen, thymie = Gefühle) werden Einschränkungen bei der Fähigkeit Emotionen wahrzunehmen, zu erkennen und zu beschreiben bezeichnet. Es gibt ein online [Messinstrument](https://www.alexithymie.com/de/), welches die Alexithymie auf einer Skala von $`r exm_alexithymie$x_min`$ Punkten (kleine Gefühlsblindheit) bis $`r exm_alexithymie$x_max`$ (grosse Gefühlsblindheit) misst. Die Skala wurde so gewählt, dass die durchschnittliche Alexithymie aller Menschen bei $`r exm_alexithymie$mu0`$ liegt. Eine Psychologin interessiert sich nun dafür, ob junge Menschen unter $25$ durchschnittlich andere Alexithymie-Werte aufweisen als die Gesamtbevölkerung. Um dies zu testen, befragt sie $N = `r exm_alexithymie$n`$ unter $25$-jährige mit besagtem Messinstrument. In dieser Gruppe wurde eine durchschnittliche Alexithymie von $M = `r round(exm_alexithymie$x_mean,1)`$ Punkten festgestellt.
+Mit Gefühlsblindheit oder _Alexithymie_ (griechisch: a = ohne, lexis= lesen, sprechen, thymie = Gefühle) werden Einschränkungen bei der Fähigkeit Emotionen wahrzunehmen, zu erkennen und zu beschreiben bezeichnet. Es gibt ein online [Messinstrument](https://www.alexithymie.com/de/), welches die Alexithymie auf einer Skala von $37$ Punkten (kleine Gefühlsblindheit) bis $185$ (grosse Gefühlsblindheit) misst. Die Skala wurde so gewählt, dass die durchschnittliche Alexithymie aller Menschen bei $100$ liegt. Eine Psychologin interessiert sich nun dafür, ob junge Menschen unter $25$ durchschnittlich andere Alexithymie-Werte aufweisen als die Gesamtbevölkerung. Um dies zu testen, befragt sie $N = 391$ unter $25$-jährige mit besagtem Messinstrument. In dieser Gruppe wurde eine durchschnittliche Alexithymie von $M = 96.7$ Punkten festgestellt.
 :::
 
 <!-- Discuss: Was könnten gründe sein für eine tiefere, höhrere Alexithymie? -->
@@ -1849,21 +1231,30 @@ Die Alternativhypothese besagt das Gegenteil davon, also hier, dass die durchsch
 
 > $H_1: \mu \neq 100$ Punkte. 
 
-Um die Wahrscheinlichkeit des beobachteten arithmetischen Mittels der Stichprobe von $M = `r round(exm_alexithymie$x_mean,1)`$ Punkten zu ermitteln, gegeben, dass die Nullhypothese wahr ist, kann erneut auf den Gedanken der wiederholten Stichprobenziehung zurückgegriffen werden. Bei diesem Gedankenexperiment wird angenommen, dass Nullhypothese wahr ist und dass das die Untersuchung $`r exm_alexithymie$n_samples`$-mal wiederholt wurde mit jeweils $`r exm_alexithymie$n`$ Beobachtungen. Von jeder dieser Stichproben kann wiederum das arithmetische Mittel berechnet werden. Die Verteilung dieser arithmetischen Mittel ist in Abbildung \@ref(fig:exm-alexithymie-plot) oben dargestellt.
+Um die Wahrscheinlichkeit des beobachteten arithmetischen Mittels der Stichprobe von $M = 96.7$ Punkten zu ermitteln, gegeben, dass die Nullhypothese wahr ist, kann erneut auf den Gedanken der wiederholten Stichprobenziehung zurückgegriffen werden. Bei diesem Gedankenexperiment wird angenommen, dass Nullhypothese wahr ist und dass das die Untersuchung $4000$-mal wiederholt wurde mit jeweils $391$ Beobachtungen. Von jeder dieser Stichproben kann wiederum das arithmetische Mittel berechnet werden. Die Verteilung dieser arithmetischen Mittel ist in Abbildung \@ref(fig:exm-alexithymie-plot) oben dargestellt.
 
-```{r exm-alexithymie-plot, fig.cap="Oben: Histogramm der simulierten Verteilung der Alexithymie-Mittelwerte; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert."}
-exm_alexithymie$plot_hist_curve_pval_reja
+
+```
+## Warning: Removed 2 rows containing non-finite outside the scale range
+## (`stat_bin()`).
 ```
 
-Der $p$-Wert, also die Wahrscheinlichkeit, dass der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert, wird hier aufgrund der zweiseitigen Hypothesenstellung auch zweiseitig ausgelegt. Extremer in Richtung der Alternativhypothese meint hier alle Werte, die weiter weg als der beobachtete Durchschnittswert $`r round(exm_alexithymie$x_mean,1)`$ vom hypothetischen Erwartungswert $\mu = `r exm_alexithymie$mu0`$ sind. Konkret sind dies alle Werte, welche kleiner als $`r round(exm_alexithymie$x_mean,1)`$, und alle Werte, welche grösser als $`r round(exm_alexithymie$x_mean_sym,1)`$ sind (roter Bereich in Abbildung \@ref(fig:exm-alexithymie-plot) oben rechts). Der Anteil der Werte, welche diese Bedingung erfüllen liegt bei $p = `r round(100*exm_alexithymie$p_value_emp,1)`\%$. Es ist demnach recht unwahrscheinlich, dass die Nullhypothese stimmt und zufällig ein Stichprobendurchschnittswert von $`r round(exm_alexithymie$x_mean,1)`$ Alexithymie-Punkten herauskommt.
+```
+## Warning: Removed 8 rows containing missing values or values outside the scale range
+## (`geom_bar()`).
+```
 
-Aufgrund der zweiseitigen Hypothesenstellung beinhaltet auch der Ablehnungsbereich sowohl die tiefsten $2.5\%$ und höchsten $2.5\%$, also insgesamt die $5\%$ extremen Durchschnittswerte. Dies sind alle Werte tiefer als  $`r round(exm_alexithymie$q025_x_means,2)`$ und alle Werte höher als $`r round(exm_alexithymie$q975_x_means,2)`$ (roter Bereich in Abbildung \@ref(fig:exm-alexithymie-plot) oben links). Da das arithmetische Mittel der Stichprobe $`r round(exm_alexithymie$x_mean,1)`$ im Ablehnungsbereich liegt, liegt hier ein signifikantes Resultat vor bei Signifikanzniveau $5\%$.
+![(\#fig:exm-alexithymie-plot)Oben: Histogramm der simulierten Verteilung der Alexithymie-Mittelwerte; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert.](aps_statistik1_files/figure-latex/exm-alexithymie-plot-1.pdf) 
+
+Der $p$-Wert, also die Wahrscheinlichkeit, dass der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert, wird hier aufgrund der zweiseitigen Hypothesenstellung auch zweiseitig ausgelegt. Extremer in Richtung der Alternativhypothese meint hier alle Werte, die weiter weg als der beobachtete Durchschnittswert $96.7$ vom hypothetischen Erwartungswert $\mu = 100$ sind. Konkret sind dies alle Werte, welche kleiner als $96.7$, und alle Werte, welche grösser als $103.3$ sind (roter Bereich in Abbildung \@ref(fig:exm-alexithymie-plot) oben rechts). Der Anteil der Werte, welche diese Bedingung erfüllen liegt bei $p = 0.7\%$. Es ist demnach recht unwahrscheinlich, dass die Nullhypothese stimmt und zufällig ein Stichprobendurchschnittswert von $96.7$ Alexithymie-Punkten herauskommt.
+
+Aufgrund der zweiseitigen Hypothesenstellung beinhaltet auch der Ablehnungsbereich sowohl die tiefsten $2.5\%$ und höchsten $2.5\%$, also insgesamt die $5\%$ extremen Durchschnittswerte. Dies sind alle Werte tiefer als  $97.48$ und alle Werte höher als $102.45$ (roter Bereich in Abbildung \@ref(fig:exm-alexithymie-plot) oben links). Da das arithmetische Mittel der Stichprobe $96.7$ im Ablehnungsbereich liegt, liegt hier ein signifikantes Resultat vor bei Signifikanzniveau $5\%$.
 
 Auch in diesem Fall kann die Verteilung der Stichprobenmittelwerte mit dem zentralen Grenzwertsatz angenähert werden. Es ergeben sich annähernd dieselben Resultate für den $p$-Wert (roter Bereich in Abbildung \@ref(fig:exm-alexithymie-plot) unten rechts) und für den Ablehnungsbereich (roter Bereich in Abbildung \@ref(fig:exm-alexithymie-plot) unten links).
 
 Die Psychologin kann nun wie folgt berichten:
 
-> Ein Einstichproben-$t$-Test ergibt, dass die durchschnittliche Alexithymie ($M = `r round(exm_alexithymie$x_mean,1)`$ Punkte, $SD = `r round(exm_alexithymie$x_sd,1)`$, $N = `r round(exm_alexithymie$n)`$) sich bei den unter 25-jährigen signifikant vom Populationsdurchschnitt von $100$ Punkten unterscheidet, $t(`r round(exm_alexithymie$n-1)`) = `r round(exm_alexithymie$t_emp,3)`$, $p = `r round(exm_alexithymie$p_value_the,3) %>% str_sub(start = 2L)`$.
+> Ein Einstichproben-$t$-Test ergibt, dass die durchschnittliche Alexithymie ($M = 96.7$ Punkte, $SD = 24.4$, $N = 391$) sich bei den unter 25-jährigen signifikant vom Populationsdurchschnitt von $100$ Punkten unterscheidet, $t(390) = -2.698$, $p = .007$.
 
 
 ## Weicht der gefundene Durchschnitt stark vom hypothetischen Wert ab?
@@ -1875,17 +1266,17 @@ In einem so berichteten Testresultat sind essenziell zwei Informationen enthalte
 Um eine solche Relevanz zu messen wurde der Begriff der Effektstärke eingeführt. Eine Effektstärke ist eine Zahl ohne Einheit (Meter, Franken, ...), welche unabhängig von der Stichprobengrösse ist und nahe bei null liegt, wenn die Nullhypothese nicht abgelehnt wurde.
 
 Wird im Vermögensbeispiel \@ref(exm:vermoegen) die Differenz zwischen geschätztem Erwartungswert und hypothetischem Erwartungswert 
-$$\bar{x} - \mu = `r round(exm_vermoegen$x_mean)` \text{CHF} - `r exm_vermoegen$mu0` \text{CHF}  = `r round(exm_vermoegen$x_mean)-exm_vermoegen$mu0`$$
+$$\bar{x} - \mu = 119853 \text{CHF} - 100000 \text{CHF}  = 19853$$
 betrachtet, so fällt auf, dass dieser Wert bereits zwei der oben genannten Eigenschaften aufweist. Tatsächlich ist dieser Wert unabhängig von der Stichprobengrösse und er liegt nahe bei $0$, wenn das Testresultat nicht signifikant war. Letzteres kann beobachtet werde indem in der Formel \@ref(eq:t-emp-onesample) verschiedene Differenzen eingesetzt werden und mit der Abbildung  \@ref(fig:t-distribution) verglichen werden. 
 
 <!-- Discuss: how? -->
 
 Wenn jetzt ein anderer Sozialpsychologe die Auswertung wiederholen würde, aber statt in CHF in Rappen Rp rechnet, dann erhält er den Wert
-$$\bar{x} - \mu = `r 100*round(exm_vermoegen$x_mean)` \text{Rp} - `r exm_vermoegen$mu0*100` \text{Rp}  = `r (round(exm_vermoegen$x_mean)-exm_vermoegen$mu0)*100`.$$
+$$\bar{x} - \mu = 11985300 \text{Rp} - 10000000 \text{Rp}  = 1985300.$$
 Dass mit den gleichen Zahlen je nach Einheit eine andere Effektstärke gefunden wird, ist unpraktisch für den Vergleich der Testresultate. Die Lösung in diesem Fall ist diese Differenz durch die geschätzte Standardabweichung zu rechnen. Dies ergibt
 
-- in CHF: $d = \frac{\bar{x} - \mu}{s} = \frac{`r round(exm_vermoegen$x_mean)` \text{CHF} - `r exm_vermoegen$mu0` \text{CHF}}{`r round(exm_vermoegen$x_sd)`\text{CHF}}  = `r round((round(exm_vermoegen$x_mean)-exm_vermoegen$mu0)/round(exm_vermoegen$x_sd),2)`$
-- in Rp: $d = \frac{\bar{x} - \mu}{s} = \frac{`r 100*round(exm_vermoegen$x_mean)` \text{Rp} - `r exm_vermoegen$mu0*100` \text{Rp}}{`r 100*round(exm_vermoegen$x_sd)`\text{Rp}}  = `r round((round(exm_vermoegen$x_mean)-exm_vermoegen$mu0)/round(exm_vermoegen$x_sd),2)` .$
+- in CHF: $d = \frac{\bar{x} - \mu}{s} = \frac{119853 \text{CHF} - 100000 \text{CHF}}{88528\text{CHF}}  = 0.22$
+- in Rp: $d = \frac{\bar{x} - \mu}{s} = \frac{11985300 \text{Rp} - 10000000 \text{Rp}}{8852800\text{Rp}}  = 0.22 .$
 
 Mit dieser Formel werden für beide Einheiten derselbe Wert berechnet. Effektiv dient jetzt als Einheit die Standardabweichung: Eine grosse Differenz bei einer grossen Standardabweichung des Merkmals führt zur selben Effektstärke wie eine kleine Differenz bei kleiner Standardabweichung eines Merkmals. Da Menschen sich nicht gewohnt sind Zahlen als Standardabweichungen zu interpretieren hat [@cohen1988] folgende Richtwerte entwickelt:
 
@@ -1905,9 +1296,9 @@ Cohen selbst hat davor gewarnt diese Werte als absolut darzustellen. Vielmehr so
 
 Das Berichten der Testresultate wird mit der Effektstärke ergänzt:
 
-> Ein Einstichproben-$t$-Test ergibt, dass das durchschnittliche Vermögen ($M = `r round(exm_vermoegen$x_mean)`$ CHF, $SD = `r round(exm_vermoegen$x_sd)`$, $N = `r round(exm_vermoegen$n)`$) in diesem Jahr nicht signifikant grösser als $100'000$ CHF ist, $t(`r round(exm_vermoegen$n-1)`) = `r round(exm_vermoegen$t_emp,3)`$, $p = `r round(exm_vermoegen$p_value_the,3) %>% str_sub(start = 2L)`, d = `r round(exm_vermoegen$effect_size,2)`$.
+> Ein Einstichproben-$t$-Test ergibt, dass das durchschnittliche Vermögen ($M = 119853$ CHF, $SD = 88528$, $N = 20$) in diesem Jahr nicht signifikant grösser als $100'000$ CHF ist, $t(19) = 1.003$, $p = .164, d = 0.22$.
 
-> Ein Einstichproben-$t$-Test ergibt, dass die durchschnittliche Alexithymie ($M = `r round(exm_alexithymie$x_mean,1)`$ Punkte, $SD = `r round(exm_alexithymie$x_sd,1)`$, $N = `r round(exm_alexithymie$n)`$) sich bei den unter 25-jährigen signifikant vom Populationsdurchschnitt von $100$ Punkten unterscheidet, $t(`r round(exm_alexithymie$n-1)`) = `r round(exm_alexithymie$t_emp,3)`$, $p = `r round(exm_alexithymie$p_value_the,3) %>% str_sub(start = 2L)`, d = `r round(exm_alexithymie$effect_size,2)`$.
+> Ein Einstichproben-$t$-Test ergibt, dass die durchschnittliche Alexithymie ($M = 96.7$ Punkte, $SD = 24.4$, $N = 391$) sich bei den unter 25-jährigen signifikant vom Populationsdurchschnitt von $100$ Punkten unterscheidet, $t(390) = -2.698$, $p = .007, d = -0.14$.
 
 In beiden Fällen liegt ein schwacher Effekt vor. Der Effekt bei der Alexithymie ist schwächer als der Effekt bei der Vermögensstudie. Der $p$-Wert sagt aber aus, dass der Effekt beim Vermögen durch die Zufallsstichprobe zustande gekommen ist, während es bei der Alexithymie unwahrscheinlich ist, dass der Effekt durch die Zufallsstichprobe zustande gekommen ist.
 
@@ -1928,20 +1319,20 @@ Ziel:
 -->
 Reproduziere das Beispiel Vermögen \@ref(exm:vermoegen) mit `Jamovi` indem folgende Teilschritte durchgeführt werden:
 
-- Datensatz `r inline_code(exm_vermoegen$file_name)` in `Jamovi` einladen.
+- Datensatz ``05-exm-vermoegen.sav`` in `Jamovi` einladen.
 - Wähle `Analysen > t-Tests > t-Test mit einer Stichprobe`.
 - Definiere die Hypothese wie im Beispiel und wähle die Testoptionen so, dass du alle Zahlen des Testberichts wiederfindest.
 
 :::
 
 :::{.solution}
-```{r sol-vermoegen-input, out.width='100%', fig.cap='Jamovi Eingabe.', fig.show='hold'}
-knitr::include_graphics("figures/05-exr-vermoegen-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-vermoegen-jmv-input} \caption{Jamovi Eingabe.}(\#fig:sol-vermoegen-input)
+\end{figure}
 
-```{r sol-vermoegen-output, out.width='100%', fig.cap='Testresultat Einstichproben-t-Test und deskriptive Statistiken.', fig.show='hold'}
-knitr::include_graphics("figures/05-exr-vermoegen-jmv-output.jpg")
-```  
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-vermoegen-jmv-output} \caption{Testresultat Einstichproben-t-Test und deskriptive Statistiken.}(\#fig:sol-vermoegen-output)
+\end{figure}
 :::
 
 ::: {.exercise  #alexithymie}
@@ -1951,19 +1342,19 @@ Ziel:
 -->
 Reproduziere das Beispiel Alexithymie \@ref(exm:alexithymie) mit `Jamovi` indem folgende Teilschritte durchgeführt werden:
 
-- Datensatz `r inline_code(exm_alexithymie$file_name)` in `Jamovi` einladen.
+- Datensatz ``05-exm-alexithymie.sav`` in `Jamovi` einladen.
 - Wähle `Analysen > t-Tests > t-Test mit einer Stichprobe`.
 - Definiere die Hypothese wie im Beispiel und wähle die Testoptionen so, dass du alle Zahlen des Testberichts wiederfindest.
 :::
 
 :::{.solution}
-```{r sol-alexithymie-input, out.width='100%', fig.cap='Jamovi Eingabe.', fig.show='hold'}
-knitr::include_graphics("figures/05-exr-alexithymie-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-alexithymie-jmv-input} \caption{Jamovi Eingabe.}(\#fig:sol-alexithymie-input)
+\end{figure}
 
-```{r sol-alexithymie-output, out.width='100%', fig.cap='Testresultat Einstichproben-t-Test und deskriptive Statistiken.', fig.show='hold'}
-knitr::include_graphics("figures/05-exr-alexithymie-jmv-output.jpg")
-```  
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-alexithymie-jmv-output} \caption{Testresultat Einstichproben-t-Test und deskriptive Statistiken.}(\#fig:sol-alexithymie-output)
+\end{figure}
 :::
 
 
@@ -1975,32 +1366,9 @@ Ziel:
 - Signifikanz begreifen
 -->
 
-```{r exr-circadian}
-gen_exr_circadian <- function(){
-  set.seed(1982)
-  mu0 <- 24
-  n <- 57
-  
-  x <- rnorm(n, 24.5, 2) 
-  # x %>% summary()
-  # x %>% t.test(alternative = 'two.sided',
-  #              mu = mu0)
-  x_mean <- x %>% mean()
-  x_mean_sym <- mu0 + (mu0 - x_mean)
-  x_sd <- x %>% sd()
-  t_emp <- (x_mean - mu0)/(x_sd/sqrt(n))
-  p_value_the <- 2*(1-pt(abs((x_mean - mu0)/ (x_sd / sqrt(n))), n-1))
-  effect_size <- (x_mean - mu0) / x_sd
-  
-  file_name <- '05-exr-circadian.sav'
-  tibble(tageslaenge = x) %>% write_sav(file_name)
-  
-  return(mget(ls()))
-}
-exr_circadian <- gen_exr_circadian()
-```
 
-Es soll überprüft werden, ob der 24-stündige Tagesrhythmus, auch _zirkadianer Rhythmus_ genannt, des Menschen auch ohne Tageslicht aufrechterhalten wird. Eine solche Untersuchung wird von @czeisler1999 berichtet. Wir gehen von folgendem fiktiven Versuch aus:  Freiwillige werden für vier Tage in einer Kellerwohnung ohne jedes Tageslicht einquartiert. Jede Versuchsperson ist während der vier Tage allein, darf die Wohnung nicht verlassen und erhält keinerlei Hinweise auf die aktuelle Tageszeit. Die Person muss unmittelbar vor dem Zu-Bett-Gehen, einen Knopf betätigen, wodurch die Uhrzeit festgehalten wird. Als Variable wird die Dauer der `tageslaenge` (in Stunden) zwischen dem Zu-Bett-Gehen am dritten Versuchstag und dem Zu-Bett-Gehen am vierten Versuchstag verwendet. Die erhobenen Daten sind in `r inline_code(exr_circadian$file_name)` abgelegt.
+
+Es soll überprüft werden, ob der 24-stündige Tagesrhythmus, auch _zirkadianer Rhythmus_ genannt, des Menschen auch ohne Tageslicht aufrechterhalten wird. Eine solche Untersuchung wird von @czeisler1999 berichtet. Wir gehen von folgendem fiktiven Versuch aus:  Freiwillige werden für vier Tage in einer Kellerwohnung ohne jedes Tageslicht einquartiert. Jede Versuchsperson ist während der vier Tage allein, darf die Wohnung nicht verlassen und erhält keinerlei Hinweise auf die aktuelle Tageszeit. Die Person muss unmittelbar vor dem Zu-Bett-Gehen, einen Knopf betätigen, wodurch die Uhrzeit festgehalten wird. Als Variable wird die Dauer der `tageslaenge` (in Stunden) zwischen dem Zu-Bett-Gehen am dritten Versuchstag und dem Zu-Bett-Gehen am vierten Versuchstag verwendet. Die erhobenen Daten sind in ``05-exr-circadian.sav`` abgelegt.
 
 a) Ohne einen Test durchzuführen, haben die Proband:innen einen anderen zirkadianen Rhythmus als Menschen die nicht am Experiment teilnehmen? Weshalb es hier sinnvoll ist einen statistischen Test zu verwenden?
 b) Stellen Sie mit einem Einstichproben-t-Test fest, ob der zirkadiane Rhythmus durch das Tageslicht beeinflusst wird. Stellen Sie insbesondere die Hypothesen auf und berichten Sie das Testresultat adäquat.
@@ -2010,20 +1378,20 @@ c) Erklären Sie alle Zahlen und Symbole im Testbericht.
 :::{.solution}
 Für diese Übung werden die Daten in `Jamovi` wie in Abbildung \@ref(fig:sol-circadian-input) analysiert. Das Resultat der Analyse ist in Abbildung \@ref(fig:sol-circadian-output) festgehalten.
 
-```{r sol-circadian-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/05-exr-circadian-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-circadian-jmv-input} \caption{Jamovi Eingabe.}(\#fig:sol-circadian-input)
+\end{figure}
 
-```{r sol-circadian-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/05-exr-circadian-jmv-output.jpg")
-``` 
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-circadian-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-circadian-output)
+\end{figure}
 
-a) Die Versuchpersonen haben einen durchschnittlichen zirkadianen Rhythmus von $M = `r round(exr_circadian$x_mean,1)`$ Stunden. Dies ist länger als die regulären $24$ Stunden. Es ist unklar, ob hier gerade zufällig Personen beobachtet wurden bei welche sich der zirkadiane Rhytmus verlängert. Um die Wahrscheinlichkeit dieses Zufalls zu quantifizieren wird ein statistischer Test durchgeführt.
+a) Die Versuchpersonen haben einen durchschnittlichen zirkadianen Rhythmus von $M = 24.6$ Stunden. Dies ist länger als die regulären $24$ Stunden. Es ist unklar, ob hier gerade zufällig Personen beobachtet wurden bei welche sich der zirkadiane Rhytmus verlängert. Um die Wahrscheinlichkeit dieses Zufalls zu quantifizieren wird ein statistischer Test durchgeführt.
 b) Die Nullhypothese geht vom aktuell bekannten aus, also in diesem Fall, dass sich der durchschnittliche zirkadiane Rhythmus unter den Versuchsbedinungen nicht verändert. Der normale zirkadiane Rhythmus ist Sonnenbedingt $24$ Stunden lang, also wird die Nullhypothese $H_0: \mu = 24$ Stunden aufgestellt. $\mu$ ist hier die durchschnittiche Dauer des zirkadianen Rhythmus in der Population. Im Versuch geht es darum festzustellen, ob der normale zirkadiane Rhythmus gehalten wird oder nicht. Ein nicht gehaltener zirkadianer Rhythmus würde bedeuten, dass sich die Tagesdauer verkürzt oder verlängert gegenüber der Nullhypothese. Es ist hier also eine zweiseitige Hypothesenstellung und die Alternativhypothese lautet $H_1: \mu \neq 24$ Stunden.
 
-> Ein Einstichproben-$t$-Test ergibt, dass die durchschnittliche Tageslänge ($M = `r round(exr_circadian$x_mean,1)`$ Stunden, $SD = `r round(exr_circadian$x_sd,1)`$, $N = `r round(exr_circadian$n)`$) unter Experimentalbedingungen  sich signifikant von $24$ Stunden unterscheidet, $t(`r round(exr_circadian$n-1)`) = `r round(exr_circadian$t_emp,2)`$, $p = `r round(exr_circadian$p_value_the,3) %>% str_sub(start = 2L)`, d = `r round(exr_circadian$effect_size,3)`$.
+> Ein Einstichproben-$t$-Test ergibt, dass die durchschnittliche Tageslänge ($M = 24.6$ Stunden, $SD = 1.8$, $N = 57$) unter Experimentalbedingungen  sich signifikant von $24$ Stunden unterscheidet, $t(56) = 2.41$, $p = .019, d = 0.319$.
 
-c) $M, SD,$ und $N$ sind das arithmetische Mittel, die geschätzte Standardabweichung und die Anzahl Beobachtungen der Stichprobe. $p$ ist die Wahrscheinlichkeit, zufällig den Stichprobenmittelwert oder einen noch extremeren Wert im Sinne der Alternativehypothese zu beobachten, falls die Nullhypothese stimmt. Dieser Wert ist kleiner als $5\%$. Deswegen wird von einem signifikanten Unterschied der durchschnittlichen Tageslänge zum Erwartungswert gesprochen. $24$ Stunden ist der Vergleichswert der Nullhypothese. $t(`r round(exr_circadian$n-1)`)$ bedeutet, dass die Teststatistik $t$-verteilt ist mit `r exr_circadian$n-1` Freiheitsgraden, sofern die Nullhypothese wahr ist. Mit der aktuellen Stichprobenziehung wurde ein Wert von $`r round(exr_circadian$t_emp,2)`$ realisiert. Dieser Wert ist mit der $t$-Verteilung in Abbildung \@ref(fig:t-distribution) zu vergleichen. Der Wert entspricht einer eher unwahrscheinlichen Beobachtung dieser Verteilung. $d = `r round(exr_circadian$effect_size,3)`$, schliesslich, bezieht sich auf die Effektstärke. Das Testresultat entspricht einem mittleren Effekt.
+c) $M, SD,$ und $N$ sind das arithmetische Mittel, die geschätzte Standardabweichung und die Anzahl Beobachtungen der Stichprobe. $p$ ist die Wahrscheinlichkeit, zufällig den Stichprobenmittelwert oder einen noch extremeren Wert im Sinne der Alternativehypothese zu beobachten, falls die Nullhypothese stimmt. Dieser Wert ist kleiner als $5\%$. Deswegen wird von einem signifikanten Unterschied der durchschnittlichen Tageslänge zum Erwartungswert gesprochen. $24$ Stunden ist der Vergleichswert der Nullhypothese. $t(56)$ bedeutet, dass die Teststatistik $t$-verteilt ist mit 56 Freiheitsgraden, sofern die Nullhypothese wahr ist. Mit der aktuellen Stichprobenziehung wurde ein Wert von $2.41$ realisiert. Dieser Wert ist mit der $t$-Verteilung in Abbildung \@ref(fig:t-distribution) zu vergleichen. Der Wert entspricht einer eher unwahrscheinlichen Beobachtung dieser Verteilung. $d = 0.319$, schliesslich, bezieht sich auf die Effektstärke. Das Testresultat entspricht einem mittleren Effekt.
 :::
 
 ::: {.exercise  #schwimmen}
@@ -2032,41 +1400,9 @@ Ziel:
 - Gerichtete Hypothese kleiner als ein Wert
 -->
 
-```{r exr-schwimmen}
-gen_exr_schwimmen <- function(){
-  set.seed(1982)
-  mu0 <- 1.58
-  n <- 13
-  
-  x <- rnorm(n, 1.50, 0.8) 
-  x %>% summary()
-  x %>% t.test(alternative = 'less',
-               mu = mu0)
-  x_mean <- x %>% mean()
-  x_mean_sym <- mu0 + (mu0 - x_mean)
-  x_sd <- x %>% sd()
-  t_emp <- (x_mean - mu0)/(x_sd/sqrt(n))
-  p_value_the <- pt(t_emp, n-1)
-  effect_size <- (x_mean - mu0) / x_sd
-  
-  file_name <- '05-exr-schwimmen.sav'
-  dd <- tibble(kraul_zeit = x) 
-  dd %>% write_sav(file_name)
-  jmv_res <- (dd %>% 
-    jmv::ttestOneS(vars = 'kraul_zeit', 
-                   testValue = 1.58, 
-                   hypothesis = 'lt', desc = TRUE,
-                   effectSize = TRUE))
-  jmv_res_test <- jmv_res$ttest$asDF %>% 
-    rename_with(~ .x %>% str_remove('\\[stud\\]'))
-  jmv_res_desc <- jmv_res$descriptives$asDF
-  
-  return(mget(ls()))
-}
-exr_schwimmen <- gen_exr_schwimmen()
-```
 
-Im Schwimmclub Neustadt erreichen neue Schwimmer nach einem Jahr Training eine Kraul-Schwimmzeit von durchschnittlich $`r exr_schwimmen$mu0`$ Minuten für $100$ Meter. Eine Sportstudentin will eine neue Trainingsmethode ausprobieren und herausfinden, ob die Methode bessere Ergebnisse erzielt. Dazu trainiert neue Schwimmer ein Jahr lang mit dieser Methode und misst anschliessend deren Kraul-Schwimmzeit über $100$ Meter. Die Daten sind in `r inline_code(exr_schwimmen$file_name)` abgelegt.
+
+Im Schwimmclub Neustadt erreichen neue Schwimmer nach einem Jahr Training eine Kraul-Schwimmzeit von durchschnittlich $1.58$ Minuten für $100$ Meter. Eine Sportstudentin will eine neue Trainingsmethode ausprobieren und herausfinden, ob die Methode bessere Ergebnisse erzielt. Dazu trainiert neue Schwimmer ein Jahr lang mit dieser Methode und misst anschliessend deren Kraul-Schwimmzeit über $100$ Meter. Die Daten sind in ``05-exr-schwimmen.sav`` abgelegt.
 
 a) Wie viele Schwimmer hat die Sportstudentin trainiert?
 b) Ist die neue Trainingsmethode besser als die bisherige? Erklären Sie die Signifikanz und Relevanz des Experimentresultats.
@@ -2075,20 +1411,20 @@ b) Ist die neue Trainingsmethode besser als die bisherige? Erklären Sie die Sig
 :::{.solution}
 Für diese Übung werden die Daten in `Jamovi` wie in Abbildung \@ref(fig:sol-schwimmen-input) analysiert. Das Resultat der Analyse ist in Abbildung \@ref(fig:sol-schwimmen-output) festgehalten.
 
-```{r sol-schwimmen-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/05-exr-schwimmen-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-schwimmen-jmv-input} \caption{Jamovi Eingabe.}(\#fig:sol-schwimmen-input)
+\end{figure}
 
-```{r sol-schwimmen-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/05-exr-schwimmen-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-schwimmen-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-schwimmen-output)
+\end{figure}
 
-a) Die Sportstudentin hat $N = `r exr_schwimmen$jmv_res_desc$num`$ Schwimmer trainiert.
-b) Die Forschungsfrage ist hier, ob die neue Trainingsmethode besser ist. Besser meint hier, dass die mit dieser Trainingsmethode trianierten Schwimmer nach dem Training durchschnittlich schneller schwimmen als die anderen. Die Alternativhypothese ist also $H_1: \mu < `r exr_schwimmen$mu0`$. Die Nullhypothese sagt genau das Gegenteil davon aus, nämlich, dass die durchschnittliche Schimmzeit mit der neuen Methode gleich bleibt oder sogar noch länger wird $H_0: \mu \geq `r exr_schwimmen$mu0`$. Das Testresultat lässt sich wie folgt berichten:
+a) Die Sportstudentin hat $N = 13$ Schwimmer trainiert.
+b) Die Forschungsfrage ist hier, ob die neue Trainingsmethode besser ist. Besser meint hier, dass die mit dieser Trainingsmethode trianierten Schwimmer nach dem Training durchschnittlich schneller schwimmen als die anderen. Die Alternativhypothese ist also $H_1: \mu < 1.58$. Die Nullhypothese sagt genau das Gegenteil davon aus, nämlich, dass die durchschnittliche Schimmzeit mit der neuen Methode gleich bleibt oder sogar noch länger wird $H_0: \mu \geq 1.58$. Das Testresultat lässt sich wie folgt berichten:
 
-> Ein Einstichproben-$t$-Test ergibt, dass die durchschnittliche Schwimmzeit ($M = `r round(exr_schwimmen$jmv_res_desc$mean,2)`$ Minuten, $SD = `r round(exr_schwimmen$jmv_res_desc$sd,2)`$, $N = `r exr_schwimmen$jmv_res_desc$num`$) mit der neuen Trainingsmethode nicht signifikant tiefer als $`r exr_schwimmen$mu0`$ Minuten ist, $t(`r exr_schwimmen$jmv_res_test$df`) = `r round(exr_schwimmen$jmv_res_test$stat,2)`$, $p = `r round(exr_schwimmen$jmv_res_test$p,3) %>% str_sub(start = 2L)`, d = `r round(exr_schwimmen$jmv_res_test$es,3)`$.
+> Ein Einstichproben-$t$-Test ergibt, dass die durchschnittliche Schwimmzeit ($M = 1.31$ Minuten, $SD = 0.63$, $N = 13$) mit der neuen Trainingsmethode nicht signifikant tiefer als $1.58$ Minuten ist, $t(12) = -1.54$, $p = .075, d = -0.426$.
 
-Das Testresultat ist nicht signifikant, da der $p$-Wert grösser als $5\%$ ist. Tatsächlich bedeutet $p = `r round(exr_schwimmen$jmv_res_test$p,3) %>% str_sub(start = 2L)`$, dass, wenn die Nullhypothese wahr ist, das gefundene Testresultat oder dass die Schwimmer noch schneller sind in $`r round(100*exr_schwimmen$jmv_res_test$p,1)`\%$ zufällig durch die Zufallsstichprobenziehung zustande kommt. Kurz gesagt, das Resulat könnt auch Zufall sein.
+Das Testresultat ist nicht signifikant, da der $p$-Wert grösser als $5\%$ ist. Tatsächlich bedeutet $p = .075$, dass, wenn die Nullhypothese wahr ist, das gefundene Testresultat oder dass die Schwimmer noch schneller sind in $7.5\%$ zufällig durch die Zufallsstichprobenziehung zustande kommt. Kurz gesagt, das Resulat könnt auch Zufall sein.
 
 Die gefundene Effektstärke ist mittel. Wenn das Resultat nicht zufällig wäre, dann würde die Trainingsmethode immerhin einen mittleren Effekt erzielen. Wenn es tatsächlich einen mittleren Effekt gibt, dann könnte die Sportstudentin das Experiment nochmal mit mehr Probanden wiederholen, um den Effekt auch als statistisch signifikan nachweisen zu können. Falls der gefundene Effekt nur zufällig zustande gekommen ist und er nicht exisitiert, wird auch eine Experimentwiederholung mit mehr Probandinnen immernoch kein signifikantes Testergebnis liefern. 
 :::
@@ -2100,7 +1436,7 @@ Ziel:
 - Ungerichtete Hypothese 
 -->
 
-Die Firma Pear bringt ein neues Smartphone das F42 der Reihe Supernova X auf den Markt. Das Smartphone ist für Jugendliche im Alter von $15-20$ Jahre konzipiert. Das Vorgängermodell F41 wurde für durchschnittlich $300$ CHF verkauft. Um herauszufinden, ob sich die durchschnittliche Zahlbereitschaft des neuen Modells von der Zahlbereitschaft für das alte Modell abweicht, erfragt Pear bei $`r exr_marktpreisanalyse$n`$ Jugendlichen die Zahlbereitschaft. Die Daten stehen unter `r inline_code(exr_marktpreisanalyse$file_name)` zur Verfügung. 
+Die Firma Pear bringt ein neues Smartphone das F42 der Reihe Supernova X auf den Markt. Das Smartphone ist für Jugendliche im Alter von $15-20$ Jahre konzipiert. Das Vorgängermodell F41 wurde für durchschnittlich $300$ CHF verkauft. Um herauszufinden, ob sich die durchschnittliche Zahlbereitschaft des neuen Modells von der Zahlbereitschaft für das alte Modell abweicht, erfragt Pear bei $70$ Jugendlichen die Zahlbereitschaft. Die Daten stehen unter ``04-exr-marktpreisanalyse.sav`` zur Verfügung. 
 
 a) Stellen Sie die oben formulierte Hypothese mit mathematischer Schreibweise dar.
 b) Testen Sie die Hypothese.
@@ -2113,17 +1449,17 @@ e) Der Stichprobenmittelwert liegt tiefer als $300$ CHF. Hätte man bereits hier
 :::{.solution}
 Für diese Übung werden die Daten in `Jamovi` wie in Abbildung \@ref(fig:sol-marktpreisanalyse-testen-input) analysiert. Das Resultat der Analyse ist in Abbildung \@ref(fig:sol-marktpreisanalyse-testen-output) festgehalten.
 
-```{r sol-marktpreisanalyse-testen-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/05-exr-marktpreisanalyse-testen-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-marktpreisanalyse-testen-jmv-input} \caption{Jamovi Eingabe.}(\#fig:sol-marktpreisanalyse-testen-input)
+\end{figure}
 
-```{r sol-marktpreisanalyse-testen-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/05-exr-marktpreisanalyse-testen-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/05-exr-marktpreisanalyse-testen-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-marktpreisanalyse-testen-output)
+\end{figure}
 
 a) Es gibt zunächst keinen Anhaltspunkt, weshalb sich die Zahlbereitschaft geändert haben sollte. Deshalb ist die Nullhypothese $H_0: \mu = 300$ CHF, wobei $\mu$ für den Erwartungswert des Merkmals Preis ist. Pear fragt sich, ob der $\mu$ von $300$ abweicht, gibt aber keine Richtung vor. Deshalb wurde $H_0$ zweiseitig formuliert. Das Gegenteil der Nullhypothese ist die Alternativhypothese $H_1: \mu \neq 300$ CHF.
 b) Das Testen erfolgt wie oben in den Bildschirmaufnahmen von `Jamovi` dargestellt.
-c) Ein Einstichproben-$t$-Test ergibt, dass sich die durchschnittliche Zahlbereitschaft ($M=`r round(mean(exr_marktpreisanalyse$tab$preis),2)`$ CHF, $SD = `r round(sd(exr_marktpreisanalyse$tab$preis),2)`$, $N = `r length(exr_marktpreisanalyse$tab$preis)`$) nicht signifikant von $300$ CHF unterscheidet, $t(`r exr_marktpreisanalyse$tab$preis %>% length()-1`)= -0.848, p = .399, d = -0.101$.
+c) Ein Einstichproben-$t$-Test ergibt, dass sich die durchschnittliche Zahlbereitschaft ($M=288.34$ CHF, $SD = 115.01$, $N = 70$) nicht signifikant von $300$ CHF unterscheidet, $t(69)= -0.848, p = .399, d = -0.101$.
 d) Statistik entspricht der beobachteten Teststatistik in der Stichprobe. Der Wert kann im Vergleich zur $t$-Verteilung in Abbildung \@ref(fig:t-distribution) gelesen werden. $-0.848$ ist bei allen dargestellten Verteilungen kein seltener Wert, wenn die Nullhypothese stimmt. Dieser Wert der Statistik deutet also nicht darauf hin, dass die Nullhypothese falsch ist. Die Freiheitsgrade $df$ bestimmen die genaue Form der t-Verteilung. In Abbildung \@ref(fig:t-distribution) sind die genauen Formen für $df = 1$, $df = 4$ und $df = 9$ dargestellt. Die $t$-Verteilung, welche die Verteilung der Mittelwerte am besten abbildet ist die mit $df = n-1$, wobei $n$ die Anzahl Beobachtungen ist. Es sind $70$ Beobachtungen gemacht worden, also ist $df = 69$. Die $t$-Verteilung sieht in diesem Fall ungefähr aus wie die Normalverteilung in Abbildung \@ref(fig:t-distribution). Der $p$-Wert von $0.399$ bedeutet, dass die Wahrscheinlichkeit diesen Stichprobenmittelwert oder einen extremeren im Sinne der Alternativhypothese bei $39.9\%$ liegt und damit ziemlich wahrscheinlich ist, gegeben dass die Nullhypohthese wahr ist. Auch dies reflektiert also, dass aufgrund der Stichprobe nicht geschlossen werden kann, dass der Erwartungswert von $300$ CHF abweicht. Die Effektstärke $d= -0.101$ ist gemäss Cohen als schwach einzustufen.
 e) Der Stichprobenmittelwert sagt aus, dass in dieser Stichprobe die Zahlungsbereitschaft nicht gleich war wie für das Modell F41. Diese Aussage ist jedoch limitiert auf die Stichprobe und kann nur auf die Population ausgeweitet werden, wenn ein statistischer Test durchgeführt wurde. Es könnte ja sein, dass es einen Unterschied im Populationsmittelwert gibt, dieser aber aufgrund einer seltenen Zufallsstichprobenziehung nicht offenbar wird.
 :::
@@ -2181,31 +1517,9 @@ d) Richtig
 
 ::: {.exercise  #test-drink-usa}
 
-```{r exr-test-drink-usa}
-gen_exr_test_drink_usa <- function(){
-  set.seed(1982)
-  mu0 <- 3
-  n <- 15
-  
-  x <- rnorm(n, 3.8, 1.4) 
-  file_name <- '05-exr-test-drink-usa.sav'
-  dd <- tibble(fluessigkeit_liter = x) 
-  dd %>% write_sav(file_name)
-  jmv_res <- (dd %>% 
-    jmv::ttestOneS(vars = 'fluessigkeit_liter', 
-                   testValue = mu0, 
-                   hypothesis = 'gt', desc = TRUE,
-                   effectSize = TRUE))
-  jmv_res_test <- jmv_res$ttest$asDF %>% 
-    rename_with(~ .x %>% str_remove('\\[stud\\]'))
-  jmv_res_desc <- jmv_res$descriptives$asDF
-  
-  return(mget(ls()))
-}
-exr_test_drink_usa <- gen_exr_test_drink_usa()
-```
 
-In der Schweiz wird empfohlen $3$ Liter Flüssigkeit pro Tag zu sich zu nehmen. Auf einer Reise in die USA fragt Karin zufällige Leute nach ihrer Flüssigkeitsaufnahme. Die Daten notiert sie im Datensatz `r inline_code("05-exr-drink-usa")`. Sie will nun testen, ob alle Leute in den USA durchschnittlich mehr Flüssigkeit pro Tag zu sich nehmen, als es in der Schweiz empfohlen ist. Testen Sie die Hypothese einem Einstichproben-$t$-Test, stellen Sie dabei `Jamovi` auf $3$ Nachkommastellenrundung ein. Welche der folgenden Aussagen sind wahr, welche falsch.
+
+In der Schweiz wird empfohlen $3$ Liter Flüssigkeit pro Tag zu sich zu nehmen. Auf einer Reise in die USA fragt Karin zufällige Leute nach ihrer Flüssigkeitsaufnahme. Die Daten notiert sie im Datensatz ``05-exr-drink-usa``. Sie will nun testen, ob alle Leute in den USA durchschnittlich mehr Flüssigkeit pro Tag zu sich nehmen, als es in der Schweiz empfohlen ist. Testen Sie die Hypothese einem Einstichproben-$t$-Test, stellen Sie dabei `Jamovi` auf $3$ Nachkommastellenrundung ein. Welche der folgenden Aussagen sind wahr, welche falsch.
 
 a) Die durchschnittliche Flüssigkeitsaufnahme ist in den USA signifikant grösser als in der Schweiz empfohlen.
 b) Der gefundene Effekt ist gemäss Cohen als gross einzustufen.
@@ -2264,237 +1578,9 @@ Bislang wurde versucht mithilfe _einer_ Stichprobe eine Aussage über _eine_ Pop
 
 :::{.example #breakup name="Trennungsschmerz"}
 
-```{r exm-breakup}
-gen_exm_t_welch <- function(mu1,
-                            s1,
-                            n1,
-                            mu2,
-                            s2,
-                            n2,
-                            var_name,
-                            x_min,
-                            x_max,
-                            file_name,
-                            group_labels,
-                            x_label_position,
-                            y_label_position_hist,
-                            y_label_position_dens,
-                            binwidth,
-                            plot_bag) {
-  
-  mu0 <- 0
-  set.seed(61)
-  x1 <- rnorm(n1, mu1, s1) %>% 
-    crop(x_min, x_max)
-  x2 <- rnorm(n2, mu2, s2) %>% 
-    crop(x_min, x_max)
-  x1_mean <- x1 %>% mean()
-  x2_mean <- x2 %>% mean()
-  x1_sd <- x1 %>% sd()
-  x2_sd <- x2 %>% sd()
-  s_p <- sqrt(weighted.mean(c(x1_sd^2, x2_sd^2), c(n1-1, n2-1)))
-  s_t <- s_p * sqrt((1/n1+1/n2))
-  s_w <- sqrt(x1_sd^2/n1 + x2_sd^2/n2)
-  x_mean <- x1_mean - x2_mean
-  df_t <- n1 + n2 - 2
-  df_w <- s_w^4 / (x1_sd^4 / (n1^2* (n1-1))+x2_sd^4 / (n2^2* (n2-1)))
-  p_value_the_t <- 2*(1-pt(x_mean/s_t, df_t))
-  p_value_the_w <- 2*(1-pt(x_mean/s_w, df_w))
 
-  dd <- tibble(!!var_name := c(x1,x2),
-         Gruppe = c(rep(group_labels[1],n1), rep(group_labels[2], n2))) %>% 
-    write_sav(file_name)
 
-  jmv_res <- dd %>%
-    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
-                desc = TRUE,
-                 welchs = TRUE, 
-                 mann = TRUE, 
-                 effectSize = TRUE)
-  jmv_res_test <- jmv_res$ttest$asDF%>% 
-    rename_with(~ .x %>% str_replace_all('\\[(stud|welc)\\]',"\\1"))
-  jmv_res_desc <- jmv_res$desc$asDF%>% 
-    rename_with(~ .x %>% str_replace_all('\\[(1|2)\\]',"\\1"))
-
-  if(plot_bag){
-    scores_hover1 <- rnorm(20, 3, s1) %>% 
-        crop(x_min, x_max)
-    scores_hover2 <- rnorm(20, 7, s1) %>% 
-        crop(x_min, x_max)
-    plot_ball_bag_different <- plot_ball_bag_two_samples(
-      scores_bag1 = rnorm(200, 3, s1) %>% 
-        crop(x_min, x_max),
-      scores_bag2 = rnorm(200, 7, s2) %>% 
-        crop(x_min, x_max),
-      scores_hover1 = scores_hover1,
-      scores_hover2 = scores_hover2,
-      score_name = var_name,
-      no_legend = TRUE
-    )
-    
-    plot_ball_bag_same <- plot_ball_bag_two_samples(
-      scores_bag1 = rnorm(200, 5, s1) %>% 
-        crop(x_min, x_max),
-      scores_bag2 = rnorm(200, 5, s2) %>% 
-        crop(x_min, x_max),
-      scores_hover1 = scores_hover1,
-      scores_hover2 = scores_hover2,
-      score_name = var_name
-    )
-  }
-  
-  # distribution if H_0 were true
-  n_samples <- 3000L
-  x1_means <- 1:n_samples %>%
-    map_dbl(~ rnorm(n1,mean(mu1, mu2), s1) %>% 
-            crop(x_min, x_max) %>% 
-            mean())
-  x2_means <- 1:n_samples %>%
-    map_dbl(~ rnorm(n2, mean(mu1, mu2), s2) %>% 
-              crop(x_min, x_max) %>% 
-              mean()
-    )
-  means_diff <- x1_means - x2_means
-  q975_x_means <- means_diff %>% quantile(c(0.975)) %>% unlist() %>% unname()
-  q025_x_means <- means_diff %>% quantile(c(0.025)) %>% unlist() %>% unname()
-  p_value_emp <- mean(abs(means_diff) > abs(x_mean))
-  
-  plot_hist <- plot_hist_denstiy_expected_value1(
-    means_diff,
-    str_c(var_name, "-Mittelwertdifferenz"),
-    binwidth,
-    list(
-      "Student-t" = function(x)
-        dt((x-mu0)/s_t, df_t) / s_t,
-      "Welch t" = function(x)
-        dt((x-mu0)/s_w, df_w) / s_w)
-      )
-  
-  x_bounds <- 3.5*s_w*c(-1, 1)
-  line_xlim <- xlim(x_bounds)
-  x_range <- seq(x_bounds[1], x_bounds[2], length.out = 1000)
-  
-  create_text_data <- function(x,y,z){
-    plot_attr_reja_pval$create_text_data(x_label_position,x,y,z)
-  }
-  
-  histogram_data <- tibble(x = rep(means_diff, 2),
-                           plot_type = rep(
-                             c("Histogram p-Wert", "Histogram Ablehnungsbereich"),
-                             each = length(means_diff)
-                           )) %>%
-    plot_attr_reja_pval$add_colors(
-      side = "both",
-      upper = q975_x_means,
-      lower = q025_x_means,
-      test_stat = x_mean,
-      mu0 = mu0
-    )
-  
-  create_density_t_data <- function(x_range, mu0, sigma_g, df, labels, x_mean) {
-    tibble(
-      x = rep(x_range, 2),
-      y = dt((x - mu0) / sigma_g, df) / sigma_g,
-      plot_type = rep(
-        labels,
-        each = length(x_range)
-      )
-    ) %>%
-      plot_attr_reja_pval$add_colors(
-        side = "both",
-        upper = qt(0.975, df) * sigma_g,
-        lower = qt(0.025, df) * sigma_g,
-        test_stat = x_mean,
-        mu0 = mu0
-      )
-  }
-
-  density_data <- bind_rows(
-    create_density_t_data(
-      x_range,
-      mu0,
-      s_t,
-      df_t,
-      c("t-Test p-Wert", "t-Test Ablehnungsbereich"),
-      x_mean
-    ),
-    create_density_t_data(
-      x_range,
-      mu0,
-      s_w,
-      df_w,
-      c("Welch-Test p-Wert", "Welch-Test Ablehnungsbereich"),
-      x_mean
-    )
-  )
- 
-   plot_hist_curve_pval_reja <- ggplot() +
-     geom_histogram(data = histogram_data,
-                   aes(x = x, fill = color),
-                   binwidth = binwidth)+
-    geom_area(data = density_data, 
-              aes(x = x, y = y, fill = color), stat = "identity") +
-    geom_vline(xintercept = x_mean) +
-    geom_text(
-      data = bind_rows(
-        create_text_data(
-           str_c(round(100 * c(1 - p_value_emp, p_value_emp), 1), '%'),
-          y_label_position_hist,
-          "Histogram p-Wert"
-        ),
-        create_text_data(
-          c('95%', '5%'), 
-          y_label_position_hist,
-          "Histogram Ablehnungsbereich"
-        ),
-        create_text_data(str_c(round(
-          100 * c(1 - p_value_the_t, p_value_the_t), 1
-        ), '%'), y_label_position_dens, "t-Test p-Wert"),
-        create_text_data(c('95%', '5%'), y_label_position_dens, "t-Test Ablehnungsbereich"),
-        create_text_data(str_c(round(
-          100 * c(1 - p_value_the_w, p_value_the_w), 1
-        ), '%'), y_label_position_dens, "Welch-Test p-Wert"),
-        create_text_data(c('95%', '5%'), y_label_position_dens, "Welch-Test Ablehnungsbereich")
-      ),
-      mapping = aes(
-        x = x,
-        y = y,
-        label = label,
-        colour = color
-      )
-    ) +
-    facet_wrap(
-      ~ plot_type,
-      ncol = 2,
-      scales = "free_y",
-      strip.position = "top"
-    ) +
-    line_xlim +
-    plot_attr_reja_pval$theme +
-    labs(x = str_c(var_name, "-Mittelwertdifferenz"), 
-         y = "Wahrscheinlichkeitsdichte        Häufigkeit")
-  
-  return(mget(ls()))
-}
-exm_breakup <- gen_exm_t_welch(mu1 = 6.84,
-                            s1 = 2.52,
-                            n1 = 2695,
-                            mu2 = 6.58,
-                            s2 = 2.58,
-                            n2 = 1409,
-                            var_name = "ER",
-                            x_min = -10,
-                            x_max = 100,
-                            file_name = '06-exm-breakup.sav',
-                            group_labels = c('male', 'female'),
-                            x_label_position = 0.2*c(-1,1),
-                            y_label_position_hist = 250,
-                            y_label_position_dens = 4,
-                            binwidth = 0.02,
-                            plot_bag = TRUE)
-```
-
-@morris2015 haben untersucht, ob das Geschlecht einen Einfluss auf den Schmerz bei der Auflösung einer romantischen Beziehung hat. Die Autoren unterscheiden dabei zwischen emotionaler (Angst, Wut, Depression, Taubheit, usw.) und physischer Reaktion (Essgewohnheit, Schlaf, Gewicht, Panik, Immunsystem). Hier wird nur auf erstere fokussiert, welche mit _ER_ abgekürzt wird. Dazu wurde mit erlösfreien Online-Umfragen unter anderem erfragt, ob die Person eine Trennung erlebt hat und wie sie ihren emotionalen Trennungsschmerz von $0$ (keine Schmerzen) bis $10$ (unerträglich) einstuft. An der Studie haben $N_\text{Frau} = `r exm_breakup$n1`$ Frauen und $N_\text{Mann} = `r exm_breakup$n2`$ Männer mitgemacht, welche eine ER von $M_\text{Frau} = `r round(exm_breakup$x1_mean,2)`, SD_\text{Frau} = `r round(exm_breakup$x1_sd,2)`$  und $M_\text{Mann} = `r round(exm_breakup$x2_mean,2)`, SD_\text{Mann} = `r round(exm_breakup$x2_sd,2)`$ respektive aufwiesen. 
+@morris2015 haben untersucht, ob das Geschlecht einen Einfluss auf den Schmerz bei der Auflösung einer romantischen Beziehung hat. Die Autoren unterscheiden dabei zwischen emotionaler (Angst, Wut, Depression, Taubheit, usw.) und physischer Reaktion (Essgewohnheit, Schlaf, Gewicht, Panik, Immunsystem). Hier wird nur auf erstere fokussiert, welche mit _ER_ abgekürzt wird. Dazu wurde mit erlösfreien Online-Umfragen unter anderem erfragt, ob die Person eine Trennung erlebt hat und wie sie ihren emotionalen Trennungsschmerz von $0$ (keine Schmerzen) bis $10$ (unerträglich) einstuft. An der Studie haben $N_\text{Frau} = 2695$ Frauen und $N_\text{Mann} = 1409$ Männer mitgemacht, welche eine ER von $M_\text{Frau} = 6.81, SD_\text{Frau} = 2.53$  und $M_\text{Mann} = 6.56, SD_\text{Mann} = 2.6$ respektive aufwiesen. 
 :::
 
 ## Was ist das Problem der Stichprobenziehung?
@@ -2503,21 +1589,15 @@ In der Stichprobe kann also ein kleiner geschlechterspezifischer Mittelwertunter
 
 Andererseits könnte der Mittelwertunterschied auch auf die zufällige Stichprobenziehung zurückzuführen sein, siehe Abbildung \@ref(fig:exm-breakup-bagplot) rechts. In dieser Situation haben die Frauen- und die Männer-Populationen ähnliche Werte und demnach auch einen ähnlichen Erwartungswert. Beim Ziehen der Stichproben spielt der Zufall hier so, dass aus der Frauen-Population einige Beobachtungen mehr mit hohen ER-Werten ausgewählt wurden als bei der Männer-Population. Dies führt dazu, dass in den zwei Stichproben ein Unterschied im arithmetischen Mittel der ER beobachtet werden kann. 
 
-```{r exm-breakup-bagplot, fig.cap="Links: Zwei Stichprobenziehungen aus zwei Populationen mit unterschiedlichen Mittelwerten. Rechts: Zwei Stichprobenziehungen aus einer Population, bzw. aus zwei Populationen die sich bezüglich ihrer Werte nicht unterscheiden."}
-grid.arrange(exm_breakup$plot_ball_bag_different,
-             exm_breakup$plot_ball_bag_same, 
-             ncol = 2)
-```
+![(\#fig:exm-breakup-bagplot)Links: Zwei Stichprobenziehungen aus zwei Populationen mit unterschiedlichen Mittelwerten. Rechts: Zwei Stichprobenziehungen aus einer Population, bzw. aus zwei Populationen die sich bezüglich ihrer Werte nicht unterscheiden.](aps_statistik1_files/figure-latex/exm-breakup-bagplot-1.pdf) 
 
 <!-- Discuss: welchen zwei anderen Möglichkeiten sind hier nicht dargestellt? -->
 
 Welche dieser Situationen zutrifft kann nicht genau herausgefunden werden, da die Population nie vollständig beobachtet werden kann.
 
-Um trotzdem eine Aussage über die Population zu treffen, kann wie bereits mehrmals gemacht, die Stichprobenziehung oft - beispielsweise $`r exm_breakup$n_samples`$-mal - wiederholt werden. Dies wird unter der Annahme gemacht, dass es keinen ER-Erwartungswertunterschied zwischen der Frauen- und Männer-Population gibt. Die Verteilung der ER-Mittelwertdifferenzen dieser Stichproben ist in Abbildung \@ref(fig:exm-breakup-hist) dargestellt. 
+Um trotzdem eine Aussage über die Population zu treffen, kann wie bereits mehrmals gemacht, die Stichprobenziehung oft - beispielsweise $3000$-mal - wiederholt werden. Dies wird unter der Annahme gemacht, dass es keinen ER-Erwartungswertunterschied zwischen der Frauen- und Männer-Population gibt. Die Verteilung der ER-Mittelwertdifferenzen dieser Stichproben ist in Abbildung \@ref(fig:exm-breakup-hist) dargestellt. 
 
-```{r exm-breakup-hist, fig.cap="Verteilung simulierter ER-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test."}
-exm_breakup$plot_hist
-```
+![(\#fig:exm-breakup-hist)Verteilung simulierter ER-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test.](aps_statistik1_files/figure-latex/exm-breakup-hist-1.pdf) 
 
 Das Testprinzip funktioniert genau gleich wie beim $t$-Test für eine Stichprobe wie in Kapitel \@ref(zentrale-tendenz-testen). Zunächst werden die Hypothesen aufgestellt. A priori liegt keine Vermutung darüber vor, ob Männer oder Frauen eine stärkere ER zeigen. Die Null- und Alternativhypothese sind deshalb
 
@@ -2533,13 +1613,22 @@ Dies entspricht, einfacher Arithmetik folgend,
 
 Es kann beobachtet werden, dass, wenn es keine Erwartungswertdifferenz gibt, die Mittelwertdifferenzen der Stichproben am häufigsten bei $0$ liegen und mit zunehmender Entfernung von $0$ unwahrscheinlicher werden. Dies kann wieder formalisiert werden indem die $5\%$ unwahrscheinlichsten Werte ($2.5\%$ links und $2.5\%$ rechts) zum Ablehnungsbereich erklärt werden und entspricht der roten Fläche in Abbildung \@ref(fig:exm-breakup-hist-pval-reja) links. Die tatsächlich beobachtete Mittelwertdifferenz (schwarze Linie) liegt im Ablehnungsbereich. Dies bedeutet dass sich die Erwartungswertdifferenz bei Signifikanzniveau $5\%$ signifikant von $0$ unterscheidet. Dies ist äquivalent zu der Aussage, dass sich die ER-Erwartungswerte der Männer und Frauen signifikant unterscheidet.
 
-```{r exm-breakup-hist-pval-reja, fig.cap="TODO"}
-exm_breakup$plot_hist_curve_pval_reja
+
 ```
+## Warning: Removed 2 rows containing non-finite outside the scale range
+## (`stat_bin()`).
+```
+
+```
+## Warning: Removed 8 rows containing missing values or values outside the scale range
+## (`geom_bar()`).
+```
+
+![(\#fig:exm-breakup-hist-pval-reja)TODO](aps_statistik1_files/figure-latex/exm-breakup-hist-pval-reja-1.pdf) 
 
 <!-- Discuss: warum ist p-Wert nur rechts? Es hat keine Beobachtungen kleiner als -0.237. -->
 
-Ebenfalls kann erneut der p-Wert berechnet werden. Dieser entspricht hier allen ER-Mittelwertdifferenzen, welche _extremer_ als die beobachtete Mittelwertdifferenz $`r round(exm_breakup$x_mean,2)`$ sind. Da die Hypothesenstellung hier zweiseitig ist, bedeutet extremer hier wieder grösser als $`r round(exm_breakup$x_mean,2)`$ oder kleiner als $`r round(-exm_breakup$x_mean,2)`$. Der $p$-Wert entspricht dem Anteil der roten Fläche in Abbildung \@ref(fig:exm-breakup-hist-pval-reja) rechts an der Gesamtfläche und beträgt $`r round(exm_breakup$p_value_emp,3)`$.
+Ebenfalls kann erneut der p-Wert berechnet werden. Dieser entspricht hier allen ER-Mittelwertdifferenzen, welche _extremer_ als die beobachtete Mittelwertdifferenz $0.25$ sind. Da die Hypothesenstellung hier zweiseitig ist, bedeutet extremer hier wieder grösser als $0.25$ oder kleiner als $-0.25$. Der $p$-Wert entspricht dem Anteil der roten Fläche in Abbildung \@ref(fig:exm-breakup-hist-pval-reja) rechts an der Gesamtfläche und beträgt $0.004$.
 
 Die Verteilung der Mittelwertdifferenzen unter der Annahme, dass die Nullhypothese wahr ist, kann wieder mit einer Kurve angenähert werden. Diese Annäherung hat den Vorteil, dass der Ablehnungsbereich und der $p$-Wert abgeschätzt werden kann, ohne dass dazu das Experiment wiederholt werden muss. Für die Annäherungskurve gibt es zwei Optionen, welche dann entsprechenden Tests ihre Namen geben: der Zweistichproben-$t$-Test nach Student und der Welch Test.
 
@@ -2564,28 +1653,9 @@ Die rote Linie in Abbildung \@ref(fig:exm-breakup-hist) zeigt, dass die Annäher
 
 :::{.example #emotional-stroop name="Emotionaler Stroop-Test bei posttraumatischer Belastungsstörung."}
 
-```{r emotional-stroop}
-exm_emotional_stroop <- gen_exm_t_welch(
-  mu1 = 762.40,
-  s1 = 232.93,
-  n1 = 26,
-  mu2 = 639.07,
-  s2 = 94.90,
-  n2 = 16,
-  var_name = "RT",
-  x_min = 0,
-  x_max = 10000,
-  file_name = '06-exm-emotional-stroop.sav',
-  group_labels = c('PTSD', 'Non-PTSD'),
-  x_label_position = 100*c(-1,1),
-  y_label_position_hist = 250,
-  y_label_position_dens = 0.005,
-  binwidth = 15,
-  plot_bag = FALSE
-)
-```
 
-Analog zum klassischen Stroop-Test werden bei einem emotionalen Stroop-Test _EST_ Testpersonen gebeten die Farben verschiedener ausgeschriebener Wörter zu erkennen. Die Wörter sind beim emotionalen Stroop-Test entweder emotional aufgeladen (Bombe, Schweiss, Faustschlag, ...) oder neutral (Tisch, Weg, Bahn, ...) für die Testpersonen [@williams1996]. Gemessen wird dabei die Reaktionsgeschwindigkeit _RT_ in Millisekunden. In einem Versuch wollten @khanna2017 herausfinden, ob von posttraumatischer Belastungsstörung  betroffene Veteranen _PTSD_ andere EST-Resultate erzielen als nicht betroffene _non-PTSD_. Die durchschnittliche Reaktionszeit der $`r exm_emotional_stroop$n1`$ von PTSD betroffenen Veteranen lag bei $M=`r round(exm_emotional_stroop$x1_mean,1)`\text{ ms }(SD = `r round(exm_emotional_stroop$x1_sd,1)`)$ und bei den $`r exm_emotional_stroop$n2`$ nicht von PTSD betroffenen Veteranen bei $M=`r round(exm_emotional_stroop$x2_mean,1)` \text{ ms }(SD = `r round(exm_emotional_stroop$x2_sd,1)`)$.  
+
+Analog zum klassischen Stroop-Test werden bei einem emotionalen Stroop-Test _EST_ Testpersonen gebeten die Farben verschiedener ausgeschriebener Wörter zu erkennen. Die Wörter sind beim emotionalen Stroop-Test entweder emotional aufgeladen (Bombe, Schweiss, Faustschlag, ...) oder neutral (Tisch, Weg, Bahn, ...) für die Testpersonen [@williams1996]. Gemessen wird dabei die Reaktionsgeschwindigkeit _RT_ in Millisekunden. In einem Versuch wollten @khanna2017 herausfinden, ob von posttraumatischer Belastungsstörung  betroffene Veteranen _PTSD_ andere EST-Resultate erzielen als nicht betroffene _non-PTSD_. Die durchschnittliche Reaktionszeit der $26$ von PTSD betroffenen Veteranen lag bei $M=741\text{ ms }(SD = 226.8)$ und bei den $16$ nicht von PTSD betroffenen Veteranen bei $M=636.9 \text{ ms }(SD = 106.1)$.  
 
 :::
 
@@ -2597,9 +1667,7 @@ Es wird keine Annahme über die Richtung einer eventualen Mittelwertdifferenz an
 
 In diesem Beispiel sind die Standardabweichungen und demnach auch die Varianzen der Reaktionszeiten in den beiden Gruppen sehr unterschiedlich. Wenn das Experiment wiederum wiederholt wird, kann der Verteilung der Mittelwertdifferenzen entnommen werden, dass der Zweistichproben-$t$-Test nach Student diese Verteilung nicht gut abbildet. Die rote Linie in Abbildung \@ref(fig:exm-emotional-stroop-hist) liegt mittig zu hoch und an den Enden zu tief Wird diese Annäherung in diesem Fall verwendet, dann besteht die Gefahr, dass ein signifikanter Mittelwertunterschied nicht erkannt wird.
 
-```{r exm-emotional-stroop-hist, fig.cap="Verteilung simulierter RT-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test."}
-exm_emotional_stroop$plot_hist
-```
+![(\#fig:exm-emotional-stroop-hist)Verteilung simulierter RT-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test.](aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-1.pdf) 
 
 Für diesen Fall wurde von @welch1947 eine alternative Annäherung an die Verteilung der Mittelwertdifferenzen gefunden, nämlich
 
@@ -2619,9 +1687,13 @@ Der Zweistichproben-$t$-Test und der Welch-Test sind also zwei Testvarianten, um
 
 <!-- Discuss: klären, Welch-Test praktisch relevant, zweistichproben-t-test historisch und als referenz wichtig. -->
 
-```{r exm-emotional-stroop-hist-pval-reja, fig.cap="TODO"}
-exm_emotional_stroop$plot_hist_curve_pval_reja
+
 ```
+## Warning: Removed 8 rows containing missing values or values outside the scale range
+## (`geom_bar()`).
+```
+
+![(\#fig:exm-emotional-stroop-hist-pval-reja)TODO](aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-pval-reja-1.pdf) 
 
 <!-- Discuss: rote und grüne linie auf den Histogramm plots -->
 
@@ -2629,7 +1701,7 @@ exm_emotional_stroop$plot_hist_curve_pval_reja
 
 ## Effektstärken
 
-In den Formeln \@ref(eq:t-emp-twosample-t) und \@ref(eq:t-emp-twosample-welch) kann beobachtet werden, dass mit zunehmenden Stichprobengrössen der Gruppen der Nenner immer kleiner und damit die Teststatistik $t$ für eine gleichbleibende Mittelwertdifferenz immer grösser wird. Dies bedeutet, dass auch kleine Mittelwertdifferenzen bei grossen Stichprobengrösse signifikanten - also nicht auf die zufällige Stichprobenziehung zurückzuführenden - Unterschied darstellen. Beim Trennungsschmerzbeispiel ist der Mittelwertunterschied von $`r round(exm_breakup$x_mean,2)`$ gering. Dies trotz dem $p$-Wert des Welch-Test von $p=`r round(exm_breakup$p_value_the_w,3) %>% str_sub(start = 2L)`$, welcher auf einen stark signifikanten Mittelwertunterschied hindeutet. Umgekehrt bei der posttraumatischen Belastungsstörung: Hier ist der Mittelwertunterschied mit $`r round(exm_emotional_stroop$x_mean)`$ ms substanziell, aber der $p$-Wert des Welch-Test von $p=`r round(exm_emotional_stroop$p_value_the_w,3) %>% str_sub(start = 2L)`$ deutet knapp auf keine signifikante Mittelwertdifferenz hin. 
+In den Formeln \@ref(eq:t-emp-twosample-t) und \@ref(eq:t-emp-twosample-welch) kann beobachtet werden, dass mit zunehmenden Stichprobengrössen der Gruppen der Nenner immer kleiner und damit die Teststatistik $t$ für eine gleichbleibende Mittelwertdifferenz immer grösser wird. Dies bedeutet, dass auch kleine Mittelwertdifferenzen bei grossen Stichprobengrösse signifikanten - also nicht auf die zufällige Stichprobenziehung zurückzuführenden - Unterschied darstellen. Beim Trennungsschmerzbeispiel ist der Mittelwertunterschied von $0.25$ gering. Dies trotz dem $p$-Wert des Welch-Test von $p=.004$, welcher auf einen stark signifikanten Mittelwertunterschied hindeutet. Umgekehrt bei der posttraumatischen Belastungsstörung: Hier ist der Mittelwertunterschied mit $104$ ms substanziell, aber der $p$-Wert des Welch-Test von $p=.052$ deutet knapp auf keine signifikante Mittelwertdifferenz hin. 
 
 Würde die Relevanz des beobachteten Effekts mit der Mittelwertsdifferenz gemessen, dann wäre, analog zu Kapitel \@ref(zentrale-tendenz-testen), dieses Mass wieder abhängig von der Einheit. Um dies zu verhindern, wird die Mittelwertdifferenz wieder durch die Standardabweichung geteilt. Für die konkrete Berechnung der Effektstärke gibt es verschiedene Methoden, wovon drei hier vorgestellt werden:
 
@@ -2649,13 +1721,13 @@ Glass $\Delta$ wird in `Jamovi` nicht standardmässig ausgegeben und muss händi
 
 Da es sich bei beiden Beispielen nicht um Experimente handelt, weil weder das Geschlecht noch die posttraumatische Belastungsstörung zufällig zugeorndet wurde, ist hier Glass $\Delta$ keine sinnvolle Effektgrösse. Aus diesem Grund wird für die Effektstärkenberechnung bei beiden Beispielen Cohens $d$ für den Welch-Test verwendet. Das berichten der Testresultate kann deshalb wie folgt aussehen:
 
-> Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche emotionale Antwort ER bei einer Trennung  bei Männern ($M = `r round(exm_breakup$jmv_res_desc$mean1,2)`$, $SD = `r round(exm_breakup$jmv_res_desc$sd1,2)`$, $N = `r exm_breakup$jmv_res_desc$num1`$) signifikant anders ist als bei Frauen ($M = `r round(exm_breakup$jmv_res_desc$mean2,2)`$, $SD = `r round(exm_breakup$jmv_res_desc$sd2,2)`$, $N = `r exm_breakup$jmv_res_desc$num2`$), $t(`r round(exm_breakup$jmv_res_test$dfwelc,1)`) = `r round(exm_breakup$jmv_res_test$statwelc,2)`$, $`r report_p(exm_breakup$jmv_res_test$pwelc)`, d = `r round(exm_breakup$jmv_res_test$eswelc,2)`$.
+> Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche emotionale Antwort ER bei einer Trennung  bei Männern ($M = 6.56$, $SD = 2.6$, $N = 1409$) signifikant anders ist als bei Frauen ($M = 6.81$, $SD = 2.53$, $N = 2695$), $t(2786.7) = -2.9$, $p = .004, d = -0.1$.
 
-> Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Reaktionszeit beim emotionalen Stroop-Test bei Veteranen ohne PTSD ($M = `r round(exm_emotional_stroop$jmv_res_desc$mean1,2)`$, $SD = `r round(exm_emotional_stroop$jmv_res_desc$sd1,2)`$, $N = `r exm_emotional_stroop$jmv_res_desc$num1`$) nicht signifikant anders ist als bei Menschen mit PTSD ($M = `r round(exm_emotional_stroop$jmv_res_desc$mean2,2)`$, $SD = `r round(exm_emotional_stroop$jmv_res_desc$sd2,2)`$, $N = `r exm_emotional_stroop$jmv_res_desc$num2`$), $t(`r round(exm_emotional_stroop$jmv_res_test$dfwelc,1)`) = `r round(exm_emotional_stroop$jmv_res_test$statwelc,2)`$, $`r report_p(exm_emotional_stroop$jmv_res_test$pwelc)`, d = `r round(exm_emotional_stroop$jmv_res_test$eswelc,3)`$.
+> Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Reaktionszeit beim emotionalen Stroop-Test bei Veteranen ohne PTSD ($M = 636.86$, $SD = 106.08$, $N = 16$) nicht signifikant anders ist als bei Menschen mit PTSD ($M = 740.98$, $SD = 226.81$, $N = 26$), $t(37.9) = -2.01$, $p = .052, d = -0.588$.
 
-<!-- g = `r round((1-(3/(4*(exm_emotional_stroop$n1+exm_emotional_stroop$n2)-9)))*exm_emotional_stroop$jmv_res_test$esstud,3)`. -->
+<!-- g = -0.536. -->
 
-<!-- mit der neuen Trainingsmethode ist nicht signifikant tiefer als $`r exr_schwimmen$mu0`$ Minuten, $t(`r exr_schwimmen$jmv_res_test$df`) = `r round(exr_schwimmen$jmv_res_test$stat,2)`$, $p = `r round(exr_schwimmen$jmv_res_test$p,3) %>% str_sub(start = 2L)`, d = `r round(exr_schwimmen$jmv_res_test$es,3)`$. -->
+<!-- mit der neuen Trainingsmethode ist nicht signifikant tiefer als $1.58$ Minuten, $t(12) = -1.54$, $p = .075, d = -0.426$. -->
 
 Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit auf den EST um einen mittleren Effekt.
 
@@ -2696,41 +1768,9 @@ Ziel:
 - Anwendung t-Test mit Jamovi zweiseitig
 -->
 
-```{r exr-bobo2groups}
-gen_exr_bobo2groups <- function(){
-  set.seed(23)
-  n1 <- 24
-  n2 <- 24
-  x1 <- rnorm(n1, 10, 3)
-  x2 <- rnorm(n2, 5, 0.5)
-  var_name <- "anzahl_aggressionen"
-  group_labels <- c('aggressiv', 'nicht aggressiv')
-  
-  file_name <- '06-exr-bobo2groups.sav'
-  dd <- tibble(!!var_name := c(x1, x2),
-       Gruppe = c(rep(group_labels[1],n1), 
-                  rep(group_labels[2], n2))) %>% 
-  write_sav(file_name)
 
-  jmv_res <- dd %>%
-    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
-                 norm = TRUE,
-                 qq=TRUE,
-                desc = TRUE,
-                 welchs = TRUE, 
-                 mann = FALSE, 
-                 effectSize = TRUE)
-  jmv_res_test <- jmv_res$ttest$asDF%>% 
-    rename_with(~ .x %>% str_replace_all('\\[(stud|welc)\\]',"\\1"))
-  jmv_res_desc <- jmv_res$desc$asDF%>% 
-    rename_with(~ .x %>% str_replace_all('\\[(1|2)\\]',"\\1"))
-  
-  return(mget(ls()))
-}
-exr_bobo2groups <- gen_exr_bobo2groups()
-```
 
-Mit dem Bobo-Doll-Experiment sollte die Übertragung von Aggression durch Imitation aggressiver Modelle nachgewiesen werden. An der Studie nahmen $`r exr_bobo2groups$n1 + exr_bobo2groups$n2`$ Kinder im Alter von drei bis sechs Jahren teil. Die Kinder wurden in zwei Gruppen eingeteilt: eine mit aggressivem Modell und eine mit nicht-aggressivem Modell. In der aggressiven Bedingung sahen die Kinder, wie eine erwachsene Person (das Modell) eine Bobo-Puppe aggressiv behandelte, während in der nicht-aggressiven Bedingung das Modell ruhig mit der Puppe spielte. Nach der Beobachtungsphase wurden die Kinder einzeln in einen Spielraum geführt, der ähnliche Spielzeuge wie im Experiment enthielt, einschliesslich der Bobo-Puppe. Die Forscher beobachteten und notierten die Anzahl gezeigter aggressiven Handlungen gegenüber der Bobo-Puppe. 
+Mit dem Bobo-Doll-Experiment sollte die Übertragung von Aggression durch Imitation aggressiver Modelle nachgewiesen werden. An der Studie nahmen $48$ Kinder im Alter von drei bis sechs Jahren teil. Die Kinder wurden in zwei Gruppen eingeteilt: eine mit aggressivem Modell und eine mit nicht-aggressivem Modell. In der aggressiven Bedingung sahen die Kinder, wie eine erwachsene Person (das Modell) eine Bobo-Puppe aggressiv behandelte, während in der nicht-aggressiven Bedingung das Modell ruhig mit der Puppe spielte. Nach der Beobachtungsphase wurden die Kinder einzeln in einen Spielraum geführt, der ähnliche Spielzeuge wie im Experiment enthielt, einschliesslich der Bobo-Puppe. Die Forscher beobachteten und notierten die Anzahl gezeigter aggressiven Handlungen gegenüber der Bobo-Puppe. 
 Inspiriert von @bandura1961.
 
 Beantworten Sie die Frage, ob aggressives Verhalten Erwachsener von Kindern imitiert wird anhand der folgenden Teilfragen:
@@ -2743,21 +1783,21 @@ c) Führen Sie den statistischen Test mit Jamovi durch und berechnen Sie eine an
 :::{.solution}
 Zuerst wird der Datensatz mit `Jamovi` eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-bobo2groups-input). 
 
-```{r sol-bobo2groups-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/06-exr-bobo2groups-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/06-exr-bobo2groups-jmv-input} \caption{Jamovi Eingabe.}(\#fig:sol-bobo2groups-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-bobo2groups-output).
 
-```{r sol-bobo2groups-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/06-exr-bobo2groups-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/06-exr-bobo2groups-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-bobo2groups-output)
+\end{figure}
 
 Damit können und beide Teilfragen beantwortet werden. 
 
-a) In der Stichprobe ist der durchschnittliche Anzahl gezählter Aggressionen in der Gruppe mit aggressiven Modellen mit $M = `r round(exr_bobo2groups$jmv_res_desc$mean1,2)`$ höher als in der Gruppe mit nicht Aggressiven Modellen $M = `r round(exr_bobo2groups$jmv_res_desc$mean2,2)`$. Es könnte sein, dass der gefundene Mittelwertunterschied auf die zufällige Stichprobenziehung zurückzuführen ist. Um dieses Risiko zu quantifizieren und damit einzuschätzen, ob das Ergebnis auch für die Population gelten könnte, kann ein statistischer Test durchgeführt werden.
+a) In der Stichprobe ist der durchschnittliche Anzahl gezählter Aggressionen in der Gruppe mit aggressiven Modellen mit $M = 10.63$ höher als in der Gruppe mit nicht Aggressiven Modellen $M = 4.95$. Es könnte sein, dass der gefundene Mittelwertunterschied auf die zufällige Stichprobenziehung zurückzuführen ist. Um dieses Risiko zu quantifizieren und damit einzuschätzen, ob das Ergebnis auch für die Population gelten könnte, kann ein statistischer Test durchgeführt werden.
 b) Es soll gezeigt werden, dass sich der durchschnittlich beobachtete Anzahl aggressiver Handlungen der Kinder in der Gruppe mit aggressivem Modell anders ist als in der Gruppe mit nicht aggressivem Modell. Die Alternativhypothese lautet also $H_1: \mu_\text{Aggressiv} \neq \mu_\text{Nicht aggressiv}$. Die Nullhypothese dagegen sagt, dass beide Gruppen durchschnittlich gleich viele aggressive Handlungen begehen, also $H_0: \mu_\text{Aggressiv} = \mu_\text{Nicht aggressiv}$.
-c) Es werden Mittelwerte von einer intervallskalierten Variabel über zwei Gruppen verglichen. Als statischer Test kommt demnach der Zweistichproben-$t$-Test oder der Welch-Test infrage. Aufgrund der genaueren Testergebnisse wird immer der Welch-Test bevorzugt und dieser in folge durchgeführt und berichtet. Ein zweiseitiger Welch-Test ergibt, dass der durchschnittliche Anzahl Aggressionen in der Gruppe mit aggressivem Modell ($M = `r round(exr_bobo2groups$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_bobo2groups$jmv_res_desc$sd1,2)`$, $N = `r exr_bobo2groups$jmv_res_desc$num1`$) signifikant anders ist als in der Gruppe mit nicht aggressivem Modell ($M = `r round(exr_bobo2groups$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_bobo2groups$jmv_res_desc$sd2,2)`$, $N = `r exr_bobo2groups$jmv_res_desc$num2`$), $t(`r round(exr_bobo2groups$jmv_res_test$dfwelc,1)`) = `r round(exr_bobo2groups$jmv_res_test$statwelc,2)`$, $`r report_p(exr_bobo2groups$jmv_res_test$pwelc)`, \Delta = `r round(glass_delta(exr_bobo2groups$jmv_res_desc, FALSE),3)`$. Da es sich um ein Experiment handelt ist hier die Effektstärke Glass $\Delta$ angebracht. Als Kontrollgruppe wurde die nicht aggressive Gruppe verwendet. Die Effektstärke ist als gross einzustufen. 
+c) Es werden Mittelwerte von einer intervallskalierten Variabel über zwei Gruppen verglichen. Als statischer Test kommt demnach der Zweistichproben-$t$-Test oder der Welch-Test infrage. Aufgrund der genaueren Testergebnisse wird immer der Welch-Test bevorzugt und dieser in folge durchgeführt und berichtet. Ein zweiseitiger Welch-Test ergibt, dass der durchschnittliche Anzahl Aggressionen in der Gruppe mit aggressivem Modell ($M = 10.63$, $SD = 2.62$, $N = 24$) signifikant anders ist als in der Gruppe mit nicht aggressivem Modell ($M = 4.95$, $SD = 0.45$, $N = 24$), $t(24.4) = 10.45$, $p < 0.001, \Delta = 12.593$. Da es sich um ein Experiment handelt ist hier die Effektstärke Glass $\Delta$ angebracht. Als Kontrollgruppe wurde die nicht aggressive Gruppe verwendet. Die Effektstärke ist als gross einzustufen. 
 :::
 
 ::: {.exercise  #gruppenpuzzle}
@@ -2765,42 +1805,9 @@ c) Es werden Mittelwerte von einer intervallskalierten Variabel über zwei Grupp
 Ziel: 
 - Anwendung t-Test mit Jamovi zweiseitig
 -->
-```{r exr-gruppenpuzzle}
-gen_exr_gruppenpuzzle <- function(){
-  set.seed(23)
-  n1 <- 35
-  n2 <- 21
-  x1 <- rnorm(n1, 5.1, 0.3)
-  x2 <- rnorm(n2, 4.8, 0.3)
-  var_name <- "Zuneigung"
-  group_labels <- c('gruppenpuzzle', 'traditionell')
-  
-  file_name <- '06-exr-gruppenpuzzle.sav'
-  dd <- tibble(!!var_name := c(x1, x2),
-       Gruppe = c(rep(group_labels[1],n1), 
-                  rep(group_labels[2], n2))) %>% 
-  write_sav(file_name)
 
-  jmv_res <- dd %>%
-    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
-                 qq=TRUE, norm = TRUE,
-                desc = TRUE,
-                 welchs = TRUE, 
-                 mann = FALSE, 
-                 effectSize = TRUE)
-  jmv_res_test <- jmv_res$ttest$asDF%>% 
-    rename_with(~ .x %>% str_replace_all('\\[(stud|welc)\\]',"\\1"))
-  jmv_res_desc <- jmv_res$desc$asDF%>% 
-    rename_with(~ .x %>% str_replace_all('\\[(1|2)\\]',"\\1"))
-  
-  effect_glass <- glass_delta(jmv_res_desc, FALSE)
-  
-  return(mget(ls()))
-}
-exr_gruppenpuzzle <- gen_exr_gruppenpuzzle()
-```
 
-In den 1970er Jahren hat eine Gruppe um @blaney1977 Versuche durchgeführt zu neuen Lehrmethoden. Insbesondere wurde dabei das sogenannte Gruppenpuzzle `gruppenpuzzle`, eine Lernform bei welcher die Lernenden den Inhalt mit und in Abhängigkeit voneinander erarbeiten, mit dem traditionellen Frontalunterricht `traditionell` verglichen. Die Forschenden wollten unter anderem Herausfinden, ob sich die Gruppenpuzzleteilnehmende nach dem Unterricht besser oder schlechter mochten (_liking_), als traditionell unterrichtete Lernende. Fiktive Daten zu dem Experiment sind als `r inline_code(exr_gruppenpuzzle$file_name)` verfügbar.
+In den 1970er Jahren hat eine Gruppe um @blaney1977 Versuche durchgeführt zu neuen Lehrmethoden. Insbesondere wurde dabei das sogenannte Gruppenpuzzle `gruppenpuzzle`, eine Lernform bei welcher die Lernenden den Inhalt mit und in Abhängigkeit voneinander erarbeiten, mit dem traditionellen Frontalunterricht `traditionell` verglichen. Die Forschenden wollten unter anderem Herausfinden, ob sich die Gruppenpuzzleteilnehmende nach dem Unterricht besser oder schlechter mochten (_liking_), als traditionell unterrichtete Lernende. Fiktive Daten zu dem Experiment sind als ``06-exr-gruppenpuzzle.sav`` verfügbar.
 
 a) Stellen Sie die Testhypothesen auf für einen zweiseitigen Welch-Test.
 b) Führen Sie den Test durch und berichten Sie das Resultat.
@@ -2810,21 +1817,21 @@ c) Erklären Sie den Wert der Statistik, der Freiheitsgrade, des $p$-Werts und d
 :::{.solution}
 Zuerst wird der Datensatz mit `Jamovi` eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-gruppenpuzzle-input). 
 
-```{r sol-gruppenpuzzle-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/06-exr-gruppenpuzzle-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/06-exr-gruppenpuzzle-jmv-input} \caption{Jamovi Eingabe.}(\#fig:sol-gruppenpuzzle-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-gruppenpuzzle-output).
 
-```{r sol-gruppenpuzzle-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/06-exr-gruppenpuzzle-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/06-exr-gruppenpuzzle-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-gruppenpuzzle-output)
+\end{figure}
 
 Damit können und die Teilfragen beantwortet werden. 
 
 a) Angenommen die Zuneigung zur Personen der einen Gruppe ist unabhängig von der Lehrmethode, dann sollten beide Gruppen im durchschnitt denselben Erwartungswert $\mu$ bei der Zuneigung haben. Die Nullhypothese ist also $H_0: \mu_\text{Gruppenpuzzle} = \mu_\text{Traditionell}$. Ein Unterschied dazu wäre, wenn es die Lernenden der beiden Gruppen einen unterschiedlichen Erwartungswert aufweisen, formell $H_1: \mu_\text{Gruppenpuzzle} \neq \mu_\text{Traditionell}$. 
-b) Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Zuneigung in der Gruppenpuzzlegruppe ($M = `r round(exr_gruppenpuzzle$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_gruppenpuzzle$jmv_res_desc$sd1,2)`$, $N = `r exr_gruppenpuzzle$jmv_res_desc$num1`$) signifikant anders ist als in der traditionell unterrichteten Gruppe($M = `r round(exr_gruppenpuzzle$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_gruppenpuzzle$jmv_res_desc$sd2,2)`$, $N = `r exr_gruppenpuzzle$jmv_res_desc$num2`$), $t(`r round(exr_gruppenpuzzle$jmv_res_test$dfwelc,1)`) = `r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$, $`r report_p(exr_gruppenpuzzle$jmv_res_test$pwelc)`, \Delta = `r round(exr_gruppenpuzzle$effect_glass,3)`$.
-c) Die Statistik von $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ ist ein Wert, welcher eine Verteilung wie in \@ref(fig:t-distribution) aufweist. Diese Verteilung weist  die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zweigt, dass der beobachtete Wert $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ selten zufällig vorkommt (tiefer Wert der Linie weist auf eine tiefe Wahrscheinlichkeit der Statistik hin). Die Freiheitsgrade `r round(exr_gruppenpuzzle$jmv_res_test$dfwelc,1)` bestimmen die Form der oben referenzierten Verteilung. Wo bei kleinen Freiheitsgraden die beobachtete Statistik noch mit einer nicht allzukleinen Wahrscheinlichkeit beobachtet werden kann (vgl. $df = 1$ in der Abbildung), so ist es bei dieser Anzahl Freiheitsgrade sehr selten (vgl. `Normalverteilung` in der Abbildung). $`r report_p(exr_gruppenpuzzle$jmv_res_test$pwelc)`$ bedeutet, dass der $p$-Wert kleiner als $0.001 = 0.1\%$ ist. Damit ist die Wahrscheinlichkeit den Statistik-Wert $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ oder einen extremeren Wert im Sinne der Alternativhypothese zu beobachten, gegeben dass die Nullhypothese wahr ist, kleiner als $0.1\%$ also sehr selten. Da der $p$-Wert kleiner ist als $5\%$ ist wird geschlossen, dass die Annahme, dass die Nullhypothese wahr ist, wahrscheinlich falsch ist. Die Effektstärke von $\Delta = `r round(round(exr_gruppenpuzzle$effect_glass,3),3)`$ bedeutet, dass hier ein Mittelwertunterschied von ungefähr $`r round(round(exr_gruppenpuzzle$effect_glass,3),3)`$ Standardabweichungen des Merkmals Zuneigung entspricht. Dies heisst, auf der Skala des Merkmals ist der Mittelwertunterschied gross oder anders gesagt: es handelt sich um einen starken Effekt. Das Vorzeichen hängt von der Gruppenbeschriftung ab und hat keine spezielle Bedeutung.
+b) Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Zuneigung in der Gruppenpuzzlegruppe ($M = 5.11$, $SD = 0.25$, $N = 35$) signifikant anders ist als in der traditionell unterrichteten Gruppe($M = 4.82$, $SD = 0.31$, $N = 21$), $t(35.6) = 3.69$, $p < 0.001, \Delta = 0.95$.
+c) Die Statistik von $3.69$ ist ein Wert, welcher eine Verteilung wie in \@ref(fig:t-distribution) aufweist. Diese Verteilung weist  die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zweigt, dass der beobachtete Wert $3.69$ selten zufällig vorkommt (tiefer Wert der Linie weist auf eine tiefe Wahrscheinlichkeit der Statistik hin). Die Freiheitsgrade 35.6 bestimmen die Form der oben referenzierten Verteilung. Wo bei kleinen Freiheitsgraden die beobachtete Statistik noch mit einer nicht allzukleinen Wahrscheinlichkeit beobachtet werden kann (vgl. $df = 1$ in der Abbildung), so ist es bei dieser Anzahl Freiheitsgrade sehr selten (vgl. `Normalverteilung` in der Abbildung). $p < 0.001$ bedeutet, dass der $p$-Wert kleiner als $0.001 = 0.1\%$ ist. Damit ist die Wahrscheinlichkeit den Statistik-Wert $3.69$ oder einen extremeren Wert im Sinne der Alternativhypothese zu beobachten, gegeben dass die Nullhypothese wahr ist, kleiner als $0.1\%$ also sehr selten. Da der $p$-Wert kleiner ist als $5\%$ ist wird geschlossen, dass die Annahme, dass die Nullhypothese wahr ist, wahrscheinlich falsch ist. Die Effektstärke von $\Delta = 0.95$ bedeutet, dass hier ein Mittelwertunterschied von ungefähr $0.95$ Standardabweichungen des Merkmals Zuneigung entspricht. Dies heisst, auf der Skala des Merkmals ist der Mittelwertunterschied gross oder anders gesagt: es handelt sich um einen starken Effekt. Das Vorzeichen hängt von der Gruppenbeschriftung ab und hat keine spezielle Bedeutung.
 :::
 
 ::: {.exercise  #music-memory}
@@ -2832,39 +1839,9 @@ c) Die Statistik von $`r round(exr_gruppenpuzzle$jmv_res_test$statwelc,2)`$ ist 
 Ziel: 
 - Zweiseitig nicht signifikant
 -->
-```{r exr-music-memory}
-gen_exr_music_memory <- function(){
-  set.seed(23)
-  n2 <- 43
-  n1 <- 35
-  x2 <- rnorm(n1, 8.2, 0.9)
-  x1 <- rnorm(n2, 8.0, 1.7)
-  var_name <- "anzahl_nonsens_silben"
-  group_labels <- c('mit_text', 'ohne_text')
-  
-  file_name <- '06-exr-music-memory.sav'
-  dd <- tibble(!!var_name := c(x1, x2),
-       Gruppe = c(rep(group_labels[1],n1), 
-                  rep(group_labels[2], n2))) %>% 
-  write_sav(file_name)
 
-  jmv_res <- dd %>%
-    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
-                desc = TRUE, qq = TRUE, norm = TRUE,
-                 welchs = TRUE, 
-                 mann = FALSE, 
-                 effectSize = TRUE)
-  jmv_res_test <- jmv_res$ttest$asDF%>% 
-    rename_with(~ .x %>% str_replace_all('\\[(stud|welc)\\]',"\\1"))
-  jmv_res_desc <- jmv_res$desc$asDF%>% 
-    rename_with(~ .x %>% str_replace_all('\\[(1|2)\\]',"\\1"))
-  
-  return(mget(ls()))
-}
-exr_music_memory <- gen_exr_music_memory()
-```
 
-Studierende wollen herausfinden, ob Entspannungsmusik ohne Text oder Musik mit Text einen unterschiedlichen Einfluss auf die Merkfähigkeit haben. Dazu lernen die Studienteilnehmenden während $10$ Minuten Wortsilben ohne semantische Bedeutung auswendig und geben diese nach einer Latenzzeit wider. Die Beschallungsart wird den Studienteilnehmenden zufällig zugeordnet. Die Anzahl korrekt memorisierte Wortsilben sind im Datensatz `r inline_code(exr_music_memory$file_name)` verfügbar.
+Studierende wollen herausfinden, ob Entspannungsmusik ohne Text oder Musik mit Text einen unterschiedlichen Einfluss auf die Merkfähigkeit haben. Dazu lernen die Studienteilnehmenden während $10$ Minuten Wortsilben ohne semantische Bedeutung auswendig und geben diese nach einer Latenzzeit wider. Die Beschallungsart wird den Studienteilnehmenden zufällig zugeordnet. Die Anzahl korrekt memorisierte Wortsilben sind im Datensatz ``06-exr-music-memory.sav`` verfügbar.
 
 a) Stellen Sie die Testhypothesen auf für einen zweiseitigen Welch-Test.
 b) Führen Sie den Test durch und berichten Sie das Resultat.
@@ -2874,21 +1851,21 @@ c) Erklären Sie den Wert der Statistik, des $p$-Werts und der Effektstärke Coh
 :::{.solution}
 Zuerst wird der Datensatz mit `Jamovi` eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-music-memory-input). 
 
-```{r sol-music-memory-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/06-exr-music-memory-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/06-exr-music-memory-jmv-input} \caption{Jamovi Eingabe.}(\#fig:sol-music-memory-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-music-memory-output).
 
-```{r sol-music-memory-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/06-exr-music-memory-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/06-exr-music-memory-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-music-memory-output)
+\end{figure}
 
 Damit können die Teilfragen beantwortet werden. 
 
 a) Die Nullhypothese besagt, dass die durchschnittliche Anzahl gemerkter Wortsilben beim Lernen mit oder ohne Musik gleich ist, also $H_0: \mu_\text{Musik mit Text} = \mu_\text{Musik ohne Text}$. Die Alternativhypothese besagt, dass sich die durchschnittliche Anzahl gemerkter Wortsiblen mit oder ohne Musik unterscheiden  $H_1: \mu_\text{Musik mit Text} \neq \mu_\text{Musik ohne Text}$. 
-b) Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Anzahl gemerkter Wortsilben beim Lernen mit Musik mit Text ($M = `r round(exr_music_memory$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_music_memory$jmv_res_desc$sd1,2)`$, $N = `r exr_music_memory$jmv_res_desc$num1`$) nicht signifikant anders ist als beim Lernen mit Musik ohne Text ($M = `r round(exr_music_memory$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_music_memory$jmv_res_desc$sd2,2)`$, $N = `r exr_music_memory$jmv_res_desc$num2`$), $t(`r round(exr_music_memory$jmv_res_test$dfwelc,1)`) = `r round(exr_music_memory$jmv_res_test$statwelc,2)`$, $`r report_p(exr_music_memory$jmv_res_test$pwelc)`, d = `r round(exr_music_memory$jmv_res_test$eswelc,3)`$.
-c) Die Statistik von $`r round(exr_music_memory$jmv_res_test$statwelc,2)`$ ist ein Wert, welcher eine Verteilung wie in \@ref(fig:t-distribution) aufweist. Diese Verteilung weist  die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zeigt, dass der beobachtete Wert $`r round(exr_music_memory$jmv_res_test$statwelc,2)`$ oft zufällig vorkommt (hoher Wert der Linie weist auf eine hohe Wahrscheinlichkeit der Statistik hin). $`r report_p(exr_music_memory$jmv_res_test$pwelc)`$ bedeutet, dass die Wahrscheinlichkeit den Statistik-Wert $`r round(exr_music_memory$jmv_res_test$statwelc,2)`$ oder einen extremeren Wert im Sinne der Alternativhypothese zu beobachten, gegeben dass die Nullhypothese wahr ist, nicht aussergewönlich erscheint. Da der $p$-Wert grösser ist als $5\%$ ist, kann keine Aussage zur Wahrheit oder Falschheit der Nullhypothese getroffen werden. Die Effektstärke von $d = `r round(exr_music_memory$jmv_res_test$eswelc,3)`$ bedeutet, dass hier ein Mittelwertunterschied von ungefähr $`r round(exr_music_memory$jmv_res_test$eswelc,3)`$ Standardabweichungen des Merkmals Anzahl gemerkter Wortsiblen entspricht. Dies heisst, auf der Skala des Merkmals ist der Mittelwertunterschied klein oder anders gesagt: es handelt sich um einen schwachen Effekt. Das Vorzeichen hängt von der Gruppenbeschriftung ab und hat keine spezielle Bedeutung.
+b) Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Anzahl gemerkter Wortsilben beim Lernen mit Musik mit Text ($M = 8$, $SD = 1.69$, $N = 35$) nicht signifikant anders ist als beim Lernen mit Musik ohne Text ($M = 8.22$, $SD = 1.06$, $N = 43$), $t(54.6) = -0.66$, $p = .514, d = -0.153$.
+c) Die Statistik von $-0.66$ ist ein Wert, welcher eine Verteilung wie in \@ref(fig:t-distribution) aufweist. Diese Verteilung weist  die Statistik auf, wenn das Experiment oft wiederholt wird und die Nullhypothese wahr ist. Die Verteilung zeigt, dass der beobachtete Wert $-0.66$ oft zufällig vorkommt (hoher Wert der Linie weist auf eine hohe Wahrscheinlichkeit der Statistik hin). $p = .514$ bedeutet, dass die Wahrscheinlichkeit den Statistik-Wert $-0.66$ oder einen extremeren Wert im Sinne der Alternativhypothese zu beobachten, gegeben dass die Nullhypothese wahr ist, nicht aussergewönlich erscheint. Da der $p$-Wert grösser ist als $5\%$ ist, kann keine Aussage zur Wahrheit oder Falschheit der Nullhypothese getroffen werden. Die Effektstärke von $d = -0.153$ bedeutet, dass hier ein Mittelwertunterschied von ungefähr $-0.153$ Standardabweichungen des Merkmals Anzahl gemerkter Wortsiblen entspricht. Dies heisst, auf der Skala des Merkmals ist der Mittelwertunterschied klein oder anders gesagt: es handelt sich um einen schwachen Effekt. Das Vorzeichen hängt von der Gruppenbeschriftung ab und hat keine spezielle Bedeutung.
 :::
 
 ::: {.exercise  #hypnose}
@@ -2897,40 +1874,9 @@ Ziel:
 - Anwendung t-Test mit Jamovi linksseitig
 -->
 
-```{r exr-hypnose}
-gen_exr_hypnose <- function(){
-  set.seed(23)
-  n2 <- 15
-  n1 <- 11
-  x2 <- rnorm(n1, 5.5, 1)
-  x1 <- rnorm(n2, 5, 0.5)
-  var_name <- "Schmerz"
-  group_labels <- c('hypnose', 'placebo')
-  
-  file_name <- '06-exr-hypnose.sav'
-  dd <- tibble(!!var_name := c(x1, x2),
-       Gruppe = c(rep(group_labels[1],n1), 
-                  rep(group_labels[2], n2))) %>% 
-  write_sav(file_name)
 
-  jmv_res <- dd %>%
-    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
-                 hypothesis = 'twoGreater',
-                desc = TRUE,
-                 welchs = TRUE, 
-                 mann = FALSE, 
-                 effectSize = TRUE)
-  jmv_res_test <- jmv_res$ttest$asDF%>% 
-    rename_with(~ .x %>% str_replace_all('\\[(stud|welc)\\]',"\\1"))
-  jmv_res_desc <- jmv_res$desc$asDF%>% 
-    rename_with(~ .x %>% str_replace_all('\\[(1|2)\\]',"\\1"))
-  effect_glass <- glass_delta(jmv_res_desc, FALSE)
-  return(mget(ls()))
-}
-exr_hypnose <- gen_exr_hypnose()
-```
 
-Die Gesellschaft für Hypnose will unter Beweis stellen (Signifikanzniveau $\alpha=5\%$), dass ein neues Hypnoseverfahren eine schmerzlindernde Wirkung hat. Dazu werden Probanden zufällig und doppelblind in zwei Gruppen eingeteilt. Eine Gruppe erhält die Behandlung mit dem neuen Hypnoseverfahren, die andere wird einer Placebo-Behandlung unterzogen. Nach der Behandlung wird das Schmerzempfinden auf einer Skala von $1$ bis $10$ gemessen. Die Daten beider Versuchsgruppen stellen sich als normalverteilt heraus. Die erhobenen Daten sind unter `r inline_code(exr_hypnose$file_name)` abgelegt.
+Die Gesellschaft für Hypnose will unter Beweis stellen (Signifikanzniveau $\alpha=5\%$), dass ein neues Hypnoseverfahren eine schmerzlindernde Wirkung hat. Dazu werden Probanden zufällig und doppelblind in zwei Gruppen eingeteilt. Eine Gruppe erhält die Behandlung mit dem neuen Hypnoseverfahren, die andere wird einer Placebo-Behandlung unterzogen. Nach der Behandlung wird das Schmerzempfinden auf einer Skala von $1$ bis $10$ gemessen. Die Daten beider Versuchsgruppen stellen sich als normalverteilt heraus. Die erhobenen Daten sind unter ``06-exr-hypnose.sav`` abgelegt.
 
 a) Beschreiben Sie die beiden Stichproben deskriptiv. Hat die neue Behandlungsmethode einen Vorteil gegenüber der Placebo-Behandlung in der Stichprobe? Weshalb ist es sinnvoll danach noch einen statistischen Test durchzuführen?
 b) Stellen Sie die Hypothesen für einen einseitigen Test auf.
@@ -2941,21 +1887,21 @@ c) Prüfen Sie die Hypothesen mit einem geeigneten einseitig durchgeführten sta
 
 Zuerst wird der Datensatz mit `Jamovi` eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-hypnose-input). 
 
-```{r sol-hypnose-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/06-exr-hypnose-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/06-exr-hypnose-jmv-input} \caption{Jamovi Eingabe.}(\#fig:sol-hypnose-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-hypnose-output).
 
-```{r sol-hypnose-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/06-exr-hypnose-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/06-exr-hypnose-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-hypnose-output)
+\end{figure}
 
 Damit können und beide Teilfragen beantwortet werden. 
 
-a) In der Stichprobe ist der durchschnittliche Schmerz (arithmetisches Mittel) in der Hypnose-Gruppe mit $M = `r round(exr_hypnose$jmv_res_desc$mean2,2)`$ tiefer als in der Placebo-Gruppe mit $M = `r round(exr_hypnose$jmv_res_desc$mean1,2)`$. Es könnte sein, dass der gefundene Mittelwertunterschied auf die zufällige Stichprobenziehung zurückzuführen ist. Um dieses Risiko zu quantifizieren und damit einzuschätzen, ob das Ergebnis auch für die Population gelten könnte, kann ein statistischer Test durchgeführt werden.
+a) In der Stichprobe ist der durchschnittliche Schmerz (arithmetisches Mittel) in der Hypnose-Gruppe mit $M = 5.81$ tiefer als in der Placebo-Gruppe mit $M = 4.92$. Es könnte sein, dass der gefundene Mittelwertunterschied auf die zufällige Stichprobenziehung zurückzuführen ist. Um dieses Risiko zu quantifizieren und damit einzuschätzen, ob das Ergebnis auch für die Population gelten könnte, kann ein statistischer Test durchgeführt werden.
 b) Es soll gezeigt werden, dass sich der durchschnittlich empfundene Schmerz mit der Hypnose-Behandlung tiefer liegt als mit der Placebo-Behandlung. Die Alternativhypothese lautet also $H_1: \mu_\text{Hypnose} < \mu_\text{Placebo}$. Die Nullhypothese dagegen sagt, dass die Hypnose-Behandlung nicht besser oder sogar schlechter ist als die Placebo-Behandlung also $H_0: \mu_\text{Hypnose} \geq \mu_\text{Placebo}$.
-c) Ein einseitiger Welch-Test ergibt, dass der durchschnittliche erhobene Schmerz bei einer Behandlung mit der neuen Hypnose-Methode ($M = `r round(exr_hypnose$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_hypnose$jmv_res_desc$sd1,2)`$, $N = `r exr_hypnose$jmv_res_desc$num1`$) signifikant tiefer ist als bei der Placebo-Behandlung ($M = `r round(exr_hypnose$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_hypnose$jmv_res_desc$sd2,2)`$, $N = `r exr_hypnose$jmv_res_desc$num2`$), $t(`r round(exr_hypnose$jmv_res_test$dfwelc,1)`) = `r round(exr_hypnose$jmv_res_test$statwelc,2)`$, $`r report_p(exr_hypnose$jmv_res_test$pwelc)`, \Delta = `r round(exr_hypnose$effect_glass,3)`$.
+c) Ein einseitiger Welch-Test ergibt, dass der durchschnittliche erhobene Schmerz bei einer Behandlung mit der neuen Hypnose-Methode ($M = 4.92$, $SD = 0.39$, $N = 11$) signifikant tiefer ist als bei der Placebo-Behandlung ($M = 5.81$, $SD = 0.87$, $N = 15$), $t(20.6) = -3.5$, $p = .001, \Delta = -1.022$.
 :::
 
 ::: {.exercise  #ehe-burnout}
@@ -2963,40 +1909,9 @@ c) Ein einseitiger Welch-Test ergibt, dass der durchschnittliche erhobene Schmer
 Ziel: 
 - Anwendung t-Test mit Jamovi rechtsseitig
 -->
-```{r exr-ehe-burnout}
-gen_exr_ehe_burnout <- function(){
-  set.seed(23)
-  n1 <- 51L
-  n2 <- 61L
-  x1 <- rnorm(n1, 10.82, 2.165)
-  x2 <- rnorm(n2, 10.08, 1.969)
-  var_name <- "Burnout_score"
-  group_labels <- c('Unverheiratet', 'Verheiratet')
-  
-  file_name <- '06-exr-ehe-burnout.sav'
-  dd <- tibble(!!var_name := c(x1, x2),
-       Gruppe = c(rep(group_labels[1], length(x1)), 
-                  rep(group_labels[2], length(x2)))) %>% 
-  write_sav(file_name)
 
-  jmv_res <- dd %>%
-    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
-                 hypothesis = 'oneGreater',
-                desc = TRUE,
-                 welchs = TRUE, 
-                 mann = FALSE, 
-                 effectSize = TRUE)
-  jmv_res_test <- jmv_res$ttest$asDF%>% 
-    rename_with(~ .x %>% str_replace_all('\\[(stud|welc)\\]',"\\1"))
-  jmv_res_desc <- jmv_res$desc$asDF%>% 
-    rename_with(~ .x %>% str_replace_all('\\[(1|2)\\]',"\\1"))
-  
-  return(mget(ls()))
-}
-exr_ehe_burnout <- gen_exr_ehe_burnout()
-```
 
-Eine Forscherin hat die Hypothese, dass unverheiratete Ärztinnen ein weniger stabiles Umfeld haben als ihre verheirateten Kolleginnen. Das Fehlen dieser Ressource führt dazu, dass unverheiratete Ärztinnen eher Burnout gefährdet sind. Um diese Hypothese zu untersuchen befragt die Forscherin in einer Umfrage zufällig verheiratete und unverheiratete Ärztinnen. Diese füllen einen Online-Fragebogen mit einem Burnout-Inventar aus, welches zu einem Burnout-score führt. Die Daten sind unter `r inline_code(exr_ehe_burnout$file_name)` verfügbar.
+Eine Forscherin hat die Hypothese, dass unverheiratete Ärztinnen ein weniger stabiles Umfeld haben als ihre verheirateten Kolleginnen. Das Fehlen dieser Ressource führt dazu, dass unverheiratete Ärztinnen eher Burnout gefährdet sind. Um diese Hypothese zu untersuchen befragt die Forscherin in einer Umfrage zufällig verheiratete und unverheiratete Ärztinnen. Diese füllen einen Online-Fragebogen mit einem Burnout-Inventar aus, welches zu einem Burnout-score führt. Die Daten sind unter ``06-exr-ehe-burnout.sav`` verfügbar.
 
 a) Wie viele verheiratete und unverheiratete haben den Fragebogen abgeschlossen?
 b) Welche Gruppe hat in der Stichprobe ein höheres mittleres Burnout-Risiko?
@@ -3008,22 +1923,22 @@ d) Lässt sich die Hypothese statistisch bestätigen? Berichten Sie das Testresu
 
 Zuerst wird der Datensatz mit `Jamovi` eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-ehe-burnout-input). 
 
-```{r sol-ehe-burnout-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/06-exr-ehe-burnout-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/06-exr-ehe-burnout-jmv-input} \caption{Jamovi Eingabe.}(\#fig:sol-ehe-burnout-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-ehe-burnout-output).
 
-```{r sol-ehe-burnout-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/06-exr-ehe-burnout-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/06-exr-ehe-burnout-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-ehe-burnout-output)
+\end{figure}
 
 Damit können die Teilfragen beantwortet werden. 
 
-a) Aus der Stichprobenbeschreibung kann entnommen werden, dass $`r exr_ehe_burnout$jmv_res_desc$num1`$ unverheiratete und $`r exr_ehe_burnout$jmv_res_desc$num2`$ verheiratete Ärztinnen den Fragebogen abgeschlossen haben.
-b) Die unverheirateten Ärztinnen $M = `r round(exr_ehe_burnout$jmv_res_desc$mean1,2)`$ scheiden durchschnittlich höher ab als die verheirateten Ärztinnen $M = `r round(exr_ehe_burnout$jmv_res_desc$mean2,2)`$. Dieser Befund beschränkt sich ohne statistischen Test auf die Stichprobe. Deshalb wurde darin das Wort signifikant nicht verwendet.
+a) Aus der Stichprobenbeschreibung kann entnommen werden, dass $51$ unverheiratete und $61$ verheiratete Ärztinnen den Fragebogen abgeschlossen haben.
+b) Die unverheirateten Ärztinnen $M = 10.99$ scheiden durchschnittlich höher ab als die verheirateten Ärztinnen $M = 10.15$. Dieser Befund beschränkt sich ohne statistischen Test auf die Stichprobe. Deshalb wurde darin das Wort signifikant nicht verwendet.
 c) Die Forscherin will zeigen, dass unverheiratete Ärztinnen ein durchhschnittlich höheres Burnout-Risiko haben als verheiratete und zwar nicht nur in der Stichprobe sondern auch ich der Population. Das durchschnittliche Burnout-Risiko in der Population ist der Erwartungswert des Burnout-Risiko und wird mit $\mu$ bezeichnet. Die Forscherin will also zeigen, dass $H_1: \mu_\text{unverheiratet} > \mu_\text{verheiratet}$. Demgegenüber steht die Nullhypothese, dass dies nicht so ist oder das gar das Gegenteil der Fall sein könnte also $H_0: \mu_\text{unverheiratet} \leq \mu_\text{verheiratet}$. Die Hypothese ist also einseitig gestellt.
-d) Ein einseitiger Welch-Test ergibt, dass der durchschnittliche Burnout-Wert bei unverheirateten Ärztinnen ($M = `r round(exr_ehe_burnout$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_ehe_burnout$jmv_res_desc$sd1,2)`$, $N = `r exr_ehe_burnout$jmv_res_desc$num1`$) signifikant höher ist als bei verheirateten Ärztinnen ($M = `r round(exr_ehe_burnout$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_ehe_burnout$jmv_res_desc$sd2,2)`$, $N = `r exr_ehe_burnout$jmv_res_desc$num2`$), $t(`r round(exr_ehe_burnout$jmv_res_test$dfwelc,1)`) = `r round(exr_ehe_burnout$jmv_res_test$statwelc,2)`$, $`r report_p(exr_ehe_burnout$jmv_res_test$pwelc)`, d = `r round(exr_ehe_burnout$jmv_res_test$eswelc,3)`$.
+d) Ein einseitiger Welch-Test ergibt, dass der durchschnittliche Burnout-Wert bei unverheirateten Ärztinnen ($M = 10.99$, $SD = 1.92$, $N = 51$) signifikant höher ist als bei verheirateten Ärztinnen ($M = 10.15$, $SD = 2.01$, $N = 61$), $t(108.1) = 2.26$, $p = .013, d = 0.427$.
 :::
 
 ::: {.exercise  #tagname5}
@@ -3069,32 +1984,7 @@ wird hier nicht eingegangen.
 ## Wie stark unterscheiden sich die Mediane?
 
 ::: {#red-hair-pain .example name="Schmerzen bei Rothaarigen."}
-```{r exm-red-hair-pain}
-gen_exm_red_hair_pain <- function(){
-  set.seed(23)
-  n1 <- 13
-  n2 <- 15
-  var_name <- "Schmerztoleranzzeit_s"
 
-  file_name <- '07-exm-red-hair-pain.sav'
-  dd <- tibble(!!var_name := c(9+rchisq(n1, 3), 5+rchisq(n2, 3)),
-         Gruppe = c(rep("MC4R", n1), rep("Non-MC4R", n2))) %>% 
-  write_sav(file_name)
-
-  jmv_res <- dd %>%
-    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
-                 qq = TRUE, norm = TRUE,
-                desc = TRUE,
-                 welchs = TRUE, 
-                 mann = TRUE, 
-                 effectSize = TRUE)
-  plot_utest_order <- dd %>%
-    rename(x = Schmerztoleranzzeit_s) %>%
-    plot_utest_order("Schmerztoleranzzeit_s")
-  return(mget(ls()))
-}
-exm_red_hair_pain <- gen_exm_red_hair_pain()
-```
 
 Beispiel frei nach @robinson2021. Viele rothaarige Menschen haben eine
 höhere Schmerztoleranz. Der Mechanismus dazu ist auf das MC4R-Gen
@@ -3105,7 +1995,7 @@ durchgeführt haben. Dabei werden die Mäuse auf eine erhitzte Platte
 gestellt und die Zeit in Sekunden gemessen, bis die Maus anfängt zu
 hüpfen oder sich die Pfoten zu lecken, um den Schmerz zu reduzieren.
 Dies bei einer maximalen Versuchszeit von $20$ Sekunden. Die Daten sind
-unter `r inline_code(exm_red_hair_pain$file_name)` verfügbar. Die
+unter ``07-exm-red-hair-pain.sav`` verfügbar. Die
 Beobachtete Stichprobe ergibt, dass es die $N = 13$ MC4R-Mäuse
 $M = 12s, SD = 1.93$ und die $15$ Non-MC4R-Mäuse $M = 7.8s, SD = 2.16$
 auf der heissen Platte ausgehalten haben. Werden die Daten auf die
@@ -3123,9 +2013,7 @@ Beobachtungen werden nummeriert, was den sogenannten Rangnummern
 entspricht. Für gleiche Ränge wird den betreffenden Rängen ein mittlerer
 Rang zugewiesen.
 
-```{r exm-red-hair-pain-utest-order, fig.cap="Mitte: Aufsteigend sortierte Beobachtungen des Merkmals Schmerztoleranz für MC4R und Non-MC4R Mäuse. Die Zahlen stehen für die Rangnummern. Oben (MC4R) und unten (Non-MC4R) stellt die Gruppenaufteilung der Rangnummern dar."}
-exm_red_hair_pain$plot_utest_order
-```
+![(\#fig:exm-red-hair-pain-utest-order)Mitte: Aufsteigend sortierte Beobachtungen des Merkmals Schmerztoleranz für MC4R und Non-MC4R Mäuse. Die Zahlen stehen für die Rangnummern. Oben (MC4R) und unten (Non-MC4R) stellt die Gruppenaufteilung der Rangnummern dar.](aps_statistik1_files/figure-latex/exm-red-hair-pain-utest-order-1.pdf) 
 
 In einem zweiten Schritt werden die Beobachtungen wieder in die Gruppen
 aufgeteilt (siehe obere und untere Reihe in der Abbildung) und die
@@ -3156,33 +2044,7 @@ ist in `Jamovi` automatisiert und es kann direkt der $p$-Wert in der
 Ausgabe abgelesen werden, hier $p < 0.001$.
 
 ::: {#aufgeschlossenheit-jung-alt .example name="Aufgeschlossenheit bei Jung und Alt."}
-```{r exm-aufgeschlossenheit-jung-alt}
-gen_exm_aufgeschlossenheit_jung_alt <- function(){
-  set.seed(23)
-  n1 <- 13
-  n2 <- 7
-  var_name <- "Aufgeschlossenheit"
 
-  file_name <- '07-exm-aufgeschlossenheit-jung-alt.sav'
-  dd <- tibble(!!var_name := c(round(rnorm(n1, 5)*2)/2, 
-                               round(rnorm(n2, 5)*2)/2),
-         Gruppe = c(rep("Jung", n1), rep("Alt", n2))) %>% 
-  write_sav(file_name)
-
-  jmv_res <- dd %>%
-    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
-                 qq = TRUE, norm = TRUE,
-                desc = TRUE,
-                 welchs = TRUE, 
-                 mann = TRUE, 
-                 effectSize = TRUE)
-  plot_utest_order <- dd %>%
-    rename(x = all_of(var_name)) %>%
-    plot_utest_order(var_name)
-  return(mget(ls()))
-}
-exm_aufgeschlossenheit_jung_alt <- gen_exm_aufgeschlossenheit_jung_alt()
-```
 
 Eine Studentin will herausfinden, ob sich die durchschnittliche
 Aufgeschlossenheit von jüngere Menschen unter $30$ Jahren und älteren
@@ -3191,10 +2053,10 @@ befragt sie zufällig Leute der beiden Gruppen mit dem TIPI, welcher die
 Aufgeschlossenheit auf einer Skala von $1$ bis $7$ misst, wobei das
 kleinste Messintervall $0.5$ Punkte beträgt. Die Daten sind also eher
 ordinal als intervallskaliert. In der Stichprobe waren
-$N = `r exm_aufgeschlossenheit_jung_alt$n1`$ junge mit einer Aufgeschlossenheit von $M = 5.38, SD = 0.92$ und $N =`r
+$N = 13$ junge mit einer Aufgeschlossenheit von $M = 5.38, SD = 0.92$ und $N =`r
 exm_aufgeschlossenheit_jung_alt$n2`$ alte mit einer Aufgeschlossenheit
 von $M = 5, SD = 0.87$. Die Daten sind unter
-`r inline_code(exm_aufgeschlossenheit_jung_alt$file_name)` verfügbar.
+``07-exm-aufgeschlossenheit-jung-alt.sav`` verfügbar.
 (Beispiel frei erfunden.)
 :::
 
@@ -3205,9 +2067,7 @@ Danach werden Rangnummern vergeben und die Beobachtungen wieder in ihre
 Gruppen geteilt, siehe die Reihen oben und unten der Abbildung. Die
 Ränge scheinen zufällig in die beiden Gruppen zu fallen.
 
-```{r exm-aufgeschlossenheit-jung-alt-utest-oder, fig.cap="Mitte: Aufsteigend sortierte Beobachtungen des Merkmals Schmerztoleranz für Junge und Alte. Die Zahlen stehen für die Rangnummern. Oben (Jung) und unten (Alt) stellt die Gruppenaufteilung der Rangnummern dar."}
-exm_aufgeschlossenheit_jung_alt$plot_utest_order
-```
+![(\#fig:exm-aufgeschlossenheit-jung-alt-utest-oder)Mitte: Aufsteigend sortierte Beobachtungen des Merkmals Schmerztoleranz für Junge und Alte. Die Zahlen stehen für die Rangnummern. Oben (Jung) und unten (Alt) stellt die Gruppenaufteilung der Rangnummern dar.](aps_statistik1_files/figure-latex/exm-aufgeschlossenheit-jung-alt-utest-oder-1.pdf) 
 
 Nun werden die Ränge innerhalb einer Gruppe addiert
 $$R_\text{Jung} = 143   \quad R_\text{Alt} = 67.$$ Die Rangsummen
@@ -3323,31 +2183,7 @@ Ziel:
 -->
 ```
 
-```{r exr-tempo30}
-gen_exr_tempo30 <- function(){
-  set.seed(23)
-  n1 <- 65
-  n2 <- 54
-  var_name <- "Durchfahrtszeit"
 
-  file_name <- '07-exr-tempo30.sav'
-  dd <- tibble(!!var_name := c(rexp(n1, 1/6), 
-                               rexp(n2, 1/4.8)),
-         Gruppe = c(rep("Tempo 50", n1), rep("Tempo 30", n2))) %>% 
-  write_sav(file_name)
-
-  jmv_res <- dd %>%
-    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
-                 qq = TRUE, 
-                 norm = TRUE,
-                  desc = TRUE,
-                 welchs = TRUE, 
-                 mann = TRUE, 
-                 effectSize = TRUE)
-  return(mget(ls()))
-}
-exr_tempo30 <- gen_exr_tempo30()
-```
 
 Für die Dorfstrasse in Köniz wurden zwei Verkehrskonzepte verglichen
 Tempo 50 mit Fussgängerstreifen und Tempo 30 ohne Fussgängerstreifen. Um
@@ -3356,7 +2192,7 @@ erhoben unter anderem die Durchfahrtszeit von Autos, die Anzahl
 Strassenquerungen von Fussgängern und die Anzahl Unfälle. Hier soll nur
 die Durchfahrtszeit von Autos in Minuten betrachtet und herausgefunden
 werden wie sich die Verkehrskonzepte auf diese ausgewirkt haben. Fiktive
-Daten dazu wurden als Datensatz `r inline_code(exr_tempo30$file_name)`
+Daten dazu wurden als Datensatz ``07-exr-tempo30.sav``
 abgelegt.
 
 a)  Prüfen Sie, ob die Testvoraussetzungen für einen Welch Test gegeben
@@ -3372,16 +2208,16 @@ Zuerst wird der Datensatz mit `Jamovi` eingelesen und die
 Analyseparameter werden gesetzt, siehe Abbildung
 \@ref(fig:sol-tempo30-input).
 
-```{r sol-tempo30-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/07-exr-tempo30-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/07-exr-tempo30-jmv-input} \caption{Jamovi Eingabe.}(\#fig:sol-tempo30-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung
 \@ref(fig:sol-tempo30-output).
 
-```{r sol-tempo30-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/07-exr-tempo30-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/07-exr-tempo30-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-tempo30-output)
+\end{figure}
 
 Damit können die Teilfragen beantwortet werden.
 
@@ -3417,37 +2253,13 @@ Ziel:
 -->
 ```
 
-```{r exr-warteschlangen}
-gen_exr_warteschlangen <- function(){
-  set.seed(23)
-  n1 <- 51
-  n2 <- 107
-  var_name <- "Wartezeit"
 
-  file_name <- '07-exr-warteschlangen.sav'
-  dd <- tibble(!!var_name := c(rexp(n1, 1/5),
-                               rexp(n2, 1/7)),
-         Gruppe = c(rep("Konzept 1", n1), rep("Konzept 2", n2))) %>%
-  write_sav(file_name)
-
-  jmv_res <- dd %>%
-    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
-                 qq = TRUE,
-                 norm = TRUE,
-                  desc = TRUE,
-                 welchs = TRUE,
-                 mann = TRUE,
-                 effectSize = TRUE)
-  return(mget(ls()))
-}
-exr_warteschlangen <- gen_exr_warteschlangen()
-```
 
 Ein Flughafen nimmt ein neues Terminal in betrieb. Um den Betrieb für
 die Zukunft zu optimieren und die Wartezeit der Gäste möglichst kurz zu
 halten, werden zwei Warteschlangenkonzepte getestet. Gäste werden dabei
 per Kamera getrackt und ihre Wartezeit in Minuten wird im Datensatz
-`r inline_code(exr_warteschlangen$file_name)` festgehalten.
+``07-exr-warteschlangen.sav`` festgehalten.
 
 a)  Prüfen Sie, ob die Testvoraussetzung für einen Welch Test gegeben
     ist.
@@ -3463,16 +2275,16 @@ Zuerst wird der Datensatz mit `Jamovi` eingelesen und die
 Analyseparameter werden gesetzt, siehe Abbildung
 \@ref(fig:sol-warteschlangen-input).
 
-```{r sol-warteschlangen-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/07-exr-warteschlangen-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/07-exr-warteschlangen-jmv-input} \caption{Jamovi Eingabe.}(\#fig:sol-warteschlangen-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung
 \@ref(fig:sol-warteschlangen-output).
 
-```{r sol-warteschlangen-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/07-exr-warteschlangen-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/07-exr-warteschlangen-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-warteschlangen-output)
+\end{figure}
 
 Damit können die Teilfragen beantwortet werden.
 
@@ -3508,30 +2320,7 @@ Ziel:
 -->
 ```
 
-```{r exr-statistik-herausforderung}
-gen_exr_statistik_herausforderung <- function(){
-  set.seed(23)
-  n1 <- 6
-  n2 <- 5
-  var_name <- "Herausforderung"
 
-  file_name <- '07-exr-statistik-herausforderung.sav'
-  dd <- tibble(!!var_name := c(c(3,4,2,6,2,5),
-                               c(9,7,5,10,6)),
-         Gruppe = c(rep("Statistik 1", n1), rep("Statistik 2", n2))) %>%
-  write_sav(file_name)
-
-  jmv_res <- dd %>%
-    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
-                 qq = TRUE, norm = TRUE,
-                desc = TRUE,
-                 welchs = TRUE,
-                 mann = TRUE,
-                 effectSize = TRUE)
-  return(mget(ls()))
-}
-exr_statistik_herausforderung <- gen_exr_statistik_herausforderung()
-```
 
 Studierende der Kurse Statistik $1$ und $2$ sollen auf einer Skala von
 $1$ bis $10$ bewerten ($1=$ gar nicht herausfordernd, $10 =$ äusserst
@@ -3544,7 +2333,7 @@ b)  Weshalb wird hier ein $U$-Test gegenüber einem Welch Test bevorzugt?
 c)  Führen Sie einen $U$-Test durch mit Signifikanzniveau $5\%$,
     berichten Sie das Ergebnis in einem Satz und interpretieren Sie die
     Effektstärke. Die Daten sind unter
-    `r inline_code(exr_statistik_herausforderung$file_name)` verfügbar.
+    ``07-exr-statistik-herausforderung.sav`` verfügbar.
     (Beispiel frei erfunden.)
 :::
 
@@ -3553,16 +2342,16 @@ Zuerst wird der Datensatz mit `Jamovi` eingelesen und die
 Analyseparameter werden gesetzt, siehe Abbildung
 \@ref(fig:sol-statistik-herausforderung-input).
 
-```{r sol-statistik-herausforderung-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/07-exr-statistik-herausforderung-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/07-exr-statistik-herausforderung-jmv-input} \caption{Jamovi Eingabe.}(\#fig:sol-statistik-herausforderung-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung
 \@ref(fig:sol-statistik-herausforderung-output).
 
-```{r sol-statistik-herausforderung-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/07-exr-statistik-herausforderung-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/07-exr-statistik-herausforderung-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-statistik-herausforderung-output)
+\end{figure}
 
 Damit können die Teilfragen beantwortet werden.
 
@@ -3586,30 +2375,7 @@ c)  Das Testergebnis kann aus `Jamovi` abgelesen werden und wird wie
 :::
 
 ::: {#depression-ecstasy .exercise}
-```{r exr-depression-ecstasy}
-gen_exr_depression_ecstasy <- function(){
-  set.seed(23)
-  n1 <- 10
-  n2 <- 10
-  var_name <- "bdi"
 
-  file_name <- '07-exr-depression-ecstasy.sav'
-  dd <- tibble(!!var_name := c(c(15, 35, 16, 18, 19, 17, 27, 16, 13, 20), 
-                               c(16, 15, 20, 15, 16, 13, 14, 19, 18, 18)),
-         Gruppe = c(rep("Ecstasy", n1), rep("Alkohol", n2))) %>% 
-  write_sav(file_name)
-
-  jmv_res <- dd %>%
-    jmv::ttestIS(formula = as.formula(str_c(var_name, "~Gruppe")),
-                 qq = TRUE, norm = TRUE,
-                desc = TRUE,
-                 welchs = TRUE, 
-                 mann = TRUE, 
-                 effectSize = TRUE)
-  return(mget(ls()))
-}
-exr_depression_ecstasy <- gen_exr_depression_ecstasy()
-```
 
 Eine Neurologin sammelt Daten, um die depressive Wirkung bestimmter
 Freizeitdrogen zu untersuchen. Sie schickt dazu $20$ männliche
@@ -3618,7 +2384,7 @@ Tanzlokal. Zehn Testpersonen nehmen eine Ecstasy Pille ein, die zehn
 anderen trinken einen Liter Bier. Der Grad der Depression wird mit dem
 Beck Depression Inventory (BDI) zwölf Stunden nach dem Verlassen des
 Tanzlokals gemessen. Die Daten sind unter
-`r inline_code(exr_depression_ecstasy$file_name)` verfügbar. Ist die
+``07-exr-depression-ecstasy.sav`` verfügbar. Ist die
 durchschnittliche Schwere der Nachtanzdepression bei der Ecstasy-Gruppe
 schlimmer als bei der Alkohol-Gruppe? Testen Sie mit einem $U$-Test,
 berichten Sie das Testresultat und schätzen sie die Effektstärke ein.
@@ -3629,16 +2395,16 @@ Zuerst wird der Datensatz mit `Jamovi` eingelesen und die
 Analyseparameter werden gesetzt, siehe Abbildung
 \@ref(fig:sol-depression-ecstasy-input).
 
-```{r sol-depression-ecstasy-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/07-exr-depression-ecstasy-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/07-exr-depression-ecstasy-jmv-input} \caption{Jamovi Eingabe.}(\#fig:sol-depression-ecstasy-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung
 \@ref(fig:sol-depression-ecstasy-output).
 
-```{r sol-depression-ecstasy-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/07-exr-depression-ecstasy-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/07-exr-depression-ecstasy-jmv-output} \caption{Jamovi Ausgabe.}(\#fig:sol-depression-ecstasy-output)
+\end{figure}
 
 Damit kann die Frage nun beantwortet werden:
 
@@ -3663,47 +2429,14 @@ TODO.
 Bislang wurde immer ein Merkmal separat betrachtet und manchmal wurden Untergruppen verglichen. Dabei ging es um die Frage, wo der Erwartungswert des Merkmals liegt und ob er einem gewissen Wert entspricht respektive für zwei Gruppen identisch ist. Wird jetzt noch ein zweites Merkmal beobachtet stellt sich die Frage, wie sich die Merkmale zueinander verhalten.
 
 ::: {#zahlungsbereitschaft .example name="Zahlungsbereitschaft"}
-```{r exm-zahlungsbereitschaft}
-gen_exm_zahlungsbereitschaft <- function(){
-  set.seed(23)
-  n <- 375
 
-  file_name <- '08-exm-zahlungsbereitschaft.sav'
-  dd <- tibble(
-    Einkommen = rnorm(n, 80, 10),
-    Alter = runif(n, 18, 50),
-    Anzahl_spiele = rexp(n, 1/10),
-    Preis = (Einkommen / 80) *10 - (Anzahl_spiele-10) *0.2 + rnorm(n, 10, 1)) %>% 
-  write_sav(file_name)
-  jmv_corr <- jmv::corrMatrix(dd)$matrix$asDF %>% 
-    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  jmv_pos <- jmv::corrMatrix(dd, hypothesis = "pos")$matrix$asDF %>% 
-    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  jmv_neg <- jmv::corrMatrix(dd, hypothesis = "neg")$matrix$asDF %>% 
-    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  corr_mat <- dd %>% cor()
-  dd %>% ggplot()+geom_point(aes(y = Preis, x = Einkommen))
-  scatterplot <- dd %>% 
-    pivot_longer(cols = c(1:3), names_to = "Variable", values_to = "Wert") %>%
-    ggplot()+
-    geom_point(aes(y = Preis, x = Wert))+
-    facet_wrap(~Variable,nrow = 1, scales = "free_x")+
-    labs(x = "")+ 
-    theme(aspect.ratio=1)
-  # jmv_res <- dd 
-  return(mget(ls()))
-}
-exm_zahlungsbereitschaft <- gen_exm_zahlungsbereitschaft()
-```
 
-Eine Firma will eine Kickstarteridee für ein Kinderspielzeug auf den Markt bringen. Dazu muss sie herausfinden wie viel die Konsumierenden bereit sind für das Spielzeug zu bezahlen. Es werden $`r exm_zahlungsbereitschaft$n`$ Konsumierende gefragt, wie viel sie für das Spielzeug zahlen würden. Zusätzlich wurde auch nach dem Jahreseinkommen in CHF und der Anzahl Spielzeuge im Haushalt gefragt.
+Eine Firma will eine Kickstarteridee für ein Kinderspielzeug auf den Markt bringen. Dazu muss sie herausfinden wie viel die Konsumierenden bereit sind für das Spielzeug zu bezahlen. Es werden $375$ Konsumierende gefragt, wie viel sie für das Spielzeug zahlen würden. Zusätzlich wurde auch nach dem Jahreseinkommen in CHF und der Anzahl Spielzeuge im Haushalt gefragt.
 :::
 
 [Um den Zusammenhang zwischen zwei intervallskalierten Merkmalen aufzuzeigen wird ein sogenanntes **Streudiagramm** verwendet.]{#customdef-streudiagramm .customdef} Um den Zusammenhang zwischen zwei intervallskalierten Merkmalen aufzuzeigen wird ein sogenanntes Streudiagramm verwendet. Dabei wird ein Koordinatensystem erstellt mit einem Merkmal auf der x-Achse und dem anderen Merkmal auf der y-Achse. Danach wird für jede Beobachtung ein Punkt bei den entsprechenden Werten für die beiden betrachteten Merkmale in dieses Koordinatensystem eingezeichnet.
 
-```{r exm-zahlungsbereitschaft-streudiagramm, fig.cap="Die drei Streudiagramme zeigen jeweils die Zahlungsbereitschaft (Preis in CHF) auf der y-Achse und das Alter in Jahren, die Anzahl Spiele im Haushalt und das Jahreseinkommen in 1'000 CHF respektive auf der x-Achse."}
-exm_zahlungsbereitschaft$scatterplot
-```
+![(\#fig:exm-zahlungsbereitschaft-streudiagramm)Die drei Streudiagramme zeigen jeweils die Zahlungsbereitschaft (Preis in CHF) auf der y-Achse und das Alter in Jahren, die Anzahl Spiele im Haushalt und das Jahreseinkommen in 1'000 CHF respektive auf der x-Achse.](aps_statistik1_files/figure-latex/exm-zahlungsbereitschaft-streudiagramm-1.pdf) 
 
 In Abbildung \@ref(fig:exm-zahlungsbereitschaft-streudiagramm) sind drei Streudiagramme aufgezeichnet. Sie setzen jeweils die Zahlungsbereitschaft (Preis) mit dem Alter in Jahren, der Anzahl vorhandener Spiele im Haushalt und dem Einkommen respektive in Bezug. Es kann beobachtet werden, dass die Zahlungsbereitschaft unabhängig vom Alter immer ungefähr ähnlich hoch ist. Es ist des Weiteren klar zu sehen, dass die Zahlungsbereitschaft mit der Anzahl im Haushalt vorhandener Spiele sinkt. Ein bisschen weniger klar ist die Beobachtung, dass die Zahlungsbereitschaft mit dem Jahreseinkommen ansteigt.
 
@@ -3711,71 +2444,21 @@ In Abbildung \@ref(fig:exm-zahlungsbereitschaft-streudiagramm) sind drei Streudi
 
 Die Korrelation erfasst nur lineare Zusammenhänge, also nur wenn Punkte entlang einer Linie streuen im Streudiagramm. Je weiter weg die Korrelation von $0$ ist, desto weniger streuen die Punkte entlang einer Linie, siehe erste und zweite Zeile der Abbildung \@ref(fig:correlation-examples). Die Korrelation sagt lediglich, ob die Linie steigt oder fällt, jedoch nicht wie stark. Nicht lineare Zusammenhänge wie in der dritten Zeile von Abbildung \@ref(fig:correlation-examples) können mit der Korrelation nicht richtig erfasst werden und gängige Korrelationsberechnungen geben zufällige Resultate.
 
-```{r correlation-examples, out.width='100%', fig.cap='Streudiagramme und dazugehörige Korrelation.'}
-knitr::include_graphics("figures/08-correlations-wikipedia.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/08-correlations-wikipedia} \caption{Streudiagramme und dazugehörige Korrelation.}(\#fig:correlation-examples)
+\end{figure}
 
 Liegt eine Korrelation vor bedeutet dies, dass die Merkmale sich gemeinsam verändern. In Beispiel \@ref(exm:zahlungsbereitschaft) scheint intuitiv klar, dass das Einkommen und die Anzahl vorhandene Spiele pro Haushalt die Zahlungsbereitschaft beeinflussen. Das Einkommen und die Anzahl Spiele sind also ursächlich. Dass die Zahlungsbereitschaft ursächlich wäre und zum Beispiel das Einkommen beeinflusst ist eher unwahrscheinlich. Welches von zwei Merkmalen ursächlich ist, bzw. wie die Merkmale kausal zusammenhängen, lässt sich jedoch nicht immer einfach beantworten, wie das folgende Beispiel zeigt.
 
 ::: {#depression-alkohol-angst .example name="Depression, Angststörungen und Alkohol"}
-```{r exm-depression-alkohol-angst}
-gen_exm_depression_alkohol_angst <- function(){
-  set.seed(23)
-  n <- 375
-  # alcoholism, Depression (0-63), Angst
-  Sigma <- diag(3)
-  diag(Sigma) <- c(4,5,7.8)
-  Sigma[1,2] <- 1.3
-  Sigma[2,3] <- 3.25
-  Sigma[1,3] <- 0.3
-  Sigma[lower.tri(Sigma)] <- Sigma[upper.tri(Sigma)]
-  
-  x = mvtnorm::rmvnorm(n, c(15, 19, 43.2), sigma = Sigma)
-  colnames(x) <-  c("Alkohol", "Depression", "Angst")
-  x <- x %>% as_tibble() 
-  file_name <- '08-exm-depression-alkohol-angst.sav'
-  dd <- x %>% 
-    write_sav(file_name)
-  file_name1 <- '08-exm-depressiondiagnose-alkohol-angst.sav'
-  dd1 <- x %>% 
-    mutate(depressionsdiagnose = ifelse(Depression >= 20, "schwer", "leicht")) %>% 
-    write_sav(file_name1)
-  desc_1gr <- (dd1 %>% 
-                 jmv::descriptives())$descriptives$asDF %>% 
-    rename_with(~.x %>% 
-                  str_replace_all("\\.|]", "") %>% 
-                  str_replace_all("\\[","_"))
-  desc_2gr <- (dd1 %>% 
-                 jmv::descriptives(splitBy = "depressionsdiagnose"))$descriptives$asDF %>% 
-    rename_with(~.x %>% 
-                  str_replace_all("\\.|]", "") %>% 
-                  str_replace_all("\\[","_"))
-  jmv_corr <- jmv::corrMatrix(dd)$matrix$asDF %>% 
-    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  jmv_partcorr <- (dd %>% 
-    jmv::corrPart(vars = c('Angst', 'Alkohol'),controls = "Depression"))$matrix$asDF%>%
-    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  corr_mat <- dd %>% cor()
-  scatter1 <- dd %>% ggplot()+geom_point(aes(y = Alkohol, x = Depression))
-  scatter2 <- dd %>% ggplot()+geom_point(aes(y = Alkohol, x = Angst))
-  scatter3 <- dd %>% ggplot()+geom_point(aes(y = Depression, x = Angst))
-  
-  return(mget(ls()))
-}
-exm_depression_alkohol_angst <- gen_exm_depression_alkohol_angst()
-```
 
-In der Psychotherapie ist aufgefallen, dass sich Alkoholabhängigkeit, Angststörungen und Depression in der Tendenz wechselwirkend positiv beeinflussen [@schuckit1996]. Dies soll mit den fiktiven Daten in `r inline_code(exm_depression_alkohol_angst$file_name)` illustriert werden. Für die Messung der Schwere der drei Merkmale Alkoholismus, Angststörung und Depression wurden die folgenden Messinstrumente verwendet: Das Beck Depression Inventory *BDI* für die Depression [@beck1988], das state trait anxiety inventory *STAI* für die Angststörungen [@spielberger1983manual] und das alcohol use inventory für den Alkoholismus [@skinner1982].
+
+In der Psychotherapie ist aufgefallen, dass sich Alkoholabhängigkeit, Angststörungen und Depression in der Tendenz wechselwirkend positiv beeinflussen [@schuckit1996]. Dies soll mit den fiktiven Daten in ``08-exm-depression-alkohol-angst.sav`` illustriert werden. Für die Messung der Schwere der drei Merkmale Alkoholismus, Angststörung und Depression wurden die folgenden Messinstrumente verwendet: Das Beck Depression Inventory *BDI* für die Depression [@beck1988], das state trait anxiety inventory *STAI* für die Angststörungen [@spielberger1983manual] und das alcohol use inventory für den Alkoholismus [@skinner1982].
 :::
 
-Streudiagramme aller möglicher bivariaten Zusammenhänge sind in Abbildung \@ref(fig:exm-depression-alkohol-angst-scatter) dargestellt. Während der lineare Zusammenhang zwischen Alkoholismus und Angststörung kaum erkennbar ist, so kann zwischen Depression und Alkoholismus ein leichter und zwischen Depression und Angststörung ein deutlich gleichläufiger linearer Zusammenhang festgestellt werden. Die geschätzten Korrelationen sind $`r round(exm_depression_alkohol_angst$corr_mat['Alkohol', 'Depression'],2)`$ zwischen Alkoholismus und Depression, $`r round(exm_depression_alkohol_angst$corr_mat['Alkohol', 'Angst'],2)`$ zwischen Alkoholismus und Angststörung und $`r round(exm_depression_alkohol_angst$corr_mat['Depression', 'Angst'],2)`$ zwischen Depression und Angststörung.
+Streudiagramme aller möglicher bivariaten Zusammenhänge sind in Abbildung \@ref(fig:exm-depression-alkohol-angst-scatter) dargestellt. Während der lineare Zusammenhang zwischen Alkoholismus und Angststörung kaum erkennbar ist, so kann zwischen Depression und Alkoholismus ein leichter und zwischen Depression und Angststörung ein deutlich gleichläufiger linearer Zusammenhang festgestellt werden. Die geschätzten Korrelationen sind $0.32$ zwischen Alkoholismus und Depression, $0.1$ zwischen Alkoholismus und Angststörung und $0.46$ zwischen Depression und Angststörung.
 
-```{r exm-depression-alkohol-angst-scatter, fig.cap="Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten.", echo = FALSE}
-plots <- with(exm_depression_alkohol_angst, 
-              list(scatter1, scatter2, scatter3)) %>% 
-  map(~ .x + theme(aspect.ratio=1))
-do.call(grid.arrange, c(plots, ncol = 3))
-```
+![(\#fig:exm-depression-alkohol-angst-scatter)Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten.](aps_statistik1_files/figure-latex/exm-depression-alkohol-angst-scatter-1.pdf) 
 
 In diesem Fall ist unklar, ob jemand mit Alkoholismus eher eine Angststörung entwickelt, oder jemand mit Angststörung eher eine Alkoholabhängigkeit entwickelt. Die Korrelation gibt nur einen Anhaltspunkt über die Art des Zusammenhangs, nicht aber über die Ursächlichkeit der Variablen. Es könnte auch sein, dass die beiden Merkmale eigentlich unabhängig voneinander sind, aber ein drittes Merkmal die beiden Merkmale beeinflusst. Dazu später mehr unter \@ref(stoerfaktor).
 
@@ -3806,13 +2489,13 @@ Wenn wiederholt Stichproben gezogen werden und immer wieder die Teststatistik be
 
 In `Jamovi` wird die Korrelation nach Pearson unter `Analysen > Regression > Korrelationsmatrix` und `Korrelationskoeffizienten: Pearson` geschätzt und mit der Zusatzoption `Zusätzliche Optionen: Signifikanzniveau` gegen Null abgesichert. Angenommen, es gäbe kein Vorwissen über die Richtung des Zusammenhangs zwischen den Merkmalen Alkoholismus, Depression und Angst. In diesem Fall werden zweiseitige Tests berechnet und wie folgt berichtet:
 
-> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Alkoholismus und Depression ($r = `r round(exm_depression_alkohol_angst$corr_mat['Alkohol', 'Depression'],2)`$) signifikant von $0$ unterscheidet, `r absichern_pearson(exm_depression_alkohol_angst$corr_mat['Alkohol', 'Depression'], exm_depression_alkohol_angst$n)`, $`r exm_depression_alkohol_angst$jmv_corr %>% filter(name_r == "Depression") %>% pull(Alkohol_rp) %>% as.numeric() %>% report_p(3)`$.
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Alkoholismus und Depression ($r = 0.32$) signifikant von $0$ unterscheidet, $t(373) = 6.41$, $p < 0.001$.
 >
-> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Alkoholismus und Angststörung ($r = `r round(exm_depression_alkohol_angst$corr_mat['Alkohol', 'Angst'],2)`$) nicht signifikant von $0$ unterscheidet, `r absichern_pearson(exm_depression_alkohol_angst$corr_mat['Alkohol', 'Angst'], exm_depression_alkohol_angst$n)`, $`r exm_depression_alkohol_angst$jmv_corr %>% filter(name_r == "Angst") %>% pull(Alkohol_rp) %>% as.numeric() %>% report_p(3)`$.
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Alkoholismus und Angststörung ($r = 0.1$) nicht signifikant von $0$ unterscheidet, $t(373) = 1.96$, $p = .051$.
 
 Ist eine klare Hypothese über die Richtung des linearen Zusammenhangs vorhanden, zum Beispiel Leute mit mehr Geld kaufen mehr Geld für Spielzeuge ausgeben wollen, so kann auch einseitig getestet werden: $H_0: \rho \leq 0$ und $H_1: \rho > 0$ und
 
-> Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Einkommen ($r = `r round(exm_zahlungsbereitschaft$corr_mat['Preis', 'Einkommen'],2)`$) signifikant grösser ist als $0$, `r absichern_pearson(exm_zahlungsbereitschaft$corr_mat['Preis', 'Einkommen'], exm_zahlungsbereitschaft$n)`, $`r exm_zahlungsbereitschaft$jmv_pos %>% filter(name_r == "Preis") %>% pull(Einkommen_rp) %>% as.numeric() %>% report_p(3)`$.
+> Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Einkommen ($r = 0.48$) signifikant grösser ist als $0$, $t(373) = 10.7$, $p < 0.001$.
 
 Da die Teststatistik nicht von `Jamovi` direkt ausgegeben wird, muss diese händisch berechnet werden.
 
@@ -3822,38 +2505,9 @@ Manchmal ist ein Merkmal oder beide Merkmale nicht intervallskaliert und normalv
 
 ::: {#fb-life .example name="Facebook und Lebenszufriedenheit."}
 
-```{r exm-fb-life}
-gen_exm_fb_life <- function(){
-  set.seed(23)
-  n <- 73
-  Sigma <- diag(2)
-  Sigma[1,2] <- - 0.43
-  Sigma[lower.tri(Sigma)] <- Sigma[upper.tri(Sigma)]
-  
-  x = mvtnorm::rmvnorm(n, c(0,0), sigma = Sigma)
-  colnames(x) <-  c("life_satisfaction", "fb_intensity")
-  x <- x %>% as_tibble() %>% 
-    mutate(life_satisfaction = round((5+life_satisfaction * 2)),
-           fb_intensity = fb_intensity + rexp(n,1/3),
-           fb_intensity = case_when(fb_intensity > 7 ~ 7,
-                                    fb_intensity < 1 ~ 1,
-                                    TRUE ~fb_intensity) %>% round())
-  
-  file_name <- '08-exm-fb-life.sav'
-  dd <- x %>% 
-    write_sav(file_name)
-  jmv_corr <- jmv::corrMatrix(dd, pearson = FALSE, spearman = TRUE)$matrix$asDF %>%
-    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  corr_mat <- dd %>% cor()
-  # scatter1 <- dd %>% ggplot()+geom_point(aes(y = Alkohol, x = Depression))
-  # scatter2 <- dd %>% ggplot()+geom_point(aes(y = Alkohol, x = Angst))
-  # scatter3 <- dd %>% ggplot()+geom_point(aes(y = Depression, x = Angst))
-  return(mget(ls()))
-}
-exm_fb_life <- gen_exm_fb_life()
-```
 
-Je intensiver Facebook konsumiert wird, desto tiefer ist die Lebenszufriedenheit [@blachnio2016]. Eine Studie will dieses Resultat reproduzieren. Die Facebook-Nutzungsintensität wurde dafür mit einer Skala von $1$ (keine) bis $7$ (sehr intensive Nutzung) und die Lebenszufriedenheit mit Punkten von $1$ (sehr unzufrieden) bis $10$ (sehr zufrieden) gemessen. Es wurden $`r exm_fb_life$n`$ Personen befragt. Ihre Antworten wurden bereinigt im Datensatz `r inline_code(exm_fb_life$file_name)` abgelegt. Nach der Erhebung wird festgestellt, dass die beiden Merkmale nicht normalverteilt sind.
+
+Je intensiver Facebook konsumiert wird, desto tiefer ist die Lebenszufriedenheit [@blachnio2016]. Eine Studie will dieses Resultat reproduzieren. Die Facebook-Nutzungsintensität wurde dafür mit einer Skala von $1$ (keine) bis $7$ (sehr intensive Nutzung) und die Lebenszufriedenheit mit Punkten von $1$ (sehr unzufrieden) bis $10$ (sehr zufrieden) gemessen. Es wurden $73$ Personen befragt. Ihre Antworten wurden bereinigt im Datensatz ``08-exm-fb-life.sav`` abgelegt. Nach der Erhebung wird festgestellt, dass die beiden Merkmale nicht normalverteilt sind.
 :::
 
 Wenn die Daten beider Merkmale mindestens ordinalskaliert sind, diese aber nicht die Voraussetzungen für die Korrelation nach Pearson erfüllen, kann die Korrelation nach Spearman angewendet werden. Diese wird berechnet indem den Beobachtungen jedes Merkmals aufsteigende sortiert und entsprechend der Reihenfolge Rangplätze vergeben werden. Die Differenz der Ränge der beiden Merkmale für Beobachtung $i$ wird mit $d_i$ bezeichnet. Die Korrelation nach Spearman ist 
@@ -3876,7 +2530,7 @@ Die Absicherung gegen Null der Korrelation nach Spearman erfolgt gleich wie bei 
 
 In `Jamovi` wird die Korrelation nach Spearman unter `Analysen > Regression > Korrelationsmatrix` und `Korrelationskoeffizienten: Spearman` geschätzt und mit der Zusatzoption `Zusätzliche Optionen: Signifikanzniveau` gegen Null abgesichert. Angenommen, es gäbe kein Vorwissen über die Richtung des Zusammenhangs zwischen den Merkmalen Facebook-Nutzungsintensität und Lebenszufriedenheit. In diesem Fall werden zweiseitige Tests berechnet und wie folgt berichtet:
 
-> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Spearman ergibt, dass sich die Korrelation zwischen Facebook-Nutzungsintensität und Lebenszufriedenheit ($r = `r round(exm_fb_life$corr_mat['fb_intensity', 'life_satisfaction'],2)`$) signifikant von $0$ unterscheidet, `r absichern_pearson(exm_fb_life$corr_mat['fb_intensity', 'life_satisfaction'], exm_fb_life$n)`, $`r exm_fb_life$jmv_corr %>% filter(name_rho == "fb_intensity") %>% pull(life_satisfaction_rhop) %>% as.numeric() %>% report_p(3)`$.
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Spearman ergibt, dass sich die Korrelation zwischen Facebook-Nutzungsintensität und Lebenszufriedenheit ($r = -0.29$) signifikant von $0$ unterscheidet, $t(71) = -2.58$, $p = .007$.
 
 ## Wie stark ist der Zusammenhang zwischen einem intervallskalierten und normalverteilten Merkmal und einem dichotomen Merkmal?
 
@@ -3888,7 +2542,7 @@ wobei $s$ die Standardabweichung des intervallskalierten Merkmals bezeichnet.
 Die Berechnung der punktbiserialen Korrelation ist in Jamovi nicht implementiert. Die Kenngrössen für die Berechnung können jedoch aus der `Erforschung > Deskriptivstatistik` von `Jamovi` abgelesen werden. Dabei ist zu beachten, dass für $\bar{x}_1, n_1, \bar{x}_2, n_2$ die Option `Aufgeteilt nach` mit dem dichotomen Merkmal befüllt sein muss. Für die Berechnung von $s$ muss dieses Feld jedoch leer sein. Im Beispiel ist die punktbiseriale Korrelation
 
 $$ r = \frac{\bar{x}_1- \bar{x}_2}{(n_1+n_2)\cdot s}\sqrt{n_1\cdot n_2}
-= \frac{`r round(exm_depression_alkohol_angst$desc_2gr$Alkohol_meanschwer,2)`- `r round(exm_depression_alkohol_angst$desc_2gr$Alkohol_meanleicht,2)`}{(`r exm_depression_alkohol_angst$desc_2gr$Alkohol_nschwer`+`r exm_depression_alkohol_angst$desc_2gr$Alkohol_nleicht`)\cdot `r round(exm_depression_alkohol_angst$desc_1gr$Alkohol_sd,2)`}\sqrt{`r exm_depression_alkohol_angst$desc_2gr$Alkohol_nschwer`\cdot `r exm_depression_alkohol_angst$desc_2gr$Alkohol_nleicht`} = `r round(((round(exm_depression_alkohol_angst$desc_2gr$Alkohol_meanschwer,2) - round(exm_depression_alkohol_angst$desc_2gr$Alkohol_meanleicht,2))/(round(exm_depression_alkohol_angst$desc_1gr$Alkohol_sd,2)*(exm_depression_alkohol_angst$desc_2gr$Alkohol_nschwer+exm_depression_alkohol_angst$desc_2gr$Alkohol_nleicht)))*sqrt(exm_depression_alkohol_angst$desc_2gr$Alkohol_nschwer*exm_depression_alkohol_angst$desc_2gr$Alkohol_nleicht),2)`.$$
+= \frac{15.88- 14.59}{(122+253)\cdot 1.97}\sqrt{122\cdot 253} = 0.31.$$
 
 Da ein dichotomes Merkmal wie die Depressionsdiagnostik nur zwei Ausprägungen hat, funktioniert die übliche Interpretation dieses gleichläufigen Zusammenhangs mit "je mehr schwere Depression, desto höher der Alkoholismus-Wert" nicht mehr. Stattdessen kann die leicht angepasste Interpretation "je eher eine Person eine schwere Depression hat, desto höher der Alkoholismus-Wert" oder "je höher der Alkoholismus-Wert, desto eher hat eine Person eine schwere Depression" verwendet werden.
 
@@ -3930,33 +2584,23 @@ Exploration der Formel der partiellen Korrelation:
 Die partielle Korrelation kann in `Jamovi` unter `Analysen > Regression > Partielle Korrelation` berechnet werden und beträgt $r = -0.05$. Unter Berücksichtigung der Störvariable Depression, ist der Zusammenhang zwischen Alkoholismus und Angststörung also nicht nur kleiner geworden, sondern hat sich sogar in einen gegenläufigen Zusammenhang gewandelt. Dies ist abstrahiert im
 unteren Teil der Abbildung \@ref(fig:exm-depression-alkohol-angst-stoervardiagramm)  dargestellt. Wird die partielle Korrelation unter Berücksichtigung einer Störvariable angegeben, spricht man auch von es wurde für die Störvariable **kontrolliert**.
 
-```{r exm-depression-alkohol-angst-stoervardiagramm,fig.show = 'hold', out.height='50%', fig.cap="Zusammenhang zwischen Angst und Alkoholismus ohne (oben) und mit (unten) Berücksichtigung der Störvariable."}
-grViz("
-digraph G {
-  rankdir=LR;
-  node [shape=box, style=filled, fillcolor=lightblue, fontsize=18];
+<div class="figure">
 
-  Alkoholismus;
-  Angst;
-  
-  Angst -> Alkoholismus [penwidth=2, dir=both, label = 'r = 0.10'];
-}
-")
-grViz("
-digraph G {
-  rankdir=LR;
-  node [shape=box, style=filled, fillcolor=lightblue, fontsize=18];
-
-  Alkoholismus;
-  Angst;
-  Depression;
-
-  Depression -> Angst [penwidth=2, label = 'r = 0.46'];
-  Depression -> Alkoholismus [penwidth=2, label = 'r = 0.32'];
-  Angst -> Alkoholismus [penwidth=2, dir=both, label = 'Partielle r = -0.05', color = red];
-}
-")
+```{=html}
+<div class="grViz html-widget html-fill-item" id="htmlwidget-706e52c348bc82b28fab" style="width:468px;height:50%;"></div>
+<script type="application/json" data-for="htmlwidget-706e52c348bc82b28fab">{"x":{"diagram":"\ndigraph G {\n  rankdir=LR;\n  node [shape=box, style=filled, fillcolor=lightblue, fontsize=18];\n\n  Alkoholismus;\n  Angst;\n  \n  Angst -> Alkoholismus [penwidth=2, dir=both, label = \"r = 0.10\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
+
+<p class="caption">(\#fig:exm-depression-alkohol-angst-stoervardiagramm)Zusammenhang zwischen Angst und Alkoholismus ohne (oben) und mit (unten) Berücksichtigung der Störvariable.</p>
+</div><div class="figure">
+
+```{=html}
+<div class="grViz html-widget html-fill-item" id="htmlwidget-44c25d2b51778fbed4f5" style="width:468px;height:50%;"></div>
+<script type="application/json" data-for="htmlwidget-44c25d2b51778fbed4f5">{"x":{"diagram":"\ndigraph G {\n  rankdir=LR;\n  node [shape=box, style=filled, fillcolor=lightblue, fontsize=18];\n\n  Alkoholismus;\n  Angst;\n  Depression;\n\n  Depression -> Angst [penwidth=2, label = \"r = 0.46\"];\n  Depression -> Alkoholismus [penwidth=2, label = \"r = 0.32\"];\n  Angst -> Alkoholismus [penwidth=2, dir=both, label = \"Partielle r = -0.05\", color = red];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+```
+
+<p class="caption">(\#fig:exm-depression-alkohol-angst-stoervardiagramm)Zusammenhang zwischen Angst und Alkoholismus ohne (oben) und mit (unten) Berücksichtigung der Störvariable.</p>
+</div>
 
 
 Die Absicherung gegen Null der partiellen Korrelation erfolgt ähnlich wie bei der Korrelation nach Pearson. Die Teststatistik wird mit
@@ -3968,7 +2612,7 @@ t = r\cdot \sqrt{\frac{n-3}{1-r^2}}.
 
 berechnet und ist $t$-verteilt bei $n-3$ Freiheitsgraden, wobei $n$ für die Anzahl Beobachtungstripel steht. Die Teststatistik wird von `Jamovi` nicht berechnet und muss händisch eruiert werden.
 
-> Die zweiseitige Absicherung gegen Null der partiellen Korrelation ergibt, dass sich die Korrelation zwischen Alkoholismus und Angststörung unter Berücksichtigung der Depression als Störfaktor ($r = `r round(exm_depression_alkohol_angst$jmv_partcorr %>% filter(name_r == "Alkohol") %>% pull("Angst_r") %>% as.numeric(),2)`$) nicht signifikant von $0$ unterscheidet, `r absichern_partiell(exm_depression_alkohol_angst$jmv_partcorr %>% filter(name_r == "Alkohol") %>% pull("Angst_r") %>% as.numeric(), exm_depression_alkohol_angst$n)`, $`r exm_depression_alkohol_angst$jmv_partcorr %>% filter(name_r == "Alkohol") %>% pull(Angst_rp) %>% as.numeric() %>% report_p(3)`$. Die Korrelation ist als schwach einzustufen.
+> Die zweiseitige Absicherung gegen Null der partiellen Korrelation ergibt, dass sich die Korrelation zwischen Alkoholismus und Angststörung unter Berücksichtigung der Depression als Störfaktor ($r = -0.05$) nicht signifikant von $0$ unterscheidet, $t(372) = -1$, $p = .316$. Die Korrelation ist als schwach einzustufen.
 
 In diesem Beispiel wurde die Angst arbiträr als Störfaktor gehandelt. Die selben Überlegungen und Berechnungen wären aber auch zum Beispiel für den Alkoholismus als Störfaktor für den Zusammenhang zwischen Angst und Depression zulässig. Die Identifikation von Störvariablen muss also theoriegeleitet erfolgen.
 
@@ -3983,11 +2627,11 @@ Ziel:
 -->
 ```
 
-Sichern Sie die Korrelation nach Pearson zwischen Angststörung und Depression in Beispiel \@ref(exm:depression-alkohol-angst) mit dem Datensatz `r inline_code(exm_depression_alkohol_angst$file_name)` zweiseitig gegen Null ab, berichten Sie das Ergebnis und interpretieren Sie die Stärke des Zusammenhangs.
+Sichern Sie die Korrelation nach Pearson zwischen Angststörung und Depression in Beispiel \@ref(exm:depression-alkohol-angst) mit dem Datensatz ``08-exm-depression-alkohol-angst.sav`` zweiseitig gegen Null ab, berichten Sie das Ergebnis und interpretieren Sie die Stärke des Zusammenhangs.
 :::
 
 ::: solution
-> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Depression und Angststörung ($r = `r round(exm_depression_alkohol_angst$corr_mat['Depression', 'Angst'],2)`$) sich signifikant von $0$ unterscheidet, `r absichern_pearson(exm_depression_alkohol_angst$corr_mat['Depression', 'Angst'], exm_depression_alkohol_angst$n)`, $`r exm_depression_alkohol_angst$jmv_corr %>% filter(name_r == "Angst") %>% pull(Depression_rp) %>% as.numeric() %>% report_p(3)`$. Die Korrelation deutet auf einen starken Zusammenhang der Art je mehr Depression desto grösser die Angststörung hin.
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Depression und Angststörung ($r = 0.46$) sich signifikant von $0$ unterscheidet, $t(373) = 9.98$, $p < 0.001$. Die Korrelation deutet auf einen starken Zusammenhang der Art je mehr Depression desto grösser die Angststörung hin.
 :::
 
 ::: {#zahlungsbereitschaft-berichten .exercise}
@@ -3998,13 +2642,13 @@ Ziel:
 -->
 ```
 
-Testen Sie mit dem Datensatz `r inline_code(exm_zahlungsbereitschaft$file_name)` aus Beispiel \@ref(exm:zahlungsbereitschaft), ob die Korrelation nach Pearson zwischen der Zahlungsbereitschaft `Preis` und Alter positiv und ob die Korrelation zwischen der Zahlungsbereitschaft und der Anzahl Spiele im Haushalt negativ ist. Berichten Sie das Ergebnis und interpretieren Sie die Stärke des Zusammenhangs.
+Testen Sie mit dem Datensatz ``08-exm-zahlungsbereitschaft.sav`` aus Beispiel \@ref(exm:zahlungsbereitschaft), ob die Korrelation nach Pearson zwischen der Zahlungsbereitschaft `Preis` und Alter positiv und ob die Korrelation zwischen der Zahlungsbereitschaft und der Anzahl Spiele im Haushalt negativ ist. Berichten Sie das Ergebnis und interpretieren Sie die Stärke des Zusammenhangs.
 :::
 
 ::: solution
-> Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Alter ($r = `r round(exm_zahlungsbereitschaft$corr_mat['Preis', 'Alter'],2)`$) nicht signifikant grösser ist als $0$, `r absichern_pearson(exm_zahlungsbereitschaft$corr_mat['Preis', 'Alter'], exm_zahlungsbereitschaft$n)`, $`r exm_zahlungsbereitschaft$jmv_pos %>% filter(name_r == "Preis") %>% pull(Alter_rp) %>% as.numeric() %>% report_p(3)`$. Der Zusammenhang ist so schwach, dass keine Richtung des Zusammenhangs aus dem Korrelationskoeffizenten abgelesen werden kann.
+> Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Alter ($r = 0$) nicht signifikant grösser ist als $0$, $t(373) = -0.04$, $p = .515$. Der Zusammenhang ist so schwach, dass keine Richtung des Zusammenhangs aus dem Korrelationskoeffizenten abgelesen werden kann.
 >
-> Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Anzahl Spiele ($r = `r round(exm_zahlungsbereitschaft$corr_mat['Preis', 'Anzahl_spiele'],2)`$) signifikant kleiner ist als $0$,`r absichern_pearson(exm_zahlungsbereitschaft$corr_mat['Preis', 'Anzahl_spiele'], exm_zahlungsbereitschaft$n)`, $`r exm_zahlungsbereitschaft$jmv_neg %>% filter(name_r == "Preis") %>% pull(Anzahl_spiele_rp) %>% as.numeric() %>% report_p(3)`$. Der Zusammenhang der Art je höher die Kaufbereitschaft, desto tiefer die Anzahl Spiele im Haushalt, ist stark.
+> Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Anzahl Spiele ($r = -0.77$) signifikant kleiner ist als $0$,$t(373) = -23.33$, $p < 0.001$. Der Zusammenhang der Art je höher die Kaufbereitschaft, desto tiefer die Anzahl Spiele im Haushalt, ist stark.
 :::
 
 ::: {#big-five-cor .exercise}
@@ -4025,28 +2669,28 @@ c)  Testen Sie, ob die Korrelationen von Null abweichen und berichten Sie das Er
 ::: solution
 Zuerst wird der Datensatz mit `Jamovi` eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-big-five-cor-input).
 
-```{r sol-big-five-cor-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/08-exr-big-five-cor-jmv-input.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/08-exr-big-five-cor-jmv-input} \caption{Jamovi Eingabe.}(\#fig:sol-big-five-cor-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildungen \@ref(fig:sol-big-five-cor-output-koorelationsmatrix) und \@ref(fig:sol-big-five-cor-output-koorelationsmatrixdiagramm).
 
-```{r sol-big-five-cor-output-koorelationsmatrix, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/08-exr-big-five-cor-jmv-output-korrelationsmatrix.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/08-exr-big-five-cor-jmv-output-korrelationsmatrix} \caption{Jamovi Ausgabe.}(\#fig:sol-big-five-cor-output-koorelationsmatrix)
+\end{figure}
 
-```{r sol-big-five-cor-output-koorelationsmatrixdiagramm, out.width='100%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/08-exr-big-five-cor-jmv-output-korrelationsmatrixdiagramm.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/08-exr-big-five-cor-jmv-output-korrelationsmatrixdiagramm} \caption{Jamovi Ausgabe.}(\#fig:sol-big-five-cor-output-koorelationsmatrixdiagramm)
+\end{figure}
 
 Damit können die Teilfragen beantwortet werden.
 
 a)  Die Korrelationen können direkt aus Abbildung \@ref(fig:sol-big-five-cor-output-koorelationsmatrix) entnommen werden. Die stärkste positive Korrelation beschreibt den Zusammenhang zwischen Extraversion und Openness ($r = 0.267$). Diese Korrelation ist als mittel einzustufen und bedeutet je extravertierter eine Person ist desto höhere Werte hat sie tendenziell auch bei der Offenheit. Die stärkste negative Korrelation beschreibt den Zusammenhang zwischen Neuroticism und Conscientiousness ($r = -0.368$). Dies ist ebenfalls eine mittlere Korrelation. Sie bedeutet je neurotischer jemand ist, desto tiefere Werte für Conscientiousness hat die Person. Die schwächste Korrelation beschreibt den Zusammenhang zwischen Neuroticism und Openness ($r = -0.010$). Es handelt sich um einen schwachen Zusammenhang. Da die Korrelation quasi Null ist, bedeutet dies, dass Neuroticism und Openness unabhängig voneinander sind. Das Vorzeichen der Korrelation deutet darauf hin, dass je höhere Neuroticism-Werte jemand hat, desto tiefere Openness-Werte hat die Person tendenziell.
 b)  Die Korrelationsmatrix als Diagramm in Abbildung \@ref(fig:sol-big-five-cor-output-koorelationsmatrixdiagramm) hat folgende Bestandteile: Auf der Diagonalen befinden sich die geschätzten Verteilungen der Merkmale. Je höher die Linie bei einem gewissen Wert, desto wahrscheinlicher ist eine Beobachtung an diesem Punkt. Im oberen Dreieck sind die paarweise Korrelationen abgetragen. Die Sterne stehen für den $p$-Wert der Absicherung gegen Null, wobei ein Stern einer Korrelation entspricht, welche bei Signifikanzniveau $5\%$ signifikant anders ist als Null. Im unteren Dreieck sind paarweise Streudiagramme aufgeführt und eine sogenannte Regressionsgerade, welche die Punkte am besten linear abbildet. Hier können Korrelationen grafisch erkannt werde und Anomalien wie zum Beispiel Aussreisser oder nicht lineare Zusammenhänge erkannt werden.
 c) Die entsprechenden Zusammenhänge wurden bereits in a) identifiziert.
-> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Openness und Extraversion ($r = 0.267$) signifikant von $0$ unterscheidet, `r absichern_pearson(0.267, 500)`, $`r 0.000001 %>% report_p(3)`$.
-> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Neuroticism und Conscientiousness ($r = -0.368$) signifikant von $0$ unterscheidet, `r absichern_pearson(-0.368, 500)`, $`r 0.000001 %>% report_p(3)`$.
-> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Neuroticism und Openness ($r = -0.010$) nicht signifikant von $0$ unterscheidet, `r absichern_pearson(-0.010, 500)`, $`r 0.81686 %>% report_p(3)`$.
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Openness und Extraversion ($r = 0.267$) signifikant von $0$ unterscheidet, $t(498) = 6.18$, $p < 0.001$.
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Neuroticism und Conscientiousness ($r = -0.368$) signifikant von $0$ unterscheidet, $t(498) = -8.83$, $p < 0.001$.
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Neuroticism und Openness ($r = -0.010$) nicht signifikant von $0$ unterscheidet, $t(498) = -0.22$, $p = .817$.
 :::
 
 ::: {#hairloss-sex .exercise}
@@ -4057,46 +2701,9 @@ Ziel:
 -->
 ```
 
-```{r exr-hairloss-sex}
-gen_exr_hairloss_sex <- function(){
-  n <- 375
-  mu <- 
-  sigma <- 
-  Omega <- matrix(c(1, 0.2, 0.45,
-                  0.2, 1, 0.5,
-                  0.45, 0.5, 1), nrow = 3)
-  
-  dd = rcorrelated(n, 
-                   mu = c(4,18,30),
-                   sds = c(1.5,5,6),
-                   Omega = Omega,
-                   colnames = c("hns", "ases", "age"))
-  dd <- dd %>% 
-    mutate(hns = hns %>% round(),
-           hns = case_when(hns > 7 ~7,
-                           hns < 1 ~1,
-                           TRUE~hns),
-           ases = ases %>% round(1),
-           ases = case_when(ases < 5 ~ 5,
-                            ases > 30 ~ 30,
-                            TRUE~ ases),
-           age = age %>% round(1))
-    
-  file_name <- '08-exr-haarausfall-sex.sav'
-  dd %>% write_sav(file_name)
-  corr_mat_pearson <- dd %>% cor()
-  corr_mat_spearman <- dd %>% cor(method = "spearman")
-  jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
-    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  jmv_partcorr <- (dd %>% 
-    jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
-    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  return(mget(ls()))
-}
-exr_hairloss_sex <- gen_exr_hairloss_sex()
-```
 
-Mit einer Studie soll der Zusammenhang zwischen Haarausfall und erfülltem Sexualleben bei männlichen Patienten eruiert werden [@tas2018]. Die Schwere des Haarausfalls wird mit der Hamilton-Norwood-Schema HNS ganzzahlig von $1$ bis $7$ gemessen, wobei jede höhere Zahl für ein neues zunehmendes Haarausfallstadium steht[@hamilton1951]. Die Dysfunktionalität des Sexuallebens wird mit der Arizona Sexual Experience Scale ASES von $5$ bis $30$ Punkten gemessen, wobei höhere Zahlen auf eine sexuelle Dysfunktion hindeuten [@mcgahuey2016]. Bei diesem Instrument führen mehrere Likert-skalierte Items zum Endpunkteergebnis. Es wurden Daten erhoben, welche unter `r inline_code(exr_hairloss_sex$file_name)` verfügbar sind.
+
+Mit einer Studie soll der Zusammenhang zwischen Haarausfall und erfülltem Sexualleben bei männlichen Patienten eruiert werden [@tas2018]. Die Schwere des Haarausfalls wird mit der Hamilton-Norwood-Schema HNS ganzzahlig von $1$ bis $7$ gemessen, wobei jede höhere Zahl für ein neues zunehmendes Haarausfallstadium steht[@hamilton1951]. Die Dysfunktionalität des Sexuallebens wird mit der Arizona Sexual Experience Scale ASES von $5$ bis $30$ Punkten gemessen, wobei höhere Zahlen auf eine sexuelle Dysfunktion hindeuten [@mcgahuey2016]. Bei diesem Instrument führen mehrere Likert-skalierte Items zum Endpunkteergebnis. Es wurden Daten erhoben, welche unter ``08-exr-haarausfall-sex.sav`` verfügbar sind.
 
 a) Welcher Korrelationskoeffizient ist hier am ehesten angebracht?
 b) Berechnen Sie die Korrelation nach Spearman, sichern Sie diese zweiseitig gegen Null ab und interpretieren Sie die Stärke des Zusammenhangs.
@@ -4107,31 +2714,31 @@ c) Angenommen alle Merkmale wären intervallskaliert und normalverteilt. Berechn
 a) Die Messung mit der ASES ist intervallskaliert. Die Messung des Haarausfalls dagegen kann sowohl als ordinalskaliert oder intervallskaliert betrachtet werden. Einerseits entsprechen die Zahlen auf der HNS verschiedenen abgegrenzten und klassifizierten Stadien der Progression des Haarausfalls. Dies deutet auf eine ordinalskaliertes Merkmal hin. Andererseits braucht es hier keine grosse Vorstellungskraft, sich eine $3.23$ vorzustellen. Das wäre wie Stadium $3$ mit ein wenig zusätzlichem Haarausfall. Aufgrund dieser Überlegung wäre hier sowohl der Korrelationskoeffizient nach Pearson wie der nach Spearman angebracht. Für letzteren müsste noch die Normalverteilung überprüft werden, was hier nicht gemacht wird.
 b) Zuerst wird der Datensatz mit `Jamovi` eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-hairloss-sex-input-spearman).
 
-```{r sol-hairloss-sex-input-spearman, out.width='100%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/08-exr-hairloss-sex-jmv-input-spearman.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/08-exr-hairloss-sex-jmv-input-spearman} \caption{Jamovi Eingabe.}(\#fig:sol-hairloss-sex-input-spearman)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-hairloss-sex-output-spearman)
 
-```{r sol-hairloss-sex-output-spearman, out.width='50%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/08-exr-hairloss-sex-jmv-output-spearman.jpg")
-```
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/08-exr-hairloss-sex-jmv-output-spearman} \caption{Jamovi Ausgabe.}(\#fig:sol-hairloss-sex-output-spearman)
+\end{figure}
 
-> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Spearman ergibt, dass sich die Korrelation zwischen Haarausfall und Dysfunktion der Sexualität ($r = `r round(exr_hairloss_sex$corr_mat_spearman['hns', 'ases'],2)`$) signifikant von $0$ unterscheidet, `r absichern_pearson(exr_hairloss_sex$corr_mat_spearman['hns', 'ases'], exr_hairloss_sex$n)`, $`r exr_hairloss_sex$jmv_corr %>% filter(name_rho == "ases") %>% pull(hns_rhop) %>% as.numeric() %>% report_p(3)`$. Die Korrelation ist als mittel einzustufen.
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Spearman ergibt, dass sich die Korrelation zwischen Haarausfall und Dysfunktion der Sexualität ($r = 0.24$) signifikant von $0$ unterscheidet, $t(373) = 4.7$, $p < 0.001$. Die Korrelation ist als mittel einzustufen.
 
 c) Zuerst wird der Datensatz mit `Jamovi` eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-hairloss-sex-input-partiell).
 
-```{r sol-hairloss-sex-input-partiell, out.width='100%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/08-exr-hairloss-sex-jmv-input-partiell.jpg")
-```
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/08-exr-hairloss-sex-jmv-input-partiell} \caption{Jamovi Eingabe.}(\#fig:sol-hairloss-sex-input-partiell)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-hairloss-sex-output-partiell)
 
-```{r sol-hairloss-sex-output-partiell, out.width='50%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/08-exr-hairloss-sex-jmv-output-partiell.jpg")
-```
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/08-exr-hairloss-sex-jmv-output-partiell} \caption{Jamovi Ausgabe.}(\#fig:sol-hairloss-sex-output-partiell)
+\end{figure}
 
-> Die zweiseitige Absicherung gegen Null der partiellen Korrelation ergibt, dass sich die Korrelation zwischen Haarausfall und Dysfunktion der Sexualität unter Berücksichtigung des Alters als Störfaktor ($r = `r round(exr_hairloss_sex$jmv_partcorr %>% filter(name_r == "ases") %>% pull("hns_r") %>% as.numeric(),2)`$) nicht signifikant von $0$ unterscheidet, `r absichern_partiell(exr_hairloss_sex$jmv_partcorr %>% filter(name_r == "ases") %>% pull("hns_r") %>% as.numeric(), exr_hairloss_sex$n)`, $`r exr_hairloss_sex$jmv_partcorr %>% filter(name_r == "ases") %>% pull(hns_rp) %>% as.numeric() %>% report_p(3)`$. Die Korrelation ist als schwach einzustufen.
+> Die zweiseitige Absicherung gegen Null der partiellen Korrelation ergibt, dass sich die Korrelation zwischen Haarausfall und Dysfunktion der Sexualität unter Berücksichtigung des Alters als Störfaktor ($r = 0.02$) nicht signifikant von $0$ unterscheidet, $t(372) = 0.35$, $p = .728$. Die Korrelation ist als schwach einzustufen.
 :::
 
 
@@ -4150,33 +2757,27 @@ Berechnen Sie (a) Punktbiseriale Korrelation und (b) die biserielle Rangkorrelat
 
 a) Zuerst wird der Datensatz mit `Jamovi` eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \@ref(fig:sol-ehe-burnout-pointcorrelation-input).
 
-```{r sol-ehe-burnout-pointcorrelation-input, fig.show = 'hold', out.height='50%', fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/08-exr-ehe-burnout-pointcorrelation-jmv-input1.jpg")
-knitr::include_graphics("figures/08-exr-ehe-burnout-pointcorrelation-jmv-input2.jpg")
-```
+\begin{figure}
+\includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input1} \includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input2} \caption{Jamovi Eingabe.}(\#fig:sol-ehe-burnout-pointcorrelation-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-ehe-burnout-pointcorrelation-output)
 
-```{r sol-ehe-burnout-pointcorrelation-output, fig.show = 'hold', out.height='50%', fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/08-exr-ehe-burnout-pointcorrelation-jmv-output1.jpg")
-knitr::include_graphics("figures/08-exr-ehe-burnout-pointcorrelation-jmv-output2.jpg")
-```
+\begin{figure}
+\includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output1} \includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output2} \caption{Jamovi Ausgabe.}(\#fig:sol-ehe-burnout-pointcorrelation-output)
+\end{figure}
 
 Daraus ergibt sich
-$$ r = \frac{10.99- 10.15}{(51+61)\cdot 2.01}\sqrt{51\cdot 61} = `r round( (10.99-10.15)/((51+61)*2.01)*sqrt(51*61),2)`.$$
+$$ r = \frac{10.99- 10.15}{(51+61)\cdot 2.01}\sqrt{51\cdot 61} = 0.21.$$
 Hier wurden die Zwischenresultate mit zwei Nachkommastellen aus `Jamovi` gezogen. Je eher eine Ärztin unverheiratet ist, desto höher ist der Burnout-Wert. Der Zusammenhang ist als mittel einzustufen.
 
 b) Die Analyseparameter in `Jamovi` werden nun geändert, siehe Abbildung \@ref(fig:sol-ehe-burnout-rankcorrelation-input).
 
-```{r sol-ehe-burnout-rankcorrelation-input, fig.cap='Jamovi Eingabe.'}
-knitr::include_graphics("figures/08-exr-ehe-burnout-pointcorrelation-jmv-input3.jpg")
-```
+![(\#fig:sol-ehe-burnout-rankcorrelation-input)Jamovi Eingabe.](figures/08-exr-ehe-burnout-pointcorrelation-jmv-input3.jpg) 
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-ehe-burnout-rankcorrelation-output)
 
-```{r sol-ehe-burnout-rankcorrelation-output, fig.cap='Jamovi Ausgabe.'}
-knitr::include_graphics("figures/08-exr-ehe-burnout-pointcorrelation-jmv-output3.jpg")
-```
+![(\#fig:sol-ehe-burnout-rankcorrelation-output)Jamovi Ausgabe.](figures/08-exr-ehe-burnout-pointcorrelation-jmv-output3.jpg) 
 
 Die biseriale Rangkorrelation ist also $r = -0.212$. Je eher eine Ärztin verheiratet ist, desto tiefer ist der Burnout-Wert. Der Zusammenhang ist als mittel einzustufen. Achtung das Vorzeichen der biserialen Rangkorrelation hängt einzig davon ab, welche Gruppe (verheiratet/unverheiratet) als erste Gruppe in `Jamovi` hinterlegt ist. In diesem Datensatz ist dies, sofern nichts geändert wird die unverheiratete Gruppe.
 :::
@@ -4188,44 +2789,7 @@ Ziel:
 - 
 -->
 
-```{r exr-test-preparation}
-gen_exr_test_preparation <- function(){
-  n <- 170
-  Omega <- matrix(c(1, -0.23, -0.27,
-                  -0.23, 1, 0.41,
-                  -0.27, 0.41, 1), nrow = 3)
-  
-  dd = rcorrelated(n, 
-                   mu = c(47.9, 72.1, 5),
-                   sds = c(10, 10, 2),
-                   Omega = Omega,
-                   colnames = c("Prüfungsangst", "Prüfungsresultat", "Vorbereitung"))
-  dd <- dd %>%
-    mutate(Prüfungsangst = Prüfungsangst %>% round(),
-           Prüfungsangst = case_when(Prüfungsangst > 75 ~75,
-                           Prüfungsangst < 1 ~1,
-                           TRUE~Prüfungsangst),
-           Prüfungsresultat = Prüfungsresultat %>% round(1),
-           Prüfungsresultat = case_when(Prüfungsresultat > 100 ~100,
-                           Prüfungsangst < 1 ~1,
-                           TRUE~Prüfungsresultat),
-           Vorbereitung = case_when(Vorbereitung < 0 ~ 0,
-                            Vorbereitung > 10 ~ 10,
-                            TRUE~ Vorbereitung),
-           Vorbereitung = Vorbereitung %>% round())
-    
-  file_name <- '08-exr-test-preparation.sav'
-  dd %>% write_sav(file_name)
-  corr_mat_pearson <- dd %>% cor()
-  jmv_corr <- jmv::corrMatrix(dd, spearman = FALSE)$matrix$asDF %>%
-    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  jmv_partcorr <- (dd %>%
-    jmv::corrPart(vars = c('Prüfungsangst', 'Prüfungsresultat'),controls = "Vorbereitung"))$matrix$asDF%>%
-    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  return(mget(ls()))
-}
-exr_test_preparation <- gen_exr_test_preparation()
-```
+
 
 
 Es ist bekannt, dass Prüfungsangst zu schlechterern Prüfungsergebnissen führt. In einer Studie soll herausgefunden werden, wie dieser Zusammenhang durch die Vorbereitung beeinflusst wird [@yusefzadeh2019]. Dafür wurde die Prüfungsangst mit dem test anxiety inventory TAI (von $0-75$), das Prüfungsergebnis (von $0-100$ Punkte) und die Vorbereitung (von $0-10$) gemessen. Letztere beruhte darauf, wie viele Prüfungsvorbereitungsgelegenheiten wahrgenommen wurde.
@@ -4237,23 +2801,21 @@ b) Berechnen Sie die partielle Korrelation indem Sie für die Vorbereitung kontr
 :::{.solution}
 Die Analyseparameter in `Jamovi` werden nun geändert, siehe Abbildung \@ref(fig:sol-test-preparation-input).
 
-```{r sol-test-preparation-input, fig.cap='Jamovi Eingabe.', fig.show='hold', out.width='50%'}
-knitr::include_graphics("figures/08-exr-test-preparation-jmv-input1.jpg")
-knitr::include_graphics("figures/08-exr-test-preparation-jmv-input2.jpg")
-```
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-input1} \includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-input2} \caption{Jamovi Eingabe.}(\#fig:sol-test-preparation-input)
+\end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-test-preparation-output)
 
-```{r sol-test-preparation-output, fig.cap='Jamovi Ausgabe.', fig.show='hold', out.width='50%'}
-knitr::include_graphics("figures/08-exr-test-preparation-jmv-output1.jpg")
-knitr::include_graphics("figures/08-exr-test-preparation-jmv-output2.jpg")
-```
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-output1} \includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-output2} \caption{Jamovi Ausgabe.}(\#fig:sol-test-preparation-output)
+\end{figure}
 
 a) 
-> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Prüfungsangst und Prüfungsresultat ($r = `r round(exr_test_preparation$corr_mat['Prüfungsangst', 'Prüfungsresultat'],2)`$) signifikant von $0$ unterscheidet, `r absichern_pearson(exr_test_preparation$corr_mat['Prüfungsangst', 'Prüfungsresultat'], exr_test_preparation$n)`, $`r exr_test_preparation$jmv_corr %>% filter(name_r == "Prüfungsresultat") %>% pull(Prüfungsangst_rp) %>% as.numeric() %>% report_p(3)`$. Die Korrelation deutet auf einen schwachen Zusammenhang der Art je mehr Prüfungsangst desto schlechter das Prüfungsresultat.
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Prüfungsangst und Prüfungsresultat ($r = -0.17$) signifikant von $0$ unterscheidet, $t(168) = -2.22$, $p = .028$. Die Korrelation deutet auf einen schwachen Zusammenhang der Art je mehr Prüfungsangst desto schlechter das Prüfungsresultat.
 
 b)
-> Die zweiseitige Absicherung gegen Null der partiellen Korrelation ergibt, dass sich die Korrelation zwischen Prüfungsangst und Prüfungsresultat unter Berücksichtigung der Vorbereitung als Störfaktor ($r = `r round(exr_test_preparation$jmv_partcorr %>% filter(name_r == "Prüfungsresultat") %>% pull("Prüfungsangst_r") %>% as.numeric(),2)`$) nicht signifikant von $0$ unterscheidet, `r absichern_partiell(exr_test_preparation$jmv_partcorr %>% filter(name_r == "Prüfungsresultat") %>% pull("Prüfungsangst_r") %>% as.numeric(), exr_test_preparation$n)`, $`r exr_test_preparation$jmv_partcorr %>% filter(name_r == "Prüfungsresultat") %>% pull(Prüfungsangst_rp) %>% as.numeric() %>% report_p(3)`$. Die partielle Korrelation deutet auf einen schwachen Zusammenhang der Art je mehr Prüfungsangst desto schlechter das Prüfungsresultat.
+> Die zweiseitige Absicherung gegen Null der partiellen Korrelation ergibt, dass sich die Korrelation zwischen Prüfungsangst und Prüfungsresultat unter Berücksichtigung der Vorbereitung als Störfaktor ($r = -0.1$) nicht signifikant von $0$ unterscheidet, $t(167) = -1.32$, $p = .189$. Die partielle Korrelation deutet auf einen schwachen Zusammenhang der Art je mehr Prüfungsangst desto schlechter das Prüfungsresultat.
 
 :::
 
@@ -4302,31 +2864,14 @@ Ziel:
 -->
 ```
 
-```{r exr-test-spearman}
-gen_exr_test_spearman <- function(){
-  n <- 122
-  dd <- tibble(wartezeit = rexp(n, 1/10),
-         wartezeit_jittered = wartezeit + rnorm(n, 1, 3),
-         zufriedenheit = case_when(
-           wartezeit_jittered > 2 ~ 4,
-           wartezeit_jittered > 5 ~ 3,
-           wartezeit_jittered > 10 ~ 2,
-           wartezeit_jittered > 15 ~ 1,
-           TRUE~5))
-    
-  file_name <- 'tests/08-test-spearman.sav'
-  dd %>% write_sav(file_name)
-  return(mget(ls()))
-}
-exr_test_spearman <- gen_exr_test_spearman()
-```
+
 
 Im folgenden wird eine Korrelation zwischen der Wartezeit am Flughafen und der Gästezufriedenheit berechnet. Dabei wird festgestellt, dass beide Merkmale intervallskaliert aber nicht normalverteilt sind. `Jamovi` liefert die Ausgabe in Abbildung \@ref(fig:sol-test-spearman-output).
 
 
-```{r sol-test-spearman-output, fig.cap='Jamovi Eingabe.', fig.show='hold', out.width='50%'}
-knitr::include_graphics("figures/08-exr-test-spearman-jmv-output.jpg")
-```
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/08-exr-test-spearman-jmv-output} \caption{Jamovi Eingabe.}(\#fig:sol-test-spearman-output)
+\end{figure}
 
 Welche der folgenden Aussagen sind wahr welche falsch?
 
@@ -4372,27 +2917,9 @@ Ziel:
 -->
 ```
 
-```{r exr-cancer-smoking}
-gen_exr_cancer_smoking <- function(){
-  dd <- tibble(lung = c("cancer", "cancer", "no_cancer", "no_cancer"),
-               habit = c("smoking", "no_smoking", "smoking", "no_smoking"),
-               counts = c(150,50,100,297))
-    
-  file_name <- '09-exr-cancer-smoking.sav'
-  dd %>% write_sav(file_name)
-  # corr_mat_pearson <- dd %>% cor()
-  # corr_mat_spearman <- dd %>% cor(method = "spearman")
-  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  # jmv_partcorr <- (dd %>% 
-  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  return(mget(ls()))
-}
-exr_cancer_smoking <- gen_exr_cancer_smoking()
-```
 
-Um den Zusammenhang zwischen rauchen und Lungenkrebs zu analsyieren haben Forschende in einer Studie $200$ an Lungenkrebs erkankte und $397$ nicht an Lungenkrebs erkrankte Menschen zu ihrem Rauchverhalten befragt. Die Forschenden haben die Daten im Datensatz `r inline_code(exr_cancer_smoking$file_name)` aggregiert zur Verfügung gestellt. Lose nach @matos1998.
+
+Um den Zusammenhang zwischen rauchen und Lungenkrebs zu analsyieren haben Forschende in einer Studie $200$ an Lungenkrebs erkankte und $397$ nicht an Lungenkrebs erkrankte Menschen zu ihrem Rauchverhalten befragt. Die Forschenden haben die Daten im Datensatz ``09-exr-cancer-smoking.sav`` aggregiert zur Verfügung gestellt. Lose nach @matos1998.
 
 a) Handelt es sich um eine Fall-Kontroll (case-control) Studie oder um eine Kohortenstudie?
 b) Identifizieren Sie abhängige und unabhängige Variable. Wie gross ist die Inzidenz in der exponierten und nicht exponierten Gruppe?
@@ -4415,36 +2942,9 @@ Ziel:
 -->
 ```
 
-```{r exr-depression-training}
-gen_exr_depression_training <- function(){
-  n11 <- 22
-  n12 <- 25
-  n21 <- 23
-  n22 <- 7
-  dd <- tibble(depression = c(rep("depressiv",n11),
-                        rep("depressiv",n12),
-                        rep("nicht_depressiv",n21),
-                        rep("nicht_depressiv",n22)),
-         training = c(rep("oft",n11),
-                      rep("selten",n12),
-                      rep("oft",n21),
-                      rep("selten",n22)))
-    
-  file_name <- '09-exr-depression-training.sav'
-  dd %>% write_sav(file_name)
-  # corr_mat_pearson <- dd %>% cor()
-  # corr_mat_spearman <- dd %>% cor(method = "spearman")
-  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  # jmv_partcorr <- (dd %>% 
-  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  return(mget(ls()))
-}
-exr_depression_training <- gen_exr_depression_training()
-```
+
 <!-- TODO: Ausschöpfen odds ratio, etc -->
-Eine Psychologin hat versucht herauszufinden, wie sich das Trainingsverhalten auf depressive Stimmungen auswirkt. Dazu hat sie $77$ Leute befragt und die Resultate in Datensatz `r inline_code(exr_depression_training$file_name)` erhalten.
+Eine Psychologin hat versucht herauszufinden, wie sich das Trainingsverhalten auf depressive Stimmungen auswirkt. Dazu hat sie $77$ Leute befragt und die Resultate in Datensatz ``09-exr-depression-training.sav`` erhalten.
 
 a) Sind die Variablen Depression und Trainingsverhalten voneinander abhängig, wenn bei $\alpha = 5\%$ getestet wird?
 b) Muss hier bei der Berechnung der Prüfgrösse die Yates-Korrektur verwendet werden?
@@ -4467,36 +2967,9 @@ Ziel:
 -->
 ```
 
-```{r exr-bio-milch}
-gen_exr_bio_milch <- function(){
-  n11 <- 7
-  n12 <- 3
-  n21 <- 2
-  n22 <- 3
-  dd <- tibble(behauptet = c(rep("bio",n11),
-                        rep("bio",n12),
-                        rep("nicht_bio",n21),
-                        rep("nicht_bio",n22)),
-         ist = c(rep("bio",n11),
-                      rep("nicht_bio",n12),
-                      rep("bio",n21),
-                      rep("nicht_bio",n22)))
-    
-  file_name <- '09-exr-bio-milch.sav'
-  dd %>% write_sav(file_name)
-  # corr_mat_pearson <- dd %>% cor()
-  # corr_mat_spearman <- dd %>% cor(method = "spearman")
-  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  # jmv_partcorr <- (dd %>% 
-  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  return(mget(ls()))
-}
-exr_bio_milch <- gen_exr_bio_milch()
-```
+
 <!-- TODO: Ausschöpfen odds ratio, etc -->
-Eine Freundin von Ihnen behauptet, dass Sie Bio-Milch und nicht Bio-Milch am Geschmack unterscheiden kann. Sie geben ihr $9$-mal Bio-Milch zu trinken und $6$-mal nicht Bio-Milch zu trinken bei einem doppel-blind Test. Es entstehen die Daten in `r inline_code(exr_bio_milch$file_name)`. 
+Eine Freundin von Ihnen behauptet, dass Sie Bio-Milch und nicht Bio-Milch am Geschmack unterscheiden kann. Sie geben ihr $9$-mal Bio-Milch zu trinken und $6$-mal nicht Bio-Milch zu trinken bei einem doppel-blind Test. Es entstehen die Daten in ``09-exr-bio-milch.sav``. 
 
 a) Welcher Test ist bei dieser Datenlage angebracht, um zu testen, ob die Freundin tatsächlich Bio und nicht Bio-Milch am Geschmack unterschieden kann?
 b) Konnte die Freundin ihre Behauptung im Experiment nachweisen? Führen Sie den angebrachten Test durch und berichten Sie das Resultat inklusive Effektstärke.
@@ -4515,36 +2988,9 @@ Ziel:
 -->
 ```
 
-```{r exr-covid-sterblichkeit}
-gen_exr_covid_sterblichkeit <- function(){
-  n11 <- 29
-  n12 <- 671
-  n21 <- 25
-  n22 <- 345
-  dd <- tibble(geschlecht = c(rep("weiblich",n11),
-                        rep("weiblich",n12),
-                        rep("maennlich",n21),
-                        rep("maennlich",n22)),
-         covid = c(rep("gestorben",n11),
-                      rep("genesen",n12),
-                      rep("gestorben",n21),
-                      rep("genesen",n22)))
-    
-  file_name <- '09-exr-covid-sterblichkeit.sav'
-  dd %>% write_sav(file_name)
-  # corr_mat_pearson <- dd %>% cor()
-  # corr_mat_spearman <- dd %>% cor(method = "spearman")
-  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  # jmv_partcorr <- (dd %>% 
-  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  return(mget(ls()))
-}
-exr_covid_sterblichkeit <- gen_exr_covid_sterblichkeit()
-```
+
 <!-- TODO: Ausschöpfen odds ratio, etc -->
-Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert (fiktive Zahlen, siehe Daten in `r inline_code(exr_covid_sterblichkeit$file_name)`). Wie gross ist die Inzidenz, das relative Risiko und der odds ratio und wie werden diese Grössen interpretiert? Was sind UV und AV?
+Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert (fiktive Zahlen, siehe Daten in ``09-exr-covid-sterblichkeit.sav``). Wie gross ist die Inzidenz, das relative Risiko und der odds ratio und wie werden diese Grössen interpretiert? Was sind UV und AV?
 :::
 
 ::: solution

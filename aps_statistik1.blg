@@ -1,0 +1,60 @@
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: aps_statistik1.aux
+The style file: apalike.bst
+Database file #1: book.bib
+Database file #2: packages.bib
+Warning--empty journal in beck1988
+Warning--empty journal in blachnio2016
+Warning--empty journal in dolan2009
+Warning--empty journal in hamilton1951
+Warning--empty journal in matos1998
+Warning--empty journal in robinson2021
+Warning--empty journal in sandstrom2022
+Warning--empty journal in schuckit1996
+Warning--empty journal in skinner1982
+Warning--empty journal in tas2018
+Warning--empty journal in yusefzadeh2019
+Warning--empty journal in zimmerman2004
+You've used 29 entries,
+            1935 wiz_defined-function locations,
+            656 strings with 9628 characters,
+and the built_in function-call counts, 12807 in all, are:
+= -- 1185
+> -- 723
+< -- 10
++ -- 270
+- -- 258
+* -- 1197
+:= -- 2290
+add.period$ -- 90
+call.type$ -- 29
+change.case$ -- 269
+chr.to.int$ -- 29
+cite$ -- 41
+duplicate$ -- 398
+empty$ -- 779
+format.name$ -- 289
+if$ -- 2384
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 29
+newline$ -- 151
+num.names$ -- 87
+pop$ -- 248
+preamble$ -- 1
+purify$ -- 274
+quote$ -- 0
+skip$ -- 294
+stack$ -- 0
+substring$ -- 821
+swap$ -- 19
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 166
+warning$ -- 12
+while$ -- 92
+width$ -- 0
+write$ -- 371
+(There were 12 warnings)
