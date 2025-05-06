@@ -3658,7 +3658,7 @@ TODO.
 
 # (PART) Zusammenhang zweier Merkmale {.unnumbered}
 
-# Zusammenhang zweier Merkmale
+# Korrelation
 
 Bislang wurde immer ein Merkmal separat betrachtet und manchmal wurden Untergruppen verglichen. Dabei ging es um die Frage, wo der Erwartungswert des Merkmals liegt und ob er einem gewissen Wert entspricht respektive für zwei Gruppen identisch ist. Wird jetzt noch ein zweites Merkmal beobachtet stellt sich die Frage, wie sich die Merkmale zueinander verhalten.
 
@@ -3980,7 +3980,7 @@ Sichern Sie die Korrelation nach Pearson zwischen Angststörung und Depression i
 :::
 
 ::: solution
-> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Depression und Angststörung ($r = `r round(exm_depression_alkohol_angst$corr_mat['Depression', 'Angst'],2)`$) sich signifikant von $0$ unterscheidet, `r absichern_pearson(exm_depression_alkohol_angst$corr_mat['Depression', 'Angst'], exm_depression_alkohol_angst$n)`, $`r exm_depression_alkohol_angst$jmv_corr %>% filter(name_r == "Angst") %>% pull(Depression_rp) %>% as.numeric() %>% report_p(3)`$. Der Zusammenhang ist stark.
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Depression und Angststörung ($r = `r round(exm_depression_alkohol_angst$corr_mat['Depression', 'Angst'],2)`$) sich signifikant von $0$ unterscheidet, `r absichern_pearson(exm_depression_alkohol_angst$corr_mat['Depression', 'Angst'], exm_depression_alkohol_angst$n)`, $`r exm_depression_alkohol_angst$jmv_corr %>% filter(name_r == "Angst") %>% pull(Depression_rp) %>% as.numeric() %>% report_p(3)`$. Die Korrelation deutet auf einen starken Zusammenhang der Art je mehr Depression desto grösser die Angststörung hin.
 :::
 
 ::: {#zahlungsbereitschaft-berichten .exercise}
@@ -3995,9 +3995,9 @@ Testen Sie mit dem Datensatz `r inline_code(exm_zahlungsbereitschaft$file_name)`
 :::
 
 ::: solution
-> Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Alter ($r = `r round(exm_zahlungsbereitschaft$corr_mat['Preis', 'Alter'],2)`$) nicht signifikant grösser ist als $0$, `r absichern_pearson(exm_zahlungsbereitschaft$corr_mat['Preis', 'Alter'], exm_zahlungsbereitschaft$n)`, $`r exm_zahlungsbereitschaft$jmv_pos %>% filter(name_r == "Preis") %>% pull(Alter_rp) %>% as.numeric() %>% report_p(3)`$. Der Zusammenhang ist schwach.
+> Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Alter ($r = `r round(exm_zahlungsbereitschaft$corr_mat['Preis', 'Alter'],2)`$) nicht signifikant grösser ist als $0$, `r absichern_pearson(exm_zahlungsbereitschaft$corr_mat['Preis', 'Alter'], exm_zahlungsbereitschaft$n)`, $`r exm_zahlungsbereitschaft$jmv_pos %>% filter(name_r == "Preis") %>% pull(Alter_rp) %>% as.numeric() %>% report_p(3)`$. Der Zusammenhang ist so schwach, dass keine Richtung des Zusammenhangs aus dem Korrelationskoeffizenten abgelesen werden kann.
 >
-> Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Anzahl Spiele ($r = `r round(exm_zahlungsbereitschaft$corr_mat['Preis', 'Anzahl_spiele'],2)`$) signifikant kleiner ist als $0$,`r absichern_pearson(exm_zahlungsbereitschaft$corr_mat['Preis', 'Anzahl_spiele'], exm_zahlungsbereitschaft$n)`, $`r exm_zahlungsbereitschaft$jmv_neg %>% filter(name_r == "Preis") %>% pull(Anzahl_spiele_rp) %>% as.numeric() %>% report_p(3)`$. Der Zusammenhang ist stark.
+> Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Anzahl Spiele ($r = `r round(exm_zahlungsbereitschaft$corr_mat['Preis', 'Anzahl_spiele'],2)`$) signifikant kleiner ist als $0$,`r absichern_pearson(exm_zahlungsbereitschaft$corr_mat['Preis', 'Anzahl_spiele'], exm_zahlungsbereitschaft$n)`, $`r exm_zahlungsbereitschaft$jmv_neg %>% filter(name_r == "Preis") %>% pull(Anzahl_spiele_rp) %>% as.numeric() %>% report_p(3)`$. Der Zusammenhang der Art je höher die Kaufbereitschaft, desto tiefer die Anzahl Spiele im Haushalt, ist stark.
 :::
 
 ::: {#big-five-cor .exercise}
@@ -4008,7 +4008,7 @@ Ziel: Psychologische Anwendung.
 -->
 ```
 
-Im Rahmen einer Studie wurde die Big-5-Persönlichkeitszüge von $500$ psychologie Studierenden abgefragt [@dolan2009]. Der Datensatz ist unter `Jamovi > Öffnen > Datenbibliothek > Big 5 (Dolan, Oort, Stoel & Wicherts, 2009)` verfügbar.
+Im Rahmen einer Studie wurde die Big-5-Persönlichkeitszüge von $500$ psychologie Studierenden abgefragt [@dolan2009]. Der Datensatz ist unter `Jamovi > Öffnen > Datenbibliothek > Big 5 (Dolan, Oort, Stoel & Wicherts, 2009)` verfügbar. Die Merkmale Neuroticism, Extraversion, Openness, Agreeableness und Conscientiousness stehen für Neurotizismus, Extraversion, Offenheit, Verträglichkeit und Gewissenhaftikeit respektive.
 
 a)  Berechnen Sie paarweise die Korrelation nach Pearson zwischen allen fünf Merkmalen. Erklären und interpretieren Sie die stärkste negative, die stärkste positive Korrelation und die schwächste Korrelation.
 b)  Zeichnen Sie die Korrelationsmatrix als Diagramm, inklusive Variablendichte und Statistiken und erklären Sie, was für Diagrammtypen Sie sehen.
@@ -4034,12 +4034,15 @@ knitr::include_graphics("figures/08-exr-big-five-cor-jmv-output-korrelationsmatr
 
 Damit können die Teilfragen beantwortet werden.
 
-a)  Die Korrelationen können direkt aus Abbildung \@ref(fig:sol-big-five-cor-output-koorelationsmatrix) entnommen werden. Die stärkste positive Korrelation beschreibt den Zusammenhang zwischen Extraversion und Openness ($r = 0.27$). Diese Korrelation ist als mittel einzustufen und bedeutet je extravertierter eine Person ist desto höhere Werte hat sie tendenziell auch bei der Offenheit. Die stärkste negative Korrelation beschreibt den Zusammenhang zwischen Neuroticism und Conscientiousness ($r = -0.37$). Dies ist ebenfalls eine mittlere Korrelation. Sie bedeutet je neurotischer jemand ist, desto tiefere Werte für Conscientiousness hat die Person. Die schwächste Korrelation beschreibt den Zusammenhang zwischen Neuroticism und Openness ($r = -0.010$). Es handelt sich um einen schwachen Zusammenhang. Da die Korrelation quasi Null ist, bedeutet dies, dass Neuroticism und Openness unabhängig voneinander sind. Das Vorzeichen der Korrelation deutet darauf hin, dass je höhere Neuroticism-Werte jemand hat, desto tiefere Openness-Werte hat die Person tendenziell.
+a)  Die Korrelationen können direkt aus Abbildung \@ref(fig:sol-big-five-cor-output-koorelationsmatrix) entnommen werden. Die stärkste positive Korrelation beschreibt den Zusammenhang zwischen Extraversion und Openness ($r = 0.267$). Diese Korrelation ist als mittel einzustufen und bedeutet je extravertierter eine Person ist desto höhere Werte hat sie tendenziell auch bei der Offenheit. Die stärkste negative Korrelation beschreibt den Zusammenhang zwischen Neuroticism und Conscientiousness ($r = -0.368$). Dies ist ebenfalls eine mittlere Korrelation. Sie bedeutet je neurotischer jemand ist, desto tiefere Werte für Conscientiousness hat die Person. Die schwächste Korrelation beschreibt den Zusammenhang zwischen Neuroticism und Openness ($r = -0.010$). Es handelt sich um einen schwachen Zusammenhang. Da die Korrelation quasi Null ist, bedeutet dies, dass Neuroticism und Openness unabhängig voneinander sind. Das Vorzeichen der Korrelation deutet darauf hin, dass je höhere Neuroticism-Werte jemand hat, desto tiefere Openness-Werte hat die Person tendenziell.
 b)  Die Korrelationsmatrix als Diagramm in Abbildung \@ref(fig:sol-big-five-cor-output-koorelationsmatrixdiagramm) hat folgende Bestandteile: Auf der Diagonalen befinden sich die geschätzten Verteilungen der Merkmale. Je höher die Linie bei einem gewissen Wert, desto wahrscheinlicher ist eine Beobachtung an diesem Punkt. Im oberen Dreieck sind die paarweise Korrelationen abgetragen. Die Sterne stehen für den $p$-Wert der Absicherung gegen Null, wobei ein Stern einer Korrelation entspricht, welche bei Signifikanzniveau $5\%$ signifikant anders ist als Null. Im unteren Dreieck sind paarweise Streudiagramme aufgeführt und eine sogenannte Regressionsgerade, welche die Punkte am besten linear abbildet. Hier können Korrelationen grafisch erkannt werde und Anomalien wie zum Beispiel Aussreisser oder nicht lineare Zusammenhänge erkannt werden.
-c)  TODO
+c) Die entsprechenden Zusammenhänge wurden bereits in a) identifiziert.
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Openness und Extraversion ($r = 0.267$) signifikant von $0$ unterscheidet, `r absichern_pearson(0.267, 500)`, $`r 0.000001 %>% report_p(3)`$.
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Neuroticism und Conscientiousness ($r = -0.368$) signifikant von $0$ unterscheidet, `r absichern_pearson(-0.368, 500)`, $`r 0.000001 %>% report_p(3)`$.
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Neuroticism und Openness ($r = -0.010$) nicht signifikant von $0$ unterscheidet, `r absichern_pearson(-0.010, 500)`, $`r 0.81686 %>% report_p(3)`$.
 :::
 
-::: {#body-shoe .exercise}
+::: {#hairloss-sex .exercise}
 ```{=html}
 <!-- 
 Ziel: 
@@ -4171,9 +4174,379 @@ knitr::include_graphics("figures/08-exr-ehe-burnout-pointcorrelation-jmv-output3
 Die biseriale Rangkorrelation ist also $r = -0.212$. Je eher eine Ärztin verheiratet ist, desto tiefer ist der Burnout-Wert. Der Zusammenhang ist als mittel einzustufen. Achtung das Vorzeichen der biserialen Rangkorrelation hängt einzig davon ab, welche Gruppe (verheiratet/unverheiratet) als erste Gruppe in `Jamovi` hinterlegt ist. In diesem Datensatz ist dies, sofern nichts geändert wird die unverheiratete Gruppe.
 :::
 
+
+::: {.exercise  #test-preparation}
+<!-- 
+Ziel: 
+- 
+-->
+
+```{r exr-test-preparation}
+gen_exr_test_preparation <- function(){
+  n <- 170
+  Omega <- matrix(c(1, -0.23, -0.27,
+                  -0.23, 1, 0.41,
+                  -0.27, 0.41, 1), nrow = 3)
+  
+  dd = rcorrelated(n, 
+                   mu = c(47.9, 72.1, 5),
+                   sds = c(10, 10, 2),
+                   Omega = Omega,
+                   colnames = c("Prüfungsangst", "Prüfungsresultat", "Vorbereitung"))
+  dd <- dd %>%
+    mutate(Prüfungsangst = Prüfungsangst %>% round(),
+           Prüfungsangst = case_when(Prüfungsangst > 75 ~75,
+                           Prüfungsangst < 1 ~1,
+                           TRUE~Prüfungsangst),
+           Prüfungsresultat = Prüfungsresultat %>% round(1),
+           Prüfungsresultat = case_when(Prüfungsresultat > 100 ~100,
+                           Prüfungsangst < 1 ~1,
+                           TRUE~Prüfungsresultat),
+           Vorbereitung = case_when(Vorbereitung < 0 ~ 0,
+                            Vorbereitung > 10 ~ 10,
+                            TRUE~ Vorbereitung),
+           Vorbereitung = Vorbereitung %>% round())
+    
+  file_name <- '08-exr-test-preparation.sav'
+  dd %>% write_sav(file_name)
+  corr_mat_pearson <- dd %>% cor()
+  jmv_corr <- jmv::corrMatrix(dd, spearman = FALSE)$matrix$asDF %>%
+    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  jmv_partcorr <- (dd %>%
+    jmv::corrPart(vars = c('Prüfungsangst', 'Prüfungsresultat'),controls = "Vorbereitung"))$matrix$asDF%>%
+    rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  return(mget(ls()))
+}
+exr_test_preparation <- gen_exr_test_preparation()
+```
+
+
+Es ist bekannt, dass Prüfungsangst zu schlechterern Prüfungsergebnissen führt. In einer Studie soll herausgefunden werden, wie dieser Zusammenhang durch die Vorbereitung beeinflusst wird [@yusefzadeh2019]. Dafür wurde die Prüfungsangst mit dem test anxiety inventory TAI (von $0-75$), das Prüfungsergebnis (von $0-100$ Punkte) und die Vorbereitung (von $0-10$) gemessen. Letztere beruhte darauf, wie viele Prüfungsvorbereitungsgelegenheiten wahrgenommen wurde.
+
+a) Berechnen Sie die Korrelation zwischen Prüfungsangst und Prüfungsergebnis und sichern Sie diese zweiseitig gegen Null ab. Berichten Sie das Ergebnis.
+b) Berechnen Sie die partielle Korrelation indem Sie für die Vorbereitung kontrollieren und sichern Sie diese zweiseitig gegen Null ab. Berichten Sie das Ergebnis.
+:::
+
+:::{.solution}
+Die Analyseparameter in `Jamovi` werden nun geändert, siehe Abbildung \@ref(fig:sol-test-preparation-input).
+
+```{r sol-test-preparation-input, fig.cap='Jamovi Eingabe.', fig.show='hold', out.width='50%'}
+knitr::include_graphics("figures/08-exr-test-preparation-jmv-input1.jpg")
+knitr::include_graphics("figures/08-exr-test-preparation-jmv-input2.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-test-preparation-output)
+
+```{r sol-test-preparation-output, fig.cap='Jamovi Ausgabe.', fig.show='hold', out.width='50%'}
+knitr::include_graphics("figures/08-exr-test-preparation-jmv-output1.jpg")
+knitr::include_graphics("figures/08-exr-test-preparation-jmv-output2.jpg")
+```
+
+a) 
+> Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Prüfungsangst und Prüfungsresultat ($r = `r round(exr_test_preparation$corr_mat['Prüfungsangst', 'Prüfungsresultat'],2)`$) signifikant von $0$ unterscheidet, `r absichern_pearson(exr_test_preparation$corr_mat['Prüfungsangst', 'Prüfungsresultat'], exr_test_preparation$n)`, $`r exr_test_preparation$jmv_corr %>% filter(name_r == "Prüfungsresultat") %>% pull(Prüfungsangst_rp) %>% as.numeric() %>% report_p(3)`$. Die Korrelation deutet auf einen schwachen Zusammenhang der Art je mehr Prüfungsangst desto schlechter das Prüfungsresultat.
+
+b)
+> Die zweiseitige Absicherung gegen Null der partiellen Korrelation ergibt, dass sich die Korrelation zwischen Prüfungsangst und Prüfungsresultat unter Berücksichtigung der Vorbereitung als Störfaktor ($r = `r round(exr_test_preparation$jmv_partcorr %>% filter(name_r == "Prüfungsresultat") %>% pull("Prüfungsangst_r") %>% as.numeric(),2)`$) nicht signifikant von $0$ unterscheidet, `r absichern_partiell(exr_test_preparation$jmv_partcorr %>% filter(name_r == "Prüfungsresultat") %>% pull("Prüfungsangst_r") %>% as.numeric(), exr_test_preparation$n)`, $`r exr_test_preparation$jmv_partcorr %>% filter(name_r == "Prüfungsresultat") %>% pull(Prüfungsangst_rp) %>% as.numeric() %>% report_p(3)`$. Die partielle Korrelation deutet auf einen schwachen Zusammenhang der Art je mehr Prüfungsangst desto schlechter das Prüfungsresultat.
+
+:::
+
+
+
+
 ## Test
 
+::: {.exercise  #test-theorie-korrelation}
+Welche der folgenden Aussagen zum Zusammenhang zwischen zwei Merkmalen sind wahr, welche falsch?
+
+a) Eine Korrelation von $r = -0.23$ deutet auf einen mittleren Zusammenhang der Art je mehr desto weniger hin.
+b) Ein Grund für eine Korrelation von $r=0$ kann sein, dass der Zusammenhang nicht linear ist.
+c) Je weiter die Korrelation von $0$ weg ist, desto eher ist der Zusammenhang von der Stichprobe auf die Grundgesamtheit übertragbar.
+d) Eine Korrelation von $r = 0.2$ bedeutet, dass das erste Merkmal ursächlich für den Zusammenhang ist.
+:::
+
+:::{.solution}
+a) Richtig
+b) Richtig
+c) Richtig
+d) Falsch
+:::
+
+::: {.exercise  #test-theorie-korrelation1}
+Welche der folgenden Aussagen zum Zusammenhang zwischen zwei Merkmalen sind wahr, welche falsch?
+
+a) Um den Zusammenhang zwischen Gästezufriedenheit (Likert $1$ bis $5$) und der Zimmerart (basic oder superior) zu ermitteln, kann die Korrelation nach Spearman verwendet werden.
+b) Um den Zusammenhang zwischen Anzahl Konflikten um Wasserrechte (intervallskaliert, nicht normalverteilt) und dem Wohlstand der beiden Gemeinden (intervallskaliert, normalverteilt) zu ermitteln, kann die Korrelation nach Pearson verwendet werden.
+c) Um den Zusammenhang zwischen Alphabetisierungsrate (intervallskaliert,  normalverteilt) und Bruttoinslansprodukt (intervallskaliert, normalverteilt) von Ländern zu ermitteln, kann die Korrelation nach Pearson verwendet werden.
+d) Die partielle Korrelation ist immer weniger oder gleich stark, als die direkt gemessene Korrelation.
+:::
+
+:::{.solution}
+a) Falsch
+b) Falsch
+c) Richtig
+d) Falsch
+:::
+
+::: {#test-spearman .exercise}
+```{=html}
+<!-- 
+Ziel: 
+- Starke Korrelation gegen Null absichern
+-->
+```
+
+```{r exr-test-spearman}
+gen_exr_test_spearman <- function(){
+  n <- 122
+  dd <- tibble(wartezeit = rexp(n, 1/10),
+         wartezeit_jittered = wartezeit + rnorm(n, 1, 3),
+         zufriedenheit = case_when(
+           wartezeit_jittered > 2 ~ 4,
+           wartezeit_jittered > 5 ~ 3,
+           wartezeit_jittered > 10 ~ 2,
+           wartezeit_jittered > 15 ~ 1,
+           TRUE~5))
+    
+  file_name <- 'tests/08-test-spearman.sav'
+  dd %>% write_sav(file_name)
+  return(mget(ls()))
+}
+exr_test_spearman <- gen_exr_test_spearman()
+```
+
+Im folgenden wird eine Korrelation zwischen der Wartezeit am Flughafen und der Gästezufriedenheit berechnet. Dabei wird festgestellt, dass beide Merkmale intervallskaliert aber nicht normalverteilt sind. `Jamovi` liefert die Ausgabe in Abbildung \@ref(fig:sol-test-spearman-output).
+
+
+```{r sol-test-spearman-output, fig.cap='Jamovi Eingabe.', fig.show='hold', out.width='50%'}
+knitr::include_graphics("figures/08-exr-test-spearman-jmv-output.jpg")
+```
+
+Welche der folgenden Aussagen sind wahr welche falsch?
+
+a) Es ist richtig die Korrelation hier mit dem Korrelationskoeffiizienten nach Pearson zu berechnen.
+b) Die Korrelation sagt aus, dass die Gäste mit höherer Zufriedenheit weniger lange warten.
+c) Der Zusammenhang ist schwach.
+d) Es wurden $120$ Personen befragt.
+e) Die Nullhypothese, dass die Korrelation in der Population bei $-0.302$ liegt, kann aufgrund des vorliegenden Testreultats abgelehnt werden.
+f) Die Korrelation unterscheidet sich signifikant von $0$.
+:::
+
+
+:::{.solution}
+a) Falsch
+b) Richtig
+c) Falsch
+d) Falsch
+e) Falsch
+f) Richtig
+
+:::
+
 <!--chapter:end:src/08-korrelation.Rmd-->
+
+# Zusammenhang dichotomer Merkmale
+
+
+
+
+## Übungen
+
+<!-- Dogs and cancer -->
+<!-- https://stats.libretexts.org/Bookshelves/Introductory_Statistics/OpenIntro_Statistics_(Diez_et_al)./06%3A_Inference_for_Categorical_Data/6.02%3A_Difference_of_Two_Proportions -->
+
+::: {#cancer-smoking .exercise}
+```{=html}
+<!-- 
+https://pubmed.ncbi.nlm.nih.gov/9857993/
+Ziel: 
+- Vierfelder Testentscheidung
+- Vierfeldertest
+- Zusammenhangsmasse
+-->
+```
+
+```{r exr-cancer-smoking}
+gen_exr_cancer_smoking <- function(){
+  dd <- tibble(lung = c("cancer", "cancer", "no_cancer", "no_cancer"),
+               habit = c("smoking", "no_smoking", "smoking", "no_smoking"),
+               counts = c(150,50,100,297))
+    
+  file_name <- '09-exr-cancer-smoking.sav'
+  dd %>% write_sav(file_name)
+  # corr_mat_pearson <- dd %>% cor()
+  # corr_mat_spearman <- dd %>% cor(method = "spearman")
+  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  # jmv_partcorr <- (dd %>% 
+  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  return(mget(ls()))
+}
+exr_cancer_smoking <- gen_exr_cancer_smoking()
+```
+
+Um den Zusammenhang zwischen rauchen und Lungenkrebs zu analsyieren haben Forschende in einer Studie $200$ an Lungenkrebs erkankte und $397$ nicht an Lungenkrebs erkrankte Menschen zu ihrem Rauchverhalten befragt. Die Forschenden haben die Daten im Datensatz `r inline_code(exr_cancer_smoking$file_name)` aggregiert zur Verfügung gestellt. Lose nach @matos1998.
+
+a) Handelt es sich um eine Fall-Kontroll (case-control) Studie oder um eine Kohortenstudie?
+b) Identifizieren Sie abhängige und unabhängige Variable. Wie gross ist die Inzidenz in der exponierten und nicht exponierten Gruppe?
+c) Können hier das _RR_ und der _OR_ verwendet werden, um den Zusammenhang zu beschreiben?
+d) Wie gross ist der odds ratio und was heisst das für die rauchenden Menschen?
+e) Ist der Zusammenhang von der Stichprobe auf alle Menschen übertragbar?
+:::
+
+::: solution
+TODO
+:::
+
+::: {#depression-training .exercise}
+```{=html}
+<!-- 
+Ziel: 
+- Vierfelder Testentscheidung
+- Vierfeldertest
+- Zusammenhangsmasse
+-->
+```
+
+```{r exr-depression-training}
+gen_exr_depression_training <- function(){
+  n11 <- 22
+  n12 <- 25
+  n21 <- 23
+  n22 <- 7
+  dd <- tibble(depression = c(rep("depressiv",n11),
+                        rep("depressiv",n12),
+                        rep("nicht_depressiv",n21),
+                        rep("nicht_depressiv",n22)),
+         training = c(rep("oft",n11),
+                      rep("selten",n12),
+                      rep("oft",n21),
+                      rep("selten",n22)))
+    
+  file_name <- '09-exr-depression-training.sav'
+  dd %>% write_sav(file_name)
+  # corr_mat_pearson <- dd %>% cor()
+  # corr_mat_spearman <- dd %>% cor(method = "spearman")
+  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  # jmv_partcorr <- (dd %>% 
+  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  return(mget(ls()))
+}
+exr_depression_training <- gen_exr_depression_training()
+```
+<!-- TODO: Ausschöpfen odds ratio, etc -->
+Eine Psychologin hat versucht herauszufinden, wie sich das Trainingsverhalten auf depressive Stimmungen auswirkt. Dazu hat sie $77$ Leute befragt und die Resultate in Datensatz `r inline_code(exr_depression_training$file_name)` erhalten.
+
+a) Sind die Variablen Depression und Trainingsverhalten voneinander abhängig, wenn bei $\alpha = 5\%$ getestet wird?
+b) Muss hier bei der Berechnung der Prüfgrösse die Yates-Korrektur verwendet werden?
+c) Wie gross ist der Unterschied zwischen der Prüfgrösse mit und ohne Yates-Korrektur hier?
+d) Wie gross ist die Vierfelderkorrelation zwischen den beiden Variablen? Interpretieren Sie den Zusammenhang.
+:::
+
+::: solution
+TODO
+:::
+
+::: {#bio-milch .exercise}
+```{=html}
+<!-- 
+Ziel: 
+- Daten als einzelne Beobachtungen
+- Vierfelder Testentscheidung
+- Vierfeldertest
+- Zusammenhangsmasse
+-->
+```
+
+```{r exr-bio-milch}
+gen_exr_bio_milch <- function(){
+  n11 <- 7
+  n12 <- 3
+  n21 <- 2
+  n22 <- 3
+  dd <- tibble(behauptet = c(rep("bio",n11),
+                        rep("bio",n12),
+                        rep("nicht_bio",n21),
+                        rep("nicht_bio",n22)),
+         ist = c(rep("bio",n11),
+                      rep("nicht_bio",n12),
+                      rep("bio",n21),
+                      rep("nicht_bio",n22)))
+    
+  file_name <- '09-exr-bio-milch.sav'
+  dd %>% write_sav(file_name)
+  # corr_mat_pearson <- dd %>% cor()
+  # corr_mat_spearman <- dd %>% cor(method = "spearman")
+  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  # jmv_partcorr <- (dd %>% 
+  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  return(mget(ls()))
+}
+exr_bio_milch <- gen_exr_bio_milch()
+```
+<!-- TODO: Ausschöpfen odds ratio, etc -->
+Eine Freundin von Ihnen behauptet, dass Sie Bio-Milch und nicht Bio-Milch am Geschmack unterscheiden kann. Sie geben ihr $9$-mal Bio-Milch zu trinken und $6$-mal nicht Bio-Milch zu trinken bei einem doppel-blind Test. Es entstehen die Daten in `r inline_code(exr_bio_milch$file_name)`. 
+
+a) Welcher Test ist bei dieser Datenlage angebracht, um zu testen, ob die Freundin tatsächlich Bio und nicht Bio-Milch am Geschmack unterschieden kann?
+b) Konnte die Freundin ihre Behauptung im Experiment nachweisen? Führen Sie den angebrachten Test durch und berichten Sie das Resultat inklusive Effektstärke.
+:::
+
+::: solution
+TODO
+:::
+
+
+::: {#covid-sterblichkeit .exercise}
+```{=html}
+<!-- 
+Ziel: 
+- Starke Korrelation gegen Null absichern
+-->
+```
+
+```{r exr-covid-sterblichkeit}
+gen_exr_covid_sterblichkeit <- function(){
+  n11 <- 29
+  n12 <- 671
+  n21 <- 25
+  n22 <- 345
+  dd <- tibble(geschlecht = c(rep("weiblich",n11),
+                        rep("weiblich",n12),
+                        rep("maennlich",n21),
+                        rep("maennlich",n22)),
+         covid = c(rep("gestorben",n11),
+                      rep("genesen",n12),
+                      rep("gestorben",n21),
+                      rep("genesen",n22)))
+    
+  file_name <- '09-exr-covid-sterblichkeit.sav'
+  dd %>% write_sav(file_name)
+  # corr_mat_pearson <- dd %>% cor()
+  # corr_mat_spearman <- dd %>% cor(method = "spearman")
+  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  # jmv_partcorr <- (dd %>% 
+  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  return(mget(ls()))
+}
+exr_covid_sterblichkeit <- gen_exr_covid_sterblichkeit()
+```
+<!-- TODO: Ausschöpfen odds ratio, etc -->
+Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert (fiktive Zahlen, siehe Daten in `r inline_code(exr_covid_sterblichkeit$file_name)`). Wie gross ist die Inzidenz, das relative Risiko und der odds ratio und wie werden diese Grössen interpretiert? Was sind UV und AV?
+:::
+
+::: solution
+TODO
+:::
+
+## Test
+
+<!--chapter:end:src/09-vierfelder.Rmd-->
 
 # Begriffsverzeichnis {-}
 

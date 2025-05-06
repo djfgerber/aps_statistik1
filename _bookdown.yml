@@ -29,5 +29,6 @@ rmd_files: [
   "src/06-gruppenvergleich_intervallskalierte_variablen.Rmd",
   "src/07-u_test.Rmd",
   "src/08-korrelation.Rmd",
+  "src/09-vierfelder.Rmd",
   "src/98-glossary.Rmd"
 ]

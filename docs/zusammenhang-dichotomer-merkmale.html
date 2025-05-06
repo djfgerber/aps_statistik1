@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 9 Zusammenhang dichotomer Merkmale | Statistik 1</title>
+  <meta name="description" content="Kapitel 9 Zusammenhang dichotomer Merkmale | Statistik 1" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 9 Zusammenhang dichotomer Merkmale | Statistik 1" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 9 Zusammenhang dichotomer Merkmale | Statistik 1" />
+  
+  
+  
+
+<meta name="author" content="Daniel J. F. Gerber" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="korrelation.html"/>
+<link rel="next" href="begriffsverzeichnis.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.11/grViz.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Vorwort</a></li>
+<li class="chapter" data-level="1" data-path="einleitung.html"><a href="einleitung.html"><i class="fa fa-check"></i><b>1</b> Einleitung</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="einleitung.html"><a href="einleitung.html#worum-geht-es"><i class="fa fa-check"></i><b>1.1</b> Worum geht es?</a></li>
+<li class="chapter" data-level="1.2" data-path="einleitung.html"><a href="einleitung.html#inhaltlicher-aufbau"><i class="fa fa-check"></i><b>1.2</b> Inhaltlicher Aufbau</a></li>
+<li class="chapter" data-level="1.3" data-path="einleitung.html"><a href="einleitung.html#buch-lesen"><i class="fa fa-check"></i><b>1.3</b> Wie soll ich dieses Buch lesen?</a></li>
+<li class="chapter" data-level="1.4" data-path="einleitung.html"><a href="einleitung.html#formeln"><i class="fa fa-check"></i><b>1.4</b> Formeln, Symbole und Zahlen</a></li>
+<li class="chapter" data-level="1.5" data-path="einleitung.html"><a href="einleitung.html#software"><i class="fa fa-check"></i><b>1.5</b> Software</a></li>
+</ul></li>
+<li class="part"><span><b>I Eine intervallskaliertes Merkmal</b></span></li>
+<li class="chapter" data-level="2" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html"><i class="fa fa-check"></i><b>2</b> Intervallskalierte Merkmale</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskalierte-merkmale-definition"><i class="fa fa-check"></i><b>2.1</b> Was ist ein intervallskaliertes Merkmal?</a></li>
+<li class="chapter" data-level="2.2" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskalierte-merkmale-beschreibung"><i class="fa fa-check"></i><b>2.2</b> Wie kann ein intervallskaliertes Merkmal beschrieben werden?</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#verteilung"><i class="fa fa-check"></i><b>2.2.1</b> Verteilung</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#zentralitaet"><i class="fa fa-check"></i><b>2.2.2</b> Zentralität</a></li>
+<li class="chapter" data-level="2.2.3" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#variabilitaet"><i class="fa fa-check"></i><b>2.2.3</b> Variabilität</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskaliertes-merkmal-uebungen"><i class="fa fa-check"></i><b>2.3</b> Übungen</a></li>
+<li class="chapter" data-level="2.4" data-path="intervallskalierte-merkmale.html"><a href="intervallskalierte-merkmale.html#intervallskaliertes-merkmal-test"><i class="fa fa-check"></i><b>2.4</b> Test</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html"><i class="fa fa-check"></i><b>3</b> Stichprobenziehung</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#stichprobenziehung-problem"><i class="fa fa-check"></i><b>3.1</b> Was ist das Problem der Stichprobenziehung?</a></li>
+<li class="chapter" data-level="3.2" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#stichprobenziehung-loesung"><i class="fa fa-check"></i><b>3.2</b> Wie kann man Aussagen über die Grundgesamtheit machen?</a></li>
+<li class="chapter" data-level="3.3" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#übungen"><i class="fa fa-check"></i><b>3.3</b> Übungen</a></li>
+<li class="chapter" data-level="3.4" data-path="stichprobenziehung.html"><a href="stichprobenziehung.html#test"><i class="fa fa-check"></i><b>3.4</b> Test</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html"><i class="fa fa-check"></i><b>4</b> Durchschnitt und Standardabweichung schätzen</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#wo-liegt-der-durchschnitt-der-grundgesamtheit"><i class="fa fa-check"></i><b>4.1</b> Wo liegt der Durchschnitt der Grundgesamtheit?</a></li>
+<li class="chapter" data-level="4.2" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#übungen-1"><i class="fa fa-check"></i><b>4.2</b> Übungen</a></li>
+<li class="chapter" data-level="4.3" data-path="durchschnitt-und-standardabweichung-schätzen.html"><a href="durchschnitt-und-standardabweichung-schätzen.html#test-1"><i class="fa fa-check"></i><b>4.3</b> Test</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html"><i class="fa fa-check"></i><b>5</b> Zentrale Tendenz testen</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html#entspricht-der-erwartungswert-einem-gewissen-wert"><i class="fa fa-check"></i><b>5.1</b> Entspricht der Erwartungswert einem gewissen Wert?</a></li>
+<li class="chapter" data-level="5.2" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html#weicht-der-gefundene-durchschnitt-stark-vom-hypothetischen-wert-ab"><i class="fa fa-check"></i><b>5.2</b> Weicht der gefundene Durchschnitt stark vom hypothetischen Wert ab?</a></li>
+<li class="chapter" data-level="5.3" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html#testvoraussetzungen"><i class="fa fa-check"></i><b>5.3</b> Testvoraussetzungen</a></li>
+<li class="chapter" data-level="5.4" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html#übungen-2"><i class="fa fa-check"></i><b>5.4</b> Übungen</a></li>
+<li class="chapter" data-level="5.5" data-path="zentrale-tendenz-testen.html"><a href="zentrale-tendenz-testen.html#test-2"><i class="fa fa-check"></i><b>5.5</b> Test</a></li>
+</ul></li>
+<li class="part"><span><b>II Zwei Gruppen vergleichen</b></span></li>
+<li class="chapter" data-level="6" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><i class="fa fa-check"></i><b>6</b> Gruppenmittelwertunterschied bei einem intervallskalierten und normalverteilten Merkmal</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#was-ist-das-problem-der-stichprobenziehung"><i class="fa fa-check"></i><b>6.1</b> Was ist das Problem der Stichprobenziehung?</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#erwartungswertunterschied-zweistichproben-t-test-nach-student"><i class="fa fa-check"></i><b>6.1.1</b> Erwartungswertunterschied Zweistichproben-<span class="math inline">\(t\)</span>-Test nach Student</a></li>
+<li class="chapter" data-level="6.1.2" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#erwartungswertunterschied-welch-test"><i class="fa fa-check"></i><b>6.1.2</b> Erwartungswertunterschied Welch Test</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#effektstärken"><i class="fa fa-check"></i><b>6.2</b> Effektstärken</a></li>
+<li class="chapter" data-level="6.3" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#testvoraussetzungen-1"><i class="fa fa-check"></i><b>6.3</b> Testvoraussetzungen</a></li>
+<li class="chapter" data-level="6.4" data-path="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#übungen-3"><i class="fa fa-check"></i><b>6.4</b> Übungen</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><i class="fa fa-check"></i><b>7</b> Gruppenmittelwertunterschied bei einem mindestens ordinalskalierten Merkmal</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#wie-stark-unterscheiden-sich-die-mediane"><i class="fa fa-check"></i><b>7.1</b> Wie stark unterscheiden sich die Mediane?</a></li>
+<li class="chapter" data-level="7.2" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#u-test-effect"><i class="fa fa-check"></i><b>7.2</b> Effektstärke</a></li>
+<li class="chapter" data-level="7.3" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#übungen-4"><i class="fa fa-check"></i><b>7.3</b> Übungen</a></li>
+<li class="chapter" data-level="7.4" data-path="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html"><a href="gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal.html#test-3"><i class="fa fa-check"></i><b>7.4</b> Test</a></li>
+</ul></li>
+<li class="part"><span><b>III Zusammenhang zweier Merkmale</b></span></li>
+<li class="chapter" data-level="8" data-path="korrelation.html"><a href="korrelation.html"><i class="fa fa-check"></i><b>8</b> Korrelation</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="korrelation.html"><a href="korrelation.html#wie-stark-ist-der-zusammenhang-zwischen-zwei-intervallskalierten-und-normalverteilten-variablen"><i class="fa fa-check"></i><b>8.1</b> Wie stark ist der Zusammenhang zwischen zwei intervallskalierten und normalverteilten Variablen?</a></li>
+<li class="chapter" data-level="8.2" data-path="korrelation.html"><a href="korrelation.html#wie-stark-ist-der-zusammenhang-zwischen-zwei-mindestens-ordinalskalierten-merkmalen"><i class="fa fa-check"></i><b>8.2</b> Wie stark ist der Zusammenhang zwischen zwei mindestens ordinalskalierten Merkmalen?</a></li>
+<li class="chapter" data-level="8.3" data-path="korrelation.html"><a href="korrelation.html#wie-stark-ist-der-zusammenhang-zwischen-einem-intervallskalierten-und-normalverteilten-merkmal-und-einem-dichotomen-merkmal"><i class="fa fa-check"></i><b>8.3</b> Wie stark ist der Zusammenhang zwischen einem intervallskalierten und normalverteilten Merkmal und einem dichotomen Merkmal?</a></li>
+<li class="chapter" data-level="8.4" data-path="korrelation.html"><a href="korrelation.html#wie-stark-ist-der-zusammenhang-zwischen-einem-mindestens-ordinalskalierten-merkmal-und-einem-dichotomen-merkmal"><i class="fa fa-check"></i><b>8.4</b> Wie stark ist der Zusammenhang zwischen einem mindestens ordinalskalierten Merkmal und einem dichotomen Merkmal?</a></li>
+<li class="chapter" data-level="8.5" data-path="korrelation.html"><a href="korrelation.html#stoerfaktor"><i class="fa fa-check"></i><b>8.5</b> Was ist eine Störfaktor und wie wird damit umgegangen?</a></li>
+<li class="chapter" data-level="8.6" data-path="korrelation.html"><a href="korrelation.html#übungen-5"><i class="fa fa-check"></i><b>8.6</b> Übungen</a></li>
+<li class="chapter" data-level="8.7" data-path="korrelation.html"><a href="korrelation.html#test-4"><i class="fa fa-check"></i><b>8.7</b> Test</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="zusammenhang-dichotomer-merkmale.html"><a href="zusammenhang-dichotomer-merkmale.html"><i class="fa fa-check"></i><b>9</b> Zusammenhang dichotomer Merkmale</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="zusammenhang-dichotomer-merkmale.html"><a href="zusammenhang-dichotomer-merkmale.html#übungen-6"><i class="fa fa-check"></i><b>9.1</b> Übungen</a></li>
+<li class="chapter" data-level="9.2" data-path="zusammenhang-dichotomer-merkmale.html"><a href="zusammenhang-dichotomer-merkmale.html#test-5"><i class="fa fa-check"></i><b>9.2</b> Test</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="begriffsverzeichnis.html"><a href="begriffsverzeichnis.html"><i class="fa fa-check"></i>Begriffsverzeichnis</a></li>
+<li class="chapter" data-level="" data-path="literaturverzeichnis.html"><a href="literaturverzeichnis.html"><i class="fa fa-check"></i>Literaturverzeichnis</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Statistik 1</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="zusammenhang-dichotomer-merkmale" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Kapitel 9</span> Zusammenhang dichotomer Merkmale<a href="zusammenhang-dichotomer-merkmale.html#zusammenhang-dichotomer-merkmale" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="übungen-6" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Übungen<a href="zusammenhang-dichotomer-merkmale.html#übungen-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<!-- Dogs and cancer -->
+<!-- https://stats.libretexts.org/Bookshelves/Introductory_Statistics/OpenIntro_Statistics_(Diez_et_al)./06%3A_Inference_for_Categorical_Data/6.02%3A_Difference_of_Two_Proportions -->
+<div class="exercise">
+<p><span id="exr:cancer-smoking" class="exercise"><strong>Übung 9.1  </strong></span></p>
+<!-- 
+https://pubmed.ncbi.nlm.nih.gov/9857993/
+Ziel: 
+- Vierfelder Testentscheidung
+- Vierfeldertest
+- Zusammenhangsmasse
+-->
+<p>Um den Zusammenhang zwischen rauchen und Lungenkrebs zu analsyieren haben Forschende in einer Studie <span class="math inline">\(200\)</span> an Lungenkrebs erkankte und <span class="math inline">\(397\)</span> nicht an Lungenkrebs erkrankte Menschen zu ihrem Rauchverhalten befragt. Die Forschenden haben die Daten im Datensatz <code>09-exr-cancer-smoking.sav</code> aggregiert zur Verfügung gestellt. Lose nach <span class="citation">Matos et al. (<a href="#ref-matos1998">1998</a>)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Handelt es sich um eine Fall-Kontroll (case-control) Studie oder um eine Kohortenstudie?</li>
+<li>Identifizieren Sie abhängige und unabhängige Variable. Wie gross ist die Inzidenz in der exponierten und nicht exponierten Gruppe?</li>
+<li>Können hier das <em>RR</em> und der <em>OR</em> verwendet werden, um den Zusammenhang zu beschreiben?</li>
+<li>Wie gross ist der odds ratio und was heisst das für die rauchenden Menschen?</li>
+<li>Ist der Zusammenhang von der Stichprobe auf alle Menschen übertragbar?</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-68" class="solution"><em>Lösung</em>. </span>TODO</p>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:depression-training" class="exercise"><strong>Übung 9.2  </strong></span></p>
+<!-- 
+Ziel: 
+- Vierfelder Testentscheidung
+- Vierfeldertest
+- Zusammenhangsmasse
+-->
+<!-- TODO: Ausschöpfen odds ratio, etc -->
+<p>Eine Psychologin hat versucht herauszufinden, wie sich das Trainingsverhalten auf depressive Stimmungen auswirkt. Dazu hat sie <span class="math inline">\(77\)</span> Leute befragt und die Resultate in Datensatz <code>09-exr-depression-training.sav</code> erhalten.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Sind die Variablen Depression und Trainingsverhalten voneinander abhängig, wenn bei <span class="math inline">\(\alpha = 5\%\)</span> getestet wird?</li>
+<li>Muss hier bei der Berechnung der Prüfgrösse die Yates-Korrektur verwendet werden?</li>
+<li>Wie gross ist der Unterschied zwischen der Prüfgrösse mit und ohne Yates-Korrektur hier?</li>
+<li>Wie gross ist die Vierfelderkorrelation zwischen den beiden Variablen? Interpretieren Sie den Zusammenhang.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-69" class="solution"><em>Lösung</em>. </span>TODO</p>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:bio-milch" class="exercise"><strong>Übung 9.3  </strong></span></p>
+<!-- 
+Ziel: 
+- Daten als einzelne Beobachtungen
+- Vierfelder Testentscheidung
+- Vierfeldertest
+- Zusammenhangsmasse
+-->
+<!-- TODO: Ausschöpfen odds ratio, etc -->
+<p>Eine Freundin von Ihnen behauptet, dass Sie Bio-Milch und nicht Bio-Milch am Geschmack unterscheiden kann. Sie geben ihr <span class="math inline">\(9\)</span>-mal Bio-Milch zu trinken und <span class="math inline">\(6\)</span>-mal nicht Bio-Milch zu trinken bei einem doppel-blind Test. Es entstehen die Daten in <code>09-exr-bio-milch.sav</code>.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Welcher Test ist bei dieser Datenlage angebracht, um zu testen, ob die Freundin tatsächlich Bio und nicht Bio-Milch am Geschmack unterschieden kann?</li>
+<li>Konnte die Freundin ihre Behauptung im Experiment nachweisen? Führen Sie den angebrachten Test durch und berichten Sie das Resultat inklusive Effektstärke.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-70" class="solution"><em>Lösung</em>. </span>TODO</p>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:covid-sterblichkeit" class="exercise"><strong>Übung 9.4  </strong></span></p>
+<!-- 
+Ziel: 
+- Starke Korrelation gegen Null absichern
+-->
+<!-- TODO: Ausschöpfen odds ratio, etc -->
+<p>Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert (fiktive Zahlen, siehe Daten in <code>09-exr-covid-sterblichkeit.sav</code>). Wie gross ist die Inzidenz, das relative Risiko und der odds ratio und wie werden diese Grössen interpretiert? Was sind UV und AV?</p>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-71" class="solution"><em>Lösung</em>. </span>TODO</p>
+</details>
+</div>
+</div>
+<div id="test-5" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Test<a href="zusammenhang-dichotomer-merkmale.html#test-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+<h3>Literaturverzeichnis<a href="literaturverzeichnis.html#literaturverzeichnis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-matos1998" class="csl-entry">
+Matos, E., M. Vilensky, P. Boffetta, and M. Kogevinas. 1998. <span>“Lung Cancer and Smoking: A Case-Control Study in Buenos Aires, Argentina.”</span> <em>Lung Cancer (Amsterdam, Netherlands)</em> 21 (3): 155–63. <a href="https://doi.org/10.1016/s0169-5002(98)00055-5">https://doi.org/10.1016/s0169-5002(98)00055-5</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="korrelation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="begriffsverzeichnis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": true,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": null
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/djfgerber/aps_statistik1/edit/main/src/09-vierfelder.Rmd",
+"text": "Edit this page"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["aps_statistik1.pdf", "pdf"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"info": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

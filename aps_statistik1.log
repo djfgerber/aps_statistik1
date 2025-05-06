@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  30 APR 2025 12:52
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  6 MAY 2025 14:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2148,24 +2148,19 @@ Underfull \hbox (badness 2269) in paragraph at lines 3316--3316
  []
 
 
-Underfull \vbox (badness 1231) has occurred while \output is active []
-
-
-
-[146]
 Overfull \hbox (0.11003pt too wide) in paragraph at lines 3321--3322
 \TU/lmr/m/n/10 Eine Studie will dieses Resultat reproduzieren. Die Facebook-Nutzungsintensität
  []
 
+
+
+[146]
 File: figures/icons/caution.png Graphic file (type bmp)
 <figures/icons/caution.png>
 
 Overfull \hbox (20.42116pt too wide) detected at line 3341
 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [][][]
  []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
@@ -2185,18 +2180,8 @@ Overfull \hbox (13.50002pt too wide) in paragraph at lines 3351--3352
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [148]
-
-
-Overfull \hbox (490.15466pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 8.3.  WIE STARK IST DER ZUSAMMENHANG ZWISCHEN EINEM INTERVALLSKALIERTEN UND NORMALVERTEILTEN MERKMAL UND EINEM DICHOTOMEN MERKMAL? \TU/lmr/m/n/10 149
- []
-
-[149]
 Underfull \hbox (badness 1394) in paragraph at lines 3381--3381
 []\TU/lmr/bx/n/14.4 Wie stark ist der Zusammenhang zwis-
  []
@@ -2208,29 +2193,34 @@ Underfull \hbox (badness 2197) in paragraph at lines 3381--3381
 
 
 
-[150]
+
+Overfull \hbox (412.65576pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 8.4.  WIE STARK IST DER ZUSAMMENHANG ZWISCHEN EINEM MINDESTENS ORDINALSKALIERTEN MERKMAL UND EINEM DICHOTOMEN MERKMAL? \TU/lmr/m/n/10 149
+ []
+
+[149]
 File: figures/icons/caution.png Graphic file (type bmp)
 <figures/icons/caution.png>
 
 
-
-Overfull \hbox (30.23122pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 8.5.  WAS IST EINE STÖRFAKTOR UND WIE WIRD DAMIT UMGEGANGEN? \TU/lmr/m/n/10 151
- []
-
-[151]
+[150]
 Underfull \hbox (badness 2495) in paragraph at lines 3452--3453
 []\TU/lmr/m/n/10 Testen Sie mit dem Datensatz \TU/lmtt/m/n/10 08-exm-zahlungsbereitschaft.sav \TU/lmr/m/n/10 aus
  []
 
 
+
+[151]
 Underfull \hbox (badness 10000) in paragraph at lines 3470--3471
-\TU/lmtt/m/n/10 Jamovi > Öffnen > Datenbibliothek > Big 5 (Dolan, Oort, Stoel &
+\TU/lmtt/m/n/10 Jamovi > Öffnen > Datenbibliothek > Big 5 (Dolan, Oort, Stoel
  []
 
 
+Underfull \hbox (badness 2173) in paragraph at lines 3470--3471
+\TU/lmtt/m/n/10 & Wicherts, 2009) \TU/lmr/m/n/10 verfügbar. Die Merkmale Neuroticism, Extraversion,
+ []
 
-[152]
+
 Underfull \hbox (badness 1577) in paragraph at lines 3478--3480
 []\TU/lmr/m/n/10 Zeichnen Sie die Korrelationsmatrix als Diagramm, inklusive Vari-
  []
@@ -2239,34 +2229,32 @@ File: figures/08-exr-big-five-cor-jmv-input.jpg Graphic file (type bmp)
 <figures/08-exr-big-five-cor-jmv-input.jpg>
 File: figures/08-exr-big-five-cor-jmv-output-korrelationsmatrix.jpg Graphic file (type bmp)
 <figures/08-exr-big-five-cor-jmv-output-korrelationsmatrix.jpg>
-
-
-[153]
 File: figures/08-exr-big-five-cor-jmv-output-korrelationsmatrixdiagramm.jpg Graphic file (type bmp)
 <figures/08-exr-big-five-cor-jmv-output-korrelationsmatrixdiagramm.jpg>
 
 
+[152]
+
+[153]
+
 [154]
 
 [155]
+
+[156]
 File: figures/08-exr-hairloss-sex-jmv-input-spearman.jpg Graphic file (type bmp)
 <figures/08-exr-hairloss-sex-jmv-input-spearman.jpg>
 File: figures/08-exr-hairloss-sex-jmv-output-spearman.jpg Graphic file (type bmp)
 <figures/08-exr-hairloss-sex-jmv-output-spearman.jpg>
-
-
-[156]
-
-[157]
 File: figures/08-exr-hairloss-sex-jmv-input-partiell.jpg Graphic file (type bmp)
 <figures/08-exr-hairloss-sex-jmv-input-partiell.jpg>
 File: figures/08-exr-hairloss-sex-jmv-output-partiell.jpg Graphic file (type bmp)
 <figures/08-exr-hairloss-sex-jmv-output-partiell.jpg>
 
 
-[158]
+[157]
 
-[159]
+[158]
 File: figures/08-exr-ehe-burnout-pointcorrelation-jmv-input1.jpg Graphic file (type bmp)
 <figures/08-exr-ehe-burnout-pointcorrelation-jmv-input1.jpg>
 File: figures/08-exr-ehe-burnout-pointcorrelation-jmv-input2.jpg Graphic file (type bmp)
@@ -2276,7 +2264,7 @@ File: figures/08-exr-ehe-burnout-pointcorrelation-jmv-output1.jpg Graphic file (
 File: figures/08-exr-ehe-burnout-pointcorrelation-jmv-output2.jpg Graphic file (type bmp)
 <figures/08-exr-ehe-burnout-pointcorrelation-jmv-output2.jpg>
 
-Underfull \hbox (badness 10000) in paragraph at lines 3610--3610
+Underfull \hbox (badness 10000) in paragraph at lines 3613--3613
 [][]
  []
 
@@ -2286,27 +2274,72 @@ File: figures/08-exr-ehe-burnout-pointcorrelation-jmv-output3.jpg Graphic file (
 <figures/08-exr-ehe-burnout-pointcorrelation-jmv-output3.jpg>
 
 
+[159]
+
 [160]
 
 [161]
 
 [162]
+File: figures/08-exr-test-preparation-jmv-input1.jpg Graphic file (type bmp)
+<figures/08-exr-test-preparation-jmv-input1.jpg>
+File: figures/08-exr-test-preparation-jmv-input2.jpg Graphic file (type bmp)
+<figures/08-exr-test-preparation-jmv-input2.jpg>
+
+Overfull \hbox (2.21909pt too wide) in paragraph at lines 3667--3667
+[][] [] 
+ []
+
+File: figures/08-exr-test-preparation-jmv-output1.jpg Graphic file (type bmp)
+<figures/08-exr-test-preparation-jmv-output1.jpg>
+File: figures/08-exr-test-preparation-jmv-output2.jpg Graphic file (type bmp)
+<figures/08-exr-test-preparation-jmv-output2.jpg>
+
+Overfull \hbox (2.23334pt too wide) in paragraph at lines 3673--3673
+[][] [] 
+ []
+
+
 
 [163]
 
-[164
+[164]
+Underfull \hbox (badness 3375) in paragraph at lines 3743--3745
+[]\TU/lmr/m/n/10 Um den Zusammenhang zwischen Alphabetisierungsrate (intervall-
+ []
 
-]
+
+Underfull \hbox (badness 3281) in paragraph at lines 3743--3745
+\TU/lmr/m/n/10 skaliert, normalverteilt) und Bruttoinslansprodukt (intervallskaliert,
+ []
+
+File: figures/08-exr-test-spearman-jmv-output.jpg Graphic file (type bmp)
+<figures/08-exr-test-spearman-jmv-output.jpg>
+
 
 [165]
 
-[166] (./aps_statistik1.bbl
+[166]
+\bbl@ensure@ngerman {Kapitel} 9.
+
 
 [167
 
 ]
 
-[168
+[168]
+
+[169
+
+]
+
+[170] (./aps_statistik1.bbl
+
+[171
+
+]
+
+[172
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 4--7
@@ -2340,21 +2373,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--58
 
 
 
-[169]
+[173]
 
-[170]
-Underfull \hbox (badness 10000) in paragraph at lines 136--140
+[174]
+Underfull \hbox (badness 10000) in paragraph at lines 146--150
 []\TU/lmr/m/n/10 Zimmerman, D. W. (2004).  A note on preliminary tests
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--140
+Underfull \hbox (badness 10000) in paragraph at lines 146--150
 \TU/lmr/m/n/10 of equality of variances.  57(1):173–181.  _eprint:
  []
 
 )
 
-[171] (./aps_statistik1.aux)
+[175] (./aps_statistik1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -2364,12 +2397,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 34414 strings out of 475846
- 754562 string characters out of 5773212
- 1185221 words of memory out of 5000000
- 56730 multiletter control sequences out of 15000+600000
+ 34552 strings out of 475846
+ 760848 string characters out of 5773212
+ 1185701 words of memory out of 5000000
+ 56863 multiletter control sequences out of 15000+600000
  565418 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,10n,114p,2090b,738s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aps_statistik1.pdf (171 pages).
+Output written on aps_statistik1.pdf (175 pages).

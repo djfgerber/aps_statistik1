@@ -1,0 +1,201 @@
+# Zusammenhang dichotomer Merkmale
+
+
+
+
+## Übungen
+
+<!-- Dogs and cancer -->
+<!-- https://stats.libretexts.org/Bookshelves/Introductory_Statistics/OpenIntro_Statistics_(Diez_et_al)./06%3A_Inference_for_Categorical_Data/6.02%3A_Difference_of_Two_Proportions -->
+
+::: {#cancer-smoking .exercise}
+```{=html}
+<!-- 
+https://pubmed.ncbi.nlm.nih.gov/9857993/
+Ziel: 
+- Vierfelder Testentscheidung
+- Vierfeldertest
+- Zusammenhangsmasse
+-->
+```
+
+```{r exr-cancer-smoking}
+gen_exr_cancer_smoking <- function(){
+  dd <- tibble(lung = c("cancer", "cancer", "no_cancer", "no_cancer"),
+               habit = c("smoking", "no_smoking", "smoking", "no_smoking"),
+               counts = c(150,50,100,297))
+    
+  file_name <- '09-exr-cancer-smoking.sav'
+  dd %>% write_sav(file_name)
+  # corr_mat_pearson <- dd %>% cor()
+  # corr_mat_spearman <- dd %>% cor(method = "spearman")
+  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  # jmv_partcorr <- (dd %>% 
+  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  return(mget(ls()))
+}
+exr_cancer_smoking <- gen_exr_cancer_smoking()
+```
+
+Um den Zusammenhang zwischen rauchen und Lungenkrebs zu analsyieren haben Forschende in einer Studie $200$ an Lungenkrebs erkankte und $397$ nicht an Lungenkrebs erkrankte Menschen zu ihrem Rauchverhalten befragt. Die Forschenden haben die Daten im Datensatz `r inline_code(exr_cancer_smoking$file_name)` aggregiert zur Verfügung gestellt. Lose nach @matos1998.
+
+a) Handelt es sich um eine Fall-Kontroll (case-control) Studie oder um eine Kohortenstudie?
+b) Identifizieren Sie abhängige und unabhängige Variable. Wie gross ist die Inzidenz in der exponierten und nicht exponierten Gruppe?
+c) Können hier das _RR_ und der _OR_ verwendet werden, um den Zusammenhang zu beschreiben?
+d) Wie gross ist der odds ratio und was heisst das für die rauchenden Menschen?
+e) Ist der Zusammenhang von der Stichprobe auf alle Menschen übertragbar?
+:::
+
+::: solution
+TODO
+:::
+
+::: {#depression-training .exercise}
+```{=html}
+<!-- 
+Ziel: 
+- Vierfelder Testentscheidung
+- Vierfeldertest
+- Zusammenhangsmasse
+-->
+```
+
+```{r exr-depression-training}
+gen_exr_depression_training <- function(){
+  n11 <- 22
+  n12 <- 25
+  n21 <- 23
+  n22 <- 7
+  dd <- tibble(depression = c(rep("depressiv",n11),
+                        rep("depressiv",n12),
+                        rep("nicht_depressiv",n21),
+                        rep("nicht_depressiv",n22)),
+         training = c(rep("oft",n11),
+                      rep("selten",n12),
+                      rep("oft",n21),
+                      rep("selten",n22)))
+    
+  file_name <- '09-exr-depression-training.sav'
+  dd %>% write_sav(file_name)
+  # corr_mat_pearson <- dd %>% cor()
+  # corr_mat_spearman <- dd %>% cor(method = "spearman")
+  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  # jmv_partcorr <- (dd %>% 
+  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  return(mget(ls()))
+}
+exr_depression_training <- gen_exr_depression_training()
+```
+<!-- TODO: Ausschöpfen odds ratio, etc -->
+Eine Psychologin hat versucht herauszufinden, wie sich das Trainingsverhalten auf depressive Stimmungen auswirkt. Dazu hat sie $77$ Leute befragt und die Resultate in Datensatz `r inline_code(exr_depression_training$file_name)` erhalten.
+
+a) Sind die Variablen Depression und Trainingsverhalten voneinander abhängig, wenn bei $\alpha = 5\%$ getestet wird?
+b) Muss hier bei der Berechnung der Prüfgrösse die Yates-Korrektur verwendet werden?
+c) Wie gross ist der Unterschied zwischen der Prüfgrösse mit und ohne Yates-Korrektur hier?
+d) Wie gross ist die Vierfelderkorrelation zwischen den beiden Variablen? Interpretieren Sie den Zusammenhang.
+:::
+
+::: solution
+TODO
+:::
+
+::: {#bio-milch .exercise}
+```{=html}
+<!-- 
+Ziel: 
+- Daten als einzelne Beobachtungen
+- Vierfelder Testentscheidung
+- Vierfeldertest
+- Zusammenhangsmasse
+-->
+```
+
+```{r exr-bio-milch}
+gen_exr_bio_milch <- function(){
+  n11 <- 7
+  n12 <- 3
+  n21 <- 2
+  n22 <- 3
+  dd <- tibble(behauptet = c(rep("bio",n11),
+                        rep("bio",n12),
+                        rep("nicht_bio",n21),
+                        rep("nicht_bio",n22)),
+         ist = c(rep("bio",n11),
+                      rep("nicht_bio",n12),
+                      rep("bio",n21),
+                      rep("nicht_bio",n22)))
+    
+  file_name <- '09-exr-bio-milch.sav'
+  dd %>% write_sav(file_name)
+  # corr_mat_pearson <- dd %>% cor()
+  # corr_mat_spearman <- dd %>% cor(method = "spearman")
+  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  # jmv_partcorr <- (dd %>% 
+  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  return(mget(ls()))
+}
+exr_bio_milch <- gen_exr_bio_milch()
+```
+<!-- TODO: Ausschöpfen odds ratio, etc -->
+Eine Freundin von Ihnen behauptet, dass Sie Bio-Milch und nicht Bio-Milch am Geschmack unterscheiden kann. Sie geben ihr $9$-mal Bio-Milch zu trinken und $6$-mal nicht Bio-Milch zu trinken bei einem doppel-blind Test. Es entstehen die Daten in `r inline_code(exr_bio_milch$file_name)`. 
+
+a) Welcher Test ist bei dieser Datenlage angebracht, um zu testen, ob die Freundin tatsächlich Bio und nicht Bio-Milch am Geschmack unterschieden kann?
+b) Konnte die Freundin ihre Behauptung im Experiment nachweisen? Führen Sie den angebrachten Test durch und berichten Sie das Resultat inklusive Effektstärke.
+:::
+
+::: solution
+TODO
+:::
+
+
+::: {#covid-sterblichkeit .exercise}
+```{=html}
+<!-- 
+Ziel: 
+- Starke Korrelation gegen Null absichern
+-->
+```
+
+```{r exr-covid-sterblichkeit}
+gen_exr_covid_sterblichkeit <- function(){
+  n11 <- 29
+  n12 <- 671
+  n21 <- 25
+  n22 <- 345
+  dd <- tibble(geschlecht = c(rep("weiblich",n11),
+                        rep("weiblich",n12),
+                        rep("maennlich",n21),
+                        rep("maennlich",n22)),
+         covid = c(rep("gestorben",n11),
+                      rep("genesen",n12),
+                      rep("gestorben",n21),
+                      rep("genesen",n22)))
+    
+  file_name <- '09-exr-covid-sterblichkeit.sav'
+  dd %>% write_sav(file_name)
+  # corr_mat_pearson <- dd %>% cor()
+  # corr_mat_spearman <- dd %>% cor(method = "spearman")
+  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  # jmv_partcorr <- (dd %>% 
+  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
+  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  return(mget(ls()))
+}
+exr_covid_sterblichkeit <- gen_exr_covid_sterblichkeit()
+```
+<!-- TODO: Ausschöpfen odds ratio, etc -->
+Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert (fiktive Zahlen, siehe Daten in `r inline_code(exr_covid_sterblichkeit$file_name)`). Wie gross ist die Inzidenz, das relative Risiko und der odds ratio und wie werden diese Grössen interpretiert? Was sind UV und AV?
+:::
+
+::: solution
+TODO
+:::
+
+## Test

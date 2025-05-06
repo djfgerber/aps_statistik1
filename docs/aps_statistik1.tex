@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{30 April, 2025}
+\date{06 May, 2025}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -3230,7 +3230,7 @@ TODO.
 
 \part{Zusammenhang zweier Merkmale}\label{part-zusammenhang-zweier-merkmale}
 
-\chapter{Zusammenhang zweier Merkmale}\label{zusammenhang-zweier-merkmale}
+\chapter{Korrelation}\label{korrelation}
 
 Bislang wurde immer ein Merkmal separat betrachtet und manchmal wurden Untergruppen verglichen. Dabei ging es um die Frage, wo der Erwartungswert des Merkmals liegt und ob er einem gewissen Wert entspricht respektive für zwei Gruppen identisch ist. Wird jetzt noch ein zweites Merkmal beobachtet stellt sich die Frage, wie sich die Merkmale zueinander verhalten.
 
@@ -3441,7 +3441,7 @@ Sichern Sie die Korrelation nach Pearson zwischen Angststörung und Depression i
 \leavevmode
 
 \begin{quote}
-Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Depression und Angststörung (\(r = 0.46\)) sich signifikant von \(0\) unterscheidet, \(t(373) = 9.98\), \(p < 0.001\). Der Zusammenhang ist stark.
+Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Depression und Angststörung (\(r = 0.46\)) sich signifikant von \(0\) unterscheidet, \(t(373) = 9.98\), \(p < 0.001\). Die Korrelation deutet auf einen starken Zusammenhang der Art je mehr Depression desto grösser die Angststörung hin.
 \end{quote}
 
 \end{solution}
@@ -3457,9 +3457,9 @@ Testen Sie mit dem Datensatz \texttt{08-exm-zahlungsbereitschaft.sav} aus Beispi
 \leavevmode
 
 \begin{quote}
-Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Alter (\(r = 0\)) nicht signifikant grösser ist als \(0\), \(t(373) = -0.04\), \(p = .515\). Der Zusammenhang ist schwach.
+Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Alter (\(r = 0\)) nicht signifikant grösser ist als \(0\), \(t(373) = -0.04\), \(p = .515\). Der Zusammenhang ist so schwach, dass keine Richtung des Zusammenhangs aus dem Korrelationskoeffizenten abgelesen werden kann.
 
-Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Anzahl Spiele (\(r = -0.77\)) signifikant kleiner ist als \(0\),\(t(373) = -23.33\), \(p < 0.001\). Der Zusammenhang ist stark.
+Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass die Korrelation zwischen Kaufbereitschaft und Anzahl Spiele (\(r = -0.77\)) signifikant kleiner ist als \(0\),\(t(373) = -23.33\), \(p < 0.001\). Der Zusammenhang der Art je höher die Kaufbereitschaft, desto tiefer die Anzahl Spiele im Haushalt, ist stark.
 \end{quote}
 
 \end{solution}
@@ -3467,7 +3467,7 @@ Die einseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson
 \begin{exercise}
 \protect\hypertarget{exr:big-five-cor}{}\label{exr:big-five-cor}\leavevmode
 
-Im Rahmen einer Studie wurde die Big-5-Persönlichkeitszüge von \(500\) psychologie Studierenden abgefragt \citep{dolan2009}. Der Datensatz ist unter \texttt{Jamovi\ \textgreater{}\ Öffnen\ \textgreater{}\ Datenbibliothek\ \textgreater{}\ Big\ 5\ (Dolan,\ Oort,\ Stoel\ \&\ Wicherts,\ 2009)} verfügbar.
+Im Rahmen einer Studie wurde die Big-5-Persönlichkeitszüge von \(500\) psychologie Studierenden abgefragt \citep{dolan2009}. Der Datensatz ist unter \texttt{Jamovi\ \textgreater{}\ Öffnen\ \textgreater{}\ Datenbibliothek\ \textgreater{}\ Big\ 5\ (Dolan,\ Oort,\ Stoel\ \&\ Wicherts,\ 2009)} verfügbar. Die Merkmale Neuroticism, Extraversion, Openness, Agreeableness und Conscientiousness stehen für Neurotizismus, Extraversion, Offenheit, Verträglichkeit und Gewissenhaftikeit respektive.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
@@ -3506,17 +3506,20 @@ Damit können die Teilfragen beantwortet werden.
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  Die Korrelationen können direkt aus Abbildung \ref{fig:sol-big-five-cor-output-koorelationsmatrix} entnommen werden. Die stärkste positive Korrelation beschreibt den Zusammenhang zwischen Extraversion und Openness (\(r = 0.27\)). Diese Korrelation ist als mittel einzustufen und bedeutet je extravertierter eine Person ist desto höhere Werte hat sie tendenziell auch bei der Offenheit. Die stärkste negative Korrelation beschreibt den Zusammenhang zwischen Neuroticism und Conscientiousness (\(r = -0.37\)). Dies ist ebenfalls eine mittlere Korrelation. Sie bedeutet je neurotischer jemand ist, desto tiefere Werte für Conscientiousness hat die Person. Die schwächste Korrelation beschreibt den Zusammenhang zwischen Neuroticism und Openness (\(r = -0.010\)). Es handelt sich um einen schwachen Zusammenhang. Da die Korrelation quasi Null ist, bedeutet dies, dass Neuroticism und Openness unabhängig voneinander sind. Das Vorzeichen der Korrelation deutet darauf hin, dass je höhere Neuroticism-Werte jemand hat, desto tiefere Openness-Werte hat die Person tendenziell.
+  Die Korrelationen können direkt aus Abbildung \ref{fig:sol-big-five-cor-output-koorelationsmatrix} entnommen werden. Die stärkste positive Korrelation beschreibt den Zusammenhang zwischen Extraversion und Openness (\(r = 0.267\)). Diese Korrelation ist als mittel einzustufen und bedeutet je extravertierter eine Person ist desto höhere Werte hat sie tendenziell auch bei der Offenheit. Die stärkste negative Korrelation beschreibt den Zusammenhang zwischen Neuroticism und Conscientiousness (\(r = -0.368\)). Dies ist ebenfalls eine mittlere Korrelation. Sie bedeutet je neurotischer jemand ist, desto tiefere Werte für Conscientiousness hat die Person. Die schwächste Korrelation beschreibt den Zusammenhang zwischen Neuroticism und Openness (\(r = -0.010\)). Es handelt sich um einen schwachen Zusammenhang. Da die Korrelation quasi Null ist, bedeutet dies, dass Neuroticism und Openness unabhängig voneinander sind. Das Vorzeichen der Korrelation deutet darauf hin, dass je höhere Neuroticism-Werte jemand hat, desto tiefere Openness-Werte hat die Person tendenziell.
 \item
   Die Korrelationsmatrix als Diagramm in Abbildung \ref{fig:sol-big-five-cor-output-koorelationsmatrixdiagramm} hat folgende Bestandteile: Auf der Diagonalen befinden sich die geschätzten Verteilungen der Merkmale. Je höher die Linie bei einem gewissen Wert, desto wahrscheinlicher ist eine Beobachtung an diesem Punkt. Im oberen Dreieck sind die paarweise Korrelationen abgetragen. Die Sterne stehen für den \(p\)-Wert der Absicherung gegen Null, wobei ein Stern einer Korrelation entspricht, welche bei Signifikanzniveau \(5\%\) signifikant anders ist als Null. Im unteren Dreieck sind paarweise Streudiagramme aufgeführt und eine sogenannte Regressionsgerade, welche die Punkte am besten linear abbildet. Hier können Korrelationen grafisch erkannt werde und Anomalien wie zum Beispiel Aussreisser oder nicht lineare Zusammenhänge erkannt werden.
 \item
-  TODO
+  Die entsprechenden Zusammenhänge wurden bereits in a) identifiziert.
+  \textgreater{} Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Openness und Extraversion (\(r = 0.267\)) signifikant von \(0\) unterscheidet, \(t(498) = 6.18\), \(p < 0.001\).
+  \textgreater{} Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Neuroticism und Conscientiousness (\(r = -0.368\)) signifikant von \(0\) unterscheidet, \(t(498) = -8.83\), \(p < 0.001\).
+  \textgreater{} Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Neuroticism und Openness (\(r = -0.010\)) nicht signifikant von \(0\) unterscheidet, \(t(498) = -0.22\), \(p = .817\).
 \end{enumerate}
 
 \end{solution}
 
 \begin{exercise}
-\protect\hypertarget{exr:body-shoe}{}\label{exr:body-shoe}\leavevmode
+\protect\hypertarget{exr:hairloss-sex}{}\label{exr:hairloss-sex}\leavevmode
 
 Mit einer Studie soll der Zusammenhang zwischen Haarausfall und erfülltem Sexualleben bei männlichen Patienten eruiert werden \citep{tas2018}. Die Schwere des Haarausfalls wird mit der Hamilton-Norwood-Schema HNS ganzzahlig von \(1\) bis \(7\) gemessen, wobei jede höhere Zahl für ein neues zunehmendes Haarausfallstadium steht\citep{hamilton1951}. Die Dysfunktionalität des Sexuallebens wird mit der Arizona Sexual Experience Scale ASES von \(5\) bis \(30\) Punkten gemessen, wobei höhere Zahlen auf eine sexuelle Dysfunktion hindeuten \citep{mcgahuey2016}. Bei diesem Instrument führen mehrere Likert-skalierte Items zum Endpunkteergebnis. Es wurden Daten erhoben, welche unter \texttt{08-exr-haarausfall-sex.sav} verfügbar sind.
 
@@ -3640,7 +3643,266 @@ Die biseriale Rangkorrelation ist also \(r = -0.212\). Je eher eine Ärztin verh
 
 \end{solution}
 
+\begin{exercise}
+\protect\hypertarget{exr:test-preparation}{}\label{exr:test-preparation}\leavevmode
+
+Es ist bekannt, dass Prüfungsangst zu schlechterern Prüfungsergebnissen führt. In einer Studie soll herausgefunden werden, wie dieser Zusammenhang durch die Vorbereitung beeinflusst wird \citep{yusefzadeh2019}. Dafür wurde die Prüfungsangst mit dem test anxiety inventory TAI (von \(0-75\)), das Prüfungsergebnis (von \(0-100\) Punkte) und die Vorbereitung (von \(0-10\)) gemessen. Letztere beruhte darauf, wie viele Prüfungsvorbereitungsgelegenheiten wahrgenommen wurde.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Berechnen Sie die Korrelation zwischen Prüfungsangst und Prüfungsergebnis und sichern Sie diese zweiseitig gegen Null ab. Berichten Sie das Ergebnis.
+\item
+  Berechnen Sie die partielle Korrelation indem Sie für die Vorbereitung kontrollieren und sichern Sie diese zweiseitig gegen Null ab. Berichten Sie das Ergebnis.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+
+Die Analyseparameter in \texttt{Jamovi} werden nun geändert, siehe Abbildung \ref{fig:sol-test-preparation-input}.
+
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-input1} \includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-input2} \caption{Jamovi Eingabe.}\label{fig:sol-test-preparation-input}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-test-preparation-output}
+
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-output1} \includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-output2} \caption{Jamovi Ausgabe.}\label{fig:sol-test-preparation-output}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  \begin{quote}
+  Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Pearson ergibt, dass sich die Korrelation zwischen Prüfungsangst und Prüfungsresultat (\(r = -0.17\)) signifikant von \(0\) unterscheidet, \(t(168) = -2.22\), \(p = .028\). Die Korrelation deutet auf einen schwachen Zusammenhang der Art je mehr Prüfungsangst desto schlechter das Prüfungsresultat.
+  \end{quote}
+\item
+  \begin{quote}
+  Die zweiseitige Absicherung gegen Null der partiellen Korrelation ergibt, dass sich die Korrelation zwischen Prüfungsangst und Prüfungsresultat unter Berücksichtigung der Vorbereitung als Störfaktor (\(r = -0.1\)) nicht signifikant von \(0\) unterscheidet, \(t(167) = -1.32\), \(p = .189\). Die partielle Korrelation deutet auf einen schwachen Zusammenhang der Art je mehr Prüfungsangst desto schlechter das Prüfungsresultat.
+  \end{quote}
+\end{enumerate}
+
+\end{solution}
+
 \section{Test}\label{test-4}
+
+\begin{exercise}
+\protect\hypertarget{exr:test-theorie-korrelation}{}\label{exr:test-theorie-korrelation}
+
+Welche der folgenden Aussagen zum Zusammenhang zwischen zwei Merkmalen sind wahr, welche falsch?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Eine Korrelation von \(r = -0.23\) deutet auf einen mittleren Zusammenhang der Art je mehr desto weniger hin.
+\item
+  Ein Grund für eine Korrelation von \(r=0\) kann sein, dass der Zusammenhang nicht linear ist.
+\item
+  Je weiter die Korrelation von \(0\) weg ist, desto eher ist der Zusammenhang von der Stichprobe auf die Grundgesamtheit übertragbar.
+\item
+  Eine Korrelation von \(r = 0.2\) bedeutet, dass das erste Merkmal ursächlich für den Zusammenhang ist.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Richtig
+\item
+  Richtig
+\item
+  Richtig
+\item
+  Falsch
+\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:test-theorie-korrelation1}{}\label{exr:test-theorie-korrelation1}
+
+Welche der folgenden Aussagen zum Zusammenhang zwischen zwei Merkmalen sind wahr, welche falsch?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Um den Zusammenhang zwischen Gästezufriedenheit (Likert \(1\) bis \(5\)) und der Zimmerart (basic oder superior) zu ermitteln, kann die Korrelation nach Spearman verwendet werden.
+\item
+  Um den Zusammenhang zwischen Anzahl Konflikten um Wasserrechte (intervallskaliert, nicht normalverteilt) und dem Wohlstand der beiden Gemeinden (intervallskaliert, normalverteilt) zu ermitteln, kann die Korrelation nach Pearson verwendet werden.
+\item
+  Um den Zusammenhang zwischen Alphabetisierungsrate (intervallskaliert, normalverteilt) und Bruttoinslansprodukt (intervallskaliert, normalverteilt) von Ländern zu ermitteln, kann die Korrelation nach Pearson verwendet werden.
+\item
+  Die partielle Korrelation ist immer weniger oder gleich stark, als die direkt gemessene Korrelation.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Falsch
+\item
+  Falsch
+\item
+  Richtig
+\item
+  Falsch
+\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:test-spearman}{}\label{exr:test-spearman}\leavevmode
+
+Im folgenden wird eine Korrelation zwischen der Wartezeit am Flughafen und der Gästezufriedenheit berechnet. Dabei wird festgestellt, dass beide Merkmale intervallskaliert aber nicht normalverteilt sind. \texttt{Jamovi} liefert die Ausgabe in Abbildung \ref{fig:sol-test-spearman-output}.
+
+\begin{figure}
+\includegraphics[width=0.5\linewidth]{figures/08-exr-test-spearman-jmv-output} \caption{Jamovi Eingabe.}\label{fig:sol-test-spearman-output}
+\end{figure}
+
+Welche der folgenden Aussagen sind wahr welche falsch?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Es ist richtig die Korrelation hier mit dem Korrelationskoeffiizienten nach Pearson zu berechnen.
+\item
+  Die Korrelation sagt aus, dass die Gäste mit höherer Zufriedenheit weniger lange warten.
+\item
+  Der Zusammenhang ist schwach.
+\item
+  Es wurden \(120\) Personen befragt.
+\item
+  Die Nullhypothese, dass die Korrelation in der Population bei \(-0.302\) liegt, kann aufgrund des vorliegenden Testreultats abgelehnt werden.
+\item
+  Die Korrelation unterscheidet sich signifikant von \(0\).
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Falsch
+\item
+  Richtig
+\item
+  Falsch
+\item
+  Falsch
+\item
+  Falsch
+\item
+  Richtig
+\end{enumerate}
+
+\end{solution}
+
+\chapter{Zusammenhang dichotomer Merkmale}\label{zusammenhang-dichotomer-merkmale}
+
+\section{Übungen}\label{uxfcbungen-6}
+
+\begin{exercise}
+\protect\hypertarget{exr:cancer-smoking}{}\label{exr:cancer-smoking}\leavevmode
+
+Um den Zusammenhang zwischen rauchen und Lungenkrebs zu analsyieren haben Forschende in einer Studie \(200\) an Lungenkrebs erkankte und \(397\) nicht an Lungenkrebs erkrankte Menschen zu ihrem Rauchverhalten befragt. Die Forschenden haben die Daten im Datensatz \texttt{09-exr-cancer-smoking.sav} aggregiert zur Verfügung gestellt. Lose nach \citet{matos1998}.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Handelt es sich um eine Fall-Kontroll (case-control) Studie oder um eine Kohortenstudie?
+\item
+  Identifizieren Sie abhängige und unabhängige Variable. Wie gross ist die Inzidenz in der exponierten und nicht exponierten Gruppe?
+\item
+  Können hier das \emph{RR} und der \emph{OR} verwendet werden, um den Zusammenhang zu beschreiben?
+\item
+  Wie gross ist der odds ratio und was heisst das für die rauchenden Menschen?
+\item
+  Ist der Zusammenhang von der Stichprobe auf alle Menschen übertragbar?
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+TODO
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:depression-training}{}\label{exr:depression-training}\leavevmode
+
+Eine Psychologin hat versucht herauszufinden, wie sich das Trainingsverhalten auf depressive Stimmungen auswirkt. Dazu hat sie \(77\) Leute befragt und die Resultate in Datensatz \texttt{09-exr-depression-training.sav} erhalten.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Sind die Variablen Depression und Trainingsverhalten voneinander abhängig, wenn bei \(\alpha = 5\%\) getestet wird?
+\item
+  Muss hier bei der Berechnung der Prüfgrösse die Yates-Korrektur verwendet werden?
+\item
+  Wie gross ist der Unterschied zwischen der Prüfgrösse mit und ohne Yates-Korrektur hier?
+\item
+  Wie gross ist die Vierfelderkorrelation zwischen den beiden Variablen? Interpretieren Sie den Zusammenhang.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+TODO
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:bio-milch}{}\label{exr:bio-milch}\leavevmode
+
+Eine Freundin von Ihnen behauptet, dass Sie Bio-Milch und nicht Bio-Milch am Geschmack unterscheiden kann. Sie geben ihr \(9\)-mal Bio-Milch zu trinken und \(6\)-mal nicht Bio-Milch zu trinken bei einem doppel-blind Test. Es entstehen die Daten in \texttt{09-exr-bio-milch.sav}.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Welcher Test ist bei dieser Datenlage angebracht, um zu testen, ob die Freundin tatsächlich Bio und nicht Bio-Milch am Geschmack unterschieden kann?
+\item
+  Konnte die Freundin ihre Behauptung im Experiment nachweisen? Führen Sie den angebrachten Test durch und berichten Sie das Resultat inklusive Effektstärke.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+TODO
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:covid-sterblichkeit}{}\label{exr:covid-sterblichkeit}\leavevmode
+
+Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert (fiktive Zahlen, siehe Daten in \texttt{09-exr-covid-sterblichkeit.sav}). Wie gross ist die Inzidenz, das relative Risiko und der odds ratio und wie werden diese Grössen interpretiert? Was sind UV und AV?
+
+\end{exercise}
+
+\begin{solution}
+TODO
+\end{solution}
+
+\section{Test}\label{test-5}
 
 \chapter*{Begriffsverzeichnis}\label{begriffsverzeichnis}
 \addcontentsline{toc}{chapter}{Begriffsverzeichnis}
