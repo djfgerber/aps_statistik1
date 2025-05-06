@@ -3420,7 +3420,14 @@ unteren Teil der Abbildung \ref{fig:exm-depression-alkohol-angst-stoervardiagram
 
 \label{fig:exm-depression-alkohol-angst-stoervardiagramm}Zusammenhang zwischen Angst und Alkoholismus ohne (oben) und mit (unten) Berücksichtigung der Störvariable.
 
-Die Absicherung gegen Null der partiellen Korrelation erfolgt ähnlich wie bei der Korrelation nach Pearson. Die Teststatistik wird auch mit Gleichung \eqref{eq:absichern-pearson} berechnet, ist aber \(t\)-verteilt bei \(n-3\) Freiheitsgraden, wobei \(n\) für die Anzahl Beobachtungstripel steht. Die Teststatistik wird von \texttt{Jamovi} nicht berechnet und muss händisch eruiert werden.
+Die Absicherung gegen Null der partiellen Korrelation erfolgt ähnlich wie bei der Korrelation nach Pearson. Die Teststatistik wird mit
+
+\begin{equation}
+t = r\cdot \sqrt{\frac{n-3}{1-r^2}}.
+\label{eq:absichern-partial}
+\end{equation}
+
+berechnet und ist \(t\)-verteilt bei \(n-3\) Freiheitsgraden, wobei \(n\) für die Anzahl Beobachtungstripel steht. Die Teststatistik wird von \texttt{Jamovi} nicht berechnet und muss händisch eruiert werden.
 
 \begin{quote}
 Die zweiseitige Absicherung gegen Null der partiellen Korrelation ergibt, dass sich die Korrelation zwischen Alkoholismus und Angststörung unter Berücksichtigung der Depression als Störfaktor (\(r = -0.05\)) nicht signifikant von \(0\) unterscheidet, \(t(372) = -1\), \(p = .316\). Die Korrelation ist als schwach einzustufen.
