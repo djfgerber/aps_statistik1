@@ -19,6 +19,8 @@ Dieses Buch ist im Rahmen meiner Lehrtätigkeit an der FHNW entstanden und frei 
 
 ```{r load_packages, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(fig.align = "center")
+
 library(gridExtra)
 library(jmv)
 library(kableExtra)

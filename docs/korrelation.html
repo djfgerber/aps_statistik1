@@ -206,7 +206,7 @@ div.csl-indent {
 <p><span id="exm:zahlungsbereitschaft" class="example"><strong>Beispiel 8.1  (Zahlungsbereitschaft) </strong></span>Eine Firma will eine Kickstarteridee für ein Kinderspielzeug auf den Markt bringen. Dazu muss sie herausfinden wie viel die Konsumierenden bereit sind für das Spielzeug zu bezahlen. Es werden <span class="math inline">\(375\)</span> Konsumierende gefragt, wie viel sie für das Spielzeug zahlen würden. Zusätzlich wurde auch nach dem Jahreseinkommen in CHF und der Anzahl Spielzeuge im Haushalt gefragt.</p>
 </div>
 <p><span id="customdef-streudiagramm" class="customdef">Um den Zusammenhang zwischen zwei intervallskalierten Merkmalen aufzuzeigen wird ein sogenanntes <strong>Streudiagramm</strong> verwendet.</span> Um den Zusammenhang zwischen zwei intervallskalierten Merkmalen aufzuzeigen wird ein sogenanntes Streudiagramm verwendet. Dabei wird ein Koordinatensystem erstellt mit einem Merkmal auf der x-Achse und dem anderen Merkmal auf der y-Achse. Danach wird für jede Beobachtung ein Punkt bei den entsprechenden Werten für die beiden betrachteten Merkmale in dieses Koordinatensystem eingezeichnet.</p>
-<div class="figure"><span style="display:block;" id="fig:exm-zahlungsbereitschaft-streudiagramm"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-zahlungsbereitschaft-streudiagramm"></span>
 <img src="aps_statistik1_files/figure-html/exm-zahlungsbereitschaft-streudiagramm-1.png" alt="Die drei Streudiagramme zeigen jeweils die Zahlungsbereitschaft (Preis in CHF) auf der y-Achse und das Alter in Jahren, die Anzahl Spiele im Haushalt und das Jahreseinkommen in 1'000 CHF respektive auf der x-Achse." width="672" />
 <p class="caption">
 Abbildung 8.1: Die drei Streudiagramme zeigen jeweils die Zahlungsbereitschaft (Preis in CHF) auf der y-Achse und das Alter in Jahren, die Anzahl Spiele im Haushalt und das Jahreseinkommen in 1’000 CHF respektive auf der x-Achse.
@@ -215,7 +215,7 @@ Abbildung 8.1: Die drei Streudiagramme zeigen jeweils die Zahlungsbereitschaft (
 <p>In Abbildung <a href="korrelation.html#fig:exm-zahlungsbereitschaft-streudiagramm">8.1</a> sind drei Streudiagramme aufgezeichnet. Sie setzen jeweils die Zahlungsbereitschaft (Preis) mit dem Alter in Jahren, der Anzahl vorhandener Spiele im Haushalt und dem Einkommen respektive in Bezug. Es kann beobachtet werden, dass die Zahlungsbereitschaft unabhängig vom Alter immer ungefähr ähnlich hoch ist. Es ist des Weiteren klar zu sehen, dass die Zahlungsbereitschaft mit der Anzahl im Haushalt vorhandener Spiele sinkt. Ein bisschen weniger klar ist die Beobachtung, dass die Zahlungsbereitschaft mit dem Jahreseinkommen ansteigt.</p>
 <p><span id="customdef-korrelation" class="customdef">Diese drei Beobachtungen können mit der sogenannten <strong>Korrelation</strong> digitalisiert werden.</span> Die Korrelation ist eine Zahl zwischen <span class="math inline">\(-1\)</span> und <span class="math inline">\(+1\)</span>. Negative Zahlen bedeuten, dass es einen gegenläufigen Zusammenhang gibt. <span id="customdef-gegenlaeufig" class="customdef"><strong>Gegenläufig</strong> bedeutet je mehr von Merkmal A, desto weniger von Merkmal B.</span> Positive Zahlen bedeuten, dass es einen gleichläufigen Zusammenhang gibt. <span id="customdef-gleichlaeufig" class="customdef"><strong>Gleichläufig</strong> bedeutet je mehr von Merkmal A, desto mehr von Merkmal B.</span> Eine Korrelation von <span class="math inline">\(0\)</span> schliesslich bedeutet, dass es keinen Zusammenhang zwischen den beiden Merkmalen gibt. Je weiter weg von <span class="math inline">\(0\)</span> die Korrelation liegt, desto eindeutiger ist ein Zusammenhang auf dem Streudiagramm erkennbar. Die Korrelationen für die in der Abbildung gezeigten Zusammenhänge liegen bei <span class="math inline">\(-0.002\)</span> für Alter und Zahlungsbereitschaft, <span class="math inline">\(-0.770\)</span> für die Anzahl Spiele im Haushalt und Zahlungsbereitschaft und <span class="math inline">\(0.484\)</span> für das Einkommen und die Zahlungsbereitschaft.</p>
 <p>Die Korrelation erfasst nur lineare Zusammenhänge, also nur wenn Punkte entlang einer Linie streuen im Streudiagramm. Je weiter weg die Korrelation von <span class="math inline">\(0\)</span> ist, desto weniger streuen die Punkte entlang einer Linie, siehe erste und zweite Zeile der Abbildung <a href="korrelation.html#fig:correlation-examples">8.2</a>. Die Korrelation sagt lediglich, ob die Linie steigt oder fällt, jedoch nicht wie stark. Nicht lineare Zusammenhänge wie in der dritten Zeile von Abbildung <a href="korrelation.html#fig:correlation-examples">8.2</a> können mit der Korrelation nicht richtig erfasst werden und gängige Korrelationsberechnungen geben zufällige Resultate.</p>
-<div class="figure"><span style="display:block;" id="fig:correlation-examples"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:correlation-examples"></span>
 <img src="figures/08-correlations-wikipedia.jpg" alt="Streudiagramme und dazugehörige Korrelation." width="100%" />
 <p class="caption">
 Abbildung 8.2: Streudiagramme und dazugehörige Korrelation.
@@ -226,7 +226,7 @@ Abbildung 8.2: Streudiagramme und dazugehörige Korrelation.
 <p><span id="exm:depression-alkohol-angst" class="example"><strong>Beispiel 8.2  (Depression, Angststörungen und Alkohol) </strong></span>In der Psychotherapie ist aufgefallen, dass sich Alkoholabhängigkeit, Angststörungen und Depression in der Tendenz wechselwirkend positiv beeinflussen <span class="citation">(<a href="#ref-schuckit1996">Schuckit 1996</a>)</span>. Dies soll mit den fiktiven Daten in <code>08-exm-depression-alkohol-angst.sav</code> illustriert werden. Für die Messung der Schwere der drei Merkmale Alkoholismus, Angststörung und Depression wurden die folgenden Messinstrumente verwendet: Das Beck Depression Inventory <em>BDI</em> für die Depression <span class="citation">(<a href="#ref-beck1988">Beck, Steer, and Carbin 1988</a>)</span>, das state trait anxiety inventory <em>STAI</em> für die Angststörungen <span class="citation">(<a href="#ref-spielberger1983manual">Spielberger et al. 1983</a>)</span> und das alcohol use inventory für den Alkoholismus <span class="citation">(<a href="#ref-skinner1982">Skinner and Allen 1982</a>)</span>.</p>
 </div>
 <p>Streudiagramme aller möglicher bivariaten Zusammenhänge sind in Abbildung <a href="korrelation.html#fig:exm-depression-alkohol-angst-scatter">8.3</a> dargestellt. Während der lineare Zusammenhang zwischen Alkoholismus und Angststörung kaum erkennbar ist, so kann zwischen Depression und Alkoholismus ein leichter und zwischen Depression und Angststörung ein deutlich gleichläufiger linearer Zusammenhang festgestellt werden. Die geschätzten Korrelationen sind <span class="math inline">\(0.32\)</span> zwischen Alkoholismus und Depression, <span class="math inline">\(0.1\)</span> zwischen Alkoholismus und Angststörung und <span class="math inline">\(0.46\)</span> zwischen Depression und Angststörung.</p>
-<div class="figure"><span style="display:block;" id="fig:exm-depression-alkohol-angst-scatter"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-depression-alkohol-angst-scatter"></span>
 <img src="aps_statistik1_files/figure-html/exm-depression-alkohol-angst-scatter-1.png" alt="Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten." width="672" />
 <p class="caption">
 Abbildung 8.3: Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten.
@@ -324,14 +324,14 @@ berechnet werden. Die <span class="math inline">\(r\)</span> stehen dabei für d
 </div>
 <p>Die partielle Korrelation kann in <code>Jamovi</code> unter <code>Analysen &gt; Regression &gt; Partielle Korrelation</code> berechnet werden und beträgt <span class="math inline">\(r = -0.05\)</span>. Unter Berücksichtigung der Störvariable Depression, ist der Zusammenhang zwischen Alkoholismus und Angststörung also nicht nur kleiner geworden, sondern hat sich sogar in einen gegenläufigen Zusammenhang gewandelt. Dies ist abstrahiert im
 unteren Teil der Abbildung <a href="korrelation.html#fig:exm-depression-alkohol-angst-stoervardiagramm">8.4</a> dargestellt. Wird die partielle Korrelation unter Berücksichtigung einer Störvariable angegeben, spricht man auch von es wurde für die Störvariable <strong>kontrolliert</strong>.</p>
-<div class="figure"><span style="display:block;" id="fig:exm-depression-alkohol-angst-stoervardiagramm"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-depression-alkohol-angst-stoervardiagramm"></span>
 <div class="grViz html-widget html-fill-item" id="htmlwidget-706e52c348bc82b28fab" style="width:672px;height:50%;"></div>
 <script type="application/json" data-for="htmlwidget-706e52c348bc82b28fab">{"x":{"diagram":"\ndigraph G {\n  rankdir=LR;\n  node [shape=box, style=filled, fillcolor=lightblue, fontsize=18];\n\n  Alkoholismus;\n  Angst;\n  \n  Angst -> Alkoholismus [penwidth=2, dir=both, label = \"r = 0.10\"];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Abbildung 8.4: Zusammenhang zwischen Angst und Alkoholismus ohne (oben) und mit (unten) Berücksichtigung der Störvariable.
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:exm-depression-alkohol-angst-stoervardiagramm"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-depression-alkohol-angst-stoervardiagramm"></span>
 <div class="grViz html-widget html-fill-item" id="htmlwidget-44c25d2b51778fbed4f5" style="width:672px;height:50%;"></div>
 <script type="application/json" data-for="htmlwidget-44c25d2b51778fbed4f5">{"x":{"diagram":"\ndigraph G {\n  rankdir=LR;\n  node [shape=box, style=filled, fillcolor=lightblue, fontsize=18];\n\n  Alkoholismus;\n  Angst;\n  Depression;\n\n  Depression -> Angst [penwidth=2, label = \"r = 0.46\"];\n  Depression -> Alkoholismus [penwidth=2, label = \"r = 0.32\"];\n  Angst -> Alkoholismus [penwidth=2, dir=both, label = \"Partielle r = -0.05\", color = red];\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
@@ -403,20 +403,20 @@ Ziel: Psychologische Anwendung.
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
 <p><span id="unlabeled-div-61" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="korrelation.html#fig:sol-big-five-cor-input">8.5</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-big-five-cor-input"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-big-five-cor-input"></span>
 <img src="figures/08-exr-big-five-cor-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
 Abbildung 8.5: Jamovi Eingabe.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildungen <a href="korrelation.html#fig:sol-big-five-cor-output-koorelationsmatrix">8.6</a> und <a href="korrelation.html#fig:sol-big-five-cor-output-koorelationsmatrixdiagramm">8.7</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-big-five-cor-output-koorelationsmatrix"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-big-five-cor-output-koorelationsmatrix"></span>
 <img src="figures/08-exr-big-five-cor-jmv-output-korrelationsmatrix.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
 Abbildung 8.6: Jamovi Ausgabe.
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:sol-big-five-cor-output-koorelationsmatrixdiagramm"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-big-five-cor-output-koorelationsmatrixdiagramm"></span>
 <img src="figures/08-exr-big-five-cor-jmv-output-korrelationsmatrixdiagramm.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
 Abbildung 8.7: Jamovi Ausgabe.
@@ -454,14 +454,14 @@ Ziel:
 <li>Die Messung mit der ASES ist intervallskaliert. Die Messung des Haarausfalls dagegen kann sowohl als ordinalskaliert oder intervallskaliert betrachtet werden. Einerseits entsprechen die Zahlen auf der HNS verschiedenen abgegrenzten und klassifizierten Stadien der Progression des Haarausfalls. Dies deutet auf eine ordinalskaliertes Merkmal hin. Andererseits braucht es hier keine grosse Vorstellungskraft, sich eine <span class="math inline">\(3.23\)</span> vorzustellen. Das wäre wie Stadium <span class="math inline">\(3\)</span> mit ein wenig zusätzlichem Haarausfall. Aufgrund dieser Überlegung wäre hier sowohl der Korrelationskoeffizient nach Pearson wie der nach Spearman angebracht. Für letzteren müsste noch die Normalverteilung überprüft werden, was hier nicht gemacht wird.</li>
 <li>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="korrelation.html#fig:sol-hairloss-sex-input-spearman">8.8</a>.</li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:sol-hairloss-sex-input-spearman"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-hairloss-sex-input-spearman"></span>
 <img src="figures/08-exr-hairloss-sex-jmv-input-spearman.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
 Abbildung 8.8: Jamovi Eingabe.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="korrelation.html#fig:sol-hairloss-sex-output-spearman">8.9</a></p>
-<div class="figure"><span style="display:block;" id="fig:sol-hairloss-sex-output-spearman"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-hairloss-sex-output-spearman"></span>
 <img src="figures/08-exr-hairloss-sex-jmv-output-spearman.jpg" alt="Jamovi Ausgabe." width="50%" />
 <p class="caption">
 Abbildung 8.9: Jamovi Ausgabe.
@@ -473,14 +473,14 @@ Abbildung 8.9: Jamovi Ausgabe.
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="korrelation.html#fig:sol-hairloss-sex-input-partiell">8.10</a>.</li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:sol-hairloss-sex-input-partiell"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-hairloss-sex-input-partiell"></span>
 <img src="figures/08-exr-hairloss-sex-jmv-input-partiell.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
 Abbildung 8.10: Jamovi Eingabe.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="korrelation.html#fig:sol-hairloss-sex-output-partiell">8.11</a></p>
-<div class="figure"><span style="display:block;" id="fig:sol-hairloss-sex-output-partiell"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-hairloss-sex-output-partiell"></span>
 <img src="figures/08-exr-hairloss-sex-jmv-output-partiell.jpg" alt="Jamovi Ausgabe." width="50%" />
 <p class="caption">
 Abbildung 8.11: Jamovi Ausgabe.
@@ -506,14 +506,14 @@ Ziel:
 <ol style="list-style-type: lower-alpha">
 <li>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="korrelation.html#fig:sol-ehe-burnout-pointcorrelation-input">8.12</a>.</li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:sol-ehe-burnout-pointcorrelation-input"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-ehe-burnout-pointcorrelation-input"></span>
 <img src="figures/08-exr-ehe-burnout-pointcorrelation-jmv-input1.jpg" alt="Jamovi Eingabe." height="50%" /><img src="figures/08-exr-ehe-burnout-pointcorrelation-jmv-input2.jpg" alt="Jamovi Eingabe." height="50%" />
 <p class="caption">
 Abbildung 8.12: Jamovi Eingabe.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="korrelation.html#fig:sol-ehe-burnout-pointcorrelation-output">8.13</a></p>
-<div class="figure"><span style="display:block;" id="fig:sol-ehe-burnout-pointcorrelation-output"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-ehe-burnout-pointcorrelation-output"></span>
 <img src="figures/08-exr-ehe-burnout-pointcorrelation-jmv-output1.jpg" alt="Jamovi Ausgabe." height="50%" /><img src="figures/08-exr-ehe-burnout-pointcorrelation-jmv-output2.jpg" alt="Jamovi Ausgabe." height="50%" />
 <p class="caption">
 Abbildung 8.13: Jamovi Ausgabe.
@@ -525,14 +525,14 @@ Hier wurden die Zwischenresultate mit zwei Nachkommastellen aus <code>Jamovi</co
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Die Analyseparameter in <code>Jamovi</code> werden nun geändert, siehe Abbildung <a href="korrelation.html#fig:sol-ehe-burnout-rankcorrelation-input">8.14</a>.</li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:sol-ehe-burnout-rankcorrelation-input"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-ehe-burnout-rankcorrelation-input"></span>
 <img src="figures/08-exr-ehe-burnout-pointcorrelation-jmv-input3.jpg" alt="Jamovi Eingabe."  />
 <p class="caption">
 Abbildung 8.14: Jamovi Eingabe.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="korrelation.html#fig:sol-ehe-burnout-rankcorrelation-output">8.15</a></p>
-<div class="figure"><span style="display:block;" id="fig:sol-ehe-burnout-rankcorrelation-output"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-ehe-burnout-rankcorrelation-output"></span>
 <img src="figures/08-exr-ehe-burnout-pointcorrelation-jmv-output3.jpg" alt="Jamovi Ausgabe."  />
 <p class="caption">
 Abbildung 8.15: Jamovi Ausgabe.
@@ -557,14 +557,14 @@ Ziel:
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
 <p><span id="unlabeled-div-64" class="solution"><em>Lösung</em>. </span>Die Analyseparameter in <code>Jamovi</code> werden nun geändert, siehe Abbildung <a href="korrelation.html#fig:sol-test-preparation-input">8.16</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-test-preparation-input"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-test-preparation-input"></span>
 <img src="figures/08-exr-test-preparation-jmv-input1.jpg" alt="Jamovi Eingabe." width="50%" /><img src="figures/08-exr-test-preparation-jmv-input2.jpg" alt="Jamovi Eingabe." width="50%" />
 <p class="caption">
 Abbildung 8.16: Jamovi Eingabe.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="korrelation.html#fig:sol-test-preparation-output">8.17</a></p>
-<div class="figure"><span style="display:block;" id="fig:sol-test-preparation-output"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-test-preparation-output"></span>
 <img src="figures/08-exr-test-preparation-jmv-output1.jpg" alt="Jamovi Ausgabe." width="50%" /><img src="figures/08-exr-test-preparation-jmv-output2.jpg" alt="Jamovi Ausgabe." width="50%" />
 <p class="caption">
 Abbildung 8.17: Jamovi Ausgabe.
@@ -632,7 +632,7 @@ Ziel:
 - Starke Korrelation gegen Null absichern
 -->
 <p>Im folgenden wird eine Korrelation zwischen der Wartezeit am Flughafen und der Gästezufriedenheit berechnet. Dabei wird festgestellt, dass beide Merkmale intervallskaliert aber nicht normalverteilt sind. <code>Jamovi</code> liefert die Ausgabe in Abbildung <a href="korrelation.html#fig:sol-test-spearman-output">8.18</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-test-spearman-output"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-test-spearman-output"></span>
 <img src="figures/08-exr-test-spearman-jmv-output.jpg" alt="Jamovi Eingabe." width="50%" />
 <p class="caption">
 Abbildung 8.18: Jamovi Eingabe.

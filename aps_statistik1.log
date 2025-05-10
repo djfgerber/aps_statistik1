@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  6 MAY 2025 17:24
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  10 MAY 2025 12:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1125,7 +1125,7 @@ Overfull \hbox (67.12341pt too wide) has occurred while \output is active
 File: figures/icons/caution.png Graphic file (type bmp)
 <figures/icons/caution.png>
 
-Underfull \hbox (badness 1221) in paragraph at lines 432--434
+Underfull \hbox (badness 1221) in paragraph at lines 435--437
 []\TU/lmr/m/n/10 Berechnen Sie Modus, Median und arithmetisches Mittel der Kör-
  []
 
@@ -1136,11 +1136,6 @@ File: figures/Enten_n40_instr_histogramm.jpg Graphic file (type bmp)
 <figures/Enten_n40_instr_histogramm.jpg>
 File: figures/Enten_n40.png Graphic file (type bmp)
 <figures/Enten_n40.png>
-
-Overfull \hbox (2.22264pt too wide) in paragraph at lines 445--445
-[][] [] 
- []
-
 File: figures/02-exr-enten-hist-mean-sd-input.jpg Graphic file (type bmp)
 <figures/02-exr-enten-hist-mean-sd-input.jpg>
 File: figures/02-exr-enten-hist-mean-sd-output.jpg Graphic file (type bmp)
@@ -1150,8 +1145,8 @@ File: figures/02-exr-enten-hist-binwidth-jmv-input.jpg Graphic file (type bmp)
 File: figures/02-exr-enten-hist-binwidth-jmv-output.jpg Graphic file (type bmp)
 <figures/02-exr-enten-hist-binwidth-jmv-output.jpg>
 
-Overfull \hbox (2.21794pt too wide) in paragraph at lines 470--470
-[][] [] 
+Overfull \hbox (5.92725pt too wide) in paragraph at lines 510--511
+[]\TU/lmr/m/n/10 In einem psychologischen Test machen $[]$ Probandinnen die Werte $[][][] [][][] [][][] [][][] [][]$.
  []
 
 
@@ -1159,54 +1154,43 @@ Overfull \hbox (2.21794pt too wide) in paragraph at lines 470--470
 [20]
 
 [21]
-Overfull \hbox (5.92725pt too wide) in paragraph at lines 492--493
-[]\TU/lmr/m/n/10 In einem psychologischen Test machen $[]$ Probandinnen die Werte $[][][] [][][] [][][] [][][] [][]$.
- []
-
-
 
 [22]
+
+[23]
 File: figures/02-exr-theorie-mdn-mean-data-input.jpg Graphic file (type bmp)
 <figures/02-exr-theorie-mdn-mean-data-input.jpg>
 File: figures/02-exr-theorie-mdn-mean-data-mod.jpg Graphic file (type bmp)
 <figures/02-exr-theorie-mdn-mean-data-mod.jpg>
 File: figures/02-exr-theorie-mdn-mean-data-clean.jpg Graphic file (type bmp)
 <figures/02-exr-theorie-mdn-mean-data-clean.jpg>
-
-Underfull \hbox (badness 10000) in paragraph at lines 528--528
-[][] []
- []
-
 File: figures/02-exr-theorie-mdn-mean-jmv-input.jpg Graphic file (type bmp)
 <figures/02-exr-theorie-mdn-mean-jmv-input.jpg>
 File: figures/02-exr-theorie-mdn-mean-jmv-output.jpg Graphic file (type bmp)
 <figures/02-exr-theorie-mdn-mean-jmv-output.jpg>
 
 
-[23]
-
 [24]
-Overfull \hbox (5.92725pt too wide) in paragraph at lines 560--561
+
+[25]
+Overfull \hbox (5.92725pt too wide) in paragraph at lines 593--594
 []\TU/lmr/m/n/10 In einem psychologischen Test machen $[]$ Probandinnen die Werte $[][][] [][][] [][][] [][][] [][]$.
  []
 
 
-Underfull \hbox (badness 7704) in paragraph at lines 588--589
+Underfull \hbox (badness 7704) in paragraph at lines 621--622
 []\TU/lmr/m/n/10 Die Spannweite entspricht dem höchsten minus dem kleinsten
  []
 
 
-Overfull \hbox (13.43607pt too wide) detected at line 595
+Overfull \hbox (13.43607pt too wide) detected at line 628
 []
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[25]
-Overfull \hbox (52.33606pt too wide) detected at line 604
+[26]
+Overfull \hbox (52.33606pt too wide) detected at line 637
 []
  []
 
@@ -1216,9 +1200,9 @@ File: figures/02-exr-theorie-variabilitaet-jmv-output.jpg Graphic file (type bmp
 <figures/02-exr-theorie-variabilitaet-jmv-output.jpg>
 
 
-[26]
-
 [27]
+
+[28]
 File: figures/02-exr-koerpergroesse-sex-jmv-input-a.jpg Graphic file (type bmp)
 <figures/02-exr-koerpergroesse-sex-jmv-input-a.jpg>
 File: figures/02-exr-koerpergroesse-sex-jmv-output-a.jpg Graphic file (type bmp)
@@ -1229,8 +1213,6 @@ File: figures/02-exr-koerpergroesse-sex-jmv-output-b.jpg Graphic file (type bmp)
 <figures/02-exr-koerpergroesse-sex-jmv-output-b.jpg>
 
 
-[28]
-
 [29]
 
 [30]
@@ -1238,17 +1220,19 @@ File: figures/02-exr-koerpergroesse-sex-jmv-output-b.jpg Graphic file (type bmp)
 [31]
 
 [32]
-Underfull \hbox (badness 2221) in paragraph at lines 717--719
+
+[33]
+Underfull \hbox (badness 2221) in paragraph at lines 780--782
 []\TU/lmtt/m/n/10 Geburtzeit_std_ab_mitternacht\TU/lmr/m/n/10 : Geburtszeit in Stunden ab Mit-
  []
 
 
 
-[33]
+[34]
 File: figures/02-exr-diverse-distrib-input.jpg Graphic file (type bmp)
 <figures/02-exr-diverse-distrib-input.jpg>
 
-LaTeX Warning: Float too large for page by 24.1057pt on input line 748.
+LaTeX Warning: Float too large for page by 24.1057pt on input line 816.
 
 File: figures/02-exr-diverse-distrib-output.jpg Graphic file (type bmp)
 <figures/02-exr-diverse-distrib-output.jpg>
@@ -1267,23 +1251,6 @@ File: aps_statistik1_files/figure-latex/sol-diverse-distrib3-6.pdf Graphic file 
 File: aps_statistik1_files/figure-latex/sol-diverse-distrib3-7.pdf Graphic file (type pdf)
 <use aps_statistik1_files/figure-latex/sol-diverse-distrib3-7.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 755--755
-[][] []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 755--755
-[] []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 755--755
-[] []
- []
-
-
-
-[34]
 
 [35]
 
@@ -1295,18 +1262,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 755--755
 
 [39]
 
-[40
-
-]
+[40]
 \bbl@ensure@ngerman {Kapitel} 3.
 
-Underfull \hbox (badness 2409) in paragraph at lines 1019--1019
+Underfull \hbox (badness 2409) in paragraph at lines 1097--1097
 []\TU/lmr/bx/n/14.4 Was ist das Problem der Stichproben-
  []
 
 
 
-[41]
+[41
+
+]
 File: aps_statistik1_files/figure-latex/srs-intervall-nocol-1.pdf Graphic file (type pdf)
 <use aps_statistik1_files/figure-latex/srs-intervall-nocol-1.pdf>
 File: aps_statistik1_files/figure-latex/srs-intervall-high-p-1.pdf Graphic file (type pdf)
@@ -1327,7 +1294,7 @@ File: aps_statistik1_files/figure-latex/srs-intervall-low-p-many-1.pdf Graphic f
 [44]
 
 [45]
-Underfull \hbox (badness 1701) in paragraph at lines 1085--1087
+Underfull \hbox (badness 1701) in paragraph at lines 1178--1180
 []\TU/lmr/m/n/10 Teilnehmende tendieren dazu zusammen mit Freunden an Studien
  []
 
@@ -1358,7 +1325,7 @@ Overfull \hbox (21.45671pt too wide) has occurred while \output is active
  []
 
 [50]
-Underfull \hbox (badness 1024) in paragraph at lines 1180--1181
+Underfull \hbox (badness 1024) in paragraph at lines 1282--1283
 []\TU/lmr/m/n/10 Die Verteilung der Beobachtungen, siehe Abbildung []4.3[], zeigt, dass alle
  []
 
@@ -1390,7 +1357,7 @@ File: aps_statistik1_files/figure-latex/exm-angst-normal-approx-1.pdf Graphic fi
 File: aps_statistik1_files/figure-latex/exm-agreableness-normal-approx-1.pdf Graphic file (type pdf)
 <use aps_statistik1_files/figure-latex/exm-agreableness-normal-approx-1.pdf>
 
-Underfull \hbox (badness 2626) in paragraph at lines 1247--1247
+Underfull \hbox (badness 2626) in paragraph at lines 1358--1358
 []\TU/lmr/m/n/10 Tabelle 4.1: [][]Vergleich Perzentile der Stichprobe und der theoretischen
  []
 
@@ -1435,12 +1402,12 @@ File: figures/04-exr-stranger-jmv-input.jpg Graphic file (type bmp)
 File: figures/04-exr-stranger-jmv-output.jpg Graphic file (type bmp)
 <figures/04-exr-stranger-jmv-output.jpg>
 
-Underfull \hbox (badness 1946) in paragraph at lines 1355--1356
+Underfull \hbox (badness 1946) in paragraph at lines 1489--1490
 \TU/lmr/m/n/10 dung []4.10[] dargestellten Maske der Wert für \TU/lmtt/m/n/10 Konfidenzintervall
  []
 
 
-Underfull \hbox (badness 2469) in paragraph at lines 1355--1356
+Underfull \hbox (badness 2469) in paragraph at lines 1489--1490
 \TU/lmtt/m/n/10 für den Mittelwert \TU/lmr/m/n/10 auf $[][]$ gesetzt werden. Die durchschnittliche
  []
 
@@ -1457,22 +1424,22 @@ Overfull \hbox (21.45671pt too wide) has occurred while \output is active
 File: aps_statistik1_files/figure-latex/ki-approx-normal1-1.pdf Graphic file (type pdf)
 <use aps_statistik1_files/figure-latex/ki-approx-normal1-1.pdf>
 
-Underfull \hbox (badness 3849) in paragraph at lines 1371--1372
+Underfull \hbox (badness 3849) in paragraph at lines 1508--1509
 []\TU/lmr/m/n/10 Die arithmetischen Mittel der $[][][][][][]$ Stichproben sind im Datensatz
  []
 
 
-Underfull \hbox (badness 2318) in paragraph at lines 1371--1372
+Underfull \hbox (badness 2318) in paragraph at lines 1508--1509
 \TU/lmtt/m/n/10 04-exr-zentraler-grenzwertsatz.sav \TU/lmr/m/n/10 festgehalten. In der Spalte \TU/lmtt/m/n/10 n_10
  []
 
 
-Underfull \hbox (badness 6510) in paragraph at lines 1377--1378
+Underfull \hbox (badness 6510) in paragraph at lines 1514--1515
 []\TU/lmr/m/it/10 Lösung. []\TU/lmr/m/n/10 Das Übereinanderlegen des jeweiligen Histogramms und der
  []
 
 
-Underfull \hbox (badness 3260) in paragraph at lines 1377--1378
+Underfull \hbox (badness 3260) in paragraph at lines 1514--1515
 \TU/lmr/m/n/10 Wahrscheinlichkeitsdichte der Normalverteilung wird in Abbildung []4.13[]
  []
 
@@ -1485,14 +1452,7 @@ File: figures/04-exr-ki-approx-normal-jmv-output2.jpg Graphic file (type bmp)
 File: figures/04-exr-ki-approx-normal-jmv-output3.jpg Graphic file (type bmp)
 <figures/04-exr-ki-approx-normal-jmv-output3.jpg>
 
-Overfull \hbox (2.22362pt too wide) in paragraph at lines 1380--1380
-[][] []
- []
-
-
-Overfull \hbox (2.22946pt too wide) in paragraph at lines 1380--1380
-[] [] 
- []
+LaTeX Warning: Float too large for page by 130.47862pt on input line 1523.
 
 
 
@@ -1516,23 +1476,13 @@ File: figures/04-exr-stichprobengroesse-jmv-input.jpg Graphic file (type bmp)
 File: figures/04-exr-stichprobengroesse-jmv-output.jpg Graphic file (type bmp)
 <figures/04-exr-stichprobengroesse-jmv-output.jpg>
 
-Overfull \hbox (2.22226pt too wide) in paragraph at lines 1424--1424
-[][] [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1437--1439
+Underfull \hbox (badness 10000) in paragraph at lines 1584--1586
 
  []
 
 
 
 [65]
-File: figures/04-exr-biologietest-jmv-input.jpg Graphic file (type bmp)
-<figures/04-exr-biologietest-jmv-input.jpg>
-File: figures/04-exr-biologietest-jmv-output.jpg Graphic file (type bmp)
-<figures/04-exr-biologietest-jmv-output.jpg>
-
 
 
 Overfull \hbox (21.45671pt too wide) has occurred while \output is active
@@ -1540,6 +1490,11 @@ Overfull \hbox (21.45671pt too wide) has occurred while \output is active
  []
 
 [66]
+File: figures/04-exr-biologietest-jmv-input.jpg Graphic file (type bmp)
+<figures/04-exr-biologietest-jmv-input.jpg>
+File: figures/04-exr-biologietest-jmv-output.jpg Graphic file (type bmp)
+<figures/04-exr-biologietest-jmv-output.jpg>
+
 
 [67]
 
@@ -1569,7 +1524,7 @@ Overfull \hbox (21.45671pt too wide) has occurred while \output is active
 File: figures/icons/caution.png Graphic file (type bmp)
 <figures/icons/caution.png>
 
-Underfull \hbox (badness 2269) in paragraph at lines 1634--1635
+Underfull \hbox (badness 2269) in paragraph at lines 1791--1792
 []$[]$\TU/lmr/m/n/10 : Ungleichheit, sprich “ungleich” oder “nicht gleich”.
  []
 
@@ -1591,7 +1546,7 @@ File: aps_statistik1_files/figure-latex/exm-vermoegen-sampling-plot-1.pdf Graphi
 File: aps_statistik1_files/figure-latex/exm-vermoegen-histogram-plot-1.pdf Graphic file (type pdf)
 <use aps_statistik1_files/figure-latex/exm-vermoegen-histogram-plot-1.pdf>
 
-Underfull \hbox (badness 1142) in paragraph at lines 1734--1735
+Underfull \hbox (badness 1142) in paragraph at lines 1897--1898
 \TU/lmr/m/n/10 lichkeit zu bestimmen, kann einfach gezählt werden, welcher Anteil der
  []
 
@@ -1620,12 +1575,12 @@ Overfull \hbox (10.88452pt too wide) has occurred while \output is active
 [77]
 
 [78]
-Overfull \hbox (33.0pt too wide) in paragraph at lines 1765--1765
+Overfull \hbox (33.0pt too wide) in paragraph at lines 1928--1928
 []\TU/lmtt/m/n/10 ## Warning: Removed 2 rows containing non-finite outside the scale range 
  []
 
 
-Overfull \hbox (106.5pt too wide) in paragraph at lines 1770--1770
+Overfull \hbox (106.5pt too wide) in paragraph at lines 1933--1933
 []\TU/lmtt/m/n/10 ## Warning: Removed 8 rows containing missing values or values outside the scale range 
  []
 
@@ -1653,12 +1608,12 @@ Overfull \hbox (10.88452pt too wide) has occurred while \output is active
  []
 
 [81]
-Overfull \hbox (33.0pt too wide) in paragraph at lines 1837--1837
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2003--2003
 []\TU/lmtt/m/n/10 ## Warning: Removed 2 rows containing non-finite outside the scale range 
  []
 
 
-Overfull \hbox (106.5pt too wide) in paragraph at lines 1842--1842
+Overfull \hbox (106.5pt too wide) in paragraph at lines 2008--2008
 []\TU/lmtt/m/n/10 ## Warning: Removed 8 rows containing missing values or values outside the scale range 
  []
 
@@ -1674,14 +1629,14 @@ Overfull \hbox (10.88452pt too wide) has occurred while \output is active
  []
 
 [83]
-Underfull \hbox (badness 1810) in paragraph at lines 1870--1871
+Underfull \hbox (badness 1810) in paragraph at lines 2039--2040
 []\TU/lmr/m/n/10 Wird im Vermögensbeispiel []5.1[] die Differenz zwischen geschätztem Er-
  []
 
 
 
 [84]
-Underfull \hbox (badness 2726) in paragraph at lines 1932--1934
+Underfull \hbox (badness 2726) in paragraph at lines 2101--2103
 []\TU/lmr/m/n/10 Die Beobachtungen müssen einer Zufallsstichprobe der Population
  []
 
@@ -1693,7 +1648,7 @@ File: figures/05-exr-vermoegen-jmv-input.jpg Graphic file (type bmp)
 File: figures/05-exr-vermoegen-jmv-output.jpg Graphic file (type bmp)
 <figures/05-exr-vermoegen-jmv-output.jpg>
 
-Underfull \hbox (badness 2277) in paragraph at lines 1972--1973
+Underfull \hbox (badness 2277) in paragraph at lines 2151--2152
 []\TU/lmr/m/n/10 Reproduziere das Beispiel Alexithymie []5.2[] mit \TU/lmtt/m/n/10 Jamovi \TU/lmr/m/n/10 indem folgende
  []
 
@@ -1735,7 +1690,7 @@ File: figures/05-exr-marktpreisanalyse-testen-jmv-output.jpg Graphic file (type 
 
 
 [93]
-Underfull \hbox (badness 1565) in paragraph at lines 2143--2144
+Underfull \hbox (badness 1565) in paragraph at lines 2362--2363
 []\TU/lmr/m/n/10 Der Stichprobenmittelwert sagt aus, dass in dieser Stichprobe die
  []
 
@@ -1754,12 +1709,12 @@ Underfull \hbox (badness 1565) in paragraph at lines 2143--2144
 [98]
 \bbl@ensure@ngerman {Kapitel} 6.
 
-Overfull \hbox (32.00671pt too wide) in paragraph at lines 2250--2250
+Overfull \hbox (32.00671pt too wide) in paragraph at lines 2469--2469
 []\TU/lmr/bx/n/24.88 Gruppenmittelwertunterschied 
  []
 
 
-Underfull \hbox (badness 2409) in paragraph at lines 2258--2258
+Underfull \hbox (badness 2409) in paragraph at lines 2477--2477
 []\TU/lmr/bx/n/14.4 Was ist das Problem der Stichproben-
  []
 
@@ -1792,12 +1747,12 @@ Overfull \hbox (300.14345pt too wide) has occurred while \output is active
  []
 
 [102]
-Overfull \hbox (33.0pt too wide) in paragraph at lines 2299--2299
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2524--2524
 []\TU/lmtt/m/n/10 ## Warning: Removed 2 rows containing non-finite outside the scale range 
  []
 
 
-Overfull \hbox (106.5pt too wide) in paragraph at lines 2304--2304
+Overfull \hbox (106.5pt too wide) in paragraph at lines 2529--2529
 []\TU/lmtt/m/n/10 ## Warning: Removed 8 rows containing missing values or values outside the scale range 
  []
 
@@ -1806,12 +1761,12 @@ File: aps_statistik1_files/figure-latex/exm-breakup-hist-pval-reja-1.pdf Graphic
 
 
 [103]
-Underfull \hbox (badness 6792) in paragraph at lines 2334--2335
+Underfull \hbox (badness 6792) in paragraph at lines 2562--2563
 [][]\TU/lmr/bx/n/10 Beispiel 6.2 \TU/lmr/m/n/10 (Emotionaler Stroop-Test bei posttraumatischer Belas-
  []
 
 
-Underfull \hbox (badness 3547) in paragraph at lines 2334--2335
+Underfull \hbox (badness 3547) in paragraph at lines 2562--2563
 \TU/lmr/m/n/10 tungsstörung.)\TU/lmr/bx/n/10 . []\TU/lmr/m/n/10 Analog zum klassischen Stroop-Test werden bei einem
  []
 
@@ -1828,7 +1783,7 @@ File: aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-1.pdf Graphic 
 
 
 [105]
-Overfull \hbox (106.5pt too wide) in paragraph at lines 2368--2368
+Overfull \hbox (106.5pt too wide) in paragraph at lines 2599--2599
 []\TU/lmtt/m/n/10 ## Warning: Removed 8 rows containing missing values or values outside the scale range 
  []
 
@@ -1854,7 +1809,7 @@ Overfull \hbox (300.14345pt too wide) has occurred while \output is active
  []
 
 [108]
-Underfull \hbox (badness 1454) in paragraph at lines 2445--2447
+Underfull \hbox (badness 1454) in paragraph at lines 2679--2681
 []\TU/lmr/m/n/10 Die Beobachtungen beider Gruppen müssen einer Normalverteilung
  []
 
@@ -1872,17 +1827,17 @@ Overfull \hbox (300.14345pt too wide) has occurred while \output is active
  []
 
 [110]
-Underfull \hbox (badness 2478) in paragraph at lines 2497--2498
+Underfull \hbox (badness 2478) in paragraph at lines 2741--2742
 []\TU/lmr/m/n/10 Es werden Mittelwerte von einer intervallskalierten Variabel über
  []
 
 
-Underfull \hbox (badness 1436) in paragraph at lines 2497--2498
+Underfull \hbox (badness 1436) in paragraph at lines 2741--2742
 \TU/lmr/m/n/10 zwei Gruppen verglichen. Als statischer Test kommt demnach der
  []
 
 
-Underfull \hbox (badness 2913) in paragraph at lines 2497--2498
+Underfull \hbox (badness 2913) in paragraph at lines 2741--2742
 \TU/lmr/m/n/10 Zweistichproben-$[]$-Test oder der Welch-Test infrage. Aufgrund der
  []
 
@@ -1915,7 +1870,7 @@ Overfull \hbox (300.14345pt too wide) has occurred while \output is active
  []
 
 [114]
-Underfull \hbox (badness 1281) in paragraph at lines 2587--2589
+Underfull \hbox (badness 1281) in paragraph at lines 2851--2853
 \TU/lmr/m/n/10 ter Wortsilben beim Lernen mit oder ohne Musik gleich ist, also
  []
 
@@ -1927,12 +1882,12 @@ File: figures/06-exr-hypnose-jmv-input.jpg Graphic file (type bmp)
 File: figures/06-exr-hypnose-jmv-output.jpg Graphic file (type bmp)
 <figures/06-exr-hypnose-jmv-output.jpg>
 
-Underfull \hbox (badness 4205) in paragraph at lines 2638--2639
+Underfull \hbox (badness 4205) in paragraph at lines 2912--2913
 \TU/lmr/m/n/10 Schmerz bei einer Behandlung mit der neuen Hypnose-Methode
  []
 
 
-Underfull \hbox (badness 1418) in paragraph at lines 2646--2647
+Underfull \hbox (badness 1418) in paragraph at lines 2920--2921
 \TU/lmr/m/n/10 Umfrage zufällig verheiratete und unverheiratete Ärztinnen. Diese füllen
  []
 
@@ -1946,12 +1901,12 @@ Overfull \hbox (300.14345pt too wide) has occurred while \output is active
 [116]
 
 [117]
-Underfull \hbox (badness 3098) in paragraph at lines 2652--2654
+Underfull \hbox (badness 3098) in paragraph at lines 2926--2928
 []\TU/lmr/m/n/10 Wie viele verheiratete und unverheiratete haben den Fragebogen
  []
 
 
-Underfull \hbox (badness 2547) in paragraph at lines 2656--2658
+Underfull \hbox (badness 2547) in paragraph at lines 2930--2932
 []\TU/lmr/m/n/10 Übersetzen Sie die Hypothese der Forscherin in eine Statistische
  []
 
@@ -1978,7 +1933,7 @@ Overfull \hbox (300.14345pt too wide) has occurred while \output is active
 [120]
 \bbl@ensure@ngerman {Kapitel} 7.
 
-Overfull \hbox (32.00671pt too wide) in paragraph at lines 2705--2705
+Overfull \hbox (32.00671pt too wide) in paragraph at lines 2989--2989
 []\TU/lmr/bx/n/24.88 Gruppenmittelwertunterschied 
  []
 
@@ -2009,7 +1964,7 @@ Overfull \hbox (222.64455pt too wide) has occurred while \output is active
  []
 
 [124]
-Underfull \hbox (badness 2142) in paragraph at lines 2829--2833
+Underfull \hbox (badness 2142) in paragraph at lines 3119--3123
 \TU/lmr/m/n/10 unter \TU/lmtt/m/n/10 Analysen > t-Tests > t-Test für unabhängige Stichproben \TU/lmr/m/n/10 her-
  []
 
@@ -2108,12 +2063,12 @@ Overfull \hbox (222.64455pt too wide) has occurred while \output is active
 [140]
 \bbl@ensure@ngerman {Kapitel} 8.
 
-Underfull \hbox (badness 7415) in paragraph at lines 3241--3242
+Underfull \hbox (badness 7415) in paragraph at lines 3571--3572
 []\TU/lmr/m/n/10 Um den Zusammenhang zwischen zwei intervallskalierten Merkmalen
  []
 
 
-Underfull \hbox (badness 1888) in paragraph at lines 3241--3242
+Underfull \hbox (badness 1888) in paragraph at lines 3571--3572
 \TU/lmr/m/n/10 aufzuzeigen wird ein sogenanntes \TU/lmr/bx/n/10 Streudiagramm \TU/lmr/m/n/10 verwendet. Um den
  []
 
@@ -2143,12 +2098,12 @@ Overfull \hbox (297.33902pt too wide) has occurred while \output is active
  []
 
 [145]
-Underfull \hbox (badness 2269) in paragraph at lines 3316--3316
+Underfull \hbox (badness 2269) in paragraph at lines 3657--3657
 \TU/lmr/bx/n/14.4 zwei mindestens ordinalskalierten Merk-
  []
 
 
-Overfull \hbox (0.11003pt too wide) in paragraph at lines 3321--3322
+Overfull \hbox (0.11003pt too wide) in paragraph at lines 3662--3663
 \TU/lmr/m/n/10 Eine Studie will dieses Resultat reproduzieren. Die Facebook-Nutzungsintensität
  []
 
@@ -2158,7 +2113,7 @@ Overfull \hbox (0.11003pt too wide) in paragraph at lines 3321--3322
 File: figures/icons/caution.png Graphic file (type bmp)
 <figures/icons/caution.png>
 
-Overfull \hbox (20.42116pt too wide) detected at line 3341
+Overfull \hbox (20.42116pt too wide) detected at line 3682
 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [][][]
  []
 
@@ -2170,24 +2125,24 @@ Overfull \hbox (228.19012pt too wide) has occurred while \output is active
  []
 
 [147]
-Underfull \hbox (badness 10000) in paragraph at lines 3351--3352
+Underfull \hbox (badness 10000) in paragraph at lines 3692--3693
 \TU/lmtt/m/n/10 > Korrelationsmatrix \TU/lmr/m/n/10 und \TU/lmtt/m/n/10 Korrelationskoeffizienten: Spearman
  []
 
 
-Overfull \hbox (13.50002pt too wide) in paragraph at lines 3351--3352
+Overfull \hbox (13.50002pt too wide) in paragraph at lines 3692--3693
 \TU/lmr/m/n/10 geschätzt und mit der Zusatzoption \TU/lmtt/m/n/10 Zusätzliche Optionen: Signifikanzniveau
  []
 
 
 
 [148]
-Underfull \hbox (badness 1394) in paragraph at lines 3381--3381
+Underfull \hbox (badness 1394) in paragraph at lines 3722--3722
 []\TU/lmr/bx/n/14.4 Wie stark ist der Zusammenhang zwis-
  []
 
 
-Underfull \hbox (badness 2197) in paragraph at lines 3381--3381
+Underfull \hbox (badness 2197) in paragraph at lines 3722--3722
 \TU/lmr/bx/n/14.4 chen einem mindestens ordinalskalierten
  []
 
@@ -2204,24 +2159,24 @@ File: figures/icons/caution.png Graphic file (type bmp)
 
 
 [150]
-Underfull \hbox (badness 2495) in paragraph at lines 3459--3460
+Underfull \hbox (badness 2495) in paragraph at lines 3800--3801
 []\TU/lmr/m/n/10 Testen Sie mit dem Datensatz \TU/lmtt/m/n/10 08-exm-zahlungsbereitschaft.sav \TU/lmr/m/n/10 aus
  []
 
 
 
 [151]
-Underfull \hbox (badness 10000) in paragraph at lines 3477--3478
+Underfull \hbox (badness 10000) in paragraph at lines 3818--3819
 \TU/lmtt/m/n/10 Jamovi > Öffnen > Datenbibliothek > Big 5 (Dolan, Oort, Stoel
  []
 
 
-Underfull \hbox (badness 2173) in paragraph at lines 3477--3478
+Underfull \hbox (badness 2173) in paragraph at lines 3818--3819
 \TU/lmtt/m/n/10 & Wicherts, 2009) \TU/lmr/m/n/10 verfügbar. Die Merkmale Neuroticism, Extraversion,
  []
 
 
-Underfull \hbox (badness 1577) in paragraph at lines 3485--3487
+Underfull \hbox (badness 1577) in paragraph at lines 3826--3828
 []\TU/lmr/m/n/10 Zeichnen Sie die Korrelationsmatrix als Diagramm, inklusive Vari-
  []
 
@@ -2263,11 +2218,6 @@ File: figures/08-exr-ehe-burnout-pointcorrelation-jmv-output1.jpg Graphic file (
 <figures/08-exr-ehe-burnout-pointcorrelation-jmv-output1.jpg>
 File: figures/08-exr-ehe-burnout-pointcorrelation-jmv-output2.jpg Graphic file (type bmp)
 <figures/08-exr-ehe-burnout-pointcorrelation-jmv-output2.jpg>
-
-Underfull \hbox (badness 10000) in paragraph at lines 3620--3620
-[][]
- []
-
 File: figures/08-exr-ehe-burnout-pointcorrelation-jmv-input3.jpg Graphic file (type bmp)
 <figures/08-exr-ehe-burnout-pointcorrelation-jmv-input3.jpg>
 File: figures/08-exr-ehe-burnout-pointcorrelation-jmv-output3.jpg Graphic file (type bmp)
@@ -2285,61 +2235,105 @@ File: figures/08-exr-test-preparation-jmv-input1.jpg Graphic file (type bmp)
 <figures/08-exr-test-preparation-jmv-input1.jpg>
 File: figures/08-exr-test-preparation-jmv-input2.jpg Graphic file (type bmp)
 <figures/08-exr-test-preparation-jmv-input2.jpg>
-
-Overfull \hbox (2.21909pt too wide) in paragraph at lines 3674--3674
-[][] [] 
- []
-
 File: figures/08-exr-test-preparation-jmv-output1.jpg Graphic file (type bmp)
 <figures/08-exr-test-preparation-jmv-output1.jpg>
 File: figures/08-exr-test-preparation-jmv-output2.jpg Graphic file (type bmp)
 <figures/08-exr-test-preparation-jmv-output2.jpg>
 
-Overfull \hbox (2.23334pt too wide) in paragraph at lines 3680--3680
-[][] [] 
- []
-
-
 
 [163]
 
 [164]
-Underfull \hbox (badness 3375) in paragraph at lines 3750--3752
+Underfull \hbox (badness 3375) in paragraph at lines 4152--4154
 []\TU/lmr/m/n/10 Um den Zusammenhang zwischen Alphabetisierungsrate (intervall-
  []
 
 
-Underfull \hbox (badness 3281) in paragraph at lines 3750--3752
+Underfull \hbox (badness 3281) in paragraph at lines 4152--4154
 \TU/lmr/m/n/10 skaliert, normalverteilt) und Bruttoinslansprodukt (intervallskaliert,
  []
 
+
+
+[165]
 File: figures/08-exr-test-spearman-jmv-output.jpg Graphic file (type bmp)
 <figures/08-exr-test-spearman-jmv-output.jpg>
 
 
-[165]
-
 [166]
+
+[167]
+
+[168
+
+]
 \bbl@ensure@ngerman {Kapitel} 9.
+File: figures/09-exm-alcohol-edu-data-view.jpg Graphic file (type bmp)
+<figures/09-exm-alcohol-edu-data-view.jpg>
+File: figures/09-exm-alcohol-edu-aggdata-view.jpg Graphic file (type bmp)
+<figures/09-exm-alcohol-edu-aggdata-view.jpg>
 
 
-[167
+[169]
+
+[170]
+File: figures/icons/caution.png Graphic file (type bmp)
+<figures/icons/caution.png>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[171]
+File: figures/09-exm-dog-cancer-data-view.jpg Graphic file (type bmp)
+<figures/09-exm-dog-cancer-data-view.jpg>
+
+Underfull \hbox (badness 1442) in paragraph at lines 4302--4303
+[]\TU/lmr/m/n/10 Um diese Daten korrekt in \TU/lmtt/m/n/10 Jamovi \TU/lmr/m/n/10 einzulesen, kann unter \TU/lmtt/m/n/10 Analysen >
+ []
+
+
+Underfull \hbox (badness 3815) in paragraph at lines 4302--4303
+\TU/lmtt/m/n/10 Häufigkeiten > Kreuztabellen > Unabhängige Stichproben \TU/lmr/m/n/10 die Anzahl
+ []
+
+
+Underfull \hbox (badness 2158) in paragraph at lines 4302--4303
+\TU/lmr/m/n/10 Fälle bei \TU/lmtt/m/n/10 Anzahl (optional) \TU/lmr/m/n/10 eingelesen werden. Dies resultiert in der
+ []
+
+File: figures/09-exm-dog-cancer-aggdata-view.jpg Graphic file (type bmp)
+<figures/09-exm-dog-cancer-aggdata-view.jpg>
+
+
+[172]
+Underfull \hbox (badness 10000) in paragraph at lines 4315--4316
+
+ []
+
+File: figures/icons/caution.png Graphic file (type bmp)
+<figures/icons/caution.png>
+
+
+[173]
+
+[174]
+
+[175]
+
+[176
 
 ]
 
-[168]
+[177]
 
-[169
+[178] (./aps_statistik1.bbl
 
-]
-
-[170] (./aps_statistik1.bbl
-
-[171
+[179
 
 ]
 
-[172
+[180
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 4--7
@@ -2373,21 +2367,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--58
 
 
 
-[173]
+[181]
 
-[174]
-Underfull \hbox (badness 10000) in paragraph at lines 146--150
+[182]
+Underfull \hbox (badness 10000) in paragraph at lines 151--155
 []\TU/lmr/m/n/10 Zimmerman, D. W. (2004).  A note on preliminary tests
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 146--150
+Underfull \hbox (badness 10000) in paragraph at lines 151--155
 \TU/lmr/m/n/10 of equality of variances.  57(1):173–181.  _eprint:
  []
 
 )
 
-[175] (./aps_statistik1.aux)
+[183] (./aps_statistik1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -2397,12 +2391,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 34553 strings out of 475846
- 760870 string characters out of 5773212
- 1185785 words of memory out of 5000000
- 56864 multiletter control sequences out of 15000+600000
+ 34750 strings out of 475846
+ 771034 string characters out of 5773212
+ 1186586 words of memory out of 5000000
+ 57057 multiletter control sequences out of 15000+600000
  565418 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,10n,114p,2090b,738s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aps_statistik1.pdf (175 pages).
+Output written on aps_statistik1.pdf (183 pages).

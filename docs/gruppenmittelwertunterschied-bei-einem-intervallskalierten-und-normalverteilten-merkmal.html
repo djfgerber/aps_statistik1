@@ -209,7 +209,7 @@ div.csl-indent {
 <h2><span class="header-section-number">6.1</span> Was ist das Problem der Stichprobenziehung?<a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#was-ist-das-problem-der-stichprobenziehung" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In der Stichprobe kann also ein kleiner geschlechterspezifischer Mittelwertunterschied der ER beobachtet werden. Dieser Mittelwertunterschied könnte nun einerseits auf einen Mittelwertunterschied in der Population zurückzuführen sein, wie in Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:exm-breakup-bagplot">6.1</a> links dargestellt. Hier gibt es zwei Populationen: Frauen-Population mit höheren und Männer-Population mit tieferen ER-Werten. Dies führt dazu, dass der Erwartungswert der Frauen-Population höher ist als bei Männer-Population und eine zufällige gezogene Stichprobe aus Frauen-Population auch ein höheres arithmetisches Mittel aufweist als Männer-Population.</p>
 <p>Andererseits könnte der Mittelwertunterschied auch auf die zufällige Stichprobenziehung zurückzuführen sein, siehe Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:exm-breakup-bagplot">6.1</a> rechts. In dieser Situation haben die Frauen- und die Männer-Populationen ähnliche Werte und demnach auch einen ähnlichen Erwartungswert. Beim Ziehen der Stichproben spielt der Zufall hier so, dass aus der Frauen-Population einige Beobachtungen mehr mit hohen ER-Werten ausgewählt wurden als bei der Männer-Population. Dies führt dazu, dass in den zwei Stichproben ein Unterschied im arithmetischen Mittel der ER beobachtet werden kann.</p>
-<div class="figure"><span style="display:block;" id="fig:exm-breakup-bagplot"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-breakup-bagplot"></span>
 <img src="aps_statistik1_files/figure-html/exm-breakup-bagplot-1.png" alt="Links: Zwei Stichprobenziehungen aus zwei Populationen mit unterschiedlichen Mittelwerten. Rechts: Zwei Stichprobenziehungen aus einer Population, bzw. aus zwei Populationen die sich bezüglich ihrer Werte nicht unterscheiden." width="672" />
 <p class="caption">
 Abbildung 6.1: Links: Zwei Stichprobenziehungen aus zwei Populationen mit unterschiedlichen Mittelwerten. Rechts: Zwei Stichprobenziehungen aus einer Population, bzw. aus zwei Populationen die sich bezüglich ihrer Werte nicht unterscheiden.
@@ -218,7 +218,7 @@ Abbildung 6.1: Links: Zwei Stichprobenziehungen aus zwei Populationen mit unters
 <!-- Discuss: welchen zwei anderen Möglichkeiten sind hier nicht dargestellt? -->
 <p>Welche dieser Situationen zutrifft kann nicht genau herausgefunden werden, da die Population nie vollständig beobachtet werden kann.</p>
 <p>Um trotzdem eine Aussage über die Population zu treffen, kann wie bereits mehrmals gemacht, die Stichprobenziehung oft - beispielsweise <span class="math inline">\(3000\)</span>-mal - wiederholt werden. Dies wird unter der Annahme gemacht, dass es keinen ER-Erwartungswertunterschied zwischen der Frauen- und Männer-Population gibt. Die Verteilung der ER-Mittelwertdifferenzen dieser Stichproben ist in Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:exm-breakup-hist">6.2</a> dargestellt.</p>
-<div class="figure"><span style="display:block;" id="fig:exm-breakup-hist"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-breakup-hist"></span>
 <img src="aps_statistik1_files/figure-html/exm-breakup-hist-1.png" alt="Verteilung simulierter ER-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test." width="672" />
 <p class="caption">
 Abbildung 6.2: Verteilung simulierter ER-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test.
@@ -239,7 +239,7 @@ Abbildung 6.2: Verteilung simulierter ER-Mittelwertdifferenzen bei wiederholten 
 ## (`stat_bin()`).</code></pre>
 <pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale range
 ## (`geom_bar()`).</code></pre>
-<div class="figure"><span style="display:block;" id="fig:exm-breakup-hist-pval-reja"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-breakup-hist-pval-reja"></span>
 <img src="aps_statistik1_files/figure-html/exm-breakup-hist-pval-reja-1.png" alt="TODO" width="672" />
 <p class="caption">
 Abbildung 6.3: TODO
@@ -271,7 +271,7 @@ t = \frac{\bar{x_1}-\bar{x_2} - \omega_0}{\sqrt{\frac{(n_1 - 1) s_1^2+(n_2-1)s_2
 <p><span class="math inline">\(H_1: \mu_\text{PTSD} \neq \mu_\text{non-PTSD}.\)</span></p>
 </blockquote>
 <p>In diesem Beispiel sind die Standardabweichungen und demnach auch die Varianzen der Reaktionszeiten in den beiden Gruppen sehr unterschiedlich. Wenn das Experiment wiederum wiederholt wird, kann der Verteilung der Mittelwertdifferenzen entnommen werden, dass der Zweistichproben-<span class="math inline">\(t\)</span>-Test nach Student diese Verteilung nicht gut abbildet. Die rote Linie in Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:exm-emotional-stroop-hist">6.4</a> liegt mittig zu hoch und an den Enden zu tief Wird diese Annäherung in diesem Fall verwendet, dann besteht die Gefahr, dass ein signifikanter Mittelwertunterschied nicht erkannt wird.</p>
-<div class="figure"><span style="display:block;" id="fig:exm-emotional-stroop-hist"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-emotional-stroop-hist"></span>
 <img src="aps_statistik1_files/figure-html/exm-emotional-stroop-hist-1.png" alt="Verteilung simulierter RT-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test." width="672" />
 <p class="caption">
 Abbildung 6.4: Verteilung simulierter RT-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test.
@@ -290,7 +290,7 @@ t = \frac{\bar{x_1}-\bar{x_2} - \omega_0}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n
 <!-- Discuss: klären, Welch-Test praktisch relevant, zweistichproben-t-test historisch und als referenz wichtig. -->
 <pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale range
 ## (`geom_bar()`).</code></pre>
-<div class="figure"><span style="display:block;" id="fig:exm-emotional-stroop-hist-pval-reja"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-emotional-stroop-hist-pval-reja"></span>
 <img src="aps_statistik1_files/figure-html/exm-emotional-stroop-hist-pval-reja-1.png" alt="TODO" width="672" />
 <p class="caption">
 Abbildung 6.5: TODO
@@ -378,14 +378,14 @@ Inspiriert von <span class="citation">Bandura, Ross, and Ross (<a href="#ref-ban
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
 <p><span id="unlabeled-div-46" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:sol-bobo2groups-input">6.6</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-bobo2groups-input"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-bobo2groups-input"></span>
 <img src="figures/06-exr-bobo2groups-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
 Abbildung 6.6: Jamovi Eingabe.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:sol-bobo2groups-output">6.7</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-bobo2groups-output"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-bobo2groups-output"></span>
 <img src="figures/06-exr-bobo2groups-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
 Abbildung 6.7: Jamovi Ausgabe.
@@ -416,14 +416,14 @@ Ziel:
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
 <p><span id="unlabeled-div-47" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:sol-gruppenpuzzle-input">6.8</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-gruppenpuzzle-input"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-gruppenpuzzle-input"></span>
 <img src="figures/06-exr-gruppenpuzzle-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
 Abbildung 6.8: Jamovi Eingabe.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:sol-gruppenpuzzle-output">6.9</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-gruppenpuzzle-output"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-gruppenpuzzle-output"></span>
 <img src="figures/06-exr-gruppenpuzzle-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
 Abbildung 6.9: Jamovi Ausgabe.
@@ -454,14 +454,14 @@ Ziel:
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
 <p><span id="unlabeled-div-48" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:sol-music-memory-input">6.10</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-music-memory-input"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-music-memory-input"></span>
 <img src="figures/06-exr-music-memory-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
 Abbildung 6.10: Jamovi Eingabe.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:sol-music-memory-output">6.11</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-music-memory-output"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-music-memory-output"></span>
 <img src="figures/06-exr-music-memory-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
 Abbildung 6.11: Jamovi Ausgabe.
@@ -492,14 +492,14 @@ Ziel:
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
 <p><span id="unlabeled-div-49" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:sol-hypnose-input">6.12</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-hypnose-input"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-hypnose-input"></span>
 <img src="figures/06-exr-hypnose-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
 Abbildung 6.12: Jamovi Eingabe.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:sol-hypnose-output">6.13</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-hypnose-output"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-hypnose-output"></span>
 <img src="figures/06-exr-hypnose-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
 Abbildung 6.13: Jamovi Ausgabe.
@@ -531,14 +531,14 @@ Ziel:
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
 <p><span id="unlabeled-div-50" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:sol-ehe-burnout-input">6.14</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-ehe-burnout-input"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-ehe-burnout-input"></span>
 <img src="figures/06-exr-ehe-burnout-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
 Abbildung 6.14: Jamovi Eingabe.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="gruppenmittelwertunterschied-bei-einem-intervallskalierten-und-normalverteilten-merkmal.html#fig:sol-ehe-burnout-output">6.15</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-ehe-burnout-output"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-ehe-burnout-output"></span>
 <img src="figures/06-exr-ehe-burnout-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
 Abbildung 6.15: Jamovi Ausgabe.

@@ -201,6 +201,70 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="zusammenhang-dichotomer-merkmale" class="section level1 hasAnchor" number="9">
 <h1><span class="header-section-number">Kapitel 9</span> Zusammenhang dichotomer Merkmale<a href="zusammenhang-dichotomer-merkmale.html#zusammenhang-dichotomer-merkmale" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="example">
+<p><span id="exm:alcohol-edu" class="example"><strong>Beispiel 9.1  (Alkohol und Bildung) </strong></span>Vom Bundasamt für Statistik BFS werden regelmässig Daten zum Alkoholkonsum in der Schweiz erhoben. Dabei wird ermittlet welcher Anteil der Bevölkerung weniger als einmal pro Woche und welcher Anteil mehr als einmal pro Woche Alkohol konsumiert. Diese Anteile werden anschliessen für verschiedene Untergruppen ausgewiesen, zum Beispiel für Leute mit Tertiärbildung und anderem Bildungsabschluss. Es werden hier also zwei dichotome Merkmale (Bildung: Teriär/nicht Tertiär und Alkoholkonsum: mind. 1x / Woche, weniger als 1x / Woche) und deren Zusammenhang betrachtet. Um diese Anteile abzuschätzen werden <span class="math inline">\(1000\)</span> Personen befragt. Der Datensatz ist als <code>09-exm-alcohol-edu.sav</code> verfügbar.</p>
+</div>
+<p>Im Datensatz wird für jede Person eine Zeile ausgewiesen, siehe Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-alcohol-edu-data-view">9.1</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-alcohol-edu-data-view"></span>
+<img src="figures/09-exm-alcohol-edu-data-view.jpg" alt="Daten Alkoholkonsum und Bildung." width="50%" />
+<p class="caption">
+Abbildung 9.1: Daten Alkoholkonsum und Bildung.
+</p>
+</div>
+<p>Da der Mensch nicht besonders gut darin ist unzählige Zeilen eine Tabelle zu absorbieren, werden die Daten oft in einer Vierfeldertafel zusammengefasst. <span id="customdef-vierfeldertafel" class="customdef">Die <strong>Vierfeldertafel</strong> ist eine Kreuztabelle bei welcher die Ausprägungen des einen Merkmals als Spalten und des anderen als Zeilen fungieren.</span> Die Zellen werden dann mit der Anzahl Beobachtungen befüllt, für welche die Ausprägungskombination im Datensatz zutrifft, siehe Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-alcohol-edu-data-view">9.1</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-alcohol-edu-aggdata-view"></span>
+<img src="figures/09-exm-alcohol-edu-aggdata-view.jpg" alt="Vierfeldertafel Alkoholkonsum und Bildung.." width="50%" />
+<p class="caption">
+Abbildung 9.2: Vierfeldertafel Alkoholkonsum und Bildung..
+</p>
+</div>
+<p>Im psychologischen und medizinischen Kontext bezieht sich ein Merkmal oft auf einen schädlichen und einen nicht schädlichen Ausgang. Im Beispiel ist es der Alkoholkonsum. <span id="customdef-risikovariable" class="customdef">Dieses Merkmal wird <strong>Risikovariable</strong> genannt.</span> In der Vierfeldertafel kann die Risikovariable die Zeilen oder die Spalten bestimmen. Die Risikovariable wird durch andere Merkmale sogennante ursächliche Variablen erklärt. Im breiteren statistischen Kontext wird die Risikovariable abhängige Variable und die ursächliche Variable als unabhängige Variable bezeichnet.</p>
+<p><span id="customdef-risiko" class="customdef">Mit <strong>Risiko</strong> wird die Wahrscheinlichkeit benannt den schädlichen Ausgang zu erleiden und wird mit dem Anteil des schädlichen Ausgangs an der Gesamtzahl berechnet.</span> Das Risiko kann je nach Ausprägung der ursächlichen Variable unterschiedlich hoch sein. Das Risiko mehr als 1x pro Woche Alkohol zu konsumieren ist demnach <span class="math inline">\(308/378 = 0.815 = 81.5\%\)</span> für Menschen mit tertiärer Ausbildung und <span class="math inline">\(476/622 = 0.765 = 76.5\%\)</span> für Menschen mit anderer Ausbildung. Das Risiko kann in <code>Jamovi</code> unter <code>Zellen &gt; Prozentsätze</code> und dann <code>Zeile</code> (wenn das ursächliche Merkmal die Zeilen bestimmt) oder <code>Spalte</code> (wenn das ursächliche Merkmal die Spalte bestimmt) angezeigt werden.</p>
+<p>Die Risiken für die tertiär und andere Ausbildungen können nun verglichen werden. <span id="customdef-risikodifferenz" class="customdef">Dazu kann die Differenz der beiden Risiken sogenannte <strong>Risikodifferenz</strong> (in <code>Jamovi</code> unter <code>Statistiken &gt; Unterschiede in den Proportionen</code>) betrachtet werden.</span> Wenn die Risiken der beiden Gruppen mit <span class="math inline">\(p_1\)</span> und <span class="math inline">\(p_2\)</span> bezeichnet werden, entspricht dies schlicht
+<span class="math display">\[p_1 - p_2 = 0.815 - 0.765=0.05.\]</span>
+Das Risiko mehr als <span class="math inline">\(1\)</span>x pro Woche Alkohol zu konsumieren ist also <span class="math inline">\(0.05 = 5\%\)</span> höher für Personen mit einem tertiären Bildungsabschluss. Da die Risiken immer Werte zwischen <span class="math inline">\(0\)</span> und <span class="math inline">\(1\)</span> sind, muss dieser Formel nach die Differnez der Risiken zwischen <span class="math inline">\(-1\)</span> und <span class="math inline">\(1\)</span> liegen. Wenn die Differenz der beiden Risiken <span class="math inline">\(0\)</span> ist, bedeutet dies, dass die Risiken in beiden Gruppen gleich gross sind. Je weiter die Differenz der Risiken von <span class="math inline">\(0\)</span> weg ist, desto unterschiedlicher sind die Risiken in den zwei Gruppen.</p>
+<p>Eine andere Art die Risiken zu vergleichen ist sie ins Verhältnis zu setzen. <span id="customdef-tagname" class="customdef">Dies wird <strong>relatives Risiko</strong></span>
+<span class="math display">\[\text{RR} = \frac{p_1}{p_2} = \frac{0.815}{ 0.765}=1.065\]</span>
+genannt. Das Risiko mehr als <span class="math inline">\(1\)</span>x pro Woche Alkohol zu konsumieren ist für Personen mit tertiärer Ausbildung also <span class="math inline">\(1.065\)</span> mal so gross wie für Personen mit anderer Ausbildung. Sind <span class="math inline">\(p_1\)</span> und <span class="math inline">\(p_2\)</span> gleich gross, so ist das relative Risiko bei <span class="math inline">\(1\)</span>. Ist <span class="math inline">\(p_1\)</span> kleiner als <span class="math inline">\(p_2\)</span>, so ist das relative Risiko kleiner als <span class="math inline">\(1\)</span>. Ist <span class="math inline">\(p_1\)</span> grösser als <span class="math inline">\(p_2\)</span>, so ist das relative Risiko grösser als <span class="math inline">\(1\)</span>. Insgesamt ist das relative Risiko immer eine Zahl zwischen <span class="math inline">\(0\)</span> und <span class="math inline">\(+\infty\)</span>. Das Tauschen der Gruppennummerierung führt zu einer Umkehr des Wertes rund um <span class="math inline">\(1\)</span>. Wenn im Beispiel also die ander Bildung als Gruppe <span class="math inline">\(1\)</span> bezeichnet würde, so ist das relative Risiko
+<span class="math display">\[\text{RR} = \frac{p_1}{p_2} = \frac{0.765}{ 0.815}=0.939\]</span></p>
+<div class="caution">
+<div class="remark">
+<p><span id="unlabeled-div-68" class="remark"><em>Hinweis</em>. </span>Das hier die relativen Risiken für die Gruppenneunummerierung fast gleich weit von <span class="math inline">\(1\)</span> entfernt liegen ist im normalfall nicht so. Dies kann an folgendem Zahlenbeispiel gesehen werden: <span class="math inline">\(0.75 / 0.25 = 3\)</span> und umgekehrt <span class="math inline">\(0.25/0.75 = 0.333\)</span>.</p>
+</div>
+</div>
+<p>Das relative Risiko sagt im Gegensatz zu Risikodifferenz nichts mehr über das absolute Risiko aus. Wenn ein Medikament, zum Beispiel das Risiko einer Psychose von <span class="math inline">\(1\)</span> aus <span class="math inline">\(5000\)</span> auf <span class="math inline">\(1\)</span> aus <span class="math inline">\(10000\)</span> reduziert, so ist die Risikodifferenz bei <span class="math inline">\(0.0001 - 0.0002 = -0.01\%\)</span>. Das relative Risiko ist in dem Fall jedoch <span class="math inline">\(0.0001/0.0002 = 50\%\)</span>. Wird nun nur das relative Risiko berichtet, könnten Lesende von einem zu grossen Nutzen des Medikaments ausgehen. Es wird deshalb empfohlen immer die Risikodifferenz und das relative Risiko zu berichten.</p>
+<p>Die Risikodifferenz und das relative Risiko können nur berechnet werden, wenn die gesamt Anzahl Fälle repräsentativ für die Population ist. Dies ist bei Fall-Kontroll Studien nicht der Fall, wie folgendes Beispiel zeigt. Für solche Studien können weder die Risikodifferenz noch das relative Risiko sinnvoll berechnet werden.</p>
+<div class="example">
+<p><span id="exm:dog-cancer" class="example"><strong>Beispiel 9.2  (Krebs bei Hunden) </strong></span><span class="citation">Hayes et al. (<a href="#ref-hayes1991">1991</a>)</span> haben sich für den Zusammenhang zwischen malingen Lymphomen bei Hunden (ugs. bösartiger Lymphdrüsenkrebs) und der Anwendung des Herbizids <span class="math inline">\(2, 4\)</span>-Dichlorphenoxyessigsäure in Hausgärten interessiert. Dabei haben Sie in einer Fall-Kontroll Studie (case-control study) die Zahlen im Datensatz <code>09-exm-dog-cancer.sav</code> ermittelt.</p>
+</div>
+<p>Die Daten sind hier bereits in aggregierten Fallzahlen präsentiert, siehe Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-dog-cancer-data-view">9.3</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-dog-cancer-data-view"></span>
+<img src="figures/09-exm-dog-cancer-data-view.jpg" alt="Daten Malignes Lymphoma bei Hunden." width="50%" />
+<p class="caption">
+Abbildung 9.3: Daten Malignes Lymphoma bei Hunden.
+</p>
+</div>
+<p>Um diese Daten korrekt in <code>Jamovi</code> einzulesen, kann unter <code>Analysen &gt; Häufigkeiten &gt; Kreuztabellen &gt; Unabhängige Stichproben</code> die Anzahl Fälle bei <code>Anzahl (optional)</code> eingelesen werden. Dies resultiert in der Vierfeldertafel in Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-dog-cancer-aggdata-view">9.4</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-dog-cancer-aggdata-view"></span>
+<img src="figures/09-exm-dog-cancer-aggdata-view.jpg" alt="Vierfeldertafel Malignes Lymphoma bei Hunden." width="50%" />
+<p class="caption">
+Abbildung 9.4: Vierfeldertafel Malignes Lymphoma bei Hunden.
+</p>
+</div>
+<p>Case-control bedeutet, dass Hunde mit Tumor (Fall/case) in einer Tierklinik gegeben waren. Dazu wurde eine gewisse Anzahl (normalerweise zwischen <span class="math inline">\(1\)</span> bis <span class="math inline">\(4\)</span> mal so viele wie kranke) gesunde Hunde (Kontroll/control) zufällig ausgewählt. Bei allen Hunden wurde anschliessend ermittelt, ob die Hunde auf einem mit dem entsprechenden Herbizid belasteten Garten Zeit verbracht haben. Da von den Studienautoren bestimmt wurde, wie viele gesunde Hunde ermittelt werden, kann der Anteil der kranken Hunde nicht als Mass für das Vorkommen der Erkankung in der jeweiligen Gruppe dienen. Es ist hier also nicht aussagekräftig den Anteil kranker Hunde pro Gruppe oder das daraus folgende relative Risiko zu bestimmen.</p>
+<p><span id="customdef-odds-ratio" class="customdef">Stattdessen wird in diesen Fällen das <strong>Chancenverhältnis</strong> (eng. odds ratio)</span><br />
+<span class="math display">\[OR = \frac{a\cdot d}{b\cdot c} = \frac{191\cdot 300}{304\cdot 300} = 1.34\]</span>
+berechnet, wobei <span class="math inline">\(a, b, c\)</span> und <span class="math inline">\(d\)</span> den Anzahl Fällen in der Vierfeldertafel von oben nach unten und von links nach rechts entsprchen. <span id="customdef-odds" class="customdef">Die <strong>Chance</strong> (eng. odds) ist dabei eine Art Wahrscheinlichkeit auszudrücken.</span> Sie ist definiert als Wahrscheinlichkeit, dass ein Ereignis eintrifft geteilt durch die Wahrscheinlichkeit, dass das Ereignis nicht eintrifft. Für die Herbizid belasteten Hunde ist die Chance ein Tumor zu haben also <span class="math inline">\(a/c=191/304=0.63\)</span> und für die anderen Hunde <span class="math inline">\(b/d=300/641=0.47\)</span>. Es gilt, je höher die Chance desto höher die Eintreffwahrscheinlichkeit. Ein Chancenverhältnis von <span class="math inline">\(1.34\)</span> schliesslich bedeutet, dass die Chance einen Tumor zu entwickeln für einen Herbizid belasteten Hund <span class="math inline">\(1.34\)</span> mal so hoch ist wie für einen nicht Herbizid belasteten.</p>
+<div class="caution">
+<div class="remark">
+<p><span id="unlabeled-div-69" class="remark"><em>Hinweis</em>. </span></p>
+<ul>
+<li>Es kann festgestellt werden, dass das Chancenverhältnis unabhängig von der Wahl der ursächlichen und Risikovariable ist
+<span class="math display">\[ OR = \frac{a\cdot d}{b\cdot c} = \frac{a\cdot d}{c\cdot b}.\]</span></li>
+<li>Für kleine Fallzahlen (Risiko <span class="math inline">\(&lt;10\%\)</span>) liegt das Chancenverhältnis nahe am relativen Risiko.</li>
+</ul>
+</div>
+</div>
 <div id="übungen-6" class="section level2 hasAnchor" number="9.1">
 <h2><span class="header-section-number">9.1</span> Übungen<a href="zusammenhang-dichotomer-merkmale.html#übungen-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <!-- Dogs and cancer -->
@@ -226,7 +290,7 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-68" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-70" class="solution"><em>Lösung</em>. </span>TODO</p>
 </details>
 </div>
 <div class="exercise">
@@ -249,7 +313,7 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-69" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-71" class="solution"><em>Lösung</em>. </span>TODO</p>
 </details>
 </div>
 <div class="exercise">
@@ -271,7 +335,7 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-70" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-72" class="solution"><em>Lösung</em>. </span>TODO</p>
 </details>
 </div>
 <div class="exercise">
@@ -281,12 +345,12 @@ Ziel:
 - Starke Korrelation gegen Null absichern
 -->
 <!-- TODO: Ausschöpfen odds ratio, etc -->
-<p>Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert (fiktive Zahlen, siehe Daten in <code>09-exr-covid-sterblichkeit.sav</code>). Wie gross ist die Inzidenz, das relative Risiko und der odds ratio und wie werden diese Grössen interpretiert? Was sind UV und AV?</p>
+<p>Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert (fiktive Zahlen, siehe Daten in <code>09-exr-covid-sterblichkeit.sav</code>). Wie gross sind die Risiken, die Risikodifferenz, das relative Risiko und der odds ratio und wie werden diese Grössen interpretiert? Was sind UV und AV?</p>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-71" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-73" class="solution"><em>Lösung</em>. </span>TODO</p>
 </details>
 </div>
 </div>
@@ -297,6 +361,9 @@ Ziel:
 </div>
 <h3>Literaturverzeichnis<a href="literaturverzeichnis.html#literaturverzeichnis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-hayes1991" class="csl-entry">
+Hayes, Howard M., Robert E. Tarone, Kenneth P. Cantor, Carl R. Jessen, Dennis M. McCurnin, and Ralph C. Richardson. 1991. <span>“Case-Control Study of Canine Malignant Lymphoma: Positive Association with Dog Owner’s Use of 2, 4-Dichlorophenoxyacetic Acid Herbicides.”</span> <em><span>JNCI</span>: Journal of the National Cancer Institute</em> 83 (17): 1226–31. <a href="https://doi.org/10.1093/jnci/83.17.1226">https://doi.org/10.1093/jnci/83.17.1226</a>.
+</div>
 <div id="ref-matos1998" class="csl-entry">
 Matos, E., M. Vilensky, P. Boffetta, and M. Kogevinas. 1998. <span>“Lung Cancer and Smoking: A Case-Control Study in Buenos Aires, Argentina.”</span> <em>Lung Cancer (Amsterdam, Netherlands)</em> 21 (3): 155–63. <a href="https://doi.org/10.1016/s0169-5002(98)00055-5">https://doi.org/10.1016/s0169-5002(98)00055-5</a>.
 </div>

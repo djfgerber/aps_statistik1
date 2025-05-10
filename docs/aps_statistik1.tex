@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{06 May, 2025}
+\date{10 May, 2025}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -351,9 +351,12 @@ Für einen Menschen ist es schwierig direkt aus der Sichtung dieser Zahlen zu be
 Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von \(0.2\)°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein \textbf{Histogramm} genannt.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-ducktemp-histogramm-1.pdf}
-\caption{\label{fig:exm-ducktemp-histogramm}Histogramm Körpertemperatur Enten.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-ducktemp-histogramm-1} 
+
+}
+
+\caption{Histogramm Körpertemperatur Enten.}\label{fig:exm-ducktemp-histogramm}
 \end{figure}
 
 Aufgrund dieser Darstellung kann die Veterinärin nun sehen, wie häufig welche Körpertemperaturen sind. Dies wird die \textbf{Verteilung} des Merkmals genannt. Sie bemerkt zum Beispiel, dass Beobachtungen der Körpertemperatur rund um 41.6°C am häufigsten sind und tiefere und höhere Temperaturen seltener vorkommen. Auf einen Blick sieht sie auch, dass die Temperatur aller Enten zwischen 41°C und 42.2°C war.
@@ -442,7 +445,12 @@ Mit den Daten \texttt{02-exm-ducktemp.sav} aus Beispiel \ref{exm:ducktemp}:
 \leavevmode
 
 \begin{figure}
-  \includegraphics[width=0.5\linewidth]{figures/Enten_n40_instr_histogramm} \includegraphics[width=0.5\linewidth]{figures/Enten_n40} \caption{Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.}\label{fig:enten-hist-mean-sd1}
+  
+  {\centering \includegraphics[width=0.5\linewidth]{figures/Enten_n40_instr_histogramm} \includegraphics[width=0.5\linewidth]{figures/Enten_n40} 
+  
+  }
+  
+  \caption{Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.}\label{fig:enten-hist-mean-sd1}
   \end{figure}
 
 \begin{enumerate}
@@ -453,7 +461,12 @@ Mit den Daten \texttt{02-exm-ducktemp.sav} aus Beispiel \ref{exm:ducktemp}:
 \end{enumerate}
 
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-mean-sd-input} \includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-mean-sd-output} \caption{Links: Jamovi-Anleitung zur Berechnung der gewünschten Parameter; rechts: Parameterwerte.}\label{fig:enten-hist-mean-sd2}
+
+{\centering \includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-mean-sd-input} \includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-mean-sd-output} 
+
+}
+
+\caption{Links: Jamovi-Anleitung zur Berechnung der gewünschten Parameter; rechts: Parameterwerte.}\label{fig:enten-hist-mean-sd2}
 \end{figure}
 
 \begin{enumerate}
@@ -467,7 +480,12 @@ Mit den Daten \texttt{02-exm-ducktemp.sav} aus Beispiel \ref{exm:ducktemp}:
 \end{enumerate}
 
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-binwidth-jmv-input} \includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-binwidth-jmv-output} \caption{Links: Jamovi-Anleitung zur Berechnung des gewünschten Histogramms; rechts: Jamovi-Ausgabe.}\label{fig:enten-hist-binwidth}
+
+{\centering \includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-binwidth-jmv-input} \includegraphics[width=0.5\linewidth]{figures/02-exr-enten-hist-binwidth-jmv-output} 
+
+}
+
+\caption{Links: Jamovi-Anleitung zur Berechnung des gewünschten Histogramms; rechts: Jamovi-Ausgabe.}\label{fig:enten-hist-binwidth}
 \end{figure}
 
 Es entsteht dabei glücklicherweise genau die gewünschte Darstellung. Es wäre auch möglich gewesen, dass die Körbe auf der \(x\)-Achse verschoben sind, zum Beispiel ein Korb \(41.2\) bis \(41.4\). Diese Verschiebung könnte nicht mit \texttt{JJStatsPlot} behoben werden und müsste mit einer anderen Statistiksoftware bearbeitet werden.
@@ -525,17 +543,32 @@ In einem psychologischen Test machen \(5\) Probandinnen die Werte \(18, 21, 20, 
 Für c und d wird der Datensatz bei \texttt{Jamovi} eingegeben, siehe Abbildung \ref{fig:sol-theorie-mdn-mean-data}, und die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-theorie-mdn-mean-input}.
 
 \begin{figure}
-\includegraphics[width=0.33\linewidth]{figures/02-exr-theorie-mdn-mean-data-input} \includegraphics[width=0.33\linewidth]{figures/02-exr-theorie-mdn-mean-data-mod} \includegraphics[width=0.33\linewidth]{figures/02-exr-theorie-mdn-mean-data-clean} \caption{Jamovi Dateneingabe.}\label{fig:sol-theorie-mdn-mean-data}
+
+{\centering \includegraphics[width=0.33\linewidth]{figures/02-exr-theorie-mdn-mean-data-input} \includegraphics[width=0.33\linewidth]{figures/02-exr-theorie-mdn-mean-data-mod} \includegraphics[width=0.33\linewidth]{figures/02-exr-theorie-mdn-mean-data-clean} 
+
+}
+
+\caption{Jamovi Dateneingabe.}\label{fig:sol-theorie-mdn-mean-data}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/02-exr-theorie-mdn-mean-jmv-input} \caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-theorie-mdn-mean-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-theorie-mdn-mean-jmv-input} 
+
+}
+
+\caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-theorie-mdn-mean-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-theorie-mdn-mean-output}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/02-exr-theorie-mdn-mean-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-theorie-mdn-mean-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-theorie-mdn-mean-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-theorie-mdn-mean-output}
 \end{figure}
 
 Damit können die beiden nächsten Teilfragen beantwortet werden.
@@ -608,13 +641,23 @@ In einem psychologischen Test machen \(5\) Probandinnen die Werte \(18, 21, 20, 
 Für c und d wird der Datensatz bei \texttt{Jamovi} eingegeben. Die Variablen werden bearbeitet wie in \ref{exr:theorie-mdn-mean} beschrieben. Die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-theorie-variabilitaet-input}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/02-exr-theorie-variabilitaet-jmv-input} \caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-theorie-variabilitaet-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-theorie-variabilitaet-jmv-input} 
+
+}
+
+\caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-theorie-variabilitaet-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-theorie-variabilitaet-output}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/02-exr-theorie-variabilitaet-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-theorie-variabilitaet-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-theorie-variabilitaet-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-theorie-variabilitaet-output}
 \end{figure}
 
 Damit können die beiden nächsten Teilfragen beantwortet werden.
@@ -664,13 +707,23 @@ Bei einer Befragung wurden die Körpergrösse und das Geschlecht im Datensatz \t
 \end{enumerate}
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-input-a} \caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-koerpergroesse-sex-input-a}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-input-a} 
+
+}
+
+\caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-koerpergroesse-sex-input-a}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-koerpergroesse-sex-output-a}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-output-a} \caption{Jamovi Ausgabe.}\label{fig:sol-koerpergroesse-sex-output-a}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-output-a} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-koerpergroesse-sex-output-a}
 \end{figure}
 
 Die Körpergrösse ist demnach \(N=326\) mal beobachtet worden. Die Zentralitätmasse sind \(M=173.13\) cm, \(Mdn=172\) (Rundung nach 2 Kommastellen), Modus \(144.77\). Die Variabilitätsmasse sind \(SD=12.09\) cm, \(IQR=17.11\) und \(R=57.78\). Auf dem Histogramm ist ausserdem ersichtlich, dass die meisten Leute zwischen \(160\) und \(180\) cm gross sind und dass nur weniger unter \(155\) oder über \(200\) cm gross sind.
@@ -684,13 +737,23 @@ Die Körpergrösse ist demnach \(N=326\) mal beobachtet worden. Die Zentralität
 \end{enumerate}
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-input-b} \caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-koerpergroesse-sex-input-b}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-input-b} 
+
+}
+
+\caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-koerpergroesse-sex-input-b}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-koerpergroesse-sex-output-b}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-output-b} \caption{Jamovi Ausgabe.}\label{fig:sol-koerpergroesse-sex-output-b}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-koerpergroesse-sex-jmv-output-b} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-koerpergroesse-sex-output-b}
 \end{figure}
 
 Die Körpergrösse ist demnach bei den Frauen \(N=163\) mal beobachtet worden. Die Zentralitätmasse sind \(M=166.00\) cm, \(Mdn=166.09\), Modus \(144.77\). Die Variabilitätsmasse sind \(SD=8.41\) cm, \(IQR=11.27\) und \(R=41.45\). Die Körpergrösse ist bei den Männern auch \(N=163\) mal beobachtet worden. Die Zentralitätmasse sind \(M=180.27\) cm, \(Mdn=180.54\), Modus \(149.17\). Die Variabilitätsmasse sind \(SD=10.96\) cm, \(IQR=15.35\) und \(R=53.39\). Auf dem Histogramm ist ausserdem ersichtlich, dass die beiden Gruppen eine Spitze rund um den Mittelwert bei der Häufigkeit aufweisen. Beobachtungen, welche von der Spitze weiter weg sind werden seltener. Diese zwei Spitzen und somit unterschiedliche Körpergrössenverteilungen nach Geschlecht war aus (a) nicht ersichtlich. Es ist immer möglich, dass bei nicht-Experimenten ein zusätzliches Merkmal (hier das Geschlecht) ganz neue Erkenntnisse bringen kann.
@@ -744,15 +807,30 @@ Analysieren Sie alle erhobenen Merkmale indem Sie ein Histogramm erstellen und d
 \leavevmode
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/02-exr-diverse-distrib-input} \caption{Jamovi Eingabe.}\label{fig:sol-diverse-distrib1}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-diverse-distrib-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-diverse-distrib1}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/02-exr-diverse-distrib-output} \caption{Deskriptive Statistiken.}\label{fig:sol-diverse-distrib2}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-diverse-distrib-output} 
+
+}
+
+\caption{Deskriptive Statistiken.}\label{fig:sol-diverse-distrib2}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-1} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-2} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-3} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-4} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-5} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-6} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-7} \caption{Histogramme.}\label{fig:sol-diverse-distrib3}
+
+{\centering \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-1} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-2} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-3} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-4} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-5} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-6} \includegraphics[width=0.33\linewidth]{aps_statistik1_files/figure-latex/sol-diverse-distrib3-7} 
+
+}
+
+\caption{Histogramme.}\label{fig:sol-diverse-distrib3}
 \end{figure}
 
 Die Merkmale werden mit den Befehlen in Abbildung \ref{fig:sol-diverse-distrib1} analysiert.
@@ -1021,25 +1099,34 @@ Viele Studien basieren auf Testresultaten von Studierenden, weil diese nahe am F
 Es wird angenommen, dass sich alle Personen der Population in einem Zimmer befinden. In Abbildung \ref{fig:srs-intervall-nocol} ist dieses Zimmer aus der Vogelperspektive dargestellt, wobei jeder Punkt im schwarzen Kasten einer Person der Population entspricht. Von den Personen im Zimmer, respektive die Beobachtungen in der Population, ist die Angst nicht bekannt (Punkte in grau). Aus diesem Zimmer wurden zufällig 30 Personen geholt und befragt also sichtbar gemacht, was der Zufallsstichprobe entspricht. Die Zufallsstichprobe ist gekennzeichnet durch die farbigen Punkte über dem Zimmer, oberhalb des Pfeils. Die Farben der Punkte sind jetzt bekannt und entsprechen der jeweiligen Zustandesangst der beobachteten Personen.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/srs-intervall-nocol-1.pdf}
-\caption{\label{fig:srs-intervall-nocol}Population mit unbekannter Angst.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/srs-intervall-nocol-1} 
+
+}
+
+\caption{Population mit unbekannter Angst.}\label{fig:srs-intervall-nocol}
 \end{figure}
 
 Da die Stichprobe zufällig gezogen wurde, das heisst zufällig Personen aus dem Zimmer geholt wurden, kann es nun sein, dass die Stichprobe einer Population wie in Abbildung \ref{fig:srs-intervall-high-p} entstammt.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/srs-intervall-high-p-1.pdf}
-\caption{\label{fig:srs-intervall-high-p}Population mit ähnlichen Angst-Werten wie in der Stichprobe.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/srs-intervall-high-p-1} 
+
+}
+
+\caption{Population mit ähnlichen Angst-Werten wie in der Stichprobe.}\label{fig:srs-intervall-high-p}
 \end{figure}
 
 Es könnte aber auch sein, dass die Stichprobe einer Population mit viel höherer Zusatandsangst, wie in Abbildung \ref{fig:srs-intervall-low-p} dargestellt, entstammt. Dies wird zwar weniger häufig vorkommen als der Fall oben, aber ist trotzdem möglich.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/srs-intervall-low-p-1.pdf}
-\caption{\label{fig:srs-intervall-low-p}Population mit höheren Angst-Werten als in der Stichprobe.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/srs-intervall-low-p-1} 
+
+}
+
+\caption{Population mit höheren Angst-Werten als in der Stichprobe.}\label{fig:srs-intervall-low-p}
 \end{figure}
 
 Das Problem der zufälligen Stichprobenziehung ist also, dass nie ganz klar ist, wie die darunterliegende Population aussieht. Sind die Werte der Stichprobe tief, weil zufällig gerade Studierende mit tiefer Angst beobachtet wurden, oder haben tatsächlich die meisten Studierenden eine tiefe Angst?
@@ -1049,17 +1136,23 @@ Das Problem der zufälligen Stichprobenziehung ist also, dass nie ganz klar ist,
 Die Lösung dieses Problems funktioniert intuitiv wie folgt: Man stellt sich vor, die Stichprobenziehung würde erneut gemacht, und dann nochmal und dann nochmal. So oft, bis man einen guten Eindruck davon hat, wie häufig eine Stichprobe mit eher tiefen Angst-Werten wie bei der Stichprobe im Beispiel vorkommt. Im Szenario, in welchem in der Population tatsächlich tiefe Werte häufig vorkommen, kann dies aussehen wie in Abbildung \ref{fig:srs-intervall-high-p-many}. Stichproben mit eher tiefen Angst-Werten kommen hier häufig vor.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/srs-intervall-high-p-many-1.pdf}
-\caption{\label{fig:srs-intervall-high-p-many}Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher tiefen Angst-Werten.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/srs-intervall-high-p-many-1} 
+
+}
+
+\caption{Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher tiefen Angst-Werten.}\label{fig:srs-intervall-high-p-many}
 \end{figure}
 
 Im Szenario, in welchem in der Population tatsächlich höhere Werte häufig vorkommen, kann dies aussehen wie in Abbildung \ref{fig:srs-intervall-low-p-many}. Stichproben mit eher tiefen Angst-Werten kommen hier selten oder gar nicht vor.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/srs-intervall-low-p-many-1.pdf}
-\caption{\label{fig:srs-intervall-low-p-many}Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/srs-intervall-low-p-many-1} 
+
+}
+
+\caption{Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten.}\label{fig:srs-intervall-low-p-many}
 \end{figure}
 
 Es kann also zusammenfassend gesagt werden, dass die gezogene Stichprobe wohl eher aus einer Population mit tiefen Angst-Werten gezogen wurde als aus einer Population mit eher höheren Angst-Werten. Ganz sicher kann man jedoch nie sein, da die Werte in der Population eigentlich unbekannt sind. Eine genaue Quantifizierung dieser Unsicherheit kann mit Hilfe der Statistik erreicht werden und wird in den folgenden Kapiteln dieses Buches erläutert.
@@ -1154,17 +1247,23 @@ Ein Parameter, über welchen wir gerne eine Aussage treffen würden, ist die zen
 In Beispiel \ref{exm:angst} liegt das arithmetische Mittel in der Stichprobe der Studierenden bei \(M=43.2\). Dieser Wert entspricht nun auch der Schätzung des Erwartungswertes, also der geschätzten durchschnittlichen Angst aller Menschen. Die Folgefrage ist also wie genau unsere Schätzung ist. Um dies zu quantifizieren, wiederholen wir die Stichprobenziehung und berechnen das arithmetische Mittel dieser zweiten Stichprobe. Dann wiederholen wir diesen Prozess, zum Beispiel \(1000\) mal.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-angst-hist-means-1.pdf}
-\caption{\label{fig:exm-angst-hist-means}Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-angst-hist-means-1} 
+
+}
+
+\caption{Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.}\label{fig:exm-angst-hist-means}
 \end{figure}
 
 Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \ref{fig:exm-angst-hist-means} lässt nun eine Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die \(43\) ist hier am wahrscheinlichsten und ein Wert tiefer als \(41\) oder höher \(45\) eher selten. Um diese Aussage präziser zu gestalten, werden konventionell die \(95\)\% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die \(5\)\% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das \(2.5\)\% Perzentil trennt die \(2.5\)\% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei \(40.4\). Das \(97.5\)\%-Perzentil trennt die höchsten \(2.5\)\% (oder eben die tiefsten \(97.5\)\%) arithmetischen Mittel ab und liegt bei \(46\). Dies ist in Abbildung \ref{fig:exm-angst-hist-means-emp-ci} ersichtlich.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-angst-hist-means-emp-ci-1.pdf}
-\caption{\label{fig:exm-angst-hist-means-emp-ci}Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-angst-hist-means-emp-ci-1} 
+
+}
+
+\caption{Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.}\label{fig:exm-angst-hist-means-emp-ci}
 \end{figure}
 
 \begin{example}[Verträglichkeit]
@@ -1172,17 +1271,23 @@ Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \r
 \end{example}
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-agreableness-hist-1.pdf}
-\caption{\label{fig:exm-agreableness-hist}Verteilung der 100 beobachteten Verträglichkeitswerte einer zufällig gezogenen Stichprobe.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-agreableness-hist-1} 
+
+}
+
+\caption{Verteilung der 100 beobachteten Verträglichkeitswerte einer zufällig gezogenen Stichprobe.}\label{fig:exm-agreableness-hist}
 \end{figure}
 
 Die Verteilung der Beobachtungen, siehe Abbildung \ref{fig:exm-agreableness-hist}, zeigt, dass alle Werte zwischen \(1\) und \(7\) vorkommen, aber keine zentrale Tendenz greifbar ist. Um herauszufinden wie zutreffend die Schätzung des Erwartungswertes der Verträglichkeit von \(M=3.91\) ist, stelle man sich wieder vor, dass der Student \(1000\)-mal die Stichprobenziehung wiederholt und jedes Mal das arithmetische Mittel \(M\) von neuem berechnet. Die Verteilung der arithmetischen Mittel dieser Stichproben ist in Abbildung \ref{fig:exm-agreableness-hist-means} dargestellt. Bei dieser Verteilung kann erneut links und rechts \(2.5\%\) der Werte abgeschnitten werden, um zum Schluss zu gelangen, dass das arithmetische Mittel in \(95\%\) der Fälle zwischen \(3.7\) und \(4.3\) zu liegen kommt.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-agreableness-hist-means-1.pdf}
-\caption{\label{fig:exm-agreableness-hist-means}Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Verträglichkeit.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-agreableness-hist-means-1} 
+
+}
+
+\caption{Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Verträglichkeit.}\label{fig:exm-agreableness-hist-means}
 \end{figure}
 
 Das Problem mit diesem Vorgehen ist, dass es aus finanziellen oder technischen Gründen selten möglich ist mehrere Stichproben aus derselben Population zu ziehen. Glücklicherweise haben Statistiker:innen herausgefunden, dass die Häufigkeitsverteilungen wie in Abbildungen \ref{fig:exm-angst-hist-means-emp-ci} und \ref{fig:exm-agreableness-hist-means} immer dieselbe Verteilung haben und dies unabhängig davon wie die ursprüngliche Verteilung des Merkmals aussah. \phantomsection\label{customdef-normalverteilung}{Diese Verteilung ist eine sogenannte \textbf{Normalverteilung}}.
@@ -1229,15 +1334,21 @@ Auf \href{https://seeing-theory.brown.edu/probability-distributions/index.html\#
 Die Abbildungen \ref{fig:exm-angst-normal-approx} und \ref{fig:exm-agreableness-normal-approx} illustrieren den zentralen Grenzwertsatz für Beispiel \ref{exm:angst} und \ref{exm:agreableness} respektive, wobei die Normalverteilung der roten Linie entspricht. Dabei wird einstweilen angenommen, dass \(\mu\) und \(\sigma\) bekannt sind. Diese Annahme wird später aufgelöst und dient hier lediglich der Illustration.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-angst-normal-approx-1.pdf}
-\caption{\label{fig:exm-angst-normal-approx}Die arithmetischen Mittel sind Normalverteilt mit Parametern \(\mu_g = 43.34\) und \(\sigma_g = 9.72 / \sqrt{30}\).}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-angst-normal-approx-1} 
+
+}
+
+\caption{Die arithmetischen Mittel sind Normalverteilt mit Parametern $\mu_g = 43.34$ und $\sigma_g = 9.72 / \sqrt{30}$.}\label{fig:exm-angst-normal-approx}
 \end{figure}
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-agreableness-normal-approx-1.pdf}
-\caption{\label{fig:exm-agreableness-normal-approx}Die arithmetischen Mittel sind Normalverteilt mit Parametern \(\mu_g = 3.91\) und \(\sigma_g = 1.73 / \sqrt{100}\).}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-agreableness-normal-approx-1} 
+
+}
+
+\caption{Die arithmetischen Mittel sind Normalverteilt mit Parametern $\mu_g = 3.91$ und $\sigma_g = 1.73 / \sqrt{100}$.}\label{fig:exm-agreableness-normal-approx}
 \end{figure}
 
 Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte Ziehen von Stichproben unnötig. Die Normalverteilung ist theoretisch konstruiert und ihr \(2.5\%\)- und \(97.5\%\)-Perzentil können theoretisch hergeleitet werden. Tabelle \ref{tab:quantiles-norm} wird kann beobachtet werden, dass für unsere zwei Beispiele die Perzentile der Stichprobe und der Normalverteilung sehr ähnlich, wenn auch nicht exakt gleich sind. Die Ungenauigkeit rührt daher, dass der zentrale Grenzwertsatz nur dann exakt funktioniert, wenn die Anzahl Beobachtungen (unendlich) gross ist.
@@ -1263,9 +1374,12 @@ Einstweilen wurde hier angenommen, dass die Streuung des Merkmals \(\sigma\) bek
 Der Unterschied zwischen der Normalverteilung und der \(t\)-Verteilung ist nur sichtbar, wenn \(n\) klein ist. In Beispiel \ref{exm:angst} mit \(n = 30\) ist ein kleiner Unterschied, in Beispiel \ref{exm:agreableness} mit \(n = 100\) ist kein Unterschied zwischen der Normalverteilung und der \(t\)-Verteilung sichtbar. \phantomsection\label{customdef-freiheitsgrade}{Tatsächlich wird die \(t\)-Verteilung mit einem Parameter charakterisiert, welcher \textbf{Freiheitsgrade} (eng. degrees of freedom, \(df\)) genannt wird.} In Abbildung \ref{fig:t-distribution} wird die \(t\)-Verteilung mit verschiedenen Freiheitsgraden mit der Normalverteilung verglichen. Bei der \(t\)-Verteilung mit den kleinsten Freiheitsgraden sind extremere Werte wahrscheinlicher als \(t\)-Verteilungen mit grösseren Freiheitsgraden.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/t-distribution-1.pdf}
-\caption{\label{fig:t-distribution}Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleich zu der Normalverteilung.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/t-distribution-1} 
+
+}
+
+\caption{Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleich zu der Normalverteilung.}\label{fig:t-distribution}
 \end{figure}
 
 Die Freiheitsgrade der \(t\)-Verteilung in der Annäherung oben entsprechen der Anzahl Beobachtungen minus 1, also \(df = n-1\). Die höhere Wahrscheinlichkeit von extremeren Werten bei kleinen Freiheitsgraden spiegelt die grössere Unsicherheit der Schätzung des Erwartungswertes wider, wenn die Standardabweichung unbekannt und damit auch geschätzt werden muss. Je kleiner \(n\) ist, desto stärker fällt diese Unsicherheit aus.
@@ -1298,13 +1412,23 @@ Die Firma Pear bringt ein neues Smartphone das F42 der Reihe Supernova X auf den
 Der Datensatz wird bei \texttt{Jamovi} eingelesen und die Analyseparameter wie in Abbildung \ref{fig:sol-marktpreisanalyse-input} gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/04-exr-marktpreisanalyse-jmv-input} \caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-marktpreisanalyse-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/04-exr-marktpreisanalyse-jmv-input} 
+
+}
+
+\caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-marktpreisanalyse-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-marktpreisanalyse-output}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/04-exr-marktpreisanalyse-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-marktpreisanalyse-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/04-exr-marktpreisanalyse-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-marktpreisanalyse-output}
 \end{figure}
 
 Die Marktanalyse mit \(N = 70\) Befragten hat ergeben, dass Jugendliche im Alter von \(15-20\) Jahren bereit sind durchschnittlich \(M = 288.34\) CHF \(95\%\)-KI \([260.92,315.76]\) auszugeben für das neue Supernova X F42 von Pear.
@@ -1335,13 +1459,23 @@ Diese Aufgabe ist angelehnt an \citet{sandstrom2022}.
 Der Datensatz wird bei \texttt{Jamovi} eingelesen und die Analyseparameter wie in Abbildung \ref{fig:sol-stranger-input} gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/04-exr-stranger-jmv-input} \caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-stranger-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/04-exr-stranger-jmv-input} 
+
+}
+
+\caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-stranger-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-stranger-output}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/04-exr-stranger-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-stranger-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/04-exr-stranger-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-stranger-output}
 \end{figure}
 
 \begin{enumerate}
@@ -1363,9 +1497,12 @@ Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-stranger-output}.
 (TODO, Achtung: Diese Augabe funktioniert je nach Version von Jamovi und JJStatsPlot nicht. Wenn die Normalverteilungskurve trotz Anwählen nicht angezeigt wird, kann die Lösung der Aufgabe nachgelesen werden. Diese Aufgabe ist wichtig für das Verständnis, nicht aber zur Nachahmung an der Prüfung.) Für ein Experiment werden in drei Runden jeweils \(10000\) Zufallsstichproben erhoben mit respektive \(10\), \(40\) und \(100\) Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung \ref{fig:ki-approx-normal1} dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/ki-approx-normal1-1.pdf}
-\caption{\label{fig:ki-approx-normal1}Verteilung der Werte einer Stichprobe. (Achtung es handelt sich hierbei nicht um Mittelwerte, sondern die Effektiv gemessenen Beobachtungen einer Stichprobe.)}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/ki-approx-normal1-1} 
+
+}
+
+\caption{Verteilung der Werte einer Stichprobe. (Achtung es handelt sich hierbei nicht um Mittelwerte, sondern die Effektiv gemessenen Beobachtungen einer Stichprobe.)}\label{fig:ki-approx-normal1}
 \end{figure}
 
 Die arithmetischen Mittel der \(10'000\) Stichproben sind im Datensatz \texttt{04-exr-zentraler-grenzwertsatz.sav} festgehalten. In der Spalte \texttt{n\_10} zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallsstichprobe mit \(10\) Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse \(n\). Erstellen Sie ein Histogramm mit der Erweiterung \texttt{JJStatsPlot} und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.
@@ -1377,7 +1514,12 @@ Die arithmetischen Mittel der \(10'000\) Stichproben sind im Datensatz \texttt{0
 Das Übereinanderlegen des jeweiligen Histogramms und der Wahrscheinlichkeitsdichte der Normalverteilung wird in Abbildung \ref{fig:sol-ki-approx-normal} gezeigt. Es ist deutlich zu sehen, dass die Linie nur bei \(n=100\) die Häufigkeitsverteilung der arithmetischen Mittel gut nachbilden kann. Bei \(n=10\) und \(n=50\) ist ein grosser Unterschied zwischen Häufigkeitsverteilung und Linie sichtbar. Das genaue \(n\) ab welchem eine Häufigkeitsverteilung gut durch die Normalverteilung angenähert wird hängt von der ursprünglichen Verteilung der Daten ab, d.h. der Verteilung in Abbildung \ref{fig:ki-approx-normal1}. Es kann deshalb nicht generell gesagt werden, dass ab \(n=100\) die Annäherung immer gut sei, so wie in diesem Beispiel. Der zentrale Grenzwertsatz besagt demnach auch lediglich, dass man immer ein grosses \(n\) wählen kann, so dass die Annäherung gut ist. Er besagt nichts darüber, wie gross \(n\) sein muss.
 
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-input} \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-output1} \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-output2} \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-output3} \caption{Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100.}\label{fig:sol-ki-approx-normal}
+
+{\centering \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-input} \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-output1} \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-output2} \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-output3} 
+
+}
+
+\caption{Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100.}\label{fig:sol-ki-approx-normal}
 \end{figure}
 
 \end{solution}
@@ -1421,7 +1563,12 @@ Vergleichen Sie die Resultate der Berechnungen für jede Stichprobe:
 Abbildung \ref{fig:sol-ki-mean-n-vary} zeigt die Berechnungsanweisungen für Jamovi und die resultierende Tabelle daraus.
 
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{figures/04-exr-stichprobengroesse-jmv-input} \includegraphics[width=0.5\linewidth]{figures/04-exr-stichprobengroesse-jmv-output} \caption{Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen.}\label{fig:sol-ki-mean-n-vary}
+
+{\centering \includegraphics[width=0.5\linewidth]{figures/04-exr-stichprobengroesse-jmv-input} \includegraphics[width=0.5\linewidth]{figures/04-exr-stichprobengroesse-jmv-output} 
+
+}
+
+\caption{Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen.}\label{fig:sol-ki-mean-n-vary}
 \end{figure}
 
 \begin{enumerate}
@@ -1456,13 +1603,23 @@ Eine Klasse bringt bei einem Biologietest eine durchwachsene Leistung. Die Lehrk
 Der Datensatz wird bei \texttt{Jamovi} eingelesen und die Analyseparameter wie in Abbildung \ref{fig:sol-biologietest-input} gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/04-exr-biologietest-jmv-input} \caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-biologietest-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/04-exr-biologietest-jmv-input} 
+
+}
+
+\caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-biologietest-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-biologietest-output}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/04-exr-biologietest-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-biologietest-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/04-exr-biologietest-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-biologietest-output}
 \end{figure}
 
 Die Klasse mit \(N=20\) Lernenden hat beim ersten Biologietest eine durchschnittliche Punktzahl von \(M=14.6\) Punkten \(95\%\) KI \([11.9,17.3]\) erzielt. Bei der Wiederholung des Tests wurde eine durchschnittliche Punktzahl von \(M=14.8\) Punkten \(95\%\) KI \([14.0,15.6]\) erzielt. Die Standardabweichung des Testergebnisses war beim ersten Mal \(SD=5.8\) Punkte und bei der Wiederholung \(SD=1.7\) Punkte. Die Länge des Konfidenzintervalls war bei der ersten Durchführung mit \(17.3-11.9=5.4\) Punkten bedeutend grösser als bei der zweiten Durchführung mit \(15.6-14.0=1.6\). Eine grössere Standardabweichung führt also zu einer grösseren Länge des Konfidenzintervalls. Dies kann auch durch Durchprobieren von Testwerten in Gleichung \eqref{eq:ki-mean} festgestellt werden.
@@ -1716,17 +1873,23 @@ Es kann nun schnell gesagt werden, dass das durchschnittliche Vermögen in der P
 Aufgrund der Zufallsstichprobe ist es unmöglich zu sagen, ob unsere Stichprobe eine eher seltene Stichprobenziehung aus einer Population mit unverändertem durchschnittlichen Vermögen von \(100'000\) CHF ist (Abbildung \ref{fig:exm-vermoegen-sampling-plot} links) oder ob es eine eher häufig vorkommende Stichprobenziehung aus einer Population mit höherem durchschnittlichen Vermögen ist (Abbildung \ref{fig:exm-vermoegen-sampling-plot} rechts).
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-vermoegen-sampling-plot-1.pdf}
-\caption{\label{fig:exm-vermoegen-sampling-plot}Vorgestellte Zufallsstichprobenziehung. Links: Nullhypothese ist wahr. Rechts: Nullhypothese ist falsch. Die grauen Punkte entsprechen Vermögen über 400'000 CHF.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-vermoegen-sampling-plot-1} 
+
+}
+
+\caption{Vorgestellte Zufallsstichprobenziehung. Links: Nullhypothese ist wahr. Rechts: Nullhypothese ist falsch. Die grauen Punkte entsprechen Vermögen über 400'000 CHF.}\label{fig:exm-vermoegen-sampling-plot}
 \end{figure}
 
 Es kann jedoch ausgesagt werden, mit welcher Wahrscheinlichkeit der gefundene Stichprobenmittelwert realisiert wird, gegeben dass die Nullhypothese wahr ist. Hier wird also angenommen, dass eine Population mit Erwartungswert \(\mu = 100'000\) CHF vorliegt und dass anschliessend zum Beispiel \(3000\) Stichproben an je \(20\) Beobachtungen pro Stichprobe gezogen werden. Von jeder dieser Stichproben wird das arithmetische Mittel berechnet. In der Verteilung dieser Mittelwerte, siehe Abbildung \ref{fig:exm-vermoegen-histogram-plot}, wird nun der tatsächliche Mittelwert der Stichprobe \(\bar{x} = 119853\) verortet.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-vermoegen-histogram-plot-1.pdf}
-\caption{\label{fig:exm-vermoegen-histogram-plot}TODO.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-vermoegen-histogram-plot-1} 
+
+}
+
+\caption{TODO.}\label{fig:exm-vermoegen-histogram-plot}
 \end{figure}
 
 Der beobachtete Mittelwert ist zwar nicht genau bei \(100'000\) CHF, aber trotzdem noch einigermassen plausibel, wenn die Nullhypothese stimmt. Um diesen Gedanken zu formalisieren, gibt es zwei Denkweisen, welche nun vorgestellt werden.
@@ -1772,9 +1935,12 @@ nicht mehr normal-, sondern \(t\)-verteilt ist bei \(n-1\) Freiheitsgraden (grü
 \end{verbatim}
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-vermoegen-plots-sampling-theorie-1.pdf}
-\caption{\label{fig:exm-vermoegen-plots-sampling-theorie}Oben: Histogramm der simulierten Verteilung; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-vermoegen-plots-sampling-theorie-1} 
+
+}
+
+\caption{Oben: Histogramm der simulierten Verteilung; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert.}\label{fig:exm-vermoegen-plots-sampling-theorie}
 \end{figure}
 
 \phantomsection\label{customdef-teststatistik}{Die Berechnung des für den Test relevanten Wertes, hier des \(t\)-Wertes wird \textbf{Teststatistik} (oder auch \emph{Prüfgrösse} oder nur \emph{Statistik}) genannt.} Eine Teststatistik hat normalerweise eine bekannte theoretische Verteilung, welcher die Teststatistik folgt, wenn die Nullhypothese wahr ist. \phantomsection\label{customdef-t-test}{Aufgrund der theoretischen \(t\)-Verteilung der vorliegenden Statistik und der einen Stichprobe (vgl. nächstes Kapitel) wird dieser Test \textbf{Einstichproben-\(t\)-Test} genannt.}
@@ -1844,9 +2010,12 @@ Um die Wahrscheinlichkeit des beobachteten arithmetischen Mittels der Stichprobe
 \end{verbatim}
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-alexithymie-plot-1.pdf}
-\caption{\label{fig:exm-alexithymie-plot}Oben: Histogramm der simulierten Verteilung der Alexithymie-Mittelwerte; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-alexithymie-plot-1} 
+
+}
+
+\caption{Oben: Histogramm der simulierten Verteilung der Alexithymie-Mittelwerte; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert.}\label{fig:exm-alexithymie-plot}
 \end{figure}
 
 Der \(p\)-Wert, also die Wahrscheinlichkeit, dass der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert, wird hier aufgrund der zweiseitigen Hypothesenstellung auch zweiseitig ausgelegt. Extremer in Richtung der Alternativhypothese meint hier alle Werte, die weiter weg als der beobachtete Durchschnittswert \(96.7\) vom hypothetischen Erwartungswert \(\mu = 100\) sind. Konkret sind dies alle Werte, welche kleiner als \(96.7\), und alle Werte, welche grösser als \(103.3\) sind (roter Bereich in Abbildung \ref{fig:exm-alexithymie-plot} oben rechts). Der Anteil der Werte, welche diese Bedingung erfüllen liegt bei \(p = 0.7\%\). Es ist demnach recht unwahrscheinlich, dass die Nullhypothese stimmt und zufällig ein Stichprobendurchschnittswert von \(96.7\) Alexithymie-Punkten herauskommt.
@@ -1957,11 +2126,21 @@ Reproduziere das Beispiel Vermögen \ref{exm:vermoegen} mit \texttt{Jamovi} inde
 \leavevmode
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/05-exr-vermoegen-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-vermoegen-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/05-exr-vermoegen-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-vermoegen-input}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/05-exr-vermoegen-jmv-output} \caption{Testresultat Einstichproben-t-Test und deskriptive Statistiken.}\label{fig:sol-vermoegen-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/05-exr-vermoegen-jmv-output} 
+
+}
+
+\caption{Testresultat Einstichproben-t-Test und deskriptive Statistiken.}\label{fig:sol-vermoegen-output}
 \end{figure}
 
 \end{solution}
@@ -1987,11 +2166,21 @@ Reproduziere das Beispiel Alexithymie \ref{exm:alexithymie} mit \texttt{Jamovi} 
 \leavevmode
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/05-exr-alexithymie-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-alexithymie-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/05-exr-alexithymie-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-alexithymie-input}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/05-exr-alexithymie-jmv-output} \caption{Testresultat Einstichproben-t-Test und deskriptive Statistiken.}\label{fig:sol-alexithymie-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/05-exr-alexithymie-jmv-output} 
+
+}
+
+\caption{Testresultat Einstichproben-t-Test und deskriptive Statistiken.}\label{fig:sol-alexithymie-output}
 \end{figure}
 
 \end{solution}
@@ -2019,11 +2208,21 @@ Es soll überprüft werden, ob der 24-stündige Tagesrhythmus, auch \emph{zirkad
 Für diese Übung werden die Daten in \texttt{Jamovi} wie in Abbildung \ref{fig:sol-circadian-input} analysiert. Das Resultat der Analyse ist in Abbildung \ref{fig:sol-circadian-output} festgehalten.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/05-exr-circadian-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-circadian-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/05-exr-circadian-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-circadian-input}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/05-exr-circadian-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-circadian-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/05-exr-circadian-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-circadian-output}
 \end{figure}
 
 \begin{enumerate}
@@ -2069,11 +2268,21 @@ Im Schwimmclub Neustadt erreichen neue Schwimmer nach einem Jahr Training eine K
 Für diese Übung werden die Daten in \texttt{Jamovi} wie in Abbildung \ref{fig:sol-schwimmen-input} analysiert. Das Resultat der Analyse ist in Abbildung \ref{fig:sol-schwimmen-output} festgehalten.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/05-exr-schwimmen-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-schwimmen-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/05-exr-schwimmen-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-schwimmen-input}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/05-exr-schwimmen-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-schwimmen-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/05-exr-schwimmen-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-schwimmen-output}
 \end{figure}
 
 \begin{enumerate}
@@ -2121,11 +2330,21 @@ Die Firma Pear bringt ein neues Smartphone das F42 der Reihe Supernova X auf den
 Für diese Übung werden die Daten in \texttt{Jamovi} wie in Abbildung \ref{fig:sol-marktpreisanalyse-testen-input} analysiert. Das Resultat der Analyse ist in Abbildung \ref{fig:sol-marktpreisanalyse-testen-output} festgehalten.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/05-exr-marktpreisanalyse-testen-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-marktpreisanalyse-testen-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/05-exr-marktpreisanalyse-testen-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-marktpreisanalyse-testen-input}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/05-exr-marktpreisanalyse-testen-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-marktpreisanalyse-testen-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/05-exr-marktpreisanalyse-testen-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-marktpreisanalyse-testen-output}
 \end{figure}
 
 \begin{enumerate}
@@ -2262,9 +2481,12 @@ In der Stichprobe kann also ein kleiner geschlechterspezifischer Mittelwertunter
 Andererseits könnte der Mittelwertunterschied auch auf die zufällige Stichprobenziehung zurückzuführen sein, siehe Abbildung \ref{fig:exm-breakup-bagplot} rechts. In dieser Situation haben die Frauen- und die Männer-Populationen ähnliche Werte und demnach auch einen ähnlichen Erwartungswert. Beim Ziehen der Stichproben spielt der Zufall hier so, dass aus der Frauen-Population einige Beobachtungen mehr mit hohen ER-Werten ausgewählt wurden als bei der Männer-Population. Dies führt dazu, dass in den zwei Stichproben ein Unterschied im arithmetischen Mittel der ER beobachtet werden kann.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-breakup-bagplot-1.pdf}
-\caption{\label{fig:exm-breakup-bagplot}Links: Zwei Stichprobenziehungen aus zwei Populationen mit unterschiedlichen Mittelwerten. Rechts: Zwei Stichprobenziehungen aus einer Population, bzw. aus zwei Populationen die sich bezüglich ihrer Werte nicht unterscheiden.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-breakup-bagplot-1} 
+
+}
+
+\caption{Links: Zwei Stichprobenziehungen aus zwei Populationen mit unterschiedlichen Mittelwerten. Rechts: Zwei Stichprobenziehungen aus einer Population, bzw. aus zwei Populationen die sich bezüglich ihrer Werte nicht unterscheiden.}\label{fig:exm-breakup-bagplot}
 \end{figure}
 
 Welche dieser Situationen zutrifft kann nicht genau herausgefunden werden, da die Population nie vollständig beobachtet werden kann.
@@ -2272,9 +2494,12 @@ Welche dieser Situationen zutrifft kann nicht genau herausgefunden werden, da di
 Um trotzdem eine Aussage über die Population zu treffen, kann wie bereits mehrmals gemacht, die Stichprobenziehung oft - beispielsweise \(3000\)-mal - wiederholt werden. Dies wird unter der Annahme gemacht, dass es keinen ER-Erwartungswertunterschied zwischen der Frauen- und Männer-Population gibt. Die Verteilung der ER-Mittelwertdifferenzen dieser Stichproben ist in Abbildung \ref{fig:exm-breakup-hist} dargestellt.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-breakup-hist-1.pdf}
-\caption{\label{fig:exm-breakup-hist}Verteilung simulierter ER-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-breakup-hist-1} 
+
+}
+
+\caption{Verteilung simulierter ER-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test.}\label{fig:exm-breakup-hist}
 \end{figure}
 
 Das Testprinzip funktioniert genau gleich wie beim \(t\)-Test für eine Stichprobe wie in Kapitel \ref{zentrale-tendenz-testen}. Zunächst werden die Hypothesen aufgestellt. A priori liegt keine Vermutung darüber vor, ob Männer oder Frauen eine stärkere ER zeigen. Die Null- und Alternativhypothese sind deshalb
@@ -2306,9 +2531,12 @@ Es kann beobachtet werden, dass, wenn es keine Erwartungswertdifferenz gibt, die
 \end{verbatim}
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-breakup-hist-pval-reja-1.pdf}
-\caption{\label{fig:exm-breakup-hist-pval-reja}TODO}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-breakup-hist-pval-reja-1} 
+
+}
+
+\caption{TODO}\label{fig:exm-breakup-hist-pval-reja}
 \end{figure}
 
 Ebenfalls kann erneut der p-Wert berechnet werden. Dieser entspricht hier allen ER-Mittelwertdifferenzen, welche \emph{extremer} als die beobachtete Mittelwertdifferenz \(0.25\) sind. Da die Hypothesenstellung hier zweiseitig ist, bedeutet extremer hier wieder grösser als \(0.25\) oder kleiner als \(-0.25\). Der \(p\)-Wert entspricht dem Anteil der roten Fläche in Abbildung \ref{fig:exm-breakup-hist-pval-reja} rechts an der Gesamtfläche und beträgt \(0.004\).
@@ -2345,9 +2573,12 @@ Es wird keine Annahme über die Richtung einer eventualen Mittelwertdifferenz an
 In diesem Beispiel sind die Standardabweichungen und demnach auch die Varianzen der Reaktionszeiten in den beiden Gruppen sehr unterschiedlich. Wenn das Experiment wiederum wiederholt wird, kann der Verteilung der Mittelwertdifferenzen entnommen werden, dass der Zweistichproben-\(t\)-Test nach Student diese Verteilung nicht gut abbildet. Die rote Linie in Abbildung \ref{fig:exm-emotional-stroop-hist} liegt mittig zu hoch und an den Enden zu tief Wird diese Annäherung in diesem Fall verwendet, dann besteht die Gefahr, dass ein signifikanter Mittelwertunterschied nicht erkannt wird.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-1.pdf}
-\caption{\label{fig:exm-emotional-stroop-hist}Verteilung simulierter RT-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-1} 
+
+}
+
+\caption{Verteilung simulierter RT-Mittelwertdifferenzen bei wiederholten Zufallsstichprobenziehung. Rot: Annäherung der Verteilung mit dem Student t-Test; grün: Annäherung der Verteilung durch den Welch-Test.}\label{fig:exm-emotional-stroop-hist}
 \end{figure}
 
 Für diesen Fall wurde von \citet{welch1947} eine alternative Annäherung an die Verteilung der Mittelwertdifferenzen gefunden, nämlich
@@ -2370,9 +2601,12 @@ Der Zweistichproben-\(t\)-Test und der Welch-Test sind also zwei Testvarianten, 
 \end{verbatim}
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-pval-reja-1.pdf}
-\caption{\label{fig:exm-emotional-stroop-hist-pval-reja}TODO}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-emotional-stroop-hist-pval-reja-1} 
+
+}
+
+\caption{TODO}\label{fig:exm-emotional-stroop-hist-pval-reja}
 \end{figure}
 
 \section{Effektstärken}\label{effektstuxe4rken}
@@ -2475,13 +2709,23 @@ Beantworten Sie die Frage, ob aggressives Verhalten Erwachsener von Kindern imit
 Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-bobo2groups-input}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/06-exr-bobo2groups-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-bobo2groups-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/06-exr-bobo2groups-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-bobo2groups-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-bobo2groups-output}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/06-exr-bobo2groups-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-bobo2groups-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/06-exr-bobo2groups-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-bobo2groups-output}
 \end{figure}
 
 Damit können und beide Teilfragen beantwortet werden.
@@ -2522,13 +2766,23 @@ In den 1970er Jahren hat eine Gruppe um \citet{blaney1977} Versuche durchgeführ
 Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-gruppenpuzzle-input}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/06-exr-gruppenpuzzle-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-gruppenpuzzle-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/06-exr-gruppenpuzzle-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-gruppenpuzzle-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-gruppenpuzzle-output}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/06-exr-gruppenpuzzle-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-gruppenpuzzle-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/06-exr-gruppenpuzzle-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-gruppenpuzzle-output}
 \end{figure}
 
 Damit können und die Teilfragen beantwortet werden.
@@ -2569,13 +2823,23 @@ Studierende wollen herausfinden, ob Entspannungsmusik ohne Text oder Musik mit T
 Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-music-memory-input}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/06-exr-music-memory-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-music-memory-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/06-exr-music-memory-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-music-memory-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-music-memory-output}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/06-exr-music-memory-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-music-memory-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/06-exr-music-memory-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-music-memory-output}
 \end{figure}
 
 Damit können die Teilfragen beantwortet werden.
@@ -2616,13 +2880,23 @@ Die Gesellschaft für Hypnose will unter Beweis stellen (Signifikanzniveau \(\al
 Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-hypnose-input}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/06-exr-hypnose-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-hypnose-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/06-exr-hypnose-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-hypnose-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-hypnose-output}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/06-exr-hypnose-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-hypnose-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/06-exr-hypnose-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-hypnose-output}
 \end{figure}
 
 Damit können und beide Teilfragen beantwortet werden.
@@ -2665,13 +2939,23 @@ Eine Forscherin hat die Hypothese, dass unverheiratete Ärztinnen ein weniger st
 Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-ehe-burnout-input}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/06-exr-ehe-burnout-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-ehe-burnout-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/06-exr-ehe-burnout-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-ehe-burnout-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-ehe-burnout-output}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/06-exr-ehe-burnout-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-ehe-burnout-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/06-exr-ehe-burnout-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-ehe-burnout-output}
 \end{figure}
 
 Damit können die Teilfragen beantwortet werden.
@@ -2753,9 +3037,12 @@ entspricht. Für gleiche Ränge wird den betreffenden Rängen ein mittlerer
 Rang zugewiesen.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-red-hair-pain-utest-order-1.pdf}
-\caption{\label{fig:exm-red-hair-pain-utest-order}Mitte: Aufsteigend sortierte Beobachtungen des Merkmals Schmerztoleranz für MC4R und Non-MC4R Mäuse. Die Zahlen stehen für die Rangnummern. Oben (MC4R) und unten (Non-MC4R) stellt die Gruppenaufteilung der Rangnummern dar.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-red-hair-pain-utest-order-1} 
+
+}
+
+\caption{Mitte: Aufsteigend sortierte Beobachtungen des Merkmals Schmerztoleranz für MC4R und Non-MC4R Mäuse. Die Zahlen stehen für die Rangnummern. Oben (MC4R) und unten (Non-MC4R) stellt die Gruppenaufteilung der Rangnummern dar.}\label{fig:exm-red-hair-pain-utest-order}
 \end{figure}
 
 In einem zweiten Schritt werden die Beobachtungen wieder in die Gruppen
@@ -2809,9 +3096,12 @@ Gruppen geteilt, siehe die Reihen oben und unten der Abbildung. Die
 Ränge scheinen zufällig in die beiden Gruppen zu fallen.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-aufgeschlossenheit-jung-alt-utest-oder-1.pdf}
-\caption{\label{fig:exm-aufgeschlossenheit-jung-alt-utest-oder}Mitte: Aufsteigend sortierte Beobachtungen des Merkmals Schmerztoleranz für Junge und Alte. Die Zahlen stehen für die Rangnummern. Oben (Jung) und unten (Alt) stellt die Gruppenaufteilung der Rangnummern dar.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-aufgeschlossenheit-jung-alt-utest-oder-1} 
+
+}
+
+\caption{Mitte: Aufsteigend sortierte Beobachtungen des Merkmals Schmerztoleranz für Junge und Alte. Die Zahlen stehen für die Rangnummern. Oben (Jung) und unten (Alt) stellt die Gruppenaufteilung der Rangnummern dar.}\label{fig:exm-aufgeschlossenheit-jung-alt-utest-oder}
 \end{figure}
 
 Nun werden die Ränge innerhalb einer Gruppe addiert
@@ -2981,14 +3271,24 @@ Analyseparameter werden gesetzt, siehe Abbildung
 \ref{fig:sol-tempo30-input}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/07-exr-tempo30-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-tempo30-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/07-exr-tempo30-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-tempo30-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung
 \ref{fig:sol-tempo30-output}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/07-exr-tempo30-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-tempo30-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/07-exr-tempo30-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-tempo30-output}
 \end{figure}
 
 Damit können die Teilfragen beantwortet werden.
@@ -3060,14 +3360,24 @@ Analyseparameter werden gesetzt, siehe Abbildung
 \ref{fig:sol-warteschlangen-input}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/07-exr-warteschlangen-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-warteschlangen-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/07-exr-warteschlangen-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-warteschlangen-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung
 \ref{fig:sol-warteschlangen-output}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/07-exr-warteschlangen-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-warteschlangen-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/07-exr-warteschlangen-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-warteschlangen-output}
 \end{figure}
 
 Damit können die Teilfragen beantwortet werden.
@@ -3139,14 +3449,24 @@ Analyseparameter werden gesetzt, siehe Abbildung
 \ref{fig:sol-statistik-herausforderung-input}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/07-exr-statistik-herausforderung-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-statistik-herausforderung-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/07-exr-statistik-herausforderung-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-statistik-herausforderung-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung
 \ref{fig:sol-statistik-herausforderung-output}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/07-exr-statistik-herausforderung-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-statistik-herausforderung-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/07-exr-statistik-herausforderung-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-statistik-herausforderung-output}
 \end{figure}
 
 Damit können die Teilfragen beantwortet werden.
@@ -3201,14 +3521,24 @@ Analyseparameter werden gesetzt, siehe Abbildung
 \ref{fig:sol-depression-ecstasy-input}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/07-exr-depression-ecstasy-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-depression-ecstasy-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/07-exr-depression-ecstasy-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-depression-ecstasy-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung
 \ref{fig:sol-depression-ecstasy-output}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/07-exr-depression-ecstasy-jmv-output} \caption{Jamovi Ausgabe.}\label{fig:sol-depression-ecstasy-output}
+
+{\centering \includegraphics[width=1\linewidth]{figures/07-exr-depression-ecstasy-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-depression-ecstasy-output}
 \end{figure}
 
 Damit kann die Frage nun beantwortet werden:
@@ -3241,9 +3571,12 @@ Bislang wurde immer ein Merkmal separat betrachtet und manchmal wurden Untergrup
 \phantomsection\label{customdef-streudiagramm}{Um den Zusammenhang zwischen zwei intervallskalierten Merkmalen aufzuzeigen wird ein sogenanntes \textbf{Streudiagramm} verwendet.} Um den Zusammenhang zwischen zwei intervallskalierten Merkmalen aufzuzeigen wird ein sogenanntes Streudiagramm verwendet. Dabei wird ein Koordinatensystem erstellt mit einem Merkmal auf der x-Achse und dem anderen Merkmal auf der y-Achse. Danach wird für jede Beobachtung ein Punkt bei den entsprechenden Werten für die beiden betrachteten Merkmale in dieses Koordinatensystem eingezeichnet.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-zahlungsbereitschaft-streudiagramm-1.pdf}
-\caption{\label{fig:exm-zahlungsbereitschaft-streudiagramm}Die drei Streudiagramme zeigen jeweils die Zahlungsbereitschaft (Preis in CHF) auf der y-Achse und das Alter in Jahren, die Anzahl Spiele im Haushalt und das Jahreseinkommen in 1'000 CHF respektive auf der x-Achse.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-zahlungsbereitschaft-streudiagramm-1} 
+
+}
+
+\caption{Die drei Streudiagramme zeigen jeweils die Zahlungsbereitschaft (Preis in CHF) auf der y-Achse und das Alter in Jahren, die Anzahl Spiele im Haushalt und das Jahreseinkommen in 1'000 CHF respektive auf der x-Achse.}\label{fig:exm-zahlungsbereitschaft-streudiagramm}
 \end{figure}
 
 In Abbildung \ref{fig:exm-zahlungsbereitschaft-streudiagramm} sind drei Streudiagramme aufgezeichnet. Sie setzen jeweils die Zahlungsbereitschaft (Preis) mit dem Alter in Jahren, der Anzahl vorhandener Spiele im Haushalt und dem Einkommen respektive in Bezug. Es kann beobachtet werden, dass die Zahlungsbereitschaft unabhängig vom Alter immer ungefähr ähnlich hoch ist. Es ist des Weiteren klar zu sehen, dass die Zahlungsbereitschaft mit der Anzahl im Haushalt vorhandener Spiele sinkt. Ein bisschen weniger klar ist die Beobachtung, dass die Zahlungsbereitschaft mit dem Jahreseinkommen ansteigt.
@@ -3253,7 +3586,12 @@ In Abbildung \ref{fig:exm-zahlungsbereitschaft-streudiagramm} sind drei Streudia
 Die Korrelation erfasst nur lineare Zusammenhänge, also nur wenn Punkte entlang einer Linie streuen im Streudiagramm. Je weiter weg die Korrelation von \(0\) ist, desto weniger streuen die Punkte entlang einer Linie, siehe erste und zweite Zeile der Abbildung \ref{fig:correlation-examples}. Die Korrelation sagt lediglich, ob die Linie steigt oder fällt, jedoch nicht wie stark. Nicht lineare Zusammenhänge wie in der dritten Zeile von Abbildung \ref{fig:correlation-examples} können mit der Korrelation nicht richtig erfasst werden und gängige Korrelationsberechnungen geben zufällige Resultate.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/08-correlations-wikipedia} \caption{Streudiagramme und dazugehörige Korrelation.}\label{fig:correlation-examples}
+
+{\centering \includegraphics[width=1\linewidth]{figures/08-correlations-wikipedia} 
+
+}
+
+\caption{Streudiagramme und dazugehörige Korrelation.}\label{fig:correlation-examples}
 \end{figure}
 
 Liegt eine Korrelation vor bedeutet dies, dass die Merkmale sich gemeinsam verändern. In Beispiel \ref{exm:zahlungsbereitschaft} scheint intuitiv klar, dass das Einkommen und die Anzahl vorhandene Spiele pro Haushalt die Zahlungsbereitschaft beeinflussen. Das Einkommen und die Anzahl Spiele sind also ursächlich. Dass die Zahlungsbereitschaft ursächlich wäre und zum Beispiel das Einkommen beeinflusst ist eher unwahrscheinlich. Welches von zwei Merkmalen ursächlich ist, bzw. wie die Merkmale kausal zusammenhängen, lässt sich jedoch nicht immer einfach beantworten, wie das folgende Beispiel zeigt.
@@ -3265,9 +3603,12 @@ Liegt eine Korrelation vor bedeutet dies, dass die Merkmale sich gemeinsam verä
 Streudiagramme aller möglicher bivariaten Zusammenhänge sind in Abbildung \ref{fig:exm-depression-alkohol-angst-scatter} dargestellt. Während der lineare Zusammenhang zwischen Alkoholismus und Angststörung kaum erkennbar ist, so kann zwischen Depression und Alkoholismus ein leichter und zwischen Depression und Angststörung ein deutlich gleichläufiger linearer Zusammenhang festgestellt werden. Die geschätzten Korrelationen sind \(0.32\) zwischen Alkoholismus und Depression, \(0.1\) zwischen Alkoholismus und Angststörung und \(0.46\) zwischen Depression und Angststörung.
 
 \begin{figure}
-\centering
-\includegraphics{aps_statistik1_files/figure-latex/exm-depression-alkohol-angst-scatter-1.pdf}
-\caption{\label{fig:exm-depression-alkohol-angst-scatter}Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten.}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/exm-depression-alkohol-angst-scatter-1} 
+
+}
+
+\caption{Wiederholte Stichprobenziehung bei gleichbleibender Population mit eher hohen Angst-Werten.}\label{fig:exm-depression-alkohol-angst-scatter}
 \end{figure}
 
 In diesem Fall ist unklar, ob jemand mit Alkoholismus eher eine Angststörung entwickelt, oder jemand mit Angststörung eher eine Alkoholabhängigkeit entwickelt. Die Korrelation gibt nur einen Anhaltspunkt über die Art des Zusammenhangs, nicht aber über die Ursächlichkeit der Variablen. Es könnte auch sein, dass die beiden Merkmale eigentlich unabhängig voneinander sind, aber ein drittes Merkmal die beiden Merkmale beeinflusst. Dazu später mehr unter \ref{stoerfaktor}.
@@ -3494,17 +3835,32 @@ Im Rahmen einer Studie wurde die Big-5-Persönlichkeitszüge von \(500\) psychol
 Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die Analyseparameter werden gesetzt, siehe Abbildung \ref{fig:sol-big-five-cor-input}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/08-exr-big-five-cor-jmv-input} \caption{Jamovi Eingabe.}\label{fig:sol-big-five-cor-input}
+
+{\centering \includegraphics[width=1\linewidth]{figures/08-exr-big-five-cor-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-big-five-cor-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildungen \ref{fig:sol-big-five-cor-output-koorelationsmatrix} und \ref{fig:sol-big-five-cor-output-koorelationsmatrixdiagramm}.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/08-exr-big-five-cor-jmv-output-korrelationsmatrix} \caption{Jamovi Ausgabe.}\label{fig:sol-big-five-cor-output-koorelationsmatrix}
+
+{\centering \includegraphics[width=1\linewidth]{figures/08-exr-big-five-cor-jmv-output-korrelationsmatrix} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-big-five-cor-output-koorelationsmatrix}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/08-exr-big-five-cor-jmv-output-korrelationsmatrixdiagramm} \caption{Jamovi Ausgabe.}\label{fig:sol-big-five-cor-output-koorelationsmatrixdiagramm}
+
+{\centering \includegraphics[width=1\linewidth]{figures/08-exr-big-five-cor-jmv-output-korrelationsmatrixdiagramm} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-big-five-cor-output-koorelationsmatrixdiagramm}
 \end{figure}
 
 Damit können die Teilfragen beantwortet werden.
@@ -3556,13 +3912,23 @@ Mit einer Studie soll der Zusammenhang zwischen Haarausfall und erfülltem Sexua
 \end{enumerate}
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/08-exr-hairloss-sex-jmv-input-spearman} \caption{Jamovi Eingabe.}\label{fig:sol-hairloss-sex-input-spearman}
+
+{\centering \includegraphics[width=1\linewidth]{figures/08-exr-hairloss-sex-jmv-input-spearman} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-hairloss-sex-input-spearman}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-hairloss-sex-output-spearman}
 
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{figures/08-exr-hairloss-sex-jmv-output-spearman} \caption{Jamovi Ausgabe.}\label{fig:sol-hairloss-sex-output-spearman}
+
+{\centering \includegraphics[width=0.5\linewidth]{figures/08-exr-hairloss-sex-jmv-output-spearman} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-hairloss-sex-output-spearman}
 \end{figure}
 
 \begin{quote}
@@ -3578,13 +3944,23 @@ Die zweiseitige Absicherung gegen Null des Korrelationskoeffizienten nach Spearm
 \end{enumerate}
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{figures/08-exr-hairloss-sex-jmv-input-partiell} \caption{Jamovi Eingabe.}\label{fig:sol-hairloss-sex-input-partiell}
+
+{\centering \includegraphics[width=1\linewidth]{figures/08-exr-hairloss-sex-jmv-input-partiell} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-hairloss-sex-input-partiell}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-hairloss-sex-output-partiell}
 
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{figures/08-exr-hairloss-sex-jmv-output-partiell} \caption{Jamovi Ausgabe.}\label{fig:sol-hairloss-sex-output-partiell}
+
+{\centering \includegraphics[width=0.5\linewidth]{figures/08-exr-hairloss-sex-jmv-output-partiell} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-hairloss-sex-output-partiell}
 \end{figure}
 
 \begin{quote}
@@ -3611,13 +3987,23 @@ Berechnen Sie (a) Punktbiseriale Korrelation und (b) die biserielle Rangkorrelat
 \end{enumerate}
 
 \begin{figure}
-\includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input1} \includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input2} \caption{Jamovi Eingabe.}\label{fig:sol-ehe-burnout-pointcorrelation-input}
+
+{\centering \includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input1} \includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input2} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-ehe-burnout-pointcorrelation-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-ehe-burnout-pointcorrelation-output}
 
 \begin{figure}
-\includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output1} \includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output2} \caption{Jamovi Ausgabe.}\label{fig:sol-ehe-burnout-pointcorrelation-output}
+
+{\centering \includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output1} \includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output2} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-ehe-burnout-pointcorrelation-output}
 \end{figure}
 
 Daraus ergibt sich
@@ -3633,17 +4019,23 @@ Hier wurden die Zwischenresultate mit zwei Nachkommastellen aus \texttt{Jamovi} 
 \end{enumerate}
 
 \begin{figure}
-\centering
-\includegraphics{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input3.jpg}
-\caption{\label{fig:sol-ehe-burnout-rankcorrelation-input}Jamovi Eingabe.}
+
+{\centering \includegraphics{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input3} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-ehe-burnout-rankcorrelation-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-ehe-burnout-rankcorrelation-output}
 
 \begin{figure}
-\centering
-\includegraphics{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output3.jpg}
-\caption{\label{fig:sol-ehe-burnout-rankcorrelation-output}Jamovi Ausgabe.}
+
+{\centering \includegraphics{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output3} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-ehe-burnout-rankcorrelation-output}
 \end{figure}
 
 Die biseriale Rangkorrelation ist also \(r = -0.212\). Je eher eine Ärztin verheiratet ist, desto tiefer ist der Burnout-Wert. Der Zusammenhang ist als mittel einzustufen. Achtung das Vorzeichen der biserialen Rangkorrelation hängt einzig davon ab, welche Gruppe (verheiratet/unverheiratet) als erste Gruppe in \texttt{Jamovi} hinterlegt ist. In diesem Datensatz ist dies, sofern nichts geändert wird die unverheiratete Gruppe.
@@ -3671,13 +4063,23 @@ Es ist bekannt, dass Prüfungsangst zu schlechterern Prüfungsergebnissen führt
 Die Analyseparameter in \texttt{Jamovi} werden nun geändert, siehe Abbildung \ref{fig:sol-test-preparation-input}.
 
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-input1} \includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-input2} \caption{Jamovi Eingabe.}\label{fig:sol-test-preparation-input}
+
+{\centering \includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-input1} \includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-input2} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-test-preparation-input}
 \end{figure}
 
 Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-test-preparation-output}
 
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-output1} \includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-output2} \caption{Jamovi Ausgabe.}\label{fig:sol-test-preparation-output}
+
+{\centering \includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-output1} \includegraphics[width=0.5\linewidth]{figures/08-exr-test-preparation-jmv-output2} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-test-preparation-output}
 \end{figure}
 
 \begin{enumerate}
@@ -3778,7 +4180,12 @@ Welche der folgenden Aussagen zum Zusammenhang zwischen zwei Merkmalen sind wahr
 Im folgenden wird eine Korrelation zwischen der Wartezeit am Flughafen und der Gästezufriedenheit berechnet. Dabei wird festgestellt, dass beide Merkmale intervallskaliert aber nicht normalverteilt sind. \texttt{Jamovi} liefert die Ausgabe in Abbildung \ref{fig:sol-test-spearman-output}.
 
 \begin{figure}
-\includegraphics[width=0.5\linewidth]{figures/08-exr-test-spearman-jmv-output} \caption{Jamovi Eingabe.}\label{fig:sol-test-spearman-output}
+
+{\centering \includegraphics[width=0.5\linewidth]{figures/08-exr-test-spearman-jmv-output} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-test-spearman-output}
 \end{figure}
 
 Welche der folgenden Aussagen sind wahr welche falsch?
@@ -3825,6 +4232,107 @@ Welche der folgenden Aussagen sind wahr welche falsch?
 \end{solution}
 
 \chapter{Zusammenhang dichotomer Merkmale}\label{zusammenhang-dichotomer-merkmale}
+
+\begin{example}[Alkohol und Bildung]
+\protect\hypertarget{exm:alcohol-edu}{}\label{exm:alcohol-edu}Vom Bundasamt für Statistik BFS werden regelmässig Daten zum Alkoholkonsum in der Schweiz erhoben. Dabei wird ermittlet welcher Anteil der Bevölkerung weniger als einmal pro Woche und welcher Anteil mehr als einmal pro Woche Alkohol konsumiert. Diese Anteile werden anschliessen für verschiedene Untergruppen ausgewiesen, zum Beispiel für Leute mit Tertiärbildung und anderem Bildungsabschluss. Es werden hier also zwei dichotome Merkmale (Bildung: Teriär/nicht Tertiär und Alkoholkonsum: mind. 1x / Woche, weniger als 1x / Woche) und deren Zusammenhang betrachtet. Um diese Anteile abzuschätzen werden \(1000\) Personen befragt. Der Datensatz ist als \texttt{09-exm-alcohol-edu.sav} verfügbar.
+\end{example}
+
+Im Datensatz wird für jede Person eine Zeile ausgewiesen, siehe Abbildung \ref{fig:exm-alcohol-edu-data-view}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{figures/09-exm-alcohol-edu-data-view} 
+
+}
+
+\caption{Daten Alkoholkonsum und Bildung.}\label{fig:exm-alcohol-edu-data-view}
+\end{figure}
+
+Da der Mensch nicht besonders gut darin ist unzählige Zeilen eine Tabelle zu absorbieren, werden die Daten oft in einer Vierfeldertafel zusammengefasst. \phantomsection\label{customdef-vierfeldertafel}{Die \textbf{Vierfeldertafel} ist eine Kreuztabelle bei welcher die Ausprägungen des einen Merkmals als Spalten und des anderen als Zeilen fungieren.} Die Zellen werden dann mit der Anzahl Beobachtungen befüllt, für welche die Ausprägungskombination im Datensatz zutrifft, siehe Abbildung \ref{fig:exm-alcohol-edu-data-view}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{figures/09-exm-alcohol-edu-aggdata-view} 
+
+}
+
+\caption{Vierfeldertafel Alkoholkonsum und Bildung..}\label{fig:exm-alcohol-edu-aggdata-view}
+\end{figure}
+
+Im psychologischen und medizinischen Kontext bezieht sich ein Merkmal oft auf einen schädlichen und einen nicht schädlichen Ausgang. Im Beispiel ist es der Alkoholkonsum. \phantomsection\label{customdef-risikovariable}{Dieses Merkmal wird \textbf{Risikovariable} genannt.} In der Vierfeldertafel kann die Risikovariable die Zeilen oder die Spalten bestimmen. Die Risikovariable wird durch andere Merkmale sogennante ursächliche Variablen erklärt. Im breiteren statistischen Kontext wird die Risikovariable abhängige Variable und die ursächliche Variable als unabhängige Variable bezeichnet.
+
+\phantomsection\label{customdef-risiko}{Mit \textbf{Risiko} wird die Wahrscheinlichkeit benannt den schädlichen Ausgang zu erleiden und wird mit dem Anteil des schädlichen Ausgangs an der Gesamtzahl berechnet.} Das Risiko kann je nach Ausprägung der ursächlichen Variable unterschiedlich hoch sein. Das Risiko mehr als 1x pro Woche Alkohol zu konsumieren ist demnach \(308/378 = 0.815 = 81.5\%\) für Menschen mit tertiärer Ausbildung und \(476/622 = 0.765 = 76.5\%\) für Menschen mit anderer Ausbildung. Das Risiko kann in \texttt{Jamovi} unter \texttt{Zellen\ \textgreater{}\ Prozentsätze} und dann \texttt{Zeile} (wenn das ursächliche Merkmal die Zeilen bestimmt) oder \texttt{Spalte} (wenn das ursächliche Merkmal die Spalte bestimmt) angezeigt werden.
+
+Die Risiken für die tertiär und andere Ausbildungen können nun verglichen werden. \phantomsection\label{customdef-risikodifferenz}{Dazu kann die Differenz der beiden Risiken sogenannte \textbf{Risikodifferenz} (in \texttt{Jamovi} unter \texttt{Statistiken\ \textgreater{}\ Unterschiede\ in\ den\ Proportionen}) betrachtet werden.} Wenn die Risiken der beiden Gruppen mit \(p_1\) und \(p_2\) bezeichnet werden, entspricht dies schlicht
+\[p_1 - p_2 = 0.815 - 0.765=0.05.\]
+Das Risiko mehr als \(1\)x pro Woche Alkohol zu konsumieren ist also \(0.05 = 5\%\) höher für Personen mit einem tertiären Bildungsabschluss. Da die Risiken immer Werte zwischen \(0\) und \(1\) sind, muss dieser Formel nach die Differnez der Risiken zwischen \(-1\) und \(1\) liegen. Wenn die Differenz der beiden Risiken \(0\) ist, bedeutet dies, dass die Risiken in beiden Gruppen gleich gross sind. Je weiter die Differenz der Risiken von \(0\) weg ist, desto unterschiedlicher sind die Risiken in den zwei Gruppen.
+
+Eine andere Art die Risiken zu vergleichen ist sie ins Verhältnis zu setzen. \phantomsection\label{customdef-tagname}{Dies wird \textbf{relatives Risiko}}
+\[\text{RR} = \frac{p_1}{p_2} = \frac{0.815}{ 0.765}=1.065\]
+genannt. Das Risiko mehr als \(1\)x pro Woche Alkohol zu konsumieren ist für Personen mit tertiärer Ausbildung also \(1.065\) mal so gross wie für Personen mit anderer Ausbildung. Sind \(p_1\) und \(p_2\) gleich gross, so ist das relative Risiko bei \(1\). Ist \(p_1\) kleiner als \(p_2\), so ist das relative Risiko kleiner als \(1\). Ist \(p_1\) grösser als \(p_2\), so ist das relative Risiko grösser als \(1\). Insgesamt ist das relative Risiko immer eine Zahl zwischen \(0\) und \(+\infty\). Das Tauschen der Gruppennummerierung führt zu einer Umkehr des Wertes rund um \(1\). Wenn im Beispiel also die ander Bildung als Gruppe \(1\) bezeichnet würde, so ist das relative Risiko
+\[\text{RR} = \frac{p_1}{p_2} = \frac{0.765}{ 0.815}=0.939\]
+
+\begin{caution}
+
+\begin{remark}
+Das hier die relativen Risiken für die Gruppenneunummerierung fast gleich weit von \(1\) entfernt liegen ist im normalfall nicht so. Dies kann an folgendem Zahlenbeispiel gesehen werden: \(0.75 / 0.25 = 3\) und umgekehrt \(0.25/0.75 = 0.333\).
+\end{remark}
+
+\end{caution}
+
+Das relative Risiko sagt im Gegensatz zu Risikodifferenz nichts mehr über das absolute Risiko aus. Wenn ein Medikament, zum Beispiel das Risiko einer Psychose von \(1\) aus \(5000\) auf \(1\) aus \(10000\) reduziert, so ist die Risikodifferenz bei \(0.0001 - 0.0002 = -0.01\%\). Das relative Risiko ist in dem Fall jedoch \(0.0001/0.0002 = 50\%\). Wird nun nur das relative Risiko berichtet, könnten Lesende von einem zu grossen Nutzen des Medikaments ausgehen. Es wird deshalb empfohlen immer die Risikodifferenz und das relative Risiko zu berichten.
+
+Die Risikodifferenz und das relative Risiko können nur berechnet werden, wenn die gesamt Anzahl Fälle repräsentativ für die Population ist. Dies ist bei Fall-Kontroll Studien nicht der Fall, wie folgendes Beispiel zeigt. Für solche Studien können weder die Risikodifferenz noch das relative Risiko sinnvoll berechnet werden.
+
+\begin{example}[Krebs bei Hunden]
+\protect\hypertarget{exm:dog-cancer}{}\label{exm:dog-cancer}\citet{hayes1991} haben sich für den Zusammenhang zwischen malingen Lymphomen bei Hunden (ugs. bösartiger Lymphdrüsenkrebs) und der Anwendung des Herbizids \(2, 4\)-Dichlorphenoxyessigsäure in Hausgärten interessiert. Dabei haben Sie in einer Fall-Kontroll Studie (case-control study) die Zahlen im Datensatz \texttt{09-exm-dog-cancer.sav} ermittelt.
+\end{example}
+
+Die Daten sind hier bereits in aggregierten Fallzahlen präsentiert, siehe Abbildung \ref{fig:exm-dog-cancer-data-view}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{figures/09-exm-dog-cancer-data-view} 
+
+}
+
+\caption{Daten Malignes Lymphoma bei Hunden.}\label{fig:exm-dog-cancer-data-view}
+\end{figure}
+
+Um diese Daten korrekt in \texttt{Jamovi} einzulesen, kann unter \texttt{Analysen\ \textgreater{}\ Häufigkeiten\ \textgreater{}\ Kreuztabellen\ \textgreater{}\ Unabhängige\ Stichproben} die Anzahl Fälle bei \texttt{Anzahl\ (optional)} eingelesen werden. Dies resultiert in der Vierfeldertafel in Abbildung \ref{fig:exm-dog-cancer-aggdata-view}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{figures/09-exm-dog-cancer-aggdata-view} 
+
+}
+
+\caption{Vierfeldertafel Malignes Lymphoma bei Hunden.}\label{fig:exm-dog-cancer-aggdata-view}
+\end{figure}
+
+Case-control bedeutet, dass Hunde mit Tumor (Fall/case) in einer Tierklinik gegeben waren. Dazu wurde eine gewisse Anzahl (normalerweise zwischen \(1\) bis \(4\) mal so viele wie kranke) gesunde Hunde (Kontroll/control) zufällig ausgewählt. Bei allen Hunden wurde anschliessend ermittelt, ob die Hunde auf einem mit dem entsprechenden Herbizid belasteten Garten Zeit verbracht haben. Da von den Studienautoren bestimmt wurde, wie viele gesunde Hunde ermittelt werden, kann der Anteil der kranken Hunde nicht als Mass für das Vorkommen der Erkankung in der jeweiligen Gruppe dienen. Es ist hier also nicht aussagekräftig den Anteil kranker Hunde pro Gruppe oder das daraus folgende relative Risiko zu bestimmen.
+
+\phantomsection\label{customdef-odds-ratio}{Stattdessen wird in diesen Fällen das \textbf{Chancenverhältnis} (eng. odds ratio)}\\
+\[OR = \frac{a\cdot d}{b\cdot c} = \frac{191\cdot 300}{304\cdot 300} = 1.34\]
+berechnet, wobei \(a, b, c\) und \(d\) den Anzahl Fällen in der Vierfeldertafel von oben nach unten und von links nach rechts entsprchen. \phantomsection\label{customdef-odds}{Die \textbf{Chance} (eng. odds) ist dabei eine Art Wahrscheinlichkeit auszudrücken.} Sie ist definiert als Wahrscheinlichkeit, dass ein Ereignis eintrifft geteilt durch die Wahrscheinlichkeit, dass das Ereignis nicht eintrifft. Für die Herbizid belasteten Hunde ist die Chance ein Tumor zu haben also \(a/c=191/304=0.63\) und für die anderen Hunde \(b/d=300/641=0.47\). Es gilt, je höher die Chance desto höher die Eintreffwahrscheinlichkeit. Ein Chancenverhältnis von \(1.34\) schliesslich bedeutet, dass die Chance einen Tumor zu entwickeln für einen Herbizid belasteten Hund \(1.34\) mal so hoch ist wie für einen nicht Herbizid belasteten.
+
+\begin{caution}
+
+\begin{remark}
+\leavevmode
+
+\begin{itemize}
+\tightlist
+\item
+  Es kann festgestellt werden, dass das Chancenverhältnis unabhängig von der Wahl der ursächlichen und Risikovariable ist
+  \[ OR = \frac{a\cdot d}{b\cdot c} = \frac{a\cdot d}{c\cdot b}.\]
+\item
+  Für kleine Fallzahlen (Risiko \(<10\%\)) liegt das Chancenverhältnis nahe am relativen Risiko.
+\end{itemize}
+
+\end{remark}
+
+\end{caution}
 
 \section{Übungen}\label{uxfcbungen-6}
 
@@ -3901,7 +4409,7 @@ TODO
 \begin{exercise}
 \protect\hypertarget{exr:covid-sterblichkeit}{}\label{exr:covid-sterblichkeit}\leavevmode
 
-Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert (fiktive Zahlen, siehe Daten in \texttt{09-exr-covid-sterblichkeit.sav}). Wie gross ist die Inzidenz, das relative Risiko und der odds ratio und wie werden diese Grössen interpretiert? Was sind UV und AV?
+Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert (fiktive Zahlen, siehe Daten in \texttt{09-exr-covid-sterblichkeit.sav}). Wie gross sind die Risiken, die Risikodifferenz, das relative Risiko und der odds ratio und wie werden diese Grössen interpretiert? Was sind UV und AV?
 
 \end{exercise}
 
@@ -3923,6 +4431,10 @@ TODO
 \item
   \hyperref[customdef-arithmetisches-mittel]{arithmetische Mittel}
 \item
+  \hyperref[customdef-odds]{Chance}
+\item
+  \hyperref[customdef-odds-ratio]{Chancenverhältnis}
+\item
   \hyperref[customdef-welch-cohens-d]{Cohens \(d\) für den Welch-Test}
 \item
   \hyperref[customdef-cohens-d]{Cohens \(d\) für Zweistichproben-t-Test}
@@ -3935,11 +4447,7 @@ TODO
 \item
   \hyperref[customdef-freiheitsgrade]{Freiheitsgrade}
 \item
-  \hyperref[customdef-gegenlaeufig]{Gegenläufig}
-\item
   \hyperref[customdef-glass-delta]{Glass \(\Delta\)}
-\item
-  \hyperref[customdef-gleichlaeufig]{Gleichläufig}
 \item
   \hyperref[customdef-grundgesamtheit]{Grundgesamtheit}
 \item
@@ -3957,8 +4465,6 @@ TODO
 \item
   \hyperref[customdef-confidence-interval]{Konfidenzintervall}
 \item
-  \hyperref[customdef-korrelation]{Korrelation}
-\item
   \hyperref[customdef-median]{Median}
 \item
   \hyperref[customdef-modus]{Modus}
@@ -3969,21 +4475,21 @@ TODO
 \item
   \hyperref[customdef-nullhypothese]{Nullhypothese}
 \item
-  \hyperref[customdef-partielle-korrelation]{partielle Korrelation}
-\item
-  \hyperref[customdef-pearson-korrelation]{Pearson}
-\item
   \hyperref[customdef-perzentil]{Perzentil}
 \item
   \hyperref[customdef-population]{Population}
 \item
-  \hyperref[customdef-punktbiseriale-korrelation]{Punktbiseriale Korrelation}
+  \hyperref[customdef-tagname]{relatives Risiko}
+\item
+  \hyperref[customdef-risiko]{Risiko}
+\item
+  \hyperref[customdef-risikodifferenz]{Risikodifferenz}
+\item
+  \hyperref[customdef-risikovariable]{Risikovariable}
 \item
   \hyperref[customdef-signifikanzniveau]{Signifikanzniveau}
 \item
   \hyperref[customdef-spannweite]{Spannweite}
-\item
-  \hyperref[customdef-spearman-korrelation]{Spearman}
 \item
   \hyperref[customdef-std]{Standardabweichung}
 \item
@@ -3991,13 +4497,13 @@ TODO
 \item
   \hyperref[customdef-stichprobenziehung]{Stichprobenziehung}
 \item
-  \hyperref[customdef-streudiagramm]{Streudiagramm}
-\item
   \hyperref[customdef-student-verteilung]{Student-\(t\)-Verteilung}
 \item
   \hyperref[customdef-teststatistik]{Teststatistik}
 \item
   \hyperref[customdef-confidence-level]{Vertrauenswahrscheinlichkeit}
+\item
+  \hyperref[customdef-vierfeldertafel]{Vierfeldertafel}
 \item
   \hyperref[customdef-welch-test]{Welch-Test}
 \item

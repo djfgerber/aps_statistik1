@@ -226,7 +226,7 @@ Die folgende Diskussion ist auch auf verhältnisskalierte Merkmale anwendbar. Le
 <div id="verteilung" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Verteilung<a href="intervallskalierte-merkmale.html#verteilung" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Um die Zahlen zusammenzufassen, kann die Veterinärin zum Beispiel Temperaturabschnitte von <span class="math inline">\(0.2\)</span>°C betrachten und zählen wie viele Beobachtungen sie in den jeweiligen Abschnitten gemacht hat. Diese Zähldaten können tabellarisch oder grafisch mit einem Balkendiagramm dargestellt werden. Letzteres wird ein <strong>Histogramm</strong> genannt.</p>
-<div class="figure"><span style="display:block;" id="fig:exm-ducktemp-histogramm"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-ducktemp-histogramm"></span>
 <img src="aps_statistik1_files/figure-html/exm-ducktemp-histogramm-1.png" alt="Histogramm Körpertemperatur Enten." width="672" />
 <p class="caption">
 Abbildung 2.1: Histogramm Körpertemperatur Enten.
@@ -296,7 +296,7 @@ Ziel:
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
 <p><span id="unlabeled-div-3" class="solution"><em>Lösung</em>. </span></p>
-<div class="figure"><span style="display:block;" id="fig:enten-hist-mean-sd1"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:enten-hist-mean-sd1"></span>
 <img src="figures/Enten_n40_instr_histogramm.jpg" alt="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur." width="50%" /><img src="figures/Enten_n40.png" alt="Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur." width="50%" />
 <p class="caption">
 Abbildung 2.2: Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: Histogramm der Temperatur.
@@ -305,7 +305,7 @@ Abbildung 2.2: Links: Jamovi-Anleitung zur Erstellung des Histogramms; rechts: H
 <ol style="list-style-type: lower-alpha">
 <li>Das Histogramm, siehe Abbildung <a href="intervallskalierte-merkmale.html#fig:enten-hist-mean-sd1">2.2</a> sieht nicht gleich aus, da Jamovi die Temperaturabschnitte mit Korbbreite <span class="math inline">\(0.125\)</span>°C kürzer gewählt hat als die in Abbildung Abbildung <a href="intervallskalierte-merkmale.html#fig:exm-ducktemp-histogramm">2.1</a> dargestellte Korbbreite von <span class="math inline">\(0.2\)</span>°C. Ein Histogramm sieht immer anders aus je nach ausgewählter Abschnittsweite.</li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:enten-hist-mean-sd2"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:enten-hist-mean-sd2"></span>
 <img src="figures/02-exr-enten-hist-mean-sd-input.jpg" alt="Links: Jamovi-Anleitung zur Berechnung der gewünschten Parameter; rechts: Parameterwerte." width="50%" /><img src="figures/02-exr-enten-hist-mean-sd-output.jpg" alt="Links: Jamovi-Anleitung zur Berechnung der gewünschten Parameter; rechts: Parameterwerte." width="50%" />
 <p class="caption">
 Abbildung 2.3: Links: Jamovi-Anleitung zur Berechnung der gewünschten Parameter; rechts: Parameterwerte.
@@ -315,7 +315,7 @@ Abbildung 2.3: Links: Jamovi-Anleitung zur Berechnung der gewünschten Parameter
 <li>Eine Anleitung zur Berechnung in <code>Jamovi</code> sowie die berechneten Werte können in Abbildung <a href="intervallskalierte-merkmale.html#fig:enten-hist-mean-sd2">2.3</a> abgelesen und sind Modus <span class="math inline">\(= 41.5\)</span>°C, Median <span class="math inline">\(Mdn = 41.7\)</span> und arithmetisches Mittel <span class="math inline">\(M=41.7\)</span>.</li>
 <li>Im Modul <code>JJStatsPlot</code> kann die Korbgrösse mit <code>Change Bin Width</code> angepasst werden. In Abbildung Abbildung <a href="intervallskalierte-merkmale.html#fig:exm-ducktemp-histogramm">2.1</a> kann beobachtet werden, dass die Balken und also auch die Körbe <span class="math inline">\(0.2\)</span> Einheiten breit sind. Dies wird so eingestellt, siehe Abbildung <a href="intervallskalierte-merkmale.html#fig:enten-hist-binwidth">2.4</a>.</li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:enten-hist-binwidth"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:enten-hist-binwidth"></span>
 <img src="figures/02-exr-enten-hist-binwidth-jmv-input.jpg" alt="Links: Jamovi-Anleitung zur Berechnung des gewünschten Histogramms; rechts: Jamovi-Ausgabe." width="50%" /><img src="figures/02-exr-enten-hist-binwidth-jmv-output.jpg" alt="Links: Jamovi-Anleitung zur Berechnung des gewünschten Histogramms; rechts: Jamovi-Ausgabe." width="50%" />
 <p class="caption">
 Abbildung 2.4: Links: Jamovi-Anleitung zur Berechnung des gewünschten Histogramms; rechts: Jamovi-Ausgabe.
@@ -367,20 +367,20 @@ Um den Median zu berechnen, werden die Werte zuerst aufsteigend sortiert <span c
 <li>Die Beobachtungen sind jetzt <span class="math inline">\(x_1 = 81, x_2 = 21, x_3 = 20, x_4 = 19, x_5=22\)</span>. Analog wie in (a) kann demnach das arithmetische Mittel als <span class="math inline">\(\bar{x} = 32.6\)</span> bestimmt werden. Die aufsteigend sortierten Beobachtungen sind nun <span class="math inline">\(19, 20, 21, 22, 81\)</span>. Der Median ist also <span class="math inline">\(21\)</span>.</li>
 </ol>
 <p>Für c und d wird der Datensatz bei <code>Jamovi</code> eingegeben, siehe Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-theorie-mdn-mean-data">2.5</a>, und die Analyseparameter werden gesetzt, siehe Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-theorie-mdn-mean-input">2.6</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-theorie-mdn-mean-data"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-theorie-mdn-mean-data"></span>
 <img src="figures/02-exr-theorie-mdn-mean-data-input.jpg" alt="Jamovi Dateneingabe." width="33%" /><img src="figures/02-exr-theorie-mdn-mean-data-mod.jpg" alt="Jamovi Dateneingabe." width="33%" /><img src="figures/02-exr-theorie-mdn-mean-data-clean.jpg" alt="Jamovi Dateneingabe." width="33%" />
 <p class="caption">
 Abbildung 2.5: Jamovi Dateneingabe.
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:sol-theorie-mdn-mean-input"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-theorie-mdn-mean-input"></span>
 <img src="figures/02-exr-theorie-mdn-mean-jmv-input.jpg" alt="Jamovi setzen der Analyseparameter." width="100%" />
 <p class="caption">
 Abbildung 2.6: Jamovi setzen der Analyseparameter.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-theorie-mdn-mean-output">2.7</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-theorie-mdn-mean-output"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-theorie-mdn-mean-output"></span>
 <img src="figures/02-exr-theorie-mdn-mean-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
 Abbildung 2.7: Jamovi Ausgabe.
@@ -435,14 +435,14 @@ Ziel:
 Je nach Rundungsverfahren können hier kleinere Werteunterschiede im Nachkommabereich resultieren.</li>
 </ol>
 <p>Für c und d wird der Datensatz bei <code>Jamovi</code> eingegeben. Die Variablen werden bearbeitet wie in <a href="intervallskalierte-merkmale.html#exr:theorie-mdn-mean">2.3</a> beschrieben. Die Analyseparameter werden gesetzt, siehe Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-theorie-variabilitaet-input">2.8</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-theorie-variabilitaet-input"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-theorie-variabilitaet-input"></span>
 <img src="figures/02-exr-theorie-variabilitaet-jmv-input.jpg" alt="Jamovi setzen der Analyseparameter." width="100%" />
 <p class="caption">
 Abbildung 2.8: Jamovi setzen der Analyseparameter.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-theorie-variabilitaet-output">2.9</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-theorie-variabilitaet-output"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-theorie-variabilitaet-output"></span>
 <img src="figures/02-exr-theorie-variabilitaet-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
 Abbildung 2.9: Jamovi Ausgabe.
@@ -479,14 +479,14 @@ Ziel:
 <ol style="list-style-type: lower-alpha">
 <li>Der Datensatz wird bei <code>Jamovi</code> eingelesen und die Analyseparameter wie in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-koerpergroesse-sex-input-a">2.10</a> gesetzt.</li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:sol-koerpergroesse-sex-input-a"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-koerpergroesse-sex-input-a"></span>
 <img src="figures/02-exr-koerpergroesse-sex-jmv-input-a.jpg" alt="Jamovi setzen der Analyseparameter." width="100%" />
 <p class="caption">
 Abbildung 2.10: Jamovi setzen der Analyseparameter.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-koerpergroesse-sex-output-a">2.11</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-koerpergroesse-sex-output-a"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-koerpergroesse-sex-output-a"></span>
 <img src="figures/02-exr-koerpergroesse-sex-jmv-output-a.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
 Abbildung 2.11: Jamovi Ausgabe.
@@ -496,14 +496,14 @@ Abbildung 2.11: Jamovi Ausgabe.
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Die Analyse wird mit Gruppierungsvariable Geschlecht wiederholt wie in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-koerpergroesse-sex-input-b">2.12</a></li>
 </ol>
-<div class="figure"><span style="display:block;" id="fig:sol-koerpergroesse-sex-input-b"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-koerpergroesse-sex-input-b"></span>
 <img src="figures/02-exr-koerpergroesse-sex-jmv-input-b.jpg" alt="Jamovi setzen der Analyseparameter." width="100%" />
 <p class="caption">
 Abbildung 2.12: Jamovi setzen der Analyseparameter.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="intervallskalierte-merkmale.html#fig:sol-koerpergroesse-sex-output-b">2.13</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-koerpergroesse-sex-output-b"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-koerpergroesse-sex-output-b"></span>
 <img src="figures/02-exr-koerpergroesse-sex-jmv-output-b.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
 Abbildung 2.13: Jamovi Ausgabe.
@@ -543,19 +543,19 @@ Ziel:
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
 <p><span id="unlabeled-div-8" class="solution"><em>Lösung</em>. </span></p>
-<div class="figure"><span style="display:block;" id="fig:sol-diverse-distrib1"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-diverse-distrib1"></span>
 <img src="figures/02-exr-diverse-distrib-input.jpg" alt="Jamovi Eingabe." width="100%" />
 <p class="caption">
 Abbildung 2.14: Jamovi Eingabe.
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:sol-diverse-distrib2"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-diverse-distrib2"></span>
 <img src="figures/02-exr-diverse-distrib-output.jpg" alt="Deskriptive Statistiken." width="100%" />
 <p class="caption">
 Abbildung 2.15: Deskriptive Statistiken.
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:sol-diverse-distrib3"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-diverse-distrib3"></span>
 <img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-1.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-2.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-3.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-4.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-5.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-6.png" alt="Histogramme." width="33%" /><img src="aps_statistik1_files/figure-html/sol-diverse-distrib3-7.png" alt="Histogramme." width="33%" />
 <p class="caption">
 Abbildung 2.16: Histogramme.

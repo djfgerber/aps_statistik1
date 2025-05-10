@@ -208,14 +208,14 @@ basierend auf einer Stichprobe präsentiert.</p>
 <h2><span class="header-section-number">4.1</span> Wo liegt der Durchschnitt der Grundgesamtheit?<a href="durchschnitt-und-standardabweichung-schätzen.html#wo-liegt-der-durchschnitt-der-grundgesamtheit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ein Parameter, über welchen wir gerne eine Aussage treffen würden, ist die zentrale Tendenz in der Grundgesamtheit. <span id="customdef-erwartungswert" class="customdef">Diese wird <strong>Erwartungswert</strong> (Symbol <span class="math inline">\(\mu\)</span> [gr.: mü]) genannt.</span> Wenn das arithmetische Mittel der Stichprobe berechnet wird, ergibt dies auch ein Schätzwert für besagten Erwartungswert. Aufgrund der zufälligen Stichprobenziehung ist jedoch auch klar, dass dieser Schätzwert nie genau dem wahren Erwartungswert entspricht.</p>
 <p>In Beispiel <a href="stichprobenziehung.html#exm:angst">3.1</a> liegt das arithmetische Mittel in der Stichprobe der Studierenden bei <span class="math inline">\(M=43.2\)</span>. Dieser Wert entspricht nun auch der Schätzung des Erwartungswertes, also der geschätzten durchschnittlichen Angst aller Menschen. Die Folgefrage ist also wie genau unsere Schätzung ist. Um dies zu quantifizieren, wiederholen wir die Stichprobenziehung und berechnen das arithmetische Mittel dieser zweiten Stichprobe. Dann wiederholen wir diesen Prozess, zum Beispiel <span class="math inline">\(1000\)</span> mal.</p>
-<div class="figure"><span style="display:block;" id="fig:exm-angst-hist-means"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-angst-hist-means"></span>
 <img src="aps_statistik1_files/figure-html/exm-angst-hist-means-1.png" alt="Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst." width="672" />
 <p class="caption">
 Abbildung 4.1: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.
 </p>
 </div>
 <p>Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-angst-hist-means">4.1</a> lässt nun eine Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die <span class="math inline">\(43\)</span> ist hier am wahrscheinlichsten und ein Wert tiefer als <span class="math inline">\(41\)</span> oder höher <span class="math inline">\(45\)</span> eher selten. Um diese Aussage präziser zu gestalten, werden konventionell die <span class="math inline">\(95\)</span>% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die <span class="math inline">\(5\)</span>% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das <span class="math inline">\(2.5\)</span>% Perzentil trennt die <span class="math inline">\(2.5\)</span>% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei <span class="math inline">\(40.4\)</span>. Das <span class="math inline">\(97.5\)</span>%-Perzentil trennt die höchsten <span class="math inline">\(2.5\)</span>% (oder eben die tiefsten <span class="math inline">\(97.5\)</span>%) arithmetischen Mittel ab und liegt bei <span class="math inline">\(46\)</span>. Dies ist in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-angst-hist-means-emp-ci">4.2</a> ersichtlich.</p>
-<div class="figure"><span style="display:block;" id="fig:exm-angst-hist-means-emp-ci"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-angst-hist-means-emp-ci"></span>
 <img src="aps_statistik1_files/figure-html/exm-angst-hist-means-emp-ci-1.png" alt="Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst." width="672" />
 <p class="caption">
 Abbildung 4.2: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Angst.
@@ -224,14 +224,14 @@ Abbildung 4.2: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen
 <div class="example">
 <p><span id="exm:agreableness" class="example"><strong>Beispiel 4.1  (Verträglichkeit) </strong></span>Einer der Big-5 Persönlichkeitszüge ist die Verträglichkeit. Eine einfache Art die Big-5 zu messen ist mit den 10 Fragen aus dem ten-item personality inventory <em>TIPI</em> <span class="citation">(<a href="#ref-gosling2003">Gosling, Rentfrow, and Swann 2003</a>)</span>. Für die Verträglichkeit müssen zwei Items (Item 1: Critical, quarrelsome; Item 2: Sympathetic, warm) auf einer Likert-Skala von 1 bis 7 eingeordnet werden. Anschliessend werden die Antworten gemittelt. Ein Student möchte herausfinden, ob mit diesem Messinstrument die durchschnittliche Verträglichkeit aller Menschen mittig also bei <span class="math inline">\(4\)</span> liegt. Dafür befragt er <span class="math inline">\(n = 100\)</span> Personen und findet die Werte <span class="math inline">\(M=3.91, s = 1.73\)</span>.</p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:exm-agreableness-hist"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-agreableness-hist"></span>
 <img src="aps_statistik1_files/figure-html/exm-agreableness-hist-1.png" alt="Verteilung der 100 beobachteten Verträglichkeitswerte einer zufällig gezogenen Stichprobe." width="672" />
 <p class="caption">
 Abbildung 4.3: Verteilung der 100 beobachteten Verträglichkeitswerte einer zufällig gezogenen Stichprobe.
 </p>
 </div>
 <p>Die Verteilung der Beobachtungen, siehe Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-agreableness-hist">4.3</a>, zeigt, dass alle Werte zwischen <span class="math inline">\(1\)</span> und <span class="math inline">\(7\)</span> vorkommen, aber keine zentrale Tendenz greifbar ist. Um herauszufinden wie zutreffend die Schätzung des Erwartungswertes der Verträglichkeit von <span class="math inline">\(M=3.91\)</span> ist, stelle man sich wieder vor, dass der Student <span class="math inline">\(1000\)</span>-mal die Stichprobenziehung wiederholt und jedes Mal das arithmetische Mittel <span class="math inline">\(M\)</span> von neuem berechnet. Die Verteilung der arithmetischen Mittel dieser Stichproben ist in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-agreableness-hist-means">4.4</a> dargestellt. Bei dieser Verteilung kann erneut links und rechts <span class="math inline">\(2.5\%\)</span> der Werte abgeschnitten werden, um zum Schluss zu gelangen, dass das arithmetische Mittel in <span class="math inline">\(95\%\)</span> der Fälle zwischen <span class="math inline">\(3.7\)</span> und <span class="math inline">\(4.3\)</span> zu liegen kommt.</p>
-<div class="figure"><span style="display:block;" id="fig:exm-agreableness-hist-means"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-agreableness-hist-means"></span>
 <img src="aps_statistik1_files/figure-html/exm-agreableness-hist-means-1.png" alt="Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Verträglichkeit." width="672" />
 <p class="caption">
 Abbildung 4.4: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen Stichproben der Verträglichkeit.
@@ -259,13 +259,13 @@ Abbildung 4.4: Verteilung der arithmetischen Mittel von 1000 zufällig gezogenen
 </div>
 </div>
 <p>Die Abbildungen <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-angst-normal-approx">4.5</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-agreableness-normal-approx">4.6</a> illustrieren den zentralen Grenzwertsatz für Beispiel <a href="stichprobenziehung.html#exm:angst">3.1</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#exm:agreableness">4.1</a> respektive, wobei die Normalverteilung der roten Linie entspricht. Dabei wird einstweilen angenommen, dass <span class="math inline">\(\mu\)</span> und <span class="math inline">\(\sigma\)</span> bekannt sind. Diese Annahme wird später aufgelöst und dient hier lediglich der Illustration.</p>
-<div class="figure"><span style="display:block;" id="fig:exm-angst-normal-approx"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-angst-normal-approx"></span>
 <img src="aps_statistik1_files/figure-html/exm-angst-normal-approx-1.png" alt="Die arithmetischen Mittel sind Normalverteilt mit Parametern $\mu_g = 43.34$ und $\sigma_g = 9.72 / \sqrt{30}$." width="672" />
 <p class="caption">
 Abbildung 4.5: Die arithmetischen Mittel sind Normalverteilt mit Parametern <span class="math inline">\(\mu_g = 43.34\)</span> und <span class="math inline">\(\sigma_g = 9.72 / \sqrt{30}\)</span>.
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:exm-agreableness-normal-approx"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-agreableness-normal-approx"></span>
 <img src="aps_statistik1_files/figure-html/exm-agreableness-normal-approx-1.png" alt="Die arithmetischen Mittel sind Normalverteilt mit Parametern $\mu_g = 3.91$ und $\sigma_g = 1.73 / \sqrt{100}$." width="672" />
 <p class="caption">
 Abbildung 4.6: Die arithmetischen Mittel sind Normalverteilt mit Parametern <span class="math inline">\(\mu_g = 3.91\)</span> und <span class="math inline">\(\sigma_g = 1.73 / \sqrt{100}\)</span>.
@@ -371,7 +371,7 @@ Vertraeglichkeit
 </table>
 <p>Einstweilen wurde hier angenommen, dass die Streuung des Merkmals <span class="math inline">\(\sigma\)</span> bekannt ist. Dies ist in der Realität nie der Fall und eine weitere, wenn auch weniger grosse Ungenauigkeitsquelle. <span id="customdef-student-verteilung" class="customdef">Wenn <span class="math inline">\(\sigma\)</span> also auch aus der Stichprobe geschätzt werden muss, ist die Annäherung der Verteilung der arithmetischen Mittel besser gegeben mit einer <strong>Student-<span class="math inline">\(t\)</span>-Verteilung</strong> oder kurz <span class="math inline">\(t\)</span>-Verteilung.</span> Die grüne gestrichelte Linie in den Abbildungen <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-angst-normal-approx">4.5</a> und <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:exm-agreableness-normal-approx">4.6</a> entspricht der <span class="math inline">\(t\)</span>-Verteilung im jeweiligen Beispiel.</p>
 <p>Der Unterschied zwischen der Normalverteilung und der <span class="math inline">\(t\)</span>-Verteilung ist nur sichtbar, wenn <span class="math inline">\(n\)</span> klein ist. In Beispiel <a href="stichprobenziehung.html#exm:angst">3.1</a> mit <span class="math inline">\(n = 30\)</span> ist ein kleiner Unterschied, in Beispiel <a href="durchschnitt-und-standardabweichung-schätzen.html#exm:agreableness">4.1</a> mit <span class="math inline">\(n = 100\)</span> ist kein Unterschied zwischen der Normalverteilung und der <span class="math inline">\(t\)</span>-Verteilung sichtbar. <span id="customdef-freiheitsgrade" class="customdef">Tatsächlich wird die <span class="math inline">\(t\)</span>-Verteilung mit einem Parameter charakterisiert, welcher <strong>Freiheitsgrade</strong> (eng. degrees of freedom, <span class="math inline">\(df\)</span>) genannt wird.</span> In Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:t-distribution">4.7</a> wird die <span class="math inline">\(t\)</span>-Verteilung mit verschiedenen Freiheitsgraden mit der Normalverteilung verglichen. Bei der <span class="math inline">\(t\)</span>-Verteilung mit den kleinsten Freiheitsgraden sind extremere Werte wahrscheinlicher als <span class="math inline">\(t\)</span>-Verteilungen mit grösseren Freiheitsgraden.</p>
-<div class="figure"><span style="display:block;" id="fig:t-distribution"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:t-distribution"></span>
 <img src="aps_statistik1_files/figure-html/t-distribution-1.png" alt="Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleich zu der Normalverteilung." width="672" />
 <p class="caption">
 Abbildung 4.7: Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleich zu der Normalverteilung.
@@ -437,14 +437,14 @@ Ziel:
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
 <p><span id="unlabeled-div-26" class="solution"><em>Lösung</em>. </span>Der Datensatz wird bei <code>Jamovi</code> eingelesen und die Analyseparameter wie in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-marktpreisanalyse-input">4.8</a> gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-marktpreisanalyse-input"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-marktpreisanalyse-input"></span>
 <img src="figures/04-exr-marktpreisanalyse-jmv-input.jpg" alt="Jamovi setzen der Analyseparameter." width="100%" />
 <p class="caption">
 Abbildung 4.8: Jamovi setzen der Analyseparameter.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-marktpreisanalyse-output">4.9</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-marktpreisanalyse-output"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-marktpreisanalyse-output"></span>
 <img src="figures/04-exr-marktpreisanalyse-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
 Abbildung 4.9: Jamovi Ausgabe.
@@ -471,14 +471,14 @@ Ziel:
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
 <p><span id="unlabeled-div-27" class="solution"><em>Lösung</em>. </span>Der Datensatz wird bei <code>Jamovi</code> eingelesen und die Analyseparameter wie in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-stranger-input">4.10</a> gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-stranger-input"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-stranger-input"></span>
 <img src="figures/04-exr-stranger-jmv-input.jpg" alt="Jamovi setzen der Analyseparameter." width="100%" />
 <p class="caption">
 Abbildung 4.10: Jamovi setzen der Analyseparameter.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-stranger-output">4.11</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-stranger-output"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-stranger-output"></span>
 <img src="figures/04-exr-stranger-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
 Abbildung 4.11: Jamovi Ausgabe.
@@ -498,7 +498,7 @@ Ziel:
 - Erleben, dass Mittelwerte normalverteilt sind.
 -->
 <p>(TODO, Achtung: Diese Augabe funktioniert je nach Version von Jamovi und JJStatsPlot nicht. Wenn die Normalverteilungskurve trotz Anwählen nicht angezeigt wird, kann die Lösung der Aufgabe nachgelesen werden. Diese Aufgabe ist wichtig für das Verständnis, nicht aber zur Nachahmung an der Prüfung.) Für ein Experiment werden in drei Runden jeweils <span class="math inline">\(10000\)</span> Zufallsstichproben erhoben mit respektive <span class="math inline">\(10\)</span>, <span class="math inline">\(40\)</span> und <span class="math inline">\(100\)</span> Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:ki-approx-normal1">4.12</a> dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.</p>
-<div class="figure"><span style="display:block;" id="fig:ki-approx-normal1"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ki-approx-normal1"></span>
 <img src="aps_statistik1_files/figure-html/ki-approx-normal1-1.png" alt="Verteilung der Werte einer Stichprobe. (Achtung es handelt sich hierbei nicht um Mittelwerte, sondern die Effektiv gemessenen Beobachtungen einer Stichprobe.)" width="672" />
 <p class="caption">
 Abbildung 4.12: Verteilung der Werte einer Stichprobe. (Achtung es handelt sich hierbei nicht um Mittelwerte, sondern die Effektiv gemessenen Beobachtungen einer Stichprobe.)
@@ -510,7 +510,7 @@ Abbildung 4.12: Verteilung der Werte einer Stichprobe. (Achtung es handelt sich 
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
 <p><span id="unlabeled-div-28" class="solution"><em>Lösung</em>. </span>Das Übereinanderlegen des jeweiligen Histogramms und der Wahrscheinlichkeitsdichte der Normalverteilung wird in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-ki-approx-normal">4.13</a> gezeigt. Es ist deutlich zu sehen, dass die Linie nur bei <span class="math inline">\(n=100\)</span> die Häufigkeitsverteilung der arithmetischen Mittel gut nachbilden kann. Bei <span class="math inline">\(n=10\)</span> und <span class="math inline">\(n=50\)</span> ist ein grosser Unterschied zwischen Häufigkeitsverteilung und Linie sichtbar. Das genaue <span class="math inline">\(n\)</span> ab welchem eine Häufigkeitsverteilung gut durch die Normalverteilung angenähert wird hängt von der ursprünglichen Verteilung der Daten ab, d.h. der Verteilung in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:ki-approx-normal1">4.12</a>. Es kann deshalb nicht generell gesagt werden, dass ab <span class="math inline">\(n=100\)</span> die Annäherung immer gut sei, so wie in diesem Beispiel. Der zentrale Grenzwertsatz besagt demnach auch lediglich, dass man immer ein grosses <span class="math inline">\(n\)</span> wählen kann, so dass die Annäherung gut ist. Er besagt nichts darüber, wie gross <span class="math inline">\(n\)</span> sein muss.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-ki-approx-normal"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-ki-approx-normal"></span>
 <img src="figures/04-exr-ki-approx-normal-jmv-input.jpg" alt="Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100." width="50%" /><img src="figures/04-exr-ki-approx-normal-jmv-output1.jpg" alt="Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100." width="50%" /><img src="figures/04-exr-ki-approx-normal-jmv-output2.jpg" alt="Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100." width="50%" /><img src="figures/04-exr-ki-approx-normal-jmv-output3.jpg" alt="Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100." width="50%" />
 <p class="caption">
 Abbildung 4.13: Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100.
@@ -542,7 +542,7 @@ Ziel:
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
 <p><span id="unlabeled-div-29" class="solution"><em>Lösung</em>. </span>Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-ki-mean-n-vary">4.14</a> zeigt die Berechnungsanweisungen für Jamovi und die resultierende Tabelle daraus.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-ki-mean-n-vary"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-ki-mean-n-vary"></span>
 <img src="figures/04-exr-stichprobengroesse-jmv-input.jpg" alt="Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen." width="50%" /><img src="figures/04-exr-stichprobengroesse-jmv-output.jpg" alt="Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen." width="50%" />
 <p class="caption">
 Abbildung 4.14: Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen.
@@ -572,14 +572,14 @@ Ziel:
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
 <p><span id="unlabeled-div-30" class="solution"><em>Lösung</em>. </span>Der Datensatz wird bei <code>Jamovi</code> eingelesen und die Analyseparameter wie in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-biologietest-input">4.15</a> gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-biologietest-input"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-biologietest-input"></span>
 <img src="figures/04-exr-biologietest-jmv-input.jpg" alt="Jamovi setzen der Analyseparameter." width="100%" />
 <p class="caption">
 Abbildung 4.15: Jamovi setzen der Analyseparameter.
 </p>
 </div>
 <p>Dies produziert das Analyseergebnis in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-biologietest-output">4.16</a>.</p>
-<div class="figure"><span style="display:block;" id="fig:sol-biologietest-output"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-biologietest-output"></span>
 <img src="figures/04-exr-biologietest-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
 Abbildung 4.16: Jamovi Ausgabe.

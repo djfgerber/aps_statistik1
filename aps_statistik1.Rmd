@@ -19,6 +19,8 @@ Dieses Buch ist im Rahmen meiner Lehrtätigkeit an der FHNW entstanden und frei 
 
 ```{r load_packages, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(fig.align = "center")
+
 library(gridExtra)
 library(jmv)
 library(kableExtra)
@@ -4354,7 +4356,114 @@ f) Richtig
 # Zusammenhang dichotomer Merkmale
 
 
+::: {#alcohol-edu .example name="Alkohol und Bildung"}
+```{r exm-alcohol-edu}
+gen_exm_alcohol_edu <- function(){
+  set.seed(212123)
+  file_name <- '09-exm-alcohol-edu.sav'
+  n <- 1000
+  no_risk_tert <- 0.184
+  no_risk_other <- 0.234
 
+  p_tert <- round(2313/(2313+2916+892),3)
+  
+  tibble(bildung = c(rep("tertiär", p_tert*n),rep("andere", (1-p_tert)*n)),
+       alkoholkonsum = c(rep("oft", round((1-no_risk_tert)*n*p_tert,0)), 
+                         rep("selten", round(no_risk_tert*n*p_tert, 0)), 
+                         rep("oft", round((1-no_risk_other)*n*(1-p_tert))), 
+                         rep("selten", round((no_risk_other)*n*(1-p_tert))))) %>% 
+    slice_sample(n=nrow(.)) %>% 
+  write_sav(file_name)
+  return(mget(ls()))
+}
+exm_alcohol_edu <- gen_exm_alcohol_edu()
+```
+
+Vom Bundasamt für Statistik BFS werden regelmässig Daten zum Alkoholkonsum in der Schweiz erhoben. Dabei wird ermittlet welcher Anteil der Bevölkerung weniger als einmal pro Woche und welcher Anteil mehr als einmal pro Woche Alkohol konsumiert. Diese Anteile werden anschliessen für verschiedene Untergruppen ausgewiesen, zum Beispiel für Leute mit Tertiärbildung und anderem Bildungsabschluss. Es werden hier also zwei dichotome Merkmale (Bildung: Teriär/nicht Tertiär und Alkoholkonsum: mind. 1x / Woche, weniger als 1x / Woche) und deren Zusammenhang betrachtet. Um diese Anteile abzuschätzen werden $`r exm_alcohol_edu$n`$ Personen befragt. Der Datensatz ist als `r inline_code(exm_alcohol_edu$file_name)` verfügbar.  
+:::
+
+Im Datensatz wird für jede Person eine Zeile ausgewiesen, siehe Abbildung \@ref(fig:exm-alcohol-edu-data-view).
+
+```{r exm-alcohol-edu-data-view, out.width='50%', fig.cap='Daten Alkoholkonsum und Bildung.'}
+knitr::include_graphics("figures/09-exm-alcohol-edu-data-view.jpg")
+```
+
+Da der Mensch nicht besonders gut darin ist unzählige Zeilen eine Tabelle zu absorbieren, werden die Daten oft in einer Vierfeldertafel zusammengefasst. [Die **Vierfeldertafel** ist eine Kreuztabelle bei welcher die Ausprägungen des einen Merkmals als Spalten und des anderen als Zeilen fungieren.]{.customdef #customdef-vierfeldertafel} Die Zellen werden dann mit der Anzahl Beobachtungen befüllt, für welche die Ausprägungskombination im Datensatz zutrifft, siehe Abbildung \@ref(fig:exm-alcohol-edu-data-view).
+
+```{r exm-alcohol-edu-aggdata-view, out.width='50%', fig.cap='Vierfeldertafel Alkoholkonsum und Bildung..'}
+knitr::include_graphics("figures/09-exm-alcohol-edu-aggdata-view.jpg")
+```
+
+Im psychologischen und medizinischen Kontext bezieht sich ein Merkmal oft auf einen schädlichen und einen nicht schädlichen Ausgang. Im Beispiel ist es der Alkoholkonsum. [Dieses Merkmal wird **Risikovariable**  genannt.]{.customdef #customdef-risikovariable} In der Vierfeldertafel kann die Risikovariable die Zeilen oder die Spalten bestimmen. Die Risikovariable wird durch andere Merkmale sogennante ursächliche Variablen erklärt. Im breiteren statistischen Kontext wird die Risikovariable abhängige Variable und die ursächliche Variable als unabhängige Variable bezeichnet. 
+
+[Mit **Risiko** wird die Wahrscheinlichkeit benannt den schädlichen Ausgang zu erleiden und wird mit dem Anteil des schädlichen Ausgangs an der Gesamtzahl berechnet.]{.customdef #customdef-risiko} Das Risiko kann je nach Ausprägung der ursächlichen Variable unterschiedlich hoch sein. Das Risiko mehr als 1x pro Woche Alkohol zu konsumieren ist demnach $308/378 = `r round(308/378,3)` = `r round(100*308/378,1)`\%$ für Menschen mit tertiärer Ausbildung und $476/622 = `r round(476/622,3)` = `r round(100*476/622,1)`\%$ für Menschen mit anderer Ausbildung. Das Risiko kann in `Jamovi` unter `Zellen > Prozentsätze` und dann `Zeile` (wenn das ursächliche Merkmal die Zeilen bestimmt) oder `Spalte` (wenn das ursächliche Merkmal die Spalte bestimmt) angezeigt werden.
+
+Die Risiken für die tertiär und andere Ausbildungen können nun verglichen werden. [Dazu kann die Differenz der beiden Risiken sogenannte **Risikodifferenz** (in `Jamovi` unter `Statistiken > Unterschiede in den Proportionen`) betrachtet werden.]{.customdef #customdef-risikodifferenz} Wenn die Risiken der beiden Gruppen mit $p_1$ und $p_2$ bezeichnet werden, entspricht dies schlicht 
+$$p_1 - p_2 = `r round(308/378,3)` - `r round(476/622,3)`=`r round(308/378,3)- round(476/622,3)`.$$ 
+Das Risiko mehr als $1$x pro Woche Alkohol zu konsumieren ist also $`r round(308/378,3)- round(476/622,3)` = `r 100*(round(308/378,3)- round(476/622,3))`\%$ höher für Personen mit einem tertiären Bildungsabschluss. Da die Risiken immer Werte zwischen $0$ und $1$ sind, muss dieser Formel nach die Differnez der Risiken zwischen $-1$ und $1$ liegen. Wenn die Differenz der beiden Risiken $0$ ist, bedeutet dies, dass die Risiken in beiden Gruppen gleich gross sind. Je weiter die Differenz der Risiken von $0$ weg ist, desto unterschiedlicher sind die Risiken in den zwei Gruppen.
+
+Eine andere Art die Risiken zu vergleichen ist sie ins Verhältnis zu setzen. [Dies wird **relatives Risiko**]{.customdef #customdef-tagname} 
+$$\text{RR} = \frac{p_1}{p_2} = \frac{`r round(308/378,3)`}{ `r round(476/622,3)`}=`r round(round(308/378,3)/ round(476/622,3),3)`$$
+genannt. Das Risiko mehr als $1$x pro Woche Alkohol zu konsumieren ist für Personen mit tertiärer Ausbildung also $`r round(round(308/378,3)/ round(476/622,3),3)`$ mal so gross wie für Personen mit anderer Ausbildung. Sind $p_1$ und $p_2$ gleich gross, so ist das relative Risiko bei $1$. Ist $p_1$ kleiner als $p_2$, so ist das relative Risiko kleiner als $1$. Ist $p_1$ grösser als $p_2$, so ist das relative Risiko grösser als $1$. Insgesamt ist das relative Risiko immer eine Zahl zwischen $0$ und $+\infty$. Das Tauschen der Gruppennummerierung führt zu einer Umkehr des Wertes rund um $1$. Wenn im Beispiel also die ander Bildung als Gruppe $1$ bezeichnet würde, so ist das relative Risiko 
+$$\text{RR} = \frac{p_1}{p_2} = \frac{`r round(476/622,3)`}{ `r  round(308/378,3)`}=`r round(  round(476/622,3)/round(308/378,3),3)`$$
+
+::::{.caution data-latex=""}
+::: {.remark}
+Das hier die relativen Risiken für die Gruppenneunummerierung fast gleich weit von $1$ entfernt liegen ist im normalfall nicht so. Dies kann an folgendem Zahlenbeispiel gesehen werden: $0.75 / 0.25 = 3$ und umgekehrt $0.25/0.75 = 0.333$.
+:::
+::::
+
+Das relative Risiko sagt im Gegensatz zu Risikodifferenz nichts mehr über das absolute Risiko aus. Wenn ein Medikament, zum Beispiel das Risiko einer Psychose von $1$ aus $5000$ auf $1$ aus $10000$ reduziert, so ist die Risikodifferenz bei $0.0001 - 0.0002 = -0.01\%$. Das relative Risiko ist in dem Fall jedoch $0.0001/0.0002 = 50\%$. Wird nun nur das relative Risiko berichtet, könnten Lesende von einem zu grossen Nutzen des Medikaments ausgehen. Es wird deshalb empfohlen immer die Risikodifferenz und das relative Risiko zu berichten. 
+
+Die Risikodifferenz und das relative Risiko können nur berechnet werden, wenn die gesamt Anzahl Fälle repräsentativ für die Population ist. Dies ist bei Fall-Kontroll Studien nicht der Fall, wie folgendes Beispiel zeigt. Für solche Studien können weder die Risikodifferenz noch das relative Risiko sinnvoll berechnet werden.
+
+::: {#dog-cancer .example name="Krebs bei Hunden"}
+```{r exm-dog-cancer}
+gen_exm_dog_cancer <- function(){
+  set.seed(23)
+  
+  n <- 375
+
+  file_name <- '09-exm-dog-cancer.sav'
+  dd <- tibble(Hund = c("Tumor", "Kein Tumor", "Tumor", "Kein Tumor"),
+               Herbizid = c("Angewendet", "Angewendet", "Nicht Angewendet", "Nicht Angewendet"),
+               Anzahl = c(191,304,300,641)) %>% 
+  write_sav(file_name)
+  return(mget(ls()))
+}
+exm_dog_cancer <- gen_exm_dog_cancer()
+```
+
+@hayes1991 haben sich für den Zusammenhang zwischen malingen Lymphomen bei Hunden (ugs. bösartiger Lymphdrüsenkrebs) und der Anwendung des Herbizids $2, 4$-Dichlorphenoxyessigsäure in Hausgärten interessiert. Dabei haben Sie in einer Fall-Kontroll Studie (case-control study) die Zahlen im Datensatz `r inline_code(exm_dog_cancer$file_name)` ermittelt. 
+:::
+
+Die Daten sind hier bereits in aggregierten Fallzahlen präsentiert, siehe Abbildung \@ref(fig:exm-dog-cancer-data-view).
+
+```{r exm-dog-cancer-data-view, out.width='50%', fig.cap='Daten Malignes Lymphoma bei Hunden.'}
+knitr::include_graphics("figures/09-exm-dog-cancer-data-view.jpg")
+```
+
+Um diese Daten korrekt in `Jamovi` einzulesen, kann unter `Analysen > Häufigkeiten > Kreuztabellen > Unabhängige Stichproben` die Anzahl Fälle bei `Anzahl (optional)` eingelesen werden. Dies resultiert in der Vierfeldertafel in Abbildung \@ref(fig:exm-dog-cancer-aggdata-view).
+
+```{r exm-dog-cancer-aggdata-view, out.width='50%', fig.cap='Vierfeldertafel Malignes Lymphoma bei Hunden.'}
+knitr::include_graphics("figures/09-exm-dog-cancer-aggdata-view.jpg")
+```
+
+Case-control bedeutet, dass Hunde mit Tumor (Fall/case) in einer Tierklinik gegeben waren. Dazu wurde eine gewisse Anzahl (normalerweise zwischen $1$ bis $4$ mal so viele wie kranke) gesunde Hunde (Kontroll/control) zufällig ausgewählt. Bei allen Hunden wurde anschliessend ermittelt, ob die Hunde auf einem mit dem entsprechenden Herbizid belasteten Garten Zeit verbracht haben. Da von den Studienautoren bestimmt wurde, wie viele gesunde Hunde ermittelt werden, kann der Anteil der kranken Hunde nicht als Mass für das Vorkommen der Erkankung in der jeweiligen Gruppe dienen. Es ist hier also nicht aussagekräftig den Anteil kranker Hunde pro Gruppe oder das daraus folgende relative Risiko zu bestimmen.
+
+[Stattdessen wird in diesen Fällen das  **Chancenverhältnis** (eng. odds ratio)]{.customdef #customdef-odds-ratio}  
+$$OR = \frac{a\cdot d}{b\cdot c} = \frac{191\cdot 300}{304\cdot 300} = 1.34$$
+berechnet, wobei $a, b, c$ und $d$ den Anzahl Fällen in der Vierfeldertafel von oben nach unten und von links nach rechts entsprchen. [Die  **Chance** (eng. odds) ist dabei eine Art Wahrscheinlichkeit auszudrücken.]{.customdef #customdef-odds} Sie ist definiert als Wahrscheinlichkeit, dass ein Ereignis eintrifft geteilt durch die Wahrscheinlichkeit, dass das Ereignis nicht eintrifft. Für die Herbizid belasteten Hunde ist die Chance ein Tumor zu haben also $a/c=191/304=0.63$ und für die anderen Hunde $b/d=300/641=0.47$. Es gilt, je höher die Chance desto höher die Eintreffwahrscheinlichkeit. Ein Chancenverhältnis von $1.34$ schliesslich bedeutet, dass die Chance einen Tumor zu entwickeln für einen Herbizid belasteten Hund $1.34$ mal so hoch ist wie für einen nicht Herbizid belasteten. 
+
+::::{.caution data-latex=""}
+::: {.remark}
+
+- Es kann festgestellt werden, dass das Chancenverhältnis unabhängig von der Wahl der ursächlichen und Risikovariable ist
+$$ OR = \frac{a\cdot d}{b\cdot c} = \frac{a\cdot d}{c\cdot b}.$$
+- Für kleine Fallzahlen (Risiko $<10\%$) liegt das Chancenverhältnis nahe am relativen Risiko.
+
+:::
+::::
 
 ## Übungen
 
@@ -4544,7 +4653,7 @@ gen_exr_covid_sterblichkeit <- function(){
 exr_covid_sterblichkeit <- gen_exr_covid_sterblichkeit()
 ```
 <!-- TODO: Ausschöpfen odds ratio, etc -->
-Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert (fiktive Zahlen, siehe Daten in `r inline_code(exr_covid_sterblichkeit$file_name)`). Wie gross ist die Inzidenz, das relative Risiko und der odds ratio und wie werden diese Grössen interpretiert? Was sind UV und AV?
+Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert (fiktive Zahlen, siehe Daten in `r inline_code(exr_covid_sterblichkeit$file_name)`). Wie gross sind die Risiken, die Risikodifferenz, das relative Risiko und der odds ratio und wie werden diese Grössen interpretiert? Was sind UV und AV?
 :::
 
 ::: solution
@@ -4560,15 +4669,15 @@ TODO
 - [Ablehnungsbereich](#customdef-ablehnungsbereich)
 - [Alternativhypothese](#customdef-alternativhypothese)
 - [arithmetische Mittel](#customdef-arithmetisches-mittel)
+- [Chance](#customdef-odds)
+- [Chancenverhältnis](#customdef-odds-ratio)
 - [Cohens $d$ für den Welch-Test](#customdef-welch-cohens-d)
 - [Cohens $d$ für Zweistichproben-t-Test](#customdef-cohens-d)
 - [einseitige Hypothese](#customdef-einseitige-hypothese)
 - [Einstichproben-$t$-Test](#customdef-t-test)
 - [Erwartungswert](#customdef-erwartungswert)
 - [Freiheitsgrade](#customdef-freiheitsgrade)
-- [Gegenläufig](#customdef-gegenlaeufig)
 - [Glass $\Delta$](#customdef-glass-delta)
-- [Gleichläufig](#customdef-gleichlaeufig)
 - [Grundgesamtheit](#customdef-grundgesamtheit)
 - [Hedges $g$](#customdef-hedges-g)
 - [Hypothese](#customdef-hypothese)
@@ -4577,27 +4686,26 @@ TODO
 - [intervallskaliert](#customdef-intervallskaliert)
 - [Irrtumswahrscheinlichkeit](#customdef-erring-level)
 - [Konfidenzintervall](#customdef-confidence-interval)
-- [Korrelation](#customdef-korrelation)
 - [Median](#customdef-median)
 - [Modus](#customdef-modus)
 - [nicht signifikant](#customdef-signifikanz)
 - [Normalverteilung](#customdef-normalverteilung)
 - [Nullhypothese](#customdef-nullhypothese)
-- [partielle Korrelation](#customdef-partielle-korrelation)
-- [Pearson](#customdef-pearson-korrelation)
 - [Perzentil](#customdef-perzentil)
 - [Population](#customdef-population)
-- [Punktbiseriale Korrelation](#customdef-punktbiseriale-korrelation)
+- [relatives Risiko](#customdef-tagname)
+- [Risiko](#customdef-risiko)
+- [Risikodifferenz](#customdef-risikodifferenz)
+- [Risikovariable](#customdef-risikovariable)
 - [Signifikanzniveau](#customdef-signifikanzniveau)
 - [Spannweite](#customdef-spannweite)
-- [Spearman](#customdef-spearman-korrelation)
 - [Standardabweichung](#customdef-std)
 - [Stichprobe](#customdef-stichprobe)
 - [Stichprobenziehung](#customdef-stichprobenziehung)
-- [Streudiagramm](#customdef-streudiagramm)
 - [Student-$t$-Verteilung](#customdef-student-verteilung)
 - [Teststatistik](#customdef-teststatistik)
 - [Vertrauenswahrscheinlichkeit](#customdef-confidence-level)
+- [Vierfeldertafel](#customdef-vierfeldertafel)
 - [Welch-Test](#customdef-welch-test)
 - [Zentraler Grenzwertsatz](#customdef-zentraler-grenzwertsatz)
 - [Zufallsstichprobe](#customdef-zufallsstichprobe)
