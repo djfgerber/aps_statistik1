@@ -177,8 +177,15 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="9" data-path="zusammenhang-dichotomer-merkmale.html"><a href="zusammenhang-dichotomer-merkmale.html"><i class="fa fa-check"></i><b>9</b> Zusammenhang dichotomer Merkmale</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="zusammenhang-dichotomer-merkmale.html"><a href="zusammenhang-dichotomer-merkmale.html#übungen-6"><i class="fa fa-check"></i><b>9.1</b> Übungen</a></li>
-<li class="chapter" data-level="9.2" data-path="zusammenhang-dichotomer-merkmale.html"><a href="zusammenhang-dichotomer-merkmale.html#test-5"><i class="fa fa-check"></i><b>9.2</b> Test</a></li>
+<li class="chapter" data-level="9.1" data-path="zusammenhang-dichotomer-merkmale.html"><a href="zusammenhang-dichotomer-merkmale.html#zusammenhang-dichotomer-merkmale-beschreiben"><i class="fa fa-check"></i><b>9.1</b> Zusammenhang dichotomer Merkmale beschreiben</a></li>
+<li class="chapter" data-level="9.2" data-path="zusammenhang-dichotomer-merkmale.html"><a href="zusammenhang-dichotomer-merkmale.html#zusammenhang-dichotomer-merkmale-testen"><i class="fa fa-check"></i><b>9.2</b> Zusammenhang dichotomer Merkmale testen</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="zusammenhang-dichotomer-merkmale.html"><a href="zusammenhang-dichotomer-merkmale.html#z-test-für-den-unterschied-zwischen-den-zwei-anteilen"><i class="fa fa-check"></i><b>9.2.1</b> <span class="math inline">\(z\)</span>-Test für den Unterschied zwischen den zwei Anteilen</a></li>
+<li class="chapter" data-level="9.2.2" data-path="zusammenhang-dichotomer-merkmale.html"><a href="zusammenhang-dichotomer-merkmale.html#chi2-test"><i class="fa fa-check"></i><b>9.2.2</b> <span class="math inline">\(\chi^2\)</span>-Test</a></li>
+<li class="chapter" data-level="9.2.3" data-path="zusammenhang-dichotomer-merkmale.html"><a href="zusammenhang-dichotomer-merkmale.html#exakter-test-nach-fisher-und-yates"><i class="fa fa-check"></i><b>9.2.3</b> Exakter Test nach Fisher und Yates</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="zusammenhang-dichotomer-merkmale.html"><a href="zusammenhang-dichotomer-merkmale.html#übungen-6"><i class="fa fa-check"></i><b>9.3</b> Übungen</a></li>
+<li class="chapter" data-level="9.4" data-path="zusammenhang-dichotomer-merkmale.html"><a href="zusammenhang-dichotomer-merkmale.html#test-5"><i class="fa fa-check"></i><b>9.4</b> Test</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="begriffsverzeichnis.html"><a href="begriffsverzeichnis.html"><i class="fa fa-check"></i>Begriffsverzeichnis</a></li>
 <li class="chapter" data-level="" data-path="literaturverzeichnis.html"><a href="literaturverzeichnis.html"><i class="fa fa-check"></i>Literaturverzeichnis</a></li>
@@ -201,96 +208,324 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="zusammenhang-dichotomer-merkmale" class="section level1 hasAnchor" number="9">
 <h1><span class="header-section-number">Kapitel 9</span> Zusammenhang dichotomer Merkmale<a href="zusammenhang-dichotomer-merkmale.html#zusammenhang-dichotomer-merkmale" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="zusammenhang-dichotomer-merkmale-beschreiben" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Zusammenhang dichotomer Merkmale beschreiben<a href="zusammenhang-dichotomer-merkmale.html#zusammenhang-dichotomer-merkmale-beschreiben" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="example">
-<p><span id="exm:alcohol-edu" class="example"><strong>Beispiel 9.1  (Alkohol und Bildung) </strong></span>Vom Bundasamt für Statistik BFS werden regelmässig Daten zum Alkoholkonsum in der Schweiz erhoben. Dabei wird ermittlet welcher Anteil der Bevölkerung weniger als einmal pro Woche und welcher Anteil mehr als einmal pro Woche Alkohol konsumiert. Diese Anteile werden anschliessen für verschiedene Untergruppen ausgewiesen, zum Beispiel für Leute mit Tertiärbildung und anderem Bildungsabschluss. Es werden hier also zwei dichotome Merkmale (Bildung: Teriär/nicht Tertiär und Alkoholkonsum: mind. 1x / Woche, weniger als 1x / Woche) und deren Zusammenhang betrachtet. Um diese Anteile abzuschätzen werden <span class="math inline">\(1000\)</span> Personen befragt. Der Datensatz ist als <code>09-exm-alcohol-edu.sav</code> verfügbar.</p>
+<p><span id="exm:alcohol-edu" class="example"><strong>Beispiel 9.1  (Alkohol und Bildung) </strong></span>Vom Bundesamt für Statistik BFS werden regelmässig Daten zum
+Alkoholkonsum in der Schweiz erhoben. Dabei wird ermittelt, welcher
+Anteil der Bevölkerung weniger als einmal pro Woche und welcher Anteil
+mehr als einmal pro Woche Alkohol konsumiert. Diese Anteile werden
+anschliessen für verschiedene Untergruppen ausgewiesen, zum Beispiel für
+Leute mit Tertiärbildung und anderem Bildungsabschluss. Es werden hier
+also zwei dichotome Merkmale (Bildung: Tertiär/nicht Tertiär und
+Alkoholkonsum: mind. 1x / Woche, weniger als 1x / Woche) und deren
+Zusammenhang betrachtet. Um diese Anteile abzuschätzen werden
+<span class="math inline">\(1000\)</span> Personen befragt. Der Datensatz ist als <code>09-exm-alcohol-edu.sav</code> verfügbar.</p>
 </div>
-<p>Im Datensatz wird für jede Person eine Zeile ausgewiesen, siehe Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-alcohol-edu-data-view">9.1</a>.</p>
+<p>Im Datensatz wird für jede Person eine Zeile ausgewiesen, siehe
+Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-alcohol-edu-data-view">9.1</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-alcohol-edu-data-view"></span>
 <img src="figures/09-exm-alcohol-edu-data-view.jpg" alt="Daten Alkoholkonsum und Bildung." width="50%" />
 <p class="caption">
 Abbildung 9.1: Daten Alkoholkonsum und Bildung.
 </p>
 </div>
-<p>Da der Mensch nicht besonders gut darin ist unzählige Zeilen eine Tabelle zu absorbieren, werden die Daten oft in einer Vierfeldertafel zusammengefasst. <span id="customdef-vierfeldertafel" class="customdef">Die <strong>Vierfeldertafel</strong> ist eine Kreuztabelle bei welcher die Ausprägungen des einen Merkmals als Spalten und des anderen als Zeilen fungieren.</span> Die Zellen werden dann mit der Anzahl Beobachtungen befüllt, für welche die Ausprägungskombination im Datensatz zutrifft, siehe Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-alcohol-edu-data-view">9.1</a>.</p>
+<p>Da der Mensch nicht besonders gut darin ist unzählige Zeilen eine
+Tabelle zu absorbieren, werden die Daten oft in einer Vierfeldertafel
+zusammengefasst. <span id="customdef-vierfeldertafel" class="customdef">Die <strong>Vierfeldertafel</strong> ist eine Kreuztabelle bei
+welcher die Ausprägungen des einen Merkmals als Spalten und des anderen
+als Zeilen fungieren.</span> Die Zellen werden dann mit der Anzahl Beobachtungen befüllt,
+für welche die Ausprägungskombination im Datensatz zutrifft, siehe
+Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-alcohol-edu-data-view">9.1</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-alcohol-edu-aggdata-view"></span>
 <img src="figures/09-exm-alcohol-edu-aggdata-view.jpg" alt="Vierfeldertafel Alkoholkonsum und Bildung.." width="50%" />
 <p class="caption">
 Abbildung 9.2: Vierfeldertafel Alkoholkonsum und Bildung..
 </p>
 </div>
-<p>Im psychologischen und medizinischen Kontext bezieht sich ein Merkmal oft auf einen schädlichen und einen nicht schädlichen Ausgang. Im Beispiel ist es der Alkoholkonsum. <span id="customdef-risikovariable" class="customdef">Dieses Merkmal wird <strong>Risikovariable</strong> genannt.</span> In der Vierfeldertafel kann die Risikovariable die Zeilen oder die Spalten bestimmen. Die Risikovariable wird durch andere Merkmale sogennante ursächliche Variablen erklärt. Im breiteren statistischen Kontext wird die Risikovariable abhängige Variable und die ursächliche Variable als unabhängige Variable bezeichnet.</p>
-<p><span id="customdef-risiko" class="customdef">Mit <strong>Risiko</strong> wird die Wahrscheinlichkeit benannt den schädlichen Ausgang zu erleiden und wird mit dem Anteil des schädlichen Ausgangs an der Gesamtzahl berechnet.</span> Das Risiko kann je nach Ausprägung der ursächlichen Variable unterschiedlich hoch sein. Das Risiko mehr als 1x pro Woche Alkohol zu konsumieren ist demnach <span class="math inline">\(308/378 = 0.815 = 81.5\%\)</span> für Menschen mit tertiärer Ausbildung und <span class="math inline">\(476/622 = 0.765 = 76.5\%\)</span> für Menschen mit anderer Ausbildung. Das Risiko kann in <code>Jamovi</code> unter <code>Zellen &gt; Prozentsätze</code> und dann <code>Zeile</code> (wenn das ursächliche Merkmal die Zeilen bestimmt) oder <code>Spalte</code> (wenn das ursächliche Merkmal die Spalte bestimmt) angezeigt werden.</p>
-<p>Die Risiken für die tertiär und andere Ausbildungen können nun verglichen werden. <span id="customdef-risikodifferenz" class="customdef">Dazu kann die Differenz der beiden Risiken sogenannte <strong>Risikodifferenz</strong> (in <code>Jamovi</code> unter <code>Statistiken &gt; Unterschiede in den Proportionen</code>) betrachtet werden.</span> Wenn die Risiken der beiden Gruppen mit <span class="math inline">\(p_1\)</span> und <span class="math inline">\(p_2\)</span> bezeichnet werden, entspricht dies schlicht
+<p>Im psychologischen und medizinischen Kontext bezieht sich ein Merkmal
+oft auf einen schädlichen und einen nicht schädlichen Ausgang. Im
+Beispiel ist es der Alkoholkonsum. <span id="customdef-risikovariable" class="customdef">Dieses Merkmal wird
+<strong>Risikovariable</strong> genannt.</span> In der Vierfeldertafel kann die Risikovariable die Zeilen
+oder die Spalten bestimmen. Die Risikovariable wird durch andere
+Merkmale sogenannte ursächliche Variablen erklärt. Im breiteren
+statistischen Kontext wird die Risikovariable abhängige Variable und die
+ursächliche Variable als unabhängige Variable bezeichnet.</p>
+<p><span id="customdef-risiko" class="customdef">Mit <strong>Risiko</strong> wird die Wahrscheinlichkeit benannt den schädlichen
+Ausgang zu erleiden und wird mit dem Anteil des schädlichen Ausgangs an
+der Gesamtzahl berechnet.</span>
+Das Risiko kann je nach Ausprägung der ursächlichen Variable
+unterschiedlich hoch sein. Das Risiko mehr als 1x pro Woche Alkohol zu
+konsumieren ist demnach
+<span class="math inline">\(308/378 = 0.815 = 81.5\%\)</span> für
+Menschen mit tertiärer Ausbildung und
+<span class="math inline">\(476/622 = 0.765 = 76.5\%\)</span> für
+Menschen mit anderer Ausbildung. Das Risiko kann in <code>Jamovi</code> unter
+<code>Zellen &gt; Prozentsätze</code> und dann <code>Zeile</code> (wenn das ursächliche Merkmal
+die Zeilen bestimmt) oder <code>Spalte</code> (wenn das ursächliche Merkmal die
+Spalte bestimmt) angezeigt werden.</p>
+<p>Die Risiken für die tertiär und andere Ausbildungen können nun
+verglichen werden. <span id="customdef-risikodifferenz" class="customdef">Dazu kann die Differenz der beiden Risiken
+sogenannte <strong>Risikodifferenz</strong> (in <code>Jamovi</code> unter
+<code>Statistiken &gt; Unterschiede in den Proportionen</code>) betrachtet
+werden.</span> Wenn die
+Risiken der beiden Gruppen mit <span class="math inline">\(p_1\)</span> und <span class="math inline">\(p_2\)</span> bezeichnet werden,
+entspricht dies schlicht
 <span class="math display">\[p_1 - p_2 = 0.815 - 0.765=0.05.\]</span>
-Das Risiko mehr als <span class="math inline">\(1\)</span>x pro Woche Alkohol zu konsumieren ist also <span class="math inline">\(0.05 = 5\%\)</span> höher für Personen mit einem tertiären Bildungsabschluss. Da die Risiken immer Werte zwischen <span class="math inline">\(0\)</span> und <span class="math inline">\(1\)</span> sind, muss dieser Formel nach die Differnez der Risiken zwischen <span class="math inline">\(-1\)</span> und <span class="math inline">\(1\)</span> liegen. Wenn die Differenz der beiden Risiken <span class="math inline">\(0\)</span> ist, bedeutet dies, dass die Risiken in beiden Gruppen gleich gross sind. Je weiter die Differenz der Risiken von <span class="math inline">\(0\)</span> weg ist, desto unterschiedlicher sind die Risiken in den zwei Gruppen.</p>
-<p>Eine andere Art die Risiken zu vergleichen ist sie ins Verhältnis zu setzen. <span id="customdef-tagname" class="customdef">Dies wird <strong>relatives Risiko</strong></span>
+Das Risiko mehr als <span class="math inline">\(1\)</span>x pro Woche Alkohol zu konsumieren ist also
+<span class="math inline">\(0.05 = 5\%\)</span>
+höher für Personen mit einem tertiären Bildungsabschluss. Da die Risiken
+immer Werte zwischen <span class="math inline">\(0\)</span> und <span class="math inline">\(1\)</span> sind, muss dieser Formel nach die
+Differenz der Risiken zwischen <span class="math inline">\(-1\)</span> und <span class="math inline">\(1\)</span> liegen. Wenn die Differenz
+der beiden Risiken <span class="math inline">\(0\)</span> ist, bedeutet dies, dass die Risiken in beiden
+Gruppen gleich gross sind. Je weiter die Differenz der Risiken von <span class="math inline">\(0\)</span>
+weg ist, desto unterschiedlicher sind die Risiken in den zwei Gruppen.</p>
+<p>Eine andere Art die Risiken zu vergleichen ist sie ins Verhältnis zu
+setzen. <span id="customdef-tagname" class="customdef">Dies wird <strong>relatives
+Risiko</strong></span>
 <span class="math display">\[\text{RR} = \frac{p_1}{p_2} = \frac{0.815}{ 0.765}=1.065\]</span>
-genannt. Das Risiko mehr als <span class="math inline">\(1\)</span>x pro Woche Alkohol zu konsumieren ist für Personen mit tertiärer Ausbildung also <span class="math inline">\(1.065\)</span> mal so gross wie für Personen mit anderer Ausbildung. Sind <span class="math inline">\(p_1\)</span> und <span class="math inline">\(p_2\)</span> gleich gross, so ist das relative Risiko bei <span class="math inline">\(1\)</span>. Ist <span class="math inline">\(p_1\)</span> kleiner als <span class="math inline">\(p_2\)</span>, so ist das relative Risiko kleiner als <span class="math inline">\(1\)</span>. Ist <span class="math inline">\(p_1\)</span> grösser als <span class="math inline">\(p_2\)</span>, so ist das relative Risiko grösser als <span class="math inline">\(1\)</span>. Insgesamt ist das relative Risiko immer eine Zahl zwischen <span class="math inline">\(0\)</span> und <span class="math inline">\(+\infty\)</span>. Das Tauschen der Gruppennummerierung führt zu einer Umkehr des Wertes rund um <span class="math inline">\(1\)</span>. Wenn im Beispiel also die ander Bildung als Gruppe <span class="math inline">\(1\)</span> bezeichnet würde, so ist das relative Risiko
+genannt. Das Risiko mehr als <span class="math inline">\(1\)</span>x pro Woche Alkohol zu konsumieren ist
+für Personen mit tertiärer Ausbildung also
+<span class="math inline">\(1.065\)</span> mal so gross wie für
+Personen mit anderer Ausbildung. Sind <span class="math inline">\(p_1\)</span> und <span class="math inline">\(p_2\)</span> gleich gross, so
+ist das relative Risiko bei <span class="math inline">\(1\)</span>. Ist <span class="math inline">\(p_1\)</span> kleiner als <span class="math inline">\(p_2\)</span>, so ist das
+relative Risiko kleiner als <span class="math inline">\(1\)</span>. Ist <span class="math inline">\(p_1\)</span> grösser als <span class="math inline">\(p_2\)</span>, so ist das
+relative Risiko grösser als <span class="math inline">\(1\)</span>. Insgesamt ist das relative Risiko immer
+eine Zahl zwischen <span class="math inline">\(0\)</span> und <span class="math inline">\(+\infty\)</span>. Das Tauschen der
+Gruppennummerierung führt zu einer Umkehr des Wertes rund um <span class="math inline">\(1\)</span>. Wenn
+im Beispiel also die andere Bildung als Gruppe <span class="math inline">\(1\)</span> bezeichnet würde, so
+ist das relative Risiko
 <span class="math display">\[\text{RR} = \frac{p_1}{p_2} = \frac{0.765}{ 0.815}=0.939\]</span></p>
 <div class="caution">
 <div class="remark">
-<p><span id="unlabeled-div-68" class="remark"><em>Hinweis</em>. </span>Das hier die relativen Risiken für die Gruppenneunummerierung fast gleich weit von <span class="math inline">\(1\)</span> entfernt liegen ist im normalfall nicht so. Dies kann an folgendem Zahlenbeispiel gesehen werden: <span class="math inline">\(0.75 / 0.25 = 3\)</span> und umgekehrt <span class="math inline">\(0.25/0.75 = 0.333\)</span>.</p>
+<p><span id="unlabeled-div-68" class="remark"><em>Hinweis</em>. </span>Das hier die relativen Risiken für die Gruppenneunummerierung fast
+gleich weit von <span class="math inline">\(1\)</span> entfernt liegen ist im Normalfall nicht so. Dies
+kann an folgendem Zahlenbeispiel gesehen werden: <span class="math inline">\(0.75 / 0.25 = 3\)</span> und
+umgekehrt <span class="math inline">\(0.25/0.75 = 0.333\)</span>.</p>
 </div>
 </div>
-<p>Das relative Risiko sagt im Gegensatz zu Risikodifferenz nichts mehr über das absolute Risiko aus. Wenn ein Medikament, zum Beispiel das Risiko einer Psychose von <span class="math inline">\(1\)</span> aus <span class="math inline">\(5000\)</span> auf <span class="math inline">\(1\)</span> aus <span class="math inline">\(10000\)</span> reduziert, so ist die Risikodifferenz bei <span class="math inline">\(0.0001 - 0.0002 = -0.01\%\)</span>. Das relative Risiko ist in dem Fall jedoch <span class="math inline">\(0.0001/0.0002 = 50\%\)</span>. Wird nun nur das relative Risiko berichtet, könnten Lesende von einem zu grossen Nutzen des Medikaments ausgehen. Es wird deshalb empfohlen immer die Risikodifferenz und das relative Risiko zu berichten.</p>
-<p>Die Risikodifferenz und das relative Risiko können nur berechnet werden, wenn die gesamt Anzahl Fälle repräsentativ für die Population ist. Dies ist bei Fall-Kontroll Studien nicht der Fall, wie folgendes Beispiel zeigt. Für solche Studien können weder die Risikodifferenz noch das relative Risiko sinnvoll berechnet werden.</p>
+<p>Das relative Risiko sagt im Gegensatz zu Risikodifferenz nichts mehr
+über das absolute Risiko aus. Wenn ein Medikament, zum Beispiel das
+Risiko einer Psychose von <span class="math inline">\(1\)</span> aus <span class="math inline">\(5000\)</span> auf <span class="math inline">\(1\)</span> aus <span class="math inline">\(10000\)</span> reduziert,
+so ist die Risikodifferenz bei <span class="math inline">\(0.0001 - 0.0002 = -0.01\%\)</span>. Das relative
+Risiko ist in dem Fall jedoch <span class="math inline">\(0.0001/0.0002 = 50\%\)</span>. Wird nun nur das
+relative Risiko berichtet, könnten Lesende von einem zu grossen Nutzen
+des Medikaments ausgehen. Es wird deshalb empfohlen immer die
+Risikodifferenz und das relative Risiko zu berichten.</p>
+<p>Die Risikodifferenz und das relative Risiko können nur berechnet werden,
+wenn die gesamt Anzahl Fälle repräsentativ für die Population ist. Dies
+ist bei Fall-Kontroll Studien nicht der Fall, wie folgendes Beispiel
+zeigt. Für solche Studien können weder die Risikodifferenz noch das
+relative Risiko sinnvoll berechnet werden.</p>
 <div class="example">
-<p><span id="exm:dog-cancer" class="example"><strong>Beispiel 9.2  (Krebs bei Hunden) </strong></span><span class="citation">Hayes et al. (<a href="#ref-hayes1991">1991</a>)</span> haben sich für den Zusammenhang zwischen malingen Lymphomen bei Hunden (ugs. bösartiger Lymphdrüsenkrebs) und der Anwendung des Herbizids <span class="math inline">\(2, 4\)</span>-Dichlorphenoxyessigsäure in Hausgärten interessiert. Dabei haben Sie in einer Fall-Kontroll Studie (case-control study) die Zahlen im Datensatz <code>09-exm-dog-cancer.sav</code> ermittelt.</p>
+<p><span id="exm:dog-cancer" class="example"><strong>Beispiel 9.2  (Krebs bei Hunden) </strong></span><span class="citation">Hayes et al. (<a href="#ref-hayes1991">1991</a>)</span> haben sich für den Zusammenhang zwischen malignen Lymphomen
+bei Hunden (ugs. bösartiger Lymphdrüsenkrebs) und der Anwendung des
+Herbizids <span class="math inline">\(2, 4\)</span>-Dichlorphenoxyessigsäure in Hausgärten interessiert.
+Dabei haben Sie in einer Fall-Kontroll Studie (case-control study) die
+Zahlen im Datensatz <code>09-exm-dog-cancer.sav</code> ermittelt.</p>
 </div>
-<p>Die Daten sind hier bereits in aggregierten Fallzahlen präsentiert, siehe Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-dog-cancer-data-view">9.3</a>.</p>
+<p>Die Daten sind hier bereits in aggregierten Fallzahlen präsentiert,
+siehe Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-dog-cancer-data-view">9.3</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-dog-cancer-data-view"></span>
 <img src="figures/09-exm-dog-cancer-data-view.jpg" alt="Daten Malignes Lymphoma bei Hunden." width="50%" />
 <p class="caption">
 Abbildung 9.3: Daten Malignes Lymphoma bei Hunden.
 </p>
 </div>
-<p>Um diese Daten korrekt in <code>Jamovi</code> einzulesen, kann unter <code>Analysen &gt; Häufigkeiten &gt; Kreuztabellen &gt; Unabhängige Stichproben</code> die Anzahl Fälle bei <code>Anzahl (optional)</code> eingelesen werden. Dies resultiert in der Vierfeldertafel in Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-dog-cancer-aggdata-view">9.4</a>.</p>
+<p>Um diese Daten korrekt in <code>Jamovi</code> einzulesen, kann unter
+<code>Analysen &gt; Häufigkeiten &gt; Kreuztabellen &gt; Unabhängige Stichproben</code> die
+Anzahl Fälle bei <code>Anzahl (optional)</code> eingelesen werden. Dies resultiert
+in der Vierfeldertafel in Abbildung
+<a href="zusammenhang-dichotomer-merkmale.html#fig:exm-dog-cancer-aggdata-view">9.4</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-dog-cancer-aggdata-view"></span>
 <img src="figures/09-exm-dog-cancer-aggdata-view.jpg" alt="Vierfeldertafel Malignes Lymphoma bei Hunden." width="50%" />
 <p class="caption">
 Abbildung 9.4: Vierfeldertafel Malignes Lymphoma bei Hunden.
 </p>
 </div>
-<p>Case-control bedeutet, dass Hunde mit Tumor (Fall/case) in einer Tierklinik gegeben waren. Dazu wurde eine gewisse Anzahl (normalerweise zwischen <span class="math inline">\(1\)</span> bis <span class="math inline">\(4\)</span> mal so viele wie kranke) gesunde Hunde (Kontroll/control) zufällig ausgewählt. Bei allen Hunden wurde anschliessend ermittelt, ob die Hunde auf einem mit dem entsprechenden Herbizid belasteten Garten Zeit verbracht haben. Da von den Studienautoren bestimmt wurde, wie viele gesunde Hunde ermittelt werden, kann der Anteil der kranken Hunde nicht als Mass für das Vorkommen der Erkankung in der jeweiligen Gruppe dienen. Es ist hier also nicht aussagekräftig den Anteil kranker Hunde pro Gruppe oder das daraus folgende relative Risiko zu bestimmen.</p>
-<p><span id="customdef-odds-ratio" class="customdef">Stattdessen wird in diesen Fällen das <strong>Chancenverhältnis</strong> (eng. odds ratio)</span><br />
+<p>Case-control bedeutet, dass Hunde mit Tumor (Fall/case) in einer
+Tierklinik gegeben waren. Dazu wurde eine gewisse Anzahl (normalerweise
+zwischen <span class="math inline">\(1\)</span> bis <span class="math inline">\(4\)</span> mal so viele wie kranke) gesunde Hunde
+(Kontroll/control) zufällig ausgewählt. Bei allen Hunden wurde
+anschliessend ermittelt, ob die Hunde auf einem mit dem entsprechenden
+Herbizid belasteten Garten Zeit verbracht haben. Da von den
+Studienautoren bestimmt wurde, wie viele gesunde Hunde ermittelt werden,
+kann der Anteil der kranken Hunde nicht als Mass für das Vorkommen der
+Erkrankung in der jeweiligen Gruppe dienen. Es ist hier also nicht
+aussagekräftig den Anteil kranker Hunde pro Gruppe oder das daraus
+folgende relative Risiko zu bestimmen.</p>
+<p><span id="customdef-odds-ratio" class="customdef">Stattdessen wird in diesen Fällen das <strong>Chancenverhältnis</strong> (eng. odds
+ratio)</span><br />
 <span class="math display">\[OR = \frac{a\cdot d}{b\cdot c} = \frac{191\cdot 300}{304\cdot 300} = 1.34\]</span>
-berechnet, wobei <span class="math inline">\(a, b, c\)</span> und <span class="math inline">\(d\)</span> den Anzahl Fällen in der Vierfeldertafel von oben nach unten und von links nach rechts entsprchen. <span id="customdef-odds" class="customdef">Die <strong>Chance</strong> (eng. odds) ist dabei eine Art Wahrscheinlichkeit auszudrücken.</span> Sie ist definiert als Wahrscheinlichkeit, dass ein Ereignis eintrifft geteilt durch die Wahrscheinlichkeit, dass das Ereignis nicht eintrifft. Für die Herbizid belasteten Hunde ist die Chance ein Tumor zu haben also <span class="math inline">\(a/c=191/304=0.63\)</span> und für die anderen Hunde <span class="math inline">\(b/d=300/641=0.47\)</span>. Es gilt, je höher die Chance desto höher die Eintreffwahrscheinlichkeit. Ein Chancenverhältnis von <span class="math inline">\(1.34\)</span> schliesslich bedeutet, dass die Chance einen Tumor zu entwickeln für einen Herbizid belasteten Hund <span class="math inline">\(1.34\)</span> mal so hoch ist wie für einen nicht Herbizid belasteten.</p>
+berechnet, wobei <span class="math inline">\(a, b, c\)</span> und <span class="math inline">\(d\)</span> den Anzahl Fällen in der
+Vierfeldertafel von oben nach unten und von links nach rechts
+entsprechen. <span id="customdef-odds" class="customdef">Die <strong>Chance</strong> (eng. odds) ist dabei eine Art
+Wahrscheinlichkeit auszudrücken.</span> Sie ist definiert als Wahrscheinlichkeit, dass ein Ereignis
+eintrifft geteilt durch die Wahrscheinlichkeit, dass das Ereignis nicht
+eintrifft. Für die Herbizid belasteten Hunde ist die Chance ein Tumor zu
+haben also <span class="math inline">\(a/c=191/304=0.63\)</span> und für die anderen Hunde
+<span class="math inline">\(b/d=300/641=0.47\)</span>. Es gilt, je höher die Chance desto höher die
+Eintreffwahrscheinlichkeit. Ein Chancenverhältnis von <span class="math inline">\(1.34\)</span>
+schliesslich bedeutet, dass die Chance einen Tumor zu entwickeln für
+einen Herbizid belasteten Hund <span class="math inline">\(1.34\)</span> mal so hoch ist wie für einen
+nicht Herbizid belasteten.</p>
 <div class="caution">
 <div class="remark">
 <p><span id="unlabeled-div-69" class="remark"><em>Hinweis</em>. </span></p>
 <ul>
-<li>Es kann festgestellt werden, dass das Chancenverhältnis unabhängig von der Wahl der ursächlichen und Risikovariable ist
+<li>Es kann festgestellt werden, dass das Chancenverhältnis unabhängig
+von der Wahl der ursächlichen und Risikovariable ist
 <span class="math display">\[ OR = \frac{a\cdot d}{b\cdot c} = \frac{a\cdot d}{c\cdot b}.\]</span></li>
-<li>Für kleine Fallzahlen (Risiko <span class="math inline">\(&lt;10\%\)</span>) liegt das Chancenverhältnis nahe am relativen Risiko.</li>
+<li>Für kleine Fallzahlen (Risiko <span class="math inline">\(&lt;10\%\)</span>) liegt das Chancenverhältnis
+nahe am relativen Risiko.</li>
 </ul>
 </div>
 </div>
-<div id="übungen-6" class="section level2 hasAnchor" number="9.1">
-<h2><span class="header-section-number">9.1</span> Übungen<a href="zusammenhang-dichotomer-merkmale.html#übungen-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<!-- Dogs and cancer -->
-<!-- https://stats.libretexts.org/Bookshelves/Introductory_Statistics/OpenIntro_Statistics_(Diez_et_al)./06%3A_Inference_for_Categorical_Data/6.02%3A_Difference_of_Two_Proportions -->
+</div>
+<div id="zusammenhang-dichotomer-merkmale-testen" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Zusammenhang dichotomer Merkmale testen<a href="zusammenhang-dichotomer-merkmale.html#zusammenhang-dichotomer-merkmale-testen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In <code>Jamovi &gt; Kreuztabellen &gt; Statistiken &gt; Tests</code> stehen verschiedene
+Tests zur Verfügung, um zu testen, ob ein in einer Zufallsstichprobe
+gefundener Zusammenhang zwischen den Risiken <span class="math inline">\(p_1\)</span> und <span class="math inline">\(p_2\)</span> auf die
+Risiken in der Population <span class="math inline">\(\pi_1\)</span> und <span class="math inline">\(\pi_2\)</span> (sprich ‘pi’) übertragen
+werden darf.</p>
+<div id="z-test-für-den-unterschied-zwischen-den-zwei-anteilen" class="section level3 hasAnchor" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> <span class="math inline">\(z\)</span>-Test für den Unterschied zwischen den zwei Anteilen<a href="zusammenhang-dichotomer-merkmale.html#z-test-für-den-unterschied-zwischen-den-zwei-anteilen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Wenn die Merkmale unabhängig voneinander sind, dann sollte das Risiko in
+beiden Gruppen ungefähr gleich gross sein. Dies impliziert auch, dass
+die Risikodifferenz <span class="math inline">\(0\)</span> ist. Beim
+<span class="math inline">\(z\)</span>-Test für den Unterschied zwischen den zwei Anteilen wird also
+<span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span> und damit äquivalent <span class="math inline">\(H_0: \pi_1 = \pi_2\)</span>
+getestet. Wird die Nullhypothese verworfen, wird fortan an die
+Alternativhypothese <span class="math inline">\(H_1: \pi_1 \neq \pi_2\)</span> geglaubt. Aus Platzgründen
+werden hier nur die zweiseitigen Hypothesenstellungen erwähnt. Die
+einseitigen Hypothesenstellungen funktionieren aber anaolg zu den bisher
+gesehen Tests.</p>
+<p>Die Teststatistik für den <span class="math inline">\(z\)</span>-Test der Risikodifferenz ist</p>
+<p><span class="math display">\[z = \frac{p_1-p_2}{\sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}}} = -1.85,\]</span></p>
+<p>wobei <span class="math inline">\(n_1\)</span> und <span class="math inline">\(n_2\)</span> der Anzahl vom Risiko betroffene bzw. nicht
+betroffene Beobachtungen darstellen. Wenn die Nullhypothese wahr ist,
+ist diese Teststatistik ist standardnormalverteilt. Dies entspricht der
+Normalverteilung in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:t-distribution">4.7</a>. Je grösser die
+Differenz der beiden Risiken, desto weiter weg von <span class="math inline">\(0\)</span> ist die
+Teststatistik und desto unwahrscheinlicher ist es, dass die berechnete
+Teststatistik aufgrund der Zufallsstichprobenziehung zustande kommt. Der genaue <span class="math inline">\(p\)</span>-Wert kann mit <code>Jamovi</code> unter <code>Tests &gt; z-Test für den Unterschied zwischen den zwei Anteilen</code> ermittelt werden. Mit <span class="math inline">\(p = .0649\)</span> kann die Nullhypothese knapp nicht verworfen werden. Die beiden Anteile <span class="math inline">\(\pi_1\)</span> und <span class="math inline">\(\pi_2\)</span> könnten also gleich sein.</p>
+<blockquote>
+<p>Ein zweiseitiger <span class="math inline">\(z\)</span>-Test für den Unterschied zwischen den zwei Anteilen ergibt, dass der Anteil der mehr als einmal pro Woche alkoholkonsumierenden Personen mit Tertiärbildung (<span class="math inline">\(p_1 = 81.5\%\)</span>), nicht signifikant von ebendiesem Anteil der Personen mit anderer Bildung (<span class="math inline">\(p_2 = 76.5\%\)</span>) unterscheidet, <span class="math inline">\(z = -1.85, p = .0649\)</span>.</p>
+</blockquote>
+</div>
+<div id="chi2-test" class="section level3 hasAnchor" number="9.2.2">
+<h3><span class="header-section-number">9.2.2</span> <span class="math inline">\(\chi^2\)</span>-Test<a href="zusammenhang-dichotomer-merkmale.html#chi2-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span id="customdef-chisq-test" class="customdef">Der <strong><span class="math inline">\(\chi^2\)</span>-Test</strong> (sprich ‘chi-quadrat-test’) ist eine zweite allgemeinere Variante, um den Zusammenhang zwischen zwei dichotomen Merkmalen zu testen.</span> Die Nullhypothese ist wiederum, dass die beiden Merkmale unabhängig voneinander sind.</p>
+<p>Um nun die Teststatistik näher verstehen zu können, muss ein kurzer
+Exkurs in Wahrscheinlichkeitslehre unternommen werden. Diese besagt
+nämlich, dass wenn zwei Ereignisse A und B unabhängig voneinander
+auftreten, dann ist die Auftretenswahrscheinlichkeit genau gleich dem
+Produkt der Wahrscheinlichkeiten der jeweiligen Ereignisse. In Formeln
+ausgedrückt
+<span class="math display">\[p(A \text{ und }B) \overset{\text{unabhängig}}{=} p(A) \cdot p(B).\]</span></p>
+<p>Auf das Beispiel <a href="zusammenhang-dichotomer-merkmale.html#exm:alcohol-edu">9.1</a> bezogen bedeutet dies, dass wenn
+Alkoholkonsum und die Ausbildungsart unabhängig voneinander sind, dann
+entspricht die Wahrscheinlichkeit mehr als <span class="math inline">\(1\)</span>x pro Woche Alkohol zu
+konsumieren und eine tertiäre Ausbildung genossen zu haben</p>
+<p><span class="math display">\[
+p(\text{[alkohol &gt; 1x pro Woche] und tertiär}) = \frac{476}{784} = 0.60714
+\]</span></p>
+<p>genau</p>
+<p><span class="math display">\[
+p(\text{[alkohol &gt; 1x pro Woche]}) \cdot p(\text{tertiär}) = \frac{784}{1000}\cdot \frac{622}{1000} = 0.48765
+\]</span></p>
+<p>entsprechen. Die Zahlen zeigen an, dass dies für diese Stichprobe klar nicht gegeben ist. Die beobachtete Differenz könnte sich aber auch aus der Zufallsstichprobenziehung ergeben haben. Der <span class="math inline">\(\chi^2\)</span>-Vierfeldertest vergleicht nun in jeder Zelle <span class="math inline">\(i\)</span> der Vierfeldertafel die tatsächlich beobachteten Beobachtungen <span class="math inline">\(o_i\)</span> (observed) mit den erwarteten Beobachtungen <span class="math inline">\(e_i\)</span> (expected), wenn die Unabhängigkeit gegeben wäre. Letztere berechnet sich durch <span class="math inline">\(p(A) \cdot p(B) \cdot n\)</span>, wobei <span class="math inline">\(n\)</span> die Gesamtanzahl Beobachtungen ist. Im Beispiel</p>
+<p><span class="math display">\[e_1 = p(\text{[alkohol &gt; 1x pro Woche]}) \cdot p(\text{tertiär}) \cdot n =0.48765 \cdot  1000 = 487.648 \]</span>
+Je weiter diese Zahl von der beobachteten Zahl abweicht, desto unwahrscheinlicher ist die Unabhängigkeit. Der <span class="math inline">\(\chi^2\)</span> trägt dem Rechnung, indem die Teststatistik</p>
+<p><span class="math display">\[\chi^2 = \sum_{i = 1}^k \frac{(o_i - e_i)^2}{e_i} = 3.41,\]</span>
+wobei <span class="math inline">\(k\)</span> hier für die Anzahl Zellen steht. Eine grosse Teststatistik spricht also gegen die Unabhängigkeit.</p>
+<p>Wenn die Stichprobenziehung oft wiederholt wird, kann festgestellt werden, dass diese Teststatistik einer bekannten Verteilung, der <span class="math inline">\(\chi^2\)</span>-Verteilung bei <span class="math inline">\(df = 1\)</span> Freiheitsgraden folgt. <span id="customdef-chisq-distribution" class="customdef">Die <strong><span class="math inline">\(\chi^2\)</span>-Verteilung</strong> ist für verschiedene Freiheitsgrade in Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:chisq-distribution">9.5</a> dargestellt.</span>
+Die Teststatistik des <span class="math inline">\(\chi^2\)</span>-Vierfeldertests <span class="math inline">\(3.41\)</span> wird also mit der roten Verteilung in der Abbildung verglichen. Die Werte rechts auf der Abbildung sind seltener und der beobachtete Wert liegt so, dass er zu den <span class="math inline">\(p = .065\)</span> seltensten Beobachtungen zählt, sofern die Unabhängigkeit gilt. Dies reicht hier gerade nicht, um die Nullhypothese bei Signifikanzniveau <span class="math inline">\(\alpha = 5\%\)</span> zu verwerfen.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chisq-distribution"></span>
+<img src="aps_statistik1_files/figure-html/chisq-distribution-1.png" alt="Chiquadrat-Verteilungen mit 1, 4 und 9 Freiheitsgraden." width="672" />
+<p class="caption">
+Abbildung 9.5: Chiquadrat-Verteilungen mit 1, 4 und 9 Freiheitsgraden.
+</p>
+</div>
+<p>Um die Effektstärke des <span class="math inline">\(\chi^2\)</span>-Tests anzugeben kann Cramérs <span class="math inline">\(\phi\)</span></p>
+<p><span class="math display">\[\phi = \sqrt{\frac{\chi^2}{n}} = \sqrt{\frac{3.41}{1000}} = 0.06\]</span></p>
+<p>Cramérs <span class="math inline">\(\phi\)</span> immer grösser als <span class="math inline">\(0\)</span> und kleiner als <span class="math inline">\(1\)</span>. Je weiter <span class="math inline">\(\phi\)</span> von <span class="math inline">\(0\)</span> weg ist, desto stärker sind die Merkmale voneinander abhängig. Da dies auch als Zusammenhangsmass gesehen werden kann wird Cramérs <span class="math inline">\(\phi\)</span> auch Vierfelderkorrelation genannt. Die Interpretation als Effektstärke erfolgt dabei wir für die Korrelation. Ein Wert von <span class="math inline">\(0.06\)</span> wird demnach als schwach eingestuft.</p>
+<blockquote>
+<p>Ein <span class="math inline">\(\chi^2\)</span>-Test ergibt, dass der Alkoholkonsum (mehr/weniger als 1x pro Woche) und Bildung (Tertiär/andere Bildung) nicht signifikant abhängig voneinander sind, <span class="math inline">\(\chi^2 (1) = 3.41, p = .0649, \phi = 0.06\)</span>.</p>
+</blockquote>
+<p>Der <span class="math inline">\(\chi^2\)</span> Test hat für die Vierfeldervariante immer den gleichen <span class="math inline">\(p\)</span>-Wert wie der Test der Risikodifferenz auf <span class="math inline">\(0\)</span>. Beide Tests basieren auf dem zentralen Grenzwertsatz und dürfen deshalb nur angewendet werden, wenn gewisse Voraussetzungen erfüllt sind. Die Voraussetzung ist, dass insgesamt <span class="math inline">\(40\)</span> oder mehr Beobachtungen vorliegen müssen. <span id="customdef-chisq-corrected" class="customdef">Ist dies nicht der Fall, aber in jeder Zelle ist die Anzahl der erwarteten Beobachtungen bei <span class="math inline">\(5\)</span> oder grösser, so kann der <strong><span class="math inline">\(\chi^2\)</span>-Test mit Kontinuitätskorrektur</strong> oder Yates-Korrektur verwendet werden</span>
+<span class="math display">\[\chi^2_{Yates} = \sum_{i = 1}^k \frac{(|o_i - e_i| -0.5)^2}{e_i}.\]</span></p>
+<p>In Beispiel sind mit <span class="math inline">\(n = 1000\)</span> genügend Beobachtungen vorhanden, um ohne die Kontinuitätskorrektur auszukommen. Der Bericht des Tests ist genau gleich wie der Bericht des <span class="math inline">\(\chi^2\)</span>-Test ausser, dass der Name des Verfahrens geändert wird:</p>
+<blockquote>
+<p>Ein <span class="math inline">\(\chi^2\)</span>-Test mit Kontinuitätskorrektur ergibt, dass der Alkoholkonsum …</p>
+</blockquote>
+</div>
+<div id="exakter-test-nach-fisher-und-yates" class="section level3 hasAnchor" number="9.2.3">
+<h3><span class="header-section-number">9.2.3</span> Exakter Test nach Fisher und Yates<a href="zusammenhang-dichotomer-merkmale.html#exakter-test-nach-fisher-und-yates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Wenn die erwarteten Beobachtungen in mindestens einer Zelle kleiner als <span class="math inline">\(5\)</span> sind, dann ist die Approximation der Verteilung der Teststatistik durch den <span class="math inline">\(\chi^2\)</span>-Test sogar mit Kontinuitätskorrektur zu ungenau.</p>
+<div class="example">
+<p><span id="exm:red-white-wine" class="example"><strong>Beispiel 9.3  (Wette: Unterscheiden von Rot- und Weisswein) </strong></span>Nina behauptet, sie kann Rotwein von Weisswein am Geschmack unterscheiden. Sie bereiten ein Experiment vor, um dies zu testen verbinden Nina die Augen. Als Statistiklernende wissen sie, dass es nicht genügt, dass Nina einmal die richtige Weinsorte wählt - dies könnte ja zufällig richtig sein. Stattdessen werden <span class="math inline">\(5\)</span> Gläser Rotwein und <span class="math inline">\(4\)</span> Gläser Weisswein vorbereitet und Nina in zufälliger Reihenfolge zum Probieren angeboten. Das Experiment endet mi den Zahlen in Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-red-white-wine-aggdata-view">9.6</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-red-white-wine-aggdata-view"></span>
+<img src="figures/09-exm-red-white-wine-aggdata-view.jpg" alt="Vierfeldertafel Wette Unterschied Rot- und Weisswein."  />
+<p class="caption">
+Abbildung 9.6: Vierfeldertafel Wette Unterschied Rot- und Weisswein.
+</p>
+</div>
+</div>
+<p>Da nur wenige Beobachtungen gemacht wurden, kann die Wahrscheinlichkeit eines Ausgangs des Experiments mit Hilfe der hypergeometrischen-Verteilung genau berechnet werden. Die Wahrscheinlichkeit für den Experimentausgang in Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-red-white-wine-aggdata-view">9.6</a> entspricht <span class="math inline">\(p_0 = 0.159\)</span>.</p>
+<p>Der <span class="math inline">\(p\)</span>-Wert eines Tests ist bekannterweise die Wahrscheinlichkeit die berechnetet Teststatistik zu beobachten <em>oder eine unwahrscheinlichere Situation im Sinne der Alternativhypothese</em>. Um dem zweiten Teil dieser Definition gerecht zu werden, werden nun andere, unwahrscheinlichere Experimentausgänge bewertet. Um dies zu erreichen, wird hier angenommen, dass in jedem Fall die Randsummen immer gleichbleiben (also <span class="math inline">\(5\)</span> für ist Rotwein, <span class="math inline">\(4\)</span> für ist Weisswein, <span class="math inline">\(5\)</span> für sagt Rotwein und <span class="math inline">\(4\)</span> für sagt Weisswein). Wenn ist und sagt unabhängig voneinander ist und Nina also die Weinfarben nicht auseinanderhalten kann, dann wäre es unwahrscheinlicher, wenn sie alle <span class="math inline">\(5\)</span> Rotweine als solche erkannt hätte. Wenn die Randsummen gleich gehalten werden, entspricht dies der Situation in Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-red-white-wine-aggdata-view-alt">9.7</a>. Die Wahrscheinlichkeit für diese Situation ist <span class="math inline">\(p_1 = 0.008\)</span>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-red-white-wine-aggdata-view-alt"></span>
+<img src="figures/09-exm-red-white-wine-aggdata-view-alt.jpg" alt="Vierfeldertafel Wette Unterschied Rot- und Weisswein."  />
+<p class="caption">
+Abbildung 9.7: Vierfeldertafel Wette Unterschied Rot- und Weisswein.
+</p>
+</div>
+<p>Grundsätzlich können hier noch weitere Situationen aufgezählt werden. Im Beispiel sind mit der eben beschriebenen Situation und der ursprünglichen Situation jedoch die Alternativen erschöpft: Es kann nicht sein, dass Nina <span class="math inline">\(6\)</span>-mal Rotwein richtig voraussagt, wenn sie insgesamt nur <span class="math inline">\(5\)</span>-mal Rotwein sagt.</p>
+<p>Nun werden die Wahrscheinlichkeiten aller Situation aufsummiert, <span class="math inline">\(p = p_0 + p_1 + \ldots = 0.159+0.008 =0.167\)</span>. Da mit diesem Vorgehen genau der Definition des <span class="math inline">\(p\)</span>-Wertes gefolgt wurde, stellt dieses <span class="math inline">\(p\)</span> nun auch einen <span class="math inline">\(p\)</span>-Wert dar. <span id="customdef-fisher-yates" class="customdef">Der dazugehörige Test wird <strong>exakter Test nach Fisher und Yates</strong> oder einfach Fisher-Yates-Test genannt.</span></p>
+<blockquote>
+<p>Ein exakter Test nach Fisher und Yates ergibt, dass das Ansagen der Weinsorte von Nina nicht signifikant von der tatsächlichen Weinsorte abhängt, <span class="math inline">\(p = .167\)</span>.</p>
+</blockquote>
+<div class="caution">
+<div class="remark">
+<p><span id="unlabeled-div-70" class="remark"><em>Hinweis</em>. </span></p>
+<ul>
+<li>Der Test ist exakt, weil hier die Wahrscheinlichkeiten genau bestimmt wurden. Bei allen anderen bislang gesehenen Tests wird die Wahrscheinlichkeit über eine Verteilung angenähert. Diese Annäherung ist theoretisch nur richtig, wenn unendlich viele Beobachtungen gemacht werden, weshalb diese Art Test auch <strong>asymptotisch</strong> genannt wird. In der Praxis wird jedoch festgestellt, dass asymptotische Tests bereits für eine kleine Anzahl Beobachtungen (z. B. <span class="math inline">\(50\)</span> für den Einstichproben-<span class="math inline">\(t\)</span>-Test) hinreichend genau sind.</li>
+<li>Da für den exakten Test nach Fisher und Yates die Wahrscheinlichkeiten direkt berechnet werden, wird keine Teststatistik verwendet.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="übungen-6" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Übungen<a href="zusammenhang-dichotomer-merkmale.html#übungen-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="exercise">
-<p><span id="exr:cancer-smoking" class="exercise"><strong>Übung 9.1  </strong></span></p>
+<p><span id="exr:autism-epilepsy" class="exercise"><strong>Übung 9.1  </strong></span></p>
 <!-- 
-https://pubmed.ncbi.nlm.nih.gov/9857993/
 Ziel: 
-- Vierfelder Testentscheidung
-- Vierfeldertest
-- Zusammenhangsmasse
+-
 -->
-<p>Um den Zusammenhang zwischen rauchen und Lungenkrebs zu analsyieren haben Forschende in einer Studie <span class="math inline">\(200\)</span> an Lungenkrebs erkankte und <span class="math inline">\(397\)</span> nicht an Lungenkrebs erkrankte Menschen zu ihrem Rauchverhalten befragt. Die Forschenden haben die Daten im Datensatz <code>09-exr-cancer-smoking.sav</code> aggregiert zur Verfügung gestellt. Lose nach <span class="citation">Matos et al. (<a href="#ref-matos1998">1998</a>)</span>.</p>
+<p><span class="citation">Viscidi et al. (<a href="#ref-viscidi2013">2013</a>)</span> wollten herausfinden wie sich das Alter (Kind bis <span class="math inline">\(10\)</span>
+Jahre / Jugendlich älter als <span class="math inline">\(10\)</span> Jahre) auf das Auftreten von Epilepsie
+bei Menschen mit einer Autismus-Spektrum-Störung auswirkt. Dafür wurden
+zufällig 5185 Menschen mit
+Autismus-Spektrum-Störung zu ihrem Alter und dem Auftreten von Epilepsie
+befragt. Simulierte Daten befinden sich im Datensatz
+<code>09-exr-autism-epilepsy.sav</code>.</p>
 <ol style="list-style-type: lower-alpha">
-<li>Handelt es sich um eine Fall-Kontroll (case-control) Studie oder um eine Kohortenstudie?</li>
-<li>Identifizieren Sie abhängige und unabhängige Variable. Wie gross ist die Inzidenz in der exponierten und nicht exponierten Gruppe?</li>
-<li>Können hier das <em>RR</em> und der <em>OR</em> verwendet werden, um den Zusammenhang zu beschreiben?</li>
-<li>Wie gross ist der odds ratio und was heisst das für die rauchenden Menschen?</li>
-<li>Ist der Zusammenhang von der Stichprobe auf alle Menschen übertragbar?</li>
+<li>Lässt das Studiendesign das Berechnen des relativen Risikos zu?</li>
+<li>Berechnen Sie die Risikodifferenz, das relative Risiko und das
+Chancenverhältnis.</li>
+<li>Sichern Sie die Risikodifferenz zweiseitig gegen Null ab und
+berichten Sie das Ergebnis.</li>
+<li>Testen Sie den Zusammenhang mit einem Vierfeldertest und berichten
+Sie das Ergebnis. Welcher Test kommt zur Anwendung?</li>
 </ol>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-70" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-71" class="solution"><em>Lösung</em>. </span>TODO</p>
 </details>
 </div>
 <div class="exercise">
@@ -302,22 +537,95 @@ Ziel:
 - Zusammenhangsmasse
 -->
 <!-- TODO: Ausschöpfen odds ratio, etc -->
-<p>Eine Psychologin hat versucht herauszufinden, wie sich das Trainingsverhalten auf depressive Stimmungen auswirkt. Dazu hat sie <span class="math inline">\(77\)</span> Leute befragt und die Resultate in Datensatz <code>09-exr-depression-training.sav</code> erhalten.</p>
+<p>Eine Psychologin hat versucht herauszufinden, wie sich das
+Trainingsverhalten (oft/selten) auf depressive Stimmungen auswirkt. Dazu
+hat sie in einem Experiment
+<span class="math inline">\(77\)</span> zufällige Leute befragt und die Resultate in Datensatz <code>09-exr-depression-training.sav</code> erhalten.</p>
 <ol style="list-style-type: lower-alpha">
-<li>Sind die Variablen Depression und Trainingsverhalten voneinander abhängig, wenn bei <span class="math inline">\(\alpha = 5\%\)</span> getestet wird?</li>
-<li>Muss hier bei der Berechnung der Prüfgrösse die Yates-Korrektur verwendet werden?</li>
-<li>Wie gross ist der Unterschied zwischen der Prüfgrösse mit und ohne Yates-Korrektur hier?</li>
-<li>Wie gross ist die Vierfelderkorrelation zwischen den beiden Variablen? Interpretieren Sie den Zusammenhang.</li>
+<li>Welches ist die Risikovariable?</li>
+<li>Wie gross sind die Risiken in den beiden Gruppen? Wie gross ist die
+Risikodifferenz, das relative Risiko und das Chancenverhältnis?
+Welche Wirkung hat das Trainingsverhalten auf das Risiko eine
+Depression zu erleiden?</li>
+<li>Sind die Variablen Depression und Trainingsverhalten voneinander
+abhängig, wenn bei <span class="math inline">\(\alpha = 5\%\)</span> getestet wird?</li>
+<li>Wie gross ist der Unterschied zwischen der Prüfgrösse mit und ohne
+Yates-Korrektur hier?</li>
+<li>Wie gross ist die Vierfelderkorrelation zwischen den beiden
+Variablen? Interpretieren Sie den Zusammenhang.</li>
 </ol>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-71" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-72" class="solution"><em>Lösung</em>. </span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Die Risikovariable ist hier eine Depression zu haben oder nicht.</li>
+<li>Das Risiko beträgt
+<span class="math inline">\(p_1 = 48.9%\)</span> in der oft trainierenden Gruppe. In der anderen Gruppe liegt das Risiko bei <span class="math inline">\(p_2 =78.1 \%\)</span>.
+Die Risikodifferenz liegt bei
+<span class="math inline">\(-29.2\%\)</span>,
+das relative Risiko bei
+<span class="math inline">\(0.626\)</span> und das
+Chancenverhältnis bei
+<span class="math inline">\(0.268\)</span>. Oft zu
+trainineren hat einen protektive Wirkung auf das Risiko an einer
+Depression zu erkranken.</li>
+<li>TODO</li>
+<li>TODO</li>
+<li>TODO</li>
+</ol>
 </details>
 </div>
 <div class="exercise">
-<p><span id="exr:bio-milch" class="exercise"><strong>Übung 9.3  </strong></span></p>
+<p><span id="exr:cancer-smoking" class="exercise"><strong>Übung 9.3  </strong></span></p>
+<!-- 
+https://pubmed.ncbi.nlm.nih.gov/9857993/
+Ziel: 
+- Vierfelder Testentscheidung
+- Vierfeldertest
+- Zusammenhangsmasse
+-->
+<p>Um den Zusammenhang zwischen Rauchen und Lungenkrebs zu analysieren
+haben Forschende in einer Studie <span class="math inline">\(200\)</span> an Lungenkrebs erkrankte und <span class="math inline">\(397\)</span>
+nicht an Lungenkrebs erkrankte Menschen zu ihrem Rauchverhalten (rauchen
+ja oder nein) befragt. Die Forschenden haben die Daten im Datensatz
+<code>09-exr-cancer-smoking.sav</code> aggregiert zur Verfügung
+gestellt. Lose nach <span class="citation">Matos et al. (<a href="#ref-matos1998">1998</a>)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Handelt es sich um eine Fall-Kontroll (case-control) Studie.</li>
+<li>Identifizieren Sie abhängige und unabhängige Variable. Wie gross ist
+das Risiko an Lungenkrebs zu erkranken für rauchende und nicht
+rauchende Menschen? Können hier die Risikodifferenz, das <em>RR</em> und
+der <em>OR</em> verwendet werden, um den Zusammenhang zu beschreiben?</li>
+<li>Wie gross ist das Chancenverhältnis und was heisst das für die
+rauchenden Menschen?</li>
+<li>Ist der Zusammenhang von der Stichprobe auf alle Menschen
+übertragbar?</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-73" class="solution"><em>Lösung</em>. </span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Ja. Die Forschenden haben bestimmt wie viele erkrankte und gesunde
+Personen sie für die Studie anschreiben.</li>
+<li>Die abhängige Variable oder Risikovariable ist hier die Erkrankung an
+Lungenkrebs. Die ursächliche oder unabhängige Variable ist das
+Rauchverhalten. Da in der Studie der Anteil gesunder und erkrankter
+Menschen im Vorherein festgelegt wurde, ist eine Berechnung des
+Risikos nicht sinnvoll. Daraus folgend ist auch die Risikodifferenz
+oder das relative Risiko nicht sinnvoll. Der OR kann immer verwendet
+werden, um den Zusammenhang zu beschreiben.</li>
+<li>Das Chancenverhältnis liegt bei <span class="math inline">\(8.91\)</span>. Das bedeutet für die
+rauchenden Leute ist die Chance an Lungenkrebs zu erkanken <span class="math inline">\(8.91\)</span>-mal so hoch wie für nicht rauchende.</li>
+<li>TODO.</li>
+</ol>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:bio-milch" class="exercise"><strong>Übung 9.4  </strong></span></p>
 <!-- 
 Ziel: 
 - Daten als einzelne Beobachtungen
@@ -326,36 +634,48 @@ Ziel:
 - Zusammenhangsmasse
 -->
 <!-- TODO: Ausschöpfen odds ratio, etc -->
-<p>Eine Freundin von Ihnen behauptet, dass Sie Bio-Milch und nicht Bio-Milch am Geschmack unterscheiden kann. Sie geben ihr <span class="math inline">\(9\)</span>-mal Bio-Milch zu trinken und <span class="math inline">\(6\)</span>-mal nicht Bio-Milch zu trinken bei einem doppel-blind Test. Es entstehen die Daten in <code>09-exr-bio-milch.sav</code>.</p>
+<p>Eine Freundin von Ihnen behauptet, dass Sie Bio-Milch und nicht
+Bio-Milch am Geschmack unterscheiden kann. Sie geben ihr <span class="math inline">\(9\)</span>-mal
+Bio-Milch zu trinken und <span class="math inline">\(6\)</span>-mal nicht Bio-Milch zu trinken bei einem
+doppel-blind Test. Es entstehen die Daten in
+<code>09-exr-bio-milch.sav</code>.</p>
 <ol style="list-style-type: lower-alpha">
-<li>Welcher Test ist bei dieser Datenlage angebracht, um zu testen, ob die Freundin tatsächlich Bio und nicht Bio-Milch am Geschmack unterschieden kann?</li>
-<li>Konnte die Freundin ihre Behauptung im Experiment nachweisen? Führen Sie den angebrachten Test durch und berichten Sie das Resultat inklusive Effektstärke.</li>
+<li>Welcher Test ist bei dieser Datenlage angebracht, um zu testen, ob
+die Freundin tatsächlich Bio und nicht Bio-Milch am Geschmack
+unterschieden kann?</li>
+<li>Konnte die Freundin ihre Behauptung im Experiment nachweisen? Führen
+Sie den angebrachten Test durch und berichten Sie das Resultat
+inklusive Effektstärke.</li>
 </ol>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-72" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-74" class="solution"><em>Lösung</em>. </span>TODO</p>
 </details>
 </div>
 <div class="exercise">
-<p><span id="exr:covid-sterblichkeit" class="exercise"><strong>Übung 9.4  </strong></span></p>
+<p><span id="exr:covid-sterblichkeit" class="exercise"><strong>Übung 9.5  </strong></span></p>
 <!-- 
 Ziel: 
 - Starke Korrelation gegen Null absichern
 -->
 <!-- TODO: Ausschöpfen odds ratio, etc -->
-<p>Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert (fiktive Zahlen, siehe Daten in <code>09-exr-covid-sterblichkeit.sav</code>). Wie gross sind die Risiken, die Risikodifferenz, das relative Risiko und der odds ratio und wie werden diese Grössen interpretiert? Was sind UV und AV?</p>
+<p>Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert
+(fiktive Zahlen, siehe Daten in
+<code>09-exr-covid-sterblichkeit.sav</code>). Wie gross sind die
+Risiken, die Risikodifferenz, das relative Risiko und der odds ratio und
+wie werden diese Grössen interpretiert? Was sind UV und AV?</p>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-73" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-75" class="solution"><em>Lösung</em>. </span>TODO</p>
 </details>
 </div>
 </div>
-<div id="test-5" class="section level2 hasAnchor" number="9.2">
-<h2><span class="header-section-number">9.2</span> Test<a href="zusammenhang-dichotomer-merkmale.html#test-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="test-5" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Test<a href="zusammenhang-dichotomer-merkmale.html#test-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
@@ -366,6 +686,9 @@ Hayes, Howard M., Robert E. Tarone, Kenneth P. Cantor, Carl R. Jessen, Dennis M.
 </div>
 <div id="ref-matos1998" class="csl-entry">
 Matos, E., M. Vilensky, P. Boffetta, and M. Kogevinas. 1998. <span>“Lung Cancer and Smoking: A Case-Control Study in Buenos Aires, Argentina.”</span> <em>Lung Cancer (Amsterdam, Netherlands)</em> 21 (3): 155–63. <a href="https://doi.org/10.1016/s0169-5002(98)00055-5">https://doi.org/10.1016/s0169-5002(98)00055-5</a>.
+</div>
+<div id="ref-viscidi2013" class="csl-entry">
+Viscidi, Emma W., Elizabeth W. Triche, Matthew F. Pescosolido, Rebecca L. McLean, Robert M. Joseph, Sarah J. Spence, and Eric M. Morrow. 2013. <span>“Clinical Characteristics of Children with Autism Spectrum Disorder and Co-Occurring Epilepsy.”</span> <em><span>PLOS</span> <span>ONE</span></em> 8 (7): e67797. <a href="https://doi.org/10.1371/journal.pone.0067797">https://doi.org/10.1371/journal.pone.0067797</a>.
 </div>
 </div>
             </section>

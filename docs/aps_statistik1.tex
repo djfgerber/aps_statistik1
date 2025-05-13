@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{10 May, 2025}
+\date{13 May, 2025}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -1894,7 +1894,7 @@ Es kann jedoch ausgesagt werden, mit welcher Wahrscheinlichkeit der gefundene St
 
 Der beobachtete Mittelwert ist zwar nicht genau bei \(100'000\) CHF, aber trotzdem noch einigermassen plausibel, wenn die Nullhypothese stimmt. Um diesen Gedanken zu formalisieren, gibt es zwei Denkweisen, welche nun vorgestellt werden.
 
-Die eine Denkweise wurde von \href{https://en.wikipedia.org/wiki/Ronald_Fisher}{Ronald Fisher} propagierte. Sie stellt die Frage nach der Wahrscheinlichkeit, dass zufällig der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert, gegeben die Nullhypothese ist wahr. Im Beispiel entspricht dies der Wahrscheinlichkeit den Wert \(119853\) oder einen grösseren Wert zu beobachten, wenn der Erwartungswert tatsächlich bei \(100'000\) CHF liegt. Um diese Wahrscheinlichkeit zu bestimmen, kann einfach gezählt werden, welcher Anteil der Stichprobenmittelwerte grösser oder gleich \(119853\) CHF ist. Im Beispiel sind dies \(0.143 = 14.3\%\). \phantomsection\label{customdef-pwert}{Dieser Wert wird, abgeleitet vom englischen \emph{probability}, \textbf{p-Wert} (Symbol: \(p\)) genannt. Beim Berichten des \(p\)-Werts wird normalerweise die führende \(0\) nicht geschrieben, also \(p = .143\).}
+Die eine Denkweise wurde von \href{https://en.wikipedia.org/wiki/Ronald_Fisher}{Ronald Fisher} propagierte. Sie stellt die Frage nach der Wahrscheinlichkeit, dass zufällig der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert, gegeben die Nullhypothese ist wahr. Im Beispiel entspricht dies der Wahrscheinlichkeit den Wert \(119853\) oder einen grösseren Wert zu beobachten, wenn der Erwartungswert tatsächlich bei \(100'000\) CHF liegt. Um diese Wahrscheinlichkeit zu bestimmen, kann einfach gezählt werden, welcher Anteil der Stichprobenmittelwerte grösser oder gleich \(119853\) CHF ist. Im Beispiel sind dies \(0.143 = 14.3\%\). \phantomsection\label{customdef-pwert}{Dieser Wert wird, abgeleitet vom englischen \emph{probability}, \textbf{\(p\)-Wert} (Symbol: \(p\)) genannt. Beim Berichten des \(p\)-Werts wird normalerweise die führende \(0\) nicht geschrieben, also \(p = .143\).}
 
 \phantomsection\label{customdef-signifikanzniveau}{Bei der anderen von Neyman und Pearson propagierten Denkweise muss noch vor der Datenerhebung ein sogenanntes \textbf{Signifikanzniveau} (Symbol \(\alpha\), sprich `alpha') bestimmt werden. Dieser Wert entspricht der Wahrscheinlichkeit, dass der statistische Test die Nullhypothese verwirft, obwohl diese wahr gewesen wäre. Normalerweise wird \(\alpha = 5\%\) gesetzt.} Es wird also akzeptiert, dass ein statistischer Test in \(5\%\) der Fälle gegen die Nullhypothese entscheidet, obwohl diese wahr wäre. \phantomsection\label{customdef-ablehnungsbereich}{In einem zweiten Schritt wird bestimmt, welches die \(5\%\) unwahrscheinlichsten Werte sind, wenn die Nullhypothese wahr ist. Diese Werte werden \textbf{Ablehnungsbereich} genannt.} Im Beispiel sind dies die \(5\%\) höchsten Werte, nämlich Vermögen von \(131511\) CHF und grössere Vermögen. Nun wird bestimmt, ob der tatsächliche beobachtete Wert im Ablehnungsbereich liegt oder nicht. \phantomsection\label{customdef-signifikanz}{Im Beispiel liegt der Stichprobenmittelwert \(119853\) CHF nicht im Ablehnungsbereich. In diesem Fall wird die Nullhypothese nicht verworfen und das Testresultat erhält das Prädikat \textbf{nicht signifikant}. Läge der Stichprobenmittelwert im Ablehnungsbereich, so wäre das Testresultat als \textbf{signifikant} einzustufen.}
 
@@ -4233,11 +4233,23 @@ Welche der folgenden Aussagen sind wahr welche falsch?
 
 \chapter{Zusammenhang dichotomer Merkmale}\label{zusammenhang-dichotomer-merkmale}
 
+\section{Zusammenhang dichotomer Merkmale beschreiben}\label{zusammenhang-dichotomer-merkmale-beschreiben}
+
 \begin{example}[Alkohol und Bildung]
-\protect\hypertarget{exm:alcohol-edu}{}\label{exm:alcohol-edu}Vom Bundasamt für Statistik BFS werden regelmässig Daten zum Alkoholkonsum in der Schweiz erhoben. Dabei wird ermittlet welcher Anteil der Bevölkerung weniger als einmal pro Woche und welcher Anteil mehr als einmal pro Woche Alkohol konsumiert. Diese Anteile werden anschliessen für verschiedene Untergruppen ausgewiesen, zum Beispiel für Leute mit Tertiärbildung und anderem Bildungsabschluss. Es werden hier also zwei dichotome Merkmale (Bildung: Teriär/nicht Tertiär und Alkoholkonsum: mind. 1x / Woche, weniger als 1x / Woche) und deren Zusammenhang betrachtet. Um diese Anteile abzuschätzen werden \(1000\) Personen befragt. Der Datensatz ist als \texttt{09-exm-alcohol-edu.sav} verfügbar.
+\protect\hypertarget{exm:alcohol-edu}{}\label{exm:alcohol-edu}Vom Bundesamt für Statistik BFS werden regelmässig Daten zum
+Alkoholkonsum in der Schweiz erhoben. Dabei wird ermittelt, welcher
+Anteil der Bevölkerung weniger als einmal pro Woche und welcher Anteil
+mehr als einmal pro Woche Alkohol konsumiert. Diese Anteile werden
+anschliessen für verschiedene Untergruppen ausgewiesen, zum Beispiel für
+Leute mit Tertiärbildung und anderem Bildungsabschluss. Es werden hier
+also zwei dichotome Merkmale (Bildung: Tertiär/nicht Tertiär und
+Alkoholkonsum: mind. 1x / Woche, weniger als 1x / Woche) und deren
+Zusammenhang betrachtet. Um diese Anteile abzuschätzen werden
+\(1000\) Personen befragt. Der Datensatz ist als \texttt{09-exm-alcohol-edu.sav} verfügbar.
 \end{example}
 
-Im Datensatz wird für jede Person eine Zeile ausgewiesen, siehe Abbildung \ref{fig:exm-alcohol-edu-data-view}.
+Im Datensatz wird für jede Person eine Zeile ausgewiesen, siehe
+Abbildung \ref{fig:exm-alcohol-edu-data-view}.
 
 \begin{figure}
 
@@ -4248,7 +4260,13 @@ Im Datensatz wird für jede Person eine Zeile ausgewiesen, siehe Abbildung \ref{
 \caption{Daten Alkoholkonsum und Bildung.}\label{fig:exm-alcohol-edu-data-view}
 \end{figure}
 
-Da der Mensch nicht besonders gut darin ist unzählige Zeilen eine Tabelle zu absorbieren, werden die Daten oft in einer Vierfeldertafel zusammengefasst. \phantomsection\label{customdef-vierfeldertafel}{Die \textbf{Vierfeldertafel} ist eine Kreuztabelle bei welcher die Ausprägungen des einen Merkmals als Spalten und des anderen als Zeilen fungieren.} Die Zellen werden dann mit der Anzahl Beobachtungen befüllt, für welche die Ausprägungskombination im Datensatz zutrifft, siehe Abbildung \ref{fig:exm-alcohol-edu-data-view}.
+Da der Mensch nicht besonders gut darin ist unzählige Zeilen eine
+Tabelle zu absorbieren, werden die Daten oft in einer Vierfeldertafel
+zusammengefasst. \phantomsection\label{customdef-vierfeldertafel}{Die \textbf{Vierfeldertafel} ist eine Kreuztabelle bei
+welcher die Ausprägungen des einen Merkmals als Spalten und des anderen
+als Zeilen fungieren.} Die Zellen werden dann mit der Anzahl Beobachtungen befüllt,
+für welche die Ausprägungskombination im Datensatz zutrifft, siehe
+Abbildung \ref{fig:exm-alcohol-edu-data-view}.
 
 \begin{figure}
 
@@ -4259,36 +4277,99 @@ Da der Mensch nicht besonders gut darin ist unzählige Zeilen eine Tabelle zu ab
 \caption{Vierfeldertafel Alkoholkonsum und Bildung..}\label{fig:exm-alcohol-edu-aggdata-view}
 \end{figure}
 
-Im psychologischen und medizinischen Kontext bezieht sich ein Merkmal oft auf einen schädlichen und einen nicht schädlichen Ausgang. Im Beispiel ist es der Alkoholkonsum. \phantomsection\label{customdef-risikovariable}{Dieses Merkmal wird \textbf{Risikovariable} genannt.} In der Vierfeldertafel kann die Risikovariable die Zeilen oder die Spalten bestimmen. Die Risikovariable wird durch andere Merkmale sogennante ursächliche Variablen erklärt. Im breiteren statistischen Kontext wird die Risikovariable abhängige Variable und die ursächliche Variable als unabhängige Variable bezeichnet.
+Im psychologischen und medizinischen Kontext bezieht sich ein Merkmal
+oft auf einen schädlichen und einen nicht schädlichen Ausgang. Im
+Beispiel ist es der Alkoholkonsum. \phantomsection\label{customdef-risikovariable}{Dieses Merkmal wird
+\textbf{Risikovariable} genannt.} In der Vierfeldertafel kann die Risikovariable die Zeilen
+oder die Spalten bestimmen. Die Risikovariable wird durch andere
+Merkmale sogenannte ursächliche Variablen erklärt. Im breiteren
+statistischen Kontext wird die Risikovariable abhängige Variable und die
+ursächliche Variable als unabhängige Variable bezeichnet.
 
-\phantomsection\label{customdef-risiko}{Mit \textbf{Risiko} wird die Wahrscheinlichkeit benannt den schädlichen Ausgang zu erleiden und wird mit dem Anteil des schädlichen Ausgangs an der Gesamtzahl berechnet.} Das Risiko kann je nach Ausprägung der ursächlichen Variable unterschiedlich hoch sein. Das Risiko mehr als 1x pro Woche Alkohol zu konsumieren ist demnach \(308/378 = 0.815 = 81.5\%\) für Menschen mit tertiärer Ausbildung und \(476/622 = 0.765 = 76.5\%\) für Menschen mit anderer Ausbildung. Das Risiko kann in \texttt{Jamovi} unter \texttt{Zellen\ \textgreater{}\ Prozentsätze} und dann \texttt{Zeile} (wenn das ursächliche Merkmal die Zeilen bestimmt) oder \texttt{Spalte} (wenn das ursächliche Merkmal die Spalte bestimmt) angezeigt werden.
+\phantomsection\label{customdef-risiko}{Mit \textbf{Risiko} wird die Wahrscheinlichkeit benannt den schädlichen
+Ausgang zu erleiden und wird mit dem Anteil des schädlichen Ausgangs an
+der Gesamtzahl berechnet.}
+Das Risiko kann je nach Ausprägung der ursächlichen Variable
+unterschiedlich hoch sein. Das Risiko mehr als 1x pro Woche Alkohol zu
+konsumieren ist demnach
+\(308/378 = 0.815 = 81.5\%\) für
+Menschen mit tertiärer Ausbildung und
+\(476/622 = 0.765 = 76.5\%\) für
+Menschen mit anderer Ausbildung. Das Risiko kann in \texttt{Jamovi} unter
+\texttt{Zellen\ \textgreater{}\ Prozentsätze} und dann \texttt{Zeile} (wenn das ursächliche Merkmal
+die Zeilen bestimmt) oder \texttt{Spalte} (wenn das ursächliche Merkmal die
+Spalte bestimmt) angezeigt werden.
 
-Die Risiken für die tertiär und andere Ausbildungen können nun verglichen werden. \phantomsection\label{customdef-risikodifferenz}{Dazu kann die Differenz der beiden Risiken sogenannte \textbf{Risikodifferenz} (in \texttt{Jamovi} unter \texttt{Statistiken\ \textgreater{}\ Unterschiede\ in\ den\ Proportionen}) betrachtet werden.} Wenn die Risiken der beiden Gruppen mit \(p_1\) und \(p_2\) bezeichnet werden, entspricht dies schlicht
+Die Risiken für die tertiär und andere Ausbildungen können nun
+verglichen werden. \phantomsection\label{customdef-risikodifferenz}{Dazu kann die Differenz der beiden Risiken
+sogenannte \textbf{Risikodifferenz} (in \texttt{Jamovi} unter
+\texttt{Statistiken\ \textgreater{}\ Unterschiede\ in\ den\ Proportionen}) betrachtet
+werden.} Wenn die
+Risiken der beiden Gruppen mit \(p_1\) und \(p_2\) bezeichnet werden,
+entspricht dies schlicht
 \[p_1 - p_2 = 0.815 - 0.765=0.05.\]
-Das Risiko mehr als \(1\)x pro Woche Alkohol zu konsumieren ist also \(0.05 = 5\%\) höher für Personen mit einem tertiären Bildungsabschluss. Da die Risiken immer Werte zwischen \(0\) und \(1\) sind, muss dieser Formel nach die Differnez der Risiken zwischen \(-1\) und \(1\) liegen. Wenn die Differenz der beiden Risiken \(0\) ist, bedeutet dies, dass die Risiken in beiden Gruppen gleich gross sind. Je weiter die Differenz der Risiken von \(0\) weg ist, desto unterschiedlicher sind die Risiken in den zwei Gruppen.
+Das Risiko mehr als \(1\)x pro Woche Alkohol zu konsumieren ist also
+\(0.05 = 5\%\)
+höher für Personen mit einem tertiären Bildungsabschluss. Da die Risiken
+immer Werte zwischen \(0\) und \(1\) sind, muss dieser Formel nach die
+Differenz der Risiken zwischen \(-1\) und \(1\) liegen. Wenn die Differenz
+der beiden Risiken \(0\) ist, bedeutet dies, dass die Risiken in beiden
+Gruppen gleich gross sind. Je weiter die Differenz der Risiken von \(0\)
+weg ist, desto unterschiedlicher sind die Risiken in den zwei Gruppen.
 
-Eine andere Art die Risiken zu vergleichen ist sie ins Verhältnis zu setzen. \phantomsection\label{customdef-tagname}{Dies wird \textbf{relatives Risiko}}
+Eine andere Art die Risiken zu vergleichen ist sie ins Verhältnis zu
+setzen. \phantomsection\label{customdef-tagname}{Dies wird \textbf{relatives
+Risiko}}
 \[\text{RR} = \frac{p_1}{p_2} = \frac{0.815}{ 0.765}=1.065\]
-genannt. Das Risiko mehr als \(1\)x pro Woche Alkohol zu konsumieren ist für Personen mit tertiärer Ausbildung also \(1.065\) mal so gross wie für Personen mit anderer Ausbildung. Sind \(p_1\) und \(p_2\) gleich gross, so ist das relative Risiko bei \(1\). Ist \(p_1\) kleiner als \(p_2\), so ist das relative Risiko kleiner als \(1\). Ist \(p_1\) grösser als \(p_2\), so ist das relative Risiko grösser als \(1\). Insgesamt ist das relative Risiko immer eine Zahl zwischen \(0\) und \(+\infty\). Das Tauschen der Gruppennummerierung führt zu einer Umkehr des Wertes rund um \(1\). Wenn im Beispiel also die ander Bildung als Gruppe \(1\) bezeichnet würde, so ist das relative Risiko
+genannt. Das Risiko mehr als \(1\)x pro Woche Alkohol zu konsumieren ist
+für Personen mit tertiärer Ausbildung also
+\(1.065\) mal so gross wie für
+Personen mit anderer Ausbildung. Sind \(p_1\) und \(p_2\) gleich gross, so
+ist das relative Risiko bei \(1\). Ist \(p_1\) kleiner als \(p_2\), so ist das
+relative Risiko kleiner als \(1\). Ist \(p_1\) grösser als \(p_2\), so ist das
+relative Risiko grösser als \(1\). Insgesamt ist das relative Risiko immer
+eine Zahl zwischen \(0\) und \(+\infty\). Das Tauschen der
+Gruppennummerierung führt zu einer Umkehr des Wertes rund um \(1\). Wenn
+im Beispiel also die andere Bildung als Gruppe \(1\) bezeichnet würde, so
+ist das relative Risiko
 \[\text{RR} = \frac{p_1}{p_2} = \frac{0.765}{ 0.815}=0.939\]
 
 \begin{caution}
 
 \begin{remark}
-Das hier die relativen Risiken für die Gruppenneunummerierung fast gleich weit von \(1\) entfernt liegen ist im normalfall nicht so. Dies kann an folgendem Zahlenbeispiel gesehen werden: \(0.75 / 0.25 = 3\) und umgekehrt \(0.25/0.75 = 0.333\).
+Das hier die relativen Risiken für die Gruppenneunummerierung fast
+gleich weit von \(1\) entfernt liegen ist im Normalfall nicht so. Dies
+kann an folgendem Zahlenbeispiel gesehen werden: \(0.75 / 0.25 = 3\) und
+umgekehrt \(0.25/0.75 = 0.333\).
 \end{remark}
 
 \end{caution}
 
-Das relative Risiko sagt im Gegensatz zu Risikodifferenz nichts mehr über das absolute Risiko aus. Wenn ein Medikament, zum Beispiel das Risiko einer Psychose von \(1\) aus \(5000\) auf \(1\) aus \(10000\) reduziert, so ist die Risikodifferenz bei \(0.0001 - 0.0002 = -0.01\%\). Das relative Risiko ist in dem Fall jedoch \(0.0001/0.0002 = 50\%\). Wird nun nur das relative Risiko berichtet, könnten Lesende von einem zu grossen Nutzen des Medikaments ausgehen. Es wird deshalb empfohlen immer die Risikodifferenz und das relative Risiko zu berichten.
+Das relative Risiko sagt im Gegensatz zu Risikodifferenz nichts mehr
+über das absolute Risiko aus. Wenn ein Medikament, zum Beispiel das
+Risiko einer Psychose von \(1\) aus \(5000\) auf \(1\) aus \(10000\) reduziert,
+so ist die Risikodifferenz bei \(0.0001 - 0.0002 = -0.01\%\). Das relative
+Risiko ist in dem Fall jedoch \(0.0001/0.0002 = 50\%\). Wird nun nur das
+relative Risiko berichtet, könnten Lesende von einem zu grossen Nutzen
+des Medikaments ausgehen. Es wird deshalb empfohlen immer die
+Risikodifferenz und das relative Risiko zu berichten.
 
-Die Risikodifferenz und das relative Risiko können nur berechnet werden, wenn die gesamt Anzahl Fälle repräsentativ für die Population ist. Dies ist bei Fall-Kontroll Studien nicht der Fall, wie folgendes Beispiel zeigt. Für solche Studien können weder die Risikodifferenz noch das relative Risiko sinnvoll berechnet werden.
+Die Risikodifferenz und das relative Risiko können nur berechnet werden,
+wenn die gesamt Anzahl Fälle repräsentativ für die Population ist. Dies
+ist bei Fall-Kontroll Studien nicht der Fall, wie folgendes Beispiel
+zeigt. Für solche Studien können weder die Risikodifferenz noch das
+relative Risiko sinnvoll berechnet werden.
 
 \begin{example}[Krebs bei Hunden]
-\protect\hypertarget{exm:dog-cancer}{}\label{exm:dog-cancer}\citet{hayes1991} haben sich für den Zusammenhang zwischen malingen Lymphomen bei Hunden (ugs. bösartiger Lymphdrüsenkrebs) und der Anwendung des Herbizids \(2, 4\)-Dichlorphenoxyessigsäure in Hausgärten interessiert. Dabei haben Sie in einer Fall-Kontroll Studie (case-control study) die Zahlen im Datensatz \texttt{09-exm-dog-cancer.sav} ermittelt.
+\protect\hypertarget{exm:dog-cancer}{}\label{exm:dog-cancer}\citet{hayes1991} haben sich für den Zusammenhang zwischen malignen Lymphomen
+bei Hunden (ugs. bösartiger Lymphdrüsenkrebs) und der Anwendung des
+Herbizids \(2, 4\)-Dichlorphenoxyessigsäure in Hausgärten interessiert.
+Dabei haben Sie in einer Fall-Kontroll Studie (case-control study) die
+Zahlen im Datensatz \texttt{09-exm-dog-cancer.sav} ermittelt.
 \end{example}
 
-Die Daten sind hier bereits in aggregierten Fallzahlen präsentiert, siehe Abbildung \ref{fig:exm-dog-cancer-data-view}.
+Die Daten sind hier bereits in aggregierten Fallzahlen präsentiert,
+siehe Abbildung \ref{fig:exm-dog-cancer-data-view}.
 
 \begin{figure}
 
@@ -4299,7 +4380,11 @@ Die Daten sind hier bereits in aggregierten Fallzahlen präsentiert, siehe Abbil
 \caption{Daten Malignes Lymphoma bei Hunden.}\label{fig:exm-dog-cancer-data-view}
 \end{figure}
 
-Um diese Daten korrekt in \texttt{Jamovi} einzulesen, kann unter \texttt{Analysen\ \textgreater{}\ Häufigkeiten\ \textgreater{}\ Kreuztabellen\ \textgreater{}\ Unabhängige\ Stichproben} die Anzahl Fälle bei \texttt{Anzahl\ (optional)} eingelesen werden. Dies resultiert in der Vierfeldertafel in Abbildung \ref{fig:exm-dog-cancer-aggdata-view}.
+Um diese Daten korrekt in \texttt{Jamovi} einzulesen, kann unter
+\texttt{Analysen\ \textgreater{}\ Häufigkeiten\ \textgreater{}\ Kreuztabellen\ \textgreater{}\ Unabhängige\ Stichproben} die
+Anzahl Fälle bei \texttt{Anzahl\ (optional)} eingelesen werden. Dies resultiert
+in der Vierfeldertafel in Abbildung
+\ref{fig:exm-dog-cancer-aggdata-view}.
 
 \begin{figure}
 
@@ -4310,11 +4395,33 @@ Um diese Daten korrekt in \texttt{Jamovi} einzulesen, kann unter \texttt{Analyse
 \caption{Vierfeldertafel Malignes Lymphoma bei Hunden.}\label{fig:exm-dog-cancer-aggdata-view}
 \end{figure}
 
-Case-control bedeutet, dass Hunde mit Tumor (Fall/case) in einer Tierklinik gegeben waren. Dazu wurde eine gewisse Anzahl (normalerweise zwischen \(1\) bis \(4\) mal so viele wie kranke) gesunde Hunde (Kontroll/control) zufällig ausgewählt. Bei allen Hunden wurde anschliessend ermittelt, ob die Hunde auf einem mit dem entsprechenden Herbizid belasteten Garten Zeit verbracht haben. Da von den Studienautoren bestimmt wurde, wie viele gesunde Hunde ermittelt werden, kann der Anteil der kranken Hunde nicht als Mass für das Vorkommen der Erkankung in der jeweiligen Gruppe dienen. Es ist hier also nicht aussagekräftig den Anteil kranker Hunde pro Gruppe oder das daraus folgende relative Risiko zu bestimmen.
+Case-control bedeutet, dass Hunde mit Tumor (Fall/case) in einer
+Tierklinik gegeben waren. Dazu wurde eine gewisse Anzahl (normalerweise
+zwischen \(1\) bis \(4\) mal so viele wie kranke) gesunde Hunde
+(Kontroll/control) zufällig ausgewählt. Bei allen Hunden wurde
+anschliessend ermittelt, ob die Hunde auf einem mit dem entsprechenden
+Herbizid belasteten Garten Zeit verbracht haben. Da von den
+Studienautoren bestimmt wurde, wie viele gesunde Hunde ermittelt werden,
+kann der Anteil der kranken Hunde nicht als Mass für das Vorkommen der
+Erkrankung in der jeweiligen Gruppe dienen. Es ist hier also nicht
+aussagekräftig den Anteil kranker Hunde pro Gruppe oder das daraus
+folgende relative Risiko zu bestimmen.
 
-\phantomsection\label{customdef-odds-ratio}{Stattdessen wird in diesen Fällen das \textbf{Chancenverhältnis} (eng. odds ratio)}\\
+\phantomsection\label{customdef-odds-ratio}{Stattdessen wird in diesen Fällen das \textbf{Chancenverhältnis} (eng. odds
+ratio)}\\
 \[OR = \frac{a\cdot d}{b\cdot c} = \frac{191\cdot 300}{304\cdot 300} = 1.34\]
-berechnet, wobei \(a, b, c\) und \(d\) den Anzahl Fällen in der Vierfeldertafel von oben nach unten und von links nach rechts entsprchen. \phantomsection\label{customdef-odds}{Die \textbf{Chance} (eng. odds) ist dabei eine Art Wahrscheinlichkeit auszudrücken.} Sie ist definiert als Wahrscheinlichkeit, dass ein Ereignis eintrifft geteilt durch die Wahrscheinlichkeit, dass das Ereignis nicht eintrifft. Für die Herbizid belasteten Hunde ist die Chance ein Tumor zu haben also \(a/c=191/304=0.63\) und für die anderen Hunde \(b/d=300/641=0.47\). Es gilt, je höher die Chance desto höher die Eintreffwahrscheinlichkeit. Ein Chancenverhältnis von \(1.34\) schliesslich bedeutet, dass die Chance einen Tumor zu entwickeln für einen Herbizid belasteten Hund \(1.34\) mal so hoch ist wie für einen nicht Herbizid belasteten.
+berechnet, wobei \(a, b, c\) und \(d\) den Anzahl Fällen in der
+Vierfeldertafel von oben nach unten und von links nach rechts
+entsprechen. \phantomsection\label{customdef-odds}{Die \textbf{Chance} (eng. odds) ist dabei eine Art
+Wahrscheinlichkeit auszudrücken.} Sie ist definiert als Wahrscheinlichkeit, dass ein Ereignis
+eintrifft geteilt durch die Wahrscheinlichkeit, dass das Ereignis nicht
+eintrifft. Für die Herbizid belasteten Hunde ist die Chance ein Tumor zu
+haben also \(a/c=191/304=0.63\) und für die anderen Hunde
+\(b/d=300/641=0.47\). Es gilt, je höher die Chance desto höher die
+Eintreffwahrscheinlichkeit. Ein Chancenverhältnis von \(1.34\)
+schliesslich bedeutet, dass die Chance einen Tumor zu entwickeln für
+einen Herbizid belasteten Hund \(1.34\) mal so hoch ist wie für einen
+nicht Herbizid belasteten.
 
 \begin{caution}
 
@@ -4324,10 +4431,173 @@ berechnet, wobei \(a, b, c\) und \(d\) den Anzahl Fällen in der Vierfeldertafel
 \begin{itemize}
 \tightlist
 \item
-  Es kann festgestellt werden, dass das Chancenverhältnis unabhängig von der Wahl der ursächlichen und Risikovariable ist
+  Es kann festgestellt werden, dass das Chancenverhältnis unabhängig
+  von der Wahl der ursächlichen und Risikovariable ist
   \[ OR = \frac{a\cdot d}{b\cdot c} = \frac{a\cdot d}{c\cdot b}.\]
 \item
-  Für kleine Fallzahlen (Risiko \(<10\%\)) liegt das Chancenverhältnis nahe am relativen Risiko.
+  Für kleine Fallzahlen (Risiko \(<10\%\)) liegt das Chancenverhältnis
+  nahe am relativen Risiko.
+\end{itemize}
+
+\end{remark}
+
+\end{caution}
+
+\section{Zusammenhang dichotomer Merkmale testen}\label{zusammenhang-dichotomer-merkmale-testen}
+
+In \texttt{Jamovi\ \textgreater{}\ Kreuztabellen\ \textgreater{}\ Statistiken\ \textgreater{}\ Tests} stehen verschiedene
+Tests zur Verfügung, um zu testen, ob ein in einer Zufallsstichprobe
+gefundener Zusammenhang zwischen den Risiken \(p_1\) und \(p_2\) auf die
+Risiken in der Population \(\pi_1\) und \(\pi_2\) (sprich `pi') übertragen
+werden darf.
+
+\subsection{\texorpdfstring{\(z\)-Test für den Unterschied zwischen den zwei Anteilen}{z-Test für den Unterschied zwischen den zwei Anteilen}}\label{z-test-fuxfcr-den-unterschied-zwischen-den-zwei-anteilen}
+
+Wenn die Merkmale unabhängig voneinander sind, dann sollte das Risiko in
+beiden Gruppen ungefähr gleich gross sein. Dies impliziert auch, dass
+die Risikodifferenz \(0\) ist. Beim
+\(z\)-Test für den Unterschied zwischen den zwei Anteilen wird also
+\(H_0: \pi_1 - \pi_2 = 0\) und damit äquivalent \(H_0: \pi_1 = \pi_2\)
+getestet. Wird die Nullhypothese verworfen, wird fortan an die
+Alternativhypothese \(H_1: \pi_1 \neq \pi_2\) geglaubt. Aus Platzgründen
+werden hier nur die zweiseitigen Hypothesenstellungen erwähnt. Die
+einseitigen Hypothesenstellungen funktionieren aber anaolg zu den bisher
+gesehen Tests.
+
+Die Teststatistik für den \(z\)-Test der Risikodifferenz ist
+
+\[z = \frac{p_1-p_2}{\sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}}} = -1.85,\]
+
+wobei \(n_1\) und \(n_2\) der Anzahl vom Risiko betroffene bzw. nicht
+betroffene Beobachtungen darstellen. Wenn die Nullhypothese wahr ist,
+ist diese Teststatistik ist standardnormalverteilt. Dies entspricht der
+Normalverteilung in Abbildung \ref{fig:t-distribution}. Je grösser die
+Differenz der beiden Risiken, desto weiter weg von \(0\) ist die
+Teststatistik und desto unwahrscheinlicher ist es, dass die berechnete
+Teststatistik aufgrund der Zufallsstichprobenziehung zustande kommt. Der genaue \(p\)-Wert kann mit \texttt{Jamovi} unter \texttt{Tests\ \textgreater{}\ z-Test\ für\ den\ Unterschied\ zwischen\ den\ zwei\ Anteilen} ermittelt werden. Mit \(p = .0649\) kann die Nullhypothese knapp nicht verworfen werden. Die beiden Anteile \(\pi_1\) und \(\pi_2\) könnten also gleich sein.
+
+\begin{quote}
+Ein zweiseitiger \(z\)-Test für den Unterschied zwischen den zwei Anteilen ergibt, dass der Anteil der mehr als einmal pro Woche alkoholkonsumierenden Personen mit Tertiärbildung (\(p_1 = 81.5\%\)), nicht signifikant von ebendiesem Anteil der Personen mit anderer Bildung (\(p_2 = 76.5\%\)) unterscheidet, \(z = -1.85, p = .0649\).
+\end{quote}
+
+\subsection{\texorpdfstring{\(\chi^2\)-Test}{\textbackslash chi\^{}2-Test}}\label{chi2-test}
+
+\phantomsection\label{customdef-chisq-test}{Der \textbf{\(\chi^2\)-Test} (sprich `chi-quadrat-test') ist eine zweite allgemeinere Variante, um den Zusammenhang zwischen zwei dichotomen Merkmalen zu testen.} Die Nullhypothese ist wiederum, dass die beiden Merkmale unabhängig voneinander sind.
+
+Um nun die Teststatistik näher verstehen zu können, muss ein kurzer
+Exkurs in Wahrscheinlichkeitslehre unternommen werden. Diese besagt
+nämlich, dass wenn zwei Ereignisse A und B unabhängig voneinander
+auftreten, dann ist die Auftretenswahrscheinlichkeit genau gleich dem
+Produkt der Wahrscheinlichkeiten der jeweiligen Ereignisse. In Formeln
+ausgedrückt
+\[p(A \text{ und }B) \overset{\text{unabhängig}}{=} p(A) \cdot p(B).\]
+
+Auf das Beispiel \ref{exm:alcohol-edu} bezogen bedeutet dies, dass wenn
+Alkoholkonsum und die Ausbildungsart unabhängig voneinander sind, dann
+entspricht die Wahrscheinlichkeit mehr als \(1\)x pro Woche Alkohol zu
+konsumieren und eine tertiäre Ausbildung genossen zu haben
+
+\[
+p(\text{[alkohol > 1x pro Woche] und tertiär}) = \frac{476}{784} = 0.60714
+\]
+
+genau
+
+\[
+p(\text{[alkohol > 1x pro Woche]}) \cdot p(\text{tertiär}) = \frac{784}{1000}\cdot \frac{622}{1000} = 0.48765
+\]
+
+entsprechen. Die Zahlen zeigen an, dass dies für diese Stichprobe klar nicht gegeben ist. Die beobachtete Differenz könnte sich aber auch aus der Zufallsstichprobenziehung ergeben haben. Der \(\chi^2\)-Vierfeldertest vergleicht nun in jeder Zelle \(i\) der Vierfeldertafel die tatsächlich beobachteten Beobachtungen \(o_i\) (observed) mit den erwarteten Beobachtungen \(e_i\) (expected), wenn die Unabhängigkeit gegeben wäre. Letztere berechnet sich durch \(p(A) \cdot p(B) \cdot n\), wobei \(n\) die Gesamtanzahl Beobachtungen ist. Im Beispiel
+
+\[e_1 = p(\text{[alkohol > 1x pro Woche]}) \cdot p(\text{tertiär}) \cdot n =0.48765 \cdot  1000 = 487.648 \]
+Je weiter diese Zahl von der beobachteten Zahl abweicht, desto unwahrscheinlicher ist die Unabhängigkeit. Der \(\chi^2\) trägt dem Rechnung, indem die Teststatistik
+
+\[\chi^2 = \sum_{i = 1}^k \frac{(o_i - e_i)^2}{e_i} = 3.41,\]
+wobei \(k\) hier für die Anzahl Zellen steht. Eine grosse Teststatistik spricht also gegen die Unabhängigkeit.
+
+Wenn die Stichprobenziehung oft wiederholt wird, kann festgestellt werden, dass diese Teststatistik einer bekannten Verteilung, der \(\chi^2\)-Verteilung bei \(df = 1\) Freiheitsgraden folgt. \phantomsection\label{customdef-chisq-distribution}{Die \textbf{\(\chi^2\)-Verteilung} ist für verschiedene Freiheitsgrade in Abbildung \ref{fig:chisq-distribution} dargestellt.}
+Die Teststatistik des \(\chi^2\)-Vierfeldertests \(3.41\) wird also mit der roten Verteilung in der Abbildung verglichen. Die Werte rechts auf der Abbildung sind seltener und der beobachtete Wert liegt so, dass er zu den \(p = .065\) seltensten Beobachtungen zählt, sofern die Unabhängigkeit gilt. Dies reicht hier gerade nicht, um die Nullhypothese bei Signifikanzniveau \(\alpha = 5\%\) zu verwerfen.
+
+\begin{figure}
+
+{\centering \includegraphics{aps_statistik1_files/figure-latex/chisq-distribution-1} 
+
+}
+
+\caption{Chiquadrat-Verteilungen mit 1, 4 und 9 Freiheitsgraden.}\label{fig:chisq-distribution}
+\end{figure}
+
+Um die Effektstärke des \(\chi^2\)-Tests anzugeben kann Cramérs \(\phi\)
+
+\[\phi = \sqrt{\frac{\chi^2}{n}} = \sqrt{\frac{3.41}{1000}} = 0.06\]
+
+Cramérs \(\phi\) immer grösser als \(0\) und kleiner als \(1\). Je weiter \(\phi\) von \(0\) weg ist, desto stärker sind die Merkmale voneinander abhängig. Da dies auch als Zusammenhangsmass gesehen werden kann wird Cramérs \(\phi\) auch Vierfelderkorrelation genannt. Die Interpretation als Effektstärke erfolgt dabei wir für die Korrelation. Ein Wert von \(0.06\) wird demnach als schwach eingestuft.
+
+\begin{quote}
+Ein \(\chi^2\)-Test ergibt, dass der Alkoholkonsum (mehr/weniger als 1x pro Woche) und Bildung (Tertiär/andere Bildung) nicht signifikant abhängig voneinander sind, \(\chi^2 (1) = 3.41, p = .0649, \phi = 0.06\).
+\end{quote}
+
+Der \(\chi^2\) Test hat für die Vierfeldervariante immer den gleichen \(p\)-Wert wie der Test der Risikodifferenz auf \(0\). Beide Tests basieren auf dem zentralen Grenzwertsatz und dürfen deshalb nur angewendet werden, wenn gewisse Voraussetzungen erfüllt sind. Die Voraussetzung ist, dass insgesamt \(40\) oder mehr Beobachtungen vorliegen müssen. \phantomsection\label{customdef-chisq-corrected}{Ist dies nicht der Fall, aber in jeder Zelle ist die Anzahl der erwarteten Beobachtungen bei \(5\) oder grösser, so kann der \textbf{\(\chi^2\)-Test mit Kontinuitätskorrektur} oder Yates-Korrektur verwendet werden}
+\[\chi^2_{Yates} = \sum_{i = 1}^k \frac{(|o_i - e_i| -0.5)^2}{e_i}.\]
+
+In Beispiel sind mit \(n = 1000\) genügend Beobachtungen vorhanden, um ohne die Kontinuitätskorrektur auszukommen. Der Bericht des Tests ist genau gleich wie der Bericht des \(\chi^2\)-Test ausser, dass der Name des Verfahrens geändert wird:
+
+\begin{quote}
+Ein \(\chi^2\)-Test mit Kontinuitätskorrektur ergibt, dass der Alkoholkonsum \ldots{}
+\end{quote}
+
+\subsection{Exakter Test nach Fisher und Yates}\label{exakter-test-nach-fisher-und-yates}
+
+Wenn die erwarteten Beobachtungen in mindestens einer Zelle kleiner als \(5\) sind, dann ist die Approximation der Verteilung der Teststatistik durch den \(\chi^2\)-Test sogar mit Kontinuitätskorrektur zu ungenau.
+
+\begin{example}[Wette: Unterscheiden von Rot- und Weisswein]
+\protect\hypertarget{exm:red-white-wine}{}\label{exm:red-white-wine}
+
+Nina behauptet, sie kann Rotwein von Weisswein am Geschmack unterscheiden. Sie bereiten ein Experiment vor, um dies zu testen verbinden Nina die Augen. Als Statistiklernende wissen sie, dass es nicht genügt, dass Nina einmal die richtige Weinsorte wählt - dies könnte ja zufällig richtig sein. Stattdessen werden \(5\) Gläser Rotwein und \(4\) Gläser Weisswein vorbereitet und Nina in zufälliger Reihenfolge zum Probieren angeboten. Das Experiment endet mi den Zahlen in Abbildung \ref{fig:exm-red-white-wine-aggdata-view}.
+
+\begin{figure}
+
+{\centering \includegraphics{figures/09-exm-red-white-wine-aggdata-view} 
+
+}
+
+\caption{Vierfeldertafel Wette Unterschied Rot- und Weisswein.}\label{fig:exm-red-white-wine-aggdata-view}
+\end{figure}
+
+\end{example}
+
+Da nur wenige Beobachtungen gemacht wurden, kann die Wahrscheinlichkeit eines Ausgangs des Experiments mit Hilfe der hypergeometrischen-Verteilung genau berechnet werden. Die Wahrscheinlichkeit für den Experimentausgang in Abbildung \ref{fig:exm-red-white-wine-aggdata-view} entspricht \(p_0 = 0.159\).
+
+Der \(p\)-Wert eines Tests ist bekannterweise die Wahrscheinlichkeit die berechnetet Teststatistik zu beobachten \emph{oder eine unwahrscheinlichere Situation im Sinne der Alternativhypothese}. Um dem zweiten Teil dieser Definition gerecht zu werden, werden nun andere, unwahrscheinlichere Experimentausgänge bewertet. Um dies zu erreichen, wird hier angenommen, dass in jedem Fall die Randsummen immer gleichbleiben (also \(5\) für ist Rotwein, \(4\) für ist Weisswein, \(5\) für sagt Rotwein und \(4\) für sagt Weisswein). Wenn ist und sagt unabhängig voneinander ist und Nina also die Weinfarben nicht auseinanderhalten kann, dann wäre es unwahrscheinlicher, wenn sie alle \(5\) Rotweine als solche erkannt hätte. Wenn die Randsummen gleich gehalten werden, entspricht dies der Situation in Abbildung \ref{fig:exm-red-white-wine-aggdata-view-alt}. Die Wahrscheinlichkeit für diese Situation ist \(p_1 = 0.008\).
+
+\begin{figure}
+
+{\centering \includegraphics{figures/09-exm-red-white-wine-aggdata-view-alt} 
+
+}
+
+\caption{Vierfeldertafel Wette Unterschied Rot- und Weisswein.}\label{fig:exm-red-white-wine-aggdata-view-alt}
+\end{figure}
+
+Grundsätzlich können hier noch weitere Situationen aufgezählt werden. Im Beispiel sind mit der eben beschriebenen Situation und der ursprünglichen Situation jedoch die Alternativen erschöpft: Es kann nicht sein, dass Nina \(6\)-mal Rotwein richtig voraussagt, wenn sie insgesamt nur \(5\)-mal Rotwein sagt.
+
+Nun werden die Wahrscheinlichkeiten aller Situation aufsummiert, \(p = p_0 + p_1 + \ldots = 0.159+0.008 =0.167\). Da mit diesem Vorgehen genau der Definition des \(p\)-Wertes gefolgt wurde, stellt dieses \(p\) nun auch einen \(p\)-Wert dar. \phantomsection\label{customdef-fisher-yates}{Der dazugehörige Test wird \textbf{exakter Test nach Fisher und Yates} oder einfach Fisher-Yates-Test genannt.}
+
+\begin{quote}
+Ein exakter Test nach Fisher und Yates ergibt, dass das Ansagen der Weinsorte von Nina nicht signifikant von der tatsächlichen Weinsorte abhängt, \(p = .167\).
+\end{quote}
+
+\begin{caution}
+
+\begin{remark}
+\leavevmode
+
+\begin{itemize}
+\tightlist
+\item
+  Der Test ist exakt, weil hier die Wahrscheinlichkeiten genau bestimmt wurden. Bei allen anderen bislang gesehenen Tests wird die Wahrscheinlichkeit über eine Verteilung angenähert. Diese Annäherung ist theoretisch nur richtig, wenn unendlich viele Beobachtungen gemacht werden, weshalb diese Art Test auch \textbf{asymptotisch} genannt wird. In der Praxis wird jedoch festgestellt, dass asymptotische Tests bereits für eine kleine Anzahl Beobachtungen (z. B. \(50\) für den Einstichproben-\(t\)-Test) hinreichend genau sind.
+\item
+  Da für den exakten Test nach Fisher und Yates die Wahrscheinlichkeiten direkt berechnet werden, wird keine Teststatistik verwendet.
 \end{itemize}
 
 \end{remark}
@@ -4337,23 +4607,30 @@ berechnet, wobei \(a, b, c\) und \(d\) den Anzahl Fällen in der Vierfeldertafel
 \section{Übungen}\label{uxfcbungen-6}
 
 \begin{exercise}
-\protect\hypertarget{exr:cancer-smoking}{}\label{exr:cancer-smoking}\leavevmode
+\protect\hypertarget{exr:autism-epilepsy}{}\label{exr:autism-epilepsy}\leavevmode
 
-Um den Zusammenhang zwischen rauchen und Lungenkrebs zu analsyieren haben Forschende in einer Studie \(200\) an Lungenkrebs erkankte und \(397\) nicht an Lungenkrebs erkrankte Menschen zu ihrem Rauchverhalten befragt. Die Forschenden haben die Daten im Datensatz \texttt{09-exr-cancer-smoking.sav} aggregiert zur Verfügung gestellt. Lose nach \citet{matos1998}.
+\citet{viscidi2013} wollten herausfinden wie sich das Alter (Kind bis \(10\)
+Jahre / Jugendlich älter als \(10\) Jahre) auf das Auftreten von Epilepsie
+bei Menschen mit einer Autismus-Spektrum-Störung auswirkt. Dafür wurden
+zufällig 5185 Menschen mit
+Autismus-Spektrum-Störung zu ihrem Alter und dem Auftreten von Epilepsie
+befragt. Simulierte Daten befinden sich im Datensatz
+\texttt{09-exr-autism-epilepsy.sav}.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  Handelt es sich um eine Fall-Kontroll (case-control) Studie oder um eine Kohortenstudie?
+  Lässt das Studiendesign das Berechnen des relativen Risikos zu?
 \item
-  Identifizieren Sie abhängige und unabhängige Variable. Wie gross ist die Inzidenz in der exponierten und nicht exponierten Gruppe?
+  Berechnen Sie die Risikodifferenz, das relative Risiko und das
+  Chancenverhältnis.
 \item
-  Können hier das \emph{RR} und der \emph{OR} verwendet werden, um den Zusammenhang zu beschreiben?
+  Sichern Sie die Risikodifferenz zweiseitig gegen Null ab und
+  berichten Sie das Ergebnis.
 \item
-  Wie gross ist der odds ratio und was heisst das für die rauchenden Menschen?
-\item
-  Ist der Zusammenhang von der Stichprobe auf alle Menschen übertragbar?
+  Testen Sie den Zusammenhang mit einem Vierfeldertest und berichten
+  Sie das Ergebnis. Welcher Test kommt zur Anwendung?
 \end{enumerate}
 
 \end{exercise}
@@ -4365,39 +4642,140 @@ TODO
 \begin{exercise}
 \protect\hypertarget{exr:depression-training}{}\label{exr:depression-training}\leavevmode
 
-Eine Psychologin hat versucht herauszufinden, wie sich das Trainingsverhalten auf depressive Stimmungen auswirkt. Dazu hat sie \(77\) Leute befragt und die Resultate in Datensatz \texttt{09-exr-depression-training.sav} erhalten.
+Eine Psychologin hat versucht herauszufinden, wie sich das
+Trainingsverhalten (oft/selten) auf depressive Stimmungen auswirkt. Dazu
+hat sie in einem Experiment
+\(77\) zufällige Leute befragt und die Resultate in Datensatz \texttt{09-exr-depression-training.sav} erhalten.
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  Sind die Variablen Depression und Trainingsverhalten voneinander abhängig, wenn bei \(\alpha = 5\%\) getestet wird?
+  Welches ist die Risikovariable?
 \item
-  Muss hier bei der Berechnung der Prüfgrösse die Yates-Korrektur verwendet werden?
+  Wie gross sind die Risiken in den beiden Gruppen? Wie gross ist die
+  Risikodifferenz, das relative Risiko und das Chancenverhältnis?
+  Welche Wirkung hat das Trainingsverhalten auf das Risiko eine
+  Depression zu erleiden?
 \item
-  Wie gross ist der Unterschied zwischen der Prüfgrösse mit und ohne Yates-Korrektur hier?
+  Sind die Variablen Depression und Trainingsverhalten voneinander
+  abhängig, wenn bei \(\alpha = 5\%\) getestet wird?
 \item
-  Wie gross ist die Vierfelderkorrelation zwischen den beiden Variablen? Interpretieren Sie den Zusammenhang.
+  Wie gross ist der Unterschied zwischen der Prüfgrösse mit und ohne
+  Yates-Korrektur hier?
+\item
+  Wie gross ist die Vierfelderkorrelation zwischen den beiden
+  Variablen? Interpretieren Sie den Zusammenhang.
 \end{enumerate}
 
 \end{exercise}
 
 \begin{solution}
-TODO
-\end{solution}
-
-\begin{exercise}
-\protect\hypertarget{exr:bio-milch}{}\label{exr:bio-milch}\leavevmode
-
-Eine Freundin von Ihnen behauptet, dass Sie Bio-Milch und nicht Bio-Milch am Geschmack unterscheiden kann. Sie geben ihr \(9\)-mal Bio-Milch zu trinken und \(6\)-mal nicht Bio-Milch zu trinken bei einem doppel-blind Test. Es entstehen die Daten in \texttt{09-exr-bio-milch.sav}.
+\leavevmode
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  Welcher Test ist bei dieser Datenlage angebracht, um zu testen, ob die Freundin tatsächlich Bio und nicht Bio-Milch am Geschmack unterschieden kann?
+  Die Risikovariable ist hier eine Depression zu haben oder nicht.
 \item
-  Konnte die Freundin ihre Behauptung im Experiment nachweisen? Führen Sie den angebrachten Test durch und berichten Sie das Resultat inklusive Effektstärke.
+  Das Risiko beträgt
+  \(p_1 = 48.9%
+  \) in der oft trainierenden Gruppe. In der anderen Gruppe liegt das Risiko bei \(p_2 =78.1 \%\).
+  Die Risikodifferenz liegt bei
+  \(-29.2\%\),
+  das relative Risiko bei
+  \(0.626\) und das
+  Chancenverhältnis bei
+  \(0.268\). Oft zu
+  trainineren hat einen protektive Wirkung auf das Risiko an einer
+  Depression zu erkranken.
+\item
+  TODO
+\item
+  TODO
+\item
+  TODO
+\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:cancer-smoking}{}\label{exr:cancer-smoking}\leavevmode
+
+Um den Zusammenhang zwischen Rauchen und Lungenkrebs zu analysieren
+haben Forschende in einer Studie \(200\) an Lungenkrebs erkrankte und \(397\)
+nicht an Lungenkrebs erkrankte Menschen zu ihrem Rauchverhalten (rauchen
+ja oder nein) befragt. Die Forschenden haben die Daten im Datensatz
+\texttt{09-exr-cancer-smoking.sav} aggregiert zur Verfügung
+gestellt. Lose nach \citet{matos1998}.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Handelt es sich um eine Fall-Kontroll (case-control) Studie.
+\item
+  Identifizieren Sie abhängige und unabhängige Variable. Wie gross ist
+  das Risiko an Lungenkrebs zu erkranken für rauchende und nicht
+  rauchende Menschen? Können hier die Risikodifferenz, das \emph{RR} und
+  der \emph{OR} verwendet werden, um den Zusammenhang zu beschreiben?
+\item
+  Wie gross ist das Chancenverhältnis und was heisst das für die
+  rauchenden Menschen?
+\item
+  Ist der Zusammenhang von der Stichprobe auf alle Menschen
+  übertragbar?
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Ja. Die Forschenden haben bestimmt wie viele erkrankte und gesunde
+  Personen sie für die Studie anschreiben.
+\item
+  Die abhängige Variable oder Risikovariable ist hier die Erkrankung an
+  Lungenkrebs. Die ursächliche oder unabhängige Variable ist das
+  Rauchverhalten. Da in der Studie der Anteil gesunder und erkrankter
+  Menschen im Vorherein festgelegt wurde, ist eine Berechnung des
+  Risikos nicht sinnvoll. Daraus folgend ist auch die Risikodifferenz
+  oder das relative Risiko nicht sinnvoll. Der OR kann immer verwendet
+  werden, um den Zusammenhang zu beschreiben.
+\item
+  Das Chancenverhältnis liegt bei \(8.91\). Das bedeutet für die
+  rauchenden Leute ist die Chance an Lungenkrebs zu erkanken \(8.91\)-mal so hoch wie für nicht rauchende.
+\item
+  TODO.
+\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:bio-milch}{}\label{exr:bio-milch}\leavevmode
+
+Eine Freundin von Ihnen behauptet, dass Sie Bio-Milch und nicht
+Bio-Milch am Geschmack unterscheiden kann. Sie geben ihr \(9\)-mal
+Bio-Milch zu trinken und \(6\)-mal nicht Bio-Milch zu trinken bei einem
+doppel-blind Test. Es entstehen die Daten in
+\texttt{09-exr-bio-milch.sav}.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Welcher Test ist bei dieser Datenlage angebracht, um zu testen, ob
+  die Freundin tatsächlich Bio und nicht Bio-Milch am Geschmack
+  unterschieden kann?
+\item
+  Konnte die Freundin ihre Behauptung im Experiment nachweisen? Führen
+  Sie den angebrachten Test durch und berichten Sie das Resultat
+  inklusive Effektstärke.
 \end{enumerate}
 
 \end{exercise}
@@ -4409,7 +4787,11 @@ TODO
 \begin{exercise}
 \protect\hypertarget{exr:covid-sterblichkeit}{}\label{exr:covid-sterblichkeit}\leavevmode
 
-Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert (fiktive Zahlen, siehe Daten in \texttt{09-exr-covid-sterblichkeit.sav}). Wie gross sind die Risiken, die Risikodifferenz, das relative Risiko und der odds ratio und wie werden diese Grössen interpretiert? Was sind UV und AV?
+Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert
+(fiktive Zahlen, siehe Daten in
+\texttt{09-exr-covid-sterblichkeit.sav}). Wie gross sind die
+Risiken, die Risikodifferenz, das relative Risiko und der odds ratio und
+wie werden diese Grössen interpretiert? Was sind UV und AV?
 
 \end{exercise}
 

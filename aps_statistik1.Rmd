@@ -50,6 +50,14 @@ write_sav <- function(x, file_name){
     haven::write_sav(paste0(path_data, file_name))
 }
 
+clean_jmv_colnames <- function(dd){
+  dd %>% 
+    rename_with(~.x %>% 
+                  str_replace_all("\\.|]", "") %>% 
+                  str_replace_all("\\[","_")) %>% 
+    return()
+}
+
 crop <- function(x, x_min, x_max){
     x[which(x < x_min)] <- x_min
     x[which(x > x_max)] <- x_max
@@ -1656,7 +1664,7 @@ exm_vermoegen$plot_hist_density +
 
 Der beobachtete Mittelwert ist zwar nicht genau bei $100'000$ CHF, aber trotzdem noch einigermassen plausibel, wenn die Nullhypothese stimmt. Um diesen Gedanken zu formalisieren, gibt es zwei Denkweisen, welche nun vorgestellt werden.
 
-Die eine Denkweise wurde von [Ronald Fisher](https://en.wikipedia.org/wiki/Ronald_Fisher) propagierte. Sie stellt die Frage nach der Wahrscheinlichkeit, dass zufällig der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert, gegeben die Nullhypothese ist wahr. Im Beispiel entspricht dies der Wahrscheinlichkeit den Wert $`r round(exm_vermoegen$x %>% mean())`$ oder einen grösseren Wert zu beobachten, wenn der Erwartungswert tatsächlich bei $100'000$ CHF liegt. Um diese Wahrscheinlichkeit zu bestimmen, kann einfach gezählt werden, welcher Anteil der Stichprobenmittelwerte grösser oder gleich $`r round(exm_vermoegen$x %>% mean())`$ CHF ist. Im Beispiel sind dies $`r round(exm_vermoegen$p_value_emp,3)` = `r round(exm_vermoegen$p_value_emp*100,1)`\%$. [Dieser Wert wird, abgeleitet vom englischen _probability_, __p-Wert__ (Symbol: $p$) genannt. Beim Berichten des $p$-Werts wird normalerweise die führende $0$ nicht geschrieben, also $p = `r round(exm_vermoegen$p_value_emp,3) %>% str_sub(2)`$.]{.customdef #customdef-pwert} 
+Die eine Denkweise wurde von [Ronald Fisher](https://en.wikipedia.org/wiki/Ronald_Fisher) propagierte. Sie stellt die Frage nach der Wahrscheinlichkeit, dass zufällig der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert, gegeben die Nullhypothese ist wahr. Im Beispiel entspricht dies der Wahrscheinlichkeit den Wert $`r round(exm_vermoegen$x %>% mean())`$ oder einen grösseren Wert zu beobachten, wenn der Erwartungswert tatsächlich bei $100'000$ CHF liegt. Um diese Wahrscheinlichkeit zu bestimmen, kann einfach gezählt werden, welcher Anteil der Stichprobenmittelwerte grösser oder gleich $`r round(exm_vermoegen$x %>% mean())`$ CHF ist. Im Beispiel sind dies $`r round(exm_vermoegen$p_value_emp,3)` = `r round(exm_vermoegen$p_value_emp*100,1)`\%$. [Dieser Wert wird, abgeleitet vom englischen _probability_, **$p$-Wert** (Symbol: $p$) genannt. Beim Berichten des $p$-Werts wird normalerweise die führende $0$ nicht geschrieben, also $p = `r round(exm_vermoegen$p_value_emp,3) %>% str_sub(2)`$.]{.customdef #customdef-pwert} 
 
 [Bei der anderen von Neyman und Pearson propagierten Denkweise muss noch vor der Datenerhebung ein sogenanntes **Signifikanzniveau** (Symbol $\alpha$, sprich 'alpha')  bestimmt werden. Dieser Wert entspricht der Wahrscheinlichkeit, dass der statistische Test die Nullhypothese verwirft, obwohl diese wahr gewesen wäre. Normalerweise wird $\alpha = 5\%$ gesetzt.]{.customdef #customdef-signifikanzniveau} Es wird also akzeptiert, dass ein statistischer Test in $5\%$ der Fälle gegen die Nullhypothese entscheidet, obwohl diese wahr wäre. [In einem zweiten Schritt wird bestimmt, welches die $5\%$ unwahrscheinlichsten Werte sind, wenn die Nullhypothese wahr ist. Diese Werte werden **Ablehnungsbereich** genannt.]{.customdef #customdef-ablehnungsbereich} Im Beispiel sind dies die $5\%$ höchsten Werte, nämlich Vermögen von $`r round(exm_vermoegen$q95_x_means)`$ CHF und grössere Vermögen. Nun wird bestimmt, ob der tatsächliche beobachtete Wert im Ablehnungsbereich liegt oder nicht. [Im Beispiel liegt der Stichprobenmittelwert $`r round(exm_vermoegen$x_mean)`$ CHF nicht im Ablehnungsbereich. In diesem Fall wird die Nullhypothese nicht verworfen und das Testresultat erhält das Prädikat **nicht signifikant**. Läge der Stichprobenmittelwert im Ablehnungsbereich, so wäre das Testresultat als **signifikant** einzustufen.]{.customdef #customdef-signifikanz}
 
@@ -4353,8 +4361,15 @@ f) Richtig
 
 <!--chapter:end:src/08-korrelation.Rmd-->
 
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
 # Zusammenhang dichotomer Merkmale
 
+## Zusammenhang dichotomer Merkmale beschreiben
 
 ::: {#alcohol-edu .example name="Alkohol und Bildung"}
 ```{r exm-alcohol-edu}
@@ -4367,55 +4382,148 @@ gen_exm_alcohol_edu <- function(){
 
   p_tert <- round(2313/(2313+2916+892),3)
   
-  tibble(bildung = c(rep("tertiär", p_tert*n),rep("andere", (1-p_tert)*n)),
+  dd <- tibble(bildung = c(rep("tertiär", p_tert*n),rep("andere", (1-p_tert)*n)),
        alkoholkonsum = c(rep("oft", round((1-no_risk_tert)*n*p_tert,0)), 
                          rep("selten", round(no_risk_tert*n*p_tert, 0)), 
                          rep("oft", round((1-no_risk_other)*n*(1-p_tert))), 
                          rep("selten", round((no_risk_other)*n*(1-p_tert))))) %>% 
     slice_sample(n=nrow(.)) %>% 
-  write_sav(file_name)
+    write_sav(file_name)
+  jmv_output <- jmv::contTables(
+    dd,
+    "alkoholkonsum",
+    "bildung",
+    chiSqCorr = TRUE,
+    odds = TRUE,
+    relRisk = TRUE,
+    diffProp = TRUE,
+    pcCol = TRUE,
+    compare = 'columns'
+  )
+  jmv_output_freq <- jmv_output$freqs$asDF %>%
+    clean_jmv_colnames()
+  jmv_output_odds <- jmv_output$odds$asDF %>%
+    clean_jmv_colnames()
+  jmv_output_test <- jmv_output$chiSq$asDF %>% 
+    clean_jmv_colnames()
   return(mget(ls()))
 }
 exm_alcohol_edu <- gen_exm_alcohol_edu()
 ```
 
-Vom Bundasamt für Statistik BFS werden regelmässig Daten zum Alkoholkonsum in der Schweiz erhoben. Dabei wird ermittlet welcher Anteil der Bevölkerung weniger als einmal pro Woche und welcher Anteil mehr als einmal pro Woche Alkohol konsumiert. Diese Anteile werden anschliessen für verschiedene Untergruppen ausgewiesen, zum Beispiel für Leute mit Tertiärbildung und anderem Bildungsabschluss. Es werden hier also zwei dichotome Merkmale (Bildung: Teriär/nicht Tertiär und Alkoholkonsum: mind. 1x / Woche, weniger als 1x / Woche) und deren Zusammenhang betrachtet. Um diese Anteile abzuschätzen werden $`r exm_alcohol_edu$n`$ Personen befragt. Der Datensatz ist als `r inline_code(exm_alcohol_edu$file_name)` verfügbar.  
+Vom Bundesamt für Statistik BFS werden regelmässig Daten zum
+Alkoholkonsum in der Schweiz erhoben. Dabei wird ermittelt, welcher
+Anteil der Bevölkerung weniger als einmal pro Woche und welcher Anteil
+mehr als einmal pro Woche Alkohol konsumiert. Diese Anteile werden
+anschliessen für verschiedene Untergruppen ausgewiesen, zum Beispiel für
+Leute mit Tertiärbildung und anderem Bildungsabschluss. Es werden hier
+also zwei dichotome Merkmale (Bildung: Tertiär/nicht Tertiär und
+Alkoholkonsum: mind. 1x / Woche, weniger als 1x / Woche) und deren
+Zusammenhang betrachtet. Um diese Anteile abzuschätzen werden
+$`r exm_alcohol_edu$n`$ Personen befragt. Der Datensatz ist als `r inline_code(exm_alcohol_edu$file_name)` verfügbar.
 :::
 
-Im Datensatz wird für jede Person eine Zeile ausgewiesen, siehe Abbildung \@ref(fig:exm-alcohol-edu-data-view).
+Im Datensatz wird für jede Person eine Zeile ausgewiesen, siehe
+Abbildung \@ref(fig:exm-alcohol-edu-data-view).
 
 ```{r exm-alcohol-edu-data-view, out.width='50%', fig.cap='Daten Alkoholkonsum und Bildung.'}
 knitr::include_graphics("figures/09-exm-alcohol-edu-data-view.jpg")
 ```
 
-Da der Mensch nicht besonders gut darin ist unzählige Zeilen eine Tabelle zu absorbieren, werden die Daten oft in einer Vierfeldertafel zusammengefasst. [Die **Vierfeldertafel** ist eine Kreuztabelle bei welcher die Ausprägungen des einen Merkmals als Spalten und des anderen als Zeilen fungieren.]{.customdef #customdef-vierfeldertafel} Die Zellen werden dann mit der Anzahl Beobachtungen befüllt, für welche die Ausprägungskombination im Datensatz zutrifft, siehe Abbildung \@ref(fig:exm-alcohol-edu-data-view).
+Da der Mensch nicht besonders gut darin ist unzählige Zeilen eine
+Tabelle zu absorbieren, werden die Daten oft in einer Vierfeldertafel
+zusammengefasst. [Die **Vierfeldertafel** ist eine Kreuztabelle bei
+welcher die Ausprägungen des einen Merkmals als Spalten und des anderen
+als Zeilen fungieren.]{#customdef-vierfeldertafel
+.customdef} Die Zellen werden dann mit der Anzahl Beobachtungen befüllt,
+für welche die Ausprägungskombination im Datensatz zutrifft, siehe
+Abbildung \@ref(fig:exm-alcohol-edu-data-view).
 
 ```{r exm-alcohol-edu-aggdata-view, out.width='50%', fig.cap='Vierfeldertafel Alkoholkonsum und Bildung..'}
 knitr::include_graphics("figures/09-exm-alcohol-edu-aggdata-view.jpg")
 ```
 
-Im psychologischen und medizinischen Kontext bezieht sich ein Merkmal oft auf einen schädlichen und einen nicht schädlichen Ausgang. Im Beispiel ist es der Alkoholkonsum. [Dieses Merkmal wird **Risikovariable**  genannt.]{.customdef #customdef-risikovariable} In der Vierfeldertafel kann die Risikovariable die Zeilen oder die Spalten bestimmen. Die Risikovariable wird durch andere Merkmale sogennante ursächliche Variablen erklärt. Im breiteren statistischen Kontext wird die Risikovariable abhängige Variable und die ursächliche Variable als unabhängige Variable bezeichnet. 
+Im psychologischen und medizinischen Kontext bezieht sich ein Merkmal
+oft auf einen schädlichen und einen nicht schädlichen Ausgang. Im
+Beispiel ist es der Alkoholkonsum. [Dieses Merkmal wird
+**Risikovariable** genannt.]{#customdef-risikovariable
+.customdef} In der Vierfeldertafel kann die Risikovariable die Zeilen
+oder die Spalten bestimmen. Die Risikovariable wird durch andere
+Merkmale sogenannte ursächliche Variablen erklärt. Im breiteren
+statistischen Kontext wird die Risikovariable abhängige Variable und die
+ursächliche Variable als unabhängige Variable bezeichnet.
 
-[Mit **Risiko** wird die Wahrscheinlichkeit benannt den schädlichen Ausgang zu erleiden und wird mit dem Anteil des schädlichen Ausgangs an der Gesamtzahl berechnet.]{.customdef #customdef-risiko} Das Risiko kann je nach Ausprägung der ursächlichen Variable unterschiedlich hoch sein. Das Risiko mehr als 1x pro Woche Alkohol zu konsumieren ist demnach $308/378 = `r round(308/378,3)` = `r round(100*308/378,1)`\%$ für Menschen mit tertiärer Ausbildung und $476/622 = `r round(476/622,3)` = `r round(100*476/622,1)`\%$ für Menschen mit anderer Ausbildung. Das Risiko kann in `Jamovi` unter `Zellen > Prozentsätze` und dann `Zeile` (wenn das ursächliche Merkmal die Zeilen bestimmt) oder `Spalte` (wenn das ursächliche Merkmal die Spalte bestimmt) angezeigt werden.
+[Mit **Risiko** wird die Wahrscheinlichkeit benannt den schädlichen
+Ausgang zu erleiden und wird mit dem Anteil des schädlichen Ausgangs an
+der Gesamtzahl berechnet.]{#customdef-risiko .customdef}
+Das Risiko kann je nach Ausprägung der ursächlichen Variable
+unterschiedlich hoch sein. Das Risiko mehr als 1x pro Woche Alkohol zu
+konsumieren ist demnach
+$308/378 = `r round(308/378,3)` = `r round(100*308/378,1)`\%$ für
+Menschen mit tertiärer Ausbildung und
+$476/622 = `r round(476/622,3)` = `r round(100*476/622,1)`\%$ für
+Menschen mit anderer Ausbildung. Das Risiko kann in `Jamovi` unter
+`Zellen > Prozentsätze` und dann `Zeile` (wenn das ursächliche Merkmal
+die Zeilen bestimmt) oder `Spalte` (wenn das ursächliche Merkmal die
+Spalte bestimmt) angezeigt werden.
 
-Die Risiken für die tertiär und andere Ausbildungen können nun verglichen werden. [Dazu kann die Differenz der beiden Risiken sogenannte **Risikodifferenz** (in `Jamovi` unter `Statistiken > Unterschiede in den Proportionen`) betrachtet werden.]{.customdef #customdef-risikodifferenz} Wenn die Risiken der beiden Gruppen mit $p_1$ und $p_2$ bezeichnet werden, entspricht dies schlicht 
-$$p_1 - p_2 = `r round(308/378,3)` - `r round(476/622,3)`=`r round(308/378,3)- round(476/622,3)`.$$ 
-Das Risiko mehr als $1$x pro Woche Alkohol zu konsumieren ist also $`r round(308/378,3)- round(476/622,3)` = `r 100*(round(308/378,3)- round(476/622,3))`\%$ höher für Personen mit einem tertiären Bildungsabschluss. Da die Risiken immer Werte zwischen $0$ und $1$ sind, muss dieser Formel nach die Differnez der Risiken zwischen $-1$ und $1$ liegen. Wenn die Differenz der beiden Risiken $0$ ist, bedeutet dies, dass die Risiken in beiden Gruppen gleich gross sind. Je weiter die Differenz der Risiken von $0$ weg ist, desto unterschiedlicher sind die Risiken in den zwei Gruppen.
+Die Risiken für die tertiär und andere Ausbildungen können nun
+verglichen werden. [Dazu kann die Differenz der beiden Risiken
+sogenannte **Risikodifferenz** (in `Jamovi` unter
+`Statistiken > Unterschiede in den Proportionen`) betrachtet
+werden.]{#customdef-risikodifferenz .customdef} Wenn die
+Risiken der beiden Gruppen mit $p_1$ und $p_2$ bezeichnet werden,
+entspricht dies schlicht
+$$p_1 - p_2 = `r round(308/378,3)` - `r round(476/622,3)`=`r round(308/378,3)- round(476/622,3)`.$$
+Das Risiko mehr als $1$x pro Woche Alkohol zu konsumieren ist also
+$`r round(308/378,3)- round(476/622,3)` = `r 100*(round(308/378,3)- round(476/622,3))`\%$
+höher für Personen mit einem tertiären Bildungsabschluss. Da die Risiken
+immer Werte zwischen $0$ und $1$ sind, muss dieser Formel nach die
+Differenz der Risiken zwischen $-1$ und $1$ liegen. Wenn die Differenz
+der beiden Risiken $0$ ist, bedeutet dies, dass die Risiken in beiden
+Gruppen gleich gross sind. Je weiter die Differenz der Risiken von $0$
+weg ist, desto unterschiedlicher sind die Risiken in den zwei Gruppen.
 
-Eine andere Art die Risiken zu vergleichen ist sie ins Verhältnis zu setzen. [Dies wird **relatives Risiko**]{.customdef #customdef-tagname} 
+Eine andere Art die Risiken zu vergleichen ist sie ins Verhältnis zu
+setzen. [Dies wird **relatives
+Risiko**]{#customdef-tagname .customdef}
 $$\text{RR} = \frac{p_1}{p_2} = \frac{`r round(308/378,3)`}{ `r round(476/622,3)`}=`r round(round(308/378,3)/ round(476/622,3),3)`$$
-genannt. Das Risiko mehr als $1$x pro Woche Alkohol zu konsumieren ist für Personen mit tertiärer Ausbildung also $`r round(round(308/378,3)/ round(476/622,3),3)`$ mal so gross wie für Personen mit anderer Ausbildung. Sind $p_1$ und $p_2$ gleich gross, so ist das relative Risiko bei $1$. Ist $p_1$ kleiner als $p_2$, so ist das relative Risiko kleiner als $1$. Ist $p_1$ grösser als $p_2$, so ist das relative Risiko grösser als $1$. Insgesamt ist das relative Risiko immer eine Zahl zwischen $0$ und $+\infty$. Das Tauschen der Gruppennummerierung führt zu einer Umkehr des Wertes rund um $1$. Wenn im Beispiel also die ander Bildung als Gruppe $1$ bezeichnet würde, so ist das relative Risiko 
+genannt. Das Risiko mehr als $1$x pro Woche Alkohol zu konsumieren ist
+für Personen mit tertiärer Ausbildung also
+$`r round(round(308/378,3)/ round(476/622,3),3)`$ mal so gross wie für
+Personen mit anderer Ausbildung. Sind $p_1$ und $p_2$ gleich gross, so
+ist das relative Risiko bei $1$. Ist $p_1$ kleiner als $p_2$, so ist das
+relative Risiko kleiner als $1$. Ist $p_1$ grösser als $p_2$, so ist das
+relative Risiko grösser als $1$. Insgesamt ist das relative Risiko immer
+eine Zahl zwischen $0$ und $+\infty$. Das Tauschen der
+Gruppennummerierung führt zu einer Umkehr des Wertes rund um $1$. Wenn
+im Beispiel also die andere Bildung als Gruppe $1$ bezeichnet würde, so
+ist das relative Risiko
 $$\text{RR} = \frac{p_1}{p_2} = \frac{`r round(476/622,3)`}{ `r  round(308/378,3)`}=`r round(  round(476/622,3)/round(308/378,3),3)`$$
 
-::::{.caution data-latex=""}
-::: {.remark}
-Das hier die relativen Risiken für die Gruppenneunummerierung fast gleich weit von $1$ entfernt liegen ist im normalfall nicht so. Dies kann an folgendem Zahlenbeispiel gesehen werden: $0.75 / 0.25 = 3$ und umgekehrt $0.25/0.75 = 0.333$.
+:::: {.caution data-latex=""}
+::: remark
+Das hier die relativen Risiken für die Gruppenneunummerierung fast
+gleich weit von $1$ entfernt liegen ist im Normalfall nicht so. Dies
+kann an folgendem Zahlenbeispiel gesehen werden: $0.75 / 0.25 = 3$ und
+umgekehrt $0.25/0.75 = 0.333$.
 :::
 ::::
 
-Das relative Risiko sagt im Gegensatz zu Risikodifferenz nichts mehr über das absolute Risiko aus. Wenn ein Medikament, zum Beispiel das Risiko einer Psychose von $1$ aus $5000$ auf $1$ aus $10000$ reduziert, so ist die Risikodifferenz bei $0.0001 - 0.0002 = -0.01\%$. Das relative Risiko ist in dem Fall jedoch $0.0001/0.0002 = 50\%$. Wird nun nur das relative Risiko berichtet, könnten Lesende von einem zu grossen Nutzen des Medikaments ausgehen. Es wird deshalb empfohlen immer die Risikodifferenz und das relative Risiko zu berichten. 
+Das relative Risiko sagt im Gegensatz zu Risikodifferenz nichts mehr
+über das absolute Risiko aus. Wenn ein Medikament, zum Beispiel das
+Risiko einer Psychose von $1$ aus $5000$ auf $1$ aus $10000$ reduziert,
+so ist die Risikodifferenz bei $0.0001 - 0.0002 = -0.01\%$. Das relative
+Risiko ist in dem Fall jedoch $0.0001/0.0002 = 50\%$. Wird nun nur das
+relative Risiko berichtet, könnten Lesende von einem zu grossen Nutzen
+des Medikaments ausgehen. Es wird deshalb empfohlen immer die
+Risikodifferenz und das relative Risiko zu berichten.
 
-Die Risikodifferenz und das relative Risiko können nur berechnet werden, wenn die gesamt Anzahl Fälle repräsentativ für die Population ist. Dies ist bei Fall-Kontroll Studien nicht der Fall, wie folgendes Beispiel zeigt. Für solche Studien können weder die Risikodifferenz noch das relative Risiko sinnvoll berechnet werden.
+Die Risikodifferenz und das relative Risiko können nur berechnet werden,
+wenn die gesamt Anzahl Fälle repräsentativ für die Population ist. Dies
+ist bei Fall-Kontroll Studien nicht der Fall, wie folgendes Beispiel
+zeigt. Für solche Studien können weder die Risikodifferenz noch das
+relative Risiko sinnvoll berechnet werden.
 
 ::: {#dog-cancer .example name="Krebs bei Hunden"}
 ```{r exm-dog-cancer}
@@ -4434,80 +4542,289 @@ gen_exm_dog_cancer <- function(){
 exm_dog_cancer <- gen_exm_dog_cancer()
 ```
 
-@hayes1991 haben sich für den Zusammenhang zwischen malingen Lymphomen bei Hunden (ugs. bösartiger Lymphdrüsenkrebs) und der Anwendung des Herbizids $2, 4$-Dichlorphenoxyessigsäure in Hausgärten interessiert. Dabei haben Sie in einer Fall-Kontroll Studie (case-control study) die Zahlen im Datensatz `r inline_code(exm_dog_cancer$file_name)` ermittelt. 
+@hayes1991 haben sich für den Zusammenhang zwischen malignen Lymphomen
+bei Hunden (ugs. bösartiger Lymphdrüsenkrebs) und der Anwendung des
+Herbizids $2, 4$-Dichlorphenoxyessigsäure in Hausgärten interessiert.
+Dabei haben Sie in einer Fall-Kontroll Studie (case-control study) die
+Zahlen im Datensatz `r inline_code(exm_dog_cancer$file_name)` ermittelt.
 :::
 
-Die Daten sind hier bereits in aggregierten Fallzahlen präsentiert, siehe Abbildung \@ref(fig:exm-dog-cancer-data-view).
+Die Daten sind hier bereits in aggregierten Fallzahlen präsentiert,
+siehe Abbildung \@ref(fig:exm-dog-cancer-data-view).
 
 ```{r exm-dog-cancer-data-view, out.width='50%', fig.cap='Daten Malignes Lymphoma bei Hunden.'}
 knitr::include_graphics("figures/09-exm-dog-cancer-data-view.jpg")
 ```
 
-Um diese Daten korrekt in `Jamovi` einzulesen, kann unter `Analysen > Häufigkeiten > Kreuztabellen > Unabhängige Stichproben` die Anzahl Fälle bei `Anzahl (optional)` eingelesen werden. Dies resultiert in der Vierfeldertafel in Abbildung \@ref(fig:exm-dog-cancer-aggdata-view).
+Um diese Daten korrekt in `Jamovi` einzulesen, kann unter
+`Analysen > Häufigkeiten > Kreuztabellen > Unabhängige Stichproben` die
+Anzahl Fälle bei `Anzahl (optional)` eingelesen werden. Dies resultiert
+in der Vierfeldertafel in Abbildung
+\@ref(fig:exm-dog-cancer-aggdata-view).
 
 ```{r exm-dog-cancer-aggdata-view, out.width='50%', fig.cap='Vierfeldertafel Malignes Lymphoma bei Hunden.'}
 knitr::include_graphics("figures/09-exm-dog-cancer-aggdata-view.jpg")
 ```
 
-Case-control bedeutet, dass Hunde mit Tumor (Fall/case) in einer Tierklinik gegeben waren. Dazu wurde eine gewisse Anzahl (normalerweise zwischen $1$ bis $4$ mal so viele wie kranke) gesunde Hunde (Kontroll/control) zufällig ausgewählt. Bei allen Hunden wurde anschliessend ermittelt, ob die Hunde auf einem mit dem entsprechenden Herbizid belasteten Garten Zeit verbracht haben. Da von den Studienautoren bestimmt wurde, wie viele gesunde Hunde ermittelt werden, kann der Anteil der kranken Hunde nicht als Mass für das Vorkommen der Erkankung in der jeweiligen Gruppe dienen. Es ist hier also nicht aussagekräftig den Anteil kranker Hunde pro Gruppe oder das daraus folgende relative Risiko zu bestimmen.
+Case-control bedeutet, dass Hunde mit Tumor (Fall/case) in einer
+Tierklinik gegeben waren. Dazu wurde eine gewisse Anzahl (normalerweise
+zwischen $1$ bis $4$ mal so viele wie kranke) gesunde Hunde
+(Kontroll/control) zufällig ausgewählt. Bei allen Hunden wurde
+anschliessend ermittelt, ob die Hunde auf einem mit dem entsprechenden
+Herbizid belasteten Garten Zeit verbracht haben. Da von den
+Studienautoren bestimmt wurde, wie viele gesunde Hunde ermittelt werden,
+kann der Anteil der kranken Hunde nicht als Mass für das Vorkommen der
+Erkrankung in der jeweiligen Gruppe dienen. Es ist hier also nicht
+aussagekräftig den Anteil kranker Hunde pro Gruppe oder das daraus
+folgende relative Risiko zu bestimmen.
 
-[Stattdessen wird in diesen Fällen das  **Chancenverhältnis** (eng. odds ratio)]{.customdef #customdef-odds-ratio}  
+[Stattdessen wird in diesen Fällen das **Chancenverhältnis** (eng. odds
+ratio)]{#customdef-odds-ratio .customdef}\
 $$OR = \frac{a\cdot d}{b\cdot c} = \frac{191\cdot 300}{304\cdot 300} = 1.34$$
-berechnet, wobei $a, b, c$ und $d$ den Anzahl Fällen in der Vierfeldertafel von oben nach unten und von links nach rechts entsprchen. [Die  **Chance** (eng. odds) ist dabei eine Art Wahrscheinlichkeit auszudrücken.]{.customdef #customdef-odds} Sie ist definiert als Wahrscheinlichkeit, dass ein Ereignis eintrifft geteilt durch die Wahrscheinlichkeit, dass das Ereignis nicht eintrifft. Für die Herbizid belasteten Hunde ist die Chance ein Tumor zu haben also $a/c=191/304=0.63$ und für die anderen Hunde $b/d=300/641=0.47$. Es gilt, je höher die Chance desto höher die Eintreffwahrscheinlichkeit. Ein Chancenverhältnis von $1.34$ schliesslich bedeutet, dass die Chance einen Tumor zu entwickeln für einen Herbizid belasteten Hund $1.34$ mal so hoch ist wie für einen nicht Herbizid belasteten. 
+berechnet, wobei $a, b, c$ und $d$ den Anzahl Fällen in der
+Vierfeldertafel von oben nach unten und von links nach rechts
+entsprechen. [Die **Chance** (eng. odds) ist dabei eine Art
+Wahrscheinlichkeit auszudrücken.]{#customdef-odds
+.customdef} Sie ist definiert als Wahrscheinlichkeit, dass ein Ereignis
+eintrifft geteilt durch die Wahrscheinlichkeit, dass das Ereignis nicht
+eintrifft. Für die Herbizid belasteten Hunde ist die Chance ein Tumor zu
+haben also $a/c=191/304=0.63$ und für die anderen Hunde
+$b/d=300/641=0.47$. Es gilt, je höher die Chance desto höher die
+Eintreffwahrscheinlichkeit. Ein Chancenverhältnis von $1.34$
+schliesslich bedeutet, dass die Chance einen Tumor zu entwickeln für
+einen Herbizid belasteten Hund $1.34$ mal so hoch ist wie für einen
+nicht Herbizid belasteten.
+
+:::: {.caution data-latex=""}
+::: remark
+-   Es kann festgestellt werden, dass das Chancenverhältnis unabhängig
+    von der Wahl der ursächlichen und Risikovariable ist
+    $$ OR = \frac{a\cdot d}{b\cdot c} = \frac{a\cdot d}{c\cdot b}.$$
+-   Für kleine Fallzahlen (Risiko $<10\%$) liegt das Chancenverhältnis
+    nahe am relativen Risiko.
+:::
+::::
+
+## Zusammenhang dichotomer Merkmale testen
+
+In `Jamovi > Kreuztabellen > Statistiken > Tests` stehen verschiedene
+Tests zur Verfügung, um zu testen, ob ein in einer Zufallsstichprobe
+gefundener Zusammenhang zwischen den Risiken $p_1$ und $p_2$ auf die
+Risiken in der Population $\pi_1$ und $\pi_2$ (sprich 'pi') übertragen
+werden darf.
+
+### $z$-Test für den Unterschied zwischen den zwei Anteilen
+
+Wenn die Merkmale unabhängig voneinander sind, dann sollte das Risiko in
+beiden Gruppen ungefähr gleich gross sein. Dies impliziert auch, dass
+die Risikodifferenz $0$ ist. Beim
+$z$-Test für den Unterschied zwischen den zwei Anteilen wird also
+$H_0: \pi_1 - \pi_2 = 0$ und damit äquivalent $H_0: \pi_1 = \pi_2$
+getestet. Wird die Nullhypothese verworfen, wird fortan an die
+Alternativhypothese $H_1: \pi_1 \neq \pi_2$ geglaubt. Aus Platzgründen
+werden hier nur die zweiseitigen Hypothesenstellungen erwähnt. Die
+einseitigen Hypothesenstellungen funktionieren aber anaolg zu den bisher
+gesehen Tests.
+
+Die Teststatistik für den $z$-Test der Risikodifferenz ist
+
+$$z = \frac{p_1-p_2}{\sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}}} = -1.85,$$
+
+wobei $n_1$ und $n_2$ der Anzahl vom Risiko betroffene bzw. nicht
+betroffene Beobachtungen darstellen. Wenn die Nullhypothese wahr ist,
+ist diese Teststatistik ist standardnormalverteilt. Dies entspricht der
+Normalverteilung in Abbildung \@ref(fig:t-distribution). Je grösser die
+Differenz der beiden Risiken, desto weiter weg von $0$ ist die
+Teststatistik und desto unwahrscheinlicher ist es, dass die berechnete
+Teststatistik aufgrund der Zufallsstichprobenziehung zustande kommt. Der genaue $p$-Wert kann mit `Jamovi` unter `Tests > z-Test für den Unterschied zwischen den zwei Anteilen` ermittelt werden. Mit $p = .0649$ kann die Nullhypothese knapp nicht verworfen werden. Die beiden Anteile $\pi_1$ und $\pi_2$ könnten also gleich sein.
+
+> Ein zweiseitiger $z$-Test für den Unterschied zwischen den zwei Anteilen ergibt, dass der Anteil der mehr als einmal pro Woche alkoholkonsumierenden Personen mit Tertiärbildung ($p_1 = 81.5\%$), nicht signifikant von ebendiesem Anteil der Personen mit anderer Bildung ($p_2 = 76.5\%$) unterscheidet, $z = -1.85, p = .0649$.
+
+### $\chi^2$-Test
+
+[Der **$\chi^2$-Test** (sprich 'chi-quadrat-test') ist eine zweite allgemeinere Variante, um den Zusammenhang zwischen zwei dichotomen Merkmalen zu testen.]{.customdef #customdef-chisq-test} Die Nullhypothese ist wiederum, dass die beiden Merkmale unabhängig voneinander sind.
+
+Um nun die Teststatistik näher verstehen zu können, muss ein kurzer
+Exkurs in Wahrscheinlichkeitslehre unternommen werden. Diese besagt
+nämlich, dass wenn zwei Ereignisse A und B unabhängig voneinander
+auftreten, dann ist die Auftretenswahrscheinlichkeit genau gleich dem
+Produkt der Wahrscheinlichkeiten der jeweiligen Ereignisse. In Formeln
+ausgedrückt
+$$p(A \text{ und }B) \overset{\text{unabhängig}}{=} p(A) \cdot p(B).$$
+
+Auf das Beispiel \@ref(exm:alcohol-edu) bezogen bedeutet dies, dass wenn
+Alkoholkonsum und die Ausbildungsart unabhängig voneinander sind, dann
+entspricht die Wahrscheinlichkeit mehr als $1$x pro Woche Alkohol zu
+konsumieren und eine tertiäre Ausbildung genossen zu haben
+
+$$
+p(\text{[alkohol > 1x pro Woche] und tertiär}) = \frac{`r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("1_count"))`}{`r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("total_count"))`} = `r round((exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("1_count")))/(exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("total_count"))),5)`
+$$
+
+genau
+
+$$
+p(\text{[alkohol > 1x pro Woche]}) \cdot p(\text{tertiär}) = \frac{`r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("total_count"))`}{`r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count"))`}\cdot \frac{`r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("1_count"))`}{`r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count"))`} = `r round((exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("total_count"))/ exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count")))* (exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("1_count"))/exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count"))),5)`
+$$
+
+entsprechen. Die Zahlen zeigen an, dass dies für diese Stichprobe klar nicht gegeben ist. Die beobachtete Differenz könnte sich aber auch aus der Zufallsstichprobenziehung ergeben haben. Der $\chi^2$-Vierfeldertest vergleicht nun in jeder Zelle $i$ der Vierfeldertafel die tatsächlich beobachteten Beobachtungen $o_i$ (observed) mit den erwarteten Beobachtungen $e_i$ (expected), wenn die Unabhängigkeit gegeben wäre. Letztere berechnet sich durch $p(A) \cdot p(B) \cdot n$, wobei $n$ die Gesamtanzahl Beobachtungen ist. Im Beispiel
+
+$$e_1 = p(\text{[alkohol > 1x pro Woche]}) \cdot p(\text{tertiär}) \cdot n =`r round(((exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("total_count"))/ exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count")))* (exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("1_count"))/exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count")))),5)` \cdot  `r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count"))` = `r round(((exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("total_count"))/ exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count")))* (exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("1_count"))/exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count")))* exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count"))),5)` $$
+Je weiter diese Zahl von der beobachteten Zahl abweicht, desto unwahrscheinlicher ist die Unabhängigkeit. Der $\chi^2$ trägt dem Rechnung, indem die Teststatistik
+
+$$\chi^2 = \sum_{i = 1}^k \frac{(o_i - e_i)^2}{e_i} = `r round(exm_alcohol_edu$jmv_output_test$value_chiSq,2)`,$$
+wobei $k$ hier für die Anzahl Zellen steht. Eine grosse Teststatistik spricht also gegen die Unabhängigkeit.
+
+Wenn die Stichprobenziehung oft wiederholt wird, kann festgestellt werden, dass diese Teststatistik einer bekannten Verteilung, der $\chi^2$-Verteilung bei $df = 1$ Freiheitsgraden folgt. [Die **$\chi^2$-Verteilung** ist für verschiedene Freiheitsgrade in Abbildung \@ref(fig:chisq-distribution) dargestellt.]{.customdef #customdef-chisq-distribution} 
+ Die Teststatistik des $\chi^2$-Vierfeldertests $`r round(exm_alcohol_edu$jmv_output_test$value_chiSq,2)`$ wird also mit der roten Verteilung in der Abbildung verglichen. Die Werte rechts auf der Abbildung sind seltener und der beobachtete Wert liegt so, dass er zu den $`r report_p(exm_alcohol_edu$jmv_output_test$p_chiSq)`$ seltensten Beobachtungen zählt, sofern die Unabhängigkeit gilt. Dies reicht hier gerade nicht, um die Nullhypothese bei Signifikanzniveau $\alpha = 5\%$ zu verwerfen.
+
+
+```{r chisq-distribution, fig.cap="Chiquadrat-Verteilungen mit 1, 4 und 9 Freiheitsgraden."}
+tibble(x = seq(0, 20, by = 0.01),
+       chisq_1 = dchisq(x, 2-1),
+       chisq_4 = dchisq(x, 5-1),
+       chisq_9 = dchisq(x, 10-1)) %>%
+  pivot_longer(cols = 2:4, names_to = "Verteilung_df", values_to="Wahrscheinlichkeitsdichte") %>% 
+  ggplot(aes(x=x))+
+  geom_line(aes(y=Wahrscheinlichkeitsdichte, color = Verteilung_df))+
+  labs(x="")+
+  ylim(c(0,0.25))
+```
+
+Um die Effektstärke des $\chi^2$-Tests anzugeben kann Cramérs $\phi$ 
+
+$$\phi = \sqrt{\frac{\chi^2}{n}} = \sqrt{\frac{`r round(exm_alcohol_edu$jmv_output_test$value_chiSq,2)`}{`r exm_alcohol_edu$n`}} = `r round(sqrt(round(exm_alcohol_edu$jmv_output_test$value_chiSq,2) / exm_alcohol_edu$n),2)`$$
+
+Cramérs $\phi$ immer grösser als $0$ und kleiner als $1$. Je weiter $\phi$ von $0$ weg ist, desto stärker sind die Merkmale voneinander abhängig. Da dies auch als Zusammenhangsmass gesehen werden kann wird Cramérs $\phi$ auch Vierfelderkorrelation genannt. Die Interpretation als Effektstärke erfolgt dabei wir für die Korrelation. Ein Wert von $0.06$ wird demnach als schwach eingestuft.
+
+> Ein $\chi^2$-Test ergibt, dass der Alkoholkonsum (mehr/weniger als 1x pro Woche) und Bildung (Tertiär/andere Bildung) nicht signifikant abhängig voneinander sind, $\chi^2 (1) = `r round(exm_alcohol_edu$jmv_output_test$value_chiSq,2)`, p = .0649, \phi = 0.06$.
+
+Der $\chi^2$ Test hat für die Vierfeldervariante immer den gleichen $p$-Wert wie der Test der Risikodifferenz auf $0$. Beide Tests basieren auf dem zentralen Grenzwertsatz und dürfen deshalb nur angewendet werden, wenn gewisse Voraussetzungen erfüllt sind. Die Voraussetzung ist, dass insgesamt $40$ oder mehr Beobachtungen vorliegen müssen. [Ist dies nicht der Fall, aber in jeder Zelle ist die Anzahl der erwarteten Beobachtungen bei $5$ oder grösser, so kann der **$\chi^2$-Test mit Kontinuitätskorrektur** oder Yates-Korrektur verwendet werden]{.customdef #customdef-chisq-corrected} 
+$$\chi^2_{Yates} = \sum_{i = 1}^k \frac{(|o_i - e_i| -0.5)^2}{e_i}.$$
+
+In Beispiel sind mit $n = 1000$ genügend Beobachtungen vorhanden, um ohne die Kontinuitätskorrektur auszukommen. Der Bericht des Tests ist genau gleich wie der Bericht des $\chi^2$-Test ausser, dass der Name des Verfahrens geändert wird:
+
+> Ein $\chi^2$-Test mit Kontinuitätskorrektur ergibt, dass der Alkoholkonsum ...
+
+### Exakter Test nach Fisher und Yates
+
+Wenn die erwarteten Beobachtungen in mindestens einer Zelle kleiner als $5$ sind, dann ist die Approximation der Verteilung der Teststatistik durch den $\chi^2$-Test sogar mit Kontinuitätskorrektur zu ungenau. 
+
+:::{.example #red-white-wine name="Wette: Unterscheiden von Rot- und Weisswein"}
+
+```{r exm-red-white-wine}
+file_name <- '09-exm-red-white-wine.sav'
+dd <- tibble(ist = c("rotwein", "rotwein", "weisswein", "weisswein"),
+       sagt = c("rotwein", "weisswein", "rotwein", "weisswein"),
+       anzahl = c(4, 1, 1, 3)) %>% 
+  write_sav(file_name)
+file_name <- '09-exm-red-white-wine-alternative.sav'
+dd <- tibble(ist = c("rotwein", "rotwein", "weisswein", "weisswein"),
+       sagt = c("rotwein", "weisswein", "rotwein", "weisswein"),
+       anzahl = c(5, 0, 0, 4)) %>% 
+  write_sav(file_name)
+```
+
+Nina behauptet, sie kann Rotwein von Weisswein am Geschmack unterscheiden. Sie bereiten ein Experiment vor, um dies zu testen verbinden Nina die Augen. Als Statistiklernende wissen sie, dass es nicht genügt, dass Nina einmal die richtige Weinsorte wählt - dies könnte ja zufällig richtig sein. Stattdessen werden $5$ Gläser Rotwein und $4$ Gläser Weisswein vorbereitet und Nina in zufälliger Reihenfolge zum Probieren angeboten. Das Experiment endet mi den Zahlen in Abbildung \@ref(fig:exm-red-white-wine-aggdata-view).
+
+```{r exm-red-white-wine-aggdata-view, fig.cap = "Vierfeldertafel Wette Unterschied Rot- und Weisswein."}
+knitr::include_graphics("figures/09-exm-red-white-wine-aggdata-view.jpg")
+```
+:::
+
+Da nur wenige Beobachtungen gemacht wurden, kann die Wahrscheinlichkeit eines Ausgangs des Experiments mit Hilfe der hypergeometrischen-Verteilung genau berechnet werden. Die Wahrscheinlichkeit für den Experimentausgang in Abbildung \@ref(fig:exm-red-white-wine-aggdata-view) entspricht $p_0 = 0.159$.
+
+Der $p$-Wert eines Tests ist bekannterweise die Wahrscheinlichkeit die berechnetet Teststatistik zu beobachten _oder eine unwahrscheinlichere Situation im Sinne der Alternativhypothese_. Um dem zweiten Teil dieser Definition gerecht zu werden, werden nun andere, unwahrscheinlichere Experimentausgänge bewertet. Um dies zu erreichen, wird hier angenommen, dass in jedem Fall die Randsummen immer gleichbleiben (also $5$ für ist Rotwein, $4$ für ist Weisswein, $5$ für sagt Rotwein und $4$ für sagt Weisswein). Wenn ist und sagt unabhängig voneinander ist und Nina also die Weinfarben nicht auseinanderhalten kann, dann wäre es unwahrscheinlicher, wenn sie alle $5$ Rotweine als solche erkannt hätte. Wenn die Randsummen gleich gehalten werden, entspricht dies der Situation in Abbildung \@ref(fig:exm-red-white-wine-aggdata-view-alt). Die Wahrscheinlichkeit für diese Situation ist $p_1 = 0.008$. 
+
+```{r exm-red-white-wine-aggdata-view-alt, fig.cap = "Vierfeldertafel Wette Unterschied Rot- und Weisswein."}
+knitr::include_graphics("figures/09-exm-red-white-wine-aggdata-view-alt.jpg")
+```
+
+Grundsätzlich können hier noch weitere Situationen aufgezählt werden. Im Beispiel sind mit der eben beschriebenen Situation und der ursprünglichen Situation jedoch die Alternativen erschöpft: Es kann nicht sein, dass Nina $6$-mal Rotwein richtig voraussagt, wenn sie insgesamt nur $5$-mal Rotwein sagt. 
+
+Nun werden die Wahrscheinlichkeiten aller Situation aufsummiert, $p = p_0 + p_1 + \ldots = 0.159+0.008 =0.167$. Da mit diesem Vorgehen genau der Definition des $p$-Wertes gefolgt wurde, stellt dieses $p$ nun auch einen $p$-Wert dar. [Der dazugehörige Test wird **exakter Test nach Fisher und Yates** oder einfach Fisher-Yates-Test genannt.]{.customdef #customdef-fisher-yates}
+
+> Ein exakter Test nach Fisher und Yates ergibt, dass das Ansagen der Weinsorte von Nina nicht signifikant von der tatsächlichen Weinsorte abhängt, $p = .167$.
 
 ::::{.caution data-latex=""}
 ::: {.remark}
 
-- Es kann festgestellt werden, dass das Chancenverhältnis unabhängig von der Wahl der ursächlichen und Risikovariable ist
-$$ OR = \frac{a\cdot d}{b\cdot c} = \frac{a\cdot d}{c\cdot b}.$$
-- Für kleine Fallzahlen (Risiko $<10\%$) liegt das Chancenverhältnis nahe am relativen Risiko.
-
+- Der Test ist exakt, weil hier die Wahrscheinlichkeiten genau bestimmt wurden. Bei allen anderen bislang gesehenen Tests wird die Wahrscheinlichkeit über eine Verteilung angenähert. Diese Annäherung ist theoretisch nur richtig, wenn unendlich viele Beobachtungen gemacht werden, weshalb diese Art Test auch **asymptotisch** genannt wird. In der Praxis wird jedoch festgestellt, dass asymptotische Tests bereits für eine kleine Anzahl Beobachtungen (z. B. $50$ für den Einstichproben-$t$-Test) hinreichend genau sind.
+- Da für den exakten Test nach Fisher und Yates die Wahrscheinlichkeiten direkt berechnet werden, wird keine Teststatistik verwendet.
 :::
 ::::
 
+
 ## Übungen
 
-<!-- Dogs and cancer -->
-<!-- https://stats.libretexts.org/Bookshelves/Introductory_Statistics/OpenIntro_Statistics_(Diez_et_al)./06%3A_Inference_for_Categorical_Data/6.02%3A_Difference_of_Two_Proportions -->
-
-::: {#cancer-smoking .exercise}
+::: {#autism-epilepsy .exercise}
 ```{=html}
 <!-- 
-https://pubmed.ncbi.nlm.nih.gov/9857993/
 Ziel: 
-- Vierfelder Testentscheidung
-- Vierfeldertest
-- Zusammenhangsmasse
+-
 -->
 ```
 
-```{r exr-cancer-smoking}
-gen_exr_cancer_smoking <- function(){
-  dd <- tibble(lung = c("cancer", "cancer", "no_cancer", "no_cancer"),
-               habit = c("smoking", "no_smoking", "smoking", "no_smoking"),
-               counts = c(150,50,100,297))
-    
-  file_name <- '09-exr-cancer-smoking.sav'
+```{r exr-autism-epilepsy}
+gen_exr_autism_epilepsy <- function(){
+  n <- 5185
+  n1 <- 2500
+  n2 <- n- n1
+  p1 <- 0.12
+  p2 <- 0.26
+  n21 <- p1*n1
+  n22 <- (1-p1)*n1
+  n11 <- round(p2*n2)
+  n12 <- round((1-p2)*n2)
+  n <- n11+n12+n21+n22
+  dd <- tibble(epilepsy = c(rep("ja",n11),
+                        rep("nein",n12),
+                        rep("ja",n21),
+                        rep("nein",n22)),
+         alter = c(rep("jugendlich",n11),
+                      rep("jugendlich",n12),
+                      rep("kind",n21),
+                      rep("kind",n22))) %>% 
+    slice_sample(prop = 1)
+  n <- dd %>% nrow()
+  jmv_output <- jmv::contTables(
+    dd,
+    "epilepsy",
+    "alter",
+    chiSqCorr = TRUE,
+    odds = TRUE,
+    relRisk = TRUE,
+    diffProp = TRUE, 
+    pcCol = TRUE, 
+    compare = 'columns'
+  )
+  jmv_output_freq <- jmv_output$freqs$asDF %>% 
+    clean_jmv_colnames()
+  jmv_output_odds <- jmv_output$odds$asDF %>% 
+    clean_jmv_colnames()
+  file_name <- '09-exr-autism-epilepsy.sav'
   dd %>% write_sav(file_name)
-  # corr_mat_pearson <- dd %>% cor()
-  # corr_mat_spearman <- dd %>% cor(method = "spearman")
-  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  # jmv_partcorr <- (dd %>% 
-  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  
   return(mget(ls()))
 }
-exr_cancer_smoking <- gen_exr_cancer_smoking()
+exr_autism_epilepsy <- gen_exr_autism_epilepsy()
 ```
 
-Um den Zusammenhang zwischen rauchen und Lungenkrebs zu analsyieren haben Forschende in einer Studie $200$ an Lungenkrebs erkankte und $397$ nicht an Lungenkrebs erkrankte Menschen zu ihrem Rauchverhalten befragt. Die Forschenden haben die Daten im Datensatz `r inline_code(exr_cancer_smoking$file_name)` aggregiert zur Verfügung gestellt. Lose nach @matos1998.
+@viscidi2013 wollten herausfinden wie sich das Alter (Kind bis $10$
+Jahre / Jugendlich älter als $10$ Jahre) auf das Auftreten von Epilepsie
+bei Menschen mit einer Autismus-Spektrum-Störung auswirkt. Dafür wurden
+zufällig `r exr_autism_epilepsy$n` Menschen mit
+Autismus-Spektrum-Störung zu ihrem Alter und dem Auftreten von Epilepsie
+befragt. Simulierte Daten befinden sich im Datensatz
+`r inline_code(exr_autism_epilepsy$file_name)`.
 
-a) Handelt es sich um eine Fall-Kontroll (case-control) Studie oder um eine Kohortenstudie?
-b) Identifizieren Sie abhängige und unabhängige Variable. Wie gross ist die Inzidenz in der exponierten und nicht exponierten Gruppe?
-c) Können hier das _RR_ und der _OR_ verwendet werden, um den Zusammenhang zu beschreiben?
-d) Wie gross ist der odds ratio und was heisst das für die rauchenden Menschen?
-e) Ist der Zusammenhang von der Stichprobe auf alle Menschen übertragbar?
+a)  Lässt das Studiendesign das Berechnen des relativen Risikos zu?
+b)  Berechnen Sie die Risikodifferenz, das relative Risiko und das
+    Chancenverhältnis.
+c)  Sichern Sie die Risikodifferenz zweiseitig gegen Null ab und
+    berichten Sie das Ergebnis.
+d)  Testen Sie den Zusammenhang mit einem Vierfeldertest und berichten
+    Sie das Ergebnis. Welcher Test kommt zur Anwendung?
 :::
 
 ::: solution
@@ -4538,31 +4855,123 @@ gen_exr_depression_training <- function(){
                       rep("selten",n12),
                       rep("oft",n21),
                       rep("selten",n22)))
-    
+  n <- dd %>% nrow()
+  jmv_output <- jmv::contTables(
+    dd,
+    "depression",
+    "training",
+    chiSqCorr = TRUE,
+    odds = TRUE,
+    relRisk = TRUE,
+    diffProp = TRUE, 
+    pcCol = TRUE, 
+    compare = 'columns'
+  )
+  jmv_output_freq <- jmv_output$freqs$asDF %>% 
+    clean_jmv_colnames()
+  jmv_output_odds <- jmv_output$odds$asDF %>% 
+    clean_jmv_colnames()
   file_name <- '09-exr-depression-training.sav'
   dd %>% write_sav(file_name)
-  # corr_mat_pearson <- dd %>% cor()
-  # corr_mat_spearman <- dd %>% cor(method = "spearman")
-  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  # jmv_partcorr <- (dd %>% 
-  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
+  
   return(mget(ls()))
 }
 exr_depression_training <- gen_exr_depression_training()
 ```
-<!-- TODO: Ausschöpfen odds ratio, etc -->
-Eine Psychologin hat versucht herauszufinden, wie sich das Trainingsverhalten auf depressive Stimmungen auswirkt. Dazu hat sie $77$ Leute befragt und die Resultate in Datensatz `r inline_code(exr_depression_training$file_name)` erhalten.
 
-a) Sind die Variablen Depression und Trainingsverhalten voneinander abhängig, wenn bei $\alpha = 5\%$ getestet wird?
-b) Muss hier bei der Berechnung der Prüfgrösse die Yates-Korrektur verwendet werden?
-c) Wie gross ist der Unterschied zwischen der Prüfgrösse mit und ohne Yates-Korrektur hier?
-d) Wie gross ist die Vierfelderkorrelation zwischen den beiden Variablen? Interpretieren Sie den Zusammenhang.
+<!-- TODO: Ausschöpfen odds ratio, etc -->
+
+Eine Psychologin hat versucht herauszufinden, wie sich das
+Trainingsverhalten (oft/selten) auf depressive Stimmungen auswirkt. Dazu
+hat sie in einem Experiment
+$`r exr_depression_training$n`$ zufällige Leute befragt und die Resultate in Datensatz `r inline_code(exr_depression_training$file_name)` erhalten.
+
+a)  Welches ist die Risikovariable?
+b)  Wie gross sind die Risiken in den beiden Gruppen? Wie gross ist die
+    Risikodifferenz, das relative Risiko und das Chancenverhältnis?
+    Welche Wirkung hat das Trainingsverhalten auf das Risiko eine
+    Depression zu erleiden?
+c)  Sind die Variablen Depression und Trainingsverhalten voneinander
+    abhängig, wenn bei $\alpha = 5\%$ getestet wird?
+d)  Wie gross ist der Unterschied zwischen der Prüfgrösse mit und ohne
+    Yates-Korrektur hier?
+e)  Wie gross ist die Vierfelderkorrelation zwischen den beiden
+    Variablen? Interpretieren Sie den Zusammenhang.
 :::
 
 ::: solution
-TODO
+a)  Die Risikovariable ist hier eine Depression zu haben oder nicht.
+b)  Das Risiko beträgt
+    $p_1 = `r round(exr_depression_training$jmv_output_freq %>% filter(depression == "depressiv") %>%slice(1) %>% pull(all_of("1_pcCol"))*100,1)`%$ in der oft trainierenden Gruppe. In der anderen Gruppe liegt das Risiko bei $p_2 =`r     round(exr_depression_training$jmv_output_freq %>% filter(depression == "depressiv") %>% slice(1) %>%  pull(all_of("2_pcCol"))*100,1)` \%$.
+    Die Risikodifferenz liegt bei
+    $`r round(100* exr_depression_training$jmv_output_odds$v_dp, 1)`\%$,
+    das relative Risiko bei
+    $`r round(exr_depression_training$jmv_output_odds$v_rr, 3)`$ und das
+    Chancenverhältnis bei
+    $`r round(exr_depression_training$jmv_output_odds$v_o, 3)`$. Oft zu
+    trainineren hat einen protektive Wirkung auf das Risiko an einer
+    Depression zu erkranken.
+c)  TODO
+d)  TODO
+e)  TODO
+:::
+
+::: {#cancer-smoking .exercise}
+```{=html}
+<!-- 
+https://pubmed.ncbi.nlm.nih.gov/9857993/
+Ziel: 
+- Vierfelder Testentscheidung
+- Vierfeldertest
+- Zusammenhangsmasse
+-->
+```
+
+```{r exr-cancer-smoking}
+gen_exr_cancer_smoking <- function(){
+  dd <- tibble(lung = c("cancer", "cancer", "no_cancer", "no_cancer"),
+               habit = c("smoking", "no_smoking", "smoking", "no_smoking"),
+               counts = c(150,50,100,297))
+  n <- dd %>% pull(counts) %>% sum()
+    
+  file_name <- '09-exr-cancer-smoking.sav'
+  dd %>% write_sav(file_name)
+  return(mget(ls()))
+}
+exr_cancer_smoking <- gen_exr_cancer_smoking()
+```
+
+Um den Zusammenhang zwischen Rauchen und Lungenkrebs zu analysieren
+haben Forschende in einer Studie $200$ an Lungenkrebs erkrankte und $397$
+nicht an Lungenkrebs erkrankte Menschen zu ihrem Rauchverhalten (rauchen
+ja oder nein) befragt. Die Forschenden haben die Daten im Datensatz
+`r inline_code(exr_cancer_smoking$file_name)` aggregiert zur Verfügung
+gestellt. Lose nach @matos1998.
+
+a)  Handelt es sich um eine Fall-Kontroll (case-control) Studie.
+b)  Identifizieren Sie abhängige und unabhängige Variable. Wie gross ist
+    das Risiko an Lungenkrebs zu erkranken für rauchende und nicht
+    rauchende Menschen? Können hier die Risikodifferenz, das *RR* und
+    der *OR* verwendet werden, um den Zusammenhang zu beschreiben?
+c)  Wie gross ist das Chancenverhältnis und was heisst das für die
+    rauchenden Menschen?
+d)  Ist der Zusammenhang von der Stichprobe auf alle Menschen
+    übertragbar?
+:::
+
+::: solution
+a)  Ja. Die Forschenden haben bestimmt wie viele erkrankte und gesunde
+    Personen sie für die Studie anschreiben.
+b)  Die abhängige Variable oder Risikovariable ist hier die Erkrankung an
+    Lungenkrebs. Die ursächliche oder unabhängige Variable ist das
+    Rauchverhalten. Da in der Studie der Anteil gesunder und erkrankter
+    Menschen im Vorherein festgelegt wurde, ist eine Berechnung des
+    Risikos nicht sinnvoll. Daraus folgend ist auch die Risikodifferenz
+    oder das relative Risiko nicht sinnvoll. Der OR kann immer verwendet
+    werden, um den Zusammenhang zu beschreiben.
+c)  Das Chancenverhältnis liegt bei $8.91$. Das bedeutet für die
+    rauchenden Leute ist die Chance an Lungenkrebs zu erkanken $8.91$-mal so hoch wie für nicht rauchende.
+d)  TODO.
 :::
 
 ::: {#bio-milch .exercise}
@@ -4593,28 +5002,30 @@ gen_exr_bio_milch <- function(){
     
   file_name <- '09-exr-bio-milch.sav'
   dd %>% write_sav(file_name)
-  # corr_mat_pearson <- dd %>% cor()
-  # corr_mat_spearman <- dd %>% cor(method = "spearman")
-  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  # jmv_partcorr <- (dd %>% 
-  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
   return(mget(ls()))
 }
 exr_bio_milch <- gen_exr_bio_milch()
 ```
-<!-- TODO: Ausschöpfen odds ratio, etc -->
-Eine Freundin von Ihnen behauptet, dass Sie Bio-Milch und nicht Bio-Milch am Geschmack unterscheiden kann. Sie geben ihr $9$-mal Bio-Milch zu trinken und $6$-mal nicht Bio-Milch zu trinken bei einem doppel-blind Test. Es entstehen die Daten in `r inline_code(exr_bio_milch$file_name)`. 
 
-a) Welcher Test ist bei dieser Datenlage angebracht, um zu testen, ob die Freundin tatsächlich Bio und nicht Bio-Milch am Geschmack unterschieden kann?
-b) Konnte die Freundin ihre Behauptung im Experiment nachweisen? Führen Sie den angebrachten Test durch und berichten Sie das Resultat inklusive Effektstärke.
+<!-- TODO: Ausschöpfen odds ratio, etc -->
+
+Eine Freundin von Ihnen behauptet, dass Sie Bio-Milch und nicht
+Bio-Milch am Geschmack unterscheiden kann. Sie geben ihr $9$-mal
+Bio-Milch zu trinken und $6$-mal nicht Bio-Milch zu trinken bei einem
+doppel-blind Test. Es entstehen die Daten in
+`r inline_code(exr_bio_milch$file_name)`.
+
+a)  Welcher Test ist bei dieser Datenlage angebracht, um zu testen, ob
+    die Freundin tatsächlich Bio und nicht Bio-Milch am Geschmack
+    unterschieden kann?
+b)  Konnte die Freundin ihre Behauptung im Experiment nachweisen? Führen
+    Sie den angebrachten Test durch und berichten Sie das Resultat
+    inklusive Effektstärke.
 :::
 
 ::: solution
 TODO
 :::
-
 
 ::: {#covid-sterblichkeit .exercise}
 ```{=html}
@@ -4641,19 +5052,18 @@ gen_exr_covid_sterblichkeit <- function(){
     
   file_name <- '09-exr-covid-sterblichkeit.sav'
   dd %>% write_sav(file_name)
-  # corr_mat_pearson <- dd %>% cor()
-  # corr_mat_spearman <- dd %>% cor(method = "spearman")
-  # jmv_corr <- jmv::corrMatrix(dd, spearman = TRUE)$matrix$asDF %>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
-  # jmv_partcorr <- (dd %>% 
-  #   jmv::corrPart(vars = c('hns', 'ases'),controls = "age"))$matrix$asDF%>%
-  #   rename_with(~.x %>% str_replace_all("\\.|]", "") %>% str_replace_all("\\[","_"))
   return(mget(ls()))
 }
 exr_covid_sterblichkeit <- gen_exr_covid_sterblichkeit()
 ```
+
 <!-- TODO: Ausschöpfen odds ratio, etc -->
-Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert (fiktive Zahlen, siehe Daten in `r inline_code(exr_covid_sterblichkeit$file_name)`). Wie gross sind die Risiken, die Risikodifferenz, das relative Risiko und der odds ratio und wie werden diese Grössen interpretiert? Was sind UV und AV?
+
+Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert
+(fiktive Zahlen, siehe Daten in
+`r inline_code(exr_covid_sterblichkeit$file_name)`). Wie gross sind die
+Risiken, die Risikodifferenz, das relative Risiko und der odds ratio und
+wie werden diese Grössen interpretiert? Was sind UV und AV?
 :::
 
 ::: solution

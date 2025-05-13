@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  10 MAY 2025 12:37
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  13 MAY 2025 10:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2268,6 +2268,11 @@ File: figures/08-exr-test-spearman-jmv-output.jpg Graphic file (type bmp)
 
 ]
 \bbl@ensure@ngerman {Kapitel} 9.
+
+Underfull \hbox (badness 10000) in paragraph at lines 4236--4236
+[]\TU/lmr/bx/n/14.4 Zusammenhang dichotomer Merkmale
+ []
+
 File: figures/09-exm-alcohol-edu-data-view.jpg Graphic file (type bmp)
 <figures/09-exm-alcohol-edu-data-view.jpg>
 File: figures/09-exm-alcohol-edu-aggdata-view.jpg Graphic file (type bmp)
@@ -2280,25 +2285,22 @@ File: figures/09-exm-alcohol-edu-aggdata-view.jpg Graphic file (type bmp)
 File: figures/icons/caution.png Graphic file (type bmp)
 <figures/icons/caution.png>
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [171]
 File: figures/09-exm-dog-cancer-data-view.jpg Graphic file (type bmp)
 <figures/09-exm-dog-cancer-data-view.jpg>
 
-Underfull \hbox (badness 1442) in paragraph at lines 4302--4303
+Underfull \hbox (badness 1442) in paragraph at lines 4383--4388
 []\TU/lmr/m/n/10 Um diese Daten korrekt in \TU/lmtt/m/n/10 Jamovi \TU/lmr/m/n/10 einzulesen, kann unter \TU/lmtt/m/n/10 Analysen >
  []
 
 
-Underfull \hbox (badness 3815) in paragraph at lines 4302--4303
+Underfull \hbox (badness 3815) in paragraph at lines 4383--4388
 \TU/lmtt/m/n/10 Häufigkeiten > Kreuztabellen > Unabhängige Stichproben \TU/lmr/m/n/10 die Anzahl
  []
 
 
-Underfull \hbox (badness 2158) in paragraph at lines 4302--4303
+Underfull \hbox (badness 2158) in paragraph at lines 4383--4388
 \TU/lmr/m/n/10 Fälle bei \TU/lmtt/m/n/10 Anzahl (optional) \TU/lmr/m/n/10 eingelesen werden. Dies resultiert in der
  []
 
@@ -2307,33 +2309,92 @@ File: figures/09-exm-dog-cancer-aggdata-view.jpg Graphic file (type bmp)
 
 
 [172]
-Underfull \hbox (badness 10000) in paragraph at lines 4315--4316
+Underfull \hbox (badness 10000) in paragraph at lines 4410--4412
 
  []
 
 File: figures/icons/caution.png Graphic file (type bmp)
 <figures/icons/caution.png>
 
+Underfull \hbox (badness 10000) in paragraph at lines 4446--4446
+[]\TU/lmr/bx/n/14.4 Zusammenhang dichotomer Merkmale
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 4448--4453
+\TU/lmr/m/n/10 In \TU/lmtt/m/n/10 Jamovi > Kreuztabellen > Statistiken > Tests \TU/lmr/m/n/10 stehen verschiedene
+ []
+
+
 
 [173]
+Underfull \hbox (badness 1442) in paragraph at lines 4471--4478
+\TU/lmr/m/n/10 statistik ist standardnormalverteilt. Dies entspricht der Normalverteilung
+ []
+
+
+Underfull \hbox (badness 2142) in paragraph at lines 4471--4478
+\TU/lmr/m/n/10 berechnete Teststatistik aufgrund der Zufallsstichprobenziehung zustande
+ []
+
+
 
 [174]
 
 [175]
+File: aps_statistik1_files/figure-latex/chisq-distribution-1.pdf Graphic file (type pdf)
+<use aps_statistik1_files/figure-latex/chisq-distribution-1.pdf>
 
-[176
 
-]
+[176]
+File: figures/09-exm-red-white-wine-aggdata-view.jpg Graphic file (type bmp)
+<figures/09-exm-red-white-wine-aggdata-view.jpg>
+
 
 [177]
+File: figures/09-exm-red-white-wine-aggdata-view-alt.jpg Graphic file (type bmp)
+<figures/09-exm-red-white-wine-aggdata-view-alt.jpg>
 
-[178] (./aps_statistik1.bbl
 
-[179
+[178]
+File: figures/icons/caution.png Graphic file (type bmp)
+<figures/icons/caution.png>
+
+Underfull \hbox (badness 1838) in paragraph at lines 4600--4601
+[]\TU/lmr/m/n/10 Da für den exakten Test nach Fisher und Yates die
+ []
+
+
+Underfull \hbox (badness 1270) in paragraph at lines 4612--4619
+\TU/lmr/m/n/10 Menschen mit einer Autismus-Spektrum-Störung auswirkt. Dafür wurden
+ []
+
+
+
+[179]
+Underfull \hbox (badness 1275) in paragraph at lines 4706--4712
+\TU/lmr/m/n/10 ja oder nein) befragt. Die Forschenden haben die Daten im Datensatz
+ []
+
+
+
+[180]
+
+[181]
+
+[182
 
 ]
 
-[180
+[183]
+
+[184] (./aps_statistik1.bbl
+
+[185
+
+]
+
+[186
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 4--7
@@ -2367,21 +2428,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--58
 
 
 
-[181]
+[187]
 
-[182]
-Underfull \hbox (badness 10000) in paragraph at lines 151--155
+[188]
+Underfull \hbox (badness 10000) in paragraph at lines 157--161
 []\TU/lmr/m/n/10 Zimmerman, D. W. (2004).  A note on preliminary tests
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--155
+Underfull \hbox (badness 10000) in paragraph at lines 157--161
 \TU/lmr/m/n/10 of equality of variances.  57(1):173–181.  _eprint:
  []
 
 )
 
-[183] (./aps_statistik1.aux)
+[189] (./aps_statistik1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -2391,12 +2452,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 34750 strings out of 475846
- 771034 string characters out of 5773212
- 1186586 words of memory out of 5000000
- 57057 multiletter control sequences out of 15000+600000
+ 34827 strings out of 475846
+ 774661 string characters out of 5773212
+ 1187728 words of memory out of 5000000
+ 57131 multiletter control sequences out of 15000+600000
  565418 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,10n,114p,2090b,738s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aps_statistik1.pdf (183 pages).
+Output written on aps_statistik1.pdf (189 pages).

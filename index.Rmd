@@ -50,6 +50,14 @@ write_sav <- function(x, file_name){
     haven::write_sav(paste0(path_data, file_name))
 }
 
+clean_jmv_colnames <- function(dd){
+  dd %>% 
+    rename_with(~.x %>% 
+                  str_replace_all("\\.|]", "") %>% 
+                  str_replace_all("\\[","_")) %>% 
+    return()
+}
+
 crop <- function(x, x_min, x_max){
     x[which(x < x_min)] <- x_min
     x[which(x > x_max)] <- x_max
