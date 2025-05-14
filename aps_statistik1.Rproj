@@ -15,3 +15,5 @@ LaTeX: XeLaTeX
 
 BuildType: Website
 WebsitePath: C:/Users/danth/switchdrive/FHNW APS/10 Course/aps_statistik1
+
+MarkdownWrap: None

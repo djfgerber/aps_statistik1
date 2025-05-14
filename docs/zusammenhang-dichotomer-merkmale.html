@@ -356,7 +356,7 @@ aussagekräftig den Anteil kranker Hunde pro Gruppe oder das daraus
 folgende relative Risiko zu bestimmen.</p>
 <p><span id="customdef-odds-ratio" class="customdef">Stattdessen wird in diesen Fällen das <strong>Chancenverhältnis</strong> (eng. odds
 ratio)</span><br />
-<span class="math display">\[OR = \frac{a\cdot d}{b\cdot c} = \frac{191\cdot 300}{304\cdot 300} = 1.34\]</span>
+<span class="math display">\[OR =\frac{\frac{a}{c}}{\frac{b}{d}} = \frac{a\cdot d}{b\cdot c} = \frac{191\cdot 641}{300\cdot 304} = 1.34\]</span>
 berechnet, wobei <span class="math inline">\(a, b, c\)</span> und <span class="math inline">\(d\)</span> den Anzahl Fällen in der
 Vierfeldertafel von oben nach unten und von links nach rechts
 entsprechen. <span id="customdef-odds" class="customdef">Die <strong>Chance</strong> (eng. odds) ist dabei eine Art
@@ -367,7 +367,7 @@ haben also <span class="math inline">\(a/c=191/304=0.63\)</span> und für die an
 <span class="math inline">\(b/d=300/641=0.47\)</span>. Es gilt, je höher die Chance desto höher die
 Eintreffwahrscheinlichkeit. Ein Chancenverhältnis von <span class="math inline">\(1.34\)</span>
 schliesslich bedeutet, dass die Chance einen Tumor zu entwickeln für
-einen Herbizid belasteten Hund <span class="math inline">\(1.34\)</span> mal so hoch ist wie für einen
+einen Herbizid belasteten Hund <span class="math inline">\(1.34\)</span>-mal so hoch ist wie für einen
 nicht Herbizid belasteten.</p>
 <div class="caution">
 <div class="remark">
@@ -378,6 +378,8 @@ von der Wahl der ursächlichen und Risikovariable ist
 <span class="math display">\[ OR = \frac{a\cdot d}{b\cdot c} = \frac{a\cdot d}{c\cdot b}.\]</span></li>
 <li>Für kleine Fallzahlen (Risiko <span class="math inline">\(&lt;10\%\)</span>) liegt das Chancenverhältnis
 nahe am relativen Risiko.</li>
+<li>Das Chancenverhältnis lässt, wie das relative Risiko, keinen Schluss
+über das absolute Risiko zu.</li>
 </ul>
 </div>
 </div>
@@ -393,14 +395,14 @@ werden darf.</p>
 <h3><span class="header-section-number">9.2.1</span> <span class="math inline">\(z\)</span>-Test für den Unterschied zwischen den zwei Anteilen<a href="zusammenhang-dichotomer-merkmale.html#z-test-für-den-unterschied-zwischen-den-zwei-anteilen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Wenn die Merkmale unabhängig voneinander sind, dann sollte das Risiko in
 beiden Gruppen ungefähr gleich gross sein. Dies impliziert auch, dass
-die Risikodifferenz <span class="math inline">\(0\)</span> ist. Beim
-<span class="math inline">\(z\)</span>-Test für den Unterschied zwischen den zwei Anteilen wird also
-<span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span> und damit äquivalent <span class="math inline">\(H_0: \pi_1 = \pi_2\)</span>
-getestet. Wird die Nullhypothese verworfen, wird fortan an die
-Alternativhypothese <span class="math inline">\(H_1: \pi_1 \neq \pi_2\)</span> geglaubt. Aus Platzgründen
-werden hier nur die zweiseitigen Hypothesenstellungen erwähnt. Die
-einseitigen Hypothesenstellungen funktionieren aber anaolg zu den bisher
-gesehen Tests.</p>
+die Risikodifferenz <span class="math inline">\(0\)</span> ist. Beim <span class="math inline">\(z\)</span>-Test für den Unterschied zwischen
+den zwei Anteilen wird also <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span> und damit
+äquivalent <span class="math inline">\(H_0: \pi_1 = \pi_2\)</span> getestet. Wird die Nullhypothese
+verworfen, wird fortan an die Alternativhypothese
+<span class="math inline">\(H_1: \pi_1 \neq \pi_2\)</span> geglaubt. Aus Platzgründen werden hier nur die
+zweiseitigen Hypothesenstellungen erwähnt. Die einseitigen
+Hypothesenstellungen funktionieren aber anaolg zu den bisher gesehen
+Tests.</p>
 <p>Die Teststatistik für den <span class="math inline">\(z\)</span>-Test der Risikodifferenz ist</p>
 <p><span class="math display">\[z = \frac{p_1-p_2}{\sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}}} = -1.85,\]</span></p>
 <p>wobei <span class="math inline">\(n_1\)</span> und <span class="math inline">\(n_2\)</span> der Anzahl vom Risiko betroffene bzw. nicht
@@ -409,14 +411,27 @@ ist diese Teststatistik ist standardnormalverteilt. Dies entspricht der
 Normalverteilung in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:t-distribution">4.7</a>. Je grösser die
 Differenz der beiden Risiken, desto weiter weg von <span class="math inline">\(0\)</span> ist die
 Teststatistik und desto unwahrscheinlicher ist es, dass die berechnete
-Teststatistik aufgrund der Zufallsstichprobenziehung zustande kommt. Der genaue <span class="math inline">\(p\)</span>-Wert kann mit <code>Jamovi</code> unter <code>Tests &gt; z-Test für den Unterschied zwischen den zwei Anteilen</code> ermittelt werden. Mit <span class="math inline">\(p = .0649\)</span> kann die Nullhypothese knapp nicht verworfen werden. Die beiden Anteile <span class="math inline">\(\pi_1\)</span> und <span class="math inline">\(\pi_2\)</span> könnten also gleich sein.</p>
+Teststatistik aufgrund der Zufallsstichprobenziehung zustande kommt. Der
+genaue <span class="math inline">\(p\)</span>-Wert kann mit <code>Jamovi</code> unter
+<code>Tests &gt; z-Test für den Unterschied zwischen den zwei Anteilen</code>
+ermittelt werden. Mit <span class="math inline">\(p = .0649\)</span> kann die Nullhypothese knapp nicht
+verworfen werden. Die beiden Anteile <span class="math inline">\(\pi_1\)</span> und <span class="math inline">\(\pi_2\)</span> könnten also
+gleich sein.</p>
 <blockquote>
-<p>Ein zweiseitiger <span class="math inline">\(z\)</span>-Test für den Unterschied zwischen den zwei Anteilen ergibt, dass der Anteil der mehr als einmal pro Woche alkoholkonsumierenden Personen mit Tertiärbildung (<span class="math inline">\(p_1 = 81.5\%\)</span>), nicht signifikant von ebendiesem Anteil der Personen mit anderer Bildung (<span class="math inline">\(p_2 = 76.5\%\)</span>) unterscheidet, <span class="math inline">\(z = -1.85, p = .0649\)</span>.</p>
+<p>Ein zweiseitiger <span class="math inline">\(z\)</span>-Test für den Unterschied zwischen den zwei
+Anteilen ergibt, dass der Anteil der mehr als einmal pro Woche
+alkoholkonsumierenden Personen mit Tertiärbildung (<span class="math inline">\(p_1 = 81.5\%\)</span>),
+nicht signifikant von ebendiesem Anteil der Personen mit anderer
+Bildung (<span class="math inline">\(p_2 = 76.5\%\)</span>) unterscheidet, <span class="math inline">\(z = -1.85, p = .0649\)</span>.</p>
 </blockquote>
 </div>
 <div id="chi2-test" class="section level3 hasAnchor" number="9.2.2">
 <h3><span class="header-section-number">9.2.2</span> <span class="math inline">\(\chi^2\)</span>-Test<a href="zusammenhang-dichotomer-merkmale.html#chi2-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span id="customdef-chisq-test" class="customdef">Der <strong><span class="math inline">\(\chi^2\)</span>-Test</strong> (sprich ‘chi-quadrat-test’) ist eine zweite allgemeinere Variante, um den Zusammenhang zwischen zwei dichotomen Merkmalen zu testen.</span> Die Nullhypothese ist wiederum, dass die beiden Merkmale unabhängig voneinander sind.</p>
+<p><span id="customdef-chisq-test" class="customdef">Der <span class="math inline">\(\chi^2\)</span>-Test (sprich ‘chi-quadrat-test’) ist eine zweite
+allgemeinere Variante, um den Zusammenhang zwischen zwei dichotomen
+Merkmalen zu testen.</span>
+Die Nullhypothese ist wiederum, dass die beiden Merkmale unabhängig
+voneinander sind.</p>
 <p>Um nun die Teststatistik näher verstehen zu können, muss ein kurzer
 Exkurs in Wahrscheinlichkeitslehre unternommen werden. Diese besagt
 nämlich, dass wenn zwei Ereignisse A und B unabhängig voneinander
@@ -435,37 +450,87 @@ p(\text{[alkohol &gt; 1x pro Woche] und tertiär}) = \frac{476}{784} = 0.60714
 <p><span class="math display">\[
 p(\text{[alkohol &gt; 1x pro Woche]}) \cdot p(\text{tertiär}) = \frac{784}{1000}\cdot \frac{622}{1000} = 0.48765
 \]</span></p>
-<p>entsprechen. Die Zahlen zeigen an, dass dies für diese Stichprobe klar nicht gegeben ist. Die beobachtete Differenz könnte sich aber auch aus der Zufallsstichprobenziehung ergeben haben. Der <span class="math inline">\(\chi^2\)</span>-Vierfeldertest vergleicht nun in jeder Zelle <span class="math inline">\(i\)</span> der Vierfeldertafel die tatsächlich beobachteten Beobachtungen <span class="math inline">\(o_i\)</span> (observed) mit den erwarteten Beobachtungen <span class="math inline">\(e_i\)</span> (expected), wenn die Unabhängigkeit gegeben wäre. Letztere berechnet sich durch <span class="math inline">\(p(A) \cdot p(B) \cdot n\)</span>, wobei <span class="math inline">\(n\)</span> die Gesamtanzahl Beobachtungen ist. Im Beispiel</p>
+<p>entsprechen. Die Zahlen zeigen an, dass dies für diese Stichprobe klar
+nicht gegeben ist. Die beobachtete Differenz könnte sich aber auch aus
+der Zufallsstichprobenziehung ergeben haben. Der <span class="math inline">\(\chi^2\)</span>-Vierfeldertest
+vergleicht nun in jeder Zelle <span class="math inline">\(i\)</span> der Vierfeldertafel die tatsächlich
+beobachteten Beobachtungen <span class="math inline">\(o_i\)</span> (observed) mit den erwarteten
+Beobachtungen <span class="math inline">\(e_i\)</span> (expected), wenn die Unabhängigkeit gegeben wäre.
+Letztere berechnet sich durch <span class="math inline">\(p(A) \cdot p(B) \cdot n\)</span>, wobei <span class="math inline">\(n\)</span> die
+Gesamtanzahl Beobachtungen ist. Im Beispiel</p>
 <p><span class="math display">\[e_1 = p(\text{[alkohol &gt; 1x pro Woche]}) \cdot p(\text{tertiär}) \cdot n =0.48765 \cdot  1000 = 487.648 \]</span>
-Je weiter diese Zahl von der beobachteten Zahl abweicht, desto unwahrscheinlicher ist die Unabhängigkeit. Der <span class="math inline">\(\chi^2\)</span> trägt dem Rechnung, indem die Teststatistik</p>
+Je weiter diese Zahl von der beobachteten Zahl abweicht, desto
+unwahrscheinlicher ist die Unabhängigkeit. Der <span class="math inline">\(\chi^2\)</span> trägt dem
+Rechnung, indem die Teststatistik</p>
 <p><span class="math display">\[\chi^2 = \sum_{i = 1}^k \frac{(o_i - e_i)^2}{e_i} = 3.41,\]</span>
-wobei <span class="math inline">\(k\)</span> hier für die Anzahl Zellen steht. Eine grosse Teststatistik spricht also gegen die Unabhängigkeit.</p>
-<p>Wenn die Stichprobenziehung oft wiederholt wird, kann festgestellt werden, dass diese Teststatistik einer bekannten Verteilung, der <span class="math inline">\(\chi^2\)</span>-Verteilung bei <span class="math inline">\(df = 1\)</span> Freiheitsgraden folgt. <span id="customdef-chisq-distribution" class="customdef">Die <strong><span class="math inline">\(\chi^2\)</span>-Verteilung</strong> ist für verschiedene Freiheitsgrade in Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:chisq-distribution">9.5</a> dargestellt.</span>
-Die Teststatistik des <span class="math inline">\(\chi^2\)</span>-Vierfeldertests <span class="math inline">\(3.41\)</span> wird also mit der roten Verteilung in der Abbildung verglichen. Die Werte rechts auf der Abbildung sind seltener und der beobachtete Wert liegt so, dass er zu den <span class="math inline">\(p = .065\)</span> seltensten Beobachtungen zählt, sofern die Unabhängigkeit gilt. Dies reicht hier gerade nicht, um die Nullhypothese bei Signifikanzniveau <span class="math inline">\(\alpha = 5\%\)</span> zu verwerfen.</p>
+wobei <span class="math inline">\(k\)</span> hier für die Anzahl Zellen steht. Eine grosse Teststatistik
+spricht also gegen die Unabhängigkeit.</p>
+<p>Wenn die Stichprobenziehung oft wiederholt wird, kann festgestellt
+werden, dass diese Teststatistik einer bekannten Verteilung, der
+<span class="math inline">\(\chi^2\)</span>-Verteilung bei <span class="math inline">\(df = 1\)</span> Freiheitsgraden folgt. <span id="customdef-chisq-distribution" class="customdef">Die
+<span class="math inline">\(\chi^2\)</span>-Verteilung ist für verschiedene Freiheitsgrade in Abbildung
+<a href="zusammenhang-dichotomer-merkmale.html#fig:chisq-distribution">9.5</a>
+dargestellt.</span>
+Die Teststatistik des <span class="math inline">\(\chi^2\)</span>-Vierfeldertests
+<span class="math inline">\(3.41\)</span> wird also mit
+der roten Verteilung in der Abbildung verglichen. Die Werte rechts auf
+der Abbildung sind seltener und der beobachtete Wert liegt so, dass er
+zu den <span class="math inline">\(p = .065\)</span>
+seltensten Beobachtungen zählt, sofern die Unabhängigkeit gilt. Dies
+reicht hier gerade nicht, um die Nullhypothese bei Signifikanzniveau
+<span class="math inline">\(\alpha = 5\%\)</span> zu verwerfen.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:chisq-distribution"></span>
 <img src="aps_statistik1_files/figure-html/chisq-distribution-1.png" alt="Chiquadrat-Verteilungen mit 1, 4 und 9 Freiheitsgraden." width="672" />
 <p class="caption">
 Abbildung 9.5: Chiquadrat-Verteilungen mit 1, 4 und 9 Freiheitsgraden.
 </p>
 </div>
-<p>Um die Effektstärke des <span class="math inline">\(\chi^2\)</span>-Tests anzugeben kann Cramérs <span class="math inline">\(\phi\)</span></p>
+<p><span id="customdef-cramers-phi" class="customdef">Um die Effektstärke des <span class="math inline">\(\chi^2\)</span>-Tests anzugeben kann <strong>Cramérs <span class="math inline">\(\phi\)</span></strong></span></p>
 <p><span class="math display">\[\phi = \sqrt{\frac{\chi^2}{n}} = \sqrt{\frac{3.41}{1000}} = 0.06\]</span></p>
-<p>Cramérs <span class="math inline">\(\phi\)</span> immer grösser als <span class="math inline">\(0\)</span> und kleiner als <span class="math inline">\(1\)</span>. Je weiter <span class="math inline">\(\phi\)</span> von <span class="math inline">\(0\)</span> weg ist, desto stärker sind die Merkmale voneinander abhängig. Da dies auch als Zusammenhangsmass gesehen werden kann wird Cramérs <span class="math inline">\(\phi\)</span> auch Vierfelderkorrelation genannt. Die Interpretation als Effektstärke erfolgt dabei wir für die Korrelation. Ein Wert von <span class="math inline">\(0.06\)</span> wird demnach als schwach eingestuft.</p>
+<p>Cramérs <span class="math inline">\(\phi\)</span> immer grösser als <span class="math inline">\(0\)</span> und kleiner als <span class="math inline">\(1\)</span>. Je weiter
+<span class="math inline">\(\phi\)</span> von <span class="math inline">\(0\)</span> weg ist, desto stärker sind die Merkmale voneinander
+abhängig. <span id="customdef-vierfelderkorrelation" class="customdef">Da dies auch als Zusammenhangsmass gesehen werden kann wird
+Cramérs <span class="math inline">\(\phi\)</span> auch <strong>Vierfelderkorrelation</strong> genannt.</span> Die Interpretation als Effektstärke erfolgt dabei wir für die Korrelation. Ein Wert von
+<span class="math inline">\(0.06\)</span> wird demnach als schwach eingestuft.</p>
 <blockquote>
-<p>Ein <span class="math inline">\(\chi^2\)</span>-Test ergibt, dass der Alkoholkonsum (mehr/weniger als 1x pro Woche) und Bildung (Tertiär/andere Bildung) nicht signifikant abhängig voneinander sind, <span class="math inline">\(\chi^2 (1) = 3.41, p = .0649, \phi = 0.06\)</span>.</p>
+<p>Ein <span class="math inline">\(\chi^2\)</span>-Test ergibt, dass der Alkoholkonsum (mehr/weniger als 1x
+pro Woche) und Bildung (Tertiär/andere Bildung) (<span class="math inline">\(p_1-p_2= 0.05\)</span>, <span class="math inline">\(RR = 1.06\)</span>) nicht signifikant
+abhängig voneinander sind,
+<span class="math inline">\(\chi^2 (1) = 3.41, p = .0649, \phi = 0.06\)</span>.</p>
 </blockquote>
-<p>Der <span class="math inline">\(\chi^2\)</span> Test hat für die Vierfeldervariante immer den gleichen <span class="math inline">\(p\)</span>-Wert wie der Test der Risikodifferenz auf <span class="math inline">\(0\)</span>. Beide Tests basieren auf dem zentralen Grenzwertsatz und dürfen deshalb nur angewendet werden, wenn gewisse Voraussetzungen erfüllt sind. Die Voraussetzung ist, dass insgesamt <span class="math inline">\(40\)</span> oder mehr Beobachtungen vorliegen müssen. <span id="customdef-chisq-corrected" class="customdef">Ist dies nicht der Fall, aber in jeder Zelle ist die Anzahl der erwarteten Beobachtungen bei <span class="math inline">\(5\)</span> oder grösser, so kann der <strong><span class="math inline">\(\chi^2\)</span>-Test mit Kontinuitätskorrektur</strong> oder Yates-Korrektur verwendet werden</span>
+<p>Der <span class="math inline">\(\chi^2\)</span> Test hat für die Vierfeldervariante immer den gleichen
+<span class="math inline">\(p\)</span>-Wert wie der Test der Risikodifferenz auf <span class="math inline">\(0\)</span>. Beide Tests basieren
+auf dem zentralen Grenzwertsatz und dürfen deshalb nur angewendet
+werden, wenn gewisse Voraussetzungen erfüllt sind. Die Voraussetzung
+ist, dass insgesamt <span class="math inline">\(40\)</span> oder mehr Beobachtungen vorliegen müssen. <span id="customdef-chisq-corrected" class="customdef">Ist
+dies nicht der Fall, aber in jeder Zelle ist die Anzahl der erwarteten
+Beobachtungen bei <span class="math inline">\(5\)</span> oder grösser, so kann der <span class="math inline">\(\chi^2\)</span>-Test mit
+<strong>Kontinuitätskorrektur</strong> oder Yates-Korrektur verwendet
+werden</span>
 <span class="math display">\[\chi^2_{Yates} = \sum_{i = 1}^k \frac{(|o_i - e_i| -0.5)^2}{e_i}.\]</span></p>
-<p>In Beispiel sind mit <span class="math inline">\(n = 1000\)</span> genügend Beobachtungen vorhanden, um ohne die Kontinuitätskorrektur auszukommen. Der Bericht des Tests ist genau gleich wie der Bericht des <span class="math inline">\(\chi^2\)</span>-Test ausser, dass der Name des Verfahrens geändert wird:</p>
+<p>In Beispiel sind mit <span class="math inline">\(n = 1000\)</span> genügend Beobachtungen vorhanden, um
+ohne die Kontinuitätskorrektur auszukommen. Der Bericht des Tests ist
+genau gleich wie der Bericht des <span class="math inline">\(\chi^2\)</span>-Test ausser, dass der Name des
+Verfahrens geändert wird:</p>
 <blockquote>
-<p>Ein <span class="math inline">\(\chi^2\)</span>-Test mit Kontinuitätskorrektur ergibt, dass der Alkoholkonsum …</p>
+<p>Ein <span class="math inline">\(\chi^2\)</span>-Test mit Kontinuitätskorrektur ergibt, dass der
+Alkoholkonsum …</p>
 </blockquote>
 </div>
 <div id="exakter-test-nach-fisher-und-yates" class="section level3 hasAnchor" number="9.2.3">
 <h3><span class="header-section-number">9.2.3</span> Exakter Test nach Fisher und Yates<a href="zusammenhang-dichotomer-merkmale.html#exakter-test-nach-fisher-und-yates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Wenn die erwarteten Beobachtungen in mindestens einer Zelle kleiner als <span class="math inline">\(5\)</span> sind, dann ist die Approximation der Verteilung der Teststatistik durch den <span class="math inline">\(\chi^2\)</span>-Test sogar mit Kontinuitätskorrektur zu ungenau.</p>
+<p>Wenn die erwarteten Beobachtungen in mindestens einer Zelle kleiner als
+<span class="math inline">\(5\)</span> sind, dann ist die Approximation der Verteilung der Teststatistik
+durch den <span class="math inline">\(\chi^2\)</span>-Test sogar mit Kontinuitätskorrektur zu ungenau.</p>
 <div class="example">
-<p><span id="exm:red-white-wine" class="example"><strong>Beispiel 9.3  (Wette: Unterscheiden von Rot- und Weisswein) </strong></span>Nina behauptet, sie kann Rotwein von Weisswein am Geschmack unterscheiden. Sie bereiten ein Experiment vor, um dies zu testen verbinden Nina die Augen. Als Statistiklernende wissen sie, dass es nicht genügt, dass Nina einmal die richtige Weinsorte wählt - dies könnte ja zufällig richtig sein. Stattdessen werden <span class="math inline">\(5\)</span> Gläser Rotwein und <span class="math inline">\(4\)</span> Gläser Weisswein vorbereitet und Nina in zufälliger Reihenfolge zum Probieren angeboten. Das Experiment endet mi den Zahlen in Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-red-white-wine-aggdata-view">9.6</a>.</p>
+<p><span id="exm:red-white-wine" class="example"><strong>Beispiel 9.3  (Wette: Unterscheiden von Rot- und Weisswein) </strong></span>Nina behauptet, sie kann Rotwein von Weisswein am Geschmack
+unterscheiden. Sie bereiten ein Experiment vor, um dies zu testen
+verbinden Nina die Augen. Als Statistiklernende wissen sie, dass es
+nicht genügt, dass Nina einmal die richtige Weinsorte wählt - dies
+könnte ja zufällig richtig sein. Stattdessen werden <span class="math inline">\(5\)</span> Gläser Rotwein
+und <span class="math inline">\(4\)</span> Gläser Weisswein vorbereitet und Nina in zufälliger Reihenfolge
+zum Probieren angeboten. Das Experiment endet mi den Zahlen in Abbildung
+<a href="zusammenhang-dichotomer-merkmale.html#fig:exm-red-white-wine-aggdata-view">9.6</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-red-white-wine-aggdata-view"></span>
 <img src="figures/09-exm-red-white-wine-aggdata-view.jpg" alt="Vierfeldertafel Wette Unterschied Rot- und Weisswein."  />
 <p class="caption">
@@ -473,25 +538,75 @@ Abbildung 9.6: Vierfeldertafel Wette Unterschied Rot- und Weisswein.
 </p>
 </div>
 </div>
-<p>Da nur wenige Beobachtungen gemacht wurden, kann die Wahrscheinlichkeit eines Ausgangs des Experiments mit Hilfe der hypergeometrischen-Verteilung genau berechnet werden. Die Wahrscheinlichkeit für den Experimentausgang in Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-red-white-wine-aggdata-view">9.6</a> entspricht <span class="math inline">\(p_0 = 0.159\)</span>.</p>
-<p>Der <span class="math inline">\(p\)</span>-Wert eines Tests ist bekannterweise die Wahrscheinlichkeit die berechnetet Teststatistik zu beobachten <em>oder eine unwahrscheinlichere Situation im Sinne der Alternativhypothese</em>. Um dem zweiten Teil dieser Definition gerecht zu werden, werden nun andere, unwahrscheinlichere Experimentausgänge bewertet. Um dies zu erreichen, wird hier angenommen, dass in jedem Fall die Randsummen immer gleichbleiben (also <span class="math inline">\(5\)</span> für ist Rotwein, <span class="math inline">\(4\)</span> für ist Weisswein, <span class="math inline">\(5\)</span> für sagt Rotwein und <span class="math inline">\(4\)</span> für sagt Weisswein). Wenn ist und sagt unabhängig voneinander ist und Nina also die Weinfarben nicht auseinanderhalten kann, dann wäre es unwahrscheinlicher, wenn sie alle <span class="math inline">\(5\)</span> Rotweine als solche erkannt hätte. Wenn die Randsummen gleich gehalten werden, entspricht dies der Situation in Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-red-white-wine-aggdata-view-alt">9.7</a>. Die Wahrscheinlichkeit für diese Situation ist <span class="math inline">\(p_1 = 0.008\)</span>.</p>
+<p>Da nur wenige Beobachtungen gemacht wurden, kann die Wahrscheinlichkeit
+eines Ausgangs des Experiments mit Hilfe der
+hypergeometrischen-Verteilung genau berechnet werden. Die
+Wahrscheinlichkeit für den Experimentausgang in Abbildung
+<a href="zusammenhang-dichotomer-merkmale.html#fig:exm-red-white-wine-aggdata-view">9.6</a> entspricht <span class="math inline">\(p_0 = 0.159\)</span>.</p>
+<p>Der <span class="math inline">\(p\)</span>-Wert eines Tests ist bekannterweise die Wahrscheinlichkeit die
+berechnetet Teststatistik zu beobachten <em>oder eine unwahrscheinlichere
+Situation im Sinne der Alternativhypothese</em>. Nina will zeigen, dass Sie
+Rotwein und Weisswein richtig erkennen kann, was der Alternativhypothese
+entspricht. Ihr ist gedient, wenn sie Rot- und Weisswein überzufällig
+oft richtig erkennt, nicht aber, wenn sie den Rot- und Weisswein
+unterdurchschnittlich oft richtig erkennt. Die Alternativhypothese ist
+also hier einseitig formuliert zu verstehen.</p>
+<p>Um dem zweiten Teil dieser Definition des <span class="math inline">\(p\)</span>-Werts gerecht zu werden,
+werden nun andere, unwahrscheinlichere Experimentausgänge im Sinne der
+Alternativhypothese bewertet. Um dies zu erreichen, wird hier
+angenommen, dass in jedem Fall die Randsummen immer gleichbleiben (also
+<span class="math inline">\(5\)</span> für ist Rotwein, <span class="math inline">\(4\)</span> für ist Weisswein, <span class="math inline">\(5\)</span> für sagt Rotwein und <span class="math inline">\(4\)</span>
+für sagt Weisswein). Wenn ist und sagt unabhängig voneinander ist und
+Nina also die Weinfarben nicht auseinanderhalten kann, dann wäre es
+unwahrscheinlicher, wenn sie alle <span class="math inline">\(5\)</span> Rotweine als solche erkannt hätte.
+Wenn die Randsummen gleich gehalten werden, entspricht dies der
+Situation in Abbildung <a href="zusammenhang-dichotomer-merkmale.html#fig:exm-red-white-wine-aggdata-view-alt">9.7</a>.
+Die Wahrscheinlichkeit für diese Situation ist <span class="math inline">\(p_1 = 0.008\)</span>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-red-white-wine-aggdata-view-alt"></span>
 <img src="figures/09-exm-red-white-wine-aggdata-view-alt.jpg" alt="Vierfeldertafel Wette Unterschied Rot- und Weisswein."  />
 <p class="caption">
 Abbildung 9.7: Vierfeldertafel Wette Unterschied Rot- und Weisswein.
 </p>
 </div>
-<p>Grundsätzlich können hier noch weitere Situationen aufgezählt werden. Im Beispiel sind mit der eben beschriebenen Situation und der ursprünglichen Situation jedoch die Alternativen erschöpft: Es kann nicht sein, dass Nina <span class="math inline">\(6\)</span>-mal Rotwein richtig voraussagt, wenn sie insgesamt nur <span class="math inline">\(5\)</span>-mal Rotwein sagt.</p>
-<p>Nun werden die Wahrscheinlichkeiten aller Situation aufsummiert, <span class="math inline">\(p = p_0 + p_1 + \ldots = 0.159+0.008 =0.167\)</span>. Da mit diesem Vorgehen genau der Definition des <span class="math inline">\(p\)</span>-Wertes gefolgt wurde, stellt dieses <span class="math inline">\(p\)</span> nun auch einen <span class="math inline">\(p\)</span>-Wert dar. <span id="customdef-fisher-yates" class="customdef">Der dazugehörige Test wird <strong>exakter Test nach Fisher und Yates</strong> oder einfach Fisher-Yates-Test genannt.</span></p>
+<p>Grundsätzlich können hier noch weitere Situationen aufgezählt werden. Im
+Beispiel sind mit der eben beschriebenen Situation und der
+ursprünglichen Situation jedoch die Alternativen erschöpft: Es kann
+nicht sein, dass Nina <span class="math inline">\(6\)</span>-mal Rotwein richtig voraussagt, wenn sie
+insgesamt nur <span class="math inline">\(5\)</span>-mal Rotwein sagt.</p>
+<p>Nun werden die Wahrscheinlichkeiten aller Situation aufsummiert,
+<span class="math inline">\(p = p_0 + p_1 + \ldots = 0.159+0.008 =0.167\)</span>. Da mit diesem Vorgehen
+genau der Definition des <span class="math inline">\(p\)</span>-Wertes gefolgt wurde, stellt dieses <span class="math inline">\(p\)</span> nun
+auch einen <span class="math inline">\(p\)</span>-Wert dar. <span id="customdef-fisher-yates" class="customdef">Der dazugehörige Test wird <strong>exakter Test nach
+Fisher und Yates</strong> oder einfach Fisher-Yates-Test
+genannt.</span></p>
 <blockquote>
-<p>Ein exakter Test nach Fisher und Yates ergibt, dass das Ansagen der Weinsorte von Nina nicht signifikant von der tatsächlichen Weinsorte abhängt, <span class="math inline">\(p = .167\)</span>.</p>
+<p>Ein einseitiger exakter Test nach Fisher und Yates ergibt, dass das
+Ansagen der Weinsorte von Nina nicht signifikant von der tatsächlichen
+Weinsorte abhängt, <span class="math inline">\(p = .167\)</span>.</p>
 </blockquote>
 <div class="caution">
 <div class="remark">
 <p><span id="unlabeled-div-70" class="remark"><em>Hinweis</em>. </span></p>
 <ul>
-<li>Der Test ist exakt, weil hier die Wahrscheinlichkeiten genau bestimmt wurden. Bei allen anderen bislang gesehenen Tests wird die Wahrscheinlichkeit über eine Verteilung angenähert. Diese Annäherung ist theoretisch nur richtig, wenn unendlich viele Beobachtungen gemacht werden, weshalb diese Art Test auch <strong>asymptotisch</strong> genannt wird. In der Praxis wird jedoch festgestellt, dass asymptotische Tests bereits für eine kleine Anzahl Beobachtungen (z. B. <span class="math inline">\(50\)</span> für den Einstichproben-<span class="math inline">\(t\)</span>-Test) hinreichend genau sind.</li>
-<li>Da für den exakten Test nach Fisher und Yates die Wahrscheinlichkeiten direkt berechnet werden, wird keine Teststatistik verwendet.</li>
+<li>Der Test ist exakt, weil hier die Wahrscheinlichkeiten genau
+bestimmt wurden. Bei allen anderen bislang gesehenen Tests wird die
+Wahrscheinlichkeit über eine Verteilung angenähert. Diese Annäherung
+ist theoretisch nur richtig, wenn unendlich viele Beobachtungen
+gemacht werden, weshalb diese Art Test auch <strong>asymptotisch</strong> genannt
+wird. In der Praxis wird jedoch festgestellt, dass asymptotische
+Tests bereits für eine kleine Anzahl Beobachtungen (z. B. <span class="math inline">\(50\)</span> für
+den Einstichproben-<span class="math inline">\(t\)</span>-Test) hinreichend genau sind.</li>
+<li>Da für den exakten Test nach Fisher und Yates die
+Wahrscheinlichkeiten direkt berechnet werden, wird keine
+Teststatistik verwendet.</li>
+<li>Um eine zweiseitige Alternative testen zu können, müsste der Test
+Wahrschinlichkeiten von gleichen oder extremeren Situationen in die
+andere Richtung dazusummieren. Solche Situationen können nicht immer
+eindeutig bestimmt werden. Im Beispiel wäre eine Möglichkeit, dass
+Nina <span class="math inline">\(1\)</span>-mal Rotwein sagt, wenn es Rotwein ist. Eine andere
+Möglichkeit wäre, dass Nina 1-mal Weisswein sagt, wenn es Weisswein
+ist. Grundsätztlich wird hier nur der einseitige extakte Test nach
+Fisher verlangt.</li>
 </ul>
 </div>
 </div>
@@ -514,18 +629,44 @@ befragt. Simulierte Daten befinden sich im Datensatz
 <code>09-exr-autism-epilepsy.sav</code>.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Lässt das Studiendesign das Berechnen des relativen Risikos zu?</li>
-<li>Berechnen Sie die Risikodifferenz, das relative Risiko und das
-Chancenverhältnis.</li>
+<li>Berechnen Sie das Risiko an Epilepsie zu leiden in den beiden Altersgruppen und anschliessend die Risikodifferenz, das relative Risiko und das Chancenverhältnis.</li>
 <li>Sichern Sie die Risikodifferenz zweiseitig gegen Null ab und
 berichten Sie das Ergebnis.</li>
-<li>Testen Sie den Zusammenhang mit einem Vierfeldertest und berichten
-Sie das Ergebnis. Welcher Test kommt zur Anwendung?</li>
+<li>Testen Sie den Zusammenhang mit einem <span class="math inline">\(\chi^2\)</span>-Test und berichten
+Sie das Ergebnis. Schätzen und interpretieren Sie auch die Effektstärke.</li>
 </ol>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-71" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-71" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+<a href="zusammenhang-dichotomer-merkmale.html#fig:sol-autism-epilepsy-input">9.8</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-autism-epilepsy-input"></span>
+<img src="figures/09-exr-autism-epilepsy-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
+<p class="caption">
+Abbildung 9.8: Jamovi Eingabe.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung
+<a href="zusammenhang-dichotomer-merkmale.html#fig:sol-autism-epilepsy-output">9.9</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-autism-epilepsy-output"></span>
+<img src="figures/09-exr-autism-epilepsy-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
+<p class="caption">
+Abbildung 9.9: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit kann die Frage nun beantwortet werden:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Ja die Leute wurden zufällig ausgewählt und nicht aufgrund der Präsenz oder Absenz eines Epilepsieanfalls.</li>
+<li>Das Risiko an Epilepsie zu leiden liegt bei <span class="math inline">\(12.0\%\)</span> für Kinder und <span class="math inline">\(26.0\%\)</span> für Jugendliche. Die Risikodifferenz liegt bei <span class="math inline">\(14.0\%\)</span>. Das Risiko ist für Jugendliche <span class="math inline">\(14.0\%\)</span> höher als für Kinder. Das relative Risiko liegt bei <span class="math inline">\(2.17\)</span>. Das Risiko ist für Jugendliche also <span class="math inline">\(2.17\)</span>-mal so hoch wie für Kinder. Das Chancenverhältnis liegt bei <span class="math inline">\(2.58\)</span>. Die Chance an Epilepsie zu leiden ist für Jugendliche also <span class="math inline">\(2.58\)</span>-mal so hoch wie für Kinder.</li>
+<li><blockquote>
+<p>Ein zweiseitiger <span class="math inline">\(z\)</span>-Test für den Unterschied zwischen zwei Anteilen ergibt, dass sich der Anteil der autistischen Jugendlichen mit Epilepsieanfällen (<span class="math inline">\(p_1 = 26.0\%\)</span>), signifikant vom Anteil der Kinder mit Epilepsieanfällen (<span class="math inline">\(p_2 = 12.0\%\)</span>) unterschiedet, <span class="math inline">\(z = 12.8, p &lt; .001\)</span>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Ein <span class="math inline">\(\chi^2\)</span>-Test ergibt, dass das Auftreten von Epilepsieanfällen (ja/nein) und die Alterskategorie (Jugendlich/Kind) (<span class="math inline">\(p_1-p_2= 0.14\)</span>, <span class="math inline">\(RR = 2.17\)</span>) signifikant voneinander abhängig sind, <span class="math inline">\(\chi^2 (1) = 163.16\)</span>, <span class="math inline">\(p &lt; 0.001\)</span>, <span class="math inline">\(\phi = 0.18.\)</span> Der Effekt ist schwach.</p>
+</blockquote></li>
+</ol>
 </details>
 </div>
 <div class="exercise">
@@ -548,8 +689,8 @@ Risikodifferenz, das relative Risiko und das Chancenverhältnis?
 Welche Wirkung hat das Trainingsverhalten auf das Risiko eine
 Depression zu erleiden?</li>
 <li>Sind die Variablen Depression und Trainingsverhalten voneinander
-abhängig, wenn bei <span class="math inline">\(\alpha = 5\%\)</span> getestet wird?</li>
-<li>Wie gross ist der Unterschied zwischen der Prüfgrösse mit und ohne
+abhängig, wenn bei <span class="math inline">\(\alpha = 5\%\)</span> mit einem <span class="math inline">\(\chi^2\)</span>-Test getestet wird?</li>
+<li>Ist die Kontinuitätskorrektur angebracht? Wie gross ist der Unterschied zwischen der Teststatistik mit und ohne
 Yates-Korrektur hier?</li>
 <li>Wie gross ist die Vierfelderkorrelation zwischen den beiden
 Variablen? Interpretieren Sie den Zusammenhang.</li>
@@ -558,11 +699,28 @@ Variablen? Interpretieren Sie den Zusammenhang.</li>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-72" class="solution"><em>Lösung</em>. </span></p>
+<p><span id="unlabeled-div-72" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+<a href="zusammenhang-dichotomer-merkmale.html#fig:sol-depression-training-input">9.10</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-depression-training-input"></span>
+<img src="figures/09-exr-depression-training-jmv-input.jpg" alt="Jamovi Eingabe."  />
+<p class="caption">
+Abbildung 9.10: Jamovi Eingabe.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung
+<a href="zusammenhang-dichotomer-merkmale.html#fig:sol-depression-training-output">9.11</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-depression-training-output"></span>
+<img src="figures/09-exr-depression-training-aggdata-view.jpg" alt="Jamovi Ausgabe."  /><img src="figures/09-exr-depression-training-jmv-output.jpg" alt="Jamovi Ausgabe."  />
+<p class="caption">
+Abbildung 9.11: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit kann die Frage nun beantwortet werden:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Die Risikovariable ist hier eine Depression zu haben oder nicht.</li>
 <li>Das Risiko beträgt
-<span class="math inline">\(p_1 = 48.9%\)</span> in der oft trainierenden Gruppe. In der anderen Gruppe liegt das Risiko bei <span class="math inline">\(p_2 =78.1 \%\)</span>.
+<span class="math inline">\(p_1 = 48.9\%\)</span> in der oft trainierenden Gruppe. In der anderen Gruppe liegt das Risiko bei <span class="math inline">\(p_2 =78.1 \%\)</span>.
 Die Risikodifferenz liegt bei
 <span class="math inline">\(-29.2\%\)</span>,
 das relative Risiko bei
@@ -571,9 +729,11 @@ Chancenverhältnis bei
 <span class="math inline">\(0.268\)</span>. Oft zu
 trainineren hat einen protektive Wirkung auf das Risiko an einer
 Depression zu erkranken.</li>
-<li>TODO</li>
-<li>TODO</li>
-<li>TODO</li>
+<li><blockquote>
+<p>Ein <span class="math inline">\(\chi^2\)</span>-Test ergibt, dass das Auftreten von Depression (ja/nein) und die Trainingsfrequenz (oft/selten) (<span class="math inline">\(p_1-p_2= -0.29\)</span>, <span class="math inline">\(RR = 0.63\)</span>) signifikant voneinander abhängig sind, <span class="math inline">\(\chi^2 (1) = 6.72\)</span>, <span class="math inline">\(p = .01\)</span>, <span class="math inline">\(\phi = 0.3.\)</span> Der Effekt ist mittel.</p>
+</blockquote></li>
+<li>Die Kontinuitätskorrektur ist nicht nötig da mit <span class="math inline">\(77\)</span> Beobachtungen mehr als <span class="math inline">\(40\)</span> Beobachtungen vorliegen. Die Teststatistik ohne Kontinuitätskorrektur ist <span class="math inline">\(\chi(1)^2 = 6.72\)</span> und mit Kontinuitätskorrektur <span class="math inline">\(\chi(1)^2 = 5.55\)</span>. Beide Testverfahren deuten auf eine signifikante Abhängigkeit hin.</li>
+<li>Die Vierfelderkorrelation entspricht der Effektstärke <span class="math inline">\(\phi = 0.3.\)</span> Die Korrelation ist mittel. Die Richtung des Zusammenhangs muss aus den Anteilen abgelesen werden. Je eher jemand unter Depression leidet, desto eher trainiert jemand selten.</li>
 </ol>
 </details>
 </div>
@@ -587,11 +747,11 @@ Ziel:
 - Zusammenhangsmasse
 -->
 <p>Um den Zusammenhang zwischen Rauchen und Lungenkrebs zu analysieren
-haben Forschende in einer Studie <span class="math inline">\(200\)</span> an Lungenkrebs erkrankte und <span class="math inline">\(397\)</span>
-nicht an Lungenkrebs erkrankte Menschen zu ihrem Rauchverhalten (rauchen
-ja oder nein) befragt. Die Forschenden haben die Daten im Datensatz
-<code>09-exr-cancer-smoking.sav</code> aggregiert zur Verfügung
-gestellt. Lose nach <span class="citation">Matos et al. (<a href="#ref-matos1998">1998</a>)</span>.</p>
+haben Forschende in einer Studie <span class="math inline">\(200\)</span> an Lungenkrebs erkrankte und
+<span class="math inline">\(397\)</span> nicht an Lungenkrebs erkrankte Menschen zu ihrem Rauchverhalten
+(rauchen ja oder nein) befragt. Die Forschenden haben die Daten im
+Datensatz <code>09-exr-cancer-smoking.sav</code> aggregiert zur
+Verfügung gestellt. Lose nach <span class="citation">Matos et al. (<a href="#ref-matos1998">1998</a>)</span>.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Handelt es sich um eine Fall-Kontroll (case-control) Studie.</li>
 <li>Identifizieren Sie abhängige und unabhängige Variable. Wie gross ist
@@ -600,27 +760,46 @@ rauchende Menschen? Können hier die Risikodifferenz, das <em>RR</em> und
 der <em>OR</em> verwendet werden, um den Zusammenhang zu beschreiben?</li>
 <li>Wie gross ist das Chancenverhältnis und was heisst das für die
 rauchenden Menschen?</li>
-<li>Ist der Zusammenhang von der Stichprobe auf alle Menschen
-übertragbar?</li>
+<li>Ist das Lungenkrebsrisiko vom Rauchverhalten abhängig? Führen Sie einen <span class="math inline">\(\chi^2\)</span>-Test durch.</li>
 </ol>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-73" class="solution"><em>Lösung</em>. </span></p>
+<p><span id="unlabeled-div-73" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+<a href="zusammenhang-dichotomer-merkmale.html#fig:sol-cancer-smoking-input">9.12</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-cancer-smoking-input"></span>
+<img src="figures/09-exr-cancer-smoking-jmv-input.jpg" alt="Jamovi Eingabe."  />
+<p class="caption">
+Abbildung 9.12: Jamovi Eingabe.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung
+<a href="zusammenhang-dichotomer-merkmale.html#fig:sol-cancer-smoking-output">9.13</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-cancer-smoking-output"></span>
+<img src="figures/09-exr-cancer-smoking-jmv-output.jpg" alt="Jamovi Ausgabe."  />
+<p class="caption">
+Abbildung 9.13: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit kann die Frage nun beantwortet werden:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Ja. Die Forschenden haben bestimmt wie viele erkrankte und gesunde
 Personen sie für die Studie anschreiben.</li>
-<li>Die abhängige Variable oder Risikovariable ist hier die Erkrankung an
-Lungenkrebs. Die ursächliche oder unabhängige Variable ist das
+<li>Die abhängige Variable oder Risikovariable ist hier die Erkrankung
+an Lungenkrebs. Die ursächliche oder unabhängige Variable ist das
 Rauchverhalten. Da in der Studie der Anteil gesunder und erkrankter
 Menschen im Vorherein festgelegt wurde, ist eine Berechnung des
 Risikos nicht sinnvoll. Daraus folgend ist auch die Risikodifferenz
 oder das relative Risiko nicht sinnvoll. Der OR kann immer verwendet
 werden, um den Zusammenhang zu beschreiben.</li>
 <li>Das Chancenverhältnis liegt bei <span class="math inline">\(8.91\)</span>. Das bedeutet für die
-rauchenden Leute ist die Chance an Lungenkrebs zu erkanken <span class="math inline">\(8.91\)</span>-mal so hoch wie für nicht rauchende.</li>
-<li>TODO.</li>
+rauchenden Leute ist die Chance an Lungenkrebs zu erkanken
+<span class="math inline">\(8.91\)</span>-mal so hoch wie für nicht rauchende.</li>
+<li><blockquote>
+<p>Ein <span class="math inline">\(\chi^2\)</span>-Test ergibt, dass das Auftreten von Lungenkrebs (ja/nein) und das Rauchverhalten (ja/nein) (<span class="math inline">\(OR = 8.91\)</span>) signifikant voneinander abhängig sind, <span class="math inline">\(\chi^2 (1) = 135.57\)</span>, <span class="math inline">\(p &lt; 0.001\)</span>, <span class="math inline">\(\phi = 0.48.\)</span> Der Effekt ist stark.</p>
+</blockquote></li>
 </ol>
 </details>
 </div>

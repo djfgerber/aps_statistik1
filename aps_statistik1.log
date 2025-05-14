@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  13 MAY 2025 10:35
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  14 MAY 2025 12:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2316,24 +2316,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 4410--4412
 File: figures/icons/caution.png Graphic file (type bmp)
 <figures/icons/caution.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 4446--4446
-[]\TU/lmr/bx/n/14.4 Zusammenhang dichotomer Merkmale
- []
-
-
-Underfull \hbox (badness 1668) in paragraph at lines 4448--4453
-\TU/lmr/m/n/10 In \TU/lmtt/m/n/10 Jamovi > Kreuztabellen > Statistiken > Tests \TU/lmr/m/n/10 stehen verschiedene
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [173]
-Underfull \hbox (badness 1442) in paragraph at lines 4471--4478
+Underfull \hbox (badness 10000) in paragraph at lines 4449--4449
+[]\TU/lmr/bx/n/14.4 Zusammenhang dichotomer Merkmale
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 4451--4456
+\TU/lmr/m/n/10 In \TU/lmtt/m/n/10 Jamovi > Kreuztabellen > Statistiken > Tests \TU/lmr/m/n/10 stehen verschiedene
+ []
+
+
+Underfull \hbox (badness 1442) in paragraph at lines 4474--4486
 \TU/lmr/m/n/10 statistik ist standardnormalverteilt. Dies entspricht der Normalverteilung
  []
 
 
-Underfull \hbox (badness 2142) in paragraph at lines 4471--4478
+Underfull \hbox (badness 2142) in paragraph at lines 4474--4486
 \TU/lmr/m/n/10 berechnete Teststatistik aufgrund der Zufallsstichprobenziehung zustande
  []
 
@@ -2347,11 +2350,10 @@ File: aps_statistik1_files/figure-latex/chisq-distribution-1.pdf Graphic file (t
 
 
 [176]
-File: figures/09-exm-red-white-wine-aggdata-view.jpg Graphic file (type bmp)
-<figures/09-exm-red-white-wine-aggdata-view.jpg>
-
 
 [177]
+File: figures/09-exm-red-white-wine-aggdata-view.jpg Graphic file (type bmp)
+<figures/09-exm-red-white-wine-aggdata-view.jpg>
 File: figures/09-exm-red-white-wine-aggdata-view-alt.jpg Graphic file (type bmp)
 <figures/09-exm-red-white-wine-aggdata-view-alt.jpg>
 
@@ -2360,41 +2362,99 @@ File: figures/09-exm-red-white-wine-aggdata-view-alt.jpg Graphic file (type bmp)
 File: figures/icons/caution.png Graphic file (type bmp)
 <figures/icons/caution.png>
 
-Underfull \hbox (badness 1838) in paragraph at lines 4600--4601
+Underfull \hbox (badness 1838) in paragraph at lines 4707--4711
 []\TU/lmr/m/n/10 Da für den exakten Test nach Fisher und Yates die
  []
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 4612--4619
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[179]
+Underfull \hbox (badness 1270) in paragraph at lines 4730--4737
 \TU/lmr/m/n/10 Menschen mit einer Autismus-Spektrum-Störung auswirkt. Dafür wurden
  []
 
 
 
-[179]
-Underfull \hbox (badness 1275) in paragraph at lines 4706--4712
+[180]
+File: figures/09-exr-autism-epilepsy-jmv-input.jpg Graphic file (type bmp)
+<figures/09-exr-autism-epilepsy-jmv-input.jpg>
+
+LaTeX Warning: Float too large for page by 24.0869pt on input line 4768.
+
+File: figures/09-exr-autism-epilepsy-jmv-output.jpg Graphic file (type bmp)
+<figures/09-exr-autism-epilepsy-jmv-output.jpg>
+
+Underfull \hbox (badness 2261) in paragraph at lines 4796--4797
+[]\TU/lmr/m/n/10 Ein $[][]$-Test ergibt, dass das Auftreten von Epilepsiean-
+ []
+
+
+Underfull \hbox (badness 1354) in paragraph at lines 4796--4797
+\TU/lmr/m/n/10 fällen (ja/nein) und die Alterskategorie (Jugendlich/Kind)
+ []
+
+File: figures/09-exr-depression-training-jmv-input.jpg Graphic file (type bmp)
+<figures/09-exr-depression-training-jmv-input.jpg>
+
+LaTeX Warning: Float too large for page by 24.09737pt on input line 4846.
+
+File: figures/09-exr-depression-training-aggdata-view.jpg Graphic file (type bmp)
+<figures/09-exr-depression-training-aggdata-view.jpg>
+File: figures/09-exr-depression-training-jmv-output.jpg Graphic file (type bmp)
+<figures/09-exr-depression-training-jmv-output.jpg>
+
+
+[181]
+
+[182]
+
+[183]
+
+[184]
+Underfull \hbox (badness 1275) in paragraph at lines 4892--4898
 \TU/lmr/m/n/10 ja oder nein) befragt. Die Forschenden haben die Daten im Datensatz
+ []
+
+File: figures/09-exr-cancer-smoking-jmv-input.jpg Graphic file (type bmp)
+<figures/09-exr-cancer-smoking-jmv-input.jpg>
+
+LaTeX Warning: Float too large for page by 24.0846pt on input line 4931.
+
+File: figures/09-exr-cancer-smoking-jmv-output.jpg Graphic file (type bmp)
+<figures/09-exr-cancer-smoking-jmv-output.jpg>
+
+
+[185]
+
+[186]
+
+[187]
+
+[188]
+Underfull \hbox (badness 1776) in paragraph at lines 4966--4967
+[]\TU/lmr/m/n/10 Ein $[][]$-Test ergibt, dass das Auftreten von Lungenkrebs
  []
 
 
 
-[180]
+[189]
 
-[181]
-
-[182
+[190
 
 ]
 
-[183]
+[191]
 
-[184] (./aps_statistik1.bbl
+[192] (./aps_statistik1.bbl
 
-[185
+[193
 
 ]
 
-[186
+[194
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 4--7
@@ -2428,9 +2488,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--58
 
 
 
-[187]
+[195]
 
-[188]
+[196]
 Underfull \hbox (badness 10000) in paragraph at lines 157--161
 []\TU/lmr/m/n/10 Zimmerman, D. W. (2004).  A note on preliminary tests
  []
@@ -2442,7 +2502,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 157--161
 
 )
 
-[189] (./aps_statistik1.aux)
+[197] (./aps_statistik1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -2452,12 +2512,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 34827 strings out of 475846
- 774661 string characters out of 5773212
- 1187728 words of memory out of 5000000
- 57131 multiletter control sequences out of 15000+600000
+ 34996 strings out of 475846
+ 783148 string characters out of 5773212
+ 1188106 words of memory out of 5000000
+ 57293 multiletter control sequences out of 15000+600000
  565418 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,10n,114p,2090b,738s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aps_statistik1.pdf (189 pages).
+Output written on aps_statistik1.pdf (197 pages).
