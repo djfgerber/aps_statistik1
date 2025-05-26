@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  26 MAY 2025 14:11
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  26 MAY 2025 17:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2508,12 +2508,12 @@ Overfull \hbox (8.03671pt too wide) has occurred while \output is active
  []
 
 [195]
-Overfull \hbox (2.153pt too wide) in paragraph at lines 5097--5099
+Overfull \hbox (2.153pt too wide) in paragraph at lines 5099--5101
 []\TU/lmr/m/n/10 Ein $[][]$-Test ergibt, dass der Abschluss (genügend/gut/ausgezeichnet)
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 5097--5099
+Underfull \hbox (badness 10000) in paragraph at lines 5099--5101
 \TU/lmr/m/n/10 und der Lernstil (visuell/auditiv/kinästhetisch) signifikant
  []
 
@@ -2527,21 +2527,27 @@ Overfull \hbox (5.11781pt too wide) has occurred while \output is active
  []
 
 [196]
+File: figures/10-exr-edu-heredity-jmv-input.jpg Graphic file (type bmp)
+<figures/10-exr-edu-heredity-jmv-input.jpg>
+File: figures/10-exr-edu-heredity-jmv-output.jpg Graphic file (type bmp)
+<figures/10-exr-edu-heredity-jmv-output.jpg>
 
-[197
+Underfull \hbox (badness 1152) in paragraph at lines 5163--5165
+[]\TU/lmr/m/n/10 Es fällt auf, dass in jeder Bildungsgruppe der Mütter die Kinder
+ []
 
-]
+
+
+[197]
 
 
 Overfull \hbox (5.11781pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 198 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
  []
 
-[198] (./aps_statistik1.bbl
+[198]
 
-[199
-
-]
+[199]
 
 
 Overfull \hbox (5.11781pt too wide) has occurred while \output is active
@@ -2549,6 +2555,28 @@ Overfull \hbox (5.11781pt too wide) has occurred while \output is active
  []
 
 [200
+
+]
+
+[201]
+
+
+Overfull \hbox (5.11781pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 202 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
+ []
+
+[202] (./aps_statistik1.bbl
+
+[203
+
+]
+
+
+Overfull \hbox (5.11781pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 204 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
+ []
+
+[204
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 4--7
@@ -2582,9 +2610,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--58
 
 
 
-[201]
+[205]
 
-[202]
+[206]
 Underfull \hbox (badness 10000) in paragraph at lines 157--161
 []\TU/lmr/m/n/10 Zimmerman, D. W. (2004).  A note on preliminary tests
  []
@@ -2596,7 +2624,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 157--161
 
 )
 
-[203] (./aps_statistik1.aux)
+[207] (./aps_statistik1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -2606,12 +2634,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 35081 strings out of 475846
- 787094 string characters out of 5773212
- 1188953 words of memory out of 5000000
- 57375 multiletter control sequences out of 15000+600000
+ 35130 strings out of 475846
+ 789302 string characters out of 5773212
+ 1189073 words of memory out of 5000000
+ 57422 multiletter control sequences out of 15000+600000
  565418 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,10n,114p,2090b,738s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aps_statistik1.pdf (203 pages).
+Output written on aps_statistik1.pdf (207 pages).

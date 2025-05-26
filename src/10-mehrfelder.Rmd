@@ -5,26 +5,7 @@ editor_options:
 ---
 
 
-<!-- tab <- summary(loglm(~1 + 2, x))$tests -->
-<!-- #tab[2,1] == chi2 -->
-<!-- sum(x) == n -->
-<!-- phi <- sqrt(tab[2, 1]/sum(x)) -->
-<!-- cont <- sqrt(phi^2/(1 + phi^2)) -->
-<!-- cramer <- sqrt(phi^2/min(dim(x) - 1)) -->
-<!-- structure(list(table = x,¨ -->
-<!-- chisq_tests = tab,  -->
-<!-- phi = ifelse(all(dim(x) ==  -->
-<!--     2L), phi, NA),  -->
-<!--     contingency = cont,  -->
-<!--     cramer = cramer),  -->
-<!--     class = "assocstats") -->
-<!-- list(`v[cont]` = asso$contingency,  -->
-<!-- `v[phi]` = ifelse(is.na(asso$phi), -->
-<!--   NaN,  -->
-<!--   asso$phi),  -->
-<!--   `v[cra]` = asso$cramer) -->
-      
-      
+
 <!-- Personality Type and Favorite Leisure Activity -->
 
 <!-- Variable 1: Personality type (introvert, ambivert, extrovert) -->
@@ -108,7 +89,7 @@ editor_options:
 
 # Zusammenhang nominalskalierter Merkmale
 
-Bislang wurde der Zusammenhang zwischen zwei dichotomen Merkmalen angeschaut. In  Beispiel \@ref(exm:dog-cancer) wird die Anwendung eines Herbizides (Ja/Nein) mit Lymphdrüsenkrebs (Tumor/Kein Tumor) verglichen. Was wäre jedoch, wenn der Lymphdrüsenkrebs mit drei Ausprägungen (Kein Tumor / gutartiger Tumor / bösartiger Tumor) erhoben wird? Im folgenden wird aufgezeigt, wie sich die bisher kennengelernten Methoden mit wenig Aufwand auf den Fall von einem oder zwei nominalskalierter Merkmale ausgeweitet werden kann.
+Bislang wurde der Zusammenhang zwischen zwei dichotomen Merkmalen angeschaut. In  Beispiel \@ref(exm:dog-cancer) wird die Anwendung eines Herbizides (Ja/Nein) mit Lymphdrüsenkrebs (Tumor/Kein Tumor) verglichen. Was wäre jedoch, wenn der Lymphdrüsenkrebs mit drei Ausprägungen (Kein Tumor / gutartiger Tumor / bösartiger Tumor) erhoben wird? Im Folgenden wird aufgezeigt, wie sich die bisher kennengelernten Methoden mit wenig Aufwand auf den Fall von einem oder zwei nominalskalierter Merkmale ausgeweitet werden kann.
 
 ## Zusammenhang nominalskalierter Merkmale beschreiben
 
@@ -163,7 +144,7 @@ exm_learning_style <- gen_exm_learning_style()
 Das Lernen wird von Pädagog:innen oft vereinfachend in Lernstile unterteilt. Eine Unterteilung ist in einen visuellen, einen auditiven und einen kinästhetischen Lernstil. Pädagog:innen wollten nur herausfinden, ob der akademische Erfolg vom Lernstil abhängt und haben dazu Pädagogik-Studierende nach der Abschlussprüfung nach ihrem Abschluss (genügend, gut und ausgezeichnet) und ihrem dominanten Lernstil befragt.
 :::
 
-Hier sollen also zwei nominalskalierte Merkmale verglichen werden. Die Daten können wie bei der Vierfeldertafel in zwei Formaten gespeichert werden: Entweder wird eine Zeile pro Beobachtung verwendet oder die Zeilen geben die Ausprägungskombinationen zusammen mit der Anzahl Beobachtungen an. Um eine Übersicht über die erhobenen Daten zu erhalten, wird wieder eine Kreuztabelle erstellt. Für diese sogenannte **Mehrfeldertabelle**  werden die Zählungen für jede Ausprägung der beiden Merkmale aufsummiert, siehe Abbildung \@ref(fig:exm-learning-style-data-view). Die Mehrfeldertabelle kann in `Jamovi` unter `Analysen > Häufigkeiten > Kreuztabellen > Unabhängige Stichproben` erstellt werden. 
+Hier sollen also zwei nominalskalierte Merkmale verglichen werden. Die Daten können wie bei der Vierfeldertafel in zwei Formaten gespeichert werden: Entweder wird eine Zeile pro Beobachtung verwendet oder die Zeilen geben die Ausprägungskombinationen zusammen mit der Anzahl Beobachtungen an. Um eine Übersicht über die erhobenen Daten zu erhalten, wird wieder eine Kreuztabelle erstellt. Für diese sogenannte **Mehrfeldertabelle**  wird die Zählung jeder Ausprägungskombination der beiden Merkmale aufsummiert, siehe Abbildung \@ref(fig:exm-learning-style-data-view). Die Mehrfeldertabelle kann in `Jamovi` unter `Analysen > Häufigkeiten > Kreuztabellen > Unabhängige Stichproben` erstellt werden. 
 
 ```{r exm-learning-style-data-view, fig.cap='Mehrfeldertabelle mit absoluten Häufigkeiten der Daten Lernstil und Abschlusserfolg.'}
 knitr::include_graphics("figures/10-exm-learning-style-data-view.jpg")
@@ -177,20 +158,20 @@ Trotz der verbesserten Übersicht ist es aufgrund der verschiedenen Randhäufigk
 knitr::include_graphics("figures/10-exm-learning-style-data-view-rel.jpg")
 ```
 
-Es kann zum Beispiel festgestellt werden, dass beim visuellen Lernstil mit $31\%$ ein viel höherer Anteil einen ausgezeichneten Abschluss macht, als bei den Lernstilen auditiv mit $15\%$ oder kinästhetisch mit $23\%$. Die Frage ist nun, ob dieser Zusammenhang zwischen Lernstil und Abschluss auf die Zufallsstichprobenziehung zurückzuführen ist oder ob man davon ausgehen kann, dass der Zusammenhang auch in der Population (also allen Pädagogikstudierende) übertragen lässt.
+Es kann zum Beispiel festgestellt werden, dass beim visuellen Lernstil mit $31\%$ ein viel höherer Anteil einen ausgezeichneten Abschluss macht als bei den Lernstilen auditiv mit $15\%$ oder kinästhetisch mit $23\%$. Die Frage ist nun, ob dieser Zusammenhang zwischen Lernstil und Abschluss auf die Zufallsstichprobenziehung zurückzuführen ist oder ob man davon ausgehen kann, dass der Zusammenhang auch in der Population (also allen Pädagogikstudierende) übertragen lässt.
 
 ## Zusammenhang nominalskalierter Merkmale testen
 
 
-Um dies zu testen, kann der im letzten Kapitel besprochene $\chi^2$-Test für dichotome Merkmale erweitert werden. Die Nullhypothese ist, dass die beiden nominalskalierten Merkmale, hier der Lernstil und der Abschluss, unabhängig voneinander sind. Der Test funktioniert nun genau gleich wie der Vierfeldertest, indem erst für jede Zelle $ij$ eine unter der Annahme der Unabhängigkeit der zwei Merkmale erwartete Anzahl Beobachtungen $e_{ij}$ berechnet wird. Die erwartete Anzahl Beobachtungen kann in `Jamovi` unter `Zelle > Anzahl > Erwartete Anzahl` dazugeschaltet werden, siehe Abbildung \@ref(fig:exm-learning-style-data-view-expected).
+Um dies zu testen, kann der im letzten Kapitel besprochene $\chi^2$-Test für dichotome Merkmale erweitert werden. Die Nullhypothese ist, dass die beiden nominalskalierten Merkmale, hier der Lernstil und der Abschluss, unabhängig voneinander sind. Der Test funktioniert nun genau gleich wie der Vierfeldertest. Für jede Zelle $ij$ wird unter der Annahme der Unabhängigkeit der zwei Merkmale die erwartete Anzahl Beobachtungen $e_{ij}$ berechnet. Die erwartete Anzahl Beobachtungen kann in `Jamovi` unter `Zelle > Anzahl > Erwartete Anzahl` dazugeschaltet werden, siehe Abbildung \@ref(fig:exm-learning-style-data-view-expected).
 
 ```{r exm-learning-style-data-view-expected, fig.cap='Mehrfeldertabelle mit beobachteten und unter Unabhängigkeit erwarteten Häufigkeiten der Daten Lernstil und Abschlusserfolg.'}
 knitr::include_graphics("figures/10-exm-learning-style-data-view-expected.jpg")
 ```
 
-Je weiter diese Zahl von der beobachteten Zahl abweicht, desto unwahrscheinlicher ist die Unabhängigkeit der beiden Merkmale. Es werden zum Beispiel $o_{11}=11$ genügende Abschlüsse bei visuellem Lernstil beobachtet. Wenn Lernstil und Abschluss unabhängig wären, würden für diese Kombination $e_{11} =20.73$ Beobachtungen erwartet.
+Je weiter diese Zahl von der beobachteten Zahl abweicht in einer Zelle abweicht, desto unwahrscheinlicher ist die Unabhängigkeit der beiden Merkmale. Es werden zum Beispiel $o_{11}=11$ genügende Abschlüsse bei visuellem Lernstil beobachtet. Wenn Lernstil und Abschluss unabhängig wären, würden für diese Kombination $e_{11} =20.73$ Beobachtungen erwartet.
 
-Der $\chi^2$-Mehrfeldertest trägt dem Rechnung, indem die Teststatistik diese Differenz der erwarteten und beoabchteten Anzahl austariert und für jede Zelle aufsummiert mit
+Der $\chi^2$-Mehrfeldertest trägt dem Rechnung, indem die Teststatistik diese Differenz der erwarteten und beobachteten Anzahl austariert und für jede Zelle aufsummiert mit
 
 $$\chi^2 = \sum_{i,j = 1}^{I,J} \frac{(o_{ij} - e_{ij})^2}{e_{ij}} \overset{Bsp}{=}  `r round(exm_learning_style$jmv_output_test$value_chiSq,2)`.$$
 
@@ -205,6 +186,25 @@ der Abbildung sind seltener und der beobachtete Wert der Teststatistik liegt so,
 
 Bei der $\chi^2$-Verteilung handelt es sich wieder um eine Annäherung der tatsächlichen Verteilung der Teststatistik. Diese Annäherung ist nur gut, wenn die Anzahl erwartete Beobachtungen in jeder Zelle mindestens $5$ beträgt. Ist dies nicht gegeben, kann entweder auch im Mehrfelderkontext Fishers exakter Test verwendet werden - wie letzterer genau erweitert wird, wird hier nicht behandelt - oder es können Ausprägungen zusammengefasst werden. Im Beispiel könnte zum Beispiel die Abschlussbewertung als neues Merkmal mit den zwei Ausprägungen _genügend_ und _mehr-als-genügend_ betrachtet werden.
 
+<!-- tab <- summary(loglm(~1 + 2, x))$tests -->
+<!-- #tab[2,1] == chi2 -->
+<!-- sum(x) == n -->
+<!-- phi <- sqrt(tab[2, 1]/sum(x)) -->
+<!-- cont <- sqrt(phi^2/(1 + phi^2)) -->
+<!-- cramer <- sqrt(phi^2/min(dim(x) - 1)) -->
+<!-- structure(list(table = x,¨ -->
+<!-- chisq_tests = tab,  -->
+<!-- phi = ifelse(all(dim(x) ==  -->
+<!--     2L), phi, NA),  -->
+<!--     contingency = cont,  -->
+<!--     cramer = cramer),  -->
+<!--     class = "assocstats") -->
+<!-- list(`v[cont]` = asso$contingency,  -->
+<!-- `v[phi]` = ifelse(is.na(asso$phi), -->
+<!--   NaN,  -->
+<!--   asso$phi),  -->
+<!--   `v[cra]` = asso$cramer) -->
+
 [Um die Effektstärke des $\chi^2$-Tests anzugeben kann **Cramérs V**]{.customdef #customdef-cramers-v}
 
 $$\phi = \sqrt{\frac{\chi^2}{n\cdot (k-1)}} = \sqrt{\frac{`r round(exm_learning_style$jmv_output_test$value_chiSq,2)`}{`r exm_learning_style$n`\cdot (3-1)}} = `r round(sqrt(round(exm_learning_style$jmv_output_test$value_chiSq,2) / (exm_learning_style$n*(3-1))),2)`$$
@@ -214,7 +214,9 @@ verwendet werden. Hier stellt $k$ die kleinere der beiden Dimensionen $I$ und $J
 Für eine Vierfeldertafel, also $I = 2, J = 2$ entspricht Cramérs $V$ genau Cramérs $\phi$.
 
 Eine Alternative zu Cramérs $V$ ist der Kontingenzkoeffizient nach Pearson 
+
 $$C = \sqrt{\frac{\chi^2}{\chi^2+n}} = \sqrt{\frac{`r round(exm_learning_style$jmv_output_test$value_chiSq,2)`}{`r round(exm_learning_style$jmv_output_test$value_chiSq,2)`+`r exm_learning_style$n`}} = `r round(sqrt(round(exm_learning_style$jmv_output_test$value_chiSq,2) / ( round(exm_learning_style$jmv_output_test$value_chiSq,2)+exm_learning_style$n)),2)`, $$
+
 wobei $n$ die Gesamtanzahl Beobachtungen ist. Es gilt $0 < C < \sqrt{(k-1)/k}$. Der Kontingenzkoeffizient wird also je nach Dimension auf einer unterschiedlichen Skala gemessen, was den intuitiven Vergleich der Werte für verschiedene Anwendungen erschwert. Korrekturmethoden existieren, sind aber weder in `Jamovi` implementiert noch werden sie oft verwendet. Es wird deshalb empfohlen immer Cramérs $V$ zu verwenden.
 
 Das Testergebnis wird schliesslich wie folgt berichtet:
@@ -229,5 +231,90 @@ Für die Mehrfeldertabelle gibt es keine standardmässig verwendeten Grössen wi
 ::::
 
 ## Übungen
+
+::: {.exercise  #edu-heredity}
+<!-- 
+Ziel: 
+- 
+-->
+```{r exr-edu-heredity}
+gen_exr_edu_heredity <- function(){
+  set.seed(894)
+  file_name <- '10-exr-edu-heredity.sav'
+  dd <- tibble(
+    mutter = c(rep("Sek I", 337), rep("Sek II", 504), rep("Hochschule", 478)),
+    kind = c(
+      rep("Sek I", 201),
+      rep("Sek II", 92),
+      rep("Hochschule", 44),
+      rep("Sek I", 102),
+      rep("Sek II", 297),
+      rep("Hochschule", 105),
+      rep("Sek I", 55),
+      rep("Sek II", 150),
+      rep("Hochschule", 273)
+    )
+  ) %>% 
+    write_sav(file_name)
+  n <- dd %>% nrow()
+  I <- dd %>% table() %>% nrow()
+  J <- dd %>% table() %>% ncol()
+  jmv_output <- jmv::contTables(
+    dd,
+    "mutter",
+    "kind",
+    chiSq = TRUE,
+    chiSqCorr = FALSE,
+    odds = FALSE,
+    relRisk = FALSE,
+    diffProp = FALSE, 
+    phiCra = TRUE,
+    exp = TRUE,
+    pcRow = TRUE,
+    compare = 'rows'
+  )
+  jmv_output_freq <- jmv_output$freqs$asDF %>% 
+    clean_jmv_colnames()
+  jmv_output_test <- jmv_output$chiSq$asDF %>% 
+    clean_jmv_colnames()
+  jmv_output_nom <- jmv_output$nom$asDF %>% 
+    clean_jmv_colnames()
+  return(mget(ls()))
+}
+exr_edu_heredity <- gen_exr_edu_heredity()
+```
+
+In einer Studie zur Bildungsgerechtigkeit soll herausgefunden werden, wie sich die Bildung der Mütter auf die Bildung der Kinder auswirkt. Dazu wurden `r exr_edu_heredity$n` Mütter mit Kindern mit abgeschlossenem ersten Bildungsweg nach ihrem und ihrer Kinder höchsten Bildungsabschluss (Sek I, Sek II oder Hochschule) gefragt. Die Daten sind in `r inline_code(exr_edu_heredity$file_name)` zu finden.
+
+a) Betrachten Sie die Bildungsanteile der Kinder für jede Bildungsgruppe der Mütter. Denken Sie, dass es einen Zusammenhang gibt zwischen der Bildung der Mutter und der Bildung der Kinder?
+b) Wie gross ist der Anteil der Kinder mit Hochschulbildung deren Mütter höchstens eine Sek I Ausbildung genossen haben? Wie viele Kinder würde man erwarten, wenn die Bildung der Mütter irrelevant wäre für die Bildung der Kinder?
+c) Ist der Zusammenhang zwischen Bildungsniveau der Mütter und Kinder statistisch nachweisbar? Führen Sie einen $\chi^2$-Test durch und berichten Sie das Ergebnis, inklusive Effektstärke nach Cramér.
+:::
+
+:::{.solution}
+Zuerst wird der Datensatz mit `Jamovi` eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+\@ref(fig:sol-edu-heredity-input).
+
+```{r sol-edu-heredity-input, fig.cap='Jamovi Eingabe.'}
+knitr::include_graphics("figures/10-exr-edu-heredity-jmv-input.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung
+\@ref(fig:sol-edu-heredity-output).
+
+```{r sol-edu-heredity-output, fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/10-exr-edu-heredity-jmv-output.jpg")
+```
+
+Damit kann die Frage nun beantwortet werden:
+
+a) Es fällt auf, dass in jeder Bildungsgruppe der Mütter die Kinder mehrheitlich denselben Bildungsabschluss aufweisen. Ein Zusammenhang in der Stichprobe ist also augenscheinlich vorhanden.
+b) Der Anteil Kinder mit Hochschulbildung deren Mütter höchstens einen Sek I Abschluss haben liegt bei rund $13\%$. Es würden $107.82$ Kinder mit Hochschulbildung erwartet, wenn die Bildung der Mutter für die Bildung der Kinder keine Rolle spielen würde. Stattdessen wurden $44$ Kinder beobachtet.
+c) 
+> Ein $\chi^2$-Test ergibt, dass die Bildung der Kinder (Sek I/ Sek II / Hochschule) und die Bildung der Mütter (Sek I/ Sek II / Hochschule) signifikant voneinander abhängig sind,
+> $\chi^2 (`r (exr_edu_heredity$I-1)*(exr_edu_heredity$J-1)`) = `r round(exr_edu_heredity$jmv_output_test$value_chiSq,2)`, `r report_p(exr_edu_heredity$jmv_output_test$p_chiSq)`, V = `r round(exr_edu_heredity$jmv_output_nom$v_cra,2)`$. Der Zusammenhang ist als mittel einzustufen.
+
+:::
 
 ## Test
