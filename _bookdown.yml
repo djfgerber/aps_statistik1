@@ -30,5 +30,6 @@ rmd_files: [
   "src/07-u_test.Rmd",
   "src/08-korrelation.Rmd",
   "src/09-vierfelder.Rmd",
+  "src/10-mehrfelder.Rmd",
   "src/98-glossary.Rmd"
 ]

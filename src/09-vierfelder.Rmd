@@ -4,7 +4,7 @@ editor_options:
     wrap: 72
 ---
 
-# Zusammenhang dichotomer Merkmale
+# Zusammenhang dichotomer Merkmale {#vierfelder}
 
 ## Zusammenhang dichotomer Merkmale beschreiben
 
@@ -250,8 +250,7 @@ nicht Herbizid belasteten.
 
 ## Zusammenhang dichotomer Merkmale testen
 
-In `Jamovi > Kreuztabellen > Statistiken > Tests` stehen verschiedene
-Tests zur Verfügung, um zu testen, ob ein in einer Zufallsstichprobe
+In `Jamovi > Analysen > Häufigkeiten > Kreuztabellen > Unabhängige Stichproben > Statistiken > Tests` stehen verschiedene Tests zur Verfügung, um zu testen, ob ein in einer Zufallsstichprobe
 gefundener Zusammenhang zwischen den Risiken $p_1$ und $p_2$ auf die
 Risiken in der Population $\pi_1$ und $\pi_2$ (sprich 'pi') übertragen
 werden darf.

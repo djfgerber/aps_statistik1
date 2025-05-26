@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{14 May, 2025}
+\date{26 May, 2025}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -4111,7 +4111,7 @@ Welche der folgenden Aussagen zum Zusammenhang zwischen zwei Merkmalen sind wahr
 \item
   Ein Grund für eine Korrelation von \(r=0\) kann sein, dass der Zusammenhang nicht linear ist.
 \item
-  Je weiter die Korrelation von \(0\) weg ist, desto eher ist der Zusammenhang von der Stichprobe auf die Grundgesamtheit übertragbar.
+  Je weiter die Korrelation von \(0\) weg ist, desto eher ist der Zusammenhang von der Stichprobe auf die Grundgesamtheit übertragbar, gegeben dass die Stichprobengrösse gleich bleibt.
 \item
   Eine Korrelation von \(r = 0.2\) bedeutet, dass das erste Merkmal ursächlich für den Zusammenhang ist.
 \end{enumerate}
@@ -4231,7 +4231,7 @@ Welche der folgenden Aussagen sind wahr welche falsch?
 
 \end{solution}
 
-\chapter{Zusammenhang dichotomer Merkmale}\label{zusammenhang-dichotomer-merkmale}
+\chapter{Zusammenhang dichotomer Merkmale}\label{vierfelder}
 
 \section{Zusammenhang dichotomer Merkmale beschreiben}\label{zusammenhang-dichotomer-merkmale-beschreiben}
 
@@ -4448,8 +4448,7 @@ nicht Herbizid belasteten.
 
 \section{Zusammenhang dichotomer Merkmale testen}\label{zusammenhang-dichotomer-merkmale-testen}
 
-In \texttt{Jamovi\ \textgreater{}\ Kreuztabellen\ \textgreater{}\ Statistiken\ \textgreater{}\ Tests} stehen verschiedene
-Tests zur Verfügung, um zu testen, ob ein in einer Zufallsstichprobe
+In \texttt{Jamovi\ \textgreater{}\ Analysen\ \textgreater{}\ Häufigkeiten\ \textgreater{}\ Kreuztabellen\ \textgreater{}\ Unabhängige\ Stichproben\ \textgreater{}\ Statistiken\ \textgreater{}\ Tests} stehen verschiedene Tests zur Verfügung, um zu testen, ob ein in einer Zufallsstichprobe
 gefundener Zusammenhang zwischen den Risiken \(p_1\) und \(p_2\) auf die
 Risiken in der Population \(\pi_1\) und \(\pi_2\) (sprich `pi') übertragen
 werden darf.
@@ -5013,6 +5012,103 @@ TODO
 \end{solution}
 
 \section{Test}\label{test-5}
+
+\chapter{Zusammenhang nominalskalierter Merkmale}\label{zusammenhang-nominalskalierter-merkmale}
+
+Bislang wurde der Zusammenhang zwischen zwei dichotomen Merkmalen angeschaut. In Beispiel \ref{exm:dog-cancer} wird die Anwendung eines Herbizides (Ja/Nein) mit Lymphdrüsenkrebs (Tumor/Kein Tumor) verglichen. Was wäre jedoch, wenn der Lymphdrüsenkrebs mit drei Ausprägungen (Kein Tumor / gutartiger Tumor / bösartiger Tumor) erhoben wird? Im folgenden wird aufgezeigt, wie sich die bisher kennengelernten Methoden mit wenig Aufwand auf den Fall von einem oder zwei nominalskalierter Merkmale ausgeweitet werden kann.
+
+\section{Zusammenhang nominalskalierter Merkmale beschreiben}\label{zusammenhang-nominalskalierter-merkmale-beschreiben}
+
+\begin{example}[Akademischer Erfolg bei verschiedenen Lernstilen]
+\protect\hypertarget{exm:learning-style}{}\label{exm:learning-style}Das Lernen wird von Pädagog:innen oft vereinfachend in Lernstile unterteilt. Eine Unterteilung ist in einen visuellen, einen auditiven und einen kinästhetischen Lernstil. Pädagog:innen wollten nur herausfinden, ob der akademische Erfolg vom Lernstil abhängt und haben dazu Pädagogik-Studierende nach der Abschlussprüfung nach ihrem Abschluss (genügend, gut und ausgezeichnet) und ihrem dominanten Lernstil befragt.
+\end{example}
+
+Hier sollen also zwei nominalskalierte Merkmale verglichen werden. Die Daten können wie bei der Vierfeldertafel in zwei Formaten gespeichert werden: Entweder wird eine Zeile pro Beobachtung verwendet oder die Zeilen geben die Ausprägungskombinationen zusammen mit der Anzahl Beobachtungen an. Um eine Übersicht über die erhobenen Daten zu erhalten, wird wieder eine Kreuztabelle erstellt. Für diese sogenannte \textbf{Mehrfeldertabelle} werden die Zählungen für jede Ausprägung der beiden Merkmale aufsummiert, siehe Abbildung \ref{fig:exm-learning-style-data-view}. Die Mehrfeldertabelle kann in \texttt{Jamovi} unter \texttt{Analysen\ \textgreater{}\ Häufigkeiten\ \textgreater{}\ Kreuztabellen\ \textgreater{}\ Unabhängige\ Stichproben} erstellt werden.
+
+\begin{figure}
+
+{\centering \includegraphics{figures/10-exm-learning-style-data-view} 
+
+}
+
+\caption{Mehrfeldertabelle mit absoluten Häufigkeiten der Daten Lernstil und Abschlusserfolg.}\label{fig:exm-learning-style-data-view}
+\end{figure}
+
+Die Zellen der Mehrfeldertabellen werden allgemein mit einem Zeilenindex \(i\) und einem Spaltenindex \(j\) bezeichnet. Die Zelle \(i = 1\) und \(j = 3\) enthält also Informationen zu Personen mit ausgezeichnetem Abschluss bei visuellem Lernstil. Die Anzahl Beobachtungen in der Zelle werden mit \(o_{ij}\) für \emph{observed} bezeichnet, zum Beispiel \(o_{13} = 16\). Der Zeilenindex geht von \(1\) bis \(I\) und der Zeilenindex von \(1\) bis \(J\). Da beide Merkmale im Beispiel genau \(3\) Ausprägungen habe ist hier \(I\) und \(J\) genau \(3\).
+
+Trotz der verbesserten Übersicht ist es aufgrund der verschiedenen Randhäufigkeiten schwer Auffälligkeiten in der Mehrfeldertabelle zu erkennen. Um dies zu vereinfachen, können der Tabelle die relativen Häufigkeiten (bezüglich Zeile oder Spalte) hinzugefügt werden, siehe Abbildung \ref{fig:exm-learning-style-data-view-rel}. Dies wird in \texttt{Jamovi} berechnet indem unter \texttt{Zellen\ \textgreater{}\ Prozentsätze} die Optionen \texttt{Zeile} und oder \texttt{Spalte} angewählt werden.
+
+\begin{figure}
+
+{\centering \includegraphics{figures/10-exm-learning-style-data-view-rel} 
+
+}
+
+\caption{Mehrfeldertabelle mit absoluten und relativen Häufigkeiten der Daten Lernstil und Abschlusserfolg.}\label{fig:exm-learning-style-data-view-rel}
+\end{figure}
+
+Es kann zum Beispiel festgestellt werden, dass beim visuellen Lernstil mit \(31\%\) ein viel höherer Anteil einen ausgezeichneten Abschluss macht, als bei den Lernstilen auditiv mit \(15\%\) oder kinästhetisch mit \(23\%\). Die Frage ist nun, ob dieser Zusammenhang zwischen Lernstil und Abschluss auf die Zufallsstichprobenziehung zurückzuführen ist oder ob man davon ausgehen kann, dass der Zusammenhang auch in der Population (also allen Pädagogikstudierende) übertragen lässt.
+
+\section{Zusammenhang nominalskalierter Merkmale testen}\label{zusammenhang-nominalskalierter-merkmale-testen}
+
+Um dies zu testen, kann der im letzten Kapitel besprochene \(\chi^2\)-Test für dichotome Merkmale erweitert werden. Die Nullhypothese ist, dass die beiden nominalskalierten Merkmale, hier der Lernstil und der Abschluss, unabhängig voneinander sind. Der Test funktioniert nun genau gleich wie der Vierfeldertest, indem erst für jede Zelle \(ij\) eine unter der Annahme der Unabhängigkeit der zwei Merkmale erwartete Anzahl Beobachtungen \(e_{ij}\) berechnet wird. Die erwartete Anzahl Beobachtungen kann in \texttt{Jamovi} unter \texttt{Zelle\ \textgreater{}\ Anzahl\ \textgreater{}\ Erwartete\ Anzahl} dazugeschaltet werden, siehe Abbildung \ref{fig:exm-learning-style-data-view-expected}.
+
+\begin{figure}
+
+{\centering \includegraphics{figures/10-exm-learning-style-data-view-expected} 
+
+}
+
+\caption{Mehrfeldertabelle mit beobachteten und unter Unabhängigkeit erwarteten Häufigkeiten der Daten Lernstil und Abschlusserfolg.}\label{fig:exm-learning-style-data-view-expected}
+\end{figure}
+
+Je weiter diese Zahl von der beobachteten Zahl abweicht, desto unwahrscheinlicher ist die Unabhängigkeit der beiden Merkmale. Es werden zum Beispiel \(o_{11}=11\) genügende Abschlüsse bei visuellem Lernstil beobachtet. Wenn Lernstil und Abschluss unabhängig wären, würden für diese Kombination \(e_{11} =20.73\) Beobachtungen erwartet.
+
+Der \(\chi^2\)-Mehrfeldertest trägt dem Rechnung, indem die Teststatistik diese Differenz der erwarteten und beoabchteten Anzahl austariert und für jede Zelle aufsummiert mit
+
+\[\chi^2 = \sum_{i,j = 1}^{I,J} \frac{(o_{ij} - e_{ij})^2}{e_{ij}} \overset{Bsp}{=}  12.78.\]
+
+Da die beiden Merkmale nominalskaliert sind, kann \(I\) und \(J\) im Gegensatz zu Kapitel \ref{vierfelder} auch einen Wert grösser als \(2\) annehmen. Eine grosse Teststatistik spricht demnach wieder gegen die Unabhängigkeit.
+
+Wenn die Stichprobenziehung oft wiederholt wird, kann festgestellt
+werden, dass diese Teststatistik einer \(\chi^2\)-Verteilung bei
+\[df = (I-1)\cdot (J-1) \overset{Bsp}{=} (3-1)\cdot (3-1) = 2\cdot 2 = 4\]
+Freiheitsgraden folgt, siehe Abbildung \ref{fig:chisq-distribution}. Die Teststatistik des \(\chi^2\)-Mehrfeldertests \(12.78\) wird also mit
+der grünen Verteilung in der Abbildung verglichen. Die Werte rechts auf
+der Abbildung sind seltener und der beobachtete Wert der Teststatistik liegt so, dass er zu den \(p = .012\) seltensten Beobachtungen zählt, sofern die Unabhängigkeit gilt. Der genaue \(p\)-Wert, kann mit \texttt{Jamovi} unter \texttt{Statistiken\ \textgreater{}\ Tests\ \textgreater{}\ \$\textbackslash{}chi\^{}2\$} bestimmt werden. Da der \(p\)-Wert kleiner als \(5\%\) liegt, kann hier die Nullhypothese bei Signifikanzniveau \(\alpha = 5\%\) verworfen werden.
+
+Bei der \(\chi^2\)-Verteilung handelt es sich wieder um eine Annäherung der tatsächlichen Verteilung der Teststatistik. Diese Annäherung ist nur gut, wenn die Anzahl erwartete Beobachtungen in jeder Zelle mindestens \(5\) beträgt. Ist dies nicht gegeben, kann entweder auch im Mehrfelderkontext Fishers exakter Test verwendet werden - wie letzterer genau erweitert wird, wird hier nicht behandelt - oder es können Ausprägungen zusammengefasst werden. Im Beispiel könnte zum Beispiel die Abschlussbewertung als neues Merkmal mit den zwei Ausprägungen \emph{genügend} und \emph{mehr-als-genügend} betrachtet werden.
+
+\phantomsection\label{customdef-cramers-v}{Um die Effektstärke des \(\chi^2\)-Tests anzugeben kann \textbf{Cramérs V}}
+
+\[\phi = \sqrt{\frac{\chi^2}{n\cdot (k-1)}} = \sqrt{\frac{12.78}{143\cdot (3-1)}} = 0.21\]
+
+verwendet werden. Hier stellt \(k\) die kleinere der beiden Dimensionen \(I\) und \(J\) der Mehrfeldertabelle dar. Da im Beispiel \(I\) und \(J\) gleich gross sind können beide als \(k\) verwendet werden. Also ist \(k = 3\) im Beispiel. Cramérs \(V\) ist immer grösser als \(0\) und kleiner als \(1\). Je weiter \(V\) von \(0\) weg ist, desto stärker sind die Merkmale voneinander abhängig. Die Interpretation als Effektstärke erfolgt dabei wie für eine Korrelation mit der Einschränkung, dass hier keine Richtung des Zusammenhangs interpretiert werden kann. Der Wert von \(0.42\) wird demnach als stark eingestuft. Cramérs \(V\) ist in \texttt{Jamovi} unter \texttt{Statistiken\ \textgreater{}\ Nominal\ \textgreater{}\ Phi\ und\ Cramer\textquotesingle{}s\ V} zu finden.
+
+Für eine Vierfeldertafel, also \(I = 2, J = 2\) entspricht Cramérs \(V\) genau Cramérs \(\phi\).
+
+Eine Alternative zu Cramérs \(V\) ist der Kontingenzkoeffizient nach Pearson
+\[C = \sqrt{\frac{\chi^2}{\chi^2+n}} = \sqrt{\frac{12.78}{12.78+143}} = 0.29, \]
+wobei \(n\) die Gesamtanzahl Beobachtungen ist. Es gilt \(0 < C < \sqrt{(k-1)/k}\). Der Kontingenzkoeffizient wird also je nach Dimension auf einer unterschiedlichen Skala gemessen, was den intuitiven Vergleich der Werte für verschiedene Anwendungen erschwert. Korrekturmethoden existieren, sind aber weder in \texttt{Jamovi} implementiert noch werden sie oft verwendet. Es wird deshalb empfohlen immer Cramérs \(V\) zu verwenden.
+
+Das Testergebnis wird schliesslich wie folgt berichtet:
+
+\begin{quote}
+Ein \(\chi^2\)-Test ergibt, dass der Abschluss (genügend/gut/ausgezeichnet) und der Lernstil (visuell/auditiv/kinästhetisch) signifikant voneinander abhängig sind,
+\(\chi^2 (4) = 12.78, p = .012, V = 0.21\). Der Zusammenhang ist als mittel einzustufen.
+\end{quote}
+
+\begin{caution}
+
+\begin{remark}
+Für die Mehrfeldertabelle gibt es keine standardmässig verwendeten Grössen wie das relative Risiko oder das Chancenverhältnis. Um den Lesenden eine Datenübersicht zu präsentieren, kann in einer Arbeit zusätzlich zum Berichtensatz die Mehrfeldertabelle mit den absoluten oder und den relativen Häufigkeiten dargestellt werden.
+\end{remark}
+
+\end{caution}
+
+\section{Übungen}\label{uxfcbungen-7}
+
+\section{Test}\label{test-6}
 
 \chapter*{Begriffsverzeichnis}\label{begriffsverzeichnis}
 \addcontentsline{toc}{chapter}{Begriffsverzeichnis}

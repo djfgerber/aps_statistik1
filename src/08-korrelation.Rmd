@@ -317,6 +317,13 @@ In diesem Beispiel wurde die Angst arbiträr als Störfaktor gehandelt. Die selb
 
 ## Übungen
 
+```{=html}
+<!-- 
+Ziel: 
+- Korrelation Lärm und Bluthochdruck
+-->
+```
+
 ::: {#depression-alkohol-angst-berichten .exercise}
 ```{=html}
 <!-- 
@@ -609,7 +616,7 @@ Welche der folgenden Aussagen zum Zusammenhang zwischen zwei Merkmalen sind wahr
 
 a) Eine Korrelation von $r = -0.23$ deutet auf einen mittleren Zusammenhang der Art je mehr desto weniger hin.
 b) Ein Grund für eine Korrelation von $r=0$ kann sein, dass der Zusammenhang nicht linear ist.
-c) Je weiter die Korrelation von $0$ weg ist, desto eher ist der Zusammenhang von der Stichprobe auf die Grundgesamtheit übertragbar.
+c) Je weiter die Korrelation von $0$ weg ist, desto eher ist der Zusammenhang von der Stichprobe auf die Grundgesamtheit übertragbar, gegeben dass die Stichprobengrösse gleich bleibt.
 d) Eine Korrelation von $r = 0.2$ bedeutet, dass das erste Merkmal ursächlich für den Zusammenhang ist.
 :::
 
