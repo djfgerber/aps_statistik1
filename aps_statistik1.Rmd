@@ -5505,7 +5505,7 @@ Bei der $\chi^2$-Verteilung handelt es sich wieder um eine Annäherung der tats�
 
 [Um die Effektstärke des $\chi^2$-Tests anzugeben kann **Cramérs V**]{.customdef #customdef-cramers-v}
 
-$$\phi = \sqrt{\frac{\chi^2}{n\cdot (k-1)}} = \sqrt{\frac{`r round(exm_learning_style$jmv_output_test$value_chiSq,2)`}{`r exm_learning_style$n`\cdot (3-1)}} = `r round(sqrt(round(exm_learning_style$jmv_output_test$value_chiSq,2) / (exm_learning_style$n*(3-1))),2)`$$
+$$V = \sqrt{\frac{\chi^2}{n\cdot (k-1)}} = \sqrt{\frac{`r round(exm_learning_style$jmv_output_test$value_chiSq,2)`}{`r exm_learning_style$n`\cdot (3-1)}} = `r round(sqrt(round(exm_learning_style$jmv_output_test$value_chiSq,2) / (exm_learning_style$n*(3-1))),2)`$$
 
 verwendet werden. Hier stellt $k$ die kleinere der beiden Dimensionen $I$ und $J$ der Mehrfeldertabelle dar. Da im Beispiel $I$ und $J$ gleich gross sind können beide als $k$ verwendet werden. Also ist $k = 3$ im Beispiel. Cramérs $V$ ist immer grösser als $0$ und kleiner als $1$. Je weiter $V$ von $0$ weg ist, desto stärker sind die Merkmale voneinander abhängig. Die Interpretation als Effektstärke erfolgt dabei wie für eine Korrelation mit der Einschränkung, dass hier keine Richtung des Zusammenhangs interpretiert werden kann. Der Wert von $0.42$ wird demnach als stark eingestuft. Cramérs $V$ ist in `Jamovi` unter `Statistiken > Nominal > Phi und Cramer's V` zu finden.
 
