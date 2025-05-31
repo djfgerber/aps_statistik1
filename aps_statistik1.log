@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  28 MAY 2025 12:35
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  31 MAY 2025 12:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2438,33 +2438,64 @@ Underfull \hbox (badness 1776) in paragraph at lines 4965--4966
 []\TU/lmr/m/n/10 Ein $[][]$-Test ergibt, dass das Auftreten von Lungenkrebs
  []
 
+File: figures/09-exr-bio-milch-jmv-input.jpg Graphic file (type bmp)
+<figures/09-exr-bio-milch-jmv-input.jpg>
+File: figures/09-exr-bio-milch-jmv-output.jpg Graphic file (type bmp)
+<figures/09-exr-bio-milch-jmv-output.jpg>
 
 
 [189]
 
-[190
+[190]
+
+[191]
+File: figures/09-exr-covid-atemnot-jmv-input.jpg Graphic file (type bmp)
+<figures/09-exr-covid-atemnot-jmv-input.jpg>
+File: figures/09-exr-covid-atemnot-jmv-output.jpg Graphic file (type bmp)
+<figures/09-exr-covid-atemnot-jmv-output.jpg>
+
+
+[192]
+
+[193]
+
+[194]
+Underfull \hbox (badness 1057) in paragraph at lines 5110--5112
+\TU/lmr/m/n/10 aussagekräftig für diese Gruppe. Im schlimmsten Fall sind sie nur
+ []
+
+
+Underfull \hbox (badness 8038) in paragraph at lines 5113--5114
+\TU/lmr/m/n/10 und die SARS-CoV-2-Historie (vorhanden/nicht vorhan-
+ []
+
+
+
+[195]
+
+[196
 
 ]
 \bbl@ensure@ngerman {Kapitel} 10.
 
-Underfull \hbox (badness 1895) in paragraph at lines 5020--5020
+Underfull \hbox (badness 1895) in paragraph at lines 5125--5125
 []\TU/lmr/bx/n/14.4 Zusammenhang nominalskalierter Merk-
  []
 
 
-Underfull \hbox (badness 1430) in paragraph at lines 5023--5024
+Underfull \hbox (badness 1430) in paragraph at lines 5128--5129
 [][]\TU/lmr/bx/n/10 Beispiel 10.1 \TU/lmr/m/n/10 (Akademischer Erfolg bei verschiedenen Lernstilen)\TU/lmr/bx/n/10 . []\TU/lmr/m/n/10 Das
  []
 
 
 
-[191]
+[197]
 File: figures/10-exm-learning-style-data-view.jpg Graphic file (type bmp)
 <figures/10-exm-learning-style-data-view.jpg>
 File: figures/10-exm-learning-style-data-view-rel.jpg Graphic file (type bmp)
 <figures/10-exm-learning-style-data-view-rel.jpg>
 
-Underfull \hbox (badness 1895) in paragraph at lines 5052--5052
+Underfull \hbox (badness 1895) in paragraph at lines 5157--5157
 []\TU/lmr/bx/n/14.4 Zusammenhang nominalskalierter Merk-
  []
 
@@ -2475,28 +2506,28 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (5.11781pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 192 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
+\TU/lmr/m/n/10 198 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
  []
 
-[192]
+[198]
 
 
 Overfull \hbox (40.25671pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 10.1.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE BESCHREIBEN \TU/lmr/m/n/10 193
+\TU/lmr/m/sl/10 10.1.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE BESCHREIBEN \TU/lmr/m/n/10 199
  []
 
-[193]
+[199]
 File: figures/10-exm-learning-style-data-view-expected.jpg Graphic file (type bmp)
 <figures/10-exm-learning-style-data-view-expected.jpg>
 
 
 
 Overfull \hbox (5.11781pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 194 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
+\TU/lmr/m/n/10 200 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
  []
 
-[194]
-Underfull \hbox (badness 5091) in paragraph at lines 5075--5079
+[200]
+Underfull \hbox (badness 5091) in paragraph at lines 5180--5184
 \TU/lmr/m/n/10 Freiheitsgraden folgt, siehe Abbildung []9.5[]. Die Teststatistik des $[][]$-
  []
 
@@ -2504,16 +2535,16 @@ Underfull \hbox (badness 5091) in paragraph at lines 5075--5079
 
 
 Overfull \hbox (8.03671pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 10.2.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE TESTEN \TU/lmr/m/n/10 195
+\TU/lmr/m/sl/10 10.2.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE TESTEN \TU/lmr/m/n/10 201
  []
 
-[195]
-Overfull \hbox (2.153pt too wide) in paragraph at lines 5099--5101
+[201]
+Overfull \hbox (2.153pt too wide) in paragraph at lines 5204--5206
 []\TU/lmr/m/n/10 Ein $[][]$-Test ergibt, dass der Abschluss (genügend/gut/ausgezeichnet)
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 5099--5101
+Underfull \hbox (badness 10000) in paragraph at lines 5204--5206
 \TU/lmr/m/n/10 und der Lernstil (visuell/auditiv/kinästhetisch) signifikant
  []
 
@@ -2523,60 +2554,60 @@ File: figures/icons/caution.png Graphic file (type bmp)
 
 
 Overfull \hbox (5.11781pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 196 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
+\TU/lmr/m/n/10 202 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
  []
 
-[196]
+[202]
 File: figures/10-exr-edu-heredity-jmv-input.jpg Graphic file (type bmp)
 <figures/10-exr-edu-heredity-jmv-input.jpg>
 File: figures/10-exr-edu-heredity-jmv-output.jpg Graphic file (type bmp)
 <figures/10-exr-edu-heredity-jmv-output.jpg>
 
-Underfull \hbox (badness 1152) in paragraph at lines 5163--5165
+Underfull \hbox (badness 1152) in paragraph at lines 5268--5270
 []\TU/lmr/m/n/10 Es fällt auf, dass in jeder Bildungsgruppe der Mütter die Kinder
  []
 
 
 
-[197]
-
-
-Overfull \hbox (5.11781pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 198 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
- []
-
-[198]
-
-[199]
-
-
-Overfull \hbox (5.11781pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 200 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
- []
-
-[200
-
-]
-
-[201]
-
-
-Overfull \hbox (5.11781pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 202 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
- []
-
-[202] (./aps_statistik1.bbl
-
-[203
-
-]
+[203]
 
 
 Overfull \hbox (5.11781pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 204 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
  []
 
-[204
+[204]
+
+[205]
+
+
+Overfull \hbox (5.11781pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 206 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
+ []
+
+[206
+
+]
+
+[207]
+
+
+Overfull \hbox (5.11781pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 208 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
+ []
+
+[208] (./aps_statistik1.bbl
+
+[209
+
+]
+
+
+Overfull \hbox (5.11781pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 210 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
+ []
+
+[210
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 4--7
@@ -2594,37 +2625,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--7
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--58
+
+[211]
+Underfull \hbox (badness 10000) in paragraph at lines 59--63
 []\TU/lmr/m/n/10 Hamilton, J. B. (1951).  Patterned loss of hair in
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--58
+Underfull \hbox (badness 10000) in paragraph at lines 59--63
 \TU/lmr/m/n/10 man: Types and incidence.  53(3):708–728.  _eprint:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--58
+Underfull \hbox (badness 10000) in paragraph at lines 59--63
 \TU/lmr/m/n/10 https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1749-
  []
 
 
 
-[205]
-
-[206]
-Underfull \hbox (badness 10000) in paragraph at lines 157--161
+[212]
+Underfull \hbox (badness 10000) in paragraph at lines 162--166
 []\TU/lmr/m/n/10 Zimmerman, D. W. (2004).  A note on preliminary tests
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 157--161
+Underfull \hbox (badness 10000) in paragraph at lines 162--166
 \TU/lmr/m/n/10 of equality of variances.  57(1):173–181.  _eprint:
  []
 
 )
 
-[207] (./aps_statistik1.aux)
+[213] (./aps_statistik1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -2634,12 +2665,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 35130 strings out of 475846
- 789302 string characters out of 5773212
- 1189073 words of memory out of 5000000
- 57422 multiletter control sequences out of 15000+600000
+ 35229 strings out of 475846
+ 793637 string characters out of 5773212
+ 1189281 words of memory out of 5000000
+ 57517 multiletter control sequences out of 15000+600000
  565418 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,10n,114p,2090b,738s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aps_statistik1.pdf (207 pages).
+Output written on aps_statistik1.pdf (213 pages).

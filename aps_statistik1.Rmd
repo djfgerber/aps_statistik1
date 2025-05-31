@@ -4961,14 +4961,14 @@ Zuerst wird der Datensatz mit `Jamovi` eingelesen und die
 Analyseparameter werden gesetzt, siehe Abbildung
 \@ref(fig:sol-autism-epilepsy-input).
 
-```{r sol-autism-epilepsy-input, out.width='100%', fig.cap='Jamovi Eingabe.'}
+```{r sol-autism-epilepsy-input, fig.cap='Jamovi Eingabe.'}
 knitr::include_graphics("figures/09-exr-autism-epilepsy-jmv-input.jpg")
 ```
 
 Dies produziert das Analyseergebnis in Abbildung
 \@ref(fig:sol-autism-epilepsy-output).
 
-```{r sol-autism-epilepsy-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+```{r sol-autism-epilepsy-output, fig.cap='Jamovi Ausgabe.'}
 knitr::include_graphics("figures/09-exr-autism-epilepsy-jmv-output.jpg")
 ```
 
@@ -5224,6 +5224,21 @@ gen_exr_bio_milch <- function(){
     
   file_name <- '09-exr-bio-milch.sav'
   dd %>% write_sav(file_name)
+  jmv_output <- jmv::contTables(
+    dd,
+    "behauptet",
+    "ist",
+    fisher = TRUE,
+    phiCra = TRUE,
+    pcCol = TRUE,hypothesis = "oneGreater",
+    compare = 'rows'
+  )
+  jmv_output_freq <- jmv_output$freqs$asDF %>%
+    clean_jmv_colnames()
+  jmv_output_test <- jmv_output$chiSq$asDF %>%
+    clean_jmv_colnames()
+  jmv_output_nom <- jmv_output$nom$asDF %>%
+    clean_jmv_colnames()
   return(mget(ls()))
 }
 exr_bio_milch <- gen_exr_bio_milch()
@@ -5237,16 +5252,41 @@ Bio-Milch zu trinken und $6$-mal nicht Bio-Milch zu trinken bei einem
 doppel-blind Test. Es entstehen die Daten in
 `r inline_code(exr_bio_milch$file_name)`.
 
-a)  Welcher Test ist bei dieser Datenlage angebracht, um zu testen, ob
+a)  Wie hoch ist der Anteil der richtig erkannten Bio-Milch und nicht Bio-Milch Proben? 
+b)  Welcher Test ist bei dieser Datenlage angebracht, um zu testen, ob
     die Freundin tatsächlich Bio und nicht Bio-Milch am Geschmack
     unterschieden kann?
-b)  Konnte die Freundin ihre Behauptung im Experiment nachweisen? Führen
+c)  Konnte die Freundin ihre Behauptung im Experiment nachweisen? Führen
     Sie den angebrachten Test durch und berichten Sie das Resultat
     inklusive Effektstärke.
+d)  Skizzieren Sie eines der im Test implizit verwendeten Alternativszenarien. 
 :::
 
 ::: solution
-TODO
+Zuerst wird der Datensatz mit `Jamovi` eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+\@ref(fig:sol-bio-milch-input).
+
+```{r sol-bio-milch-input, fig.cap='Jamovi Eingabe.'}
+knitr::include_graphics("figures/09-exr-bio-milch-jmv-input.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung
+\@ref(fig:sol-cancer-smoking-output).
+
+```{r sol-bio-milch-output, fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/09-exr-bio-milch-jmv-output.jpg")
+```
+
+Damit kann die Frage nun beantwortet werden:
+
+a) Der Anteil der richtig erkannten Bio-Milch Proben ist $p_1 = 78\%$. Der Anteil der richtig erkannten nicht Bio-Milch Proben ist $p_2 = 50\%$.
+b) Insgesamt werden $n = `r exr_bio_milch$dd %>% nrow()`$ Proben beurteilt. Da dies kleiner ist als $40$ kommt der $\chi^2$-Test nicht in Frage. Die erwarteten Beobachtungen sind zum Teil unter $5$. Dies bedeutet, dass die Kontinuitätskorrektur auch nicht verwendet werden darf. Es bleibt der exakte Test nach Fisher und Yates als einzige mögliche Option.
+c) Achtung der exakte Test nach Fisher und Yates wird einseitig durchgeführt, da es nicht interessiert, ob die Freundin die Bio-Milch unterdurchschnittlich gut erkennen kann.
+
+> Ein einseitiger exakter Test nach Fisher und Yates ergibt, dass das Ansagen der Milchsorte der Freundin nicht signifikant von der tatsächlichen Milchsorte abhängt, $`r report_p(exr_bio_milch$jmv_output_test$p_fisher)`$, $\phi = `r round(exr_bio_milch$jmv_output_nom$v_phi, 2)`$. Der Effekt ist mittel.
+
+d) Der Test belässt die Randsummen fixiert. Dies bedeutet, dass insgesamt immer gleich viele Proben jeder Milchsorte vorausgesagt werden und immer insgesamt gleich viele Porben von jeder Milchsorte gegeben werden. Der Test verwendet Alternativszenarien, welche extremer sind im Sinne der Alternativhypothese. Die Alternativhypothese ist, dass die Freundin Bio- von nicht Bio-Milch unterscheiden kann. Extremer bedeutet also hier, dass die Freundin mehr Proben richtig erkennt, zum Beispiel, $8$ statt der $7$ Bio-Milch Proben. Da die Randsummen gleichbleiben, bedeutet dies, dass die Freundin demnach $2$ statt $3$ nicht Bio-Milch Proben als Bio-Milch einstuft und $1$ statt $2$ Bio-Milch Porben als nicht Bio-Milch einstuft. Demnach ergibt sich, dass sie auch $4$ statt $3$ nicht Bio-Milch Proben als nicht Bio-Milch erkennt. Andere Szenarien, bei welchen $9$ respektive $10$ Bio-Milch Proben richtig erkannt werden.
 :::
 
 ::: {#covid-sterblichkeit .exercise}
@@ -5257,39 +5297,77 @@ Ziel:
 -->
 ```
 
-```{r exr-covid-sterblichkeit}
-gen_exr_covid_sterblichkeit <- function(){
-  n11 <- 29
-  n12 <- 671
-  n21 <- 25
-  n22 <- 345
-  dd <- tibble(geschlecht = c(rep("weiblich",n11),
-                        rep("weiblich",n12),
-                        rep("maennlich",n21),
-                        rep("maennlich",n22)),
-         covid = c(rep("gestorben",n11),
-                      rep("genesen",n12),
-                      rep("gestorben",n21),
-                      rep("genesen",n22)))
-    
-  file_name <- '09-exr-covid-sterblichkeit.sav'
+```{r exr-covid-atemnot}
+gen_exr_covid_atemnot <- function(){
+  covid <- 27698
+  control <- 87337
+  
+  covid_rf <- 7845
+  covid_nrf <- covid-covid_rf
+  ncovid_rf <- 18456
+  ncovid_nrf <- control-ncovid_rf
+  dd <- tibble(atemprobleme = c(rep("ja",2), rep("nein",2)),
+               covid = rep(c("ja", "nein"),2),
+               anzahl = c(covid_rf, ncovid_rf, covid_nrf, ncovid_nrf))
+  file_name <- '09-exr-covid-atemnot.sav'
   dd %>% write_sav(file_name)
+  jmv_output <- jmv::contTables(
+    dd,
+    "atemprobleme",
+    "covid",
+    "anzahl",
+    phiCra = TRUE,
+    pcCol = TRUE,
+    diffProp = TRUE, relRisk = TRUE, odds = TRUE,
+    compare = 'columns'
+  )
+  jmv_output_freq <- jmv_output$freqs$asDF %>%
+    clean_jmv_colnames()
+  jmv_output_odds <- jmv_output$odds$asDF %>%
+    clean_jmv_colnames()
+  jmv_output_test <- jmv_output$chiSq$asDF %>%
+    clean_jmv_colnames()
+  jmv_output_nom <- jmv_output$nom$asDF %>%
+    clean_jmv_colnames()
   return(mget(ls()))
 }
-exr_covid_sterblichkeit <- gen_exr_covid_sterblichkeit()
+exr_covid_atemnot <- gen_exr_covid_atemnot()
 ```
 
 <!-- TODO: Ausschöpfen odds ratio, etc -->
+@cohen2022 haben bei über $65$-jährigen den Zusammenhang zwischen Atemnot und einer SARS-CoV-2-Historie analysiert. Fiktive Daten dazu sind unter
+`r inline_code(exr_covid_atemnot$file_name)` abgelegt. 
 
-Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert
-(fiktive Zahlen, siehe Daten in
-`r inline_code(exr_covid_sterblichkeit$file_name)`). Wie gross sind die
-Risiken, die Risikodifferenz, das relative Risiko und der odds ratio und
-wie werden diese Grössen interpretiert? Was sind UV und AV?
+a) Wie gross ist das Risiko unter Atemnot zu leiden mit und ohne einer SARS-CoV-2 Historie? Identifizieren Sie zuerst ursächliche und Risikovariable.
+b) Wie gross ist die Risikodifferenz, das relative Risiko und das Chancenverhältnis?
+c) Welche Menschen stellen die Population dar?
+d) Lässt sich der Zusammenhang auf die Population ausweiten? Führen Sie einen Test durch und interpretieren Sie die Effektstärke.
 :::
 
 ::: solution
-TODO
+Zuerst wird der Datensatz mit `Jamovi` eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+\@ref(fig:sol-bio-milch-input).
+
+```{r sol-covid-atemnot-input, fig.cap='Jamovi Eingabe.'}
+knitr::include_graphics("figures/09-exr-covid-atemnot-jmv-input.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung
+\@ref(fig:sol-covid-atemnot-output).
+
+```{r sol-covid-atemnot-output, fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/09-exr-covid-atemnot-jmv-output.jpg")
+```
+
+Damit kann die Frage nun beantwortet werden:
+
+a) Das untersuchte schädliche Ereignis ist hier die Atemnot. Als ursache wird die vorhergehende SARS-CoV-2-Infektion betrachtet. Das Risiko nach einer SARS-CoV-2-Infektion an Atemnot zu leiden, liegt bei $`r round(100*exr_covid_atemnot$jmv_output_freq %>% filter(atemprobleme == "ja") %>% pull(all_of("1_pcCol")),1)` \%$. Das Risiko ohne vorhergehende SARS-CoV-2-Infektion an Atemnot zu leiden, liegt bei $`r round(100*exr_covid_atemnot$jmv_output_freq %>% filter(atemprobleme == "ja") %>% pull(all_of("2_pcCol")),1)` \%.$
+b) Die Risikodifferenz liegt demnach bei $`r round(100*exr_covid_atemnot$jmv_output_odds$v_dp,1)`\%$, das relative Risiko bei $`r round(exr_covid_atemnot$jmv_output_odds$v_rr,2)`$ und das Chancenverhältnis bei $`r round(exr_covid_atemnot$jmv_output_odds$v_o,2)`$. Eine vorhergehende SarsCov2 Infektion ist also mit einem erhöhten Risiko der Atemnot assoziiert.
+c) Da für die Studie nur über $65$-jährige beobachtet wurden, sind alle über $65$-jährigen die Population. Im besten Fall sind die  Studienergebnisse aussagekräftig für diese Gruppe. Im schlimmsten Fall sind sie nur aussagekräftig für die gezogene Stichprobe an über $65$-jährigen.
+d) 
+> Ein $\chi^2$-Test ergibt, dass das Auftreten von Atemnot (ja/nein) und die SARS-CoV-2-Historie (vorhanden/nicht vorhanden) ($OR = `r round(exr_covid_atemnot$jmv_output_odds$v_o, 2)`$) signifikant voneinander abhängig sind, $\chi^2 (1) = `r round(exr_covid_atemnot$jmv_output_test$value_chiSq,2)`$, $`r report_p(exr_covid_atemnot$jmv_output_test$p_chiSq)`$, $\phi = `r round(exr_covid_atemnot$jmv_output_nom$v_phi, 2)`.$ Der Effekt ist schwach.
+
 :::
 
 ## Test

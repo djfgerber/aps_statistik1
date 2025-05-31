@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{28 May, 2025}
+\date{31 May, 2025}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -4759,7 +4759,7 @@ Analyseparameter werden gesetzt, siehe Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{figures/09-exr-autism-epilepsy-jmv-input} 
+{\centering \includegraphics{figures/09-exr-autism-epilepsy-jmv-input} 
 
 }
 
@@ -4771,7 +4771,7 @@ Dies produziert das Analyseergebnis in Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{figures/09-exr-autism-epilepsy-jmv-output} 
+{\centering \includegraphics{figures/09-exr-autism-epilepsy-jmv-output} 
 
 }
 
@@ -4981,6 +4981,8 @@ doppel-blind Test. Es entstehen die Daten in
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
+  Wie hoch ist der Anteil der richtig erkannten Bio-Milch und nicht Bio-Milch Proben?
+\item
   Welcher Test ist bei dieser Datenlage angebracht, um zu testen, ob
   die Freundin tatsächlich Bio und nicht Bio-Milch am Geschmack
   unterschieden kann?
@@ -4988,27 +4990,130 @@ doppel-blind Test. Es entstehen die Daten in
   Konnte die Freundin ihre Behauptung im Experiment nachweisen? Führen
   Sie den angebrachten Test durch und berichten Sie das Resultat
   inklusive Effektstärke.
+\item
+  Skizzieren Sie eines der im Test implizit verwendeten Alternativszenarien.
 \end{enumerate}
 
 \end{exercise}
 
 \begin{solution}
-TODO
+
+Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+\ref{fig:sol-bio-milch-input}.
+
+\begin{figure}
+
+{\centering \includegraphics{figures/09-exr-bio-milch-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-bio-milch-input}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung
+\ref{fig:sol-cancer-smoking-output}.
+
+\begin{figure}
+
+{\centering \includegraphics{figures/09-exr-bio-milch-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-bio-milch-output}
+\end{figure}
+
+Damit kann die Frage nun beantwortet werden:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Der Anteil der richtig erkannten Bio-Milch Proben ist \(p_1 = 78\%\). Der Anteil der richtig erkannten nicht Bio-Milch Proben ist \(p_2 = 50\%\).
+\item
+  Insgesamt werden \(n = 15\) Proben beurteilt. Da dies kleiner ist als \(40\) kommt der \(\chi^2\)-Test nicht in Frage. Die erwarteten Beobachtungen sind zum Teil unter \(5\). Dies bedeutet, dass die Kontinuitätskorrektur auch nicht verwendet werden darf. Es bleibt der exakte Test nach Fisher und Yates als einzige mögliche Option.
+\item
+  Achtung der exakte Test nach Fisher und Yates wird einseitig durchgeführt, da es nicht interessiert, ob die Freundin die Bio-Milch unterdurchschnittlich gut erkennen kann.
+\end{enumerate}
+
+\begin{quote}
+Ein einseitiger exakter Test nach Fisher und Yates ergibt, dass das Ansagen der Milchsorte der Freundin nicht signifikant von der tatsächlichen Milchsorte abhängt, \(p = .287\), \(\phi = 0.29\). Der Effekt ist mittel.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Der Test belässt die Randsummen fixiert. Dies bedeutet, dass insgesamt immer gleich viele Proben jeder Milchsorte vorausgesagt werden und immer insgesamt gleich viele Porben von jeder Milchsorte gegeben werden. Der Test verwendet Alternativszenarien, welche extremer sind im Sinne der Alternativhypothese. Die Alternativhypothese ist, dass die Freundin Bio- von nicht Bio-Milch unterscheiden kann. Extremer bedeutet also hier, dass die Freundin mehr Proben richtig erkennt, zum Beispiel, \(8\) statt der \(7\) Bio-Milch Proben. Da die Randsummen gleichbleiben, bedeutet dies, dass die Freundin demnach \(2\) statt \(3\) nicht Bio-Milch Proben als Bio-Milch einstuft und \(1\) statt \(2\) Bio-Milch Porben als nicht Bio-Milch einstuft. Demnach ergibt sich, dass sie auch \(4\) statt \(3\) nicht Bio-Milch Proben als nicht Bio-Milch erkennt. Andere Szenarien, bei welchen \(9\) respektive \(10\) Bio-Milch Proben richtig erkannt werden.
+\end{enumerate}
+
 \end{solution}
 
 \begin{exercise}
 \protect\hypertarget{exr:covid-sterblichkeit}{}\label{exr:covid-sterblichkeit}\leavevmode
 
-Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert
-(fiktive Zahlen, siehe Daten in
-\texttt{09-exr-covid-sterblichkeit.sav}). Wie gross sind die
-Risiken, die Risikodifferenz, das relative Risiko und der odds ratio und
-wie werden diese Grössen interpretiert? Was sind UV und AV?
+\citet{cohen2022} haben bei über \(65\)-jährigen den Zusammenhang zwischen Atemnot und einer SARS-CoV-2-Historie analysiert. Fiktive Daten dazu sind unter
+\texttt{09-exr-covid-atemnot.sav} abgelegt.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Wie gross ist das Risiko unter Atemnot zu leiden mit und ohne einer SARS-CoV-2 Historie? Identifizieren Sie zuerst ursächliche und Risikovariable.
+\item
+  Wie gross ist die Risikodifferenz, das relative Risiko und das Chancenverhältnis?
+\item
+  Welche Menschen stellen die Population dar?
+\item
+  Lässt sich der Zusammenhang auf die Population ausweiten? Führen Sie einen Test durch und interpretieren Sie die Effektstärke.
+\end{enumerate}
 
 \end{exercise}
 
 \begin{solution}
-TODO
+
+Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+\ref{fig:sol-bio-milch-input}.
+
+\begin{figure}
+
+{\centering \includegraphics{figures/09-exr-covid-atemnot-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-covid-atemnot-input}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung
+\ref{fig:sol-covid-atemnot-output}.
+
+\begin{figure}
+
+{\centering \includegraphics{figures/09-exr-covid-atemnot-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-covid-atemnot-output}
+\end{figure}
+
+Damit kann die Frage nun beantwortet werden:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Das untersuchte schädliche Ereignis ist hier die Atemnot. Als ursache wird die vorhergehende SARS-CoV-2-Infektion betrachtet. Das Risiko nach einer SARS-CoV-2-Infektion an Atemnot zu leiden, liegt bei \(28.3 \%\). Das Risiko ohne vorhergehende SARS-CoV-2-Infektion an Atemnot zu leiden, liegt bei \(21.1 \%.\)
+\item
+  Die Risikodifferenz liegt demnach bei \(7.2\%\), das relative Risiko bei \(1.34\) und das Chancenverhältnis bei \(1.47\). Eine vorhergehende SarsCov2 Infektion ist also mit einem erhöhten Risiko der Atemnot assoziiert.
+\item
+  Da für die Studie nur über \(65\)-jährige beobachtet wurden, sind alle über \(65\)-jährigen die Population. Im besten Fall sind die Studienergebnisse aussagekräftig für diese Gruppe. Im schlimmsten Fall sind sie nur aussagekräftig für die gezogene Stichprobe an über \(65\)-jährigen.
+\item
+  \begin{quote}
+  Ein \(\chi^2\)-Test ergibt, dass das Auftreten von Atemnot (ja/nein) und die SARS-CoV-2-Historie (vorhanden/nicht vorhanden) (\(OR = 1.47\)) signifikant voneinander abhängig sind, \(\chi^2 (1) = 616.65\), \(p < 0.001\), \(\phi = 0.07.\) Der Effekt ist schwach.
+  \end{quote}
+\end{enumerate}
+
 \end{solution}
 
 \section{Test}\label{test-5}

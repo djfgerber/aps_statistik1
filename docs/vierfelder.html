@@ -649,7 +649,7 @@ Sie das Ergebnis. Schätzen und interpretieren Sie auch die Effektstärke.</li>
 Analyseparameter werden gesetzt, siehe Abbildung
 <a href="vierfelder.html#fig:sol-autism-epilepsy-input">9.8</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-autism-epilepsy-input"></span>
-<img src="figures/09-exr-autism-epilepsy-jmv-input.jpg" alt="Jamovi Eingabe." width="100%" />
+<img src="figures/09-exr-autism-epilepsy-jmv-input.jpg" alt="Jamovi Eingabe."  />
 <p class="caption">
 Abbildung 9.8: Jamovi Eingabe.
 </p>
@@ -657,7 +657,7 @@ Abbildung 9.8: Jamovi Eingabe.
 <p>Dies produziert das Analyseergebnis in Abbildung
 <a href="vierfelder.html#fig:sol-autism-epilepsy-output">9.9</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-autism-epilepsy-output"></span>
-<img src="figures/09-exr-autism-epilepsy-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
+<img src="figures/09-exr-autism-epilepsy-jmv-output.jpg" alt="Jamovi Ausgabe."  />
 <p class="caption">
 Abbildung 9.9: Jamovi Ausgabe.
 </p>
@@ -825,18 +825,48 @@ Bio-Milch zu trinken und <span class="math inline">\(6\)</span>-mal nicht Bio-Mi
 doppel-blind Test. Es entstehen die Daten in
 <code>09-exr-bio-milch.sav</code>.</p>
 <ol style="list-style-type: lower-alpha">
+<li>Wie hoch ist der Anteil der richtig erkannten Bio-Milch und nicht Bio-Milch Proben?</li>
 <li>Welcher Test ist bei dieser Datenlage angebracht, um zu testen, ob
 die Freundin tatsächlich Bio und nicht Bio-Milch am Geschmack
 unterschieden kann?</li>
 <li>Konnte die Freundin ihre Behauptung im Experiment nachweisen? Führen
 Sie den angebrachten Test durch und berichten Sie das Resultat
 inklusive Effektstärke.</li>
+<li>Skizzieren Sie eines der im Test implizit verwendeten Alternativszenarien.</li>
 </ol>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-74" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-74" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+<a href="vierfelder.html#fig:sol-bio-milch-input">9.14</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-bio-milch-input"></span>
+<img src="figures/09-exr-bio-milch-jmv-input.jpg" alt="Jamovi Eingabe."  />
+<p class="caption">
+Abbildung 9.14: Jamovi Eingabe.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung
+<a href="vierfelder.html#fig:sol-cancer-smoking-output">9.13</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-bio-milch-output"></span>
+<img src="figures/09-exr-bio-milch-jmv-output.jpg" alt="Jamovi Ausgabe."  />
+<p class="caption">
+Abbildung 9.15: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit kann die Frage nun beantwortet werden:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Der Anteil der richtig erkannten Bio-Milch Proben ist <span class="math inline">\(p_1 = 78\%\)</span>. Der Anteil der richtig erkannten nicht Bio-Milch Proben ist <span class="math inline">\(p_2 = 50\%\)</span>.</li>
+<li>Insgesamt werden <span class="math inline">\(n = 15\)</span> Proben beurteilt. Da dies kleiner ist als <span class="math inline">\(40\)</span> kommt der <span class="math inline">\(\chi^2\)</span>-Test nicht in Frage. Die erwarteten Beobachtungen sind zum Teil unter <span class="math inline">\(5\)</span>. Dies bedeutet, dass die Kontinuitätskorrektur auch nicht verwendet werden darf. Es bleibt der exakte Test nach Fisher und Yates als einzige mögliche Option.</li>
+<li>Achtung der exakte Test nach Fisher und Yates wird einseitig durchgeführt, da es nicht interessiert, ob die Freundin die Bio-Milch unterdurchschnittlich gut erkennen kann.</li>
+</ol>
+<blockquote>
+<p>Ein einseitiger exakter Test nach Fisher und Yates ergibt, dass das Ansagen der Milchsorte der Freundin nicht signifikant von der tatsächlichen Milchsorte abhängt, <span class="math inline">\(p = .287\)</span>, <span class="math inline">\(\phi = 0.29\)</span>. Der Effekt ist mittel.</p>
+</blockquote>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Der Test belässt die Randsummen fixiert. Dies bedeutet, dass insgesamt immer gleich viele Proben jeder Milchsorte vorausgesagt werden und immer insgesamt gleich viele Porben von jeder Milchsorte gegeben werden. Der Test verwendet Alternativszenarien, welche extremer sind im Sinne der Alternativhypothese. Die Alternativhypothese ist, dass die Freundin Bio- von nicht Bio-Milch unterscheiden kann. Extremer bedeutet also hier, dass die Freundin mehr Proben richtig erkennt, zum Beispiel, <span class="math inline">\(8\)</span> statt der <span class="math inline">\(7\)</span> Bio-Milch Proben. Da die Randsummen gleichbleiben, bedeutet dies, dass die Freundin demnach <span class="math inline">\(2\)</span> statt <span class="math inline">\(3\)</span> nicht Bio-Milch Proben als Bio-Milch einstuft und <span class="math inline">\(1\)</span> statt <span class="math inline">\(2\)</span> Bio-Milch Porben als nicht Bio-Milch einstuft. Demnach ergibt sich, dass sie auch <span class="math inline">\(4\)</span> statt <span class="math inline">\(3\)</span> nicht Bio-Milch Proben als nicht Bio-Milch erkennt. Andere Szenarien, bei welchen <span class="math inline">\(9\)</span> respektive <span class="math inline">\(10\)</span> Bio-Milch Proben richtig erkannt werden.</li>
+</ol>
 </details>
 </div>
 <div class="exercise">
@@ -846,16 +876,44 @@ Ziel:
 - Starke Korrelation gegen Null absichern
 -->
 <!-- TODO: Ausschöpfen odds ratio, etc -->
-<p>Im Zusammenhang mit Covid-19 wurden Daten zu den Todesfällen publiziert
-(fiktive Zahlen, siehe Daten in
-<code>09-exr-covid-sterblichkeit.sav</code>). Wie gross sind die
-Risiken, die Risikodifferenz, das relative Risiko und der odds ratio und
-wie werden diese Grössen interpretiert? Was sind UV und AV?</p>
+<p><span class="citation">K. Cohen et al. (<a href="#ref-cohen2022">2022</a>)</span> haben bei über <span class="math inline">\(65\)</span>-jährigen den Zusammenhang zwischen Atemnot und einer SARS-CoV-2-Historie analysiert. Fiktive Daten dazu sind unter
+<code>09-exr-covid-atemnot.sav</code> abgelegt.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Wie gross ist das Risiko unter Atemnot zu leiden mit und ohne einer SARS-CoV-2 Historie? Identifizieren Sie zuerst ursächliche und Risikovariable.</li>
+<li>Wie gross ist die Risikodifferenz, das relative Risiko und das Chancenverhältnis?</li>
+<li>Welche Menschen stellen die Population dar?</li>
+<li>Lässt sich der Zusammenhang auf die Population ausweiten? Führen Sie einen Test durch und interpretieren Sie die Effektstärke.</li>
+</ol>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-75" class="solution"><em>Lösung</em>. </span>TODO</p>
+<p><span id="unlabeled-div-75" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+<a href="vierfelder.html#fig:sol-bio-milch-input">9.14</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-covid-atemnot-input"></span>
+<img src="figures/09-exr-covid-atemnot-jmv-input.jpg" alt="Jamovi Eingabe."  />
+<p class="caption">
+Abbildung 9.16: Jamovi Eingabe.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung
+<a href="vierfelder.html#fig:sol-covid-atemnot-output">9.17</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-covid-atemnot-output"></span>
+<img src="figures/09-exr-covid-atemnot-jmv-output.jpg" alt="Jamovi Ausgabe."  />
+<p class="caption">
+Abbildung 9.17: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit kann die Frage nun beantwortet werden:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Das untersuchte schädliche Ereignis ist hier die Atemnot. Als ursache wird die vorhergehende SARS-CoV-2-Infektion betrachtet. Das Risiko nach einer SARS-CoV-2-Infektion an Atemnot zu leiden, liegt bei <span class="math inline">\(28.3 \%\)</span>. Das Risiko ohne vorhergehende SARS-CoV-2-Infektion an Atemnot zu leiden, liegt bei <span class="math inline">\(21.1 \%.\)</span></li>
+<li>Die Risikodifferenz liegt demnach bei <span class="math inline">\(7.2\%\)</span>, das relative Risiko bei <span class="math inline">\(1.34\)</span> und das Chancenverhältnis bei <span class="math inline">\(1.47\)</span>. Eine vorhergehende SarsCov2 Infektion ist also mit einem erhöhten Risiko der Atemnot assoziiert.</li>
+<li>Da für die Studie nur über <span class="math inline">\(65\)</span>-jährige beobachtet wurden, sind alle über <span class="math inline">\(65\)</span>-jährigen die Population. Im besten Fall sind die Studienergebnisse aussagekräftig für diese Gruppe. Im schlimmsten Fall sind sie nur aussagekräftig für die gezogene Stichprobe an über <span class="math inline">\(65\)</span>-jährigen.</li>
+<li><blockquote>
+<p>Ein <span class="math inline">\(\chi^2\)</span>-Test ergibt, dass das Auftreten von Atemnot (ja/nein) und die SARS-CoV-2-Historie (vorhanden/nicht vorhanden) (<span class="math inline">\(OR = 1.47\)</span>) signifikant voneinander abhängig sind, <span class="math inline">\(\chi^2 (1) = 616.65\)</span>, <span class="math inline">\(p &lt; 0.001\)</span>, <span class="math inline">\(\phi = 0.07.\)</span> Der Effekt ist schwach.</p>
+</blockquote></li>
+</ol>
 </details>
 </div>
 </div>
@@ -907,6 +965,9 @@ wie werden diese Grössen interpretiert? Was sind UV und AV?</p>
 </div>
 <h3>Literaturverzeichnis<a href="literaturverzeichnis.html#literaturverzeichnis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-cohen2022" class="csl-entry">
+Cohen, Ken, Sheng Ren, Kevin Heath, Micah C Dasmariñas, Karol Giuseppe Jubilo, Yinglong Guo, Marc Lipsitch, and Sarah E Daugherty. 2022. <span>“Risk of Persistent and New Clinical Sequelae Among Adults Aged 65 Years and Older During the Post-Acute Phase of <span>SARS</span>-<span>CoV</span>-2 Infection: Retrospective Cohort Study.”</span> <em>The <span>BMJ</span></em> 376: e068414. <a href="https://doi.org/10.1136/bmj-2021-068414">https://doi.org/10.1136/bmj-2021-068414</a>.
+</div>
 <div id="ref-hayes1991" class="csl-entry">
 Hayes, Howard M., Robert E. Tarone, Kenneth P. Cantor, Carl R. Jessen, Dennis M. McCurnin, and Ralph C. Richardson. 1991. <span>“Case-Control Study of Canine Malignant Lymphoma: Positive Association with Dog Owner’s Use of 2, 4-Dichlorophenoxyacetic Acid Herbicides.”</span> <em><span>JNCI</span>: Journal of the National Cancer Institute</em> 83 (17): 1226–31. <a href="https://doi.org/10.1093/jnci/83.17.1226">https://doi.org/10.1093/jnci/83.17.1226</a>.
 </div>
