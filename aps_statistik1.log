@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  31 MAY 2025 12:59
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.8)  2 JUN 2025 21:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2577,6 +2577,45 @@ Overfull \hbox (5.11781pt too wide) has occurred while \output is active
  []
 
 [204]
+Underfull \hbox (badness 1596) in paragraph at lines 5283--5284
+\TU/lmr/m/n/10 die Geschmackswahrnehmung auswirkt ([]DuBose et al.[], []1980[]). In einem
+ []
+
+
+Underfull \hbox (badness 1337) in paragraph at lines 5283--5284
+\TU/lmr/m/n/10 Teil des dazugehörigen Experiments wurden 12 Proband:innen Getränke
+ []
+
+
+Underfull \hbox (badness 2221) in paragraph at lines 5283--5284
+\TU/lmr/m/n/10 mit Kirschgeschmackt und verschiedenen Färbungen (rot, organge oder
+ []
+
+
+Underfull \hbox (badness 2261) in paragraph at lines 5283--5284
+\TU/lmr/m/n/10 grün) vorgesetzt. Die Proband:innen haben die Getränke probiert und
+ []
+
+
+Underfull \hbox (badness 2653) in paragraph at lines 5283--5284
+\TU/lmr/m/n/10 anschliessend angegeben, welche Geschmacksrichtung (heidelbeere/traube,
+ []
+
+File: figures/10-exr-taste-color-jmv-input.jpg Graphic file (type bmp)
+<figures/10-exr-taste-color-jmv-input.jpg>
+File: figures/10-exr-taste-color-jmv-output.jpg Graphic file (type bmp)
+<figures/10-exr-taste-color-jmv-output.jpg>
+
+Underfull \hbox (badness 3029) in paragraph at lines 5334--5336
+[]\TU/lmr/m/n/10 Interessant ist hier, wie gross der Anteil der Leute ist, welche
+ []
+
+
+Underfull \hbox (badness 3009) in paragraph at lines 5334--5336
+\TU/lmr/m/n/10 den Kirschgeschmack bei verschiedenen Färbungen richtig heraus-
+ []
+
+
 
 [205]
 
@@ -2585,29 +2624,65 @@ Overfull \hbox (5.11781pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 206 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
  []
 
-[206
-
-]
+[206]
 
 [207]
+Underfull \hbox (badness 10000) in paragraph at lines 5337--5339
+\TU/lmr/m/n/10 beere/traube, kirsche/erbeere/himbeere, orange/aprikose,
+ []
+
+File: figures/10-exr-memory-strategy-jmv-input.jpg Graphic file (type bmp)
+<figures/10-exr-memory-strategy-jmv-input.jpg>
+File: figures/10-exr-memory-strategy-jmv-output.jpg Graphic file (type bmp)
+<figures/10-exr-memory-strategy-jmv-output.jpg>
+
 
 
 Overfull \hbox (5.11781pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 208 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
  []
 
-[208] (./aps_statistik1.bbl
+[208]
 
-[209
-
-]
+[209]
 
 
 Overfull \hbox (5.11781pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 210 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
  []
 
-[210
+[210]
+
+[211]
+
+
+Overfull \hbox (5.11781pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 212 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
+ []
+
+[212
+
+]
+
+[213]
+
+
+Overfull \hbox (5.11781pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 214 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
+ []
+
+[214] (./aps_statistik1.bbl
+
+[215
+
+]
+
+
+Overfull \hbox (5.11781pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 216 \TU/lmr/m/sl/10 KAPITEL 10.  ZUSAMMENHANG NOMINALSKALIERTER MERKMALE
+ []
+
+[216
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 4--7
@@ -2626,36 +2701,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--7
 
 
 
-[211]
-Underfull \hbox (badness 10000) in paragraph at lines 59--63
+[217]
+Underfull \hbox (badness 10000) in paragraph at lines 64--68
 []\TU/lmr/m/n/10 Hamilton, J. B. (1951).  Patterned loss of hair in
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--63
+Underfull \hbox (badness 10000) in paragraph at lines 64--68
 \TU/lmr/m/n/10 man: Types and incidence.  53(3):708–728.  _eprint:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--63
+Underfull \hbox (badness 10000) in paragraph at lines 64--68
 \TU/lmr/m/n/10 https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1749-
  []
 
 
 
-[212]
-Underfull \hbox (badness 10000) in paragraph at lines 162--166
+[218]
+Underfull \hbox (badness 10000) in paragraph at lines 172--176
 []\TU/lmr/m/n/10 Zimmerman, D. W. (2004).  A note on preliminary tests
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--166
+Underfull \hbox (badness 10000) in paragraph at lines 172--176
 \TU/lmr/m/n/10 of equality of variances.  57(1):173–181.  _eprint:
  []
 
 )
 
-[213] (./aps_statistik1.aux)
+[219] (./aps_statistik1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -2665,12 +2740,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 35229 strings out of 475846
- 793637 string characters out of 5773212
- 1189281 words of memory out of 5000000
- 57517 multiletter control sequences out of 15000+600000
+ 35333 strings out of 475846
+ 798259 string characters out of 5773212
+ 1189590 words of memory out of 5000000
+ 57617 multiletter control sequences out of 15000+600000
  565418 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  98i,10n,114p,2090b,738s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on aps_statistik1.pdf (213 pages).
+Output written on aps_statistik1.pdf (219 pages).

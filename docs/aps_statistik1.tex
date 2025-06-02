@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{31 May, 2025}
+\date{02 June, 2025}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -5273,6 +5273,146 @@ Damit kann die Frage nun beantwortet werden:
   Ein \(\chi^2\)-Test ergibt, dass die Bildung der Kinder (Sek I/ Sek II / Hochschule) und die Bildung der Mütter (Sek I/ Sek II / Hochschule) signifikant voneinander abhängig sind,
   \(\chi^2 (4) = 400.67, p < 0.001, V = 0.39\). Der Zusammenhang ist als mittel einzustufen.
   \end{quote}
+\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:taste-color}{}\label{exr:taste-color}\leavevmode
+
+In einer Studie wurde untersucht, wie sich die Farbe eines Getränks auf die Geschmackswahrnehmung auswirkt \citep{dubose1980}. In einem Teil des dazugehörigen Experiments wurden 12 Proband:innen Getränke mit Kirschgeschmackt und verschiedenen Färbungen (rot, organge oder grün) vorgesetzt. Die Proband:innen haben die Getränke probiert und anschliessend angegeben, welche Geschmacksrichtung (heidelbeere/traube, kirsche/erbeere/himbeere, orange/aprikose, zitrone/grapefruit/apfel) sie dem Getränk zuordnen. Die Daten sind in \texttt{10-exr-taste-color.sav} zu finden.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Illustrieren Sie mit geeigneten Zahlen in \texttt{Jamovi}, wie die Geschmackserkennung \texttt{response\_flavour} mit der Farbe zusammenhängt.
+\item
+  Lässt sich die Aussage auf die Population aller Menschen ausweiten oder bleibt diese beschränkt auf die Stichprobe? Führen Sie einen \(\chi^2\)-Test durch und berichten Sie das Ergebnis, inklusive Effektstärke nach Cramér.
+\item
+  Die Teststatistik folgt einer \(\chi^2\)-Verteilung mit wie vielen Freiheitsgraden?
+\item
+  Wie gross ist hier \(k\) in der Berechnung von Cramérs V?
+\item
+  Sind die Voraussetzungen für den \(\chi^2\)-Test gegeben? Skizzieren Sie gegebenenfalls Alternativen.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+
+Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+\ref{fig:sol-taste-color-input}.
+
+\begin{figure}
+
+{\centering \includegraphics{figures/10-exr-taste-color-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-taste-color-input}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung
+\ref{fig:sol-taste-color-output}.
+
+\begin{figure}
+
+{\centering \includegraphics{figures/10-exr-taste-color-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-taste-color-output}
+\end{figure}
+
+Damit kann die Frage nun beantwortet werden:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Interessant ist hier, wie gross der Anteil der Leute ist, welche den Kirschgeschmack bei verschiedenen Färbungen richtig herausgeschmeckt haben. Wenn das Getränk rot gefärbt ist, erkennen \(93\%\) den Kirschgeschmack richtig. Wenn das Getränk jedoch orange oder grün gefärbt ist, erkennen nur \(52\%\) respektive \(44\%\) den Geschmack richtig. Ebenso spannend ist, dass bei oranger Färbung \(30\%\) einen Aprikosen- oder Orangengeschmack erkennen. Bei grüner Färbung erkennen rund \(41\%\) einen Apfel-, Zitronen- oder Grapefruitgeschmack.
+\item
+  \begin{quote}
+  Ein \(\chi^2\)-Test ergibt, dass der erkannte Geschmack (heidelbeere/traube, kirsche/erbeere/himbeere, orange/aprikose, zitrone/grapefruit/apfel) und die Färbung der Getränke (rot, organge oder grün) signifikant voneinander abhängig sind,
+  \(\chi^2 (6) = 30.63, p < 0.001, V = 0.43\). Der Zusammenhang ist als stark einzustufen.
+  \end{quote}
+\item
+  Die Verteilung der Teststatistik ist \(\chi^2\) bei \((I-1)\cdot (J-1) = (4-1)\cdot (3-1) = 6\) Freiheitsgraden.
+\item
+  Das \(k\) in der Formel für Carmérs V ist die kleinere Zahl zwischen \(I = 4\) und \(J = 3\), also \(3\).
+\item
+  Die erwarteten Beobachtungen für die Ausprägungen heidelbeere/traube und orange/aprikose liegen unter \(5\). Die Ergebnisse des \(\chi^2\) Tests sind also nicht valide. Alternativen wären die Zusammenlegung von Ausprägungen oder ein exakter Test nach Fisher und Yates.
+\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+\protect\hypertarget{exr:memory-strategy}{}\label{exr:memory-strategy}\leavevmode
+
+In einer Studie wurde untersucht, wie sich die Lernstrategie (phonetisch: reimt auf x, selbstreferenz: trifft auf dich zu, semantisch: bedeutet x und strukturhaft: grossbuchstaben) auf die Merkfähigkeit von Wörtern auswirkt \citep{rogers1977}. Dazu wurde ein Wort mit einer dazugehörigen Aufgabe präsentiert und die Proband:innen mussten das Wort nach 10 Minuten und einer zwischenzeitlichen Ablenkung erinnern (ja/nein). Es wurde gezählt, wieviele Wörter von allen Proband:innen zusammen pro Lernstrategie erinnert wurden. Die Daten sind in \texttt{10-exr-memory-strategy.sav} zu finden.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Illustrieren Sie mit geeigneten Zahlen in \texttt{Jamovi}, wie die Lernstrategie mit der Erinnerungsfähigkeit zusammenhängt.
+\item
+  Lässt sich die Aussage auf die Population aller Menschen ausweiten oder bleibt diese beschränkt auf die Stichprobe? Führen Sie einen \(\chi^2\)-Test durch und berichten Sie das Ergebnis, inklusive Effektstärke nach Cramér.
+\item
+  Wie gross ist die gefundene Teststatistik? Ist es eher wahrscheinlich oder unwahrscheinlich diese zufällig zu beobachten, wenn die Nullhypothese stimmt? (Vergleichen Sie mit der korrekten Kurve der Abbildung der \href{https://de.wikipedia.org/wiki/Chi-Quadrat-Verteilung}{\(\chi^2\)-Verteilung}).
+\item
+  Wie gross ist hier \(k\) in der Berechnung von Cramérs V?
+\item
+  Sind die Voraussetzungen für den \(\chi^2\)-Test gegeben? Skizzieren Sie gegebenenfalls Alternativen.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+
+Zuerst wird der Datensatz mit \texttt{Jamovi} eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+\ref{fig:sol-memory-strategy-input}.
+
+\begin{figure}
+
+{\centering \includegraphics{figures/10-exr-memory-strategy-jmv-input} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:sol-memory-strategy-input}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung
+\ref{fig:sol-memory-strategy-output}.
+
+\begin{figure}
+
+{\centering \includegraphics{figures/10-exr-memory-strategy-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-memory-strategy-output}
+\end{figure}
+
+Damit kann die Frage nun beantwortet werden:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  Der erinnerte Anteil variert je nach Lernstrategie zwischen \(64\%\) (Selbstreferenz) und \(55\) (Semantisch).
+\item
+  \begin{quote}
+  Ein \(\chi^2\)-Test ergibt, dass die Lernstrategie (phonetisch, selbstreferenz, semantisch und strukturhaft) und Worterinnerung (erinnert und nicht erinnert) nicht signifikant voneinander abhängig sind,
+  \(\chi^2 (3) = 2.71, p = .438, V = 0.07\). Der Zusammenhang ist als schwach einzustufen.
+  \end{quote}
+\item
+  Der Wert der Teststatistik liegt bei 2.71. Dieser Wert ist \(\chi^2\)-verteilt bei \(3\) Freiheitsgraden. Dies entspricht auf der referenzierten Abbildung der türkisfarbenen Linie. Auf der Linie kann abgelesen werden, dass ein Wert von 2.71 nicht unwahrscheinlich ist, wenn die Nullhypothese wahr ist. Dies ist auch mit dem hohen \(p\)-Wert zu sehen.
+\item
+  Das \(k\) in der Formel für Carmérs V ist die kleinere Zahl zwischen \(I = 4\) und \(J = 2\), also \(2\).
+\item
+  Es werden in allen Zellen \(5\) oder mehr Beobachtugnen erwartet. Die Voraussetzungen für den \(\chi^2\)-Test sind somit gegeben.
 \end{enumerate}
 
 \end{solution}

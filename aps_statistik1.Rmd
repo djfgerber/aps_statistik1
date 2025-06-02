@@ -5380,89 +5380,6 @@ editor_options:
     wrap: 72
 ---
 
-
-
-<!-- Personality Type and Favorite Leisure Activity -->
-
-<!-- Variable 1: Personality type (introvert, ambivert, extrovert) -->
-
-<!-- Variable 2: Favorite leisure activity (reading, sports, music, travel) -->
-
-<!-- Test: Is there an association between personality type and preferred leisure activity? -->
-
-<!-- Stress Level and Coping Mechanism -->
-
-<!-- Variable 1: Stress level (low, moderate, high) -->
-
-<!-- Variable 2: Primary coping mechanism (exercise, meditation, social support, avoidance) -->
-
-<!-- Test: Is stress level associated with the type of coping mechanism used? -->
-
-<!-- Age Group and Preferred Communication Channel -->
-
-<!-- Variable 1: Age group (teen, young adult, middle-aged, senior) -->
-
-<!-- Variable 2: Preferred communication (text, call, social media, in-person) -->
-
-<!-- Test: Does age group relate to communication preferences? -->
-
-<!-- Educational Background and Career Choice -->
-
-<!-- Variable 1: Educational background (high school, bachelor’s, master’s, PhD) -->
-
-<!-- Variable 2: Career choice (healthcare, education, business, technology) -->
-
-<!-- Test: Is there an association between educational background and career choice? -->
-<!-- Influence of parents educational background on career choice of teenagers among senior secondary school students in Owerri implication of parents influence on teenagers' future career choices and the society at large -->
-
-<!-- Parenting Style and Child’s Social Skills -->
-
-<!-- Variable 1: Parenting style (authoritarian, authoritative, permissive, uninvolved) -->
-
-<!-- Variable 2: Child’s social skills (poor, average, good, excellent) -->
-
-<!-- Test: Is parenting style associated with children’s social skills? -->
-
-<!-- Mood State and Preferred Music Genre -->
-
-<!-- Variable 1: Mood state (happy, sad, anxious, calm) -->
-
-<!-- Variable 2: Preferred music genre (pop, rock, classical, jazz) -->
-
-<!-- Test: Is mood state associated with music genre preference? -->
-
-<!-- Self-Esteem Level and Social Media Use Frequency -->
-
-<!-- Variable 1: Self-esteem (low, medium, high) -->
-
-<!-- Variable 2: Social media use frequency (rarely, occasionally, often, always) -->
-
-<!-- Test: Is self-esteem level related to frequency of social media use? -->
-
-<!-- Learning Style and Academic Performance -->
-
-<!-- Variable 1: Learning style (visual, auditory, kinesthetic, reading/writing) -->
-
-<!-- Variable 2: Academic performance (below average, average, above average, excellent) -->
-
-<!-- Test: Is learning style associated with academic performance? -->
-
-<!-- Marital Status and Life Satisfaction -->
-
-<!-- Variable 1: Marital status (single, married, divorced, widowed) -->
-
-<!-- Variable 2: Life satisfaction (very dissatisfied, dissatisfied, satisfied, very satisfied) -->
-
-<!-- Test: Is marital status associated with life satisfaction? -->
-
-<!-- Emotional Response to Words and Word Type -->
-
-<!-- Variable 1: Emotional response (positive, negative, neutral) -->
-
-<!-- Variable 2: Word type (noun, verb, adjective, adverb) -->
-
-<!-- Test: Is emotional response to words associated with word type? (Note: This is inspired by an example where emotional perception of different words is compared, but here expanded with word type as the second variable.) -->
-
 # Zusammenhang nominalskalierter Merkmale
 
 Bislang wurde der Zusammenhang zwischen zwei dichotomen Merkmalen angeschaut. In  Beispiel \@ref(exm:dog-cancer) wird die Anwendung eines Herbizides (Ja/Nein) mit Lymphdrüsenkrebs (Tumor/Kein Tumor) verglichen. Was wäre jedoch, wenn der Lymphdrüsenkrebs mit drei Ausprägungen (Kein Tumor / gutartiger Tumor / bösartiger Tumor) erhoben wird? Im Folgenden wird aufgezeigt, wie sich die bisher kennengelernten Methoden mit wenig Aufwand auf den Fall von einem oder zwei nominalskalierter Merkmale ausgeweitet werden kann.
@@ -5690,6 +5607,188 @@ b) Der Anteil Kinder mit Hochschulbildung deren Mütter höchstens einen Sek I A
 c) 
 > Ein $\chi^2$-Test ergibt, dass die Bildung der Kinder (Sek I/ Sek II / Hochschule) und die Bildung der Mütter (Sek I/ Sek II / Hochschule) signifikant voneinander abhängig sind,
 > $\chi^2 (`r (exr_edu_heredity$I-1)*(exr_edu_heredity$J-1)`) = `r round(exr_edu_heredity$jmv_output_test$value_chiSq,2)`, `r report_p(exr_edu_heredity$jmv_output_test$p_chiSq)`, V = `r round(exr_edu_heredity$jmv_output_nom$v_cra,2)`$. Der Zusammenhang ist als mittel einzustufen.
+
+:::
+
+
+::: {.exercise  #taste-color}
+<!-- 
+Ziel: 
+- 
+-->
+```{r exr-taste-color}
+gen_exr_taste_color <- function(){
+  set.seed(894)
+  file_name <- '10-exr-taste-color.sav'
+  dd <- tibble(flavour_response = rep(c("kirsche/erbeere/himbeere",
+                            "orange/aprikose",
+                            "zitrone/grapefruit/apfel",
+                            "heidelbeere/traube"),3),
+       color = c(rep("rot",4),
+                 rep("orange",4),
+                 rep("grün",4)
+                 ),
+       count = c(25, 0, 1, 1,
+                  14, 8, 3, 2,
+                  12, 1, 11, 3)) %>% 
+    write_sav(file_name)
+  n <- dd %>% nrow()
+  I <- dd %>% table() %>% nrow()
+  J <- dd %>% table() %>% ncol()
+  jmv_output <- jmv::contTables(
+    dd,
+    "flavour_response",
+    "color",
+    "count",
+    chiSq = TRUE,
+    chiSqCorr = FALSE,
+    odds = FALSE,
+    relRisk = FALSE,
+    diffProp = FALSE, 
+    phiCra = TRUE,
+    exp = TRUE,
+    pcRow = FALSE,
+    pcCol = TRUE,
+    compare = 'columns'
+  )
+  jmv_output_freq <- jmv_output$freqs$asDF %>% 
+    clean_jmv_colnames()
+  jmv_output_test <- jmv_output$chiSq$asDF %>% 
+    clean_jmv_colnames()
+  jmv_output_nom <- jmv_output$nom$asDF %>% 
+    clean_jmv_colnames()
+  return(mget(ls()))
+}
+exr_taste_color <- gen_exr_taste_color()
+```
+
+In einer Studie wurde untersucht, wie sich die Farbe eines Getränks auf die Geschmackswahrnehmung auswirkt [@dubose1980]. In einem Teil des dazugehörigen Experiments wurden `r exr_taste_color$n` Proband:innen Getränke mit Kirschgeschmackt und verschiedenen Färbungen (rot, organge oder grün) vorgesetzt. Die Proband:innen haben die Getränke probiert und anschliessend angegeben, welche Geschmacksrichtung (heidelbeere/traube, kirsche/erbeere/himbeere, orange/aprikose, zitrone/grapefruit/apfel) sie dem Getränk zuordnen. Die Daten sind in `r inline_code(exr_taste_color$file_name)` zu finden.
+
+a) Illustrieren Sie mit geeigneten Zahlen in `Jamovi`, wie die Geschmackserkennung `response_flavour` mit der Farbe zusammenhängt.
+b) Lässt sich die Aussage auf die Population aller Menschen ausweiten oder bleibt diese beschränkt auf die Stichprobe? Führen Sie einen $\chi^2$-Test durch und berichten Sie das Ergebnis, inklusive Effektstärke nach Cramér.
+c) Die Teststatistik folgt einer $\chi^2$-Verteilung mit wie vielen Freiheitsgraden?
+d) Wie gross ist hier $k$ in der Berechnung von Cramérs V?
+e) Sind die Voraussetzungen für den $\chi^2$-Test gegeben? Skizzieren Sie gegebenenfalls Alternativen.
+
+:::
+
+:::{.solution}
+Zuerst wird der Datensatz mit `Jamovi` eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+\@ref(fig:sol-taste-color-input).
+
+```{r sol-taste-color-input, fig.cap='Jamovi Eingabe.'}
+knitr::include_graphics("figures/10-exr-taste-color-jmv-input.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung
+\@ref(fig:sol-taste-color-output).
+
+```{r sol-taste-color-output, fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/10-exr-taste-color-jmv-output.jpg")
+```
+
+Damit kann die Frage nun beantwortet werden:
+
+a) Interessant ist hier, wie gross der Anteil der Leute ist, welche den Kirschgeschmack bei verschiedenen Färbungen richtig herausgeschmeckt haben. Wenn das Getränk rot gefärbt ist, erkennen $`r round(100*exr_taste_color$jmv_output_freq %>% filter(flavour_response == "kirsche/erbeere/himbeere") %>% pull(all_of("3_pcCol")),0)`\%$ den Kirschgeschmack richtig. Wenn das Getränk jedoch orange oder grün gefärbt ist, erkennen nur $`r round(100*exr_taste_color$jmv_output_freq %>% filter(flavour_response == "kirsche/erbeere/himbeere") %>% pull(all_of("2_pcCol")),0)`\%$ respektive $`r round(100*exr_taste_color$jmv_output_freq %>% filter(flavour_response == "kirsche/erbeere/himbeere") %>% pull(all_of("1_pcCol")),0)`\%$ den Geschmack richtig. Ebenso spannend ist, dass bei oranger Färbung $`r round(100*exr_taste_color$jmv_output_freq %>% filter(flavour_response == "orange/aprikose") %>% pull(all_of("2_pcCol")),0)`\%$ einen Aprikosen- oder Orangengeschmack erkennen. Bei grüner Färbung erkennen rund $`r round(100*exr_taste_color$jmv_output_freq %>% filter(flavour_response == "zitrone/grapefruit/apfel") %>% pull(all_of("1_pcCol")),0)`\%$ einen Apfel-, Zitronen- oder Grapefruitgeschmack. 
+b) 
+> Ein $\chi^2$-Test ergibt, dass der erkannte Geschmack (heidelbeere/traube, kirsche/erbeere/himbeere, orange/aprikose, zitrone/grapefruit/apfel) und die Färbung der Getränke (rot, organge oder grün) signifikant voneinander abhängig sind,
+> $\chi^2 (`r (exr_taste_color$I-1)*(exr_taste_color$J-1)`) = `r round(exr_taste_color$jmv_output_test$value_chiSq,2)`, `r report_p(exr_taste_color$jmv_output_test$p_chiSq)`, V = `r round(exr_taste_color$jmv_output_nom$v_cra,2)`$. Der Zusammenhang ist als stark einzustufen.
+
+c) Die Verteilung der Teststatistik ist $\chi^2$ bei $(I-1)\cdot (J-1) = (`r exr_taste_color$I`-1)\cdot (`r exr_taste_color$J`-1) = `r (exr_taste_color$I-1)*(exr_taste_color$J-1)`$ Freiheitsgraden.
+d) Das $k$ in der Formel für Carmérs V ist die kleinere Zahl zwischen $I = `r exr_taste_color$I`$ und $J = `r exr_taste_color$J`$, also $`r min(exr_taste_color$I,exr_taste_color$J)`$.
+e) Die erwarteten Beobachtungen für die Ausprägungen heidelbeere/traube und orange/aprikose liegen unter $5$. Die Ergebnisse des $\chi^2$ Tests sind also nicht valide. Alternativen wären die Zusammenlegung von Ausprägungen oder ein exakter Test nach Fisher und Yates.
+
+:::
+
+::: {.exercise  #memory-strategy}
+<!-- 
+Ziel: 
+- 
+-->
+```{r exr-memory-strategy}
+gen_exr_memory_strategy <- function(){
+  set.seed(894)
+  file_name <- '10-exr-memory-strategy.sav'
+  dd <- tibble(
+    strategie = c(rep("Strukturhaft",2),
+                 rep("Phonetisch",2),
+                 rep("Semantisch",2),
+                 rep("Selbstreferenz",2)
+                 ),
+    erinnert = rep(c("ja","nein"),4),
+       
+       anzahl = c(70, 54, 
+                 130, 92,
+                 57, 47, 
+                 90, 50)) %>% 
+    write_sav(file_name)
+  n <- dd %>% nrow()
+  I <- dd %>% table() %>% nrow()
+  J <- dd %>% table() %>% ncol()
+  jmv_output <- jmv::contTables(
+    dd,
+    "strategie",
+    "erinnert",
+    "anzahl",
+    chiSq = TRUE,
+    chiSqCorr = FALSE,
+    odds = FALSE,
+    relRisk = FALSE,
+    diffProp = FALSE, 
+    phiCra = TRUE,
+    exp = TRUE,
+    pcRow = TRUE,
+    pcCol = FALSE,
+    compare = 'rows'
+  )
+  jmv_output_freq <- jmv_output$freqs$asDF %>% 
+    clean_jmv_colnames()
+  jmv_output_test <- jmv_output$chiSq$asDF %>% 
+    clean_jmv_colnames()
+  jmv_output_nom <- jmv_output$nom$asDF %>% 
+    clean_jmv_colnames()
+  return(mget(ls()))
+}
+exr_memory_strategy <- gen_exr_memory_strategy()
+```
+
+In einer Studie wurde untersucht, wie sich die Lernstrategie (phonetisch: reimt auf x, selbstreferenz: trifft auf dich zu, semantisch: bedeutet x und strukturhaft: grossbuchstaben) auf die Merkfähigkeit von Wörtern auswirkt [@rogers1977]. Dazu wurde ein Wort mit einer dazugehörigen Aufgabe präsentiert und die Proband:innen mussten das Wort nach 10 Minuten und einer zwischenzeitlichen Ablenkung erinnern (ja/nein). Es wurde gezählt, wieviele Wörter von allen Proband:innen zusammen pro Lernstrategie erinnert wurden. Die Daten sind in `r inline_code(exr_memory_strategy$file_name)` zu finden.
+
+a) Illustrieren Sie mit geeigneten Zahlen in `Jamovi`, wie die Lernstrategie mit der Erinnerungsfähigkeit zusammenhängt.
+b) Lässt sich die Aussage auf die Population aller Menschen ausweiten oder bleibt diese beschränkt auf die Stichprobe? Führen Sie einen $\chi^2$-Test durch und berichten Sie das Ergebnis, inklusive Effektstärke nach Cramér.
+c) Wie gross ist die gefundene Teststatistik? Ist es eher wahrscheinlich oder unwahrscheinlich diese zufällig zu beobachten, wenn die Nullhypothese stimmt? (Vergleichen Sie mit der korrekten Kurve der Abbildung der [$\chi^2$-Verteilung](https://de.wikipedia.org/wiki/Chi-Quadrat-Verteilung)).
+d) Wie gross ist hier $k$ in der Berechnung von Cramérs V?
+e) Sind die Voraussetzungen für den $\chi^2$-Test gegeben? Skizzieren Sie gegebenenfalls Alternativen.
+
+:::
+
+:::{.solution}
+Zuerst wird der Datensatz mit `Jamovi` eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+\@ref(fig:sol-memory-strategy-input).
+
+```{r sol-memory-strategy-input, fig.cap='Jamovi Eingabe.'}
+knitr::include_graphics("figures/10-exr-memory-strategy-jmv-input.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung
+\@ref(fig:sol-memory-strategy-output).
+
+```{r sol-memory-strategy-output, fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/10-exr-memory-strategy-jmv-output.jpg")
+```
+
+Damit kann die Frage nun beantwortet werden:
+
+a) Der erinnerte Anteil variert je nach Lernstrategie zwischen $`r round(max(100*exr_memory_strategy$jmv_output_freq %>% pull(all_of("1_pcRow"))),0)`\%$ (Selbstreferenz) und $`r round(min(100*exr_memory_strategy$jmv_output_freq %>% pull(all_of("1_pcRow"))),0)`$ (Semantisch).
+b) 
+> Ein $\chi^2$-Test ergibt, dass die Lernstrategie (phonetisch,  selbstreferenz, semantisch und strukturhaft) und Worterinnerung (erinnert und nicht erinnert) nicht signifikant voneinander abhängig sind,
+> $\chi^2 (`r (exr_memory_strategy$I-1)*(exr_memory_strategy$J-1)`) = `r round(exr_memory_strategy$jmv_output_test$value_chiSq,2)`, `r report_p(exr_memory_strategy$jmv_output_test$p_chiSq)`, V = `r round(exr_memory_strategy$jmv_output_nom$v_cra,2)`$. Der Zusammenhang ist als schwach einzustufen.
+
+c) Der Wert der Teststatistik liegt bei `r round(exr_memory_strategy$jmv_output_test$value_chiSq,2)`. Dieser Wert ist $\chi^2$-verteilt bei $`r (exr_memory_strategy$I-1)*(exr_memory_strategy$J-1)`$ Freiheitsgraden. Dies entspricht auf der referenzierten Abbildung der türkisfarbenen Linie. Auf der Linie kann abgelesen werden, dass ein Wert von `r round(exr_memory_strategy$jmv_output_test$value_chiSq,2)` nicht unwahrscheinlich ist, wenn die Nullhypothese wahr ist. Dies ist auch mit dem hohen $p$-Wert zu sehen.
+d) Das $k$ in der Formel für Carmérs V ist die kleinere Zahl zwischen $I = `r exr_memory_strategy$I`$ und $J = `r exr_memory_strategy$J`$, also $`r min(exr_memory_strategy$I,exr_memory_strategy$J)`$.
+e) Es werden in allen Zellen $5$ oder mehr Beobachtugnen erwartet. Die Voraussetzungen für den $\chi^2$-Test sind somit gegeben.
 
 :::
 

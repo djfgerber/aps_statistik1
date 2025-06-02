@@ -340,10 +340,115 @@ Abbildung 10.5: Jamovi Ausgabe.
 </ol>
 </details>
 </div>
+<div class="exercise">
+<p><span id="exr:taste-color" class="exercise"><strong>Übung 10.2  </strong></span></p>
+<!-- 
+Ziel: 
+- 
+-->
+<p>In einer Studie wurde untersucht, wie sich die Farbe eines Getränks auf die Geschmackswahrnehmung auswirkt <span class="citation">(<a href="#ref-dubose1980">DuBose, Cardello, and Maller 1980</a>)</span>. In einem Teil des dazugehörigen Experiments wurden 12 Proband:innen Getränke mit Kirschgeschmackt und verschiedenen Färbungen (rot, organge oder grün) vorgesetzt. Die Proband:innen haben die Getränke probiert und anschliessend angegeben, welche Geschmacksrichtung (heidelbeere/traube, kirsche/erbeere/himbeere, orange/aprikose, zitrone/grapefruit/apfel) sie dem Getränk zuordnen. Die Daten sind in <code>10-exr-taste-color.sav</code> zu finden.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Illustrieren Sie mit geeigneten Zahlen in <code>Jamovi</code>, wie die Geschmackserkennung <code>response_flavour</code> mit der Farbe zusammenhängt.</li>
+<li>Lässt sich die Aussage auf die Population aller Menschen ausweiten oder bleibt diese beschränkt auf die Stichprobe? Führen Sie einen <span class="math inline">\(\chi^2\)</span>-Test durch und berichten Sie das Ergebnis, inklusive Effektstärke nach Cramér.</li>
+<li>Die Teststatistik folgt einer <span class="math inline">\(\chi^2\)</span>-Verteilung mit wie vielen Freiheitsgraden?</li>
+<li>Wie gross ist hier <span class="math inline">\(k\)</span> in der Berechnung von Cramérs V?</li>
+<li>Sind die Voraussetzungen für den <span class="math inline">\(\chi^2\)</span>-Test gegeben? Skizzieren Sie gegebenenfalls Alternativen.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-78" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+<a href="zusammenhang-nominalskalierter-merkmale.html#fig:sol-taste-color-input">10.6</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-taste-color-input"></span>
+<img src="figures/10-exr-taste-color-jmv-input.jpg" alt="Jamovi Eingabe."  />
+<p class="caption">
+Abbildung 10.6: Jamovi Eingabe.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung
+<a href="zusammenhang-nominalskalierter-merkmale.html#fig:sol-taste-color-output">10.7</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-taste-color-output"></span>
+<img src="figures/10-exr-taste-color-jmv-output.jpg" alt="Jamovi Ausgabe."  />
+<p class="caption">
+Abbildung 10.7: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit kann die Frage nun beantwortet werden:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Interessant ist hier, wie gross der Anteil der Leute ist, welche den Kirschgeschmack bei verschiedenen Färbungen richtig herausgeschmeckt haben. Wenn das Getränk rot gefärbt ist, erkennen <span class="math inline">\(93\%\)</span> den Kirschgeschmack richtig. Wenn das Getränk jedoch orange oder grün gefärbt ist, erkennen nur <span class="math inline">\(52\%\)</span> respektive <span class="math inline">\(44\%\)</span> den Geschmack richtig. Ebenso spannend ist, dass bei oranger Färbung <span class="math inline">\(30\%\)</span> einen Aprikosen- oder Orangengeschmack erkennen. Bei grüner Färbung erkennen rund <span class="math inline">\(41\%\)</span> einen Apfel-, Zitronen- oder Grapefruitgeschmack.</li>
+<li><blockquote>
+<p>Ein <span class="math inline">\(\chi^2\)</span>-Test ergibt, dass der erkannte Geschmack (heidelbeere/traube, kirsche/erbeere/himbeere, orange/aprikose, zitrone/grapefruit/apfel) und die Färbung der Getränke (rot, organge oder grün) signifikant voneinander abhängig sind,
+<span class="math inline">\(\chi^2 (6) = 30.63, p &lt; 0.001, V = 0.43\)</span>. Der Zusammenhang ist als stark einzustufen.</p>
+</blockquote></li>
+<li>Die Verteilung der Teststatistik ist <span class="math inline">\(\chi^2\)</span> bei <span class="math inline">\((I-1)\cdot (J-1) = (4-1)\cdot (3-1) = 6\)</span> Freiheitsgraden.</li>
+<li>Das <span class="math inline">\(k\)</span> in der Formel für Carmérs V ist die kleinere Zahl zwischen <span class="math inline">\(I = 4\)</span> und <span class="math inline">\(J = 3\)</span>, also <span class="math inline">\(3\)</span>.</li>
+<li>Die erwarteten Beobachtungen für die Ausprägungen heidelbeere/traube und orange/aprikose liegen unter <span class="math inline">\(5\)</span>. Die Ergebnisse des <span class="math inline">\(\chi^2\)</span> Tests sind also nicht valide. Alternativen wären die Zusammenlegung von Ausprägungen oder ein exakter Test nach Fisher und Yates.</li>
+</ol>
+</details>
+</div>
+<div class="exercise">
+<p><span id="exr:memory-strategy" class="exercise"><strong>Übung 10.3  </strong></span></p>
+<!-- 
+Ziel: 
+- 
+-->
+<p>In einer Studie wurde untersucht, wie sich die Lernstrategie (phonetisch: reimt auf x, selbstreferenz: trifft auf dich zu, semantisch: bedeutet x und strukturhaft: grossbuchstaben) auf die Merkfähigkeit von Wörtern auswirkt <span class="citation">(<a href="#ref-rogers1977">Rogers, Kuiper, and Kirker 1977</a>)</span>. Dazu wurde ein Wort mit einer dazugehörigen Aufgabe präsentiert und die Proband:innen mussten das Wort nach 10 Minuten und einer zwischenzeitlichen Ablenkung erinnern (ja/nein). Es wurde gezählt, wieviele Wörter von allen Proband:innen zusammen pro Lernstrategie erinnert wurden. Die Daten sind in <code>10-exr-memory-strategy.sav</code> zu finden.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Illustrieren Sie mit geeigneten Zahlen in <code>Jamovi</code>, wie die Lernstrategie mit der Erinnerungsfähigkeit zusammenhängt.</li>
+<li>Lässt sich die Aussage auf die Population aller Menschen ausweiten oder bleibt diese beschränkt auf die Stichprobe? Führen Sie einen <span class="math inline">\(\chi^2\)</span>-Test durch und berichten Sie das Ergebnis, inklusive Effektstärke nach Cramér.</li>
+<li>Wie gross ist die gefundene Teststatistik? Ist es eher wahrscheinlich oder unwahrscheinlich diese zufällig zu beobachten, wenn die Nullhypothese stimmt? (Vergleichen Sie mit der korrekten Kurve der Abbildung der <a href="https://de.wikipedia.org/wiki/Chi-Quadrat-Verteilung"><span class="math inline">\(\chi^2\)</span>-Verteilung</a>).</li>
+<li>Wie gross ist hier <span class="math inline">\(k\)</span> in der Berechnung von Cramérs V?</li>
+<li>Sind die Voraussetzungen für den <span class="math inline">\(\chi^2\)</span>-Test gegeben? Skizzieren Sie gegebenenfalls Alternativen.</li>
+</ol>
+</div>
+<div class="solution">
+<details>
+  <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
+<p><span id="unlabeled-div-79" class="solution"><em>Lösung</em>. </span>Zuerst wird der Datensatz mit <code>Jamovi</code> eingelesen und die
+Analyseparameter werden gesetzt, siehe Abbildung
+<a href="zusammenhang-nominalskalierter-merkmale.html#fig:sol-memory-strategy-input">10.8</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-memory-strategy-input"></span>
+<img src="figures/10-exr-memory-strategy-jmv-input.jpg" alt="Jamovi Eingabe."  />
+<p class="caption">
+Abbildung 10.8: Jamovi Eingabe.
+</p>
+</div>
+<p>Dies produziert das Analyseergebnis in Abbildung
+<a href="zusammenhang-nominalskalierter-merkmale.html#fig:sol-memory-strategy-output">10.9</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-memory-strategy-output"></span>
+<img src="figures/10-exr-memory-strategy-jmv-output.jpg" alt="Jamovi Ausgabe."  />
+<p class="caption">
+Abbildung 10.9: Jamovi Ausgabe.
+</p>
+</div>
+<p>Damit kann die Frage nun beantwortet werden:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Der erinnerte Anteil variert je nach Lernstrategie zwischen <span class="math inline">\(64\%\)</span> (Selbstreferenz) und <span class="math inline">\(55\)</span> (Semantisch).</li>
+<li><blockquote>
+<p>Ein <span class="math inline">\(\chi^2\)</span>-Test ergibt, dass die Lernstrategie (phonetisch, selbstreferenz, semantisch und strukturhaft) und Worterinnerung (erinnert und nicht erinnert) nicht signifikant voneinander abhängig sind,
+<span class="math inline">\(\chi^2 (3) = 2.71, p = .438, V = 0.07\)</span>. Der Zusammenhang ist als schwach einzustufen.</p>
+</blockquote></li>
+<li>Der Wert der Teststatistik liegt bei 2.71. Dieser Wert ist <span class="math inline">\(\chi^2\)</span>-verteilt bei <span class="math inline">\(3\)</span> Freiheitsgraden. Dies entspricht auf der referenzierten Abbildung der türkisfarbenen Linie. Auf der Linie kann abgelesen werden, dass ein Wert von 2.71 nicht unwahrscheinlich ist, wenn die Nullhypothese wahr ist. Dies ist auch mit dem hohen <span class="math inline">\(p\)</span>-Wert zu sehen.</li>
+<li>Das <span class="math inline">\(k\)</span> in der Formel für Carmérs V ist die kleinere Zahl zwischen <span class="math inline">\(I = 4\)</span> und <span class="math inline">\(J = 2\)</span>, also <span class="math inline">\(2\)</span>.</li>
+<li>Es werden in allen Zellen <span class="math inline">\(5\)</span> oder mehr Beobachtugnen erwartet. Die Voraussetzungen für den <span class="math inline">\(\chi^2\)</span>-Test sind somit gegeben.</li>
+</ol>
+</details>
+</div>
 </div>
 <div id="test-6" class="section level2 hasAnchor" number="10.4">
 <h2><span class="header-section-number">10.4</span> Test<a href="zusammenhang-nominalskalierter-merkmale.html#test-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
+</div>
+</div>
+<h3>Literaturverzeichnis<a href="literaturverzeichnis.html#literaturverzeichnis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-dubose1980" class="csl-entry">
+DuBose, Cynthia N., Armand V. Cardello, and Owen Maller. 1980. <span>“Effects of Colorants and Flavorants on Identification, Perceived Flavor Intensity, and Hedonic Quality of Fruit-Flavored Beverages and Cake.”</span> <em>Journal of Food Science</em> 45 (5): 1393–99. <a href="https://doi.org/10.1111/j.1365-2621.1980.tb06562.x">https://doi.org/10.1111/j.1365-2621.1980.tb06562.x</a>.
+</div>
+<div id="ref-rogers1977" class="csl-entry">
+Rogers, T. B., N. A. Kuiper, and W. S. Kirker. 1977. <span>“Self-Reference and the Encoding of Personal Information.”</span> <em>Journal of Personality and Social Psychology</em> 35 (9): 677–88. <a href="https://doi.org/10.1037//0022-3514.35.9.677">https://doi.org/10.1037//0022-3514.35.9.677</a>.
 </div>
 </div>
             </section>
