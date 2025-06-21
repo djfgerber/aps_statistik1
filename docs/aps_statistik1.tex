@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{02 June, 2025}
+\date{21 June, 2025}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -4513,25 +4513,43 @@ entspricht die Wahrscheinlichkeit mehr als \(1\)x pro Woche Alkohol zu
 konsumieren und eine tertiäre Ausbildung genossen zu haben
 
 \[
-p(\text{[alkohol > 1x pro Woche] und tertiär}) = \frac{476}{784} = 0.60714
+p(\text{[alkohol > 1x pro Woche] und tertiär}) = \frac{308}{1000} = 0.308
 \]
 
 genau
 
 \[
-p(\text{[alkohol > 1x pro Woche]}) \cdot p(\text{tertiär}) = \frac{784}{1000}\cdot \frac{622}{1000} = 0.48765
+p(\text{[alkohol > 1x pro Woche]}) \cdot p(\text{tertiär}) = 
+\frac{
+  784
+  }{
+  1000} 
+\cdot 
+\frac{
+  378
+}{
+  1000
+} = 
+0.296
 \]
 
-entsprechen. Die Zahlen zeigen an, dass dies für diese Stichprobe klar
-nicht gegeben ist. Die beobachtete Differenz könnte sich aber auch aus
-der Zufallsstichprobenziehung ergeben haben. Der \(\chi^2\)-Vierfeldertest
+entsprechen. Die Zahlen zeigen an, dass dies für diese Stichprobe
+nicht gegeben ist. Die beobachtete Differenz kann auf eine tatsächliche Abhängigkeit hindeuten oder sich aufgrund der Zufallsstichprobenziehung ergeben haben.
+
+Der \phantomsection\label{customdef-vierfeldertest}{\textbf{\(\chi^2\)-Vierfeldertest}}
 vergleicht nun in jeder Zelle \(i\) der Vierfeldertafel die tatsächlich
 beobachteten Beobachtungen \(o_i\) (observed) mit den erwarteten
 Beobachtungen \(e_i\) (expected), wenn die Unabhängigkeit gegeben wäre.
 Letztere berechnet sich durch \(p(A) \cdot p(B) \cdot n\), wobei \(n\) die
 Gesamtanzahl Beobachtungen ist. Im Beispiel
 
-\[e_1 = p(\text{[alkohol > 1x pro Woche]}) \cdot p(\text{tertiär}) \cdot n =0.48765 \cdot  1000 = 487.648 \]
+\[e_1 = 
+p(\text{[alkohol > 1x pro Woche]}) \cdot p(\text{tertiär}) \cdot n =
+0.296
+\cdot  
+  1000 
+= 
+  296 \]
 Je weiter diese Zahl von der beobachteten Zahl abweicht, desto
 unwahrscheinlicher ist die Unabhängigkeit. Der \(\chi^2\) trägt dem
 Rechnung, indem die Teststatistik
@@ -5169,7 +5187,7 @@ Um dies zu testen, kann der im letzten Kapitel besprochene \(\chi^2\)-Test für 
 
 Je weiter diese Zahl von der beobachteten Zahl abweicht in einer Zelle abweicht, desto unwahrscheinlicher ist die Unabhängigkeit der beiden Merkmale. Es werden zum Beispiel \(o_{11}=11\) genügende Abschlüsse bei visuellem Lernstil beobachtet. Wenn Lernstil und Abschluss unabhängig wären, würden für diese Kombination \(e_{11} =20.73\) Beobachtungen erwartet.
 
-Der \(\chi^2\)-Mehrfeldertest trägt dem Rechnung, indem die Teststatistik diese Differenz der erwarteten und beobachteten Anzahl austariert und für jede Zelle aufsummiert mit
+Der \phantomsection\label{customdef-mehrfeldertest}{\textbf{\(\chi^2\)-Mehrfeldertest}} trägt dem Rechnung, indem die Teststatistik diese Differenz der erwarteten und beobachteten Anzahl austariert und für jede Zelle aufsummiert mit
 
 \[\chi^2 = \sum_{i,j = 1}^{I,J} \frac{(o_{ij} - e_{ij})^2}{e_{ij}} \overset{Bsp}{=}  12.78.\]
 
@@ -5401,7 +5419,7 @@ Damit kann die Frage nun beantwortet werden:
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
 \item
-  Der erinnerte Anteil variert je nach Lernstrategie zwischen \(64\%\) (Selbstreferenz) und \(55\) (Semantisch).
+  Der erinnerte Anteil variert je nach Lernstrategie zwischen \(64\%\) (Selbstreferenz) und \(55\%\) (Semantisch).
 \item
   \begin{quote}
   Ein \(\chi^2\)-Test ergibt, dass die Lernstrategie (phonetisch, selbstreferenz, semantisch und strukturhaft) und Worterinnerung (erinnert und nicht erinnert) nicht signifikant voneinander abhängig sind,
@@ -5425,6 +5443,10 @@ Damit kann die Frage nun beantwortet werden:
 \begin{itemize}
 \tightlist
 \item
+  \hyperref[customdef-mehrfeldertest]{\(\chi^2\)-Mehrfeldertest}
+\item
+  \hyperref[customdef-vierfeldertest]{\(\chi^2\)-Vierfeldertest}
+\item
   \hyperref[customdef-ablehnungsbereich]{Ablehnungsbereich}
 \item
   \hyperref[customdef-alternativhypothese]{Alternativhypothese}
@@ -5436,6 +5458,8 @@ Damit kann die Frage nun beantwortet werden:
   \hyperref[customdef-cohens-d]{Cohens \(d\) für Zweistichproben-t-Test}
 \item
   \hyperref[customdef-cramers-phi]{Cramérs \(\phi\)}
+\item
+  \hyperref[customdef-cramers-v]{Cramérs V}
 \item
   \hyperref[customdef-einseitige-hypothese]{einseitige Hypothese}
 \item

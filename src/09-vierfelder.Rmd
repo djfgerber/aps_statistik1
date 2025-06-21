@@ -313,25 +313,90 @@ entspricht die Wahrscheinlichkeit mehr als $1$x pro Woche Alkohol zu
 konsumieren und eine tertiäre Ausbildung genossen zu haben
 
 $$
-p(\text{[alkohol > 1x pro Woche] und tertiär}) = \frac{`r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("1_count"))`}{`r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("total_count"))`} = `r round((exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("1_count")))/(exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("total_count"))),5)`
+p(\text{[alkohol > 1x pro Woche] und tertiär}) = \frac{`r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("2_count"))`}{`r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count"))`} = `r round((exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("2_count")))/(exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count"))),5)`
 $$
 
 genau
 
 $$
-p(\text{[alkohol > 1x pro Woche]}) \cdot p(\text{tertiär}) = \frac{`r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("total_count"))`}{`r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count"))`}\cdot \frac{`r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("1_count"))`}{`r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count"))`} = `r round((exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("total_count"))/ exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count")))* (exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("1_count"))/exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count"))),5)`
+p(\text{[alkohol > 1x pro Woche]}) \cdot p(\text{tertiär}) = 
+\frac{
+  `r exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "oft") %>% 
+    pull(all_of("total_count"))`
+  }{
+  `r exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "Total") %>% 
+    pull(all_of("total_count"))`} 
+\cdot 
+\frac{
+  `r exm_alcohol_edu$jmv_output_freq %>% 
+  filter(alkoholkonsum == "Total") %>% 
+  pull(all_of("2_count"))`
+}{
+  `r exm_alcohol_edu$jmv_output_freq %>% 
+  filter(alkoholkonsum == "Total") %>% 
+  pull(all_of("total_count"))`
+} = 
+`r round((exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "oft") %>% 
+    pull(all_of("total_count")) / 
+    exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "Total") %>% 
+    pull(all_of("total_count"))) * 
+    (exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "Total") %>% 
+    pull(all_of("2_count")) / 
+    exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "Total") %>% 
+    pull(all_of("total_count"))),3)`
 $$
 
-entsprechen. Die Zahlen zeigen an, dass dies für diese Stichprobe klar
-nicht gegeben ist. Die beobachtete Differenz könnte sich aber auch aus
-der Zufallsstichprobenziehung ergeben haben. Der $\chi^2$-Vierfeldertest
+entsprechen. Die Zahlen zeigen an, dass dies für diese Stichprobe
+nicht gegeben ist. Die beobachtete Differenz kann auf eine tatsächliche Abhängigkeit hindeuten oder sich aufgrund der Zufallsstichprobenziehung ergeben haben. 
+
+
+Der [**$\chi^2$-Vierfeldertest**]{.customdef #customdef-vierfeldertest}
 vergleicht nun in jeder Zelle $i$ der Vierfeldertafel die tatsächlich
 beobachteten Beobachtungen $o_i$ (observed) mit den erwarteten
 Beobachtungen $e_i$ (expected), wenn die Unabhängigkeit gegeben wäre.
 Letztere berechnet sich durch $p(A) \cdot p(B) \cdot n$, wobei $n$ die
 Gesamtanzahl Beobachtungen ist. Im Beispiel
 
-$$e_1 = p(\text{[alkohol > 1x pro Woche]}) \cdot p(\text{tertiär}) \cdot n =`r round(((exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("total_count"))/ exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count")))* (exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("1_count"))/exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count")))),5)` \cdot  `r exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count"))` = `r round(((exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "oft") %>% pull(all_of("total_count"))/ exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count")))* (exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("1_count"))/exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count")))* exm_alcohol_edu$jmv_output_freq %>% filter(alkoholkonsum == "Total") %>% pull(all_of("total_count"))),5)` $$
+$$e_1 = 
+p(\text{[alkohol > 1x pro Woche]}) \cdot p(\text{tertiär}) \cdot n =
+`r round((exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "oft") %>% 
+    pull(all_of("total_count")) / 
+    exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "Total") %>% 
+    pull(all_of("total_count"))) * 
+    (exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "Total") %>% 
+    pull(all_of("2_count")) / 
+    exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "Total") %>% 
+    pull(all_of("total_count"))),3)`
+\cdot  
+  `r exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "Total") %>%
+    pull(all_of("total_count"))` 
+= 
+  `r round((exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "oft") %>% 
+    pull(all_of("total_count")) / 
+    exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "Total") %>% 
+    pull(all_of("total_count"))) * 
+    (exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "Total") %>% 
+    pull(all_of("2_count")) / 
+    exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "Total") %>% 
+    pull(all_of("total_count")) * 
+    exm_alcohol_edu$jmv_output_freq %>% 
+    filter(alkoholkonsum == "Total") %>% 
+    pull(all_of("total_count"))),0)` $$
 Je weiter diese Zahl von der beobachteten Zahl abweicht, desto
 unwahrscheinlicher ist die Unabhängigkeit. Der $\chi^2$ trägt dem
 Rechnung, indem die Teststatistik

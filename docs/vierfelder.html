@@ -450,21 +450,38 @@ Alkoholkonsum und die Ausbildungsart unabhängig voneinander sind, dann
 entspricht die Wahrscheinlichkeit mehr als <span class="math inline">\(1\)</span>x pro Woche Alkohol zu
 konsumieren und eine tertiäre Ausbildung genossen zu haben</p>
 <p><span class="math display">\[
-p(\text{[alkohol &gt; 1x pro Woche] und tertiär}) = \frac{476}{784} = 0.60714
+p(\text{[alkohol &gt; 1x pro Woche] und tertiär}) = \frac{308}{1000} = 0.308
 \]</span></p>
 <p>genau</p>
 <p><span class="math display">\[
-p(\text{[alkohol &gt; 1x pro Woche]}) \cdot p(\text{tertiär}) = \frac{784}{1000}\cdot \frac{622}{1000} = 0.48765
+p(\text{[alkohol &gt; 1x pro Woche]}) \cdot p(\text{tertiär}) =
+\frac{
+  784
+  }{
+  1000}
+\cdot
+\frac{
+  378
+}{
+  1000
+} =
+0.296
 \]</span></p>
-<p>entsprechen. Die Zahlen zeigen an, dass dies für diese Stichprobe klar
-nicht gegeben ist. Die beobachtete Differenz könnte sich aber auch aus
-der Zufallsstichprobenziehung ergeben haben. Der <span class="math inline">\(\chi^2\)</span>-Vierfeldertest
+<p>entsprechen. Die Zahlen zeigen an, dass dies für diese Stichprobe
+nicht gegeben ist. Die beobachtete Differenz kann auf eine tatsächliche Abhängigkeit hindeuten oder sich aufgrund der Zufallsstichprobenziehung ergeben haben.</p>
+<p>Der <span id="customdef-vierfeldertest" class="customdef"><strong><span class="math inline">\(\chi^2\)</span>-Vierfeldertest</strong></span>
 vergleicht nun in jeder Zelle <span class="math inline">\(i\)</span> der Vierfeldertafel die tatsächlich
 beobachteten Beobachtungen <span class="math inline">\(o_i\)</span> (observed) mit den erwarteten
 Beobachtungen <span class="math inline">\(e_i\)</span> (expected), wenn die Unabhängigkeit gegeben wäre.
 Letztere berechnet sich durch <span class="math inline">\(p(A) \cdot p(B) \cdot n\)</span>, wobei <span class="math inline">\(n\)</span> die
 Gesamtanzahl Beobachtungen ist. Im Beispiel</p>
-<p><span class="math display">\[e_1 = p(\text{[alkohol &gt; 1x pro Woche]}) \cdot p(\text{tertiär}) \cdot n =0.48765 \cdot  1000 = 487.648 \]</span>
+<p><span class="math display">\[e_1 =
+p(\text{[alkohol &gt; 1x pro Woche]}) \cdot p(\text{tertiär}) \cdot n =
+0.296
+\cdot  
+  1000
+=
+  296 \]</span>
 Je weiter diese Zahl von der beobachteten Zahl abweicht, desto
 unwahrscheinlicher ist die Unabhängigkeit. Der <span class="math inline">\(\chi^2\)</span> trägt dem
 Rechnung, indem die Teststatistik</p>

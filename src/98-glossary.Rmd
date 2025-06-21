@@ -1,11 +1,14 @@
 # Begriffsverzeichnis {-}
 
+- [$\chi^2$-Mehrfeldertest](#customdef-mehrfeldertest)
+- [$\chi^2$-Vierfeldertest](#customdef-vierfeldertest)
 - [Ablehnungsbereich](#customdef-ablehnungsbereich)
 - [Alternativhypothese](#customdef-alternativhypothese)
 - [arithmetische Mittel](#customdef-arithmetisches-mittel)
 - [Cohens $d$ für den Welch-Test](#customdef-welch-cohens-d)
 - [Cohens $d$ für Zweistichproben-t-Test](#customdef-cohens-d)
 - [Cramérs $\phi$](#customdef-cramers-phi)
+- [Cramérs V](#customdef-cramers-v)
 - [einseitige Hypothese](#customdef-einseitige-hypothese)
 - [Einstichproben-$t$-Test](#customdef-t-test)
 - [Erwartungswert](#customdef-erwartungswert)

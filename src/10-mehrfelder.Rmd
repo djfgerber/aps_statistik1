@@ -88,7 +88,7 @@ knitr::include_graphics("figures/10-exm-learning-style-data-view-expected.jpg")
 
 Je weiter diese Zahl von der beobachteten Zahl abweicht in einer Zelle abweicht, desto unwahrscheinlicher ist die Unabhängigkeit der beiden Merkmale. Es werden zum Beispiel $o_{11}=11$ genügende Abschlüsse bei visuellem Lernstil beobachtet. Wenn Lernstil und Abschluss unabhängig wären, würden für diese Kombination $e_{11} =20.73$ Beobachtungen erwartet.
 
-Der $\chi^2$-Mehrfeldertest trägt dem Rechnung, indem die Teststatistik diese Differenz der erwarteten und beobachteten Anzahl austariert und für jede Zelle aufsummiert mit
+Der [**$\chi^2$-Mehrfeldertest**]{.customdef #customdef-mehrfeldertest} trägt dem Rechnung, indem die Teststatistik diese Differenz der erwarteten und beobachteten Anzahl austariert und für jede Zelle aufsummiert mit
 
 $$\chi^2 = \sum_{i,j = 1}^{I,J} \frac{(o_{ij} - e_{ij})^2}{e_{ij}} \overset{Bsp}{=}  `r round(exm_learning_style$jmv_output_test$value_chiSq,2)`.$$
 
@@ -405,7 +405,7 @@ knitr::include_graphics("figures/10-exr-memory-strategy-jmv-output.jpg")
 
 Damit kann die Frage nun beantwortet werden:
 
-a) Der erinnerte Anteil variert je nach Lernstrategie zwischen $`r round(max(100*exr_memory_strategy$jmv_output_freq %>% pull(all_of("1_pcRow"))),0)`\%$ (Selbstreferenz) und $`r round(min(100*exr_memory_strategy$jmv_output_freq %>% pull(all_of("1_pcRow"))),0)`$ (Semantisch).
+a) Der erinnerte Anteil variert je nach Lernstrategie zwischen $`r round(max(100*exr_memory_strategy$jmv_output_freq %>% pull(all_of("1_pcRow"))),0)`\%$ (Selbstreferenz) und $`r round(min(100*exr_memory_strategy$jmv_output_freq %>% pull(all_of("1_pcRow"))),0)`\%$ (Semantisch).
 b) 
 > Ein $\chi^2$-Test ergibt, dass die Lernstrategie (phonetisch,  selbstreferenz, semantisch und strukturhaft) und Worterinnerung (erinnert und nicht erinnert) nicht signifikant voneinander abhängig sind,
 > $\chi^2 (`r (exr_memory_strategy$I-1)*(exr_memory_strategy$J-1)`) = `r round(exr_memory_strategy$jmv_output_test$value_chiSq,2)`, `r report_p(exr_memory_strategy$jmv_output_test$p_chiSq)`, V = `r round(exr_memory_strategy$jmv_output_nom$v_cra,2)`$. Der Zusammenhang ist als schwach einzustufen.
