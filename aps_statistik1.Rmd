@@ -1899,7 +1899,7 @@ Dass mit den gleichen Zahlen je nach Einheit eine andere Effektstärke gefunden 
 
 Mit dieser Formel werden für beide Einheiten derselbe Wert berechnet. Effektiv dient jetzt als Einheit die Standardabweichung: Eine grosse Differenz bei einer grossen Standardabweichung des Merkmals führt zur selben Effektstärke wie eine kleine Differenz bei kleiner Standardabweichung eines Merkmals. Da Menschen sich nicht gewohnt sind Zahlen als Standardabweichungen zu interpretieren hat [@cohen1988] folgende Richtwerte entwickelt:
 
-- $|d| \approx 0.3$: schwacher Effekt
+- $|d| \approx 0.2$: schwacher Effekt
 - $|d| \approx 0.5$: mittlerer Effekt
 - $|d| \approx 0.8$: starker Effekt
 
@@ -1907,8 +1907,8 @@ Mit dieser Formel werden für beide Einheiten derselbe Wert berechnet. Effektiv 
 
 Cohen selbst hat davor gewarnt diese Werte als absolut darzustellen. Vielmehr sollte die Interpretation der Effektstärke vom Forschungsgebiet und dem Messinstrument abhängen. Um im Unterricht eine beurteilbare Praxis zu etablieren, sollen folgende Regeln gelten:
 
-- $0 < |d| \leq 0.4$: schwacher Effekt
-- $0.4 < |d| \leq 0.65$: mittlerer Effekt
+- $0 < |d| \leq 0.35$: schwacher Effekt
+- $0.35 < |d| \leq 0.65$: mittlerer Effekt
 - $0.65 < |d|$: starker Effekt
 
 <!-- Discuss absoluter Wert -->
@@ -2033,7 +2033,7 @@ b) Die Nullhypothese geht vom aktuell bekannten aus, also in diesem Fall, dass s
 
 > Ein Einstichproben-$t$-Test ergibt, dass die durchschnittliche Tageslänge ($M = `r round(exr_circadian$x_mean,1)`$ Stunden, $SD = `r round(exr_circadian$x_sd,1)`$, $N = `r round(exr_circadian$n)`$) unter Experimentalbedingungen  sich signifikant von $24$ Stunden unterscheidet, $t(`r round(exr_circadian$n-1)`) = `r round(exr_circadian$t_emp,2)`$, $p = `r round(exr_circadian$p_value_the,3) %>% str_sub(start = 2L)`, d = `r round(exr_circadian$effect_size,3)`$.
 
-c) $M, SD,$ und $N$ sind das arithmetische Mittel, die geschätzte Standardabweichung und die Anzahl Beobachtungen der Stichprobe. $p$ ist die Wahrscheinlichkeit, zufällig den Stichprobenmittelwert oder einen noch extremeren Wert im Sinne der Alternativehypothese zu beobachten, falls die Nullhypothese stimmt. Dieser Wert ist kleiner als $5\%$. Deswegen wird von einem signifikanten Unterschied der durchschnittlichen Tageslänge zum Erwartungswert gesprochen. $24$ Stunden ist der Vergleichswert der Nullhypothese. $t(`r round(exr_circadian$n-1)`)$ bedeutet, dass die Teststatistik $t$-verteilt ist mit `r exr_circadian$n-1` Freiheitsgraden, sofern die Nullhypothese wahr ist. Mit der aktuellen Stichprobenziehung wurde ein Wert von $`r round(exr_circadian$t_emp,2)`$ realisiert. Dieser Wert ist mit der $t$-Verteilung in Abbildung \@ref(fig:t-distribution) zu vergleichen. Der Wert entspricht einer eher unwahrscheinlichen Beobachtung dieser Verteilung. $d = `r round(exr_circadian$effect_size,3)`$, schliesslich, bezieht sich auf die Effektstärke. Das Testresultat entspricht einem mittleren Effekt.
+c) $M, SD,$ und $N$ sind das arithmetische Mittel, die geschätzte Standardabweichung und die Anzahl Beobachtungen der Stichprobe. $p$ ist die Wahrscheinlichkeit, zufällig den Stichprobenmittelwert oder einen noch extremeren Wert im Sinne der Alternativehypothese zu beobachten, falls die Nullhypothese stimmt. Dieser Wert ist kleiner als $5\%$. Deswegen wird von einem signifikanten Unterschied der durchschnittlichen Tageslänge zum Erwartungswert gesprochen. $24$ Stunden ist der Vergleichswert der Nullhypothese. $t(`r round(exr_circadian$n-1)`)$ bedeutet, dass die Teststatistik $t$-verteilt ist mit `r exr_circadian$n-1` Freiheitsgraden, sofern die Nullhypothese wahr ist. Mit der aktuellen Stichprobenziehung wurde ein Wert von $`r round(exr_circadian$t_emp,2)`$ realisiert. Dieser Wert ist mit der $t$-Verteilung in Abbildung \@ref(fig:t-distribution) zu vergleichen. Der Wert entspricht einer eher unwahrscheinlichen Beobachtung dieser Verteilung. $d = `r round(exr_circadian$effect_size,3)`$, schliesslich, bezieht sich auf die Effektstärke. Das Testresultat entspricht einem schwachen Effekt.
 :::
 
 ::: {.exercise  #schwimmen}
