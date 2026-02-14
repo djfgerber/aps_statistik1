@@ -64,7 +64,7 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
-\usepackage[ngerman,provide=*]{babel}
+\usepackage[german,provide=*]{babel}
 \usepackage{amsthm}
 \makeatletter
 \def\thm@space@setup{%
@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{05 August, 2025}
+\date{14 February, 2026}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -494,14 +494,130 @@ Es entsteht dabei glücklicherweise genau die gewünschte Darstellung. Es wäre 
 \end{solution}
 
 \begin{exercise}
-\protect\hypertarget{exr:temptag-pvai8hwv}{}\label{exr:temptag-pvai8hwv}\leavevmode
+\protect\hypertarget{exr:unintentional-learning}{}\label{exr:unintentional-learning}\leavevmode
 
-TODO: Exercise body
+Mit einer Studie soll herausgefunden werden, ob es bei der unabsichtlichen Erinnerung von Informationen einen Altersunterschied (\texttt{Age}) gibt. Dabei werden alte (\texttt{Old} 55-65 Jahre) und junge Menschen (\texttt{Young} 18-30 Jahre) Wörter gezeigt und verglichen, wie viele davon 10 Minuten später noch wiedergegeben werden können \texttt{Recall}. Die Daten sind im Datensatz \texttt{02-exr-unintentional-learning.sav} festgehalten.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\tightlist
+\item
+  Stellen Sie die Anzahl erinnerter Wörter in einem Histogramm mit dem \texttt{Jamovi} Basis-Modul dar.
+\item
+  Berechnen Sie alle bekannten Zentralitäts- und Variabilitätsmasse und berichten Sie mit dem korrekten Symbol mit \(2\) Nachkommastellen und mit \(3\) Nachkommastellen.
+\item
+  Stellen Sie die Anzahl erinnerter Wörter in einem Histogramm mit dem \texttt{JJStatsPlot}-Modul und einer Korbbreite von \(3\) erinnerten Wörtern dar. Wie viel Prozent der Menschen erinnerten sich an \(8\) bis \(10\) Wörter? Wie viele Menschen erinnerten sich an \(11\) bis \(13\) Wörter?
+\item
+  Wiederholen Sie Teilaufgabe (b) aber teilen Sie die Daten nach Alter auf. Beschränken Sie sich dabei auf \(2\) Nachkommastellen. Was fällt beim Altersvergleich auf?
+\end{enumerate}
 
 \end{exercise}
 
 \begin{solution}
-TODO: solution body
+Der Datensatz wird bei \texttt{Jamovi} eingelesen. Für a und b werden die Analyseparameter wie in Abbildung \ref{fig:sol-unintentional-learning-input} gesetzt.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-unintentional-learning-jmv-input} 
+
+}
+
+\caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-unintentional-learning-input}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-unintentional-learning-output}, welches zugleich die Lösung für (a) darstellt.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-unintentional-learning-jmv-output} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-unintentional-learning-output}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Einmal mit \texttt{Jamovi} berechnet, können die Parameter in der \texttt{Deskriptivstatistik} abgelesen werden. Die Nachkommastellen werden bei den 3 Punkten in der Ecke oben rechts unter \texttt{Zahlenformat} eingestellt, siehe Abbildung \ref{fig:sol-unintentional-learning-input2}.
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-unintentional-learning-jmv-input2} 
+
+}
+
+\caption{Jamovi Einstellung Nachkommastellen.}\label{fig:sol-unintentional-learning-input2}
+\end{figure}
+
+Die durchschnittliche Anzahl erinnerter Wörter liegt bei \(M = 11.91, \text{Mdn} = 11.00, \text{Modus}=7.00\), die Variabilität bei \(\text{SD}=5.27, \text{IQR} = 9.00, R= 20.00\).
+
+Die durchschnittliche Anzahl erinnerter Wörter liegt bei \(M = 11.907, \text{Mdn} = 11.000, \text{Modus}=7.000\), die Variabilität bei \(\text{SD}=5.271, \text{IQR} = 9.000, R= 20.000\).
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Für c werden die Analyseparameter wie in Abbildung \ref{fig:sol-unintentional-learning-input3} gesetzt.
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-unintentional-learning-jmv-input3} 
+
+}
+
+\caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-unintentional-learning-input3}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-unintentional-learning-output3}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-unintentional-learning-jmv-output3} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-unintentional-learning-output3}
+\end{figure}
+
+Aus dem Histogramm kann am 3. Balken auf der \texttt{count}-Achse (links) abgelesen werden, dass \(20\) Menschen sich an zwischen \(11\) und \(13\) Wörter erinnern. Der Anteil Menschen, welcher sich an \(8\) bis \(10\) Wörter erinnert liegt bei \(18\%\), was beim 4. Balken von der \texttt{proportion}-Achse (rechts) abgelesen werden kann.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Für d werden die Analyseparameter wie in Abbildung \ref{fig:sol-unintentional-learning-input4} gesetzt.
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-unintentional-learning-jmv-input4} 
+
+}
+
+\caption{Jamovi setzen der Analyseparameter.}\label{fig:sol-unintentional-learning-input4}
+\end{figure}
+
+Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-unintentional-learning-output4}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures/02-exr-unintentional-learning-jmv-output4} 
+
+}
+
+\caption{Jamovi Ausgabe.}\label{fig:sol-unintentional-learning-output4}
+\end{figure}
+
+Für die ältere Gruppe ist die durchschnittliche Anzahl erinnerter Wörter bei \(M = 10.24, \text{Mdn} = 10.00, \text{Modus}=11.00\), die Variabilität davon liegt bei \(\text{SD}=4.02, \text{IQR} = 5.00, R= 20.00\). Für die ältere Gruppe ist die durchschnittliche Anzahl erinnerter Wörter bei \(M = 13.57, \text{Mdn} = 14.00, \text{Modus}=7.00\), die Variabilität davon liegt bei \(\text{SD}=5.85, \text{IQR} = 10.75, R= 19.00\).
+
+Es fällt auf, dass sich die jüngere Gruppe durchschnittlich mehr Wörter merken kann (Vergleich arithmetisches Mittel oder Median). Die jüngere Gruppe weist ebenfalls eine grössere Streuung der Anzahl erinnerter Wörter auf als die ältere Gruppe (Vergleich Standardabweichung und IQR). Auf dem Histogramm lässt sich erkennen, dass es insbesondere wenige Leute in der älteren Gruppe gibt mit mehr als \(15\) erinnerten Worten.
 \end{solution}
 
 \begin{exercise}
@@ -3988,7 +4104,7 @@ Berechnen Sie (a) Punktbiseriale Korrelation und (b) die biserielle Rangkorrelat
 
 \begin{figure}
 
-{\centering \includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input1} \includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input2} 
+{\centering \includegraphics[width=9.83in,height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input1} \includegraphics[width=9.72in,height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input2} 
 
 }
 
@@ -3999,7 +4115,7 @@ Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-ehe-burnout-pointc
 
 \begin{figure}
 
-{\centering \includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output1} \includegraphics[height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output2} 
+{\centering \includegraphics[width=5.56in,height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output1} \includegraphics[width=4.06in,height=0.5\textheight]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output2} 
 
 }
 
@@ -4020,7 +4136,7 @@ Hier wurden die Zwischenresultate mit zwei Nachkommastellen aus \texttt{Jamovi} 
 
 \begin{figure}
 
-{\centering \includegraphics{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input3} 
+{\centering \includegraphics[width=9.62in]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-input3} 
 
 }
 
@@ -4031,7 +4147,7 @@ Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-ehe-burnout-rankco
 
 \begin{figure}
 
-{\centering \includegraphics{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output3} 
+{\centering \includegraphics[width=10.03in]{figures/08-exr-ehe-burnout-pointcorrelation-jmv-output3} 
 
 }
 
@@ -4640,7 +4756,7 @@ zum Probieren angeboten. Das Experiment endet mi den Zahlen in Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/09-exm-red-white-wine-aggdata-view} 
+{\centering \includegraphics[width=4.89in]{figures/09-exm-red-white-wine-aggdata-view} 
 
 }
 
@@ -4678,7 +4794,7 @@ Die Wahrscheinlichkeit für diese Situation ist \(p_1 = 0.008\).
 
 \begin{figure}
 
-{\centering \includegraphics{figures/09-exm-red-white-wine-aggdata-view-alt} 
+{\centering \includegraphics[width=4.79in]{figures/09-exm-red-white-wine-aggdata-view-alt} 
 
 }
 
@@ -4777,7 +4893,7 @@ Analyseparameter werden gesetzt, siehe Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/09-exr-autism-epilepsy-jmv-input} 
+{\centering \includegraphics[width=6.58in]{figures/09-exr-autism-epilepsy-jmv-input} 
 
 }
 
@@ -4789,7 +4905,7 @@ Dies produziert das Analyseergebnis in Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/09-exr-autism-epilepsy-jmv-output} 
+{\centering \includegraphics[width=6.86in]{figures/09-exr-autism-epilepsy-jmv-output} 
 
 }
 
@@ -4855,7 +4971,7 @@ Analyseparameter werden gesetzt, siehe Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/09-exr-depression-training-jmv-input} 
+{\centering \includegraphics[width=6.78in]{figures/09-exr-depression-training-jmv-input} 
 
 }
 
@@ -4867,7 +4983,7 @@ Dies produziert das Analyseergebnis in Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/09-exr-depression-training-aggdata-view} \includegraphics{figures/09-exr-depression-training-jmv-output} 
+{\centering \includegraphics[width=6.69in]{figures/09-exr-depression-training-aggdata-view} \includegraphics[width=5.11in]{figures/09-exr-depression-training-jmv-output} 
 
 }
 
@@ -4940,7 +5056,7 @@ Analyseparameter werden gesetzt, siehe Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/09-exr-cancer-smoking-jmv-input} 
+{\centering \includegraphics[width=6.67in]{figures/09-exr-cancer-smoking-jmv-input} 
 
 }
 
@@ -4952,7 +5068,7 @@ Dies produziert das Analyseergebnis in Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/09-exr-cancer-smoking-jmv-output} 
+{\centering \includegraphics[width=4.99in]{figures/09-exr-cancer-smoking-jmv-output} 
 
 }
 
@@ -5022,7 +5138,7 @@ Analyseparameter werden gesetzt, siehe Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/09-exr-bio-milch-jmv-input} 
+{\centering \includegraphics[width=8.28in]{figures/09-exr-bio-milch-jmv-input} 
 
 }
 
@@ -5034,7 +5150,7 @@ Dies produziert das Analyseergebnis in Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/09-exr-bio-milch-jmv-output} 
+{\centering \includegraphics[width=6in]{figures/09-exr-bio-milch-jmv-output} 
 
 }
 
@@ -5097,7 +5213,7 @@ Analyseparameter werden gesetzt, siehe Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/09-exr-covid-atemnot-jmv-input} 
+{\centering \includegraphics[width=8.01in]{figures/09-exr-covid-atemnot-jmv-input} 
 
 }
 
@@ -5109,7 +5225,7 @@ Dies produziert das Analyseergebnis in Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/09-exr-covid-atemnot-jmv-output} 
+{\centering \includegraphics[width=7.03in]{figures/09-exr-covid-atemnot-jmv-output} 
 
 }
 
@@ -5150,7 +5266,7 @@ Hier sollen also zwei nominalskalierte Merkmale verglichen werden. Die Daten kö
 
 \begin{figure}
 
-{\centering \includegraphics{figures/10-exm-learning-style-data-view} 
+{\centering \includegraphics[width=6.81in]{figures/10-exm-learning-style-data-view} 
 
 }
 
@@ -5163,7 +5279,7 @@ Trotz der verbesserten Übersicht ist es aufgrund der verschiedenen Randhäufigk
 
 \begin{figure}
 
-{\centering \includegraphics{figures/10-exm-learning-style-data-view-rel} 
+{\centering \includegraphics[width=8.21in]{figures/10-exm-learning-style-data-view-rel} 
 
 }
 
@@ -5178,7 +5294,7 @@ Um dies zu testen, kann der im letzten Kapitel besprochene \(\chi^2\)-Test für 
 
 \begin{figure}
 
-{\centering \includegraphics{figures/10-exm-learning-style-data-view-expected} 
+{\centering \includegraphics[width=8.15in]{figures/10-exm-learning-style-data-view-expected} 
 
 }
 
@@ -5259,7 +5375,7 @@ Analyseparameter werden gesetzt, siehe Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/10-exr-edu-heredity-jmv-input} 
+{\centering \includegraphics[width=6.46in]{figures/10-exr-edu-heredity-jmv-input} 
 
 }
 
@@ -5271,7 +5387,7 @@ Dies produziert das Analyseergebnis in Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/10-exr-edu-heredity-jmv-output} 
+{\centering \includegraphics[width=7.51in]{figures/10-exr-edu-heredity-jmv-output} 
 
 }
 
@@ -5325,7 +5441,7 @@ Analyseparameter werden gesetzt, siehe Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/10-exr-taste-color-jmv-input} 
+{\centering \includegraphics[width=8.92in]{figures/10-exr-taste-color-jmv-input} 
 
 }
 
@@ -5337,7 +5453,7 @@ Dies produziert das Analyseergebnis in Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/10-exr-taste-color-jmv-output} 
+{\centering \includegraphics[width=8.72in]{figures/10-exr-taste-color-jmv-output} 
 
 }
 
@@ -5395,7 +5511,7 @@ Analyseparameter werden gesetzt, siehe Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/10-exr-memory-strategy-jmv-input} 
+{\centering \includegraphics[width=7.68in]{figures/10-exr-memory-strategy-jmv-input} 
 
 }
 
@@ -5407,7 +5523,7 @@ Dies produziert das Analyseergebnis in Abbildung
 
 \begin{figure}
 
-{\centering \includegraphics{figures/10-exr-memory-strategy-jmv-output} 
+{\centering \includegraphics[width=6.32in]{figures/10-exr-memory-strategy-jmv-output} 
 
 }
 

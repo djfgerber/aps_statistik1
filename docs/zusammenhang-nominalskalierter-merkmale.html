@@ -223,7 +223,7 @@ div.csl-indent {
 </div>
 <p>Hier sollen also zwei nominalskalierte Merkmale verglichen werden. Die Daten können wie bei der Vierfeldertafel in zwei Formaten gespeichert werden: Entweder wird eine Zeile pro Beobachtung verwendet oder die Zeilen geben die Ausprägungskombinationen zusammen mit der Anzahl Beobachtungen an. Um eine Übersicht über die erhobenen Daten zu erhalten, wird wieder eine Kreuztabelle erstellt. Für diese sogenannte <strong>Mehrfeldertabelle</strong> wird die Zählung jeder Ausprägungskombination der beiden Merkmale aufsummiert, siehe Abbildung <a href="zusammenhang-nominalskalierter-merkmale.html#fig:exm-learning-style-data-view">10.1</a>. Die Mehrfeldertabelle kann in <code>Jamovi</code> unter <code>Analysen &gt; Häufigkeiten &gt; Kreuztabellen &gt; Unabhängige Stichproben</code> erstellt werden.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-learning-style-data-view"></span>
-<img src="figures/10-exm-learning-style-data-view.jpg" alt="Mehrfeldertabelle mit absoluten Häufigkeiten der Daten Lernstil und Abschlusserfolg."  />
+<img src="figures/10-exm-learning-style-data-view.jpg" alt="Mehrfeldertabelle mit absoluten Häufigkeiten der Daten Lernstil und Abschlusserfolg." width="245" />
 <p class="caption">
 Abbildung 10.1: Mehrfeldertabelle mit absoluten Häufigkeiten der Daten Lernstil und Abschlusserfolg.
 </p>
@@ -231,7 +231,7 @@ Abbildung 10.1: Mehrfeldertabelle mit absoluten Häufigkeiten der Daten Lernstil
 <p>Die Zellen der Mehrfeldertabellen werden allgemein mit einem Zeilenindex <span class="math inline">\(i\)</span> und einem Spaltenindex <span class="math inline">\(j\)</span> bezeichnet. Die Zelle <span class="math inline">\(i = 1\)</span> und <span class="math inline">\(j = 3\)</span> enthält also Informationen zu Personen mit ausgezeichnetem Abschluss bei visuellem Lernstil. Die Anzahl Beobachtungen in der Zelle werden mit <span class="math inline">\(o_{ij}\)</span> für <em>observed</em> bezeichnet, zum Beispiel <span class="math inline">\(o_{13} = 16\)</span>. Der Zeilenindex geht von <span class="math inline">\(1\)</span> bis <span class="math inline">\(I\)</span> und der Zeilenindex von <span class="math inline">\(1\)</span> bis <span class="math inline">\(J\)</span>. Da beide Merkmale im Beispiel genau <span class="math inline">\(3\)</span> Ausprägungen habe ist hier <span class="math inline">\(I\)</span> und <span class="math inline">\(J\)</span> genau <span class="math inline">\(3\)</span>.</p>
 <p>Trotz der verbesserten Übersicht ist es aufgrund der verschiedenen Randhäufigkeiten schwer Auffälligkeiten in der Mehrfeldertabelle zu erkennen. Um dies zu vereinfachen, können der Tabelle die relativen Häufigkeiten (bezüglich Zeile oder Spalte) hinzugefügt werden, siehe Abbildung <a href="zusammenhang-nominalskalierter-merkmale.html#fig:exm-learning-style-data-view-rel">10.2</a>. Dies wird in <code>Jamovi</code> berechnet indem unter <code>Zellen &gt; Prozentsätze</code> die Optionen <code>Zeile</code> und oder <code>Spalte</code> angewählt werden.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-learning-style-data-view-rel"></span>
-<img src="figures/10-exm-learning-style-data-view-rel.jpg" alt="Mehrfeldertabelle mit absoluten und relativen Häufigkeiten der Daten Lernstil und Abschlusserfolg."  />
+<img src="figures/10-exm-learning-style-data-view-rel.jpg" alt="Mehrfeldertabelle mit absoluten und relativen Häufigkeiten der Daten Lernstil und Abschlusserfolg." width="296" />
 <p class="caption">
 Abbildung 10.2: Mehrfeldertabelle mit absoluten und relativen Häufigkeiten der Daten Lernstil und Abschlusserfolg.
 </p>
@@ -242,7 +242,7 @@ Abbildung 10.2: Mehrfeldertabelle mit absoluten und relativen Häufigkeiten der 
 <h2><span class="header-section-number">10.2</span> Zusammenhang nominalskalierter Merkmale testen<a href="zusammenhang-nominalskalierter-merkmale.html#zusammenhang-nominalskalierter-merkmale-testen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Um dies zu testen, kann der im letzten Kapitel besprochene <span class="math inline">\(\chi^2\)</span>-Test für dichotome Merkmale erweitert werden. Die Nullhypothese ist, dass die beiden nominalskalierten Merkmale, hier der Lernstil und der Abschluss, unabhängig voneinander sind. Der Test funktioniert nun genau gleich wie der Vierfeldertest. Für jede Zelle <span class="math inline">\(ij\)</span> wird unter der Annahme der Unabhängigkeit der zwei Merkmale die erwartete Anzahl Beobachtungen <span class="math inline">\(e_{ij}\)</span> berechnet. Die erwartete Anzahl Beobachtungen kann in <code>Jamovi</code> unter <code>Zelle &gt; Anzahl &gt; Erwartete Anzahl</code> dazugeschaltet werden, siehe Abbildung <a href="zusammenhang-nominalskalierter-merkmale.html#fig:exm-learning-style-data-view-expected">10.3</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-learning-style-data-view-expected"></span>
-<img src="figures/10-exm-learning-style-data-view-expected.jpg" alt="Mehrfeldertabelle mit beobachteten und unter Unabhängigkeit erwarteten Häufigkeiten der Daten Lernstil und Abschlusserfolg."  />
+<img src="figures/10-exm-learning-style-data-view-expected.jpg" alt="Mehrfeldertabelle mit beobachteten und unter Unabhängigkeit erwarteten Häufigkeiten der Daten Lernstil und Abschlusserfolg." width="294" />
 <p class="caption">
 Abbildung 10.3: Mehrfeldertabelle mit beobachteten und unter Unabhängigkeit erwarteten Häufigkeiten der Daten Lernstil und Abschlusserfolg.
 </p>
@@ -316,7 +316,7 @@ Ziel:
 Analyseparameter werden gesetzt, siehe Abbildung
 <a href="zusammenhang-nominalskalierter-merkmale.html#fig:sol-edu-heredity-input">10.4</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-edu-heredity-input"></span>
-<img src="figures/10-exr-edu-heredity-jmv-input.jpg" alt="Jamovi Eingabe."  />
+<img src="figures/10-exr-edu-heredity-jmv-input.jpg" alt="Jamovi Eingabe." width="232" />
 <p class="caption">
 Abbildung 10.4: Jamovi Eingabe.
 </p>
@@ -324,7 +324,7 @@ Abbildung 10.4: Jamovi Eingabe.
 <p>Dies produziert das Analyseergebnis in Abbildung
 <a href="zusammenhang-nominalskalierter-merkmale.html#fig:sol-edu-heredity-output">10.5</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-edu-heredity-output"></span>
-<img src="figures/10-exr-edu-heredity-jmv-output.jpg" alt="Jamovi Ausgabe."  />
+<img src="figures/10-exr-edu-heredity-jmv-output.jpg" alt="Jamovi Ausgabe." width="270" />
 <p class="caption">
 Abbildung 10.5: Jamovi Ausgabe.
 </p>
@@ -362,7 +362,7 @@ Ziel:
 Analyseparameter werden gesetzt, siehe Abbildung
 <a href="zusammenhang-nominalskalierter-merkmale.html#fig:sol-taste-color-input">10.6</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-taste-color-input"></span>
-<img src="figures/10-exr-taste-color-jmv-input.jpg" alt="Jamovi Eingabe."  />
+<img src="figures/10-exr-taste-color-jmv-input.jpg" alt="Jamovi Eingabe." width="321" />
 <p class="caption">
 Abbildung 10.6: Jamovi Eingabe.
 </p>
@@ -370,7 +370,7 @@ Abbildung 10.6: Jamovi Eingabe.
 <p>Dies produziert das Analyseergebnis in Abbildung
 <a href="zusammenhang-nominalskalierter-merkmale.html#fig:sol-taste-color-output">10.7</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-taste-color-output"></span>
-<img src="figures/10-exr-taste-color-jmv-output.jpg" alt="Jamovi Ausgabe."  />
+<img src="figures/10-exr-taste-color-jmv-output.jpg" alt="Jamovi Ausgabe." width="314" />
 <p class="caption">
 Abbildung 10.7: Jamovi Ausgabe.
 </p>
@@ -410,7 +410,7 @@ Ziel:
 Analyseparameter werden gesetzt, siehe Abbildung
 <a href="zusammenhang-nominalskalierter-merkmale.html#fig:sol-memory-strategy-input">10.8</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-memory-strategy-input"></span>
-<img src="figures/10-exr-memory-strategy-jmv-input.jpg" alt="Jamovi Eingabe."  />
+<img src="figures/10-exr-memory-strategy-jmv-input.jpg" alt="Jamovi Eingabe." width="276" />
 <p class="caption">
 Abbildung 10.8: Jamovi Eingabe.
 </p>
@@ -418,7 +418,7 @@ Abbildung 10.8: Jamovi Eingabe.
 <p>Dies produziert das Analyseergebnis in Abbildung
 <a href="zusammenhang-nominalskalierter-merkmale.html#fig:sol-memory-strategy-output">10.9</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-memory-strategy-output"></span>
-<img src="figures/10-exr-memory-strategy-jmv-output.jpg" alt="Jamovi Ausgabe."  />
+<img src="figures/10-exr-memory-strategy-jmv-output.jpg" alt="Jamovi Ausgabe." width="228" />
 <p class="caption">
 Abbildung 10.9: Jamovi Ausgabe.
 </p>

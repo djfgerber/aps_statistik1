@@ -155,20 +155,81 @@ Es entsteht dabei glücklicherweise genau die gewünschte Darstellung. Es wäre 
   (d) Eine Anleitung zur Berechnung in `Jamovi` sowie die berechneten Werte können in Abbildung  \@ref(fig:enten-hist-mean-sd2) abgelesen und sind Interquartilabstand $IQR= 0.3$°C, $25\%$-Perzentil $=41.5$, $75\%$-Perzentil $=41.8$, $2.5\%$-Perzentil $=41.3$, $97.5\%$-Perzentil $= 42.1$, Spannweite $R=1.11$ und die Standardabweichung $SD = 0.233$.
 :::
 
-::: {.exercise #temptag-pvai8hwv}
+::: {.exercise #unintentional-learning}
 <!-- 
 Ziel: 
 - Berechnung mit Jamovi festigen
 - Output-interpretation
 -->
-TODO: Exercise body
+
+
+Mit einer Studie soll herausgefunden werden, ob es bei der unabsichtlichen Erinnerung von Informationen einen Altersunterschied (`Age`) gibt. Dabei werden alte (`Old` 55-65 Jahre) und junge Menschen (`Young` 18-30 Jahre) Wörter gezeigt und verglichen, wie viele davon 10 Minuten später noch wiedergegeben werden können `Recall`. Die Daten sind im Datensatz `r inline_code("02-exr-unintentional-learning.sav")` festgehalten.
+
+(a) Stellen Sie die Anzahl erinnerter Wörter in einem Histogramm mit dem `Jamovi` Basis-Modul dar.
+(b) Berechnen Sie alle bekannten Zentralitäts- und Variabilitätsmasse und berichten Sie mit dem korrekten Symbol mit $2$ Nachkommastellen und mit $3$ Nachkommastellen. 
+(c) Stellen Sie die Anzahl erinnerter Wörter in einem Histogramm mit dem `JJStatsPlot`-Modul und einer Korbbreite von $3$ erinnerten Wörtern dar. Wie viel Prozent der Menschen erinnerten sich an $8$ bis $10$ Wörter? Wie viele Menschen erinnerten sich an $11$ bis $13$ Wörter?
+(d) Wiederholen Sie Teilaufgabe (b) aber teilen Sie die Daten nach Alter auf. Beschränken Sie sich dabei auf $2$ Nachkommastellen. Was fällt beim Altersvergleich auf?
+
 :::
 
 :::{.solution}
-TODO: solution body
+
+Der Datensatz wird bei `Jamovi` eingelesen. Für a und b werden die Analyseparameter wie in Abbildung \@ref(fig:sol-unintentional-learning-input) gesetzt. 
+
+
+```{r sol-unintentional-learning-input, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
+knitr::include_graphics("figures/02-exr-unintentional-learning-jmv-input.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-unintentional-learning-output), welches zugleich die Lösung für (a) darstellt.
+
+```{r sol-unintentional-learning-output, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/02-exr-unintentional-learning-jmv-output.jpg")
+```
+
+(b) Einmal mit `Jamovi` berechnet, können die Parameter in der `Deskriptivstatistik` abgelesen werden. Die Nachkommastellen werden bei den 3 Punkten in der Ecke oben rechts unter `Zahlenformat` eingestellt, siehe Abbildung  \@ref(fig:sol-unintentional-learning-input2).
+
+```{r sol-unintentional-learning-input2, out.width='100%', fig.cap='Jamovi Einstellung Nachkommastellen.'}
+knitr::include_graphics("figures/02-exr-unintentional-learning-jmv-input2.jpg")
+```
+
+Die durchschnittliche Anzahl erinnerter Wörter liegt bei $M = 11.91, \text{Mdn} = 11.00, \text{Modus}=7.00$, die Variabilität bei $\text{SD}=5.27, \text{IQR} = 9.00, R= 20.00$.
+
+Die durchschnittliche Anzahl erinnerter Wörter liegt bei $M = 11.907, \text{Mdn} = 11.000, \text{Modus}=7.000$, die Variabilität bei $\text{SD}=5.271, \text{IQR} = 9.000, R= 20.000$.
+
+(c) Für c werden die Analyseparameter wie in Abbildung \@ref(fig:sol-unintentional-learning-input3) gesetzt. 
+
+
+```{r sol-unintentional-learning-input3, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
+knitr::include_graphics("figures/02-exr-unintentional-learning-jmv-input3.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-unintentional-learning-output3).
+
+```{r sol-unintentional-learning-output3, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/02-exr-unintentional-learning-jmv-output3.jpg")
+```
+
+Aus dem Histogramm kann am 3. Balken auf der `count`-Achse (links) abgelesen werden, dass $20$ Menschen sich an zwischen $11$ und $13$ Wörter erinnern. Der Anteil Menschen, welcher sich an $8$ bis $10$ Wörter erinnert liegt bei $18\%$, was beim 4. Balken von der `proportion`-Achse (rechts) abgelesen werden kann.
+
+(d) Für d werden die Analyseparameter wie in Abbildung \@ref(fig:sol-unintentional-learning-input4) gesetzt. 
+
+
+```{r sol-unintentional-learning-input4, out.width='100%', fig.cap='Jamovi setzen der Analyseparameter.'}
+knitr::include_graphics("figures/02-exr-unintentional-learning-jmv-input4.jpg")
+```
+
+Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-unintentional-learning-output4).
+
+```{r sol-unintentional-learning-output4, out.width='100%', fig.cap='Jamovi Ausgabe.'}
+knitr::include_graphics("figures/02-exr-unintentional-learning-jmv-output4.jpg")
+```
+
+Für die ältere Gruppe ist die durchschnittliche Anzahl erinnerter Wörter bei $M = 10.24, \text{Mdn} = 10.00, \text{Modus}=11.00$, die Variabilität davon liegt bei $\text{SD}=4.02, \text{IQR} = 5.00, R= 20.00$. Für die ältere Gruppe ist die durchschnittliche Anzahl erinnerter Wörter bei $M = 13.57, \text{Mdn} = 14.00, \text{Modus}=7.00$, die Variabilität davon liegt bei $\text{SD}=5.85, \text{IQR} = 10.75, R= 19.00$.
+
+Es fällt auf, dass sich die jüngere Gruppe durchschnittlich mehr Wörter merken kann (Vergleich arithmetisches Mittel oder Median). Die jüngere Gruppe weist ebenfalls eine grössere Streuung der Anzahl erinnerter Wörter auf als die ältere Gruppe (Vergleich Standardabweichung und IQR). Auf dem Histogramm lässt sich erkennen, dass es insbesondere wenige Leute in der älteren Gruppe gibt mit mehr als $15$ erinnerten Worten.
+
 :::
-
-
 
 ::: {.exercise #theorie-mdn-mean}
 <!-- 
