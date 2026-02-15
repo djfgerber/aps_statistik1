@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{14 February, 2026}
+\date{15 February, 2026}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -1610,33 +1610,47 @@ Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-stranger-output}.
 \begin{exercise}
 \protect\hypertarget{exr:ki-approx-normal}{}\label{exr:ki-approx-normal}\leavevmode
 
-(TODO, Achtung: Diese Augabe funktioniert je nach Version von Jamovi und JJStatsPlot nicht. Wenn die Normalverteilungskurve trotz Anwählen nicht angezeigt wird, kann die Lösung der Aufgabe nachgelesen werden. Diese Aufgabe ist wichtig für das Verständnis, nicht aber zur Nachahmung an der Prüfung.) Für ein Experiment werden in drei Runden jeweils \(10000\) Zufallsstichproben erhoben mit respektive \(10\), \(40\) und \(100\) Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung \ref{fig:ki-approx-normal1} dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.
+Scrolle auf \href{https://seeing-theory.brown.edu/probability-distributions/index.html\#section2}{seeing-theory.brown.edu \textgreater{} Continuous \textgreater{} Normal} bis links `Central Limit Theorem' sichtbar ist.
 
-\begin{figure}
+Mit \(\alpha\) und \(\beta\) kann die Stichprobenverteilung verändert werden. Wenn \(\alpha = \beta = 1\), handelt es sich um eine Gleichverteilung, das heisst, die Beobachtungen sind auf der ganzen Breite gleich wahrscheinlich. Ein Beispiel der realen Welt dazu sind Wochentage, an welchen man krank wird. Bei \(\alpha = 2\) und \(\beta = 5\) sind Beobachtungen links viel häufiger als Beobachtungen rechts. Ein Beispiel dazu wären Geburtszeiten: Geburten sind Tagsüber viel häufiger, weil geplante Geburten (also Kaiserschnitte) auf die Frühschicht geplant werden. \texttt{Draw\ =\ 1} und \texttt{Draw\ =\ 50} bedeutet, dass eine, respektive \(50\), Stichprobe gezogen wird. \texttt{Sample\ size} ist die Stichprobengrösse.
 
-{\centering \includegraphics{aps_statistik1_files/figure-latex/ki-approx-normal1-1} 
+Der zentrale Grenzwertsatz sagt nun, dass, wenn eine Stichprobe gezogen wird (Punkte fallen von der \texttt{draw} Linie runter) und der Durchschnitt davon gebildet wird (Punkte fallen auf die \texttt{average}-Linie) und dieser Prozess wiederholt wird, so sind die Durchschnitte Normalverteilt. Letzteres bedeutet, dass das Histogramm eine Glockenform hat (vergleiche mit der Linie, welche durch \texttt{Theoretical} angezeigt wird).
 
-}
-
-\caption{Verteilung der Werte einer Stichprobe. (Achtung es handelt sich hierbei nicht um Mittelwerte, sondern die Effektiv gemessenen Beobachtungen einer Stichprobe.)}\label{fig:ki-approx-normal1}
-\end{figure}
-
-Die arithmetischen Mittel der \(10'000\) Stichproben sind im Datensatz \texttt{04-exr-zentraler-grenzwertsatz.sav} festgehalten. In der Spalte \texttt{n\_10} zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallsstichprobe mit \(10\) Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse \(n\). Erstellen Sie ein Histogramm mit der Erweiterung \texttt{JJStatsPlot} und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Stelle \(\alpha = 1, \beta = 1\), \texttt{Sample\ size\ =\ 3}. Wie viele Stichprobenziehungen braucht es, damit die Durchschnitte normalverteilt aussehen?
+\item
+  Stelle \(\alpha = 1, \beta = 1\), \texttt{Sample\ size\ =\ 10}. Wie viele Stichprobenziehungen braucht es, damit die Durchschnitte normalverteilt aussehen?
+\item
+  Stelle \(\alpha = 2, \beta = 5\), \texttt{Sample\ size\ =\ 3}. Wie viele Stichprobenziehungen braucht es, damit die Durchschnitte normalverteilt aussehen?
+\item
+  Stelle \(\alpha = 2, \beta = 5\), \texttt{Sample\ size\ =\ 10}. Wie viele Stichprobenziehungen braucht es, damit die Durchschnitte normalverteilt aussehen?
+\item
+  Was kann daraus geschlossen werden?
+\end{enumerate}
 
 \end{exercise}
 
 \begin{solution}
 
-Das Übereinanderlegen des jeweiligen Histogramms und der Wahrscheinlichkeitsdichte der Normalverteilung wird in Abbildung \ref{fig:sol-ki-approx-normal} gezeigt. Es ist deutlich zu sehen, dass die Linie nur bei \(n=100\) die Häufigkeitsverteilung der arithmetischen Mittel gut nachbilden kann. Bei \(n=10\) und \(n=50\) ist ein grosser Unterschied zwischen Häufigkeitsverteilung und Linie sichtbar. Das genaue \(n\) ab welchem eine Häufigkeitsverteilung gut durch die Normalverteilung angenähert wird hängt von der ursprünglichen Verteilung der Daten ab, d.h. der Verteilung in Abbildung \ref{fig:ki-approx-normal1}. Es kann deshalb nicht generell gesagt werden, dass ab \(n=100\) die Annäherung immer gut sei, so wie in diesem Beispiel. Der zentrale Grenzwertsatz besagt demnach auch lediglich, dass man immer ein grosses \(n\) wählen kann, so dass die Annäherung gut ist. Er besagt nichts darüber, wie gross \(n\) sein muss.
+Die folgenden Angaben können individuell leicht unterschiedlich ausfallen. Gründe sind die subjektive Einschätzung, ob ein Histogramm bereits wie die Normalverteilung aussieht oder nicht und der Zufall, welcher bei der Zufallsstichprobenziehung entsteht.
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-input} \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-output1} \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-output2} \includegraphics[width=0.5\linewidth]{figures/04-exr-ki-approx-normal-jmv-output3} 
-
-}
-
-\caption{Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100.}\label{fig:sol-ki-approx-normal}
-\end{figure}
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  250
+\item
+  1150
+\item
+  500
+\item
+  100
+\item
+  Je mehr Beobachtungen in einer Stichprobe, desto schneller ist der Durchschnitt normalverteilt. Je nach Stichprobenverteilung, ist der Durchschnitt schneller oder langsamer normalverteilt.
+\end{enumerate}
 
 \end{solution}
 

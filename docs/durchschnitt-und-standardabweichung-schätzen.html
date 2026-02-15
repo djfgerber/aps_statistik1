@@ -511,25 +511,28 @@ Abbildung 4.11: Jamovi Ausgabe.
 Ziel: 
 - Erleben, dass Mittelwerte normalverteilt sind.
 -->
-<p>(TODO, Achtung: Diese Augabe funktioniert je nach Version von Jamovi und JJStatsPlot nicht. Wenn die Normalverteilungskurve trotz Anwählen nicht angezeigt wird, kann die Lösung der Aufgabe nachgelesen werden. Diese Aufgabe ist wichtig für das Verständnis, nicht aber zur Nachahmung an der Prüfung.) Für ein Experiment werden in drei Runden jeweils <span class="math inline">\(10000\)</span> Zufallsstichproben erhoben mit respektive <span class="math inline">\(10\)</span>, <span class="math inline">\(40\)</span> und <span class="math inline">\(100\)</span> Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:ki-approx-normal1">4.12</a> dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ki-approx-normal1"></span>
-<img src="aps_statistik1_files/figure-html/ki-approx-normal1-1.png" alt="Verteilung der Werte einer Stichprobe. (Achtung es handelt sich hierbei nicht um Mittelwerte, sondern die Effektiv gemessenen Beobachtungen einer Stichprobe.)" width="672" />
-<p class="caption">
-Abbildung 4.12: Verteilung der Werte einer Stichprobe. (Achtung es handelt sich hierbei nicht um Mittelwerte, sondern die Effektiv gemessenen Beobachtungen einer Stichprobe.)
-</p>
-</div>
-<p>Die arithmetischen Mittel der <span class="math inline">\(10&#39;000\)</span> Stichproben sind im Datensatz <code>04-exr-zentraler-grenzwertsatz.sav</code> festgehalten. In der Spalte <code>n_10</code> zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallsstichprobe mit <span class="math inline">\(10\)</span> Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse <span class="math inline">\(n\)</span>. Erstellen Sie ein Histogramm mit der Erweiterung <code>JJStatsPlot</code> und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.</p>
+<p>Scrolle auf <a href="https://seeing-theory.brown.edu/probability-distributions/index.html#section2">seeing-theory.brown.edu &gt; Continuous &gt; Normal</a> bis links ‘Central Limit Theorem’ sichtbar ist.</p>
+<p>Mit <span class="math inline">\(\alpha\)</span> und <span class="math inline">\(\beta\)</span> kann die Stichprobenverteilung verändert werden. Wenn <span class="math inline">\(\alpha = \beta = 1\)</span>, handelt es sich um eine Gleichverteilung, das heisst, die Beobachtungen sind auf der ganzen Breite gleich wahrscheinlich. Ein Beispiel der realen Welt dazu sind Wochentage, an welchen man krank wird. Bei <span class="math inline">\(\alpha = 2\)</span> und <span class="math inline">\(\beta = 5\)</span> sind Beobachtungen links viel häufiger als Beobachtungen rechts. Ein Beispiel dazu wären Geburtszeiten: Geburten sind Tagsüber viel häufiger, weil geplante Geburten (also Kaiserschnitte) auf die Frühschicht geplant werden. <code>Draw = 1</code> und <code>Draw = 50</code> bedeutet, dass eine, respektive <span class="math inline">\(50\)</span>, Stichprobe gezogen wird. <code>Sample size</code> ist die Stichprobengrösse.</p>
+<p>Der zentrale Grenzwertsatz sagt nun, dass, wenn eine Stichprobe gezogen wird (Punkte fallen von der <code>draw</code> Linie runter) und der Durchschnitt davon gebildet wird (Punkte fallen auf die <code>average</code>-Linie) und dieser Prozess wiederholt wird, so sind die Durchschnitte Normalverteilt. Letzteres bedeutet, dass das Histogramm eine Glockenform hat (vergleiche mit der Linie, welche durch <code>Theoretical</code> angezeigt wird).</p>
+<ol style="list-style-type: lower-alpha">
+<li>Stelle <span class="math inline">\(\alpha = 1, \beta = 1\)</span>, <code>Sample size = 3</code>. Wie viele Stichprobenziehungen braucht es, damit die Durchschnitte normalverteilt aussehen?</li>
+<li>Stelle <span class="math inline">\(\alpha = 1, \beta = 1\)</span>, <code>Sample size = 10</code>. Wie viele Stichprobenziehungen braucht es, damit die Durchschnitte normalverteilt aussehen?</li>
+<li>Stelle <span class="math inline">\(\alpha = 2, \beta = 5\)</span>, <code>Sample size = 3</code>. Wie viele Stichprobenziehungen braucht es, damit die Durchschnitte normalverteilt aussehen?</li>
+<li>Stelle <span class="math inline">\(\alpha = 2, \beta = 5\)</span>, <code>Sample size = 10</code>. Wie viele Stichprobenziehungen braucht es, damit die Durchschnitte normalverteilt aussehen?</li>
+<li>Was kann daraus geschlossen werden?</li>
+</ol>
 </div>
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-28" class="solution"><em>Lösung</em>. </span>Das Übereinanderlegen des jeweiligen Histogramms und der Wahrscheinlichkeitsdichte der Normalverteilung wird in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-ki-approx-normal">4.13</a> gezeigt. Es ist deutlich zu sehen, dass die Linie nur bei <span class="math inline">\(n=100\)</span> die Häufigkeitsverteilung der arithmetischen Mittel gut nachbilden kann. Bei <span class="math inline">\(n=10\)</span> und <span class="math inline">\(n=50\)</span> ist ein grosser Unterschied zwischen Häufigkeitsverteilung und Linie sichtbar. Das genaue <span class="math inline">\(n\)</span> ab welchem eine Häufigkeitsverteilung gut durch die Normalverteilung angenähert wird hängt von der ursprünglichen Verteilung der Daten ab, d.h. der Verteilung in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:ki-approx-normal1">4.12</a>. Es kann deshalb nicht generell gesagt werden, dass ab <span class="math inline">\(n=100\)</span> die Annäherung immer gut sei, so wie in diesem Beispiel. Der zentrale Grenzwertsatz besagt demnach auch lediglich, dass man immer ein grosses <span class="math inline">\(n\)</span> wählen kann, so dass die Annäherung gut ist. Er besagt nichts darüber, wie gross <span class="math inline">\(n\)</span> sein muss.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-ki-approx-normal"></span>
-<img src="figures/04-exr-ki-approx-normal-jmv-input.jpg" alt="Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100." width="50%" /><img src="figures/04-exr-ki-approx-normal-jmv-output1.jpg" alt="Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100." width="50%" /><img src="figures/04-exr-ki-approx-normal-jmv-output2.jpg" alt="Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100." width="50%" /><img src="figures/04-exr-ki-approx-normal-jmv-output3.jpg" alt="Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100." width="50%" />
-<p class="caption">
-Abbildung 4.13: Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100.
-</p>
-</div>
+<p><span id="unlabeled-div-28" class="solution"><em>Lösung</em>. </span>Die folgenden Angaben können individuell leicht unterschiedlich ausfallen. Gründe sind die subjektive Einschätzung, ob ein Histogramm bereits wie die Normalverteilung aussieht oder nicht und der Zufall, welcher bei der Zufallsstichprobenziehung entsteht.</p>
+<ol style="list-style-type: lower-alpha">
+<li>250</li>
+<li>1150</li>
+<li>500</li>
+<li>100</li>
+<li>Je mehr Beobachtungen in einer Stichprobe, desto schneller ist der Durchschnitt normalverteilt. Je nach Stichprobenverteilung, ist der Durchschnitt schneller oder langsamer normalverteilt.</li>
+</ol>
 </details>
 </div>
 <div class="exercise">
@@ -555,11 +558,11 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-29" class="solution"><em>Lösung</em>. </span>Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-ki-mean-n-vary">4.14</a> zeigt die Berechnungsanweisungen für Jamovi und die resultierende Tabelle daraus.</p>
+<p><span id="unlabeled-div-29" class="solution"><em>Lösung</em>. </span>Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-ki-mean-n-vary">4.12</a> zeigt die Berechnungsanweisungen für Jamovi und die resultierende Tabelle daraus.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-ki-mean-n-vary"></span>
 <img src="figures/04-exr-stichprobengroesse-jmv-input.jpg" alt="Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen." width="50%" /><img src="figures/04-exr-stichprobengroesse-jmv-output.jpg" alt="Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen." width="50%" />
 <p class="caption">
-Abbildung 4.14: Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen.
+Abbildung 4.12: Links: Jamovi-Anleitung zur Erstellung der Tabelle mit den relevanten Kenngrössen; rechts: Tabelle mit relevanten Kenngrössen.
 </p>
 </div>
 <ol style="list-style-type: lower-alpha">
@@ -585,18 +588,18 @@ Ziel:
 <div class="solution">
 <details>
   <summary>Klicke hier, um deine Lösung zu überprüfen.</summary>
-<p><span id="unlabeled-div-30" class="solution"><em>Lösung</em>. </span>Der Datensatz wird bei <code>Jamovi</code> eingelesen und die Analyseparameter wie in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-biologietest-input">4.15</a> gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.</p>
+<p><span id="unlabeled-div-30" class="solution"><em>Lösung</em>. </span>Der Datensatz wird bei <code>Jamovi</code> eingelesen und die Analyseparameter wie in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-biologietest-input">4.13</a> gesetzt. Die Nachkommastellen können im Menu oben rechts bei den drei vertikalen Punkten eingestellt werden.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-biologietest-input"></span>
 <img src="figures/04-exr-biologietest-jmv-input.jpg" alt="Jamovi setzen der Analyseparameter." width="100%" />
 <p class="caption">
-Abbildung 4.15: Jamovi setzen der Analyseparameter.
+Abbildung 4.13: Jamovi setzen der Analyseparameter.
 </p>
 </div>
-<p>Dies produziert das Analyseergebnis in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-biologietest-output">4.16</a>.</p>
+<p>Dies produziert das Analyseergebnis in Abbildung <a href="durchschnitt-und-standardabweichung-schätzen.html#fig:sol-biologietest-output">4.14</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:sol-biologietest-output"></span>
 <img src="figures/04-exr-biologietest-jmv-output.jpg" alt="Jamovi Ausgabe." width="100%" />
 <p class="caption">
-Abbildung 4.16: Jamovi Ausgabe.
+Abbildung 4.14: Jamovi Ausgabe.
 </p>
 </div>
 <p>Die Klasse mit <span class="math inline">\(N=20\)</span> Lernenden hat beim ersten Biologietest eine durchschnittliche Punktzahl von <span class="math inline">\(M=14.6\)</span> Punkten <span class="math inline">\(95\%\)</span> KI <span class="math inline">\([11.9,17.3]\)</span> erzielt. Bei der Wiederholung des Tests wurde eine durchschnittliche Punktzahl von <span class="math inline">\(M=14.8\)</span> Punkten <span class="math inline">\(95\%\)</span> KI <span class="math inline">\([14.0,15.6]\)</span> erzielt. Die Standardabweichung des Testergebnisses war beim ersten Mal <span class="math inline">\(SD=5.8\)</span> Punkte und bei der Wiederholung <span class="math inline">\(SD=1.7\)</span> Punkte. Die Länge des Konfidenzintervalls war bei der ersten Durchführung mit <span class="math inline">\(17.3-11.9=5.4\)</span> Punkten bedeutend grösser als bei der zweiten Durchführung mit <span class="math inline">\(15.6-14.0=1.6\)</span>. Eine grössere Standardabweichung führt also zu einer grösseren Länge des Konfidenzintervalls. Dies kann auch durch Durchprobieren von Testwerten in Gleichung <a href="durchschnitt-und-standardabweichung-schätzen.html#eq:ki-mean">(4.1)</a> festgestellt werden.</p>

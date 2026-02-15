@@ -1271,61 +1271,29 @@ knitr::include_graphics("figures/04-exr-stranger-jmv-output.jpg")
 Ziel: 
 - Erleben, dass Mittelwerte normalverteilt sind.
 -->
+Scrolle auf [seeing-theory.brown.edu > Continuous > Normal](https://seeing-theory.brown.edu/probability-distributions/index.html#section2) bis links 'Central Limit Theorem' sichtbar ist. 
 
-```{r ki-approx-normal}
-gen_exr_ki_approx_normal <- function(n){
-  seed <- 1928
-  set.seed(1928)
-  m <- 10000
-  lambda <- 7
-  x <- rpois(n, lambda)
-  x_samples <- map(1:m, ~ rpois(n, lambda))
-  means <- x_samples %>% map_dbl(mean)
-  sds <- x_samples %>% map_dbl(sd)
-  lb <- unname(quantile(means, 0.025))
-  ub <- unname(quantile(means, 0.975))
-  m_means <- mean(x)
-  s_means <- sqrt(sd(x) / n)
-  lb_t <- lambda - qt(0.975, n - 1) * s_means
-  ub_t <- lambda + qt(0.975, n - 1) * s_means
-  return(mget(ls()))
-}
+Mit $\alpha$ und $\beta$ kann die Stichprobenverteilung verändert werden. Wenn $\alpha = \beta = 1$, handelt es sich um eine Gleichverteilung, das heisst, die Beobachtungen sind auf der ganzen Breite gleich wahrscheinlich. Ein Beispiel der realen Welt dazu sind Wochentage, an welchen man krank wird. Bei $\alpha = 2$ und $\beta = 5$ sind Beobachtungen links viel häufiger als Beobachtungen rechts. Ein Beispiel dazu wären Geburtszeiten: Geburten sind Tagsüber viel häufiger, weil geplante Geburten (also Kaiserschnitte) auf die Frühschicht geplant werden. `Draw = 1` und `Draw = 50` bedeutet, dass eine, respektive $50$, Stichprobe gezogen wird. `Sample size` ist die Stichprobengrösse. 
 
-ns <- c(10, 40, 100)
-list_experiments <- map(ns, ~ gen_exr_ki_approx_normal(.x))
-tibble(!!!setNames(
-    map(list_experiments,~c(.x$means)),
-    paste0("n_", ns)
-)) %>%
-    haven::write_sav('data/04-exr-zentraler-grenzwertsatz.sav')
-```
+Der zentrale Grenzwertsatz sagt nun, dass, wenn eine Stichprobe gezogen wird (Punkte fallen von der `draw` Linie runter) und der Durchschnitt davon gebildet wird (Punkte fallen auf die `average`-Linie) und dieser Prozess wiederholt wird, so sind die Durchschnitte Normalverteilt. Letzteres bedeutet, dass das Histogramm eine Glockenform hat (vergleiche mit der Linie, welche durch `Theoretical` angezeigt wird).
 
-(TODO, Achtung: Diese Augabe funktioniert je nach Version von Jamovi und JJStatsPlot nicht. Wenn die Normalverteilungskurve trotz Anwählen nicht angezeigt wird, kann die Lösung der Aufgabe nachgelesen werden. Diese Aufgabe ist wichtig für das Verständnis, nicht aber zur Nachahmung an der Prüfung.) Für ein Experiment werden in drei Runden jeweils $`r list_experiments[[1]]$m`$ Zufallsstichproben erhoben mit respektive $10$, $40$ und $100$ Beobachtungen pro Zufallsstichprobe. Die Verteilung der jeweils ersten Zufallsstichprobe für eine Stichprobengrösse ist in Abbildung \@ref(fig:ki-approx-normal1) dargestellt. Die Daten sind nicht normalverteilt, weil keine Glockenkurve wie oben beschrieben das Histogramm gut abdecken würde.
-
-```{r ki-approx-normal1, fig.cap="Verteilung der Werte einer Stichprobe. (Achtung es handelt sich hierbei nicht um Mittelwerte, sondern die Effektiv gemessenen Beobachtungen einer Stichprobe.)"}
-map_dfr(c(1:3),
-        ~tibble(x = list_experiments[[.x]]$x_samples[[1]],
-       n = list_experiments[[.x]]$n)) %>% 
-  ggplot() +
-  geom_histogram(aes(x=x), binwidth = 1)+
-  facet_wrap(~n,labeller = label_both)+
-  labs(x="Wert", y = 'Häufigkeit')
-```
-
-Die arithmetischen Mittel der $10'000$ Stichproben sind im Datensatz `04-exr-zentraler-grenzwertsatz.sav` festgehalten. In der Spalte `n_10` zum Beispiel steht jede Zeile für das arithmetische Mittel eine Zufallsstichprobe mit $10$ Beobachtungen. Der zentrale Grenzwertsatz besagt, dass diese arithmetischen Mittel normalverteilt sind mit zunehmender Stichprobengrösse $n$. Erstellen Sie ein Histogramm mit der Erweiterung `JJStatsPlot` und zeichnen Sie eine Normalverteilung darüber. Interpretieren Sie das Resultat.
+a) Stelle $\alpha = 1, \beta = 1$, `Sample size = 3`. Wie viele Stichprobenziehungen braucht es, damit die Durchschnitte normalverteilt aussehen? 
+b) Stelle $\alpha = 1, \beta = 1$, `Sample size = 10`. Wie viele Stichprobenziehungen braucht es, damit die Durchschnitte normalverteilt aussehen? 
+c) Stelle $\alpha = 2, \beta = 5$, `Sample size = 3`. Wie viele Stichprobenziehungen braucht es, damit die Durchschnitte normalverteilt aussehen? 
+d) Stelle $\alpha = 2, \beta = 5$, `Sample size = 10`. Wie viele Stichprobenziehungen braucht es, damit die Durchschnitte normalverteilt aussehen? 
+e) Was kann daraus geschlossen werden?
 
 :::
 
 :::{.solution}
 
-Das Übereinanderlegen des jeweiligen Histogramms und der Wahrscheinlichkeitsdichte der Normalverteilung wird in Abbildung \@ref(fig:sol-ki-approx-normal) gezeigt. Es ist deutlich zu sehen, dass die Linie nur bei $n=100$ die Häufigkeitsverteilung der arithmetischen Mittel gut nachbilden kann. Bei $n=10$ und $n=50$ ist ein grosser Unterschied zwischen Häufigkeitsverteilung und Linie sichtbar. Das genaue $n$ ab welchem eine Häufigkeitsverteilung gut durch die Normalverteilung angenähert wird hängt von der ursprünglichen Verteilung der Daten ab, d.h. der Verteilung in Abbildung \@ref(fig:ki-approx-normal1). Es kann deshalb nicht generell gesagt werden, dass ab $n=100$ die Annäherung immer gut sei, so wie in diesem Beispiel. Der zentrale Grenzwertsatz besagt demnach auch lediglich, dass man immer ein grosses $n$ wählen kann, so dass die Annäherung gut ist. Er besagt nichts darüber, wie gross $n$ sein muss.
+Die folgenden Angaben können individuell leicht unterschiedlich ausfallen. Gründe sind die subjektive Einschätzung, ob ein Histogramm bereits wie die Normalverteilung aussieht oder nicht und der Zufall, welcher bei der Zufallsstichprobenziehung entsteht.
 
-```{r sol-ki-approx-normal, fig.cap="Jamovi-Eingabeeinstellungen und die Histogramme der Mittelwerte für die Stichprobengrössen 10, 40 und 100.", fig.show="hold", out.width="50%"}
-knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-input.jpg")
-knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-output1.jpg")
-knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-output2.jpg")
-knitr::include_graphics("figures/04-exr-ki-approx-normal-jmv-output3.jpg")
-```
+a) 250
+b) 1150
+c) 500
+d) 100
+e) Je mehr Beobachtungen in einer Stichprobe, desto schneller ist der Durchschnitt normalverteilt. Je nach Stichprobenverteilung, ist der Durchschnitt schneller oder langsamer normalverteilt.  
 
 :::
 
