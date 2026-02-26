@@ -321,7 +321,7 @@ Mit einer Studie soll herausgefunden werden, ob es bei der unabsichtlichen Erinn
 
 (a) Stellen Sie die Anzahl erinnerter Wörter in einem Histogramm mit dem `Jamovi` Basis-Modul dar.
 (b) Berechnen Sie alle bekannten Zentralitäts- und Variabilitätsmasse und berichten Sie mit dem korrekten Symbol mit $2$ Nachkommastellen und mit $3$ Nachkommastellen. 
-(c) Stellen Sie die Anzahl erinnerter Wörter in einem Histogramm mit dem `JJStatsPlot`-Modul und einer Korbbreite von $3$ erinnerten Wörtern dar. Wie viel Prozent der Menschen erinnerten sich an $8$ bis $10$ Wörter? Wie viele Menschen erinnerten sich an $11$ bis $13$ Wörter?
+(c) Stellen Sie die Anzahl erinnerter Wörter in einem Histogramm mit dem `JJStatsPlot`-Modul und einer Korbbreite von $3$ erinnerten Wörtern dar. Wie viel Prozent der Menschen erinnerten sich an $8$ bis $10$ Wörter? Wie viele Menschen erinnerten sich an $8$ bis $10$ Wörter? Wieso stimmt hier die relative Häufigkeit `proportion` mit der absoluten Häufigkeit `count` überein?
 (d) Wiederholen Sie Teilaufgabe (b) aber teilen Sie die Daten nach Alter auf. Beschränken Sie sich dabei auf $2$ Nachkommastellen. Was fällt beim Altersvergleich auf?
 
 :::
@@ -347,9 +347,9 @@ knitr::include_graphics("figures/02-exr-unintentional-learning-jmv-output.jpg")
 knitr::include_graphics("figures/02-exr-unintentional-learning-jmv-input2.jpg")
 ```
 
-Die durchschnittliche Anzahl erinnerter Wörter liegt bei $M = 11.91, \text{Mdn} = 11.00, \text{Modus}=7.00$, die Variabilität bei $\text{SD}=5.27, \text{IQR} = 9.00, R= 20.00$.
+Die durchschnittliche Anzahl erinnerter Wörter liegt bei $M = 11.61, \text{Mdn} = 11.00, \text{Modus}=11.00$, die Variabilität bei $\text{SD}=5.19, \text{IQR} = 8.25, R= 20.00$. ($2$ Nachkommastellen)
 
-Die durchschnittliche Anzahl erinnerter Wörter liegt bei $M = 11.907, \text{Mdn} = 11.000, \text{Modus}=7.000$, die Variabilität bei $\text{SD}=5.271, \text{IQR} = 9.000, R= 20.000$.
+Die durchschnittliche Anzahl erinnerter Wörter liegt bei $M = 11.610, \text{Mdn} = 11.000, \text{Modus}=11.000$, die Variabilität bei $\text{SD}=5.191, \text{IQR} = 8.250, R= 20.000$. ($3$ Nachkommastellen)
 
 (c) Für c werden die Analyseparameter wie in Abbildung \@ref(fig:sol-unintentional-learning-input3) gesetzt. 
 
@@ -364,7 +364,7 @@ Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-unintentional-lea
 knitr::include_graphics("figures/02-exr-unintentional-learning-jmv-output3.jpg")
 ```
 
-Aus dem Histogramm kann am 3. Balken auf der `count`-Achse (links) abgelesen werden, dass $20$ Menschen sich an zwischen $11$ und $13$ Wörter erinnern. Der Anteil Menschen, welcher sich an $8$ bis $10$ Wörter erinnert liegt bei $18\%$, was beim 4. Balken von der `proportion`-Achse (rechts) abgelesen werden kann.
+Aus dem Histogramm kann am 3. Balken auf der `count`-Achse (links) respektive der `proportion`-Achse abgelesen werden, dass sich $18$ Menschen respektive $18\%$ der Beobachtungen an zwischen $8$ bis $10$ Wörter erinnern. Hier entsprechen die relative und die absolute Häufigkeit einander genau, weil genau $N=100$ Beobachtungen vorliegen. $18$ Beobachtungen entsprechen also $18\%$ der Beobachtungen. 
 
 (d) Für d werden die Analyseparameter wie in Abbildung \@ref(fig:sol-unintentional-learning-input4) gesetzt. 
 
@@ -379,7 +379,7 @@ Dies produziert das Analyseergebnis in Abbildung \@ref(fig:sol-unintentional-lea
 knitr::include_graphics("figures/02-exr-unintentional-learning-jmv-output4.jpg")
 ```
 
-Für die ältere Gruppe ist die durchschnittliche Anzahl erinnerter Wörter bei $M = 10.24, \text{Mdn} = 10.00, \text{Modus}=11.00$, die Variabilität davon liegt bei $\text{SD}=4.02, \text{IQR} = 5.00, R= 20.00$. Für die ältere Gruppe ist die durchschnittliche Anzahl erinnerter Wörter bei $M = 13.57, \text{Mdn} = 14.00, \text{Modus}=7.00$, die Variabilität davon liegt bei $\text{SD}=5.85, \text{IQR} = 10.75, R= 19.00$.
+Für die ältere Gruppe ist die durchschnittliche Anzahl erinnerter Wörter bei $M = 10.06, \text{Mdn} = 10.00, \text{Modus}=11.00$, die Variabilität davon liegt bei $\text{SD}=4.01, \text{IQR} = 4.75, R= 20.00$. Für die ältere Gruppe ist die durchschnittliche Anzahl erinnerter Wörter bei $M = 13.16, \text{Mdn} = 14.00, \text{Modus}=7.00$, die Variabilität davon liegt bei $\text{SD}=5.79, \text{IQR} = 11.00, R= 18.00$.
 
 Es fällt auf, dass sich die jüngere Gruppe durchschnittlich mehr Wörter merken kann (Vergleich arithmetisches Mittel oder Median). Die jüngere Gruppe weist ebenfalls eine grössere Streuung der Anzahl erinnerter Wörter auf als die ältere Gruppe (Vergleich Standardabweichung und IQR). Auf dem Histogramm lässt sich erkennen, dass es insbesondere wenige Leute in der älteren Gruppe gibt mit mehr als $15$ erinnerten Worten.
 
