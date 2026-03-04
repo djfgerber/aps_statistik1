@@ -14,14 +14,14 @@ In Beispiel \@ref(exm:angst) liegt das arithmetische Mittel in der Stichprobe de
 tibble(x = exm_angst$x_means) %>% 
   ggplot(aes(x=x))+
   geom_histogram(binwidth = 0.5)+
-  labs(y = 'Häufigkeit', x = 'Angst')
+  labs(y = 'Häufigkeit', x = 'Durchschnittliche Angst')
 ```
 
 Die Häufigkeitsverteilung der berechneten arithmetischen Mittel in Abbildung \@ref(fig:exm-angst-hist-means) lässt nun eine Aussage über die Häufigkeit und damit über die Wahrscheinlichkeit von gewissen Werten als Erwartungswert zu. Ein Durchschnittswert der Zustandesangst um die $`r round(mean(exm_angst$x_means))`$ ist hier am wahrscheinlichsten und ein Wert tiefer als $`r round(quantile(exm_angst$x_means, 0.05)) %>% unname()`$ oder höher $`r round(quantile(exm_angst$x_means, 0.95)) %>% unname()`$ eher selten. Um diese Aussage präziser zu gestalten, werden konventionell die $95$% häufigsten Werte (die höchsten Balken im Histogramm) als wahrscheinlich betrachtet. Die $5$% verbleibenden Werte, verteilt auf das untere und obere Extrem, werden als unwahrscheinlich betrachtet. Das $2.5$% Perzentil trennt die $2.5$% tiefsten arithmetischen Mittel ab und liegt im Beispiel bei $`r  exm_angst$lb_means_emp`$. Das $97.5$%-Perzentil trennt die höchsten $2.5$% (oder eben die tiefsten $97.5$%) arithmetischen Mittel ab und liegt bei $`r exm_angst$ub_means_emp`$. Dies ist in Abbildung \@ref(fig:exm-angst-hist-means-emp-ci) ersichtlich.
 
 
 ```{r exm-angst-hist-means-emp-ci, fig.cap = paste0("Verteilung der arithmetischen Mittel von ",exm_angst$n_samples," zufällig gezogenen Stichproben der Angst.")}
-plot_hist_means(exm_angst$x_means, exm_angst$lb_means_emp,  exm_angst$ub_means_emp, 0.5, 'Angst')
+plot_hist_means(exm_angst$x_means, exm_angst$lb_means_emp,  exm_angst$ub_means_emp, 0.5, 'Durchschnittliche Angst')
 ```
 
 :::{.example #agreableness name="Verträglichkeit"}
@@ -65,7 +65,7 @@ Die Verteilung der Beobachtungen, siehe Abbildung \@ref(fig:exm-agreableness-his
 
 ```{r exm-agreableness-hist-means, fig.cap = paste0("Verteilung der arithmetischen Mittel von ",exm_vertraeglichkeit$m," zufällig gezogenen Stichproben der Verträglichkeit.")}
 with(exm_vertraeglichkeit,
-     plot_hist_means(means, lb, ub, 0.05, "Verträglichkeit"))
+     plot_hist_means(means, lb, ub, 0.05, "Durchschnittliche Verträglichkeit"))
 ```
 
 Das Problem mit diesem Vorgehen ist, dass es aus finanziellen oder technischen Gründen selten möglich ist mehrere Stichproben aus derselben Population zu ziehen. Glücklicherweise haben Statistiker:innen herausgefunden, dass die Häufigkeitsverteilungen wie in Abbildungen \@ref(fig:exm-angst-hist-means-emp-ci) und \@ref(fig:exm-agreableness-hist-means) immer dieselbe Verteilung haben und dies unabhängig davon wie die ursprüngliche Verteilung des Merkmals aussah. [Diese Verteilung ist eine sogenannte **Normalverteilung**]{.customdef #customdef-normalverteilung}. 
@@ -93,12 +93,12 @@ Die Abbildungen \@ref(fig:exm-angst-normal-approx) und \@ref(fig:exm-agreablenes
 
 ```{r exm-angst-normal-approx, fig.cap = paste0("Die arithmetischen Mittel sind Normalverteilt mit Parametern $\\mu_g = ",round(mean(exm_angst$x),2),"$ und $\\sigma_g = ",round(sd(exm_angst$x),2)," / \\sqrt{",exm_angst$n,"}$.")}
 with(exm_angst,
-     plot_hist_denstiy_expected_value(x_means, x_mean, x_sd, n, "Angst", 0.5))
+     plot_hist_denstiy_expected_value(x_means, x_mean, x_sd, n, "Durchschnittliche Angst", 0.5))
 ```
 
 ```{r exm-agreableness-normal-approx, fig.cap = paste0("Die arithmetischen Mittel sind Normalverteilt mit Parametern $\\mu_g = ",round(mean(exm_vertraeglichkeit$x),2),"$ und $\\sigma_g = ",round(sd(exm_vertraeglichkeit$x),2)," / \\sqrt{",exm_vertraeglichkeit$n,"}$.")}
 with(exm_vertraeglichkeit,
-     plot_hist_denstiy_expected_value(means, 4, sqrt((b - a) ^ 2 / 12), n, "Verträglichkeit", 0.05))
+     plot_hist_denstiy_expected_value(means, 4, sqrt((b - a) ^ 2 / 12), n, "Durchschnittliche Verträglichkeit", 0.05))
 ```
 
 Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte Ziehen von Stichproben unnötig. Die Normalverteilung ist theoretisch konstruiert und ihr $2.5\%$- und $97.5\%$-Perzentil können theoretisch hergeleitet werden. Tabelle \@ref(tab:quantiles-norm) wird kann beobachtet werden, dass für unsere zwei Beispiele die Perzentile der Stichprobe und der Normalverteilung sehr ähnlich, wenn auch nicht exakt gleich sind. Die Ungenauigkeit rührt daher, dass der zentrale Grenzwertsatz nur dann exakt funktioniert, wenn die Anzahl Beobachtungen (unendlich) gross ist.
