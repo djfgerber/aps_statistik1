@@ -1287,13 +1287,13 @@ e) Was kann daraus geschlossen werden?
 
 :::{.solution}
 
-Die folgenden Angaben können individuell leicht unterschiedlich ausfallen. Gründe sind die subjektive Einschätzung, ob ein Histogramm bereits wie die Normalverteilung aussieht oder nicht und der Zufall, welcher bei der Zufallsstichprobenziehung entsteht.
+Die folgenden Angaben können individuell leicht unterschiedlich ausfallen. Gründe sind die subjektive Einschätzung, ob ein Histogramm bereits wie die Normalverteilung aussieht oder nicht und der Zufall, welcher bei der Zufallsstichprobenziehung entsteht.  
 
 a) 250
-b) 1150
+b) 150
 c) 500
 d) 100
-e) Je mehr Beobachtungen in einer Stichprobe, desto schneller ist der Durchschnitt normalverteilt. Je nach Stichprobenverteilung, ist der Durchschnitt schneller oder langsamer normalverteilt.  
+e) Je mehr Beobachtungen in einer Stichprobe, desto schneller ist der Durchschnitt normalverteilt. Je nach Stichprobenverteilung, ist der Durchschnitt schneller oder langsamer normalverteilt.
 
 :::
 
@@ -1330,7 +1330,7 @@ gen_exr_ki_mean_n_vary <- function(){
 exr_ki_mean_n_vary <- gen_exr_ki_mean_n_vary()
 ```
 
-Eine Mensa will herausfinden, wie lange die Leute um 12h durchschnittlich anstehen müssen. Dazu befragt sie `r exr_ki_mean_n_vary$ki_table$n[1]` Kund:innen. Das Resultat der Untersuchung ist, dass die Kund:innen im Durchschnitt $0.4$ Stunden anstehen müssen. Leider ist das Konfidenzintervall sehr gross. Da die Mensa nicht weiss, wie viele Leute befragt werden müssen, um ein kleineres Konfidenzintervall zu erhalten befragt sie in 4 weiteren Runden jeweils `r knitr::combine_words(exr_ki_mean_n_vary$ki_table$n[-c(1)], and = " und ", oxford_comma = FALSE)` Kund:innen. Die Daten aller 5 Untersuchungen sind unter `r inline_code(exr_ki_mean_n_vary$file_name)` abgelegt. Für jede der 5 Stichproben:
+Eine Mensa will herausfinden, wie lange die Leute um 12h durchschnittlich anstehen müssen. Dazu befragt sie `r exr_ki_mean_n_vary$ki_table$n[1]` Kund:innen. Das Resultat der Untersuchung ist, dass die Kund:innen im Durchschnitt $0.4$ Stunden anstehen müssen. Leider ist das Konfidenzintervall sehr gross. Da die Mensa nicht weiss, wie viele Leute befragt werden müssen, um ein kleineres Konfidenzintervall zu erhalten befragt sie in 4 weiteren Runden jeweils `r knitr::combine_words(exr_ki_mean_n_vary$ki_table$n[-c(1)], and = " und ", oxford_comma = FALSE)` Kund:innen. Die Daten aller $5$ Untersuchungen sind unter `r inline_code(exr_ki_mean_n_vary$file_name)` abgelegt. Für jede der $5$ Stichproben:
 
   a. Was ist die Schätzung des Erwartungswertes der Wartezeit?
   b. Wie gross ist die Standardabweichung der Wartezeit?
