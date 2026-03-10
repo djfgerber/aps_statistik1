@@ -70,14 +70,14 @@ with(exm_vertraeglichkeit,
 
 Das Problem mit diesem Vorgehen ist, dass es aus finanziellen oder technischen Gründen selten möglich ist mehrere Stichproben aus derselben Population zu ziehen. Glücklicherweise haben Statistiker:innen herausgefunden, dass die Häufigkeitsverteilungen wie in Abbildungen \@ref(fig:exm-angst-hist-means-emp-ci) und \@ref(fig:exm-agreableness-hist-means) immer dieselbe Verteilung haben und dies unabhängig davon wie die ursprüngliche Verteilung des Merkmals aussah. [Diese Verteilung ist eine sogenannte **Normalverteilung**]{.customdef #customdef-normalverteilung}. 
 
-Die Normalverteilung sieht eine Glocke ähnlich. Deshalb wird sie auch Gausssche Glockenkurve nach Carl F. Gauss (1777-1855) benannt. Die Normalverteilung kann mit nur zwei Parametern beschrieben werden. 
+Die Normalverteilung sieht einer Glocke ähnlich. Deshalb wird sie auch Gausssche Glockenkurve nach Carl F. Gauss (1777-1855) benannt. Die Normalverteilung kann mit nur zwei Parametern beschrieben werden. 
 
-- $\mu_g$ gibt an, wo auf der x-Achse der höchste Punkt der Glocke liegt
+- $\mu_g$ gibt an, wo auf der $x$-Achse der höchste Punkt der Glocke liegt
 - $\sigma_g$ gibt an, wie flach die Glockenform ist (ein grosser Wert entspricht einer flachen Glockenform, ein tiefer Wert einer steilen Glockenform).
 
 Auf [seeing-theory.brown.edu > Continuous > Normal](https://seeing-theory.brown.edu/probability-distributions/index.html#section2) kann der Einfluss von $\mu_g$ und $\sigma_g$ auf die Normalverteilung erfahren werden. 
 
-[Diese Tatsache, dass die Durchschnitte aller Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie **Zentraler Grenzwertsatz** genannt wurde.]{.customdef #customdef-zentraler-grenzwertsatz} Der zentrale Grenzwertsatz besagt genauer, dass bei einem Merkmal mit Erwartungswert $\mu$ und Standardabweichung $\sigma$, der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit $\mu_g = \mu$ und $\sigma_g = \frac{\sigma}{\sqrt{n}}$ entspricht, wobei $n$ die Stichprobengrösse und $\sigma$ die Standardabweichung des Merkmals in der Population bezeichnet.
+[Diese Tatsache, dass die Durchschnitte aller intervallskalierten Merkmale normalverteilt sind, ist so zentral für die Statistik, dass sie **Zentraler Grenzwertsatz** genannt wurde.]{.customdef #customdef-zentraler-grenzwertsatz} Der zentrale Grenzwertsatz besagt genauer, dass bei einem Merkmal mit Erwartungswert $\mu$ und Standardabweichung $\sigma$, der Durchschnitt aller Stichprobenwerte einer Normalverteilung mit $\mu_g = \mu$ und $\sigma_g = \frac{\sigma}{\sqrt{n}}$ entspricht, wobei $n$ die Stichprobengrösse und $\sigma$ die Standardabweichung des Merkmals in der Population bezeichnet.
 
 ::::{.caution data-latex=""}
 :::{.remark}
@@ -135,16 +135,16 @@ Die Erkenntnis des zentralen Grenzwertsatz macht also das wiederholte Ziehen von
 ```
 
 
-Einstweilen wurde hier angenommen, dass die Streuung des Merkmals $\sigma$ bekannt ist. Dies ist in der Realität nie der Fall und eine weitere, wenn auch weniger grosse Ungenauigkeitsquelle. [Wenn $\sigma$ also auch aus der Stichprobe geschätzt werden muss, ist die Annäherung der Verteilung der arithmetischen Mittel besser gegeben mit einer **Student-$t$-Verteilung** oder kurz $t$-Verteilung.]{.customdef #customdef-student-verteilung} Die grüne gestrichelte Linie in den Abbildungen \@ref(fig:exm-angst-normal-approx) und \@ref(fig:exm-agreableness-normal-approx) entspricht der $t$-Verteilung im jeweiligen Beispiel. 
+Einstweilen wurde hier angenommen, dass die Streuung des Merkmals $\sigma$ bekannt ist. Dies ist in der Realität nie der Fall und eine weitere, wenn auch weniger grosse, Ungenauigkeitsquelle. [Wenn $\sigma$ also auch aus der Stichprobe geschätzt werden muss, ist die Annäherung der Verteilung der arithmetischen Mittel besser gegeben mit einer **Student-$t$-Verteilung** oder kurz $t$-Verteilung.]{.customdef #customdef-student-verteilung} Die grüne gestrichelte Linie in den Abbildungen \@ref(fig:exm-angst-normal-approx) und \@ref(fig:exm-agreableness-normal-approx) entspricht der $t$-Verteilung im jeweiligen Beispiel. 
 
 Der Unterschied zwischen der Normalverteilung und der $t$-Verteilung ist nur sichtbar, wenn $n$ klein ist. In Beispiel \@ref(exm:angst) mit $n = `r exm_angst$n`$ ist ein kleiner Unterschied, in Beispiel \@ref(exm:agreableness) mit $n = `r exm_vertraeglichkeit$n`$ ist kein Unterschied zwischen der Normalverteilung und der $t$-Verteilung sichtbar. [Tatsächlich wird die $t$-Verteilung mit einem Parameter charakterisiert, welcher __Freiheitsgrade__ (eng. degrees of freedom, $df$) genannt wird.]{.customdef #customdef-freiheitsgrade} In Abbildung \@ref(fig:t-distribution) wird die $t$-Verteilung mit verschiedenen Freiheitsgraden mit der Normalverteilung verglichen. Bei der $t$-Verteilung mit den kleinsten Freiheitsgraden sind extremere Werte wahrscheinlicher als $t$-Verteilungen mit grösseren Freiheitsgraden. 
 
 ```{r t-distribution, fig.cap="Student-t-Verteilungen mit 1, 4 und 9 Freiheitsgraden im Vergleich zu der Normalverteilung."}
 tibble(x = seq(-4, 4, by = 0.1),
        Normalverteilung = dnorm(x),
-       t_1 = dt(x, 2-1),
-       t_4 = dt(x, 5-1),
-       t_9 = dt(x, 10-1)) %>%
+       `t(df = 1)` = dt(x, 2-1),
+       `t(df = 4)` = dt(x, 5-1),
+       `t(df = 9)` = dt(x, 10-1)) %>%
   pivot_longer(cols = 2:5, names_to = "Verteilung", values_to="Wahrscheinlichkeitsdichte") %>% 
   ggplot(aes(x=x))+
   geom_line(aes(y=Wahrscheinlichkeitsdichte, color = Verteilung))+
@@ -159,7 +159,7 @@ Die arithmetischen Mittel bei unbekannter Standardabweichung sind bei wiederholt
 \bar{x} - \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1} < \mu < \bar{x} + \frac{s}{\sqrt{n}} \cdot t_{97.5\%, n-1}(\#eq:ki-mean)
 \end{equation}
 
-berechnet werden, wobei $\bar{x}$ das arithmetische Mittel, $s$ die Standardabweichung und $t_{97.5\%, n-1}$ dem Wert des 97.5%-Perzentil einer auf 0 zentrierten $t$-Verteilung mit $n-1$ Freiheitsgraden entspricht. Letzere Perzentile der $t$-Verteilung können bei Bedarf in entsprechenden Tabellen nachgeschlagen werden. Als Gedankenstütze kann für $t_{97.5\%, n-1}$ immer $2$ gedacht werden, da dies ungefähr dem wahren Wert entspricht, wenn $n$ grösser als $50$ ist.
+berechnet werden, wobei $\bar{x}$ das arithmetische Mittel, $s$ die Standardabweichung und $t_{97.5\%, n-1}$ dem Wert des $97.5\%$-Perzentil einer auf $0$ zentrierten $t$-Verteilung mit $n-1$ Freiheitsgraden entspricht. Letzere Perzentile der $t$-Verteilung können bei Bedarf in entsprechenden Tabellen nachgeschlagen werden. Diese Tabelle ist auch in Jamovi hinterlegt. Der Wert für $t_{97.5\%, 30-1}=t_{97.5\%, 29}$ wird aufgerufen indem bei Rj-Editor der Code `qt(0.975, df = 29)` ausgeführt wird. Wenn dies geklappt hat sollte der Wert `2.045` angezeigt werden. Als Gedankenstütze ist es im Moment jedoch ausreichend für $t_{97.5\%, n-1}$ immer $2$ zu denken, da dies ungefähr dem wahren Wert entspricht, wenn $n$ grösser als $50$ ist.
 
 Das $2.5\%$ und das $97.5\%$ Perzentil der Verteilung der arithmetischen Mittel ergeben nun die untere respektive obere Schranke eines [**Intervalls**. Ein Intervall bezeichnet durch die Symbolik $[$untere Schranke, obere Schranke$]$ beinhaltet alle Zahlen zwischen der unteren und der oberen Schranke.]{.customdef #customdef-interval} [Ein Intervall mit den oben beschriebenen Perzentilen als Schranken wurde so berechnet, dass bei wiederholter Stichprobenziehung der wahre Erwartungswert in $95\%$ der Fälle umschlossen wird. Grob übersetzt bedeutet dies, dass wir zu $95\%$ sicher oder _konfident_ sind, dass der Erwarungswert in diesem Intervall liegt. Dieses Intervall wird deshalb als $95\%$-**Konfidenzintervall** (Symbol KI) bezeichnet.]{.customdef #customdef-confidence-interval}
 [Als Sicherheit wird konventionell oft $95\%$ gewählt, andere Sicherheitswerte sind aber ebenfalls möglich und sinnvoll. Diese Werte heissen **Vertrauenswahrscheinlichkeit**. Ein $95\%$-Konfidenzintervall ist also ein Konfidenzintervall mit $95\%$ Vertrauenswahrscheinlichkeit.]{.customdef #customdef-confidence-level} [Andersherum betrachtet kann auch festgestellt werden, dass bei einem $95\%$-Konfidenzintervall die Wahrscheinlichkeit sich zu irren bei $5\%$ liegt. Irren bedeutet hier, dass der wahre Erwartungswert bei wiederholter Stichprobenziehung von $5\%$ der Konfidenzintervallen nicht überdeckt wird. Dieser Wert wird demnach **Irrtumswahrscheinlichkeit** genannt und mit $\alpha$ bezeichnet]{.customdef #customdef-erring-level}. Es ist demnach äquivalent von einem $99\%$ Konfidenzintervall oder von einem Konfidenzintervall mit $1\%$ Irrtumswahrscheinlichkeit zu sprechen.

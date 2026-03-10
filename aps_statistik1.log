@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.2.14)  10 MAR 2026 07:56
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.2.14)  10 MAR 2026 09:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1397,6 +1397,16 @@ Underfull \hbox (badness 1024) in paragraph at lines 1398--1399
 File: aps_statistik1_files/figure-latex/exm-agreableness-hist-means-1.pdf Graphic file (type pdf)
 <use aps_statistik1_files/figure-latex/exm-agreableness-hist-means-1.pdf>
 
+Underfull \hbox (badness 1092) in paragraph at lines 1411--1412
+[]\TU/lmr/m/n/10 Die Normalverteilung sieht einer Glocke ähnlich. Deshalb wird sie auch
+ []
+
+
+Underfull \hbox (badness 1902) in paragraph at lines 1411--1412
+\TU/lmr/m/n/10 Gausssche Glockenkurve nach Carl F. Gauss (1777-1855) benannt. Die
+ []
+
+
 Underfull \vbox (badness 2310) has occurred while \output is active []
 
 [59]
@@ -1473,17 +1483,16 @@ File: figures/04-exr-stichprobengroesse-jmv-input.jpg Graphic file (type bmp)
 <figures/04-exr-stichprobengroesse-jmv-input.jpg>
 File: figures/04-exr-stichprobengroesse-jmv-output.jpg Graphic file (type bmp)
 <figures/04-exr-stichprobengroesse-jmv-output.jpg>
-
-Underfull \hbox (badness 10000) in paragraph at lines 1714--1716
-
- []
-
 [71]
 Overfull \hbox (21.45671pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 72 \TU/lmr/m/sl/10 KAPITEL 4.  DURCHSCHNITT UND STANDARDABWEICHUNG SCHÄTZEN
  []
 
 [72]
+Underfull \hbox (badness 10000) in paragraph at lines 1714--1716
+
+ []
+
 File: figures/04-exr-biologietest-jmv-input.jpg Graphic file (type bmp)
 <figures/04-exr-biologietest-jmv-input.jpg>
 File: figures/04-exr-biologietest-jmv-output.jpg Graphic file (type bmp)
@@ -2489,7 +2498,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  35463 strings out of 470190
  804352 string characters out of 5477129
- 1209011 words of memory out of 5000000
+ 1209012 words of memory out of 5000000
  63406 multiletter control sequences out of 15000+600000
  634302 words of font info for 97 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
