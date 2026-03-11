@@ -321,13 +321,13 @@ e) Was kann daraus geschlossen werden?
 
 :::{.solution}
 
-Die folgenden Angaben können individuell leicht unterschiedlich ausfallen. Gründe sind die subjektive Einschätzung, ob ein Histogramm bereits wie die Normalverteilung aussieht oder nicht und der Zufall, welcher bei der Zufallsstichprobenziehung entsteht.  
+Die folgenden Angaben können individuell unterschiedlich ausfallen. Gründe sind die subjektive Einschätzung, ob ein Histogramm bereits wie die Normalverteilung aussieht oder nicht und der Zufall, welcher bei der Zufallsstichprobenziehung entsteht.  
 
-a) 250
-b) 150
-c) 500
-d) 100
-e) Je mehr Beobachtungen in einer Stichprobe, desto schneller ist der Durchschnitt normalverteilt. Je nach Stichprobenverteilung, ist der Durchschnitt schneller oder langsamer normalverteilt.
+a) $1000$ bis $2500$ Stichproben.
+b) $150$ bis $250$ Stichproben.
+c) $500$ bis $1100$ Stichproben.
+d) $50$ bis $200$ Stichproben.
+e) Je mehr Beobachtungen in einer Stichprobe, desto schneller ist der Durchschnitt normalverteilt. Je nach Stichprobenverteilung (Einstellung der $\alpha$ und $\beta$-Werte in der Simulation), ist der Durchschnitt schneller oder langsamer normalverteilt.
 
 :::
 
