@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{11 March, 2026}
+\date{18 March, 2026}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2019,7 +2019,7 @@ Es kann jedoch ausgesagt werden, mit welcher Wahrscheinlichkeit der gefundene St
 
 }
 
-\caption{TODO.}\label{fig:exm-vermoegen-histogram-plot}
+\caption{Verteilung der durchschnittlichen Vermögen unter der Annahme, dass die Nullhypothese wahr ist.}\label{fig:exm-vermoegen-histogram-plot}
 \end{figure}
 
 Der beobachtete Mittelwert ist zwar nicht genau bei \(100'000\) CHF, aber trotzdem noch einigermassen plausibel, wenn die Nullhypothese stimmt. Um diesen Gedanken zu formalisieren, gibt es zwei Denkweisen, welche nun vorgestellt werden.
@@ -2070,7 +2070,7 @@ nicht mehr normal-, sondern \(t\)-verteilt ist bei \(n-1\) Freiheitsgraden (grü
 
 }
 
-\caption{Oben: Histogramm der simulierten Verteilung; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert.}\label{fig:exm-vermoegen-plots-sampling-theorie}
+\caption{Oben: Histogramm der simulierten Verteilung; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert. Alle Verteilungen basieren auf der Annahme, dass die Nullhypothese wahr ist.}\label{fig:exm-vermoegen-plots-sampling-theorie}
 \end{figure}
 
 \phantomsection\label{customdef-teststatistik}{Die Berechnung des für den Test relevanten Wertes, hier des \(t\)-Wertes wird \textbf{Teststatistik} (oder auch \emph{Prüfgrösse} oder nur \emph{Statistik}) genannt.} Eine Teststatistik hat normalerweise eine bekannte theoretische Verteilung, welcher die Teststatistik folgt, wenn die Nullhypothese wahr ist. \phantomsection\label{customdef-t-test}{Aufgrund der theoretischen \(t\)-Verteilung der vorliegenden Statistik und der einen Stichprobe (vgl. nächstes Kapitel) wird dieser Test \textbf{Einstichproben-\(t\)-Test} genannt.}
@@ -2145,7 +2145,7 @@ Um die Wahrscheinlichkeit des beobachteten arithmetischen Mittels der Stichprobe
 
 }
 
-\caption{Oben: Histogramm der simulierten Verteilung der Alexithymie-Mittelwerte; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert.}\label{fig:exm-alexithymie-plot}
+\caption{Oben: Histogramm der simulierten Verteilung der Alexithymie-Mittelwerte; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert. Alle Verteilungen basieren auf der Annahme, dass die Nullhypothese wahr ist.}\label{fig:exm-alexithymie-plot}
 \end{figure}
 
 Der \(p\)-Wert, also die Wahrscheinlichkeit, dass der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert, wird hier aufgrund der zweiseitigen Hypothesenstellung auch zweiseitig ausgelegt. Extremer in Richtung der Alternativhypothese meint hier alle Werte, die weiter weg als der beobachtete Durchschnittswert \(96.7\) vom hypothetischen Erwartungswert \(\mu = 100\) sind. Konkret sind dies alle Werte, welche kleiner als \(96.7\), und alle Werte, welche grösser als \(103.3\) sind (roter Bereich in Abbildung \ref{fig:exm-alexithymie-plot} oben rechts). Der Anteil der Werte, welche diese Bedingung erfüllen liegt bei \(p = 0.7\%\). Es ist demnach recht unwahrscheinlich, dass die Nullhypothese stimmt und zufällig ein Stichprobendurchschnittswert von \(96.7\) Alexithymie-Punkten herauskommt.
@@ -3211,11 +3211,7 @@ befragt sie zufällig Leute der beiden Gruppen mit dem TIPI, welcher die
 Aufgeschlossenheit auf einer Skala von \(1\) bis \(7\) misst, wobei das
 kleinste Messintervall \(0.5\) Punkte beträgt. Die Daten sind also eher
 ordinal als intervallskaliert. In der Stichprobe waren
-\(N = 13\) junge mit einer Aufgeschlossenheit von \(M = 5.38, SD = 0.92\) und \(N =`r
-exm_aufgeschlossenheit_jung_alt\)n2`\$ alte mit einer Aufgeschlossenheit
-von \(M = 5, SD = 0.87\). Die Daten sind unter
-\texttt{07-exm-aufgeschlossenheit-jung-alt.sav} verfügbar.
-(Beispiel frei erfunden.)
+\(N = 13\) junge mit einer Aufgeschlossenheit von \(M = 5.38, SD = 0.92\) und \(N =7\) alte mit einer Aufgeschlossenheit von \(M = 5, SD = 0.87\). Die Daten sind unter \texttt{07-exm-aufgeschlossenheit-jung-alt.sav} verfügbar. (Beispiel frei erfunden.)
 \end{example}
 
 Auch in diesem Fall werden für den \(U\)-Test zunächst die Beobachtungen

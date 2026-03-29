@@ -325,9 +325,9 @@ Abbildung 5.1: Vorgestellte Zufallsstichprobenziehung. Links: Nullhypothese ist 
 </div>
 <p>Es kann jedoch ausgesagt werden, mit welcher Wahrscheinlichkeit der gefundene Stichprobenmittelwert realisiert wird, gegeben dass die Nullhypothese wahr ist. Hier wird also angenommen, dass eine Population mit Erwartungswert <span class="math inline">\(\mu = 100&#39;000\)</span> CHF vorliegt und dass anschliessend zum Beispiel <span class="math inline">\(3000\)</span> Stichproben an je <span class="math inline">\(20\)</span> Beobachtungen pro Stichprobe gezogen werden. Von jeder dieser Stichproben wird das arithmetische Mittel berechnet. In der Verteilung dieser Mittelwerte, siehe Abbildung <a href="zentrale-tendenz-testen.html#fig:exm-vermoegen-histogram-plot">5.2</a>, wird nun der tatsächliche Mittelwert der Stichprobe <span class="math inline">\(\bar{x} = 119853\)</span> verortet.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-vermoegen-histogram-plot"></span>
-<img src="aps_statistik1_files/figure-html/exm-vermoegen-histogram-plot-1.png" alt="TODO." width="672" />
+<img src="aps_statistik1_files/figure-html/exm-vermoegen-histogram-plot-1.png" alt="Verteilung der durchschnittlichen Vermögen unter der Annahme, dass die Nullhypothese wahr ist." width="672" />
 <p class="caption">
-Abbildung 5.2: TODO.
+Abbildung 5.2: Verteilung der durchschnittlichen Vermögen unter der Annahme, dass die Nullhypothese wahr ist.
 </p>
 </div>
 <p>Der beobachtete Mittelwert ist zwar nicht genau bei <span class="math inline">\(100&#39;000\)</span> CHF, aber trotzdem noch einigermassen plausibel, wenn die Nullhypothese stimmt. Um diesen Gedanken zu formalisieren, gibt es zwei Denkweisen, welche nun vorgestellt werden.</p>
@@ -360,9 +360,9 @@ nicht mehr normal-, sondern <span class="math inline">\(t\)</span>-verteilt ist 
 <pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale range
 ## (`geom_bar()`).</code></pre>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-vermoegen-plots-sampling-theorie"></span>
-<img src="aps_statistik1_files/figure-html/exm-vermoegen-plots-sampling-theorie-1.png" alt="Oben: Histogramm der simulierten Verteilung; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert." width="672" />
+<img src="aps_statistik1_files/figure-html/exm-vermoegen-plots-sampling-theorie-1.png" alt="Oben: Histogramm der simulierten Verteilung; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert. Alle Verteilungen basieren auf der Annahme, dass die Nullhypothese wahr ist." width="672" />
 <p class="caption">
-Abbildung 5.3: Oben: Histogramm der simulierten Verteilung; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert.
+Abbildung 5.3: Oben: Histogramm der simulierten Verteilung; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert. Alle Verteilungen basieren auf der Annahme, dass die Nullhypothese wahr ist.
 </p>
 </div>
 <p><span id="customdef-teststatistik" class="customdef">Die Berechnung des für den Test relevanten Wertes, hier des <span class="math inline">\(t\)</span>-Wertes wird <strong>Teststatistik</strong> (oder auch <em>Prüfgrösse</em> oder nur <em>Statistik</em>) genannt.</span> Eine Teststatistik hat normalerweise eine bekannte theoretische Verteilung, welcher die Teststatistik folgt, wenn die Nullhypothese wahr ist. <span id="customdef-t-test" class="customdef">Aufgrund der theoretischen <span class="math inline">\(t\)</span>-Verteilung der vorliegenden Statistik und der einen Stichprobe (vgl. nächstes Kapitel) wird dieser Test <strong>Einstichproben-<span class="math inline">\(t\)</span>-Test</strong> genannt.</span></p>
@@ -405,9 +405,9 @@ Abbildung 5.3: Oben: Histogramm der simulierten Verteilung; unten: theoretische 
 <pre><code>## Warning: Removed 8 rows containing missing values or values outside the scale range
 ## (`geom_bar()`).</code></pre>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:exm-alexithymie-plot"></span>
-<img src="aps_statistik1_files/figure-html/exm-alexithymie-plot-1.png" alt="Oben: Histogramm der simulierten Verteilung der Alexithymie-Mittelwerte; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert." width="672" />
+<img src="aps_statistik1_files/figure-html/exm-alexithymie-plot-1.png" alt="Oben: Histogramm der simulierten Verteilung der Alexithymie-Mittelwerte; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert. Alle Verteilungen basieren auf der Annahme, dass die Nullhypothese wahr ist." width="672" />
 <p class="caption">
-Abbildung 5.4: Oben: Histogramm der simulierten Verteilung der Alexithymie-Mittelwerte; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert.
+Abbildung 5.4: Oben: Histogramm der simulierten Verteilung der Alexithymie-Mittelwerte; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert. Alle Verteilungen basieren auf der Annahme, dass die Nullhypothese wahr ist.
 </p>
 </div>
 <p>Der <span class="math inline">\(p\)</span>-Wert, also die Wahrscheinlichkeit, dass der beobachtete Wert oder ein noch extremerer Wert in Richtung der Alternativhypothese resultiert, wird hier aufgrund der zweiseitigen Hypothesenstellung auch zweiseitig ausgelegt. Extremer in Richtung der Alternativhypothese meint hier alle Werte, die weiter weg als der beobachtete Durchschnittswert <span class="math inline">\(96.7\)</span> vom hypothetischen Erwartungswert <span class="math inline">\(\mu = 100\)</span> sind. Konkret sind dies alle Werte, welche kleiner als <span class="math inline">\(96.7\)</span>, und alle Werte, welche grösser als <span class="math inline">\(103.3\)</span> sind (roter Bereich in Abbildung <a href="zentrale-tendenz-testen.html#fig:exm-alexithymie-plot">5.4</a> oben rechts). Der Anteil der Werte, welche diese Bedingung erfüllen liegt bei <span class="math inline">\(p = 0.7\%\)</span>. Es ist demnach recht unwahrscheinlich, dass die Nullhypothese stimmt und zufällig ein Stichprobendurchschnittswert von <span class="math inline">\(96.7\)</span> Alexithymie-Punkten herauskommt.</p>

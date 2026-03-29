@@ -149,11 +149,7 @@ befragt sie zufällig Leute der beiden Gruppen mit dem TIPI, welcher die
 Aufgeschlossenheit auf einer Skala von $1$ bis $7$ misst, wobei das
 kleinste Messintervall $0.5$ Punkte beträgt. Die Daten sind also eher
 ordinal als intervallskaliert. In der Stichprobe waren
-$N = `r exm_aufgeschlossenheit_jung_alt$n1`$ junge mit einer Aufgeschlossenheit von $M = 5.38, SD = 0.92$ und $N =`r
-exm_aufgeschlossenheit_jung_alt$n2`$ alte mit einer Aufgeschlossenheit
-von $M = 5, SD = 0.87$. Die Daten sind unter
-`r inline_code(exm_aufgeschlossenheit_jung_alt$file_name)` verfügbar.
-(Beispiel frei erfunden.)
+$N = `r exm_aufgeschlossenheit_jung_alt$n1`$ junge mit einer Aufgeschlossenheit von $M = 5.38, SD = 0.92$ und $N =`r exm_aufgeschlossenheit_jung_alt$n2`$ alte mit einer Aufgeschlossenheit von $M = 5, SD = 0.87$. Die Daten sind unter `r inline_code(exm_aufgeschlossenheit_jung_alt$file_name)` verfügbar. (Beispiel frei erfunden.)
 :::
 
 Auch in diesem Fall werden für den $U$-Test zunächst die Beobachtungen

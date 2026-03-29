@@ -135,7 +135,7 @@ gen_exm_vermoegen <- function(){
     scale_factor*df, 
     sqrt((scale_factor)^2*2*df), 
     n,
-    "Vermögen CHF",
+    "Durchschnittliche Vermögen [CHF]",
     5000)
   
   line_xlim <- xlim(c(40000, 180000))
@@ -208,7 +208,7 @@ gen_exm_vermoegen <- function(){
                labeller = plot_attr_reja_pval$custom_labeller) +
     line_xlim +
     plot_attr_reja_pval$theme +
-    labs(x = "Vermögen", y = "W.-dichte                              Häufigkeit")
+    labs(x = "Durchschnittliche Vermögen", y = "W.-dichte                              Häufigkeit")
 
   return(mget(ls()))
 }
@@ -243,7 +243,7 @@ do.call(grid.arrange, c(exm_vermoegen$plots, ncol = 2))
 
 Es kann jedoch ausgesagt werden, mit welcher Wahrscheinlichkeit der gefundene Stichprobenmittelwert realisiert wird, gegeben dass die Nullhypothese wahr ist. Hier wird also angenommen, dass eine Population mit Erwartungswert $\mu = 100'000$ CHF vorliegt und dass anschliessend zum Beispiel $`r exm_vermoegen$n_samples`$ Stichproben an je $`r exm_vermoegen$n`$ Beobachtungen pro Stichprobe gezogen werden. Von jeder dieser Stichproben wird das arithmetische Mittel berechnet. In der Verteilung dieser Mittelwerte, siehe Abbildung \@ref(fig:exm-vermoegen-histogram-plot), wird nun der tatsächliche Mittelwert der Stichprobe $\bar{x} = `r round(exm_vermoegen$x %>% mean())`$ verortet. 
 
-```{r exm-vermoegen-histogram-plot, fig.cap="TODO.", echo = FALSE}
+```{r exm-vermoegen-histogram-plot, fig.cap="Verteilung der durchschnittlichen Vermögen unter der Annahme, dass die Nullhypothese wahr ist.", echo = FALSE}
 exm_vermoegen$plot_hist_density + 
   geom_vline(xintercept = exm_vermoegen$x %>% mean())+
   scale_x_continuous(n.breaks = 10)
@@ -285,7 +285,7 @@ nicht mehr normal-, sondern $t$-verteilt ist bei $n-1$ Freiheitsgraden (grüne L
 <!-- - why p-Wert does not correspond exactly to empirical p-Wert? -->
 <!-- - what is that uncertainty w.r.t. the rejection area? -->
 
-```{r exm-vermoegen-plots-sampling-theorie, fig.cap="Oben: Histogramm der simulierten Verteilung; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert."}
+```{r exm-vermoegen-plots-sampling-theorie, fig.cap="Oben: Histogramm der simulierten Verteilung; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert. Alle Verteilungen basieren auf der Annahme, dass die Nullhypothese wahr ist."}
 exm_vermoegen$plot_hist_curve_pval_reja
 ```
 
@@ -422,7 +422,7 @@ gen_exm_alexithymie <- function(){
                labeller = plot_attr_reja_pval$custom_labeller) +
     line_xlim +
     plot_attr_reja_pval$theme +
-    labs(x = "Alexithymie", y = "W.-dichte                              Häufigkeit")
+    labs(x = "Durchschnittliche Alexithymie", y = "W.-dichte                              Häufigkeit")
 
   return(mget(ls()))
 }
@@ -448,7 +448,7 @@ Die Alternativhypothese besagt das Gegenteil davon, also hier, dass die durchsch
 
 Um die Wahrscheinlichkeit des beobachteten arithmetischen Mittels der Stichprobe von $M = `r round(exm_alexithymie$x_mean,1)`$ Punkten zu ermitteln, gegeben, dass die Nullhypothese wahr ist, kann erneut auf den Gedanken der wiederholten Stichprobenziehung zurückgegriffen werden. Bei diesem Gedankenexperiment wird angenommen, dass Nullhypothese wahr ist und dass das die Untersuchung $`r exm_alexithymie$n_samples`$-mal wiederholt wurde mit jeweils $`r exm_alexithymie$n`$ Beobachtungen. Von jeder dieser Stichproben kann wiederum das arithmetische Mittel berechnet werden. Die Verteilung dieser arithmetischen Mittel ist in Abbildung \@ref(fig:exm-alexithymie-plot) oben dargestellt.
 
-```{r exm-alexithymie-plot, fig.cap="Oben: Histogramm der simulierten Verteilung der Alexithymie-Mittelwerte; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert."}
+```{r exm-alexithymie-plot, fig.cap="Oben: Histogramm der simulierten Verteilung der Alexithymie-Mittelwerte; unten: theoretische t-Verteilung; links: Illustration p-Wert; rechts: Illustration Ablehnungsbereich. Die Linie entspricht dem beobachteten Stichprobenmittelwert. Alle Verteilungen basieren auf der Annahme, dass die Nullhypothese wahr ist."}
 exm_alexithymie$plot_hist_curve_pval_reja
 ```
 
