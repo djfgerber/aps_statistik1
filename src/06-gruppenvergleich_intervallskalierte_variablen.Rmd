@@ -276,7 +276,7 @@ Dies entspricht, einfacher Arithmetik folgend,
 
 Es kann beobachtet werden, dass, wenn es keine Erwartungswertdifferenz gibt, die Mittelwertdifferenzen der Stichproben am häufigsten bei $0$ liegen und mit zunehmender Entfernung von $0$ unwahrscheinlicher werden. Dies kann wieder formalisiert werden indem die $5\%$ unwahrscheinlichsten Werte ($2.5\%$ links und $2.5\%$ rechts) zum Ablehnungsbereich erklärt werden und entspricht der roten Fläche in Abbildung \@ref(fig:exm-breakup-hist-pval-reja) links. Die tatsächlich beobachtete Mittelwertdifferenz (schwarze Linie) liegt im Ablehnungsbereich. Dies bedeutet dass sich die Erwartungswertdifferenz bei Signifikanzniveau $5\%$ signifikant von $0$ unterscheidet. Dies ist äquivalent zu der Aussage, dass sich die ER-Erwartungswerte der Männer und Frauen signifikant unterscheidet.
 
-```{r exm-breakup-hist-pval-reja, fig.cap="TODO"}
+```{r exm-breakup-hist-pval-reja, fig.cap="Trennungsschmerz: Ablehnungsbereich und p-Wert bei wiederholter Stichprobenziehung (oben), approximiert durch den t-Test (mitte) und approximiert durch den Welch-Test (unten). Alle Ablehnungsbereiche und p-Werte sind ähnlich."}
 exm_breakup$plot_hist_curve_pval_reja
 ```
 
@@ -362,7 +362,7 @@ Der Zweistichproben-$t$-Test und der Welch-Test sind also zwei Testvarianten, um
 
 <!-- Discuss: klären, Welch-Test praktisch relevant, zweistichproben-t-test historisch und als referenz wichtig. -->
 
-```{r exm-emotional-stroop-hist-pval-reja, fig.cap="TODO"}
+```{r exm-emotional-stroop-hist-pval-reja, fig.cap="Emotionaler Stroop-Test bei PTSD: Ablehnungsbereich und p-Wert bei wiederholter Stichprobenziehung (oben), approximiert durch den t-Test (mitte) und approximiert durch den Welch-Test (unten). Der Ablehnungsbereich und p-Wert des Welch-Tests bildet die wiederholte Stichprobenziehung genauer ab im Vergleich zum t-Test."}
 exm_emotional_stroop$plot_hist_curve_pval_reja
 ```
 
@@ -392,24 +392,21 @@ Glass $\Delta$ wird in `Jamovi` nicht standardmässig ausgegeben und muss händi
 
 Da es sich bei beiden Beispielen nicht um Experimente handelt, weil weder das Geschlecht noch die posttraumatische Belastungsstörung zufällig zugeorndet wurde, ist hier Glass $\Delta$ keine sinnvolle Effektgrösse. Aus diesem Grund wird für die Effektstärkenberechnung bei beiden Beispielen Cohens $d$ für den Welch-Test verwendet. Das berichten der Testresultate kann deshalb wie folgt aussehen:
 
-> Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche emotionale Antwort ER bei einer Trennung  bei Männern ($M = `r round(exm_breakup$jmv_res_desc$mean1,2)`$, $SD = `r round(exm_breakup$jmv_res_desc$sd1,2)`$, $N = `r exm_breakup$jmv_res_desc$num1`$) signifikant anders ist als bei Frauen ($M = `r round(exm_breakup$jmv_res_desc$mean2,2)`$, $SD = `r round(exm_breakup$jmv_res_desc$sd2,2)`$, $N = `r exm_breakup$jmv_res_desc$num2`$), $t(`r round(exm_breakup$jmv_res_test$dfwelc,1)`) = `r round(exm_breakup$jmv_res_test$statwelc,2)`$, $`r report_p(exm_breakup$jmv_res_test$pwelc)`, d = `r round(exm_breakup$jmv_res_test$eswelc,2)`$.
+> Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche emotionale Antwort ER bei einer Trennung  bei Männern ($M = `r round(exm_breakup$jmv_res_desc$mean1,2)` \text{ms}$, $SD = `r round(exm_breakup$jmv_res_desc$sd1,2)`$, $N = `r exm_breakup$jmv_res_desc$num1`$) signifikant anders ist als bei Frauen ($M = `r round(exm_breakup$jmv_res_desc$mean2,2)` \text{ms}$, $SD = `r round(exm_breakup$jmv_res_desc$sd2,2)`$, $N = `r exm_breakup$jmv_res_desc$num2`$), $t(`r round(exm_breakup$jmv_res_test$dfwelc,1)`) = `r round(exm_breakup$jmv_res_test$statwelc,2)`$, $`r report_p(exm_breakup$jmv_res_test$pwelc)`, d = `r round(exm_breakup$jmv_res_test$eswelc,2)`$.
 
 > Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Reaktionszeit beim emotionalen Stroop-Test bei Veteranen ohne PTSD ($M = `r round(exm_emotional_stroop$jmv_res_desc$mean1,2)`$, $SD = `r round(exm_emotional_stroop$jmv_res_desc$sd1,2)`$, $N = `r exm_emotional_stroop$jmv_res_desc$num1`$) nicht signifikant anders ist als bei Menschen mit PTSD ($M = `r round(exm_emotional_stroop$jmv_res_desc$mean2,2)`$, $SD = `r round(exm_emotional_stroop$jmv_res_desc$sd2,2)`$, $N = `r exm_emotional_stroop$jmv_res_desc$num2`$), $t(`r round(exm_emotional_stroop$jmv_res_test$dfwelc,1)`) = `r round(exm_emotional_stroop$jmv_res_test$statwelc,2)`$, $`r report_p(exm_emotional_stroop$jmv_res_test$pwelc)`, d = `r round(exm_emotional_stroop$jmv_res_test$eswelc,3)`$.
 
-<!-- g = `r round((1-(3/(4*(exm_emotional_stroop$n1+exm_emotional_stroop$n2)-9)))*exm_emotional_stroop$jmv_res_test$esstud,3)`. -->
-
-<!-- mit der neuen Trainingsmethode ist nicht signifikant tiefer als $`r exr_schwimmen$mu0`$ Minuten, $t(`r exr_schwimmen$jmv_res_test$df`) = `r round(exr_schwimmen$jmv_res_test$stat,2)`$, $p = `r round(exr_schwimmen$jmv_res_test$p,3) %>% str_sub(start = 2L)`, d = `r round(exr_schwimmen$jmv_res_test$es,3)`$. -->
-
-Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit auf den EST um einen mittleren Effekt.
+Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit auf den emotionalen Stroop-Test bei PTSD um einen mittleren Effekt.
 
 <!-- Discuss: Interpretation. -->
 
 ::::{.caution data-latex=""}
 
 ::: {.remark}
-- Die Namensgebung von diesen Berechnungsarten und insbesondere, was unter Cohens $d$ verstanden wird variiert beträchtlich und es empfiehlt sich immer die genaue Berechnungsart zu überprüfen.
+- Falls bei der Teststatistik oder der Effektstärke bei diesen Tests der exakt gleiche Wert aber mit anderem Vorzeichen angezeigt wird ist dies auch richtig. Dies hängt damit zusammen, dass eine der beiden Gruppen als Gruppe $1$ und die andere als Gruppe $2$ bezeichnet wird. Da die Teststatistik die Differenz von Gruppe $1$ und $2$ beinhaltet ergibt sich je nach Nummerierung ein positiver oder negativer Wert für die Teststatistik und ebenso für die Effektstärke. `Jamovi` wählt als Gruppe $1$ immer die Gruppe, welche als erstes auftaucht. Dieses Verhalten kann bei Bedarf manuell geändert werden, indem bei `Datenvariable` die Stufenreihenfolge geändert wird.
+- Die Namensgebung der Berechnungsarten für die Effektstärken und insbesondere, was unter Cohens $d$ verstanden wird, variiert beträchtlich und es empfiehlt sich immer die genaue Berechnungsart zu überprüfen.
 <!-- Discuss: Entwirrung Enzmann 2015 -->
-- In `Jamovi` wird für den Zweistichproben-$t$-Test und den Welch-Test eine unterschiedliche Effektstärke angegeben.
+- In `Jamovi` wird für den Zweistichproben-$t$-Test und den Welch-Test eine unterschiedliche Effektstärke angegeben. Dies ist einigermassen seltsam, da die Effektstärke konzeptuell nicht vom Testverfahren abhängig sein sollte.
 <!-- pooledVARSTUD <- tryNaN(((n[1]-1)*v[1]+(n[2]-1)*v[2])/(n[1]+n[2]-2)) -->
 <!-- pooledVARWELC <- tryNaN((v[1] + v[2]) / 2) -->
 <!-- sediffSTUD <- tryNaN(sqrt((pooledVARSTUD/n[1])+(pooledVARSTUD/n[2]))) -->
@@ -769,14 +766,30 @@ c) Die Forscherin will zeigen, dass unverheiratete Ärztinnen ein durchhschnittl
 d) Ein einseitiger Welch-Test ergibt, dass der durchschnittliche Burnout-Wert bei unverheirateten Ärztinnen ($M = `r round(exr_ehe_burnout$jmv_res_desc$mean1,2)`$, $SD = `r round(exr_ehe_burnout$jmv_res_desc$sd1,2)`$, $N = `r exr_ehe_burnout$jmv_res_desc$num1`$) signifikant höher ist als bei verheirateten Ärztinnen ($M = `r round(exr_ehe_burnout$jmv_res_desc$mean2,2)`$, $SD = `r round(exr_ehe_burnout$jmv_res_desc$sd2,2)`$, $N = `r exr_ehe_burnout$jmv_res_desc$num2`$), $t(`r round(exr_ehe_burnout$jmv_res_test$dfwelc,1)`) = `r round(exr_ehe_burnout$jmv_res_test$statwelc,2)`$, $`r report_p(exr_ehe_burnout$jmv_res_test$pwelc)`, d = `r round(exr_ehe_burnout$jmv_res_test$eswelc,3)`$.
 :::
 
-::: {.exercise  #tagname5}
+
+## Test
+
+::: {.exercise  #wordsrecall}
 <!-- 
 Ziel: 
-- Berichten und Werte erklären
+- 
 -->
-TODO: Exercise body
+In einem Experiment wird das Worterinnerungsgedächtnis von Patientinnen mit links (`LT Epilepsie`)- respektive rechtsseitiger (`RT Epilepsie`) Temporallappenepilepsie getestet. Dazu wird eine Anzahl Wörter eingeprägt, welche die Patientinnen nach einer kurzen Zeit wiedergeben müssen und die Anzahl erinnerter Wörter wird festgehalten. Bei der Analyse mit $t$-Test und Welch-Test mit `Jamovi` sind die Ergebnisse in Abbildung \@ref(fig:exr-wordsrecall-output) entstanden. Welche der folgenden Aussagen sind wahr, welche falsch.
+
+```{r exr-wordsrecall-output, out.width='100%', fig.cap='Jamovi Eingabe.'}
+knitr::include_graphics("figures/06-exr-wordsrecall-jmv-output.jpg")
+```
+
+a) Die Hypothesenstellung ist gemäss Testausführung einseitig.
+b) Der gefundene Effekt ist gemäss Cohen als mittel einzustufen.
+c) Der $p$-Wert des Welch-Tests nähert den tatsächlichen $p$-Wert am besten an.
+d) Es gibt einen signifikanten Unterschied bei der durchschnittlichen Worterinnerungsleistung zwischen links- und rechtsseitiger Temporalepilepsie betroffener.
+
 :::
 
 :::{.solution}
-TODO: solution body
+a) Falsch
+b) Richtig
+c) Richtig
+d) Richtig
 :::

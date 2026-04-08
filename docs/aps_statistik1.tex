@@ -153,7 +153,7 @@
 
 \title{Statistik 1}
 \author{Daniel J. F. Gerber}
-\date{18 March, 2026}
+\date{08 April, 2026}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2666,7 +2666,7 @@ Es kann beobachtet werden, dass, wenn es keine Erwartungswertdifferenz gibt, die
 
 }
 
-\caption{TODO}\label{fig:exm-breakup-hist-pval-reja}
+\caption{Trennungsschmerz: Ablehnungsbereich und p-Wert bei wiederholter Stichprobenziehung (oben), approximiert durch den t-Test (mitte) und approximiert durch den Welch-Test (unten). Alle Ablehnungsbereiche und p-Werte sind ähnlich.}\label{fig:exm-breakup-hist-pval-reja}
 \end{figure}
 
 Ebenfalls kann erneut der p-Wert berechnet werden. Dieser entspricht hier allen ER-Mittelwertdifferenzen, welche \emph{extremer} als die beobachtete Mittelwertdifferenz \(0.25\) sind. Da die Hypothesenstellung hier zweiseitig ist, bedeutet extremer hier wieder grösser als \(0.25\) oder kleiner als \(-0.25\). Der \(p\)-Wert entspricht dem Anteil der roten Fläche in Abbildung \ref{fig:exm-breakup-hist-pval-reja} rechts an der Gesamtfläche und beträgt \(0.004\).
@@ -2736,7 +2736,7 @@ Der Zweistichproben-\(t\)-Test und der Welch-Test sind also zwei Testvarianten, 
 
 }
 
-\caption{TODO}\label{fig:exm-emotional-stroop-hist-pval-reja}
+\caption{Emotionaler Stroop-Test bei PTSD: Ablehnungsbereich und p-Wert bei wiederholter Stichprobenziehung (oben), approximiert durch den t-Test (mitte) und approximiert durch den Welch-Test (unten). Der Ablehnungsbereich und p-Wert des Welch-Tests bildet die wiederholte Stichprobenziehung genauer ab im Vergleich zum t-Test.}\label{fig:exm-emotional-stroop-hist-pval-reja}
 \end{figure}
 
 \section{Effektstärken}\label{effektstuxe4rken}
@@ -2768,14 +2768,14 @@ Würde die Relevanz des beobachteten Effekts mit der Mittelwertsdifferenz gemess
 Da es sich bei beiden Beispielen nicht um Experimente handelt, weil weder das Geschlecht noch die posttraumatische Belastungsstörung zufällig zugeorndet wurde, ist hier Glass \(\Delta\) keine sinnvolle Effektgrösse. Aus diesem Grund wird für die Effektstärkenberechnung bei beiden Beispielen Cohens \(d\) für den Welch-Test verwendet. Das berichten der Testresultate kann deshalb wie folgt aussehen:
 
 \begin{quote}
-Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche emotionale Antwort ER bei einer Trennung bei Männern (\(M = 6.56\), \(SD = 2.6\), \(N = 1409\)) signifikant anders ist als bei Frauen (\(M = 6.81\), \(SD = 2.53\), \(N = 2695\)), \(t(2786.7) = -2.9\), \(p = .004, d = -0.1\).
+Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche emotionale Antwort ER bei einer Trennung bei Männern (\(M = 6.56 \text{ms}\), \(SD = 2.6\), \(N = 1409\)) signifikant anders ist als bei Frauen (\(M = 6.81 \text{ms}\), \(SD = 2.53\), \(N = 2695\)), \(t(2786.7) = -2.9\), \(p = .004, d = -0.1\).
 \end{quote}
 
 \begin{quote}
 Ein zweiseitiger Welch-Test ergibt, dass die durchschnittliche Reaktionszeit beim emotionalen Stroop-Test bei Veteranen ohne PTSD (\(M = 636.86\), \(SD = 106.08\), \(N = 16\)) nicht signifikant anders ist als bei Menschen mit PTSD (\(M = 740.98\), \(SD = 226.81\), \(N = 26\)), \(t(37.9) = -2.01\), \(p = .052, d = -0.588\).
 \end{quote}
 
-Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit auf den EST um einen mittleren Effekt.
+Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit auf den emotionalen Stroop-Test bei PTSD um einen mittleren Effekt.
 
 \begin{caution}
 
@@ -2785,9 +2785,11 @@ Beim Trennungsschmerz handelt es sich um einen schwachen, bei der Reaktionszeit 
 \begin{itemize}
 \tightlist
 \item
-  Die Namensgebung von diesen Berechnungsarten und insbesondere, was unter Cohens \(d\) verstanden wird variiert beträchtlich und es empfiehlt sich immer die genaue Berechnungsart zu überprüfen.
+  Falls bei der Teststatistik oder der Effektstärke bei diesen Tests der exakt gleiche Wert aber mit anderem Vorzeichen angezeigt wird ist dies auch richtig. Dies hängt damit zusammen, dass eine der beiden Gruppen als Gruppe \(1\) und die andere als Gruppe \(2\) bezeichnet wird. Da die Teststatistik die Differenz von Gruppe \(1\) und \(2\) beinhaltet ergibt sich je nach Nummerierung ein positiver oder negativer Wert für die Teststatistik und ebenso für die Effektstärke. \texttt{Jamovi} wählt als Gruppe \(1\) immer die Gruppe, welche als erstes auftaucht. Dieses Verhalten kann bei Bedarf manuell geändert werden, indem bei \texttt{Datenvariable} die Stufenreihenfolge geändert wird.
 \item
-  In \texttt{Jamovi} wird für den Zweistichproben-\(t\)-Test und den Welch-Test eine unterschiedliche Effektstärke angegeben.
+  Die Namensgebung der Berechnungsarten für die Effektstärken und insbesondere, was unter Cohens \(d\) verstanden wird, variiert beträchtlich und es empfiehlt sich immer die genaue Berechnungsart zu überprüfen.
+\item
+  In \texttt{Jamovi} wird für den Zweistichproben-\(t\)-Test und den Welch-Test eine unterschiedliche Effektstärke angegeben. Dies ist einigermassen seltsam, da die Effektstärke konzeptuell nicht vom Testverfahren abhängig sein sollte.
 \end{itemize}
 
 \end{remark}
@@ -3105,15 +3107,53 @@ Damit können die Teilfragen beantwortet werden.
 
 \end{solution}
 
-\begin{exercise}
-\protect\hypertarget{exr:tagname5}{}\label{exr:tagname5}\leavevmode
+\section{Test}\label{test-3}
 
-TODO: Exercise body
+\begin{exercise}
+\protect\hypertarget{exr:wordsrecall}{}\label{exr:wordsrecall}\leavevmode
+
+In einem Experiment wird das Worterinnerungsgedächtnis von Patientinnen mit links (\texttt{LT\ Epilepsie})- respektive rechtsseitiger (\texttt{RT\ Epilepsie}) Temporallappenepilepsie getestet. Dazu wird eine Anzahl Wörter eingeprägt, welche die Patientinnen nach einer kurzen Zeit wiedergeben müssen und die Anzahl erinnerter Wörter wird festgehalten. Bei der Analyse mit \(t\)-Test und Welch-Test mit \texttt{Jamovi} sind die Ergebnisse in Abbildung \ref{fig:exr-wordsrecall-output} entstanden. Welche der folgenden Aussagen sind wahr, welche falsch.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures/06-exr-wordsrecall-jmv-output} 
+
+}
+
+\caption{Jamovi Eingabe.}\label{fig:exr-wordsrecall-output}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Die Hypothesenstellung ist gemäss Testausführung einseitig.
+\item
+  Der gefundene Effekt ist gemäss Cohen als mittel einzustufen.
+\item
+  Der \(p\)-Wert des Welch-Tests nähert den tatsächlichen \(p\)-Wert am besten an.
+\item
+  Es gibt einen signifikanten Unterschied bei der durchschnittlichen Worterinnerungsleistung zwischen links- und rechtsseitiger Temporalepilepsie betroffener.
+\end{enumerate}
 
 \end{exercise}
 
 \begin{solution}
-TODO: solution body
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Falsch
+\item
+  Richtig
+\item
+  Richtig
+\item
+  Richtig
+\end{enumerate}
+
 \end{solution}
 
 \chapter{Gruppenmittelwertunterschied bei einem mindestens ordinalskalierten Merkmal}\label{gruppenmittelwertunterschied-bei-einem-mindestens-ordinalskalierten-merkmal}
@@ -3680,7 +3720,7 @@ einzustufen.
 
 \end{solution}
 
-\section{Test}\label{test-3}
+\section{Test}\label{test-4}
 
 TODO.
 
@@ -4222,7 +4262,7 @@ Dies produziert das Analyseergebnis in Abbildung \ref{fig:sol-test-preparation-o
 
 \end{solution}
 
-\section{Test}\label{test-4}
+\section{Test}\label{test-5}
 
 \begin{exercise}
 \protect\hypertarget{exr:test-theorie-korrelation}{}\label{exr:test-theorie-korrelation}
@@ -5260,7 +5300,7 @@ Damit kann die Frage nun beantwortet werden:
 
 \end{solution}
 
-\section{Test}\label{test-5}
+\section{Test}\label{test-6}
 
 \chapter{Zusammenhang nominalskalierter Merkmale}\label{zusammenhang-nominalskalierter-merkmale}
 
@@ -5561,7 +5601,7 @@ Damit kann die Frage nun beantwortet werden:
 
 \end{solution}
 
-\section{Test}\label{test-6}
+\section{Test}\label{test-7}
 
 \chapter*{Begriffsverzeichnis}\label{begriffsverzeichnis}
 \addcontentsline{toc}{chapter}{Begriffsverzeichnis}
